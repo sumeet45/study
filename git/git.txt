@@ -1,0 +1,21 @@
+Edureka youtube - 
+
+* what is version control?
+- Version control is a system that records changes to a file or set of files over the time, so that you can recall specific versions later. These versions are recorded in a repository and can be recalled from the same. There are local, centralized and distributed version control systems.
+
+Local VCS 
+Centralized VCS
+Distributed VCS
+
+* Use of VCS
+- better collaboration of code (shared workspace and real time updates),
+  managing code (previous versions code manage),
+  Rollback version,
+  Reduce Downtime (Reverse faulty and save time)
+  analyze code
+
+* what is repository?
+- A repo is a directory or storage space where your projects can live. It can be local to a folder on your computer or it can be a storage space on another online host (such as Github). In repo, you can any file related to your projects.
+
+* What is Git?
+- Git is Distributed version control tool that supports distributed non-linear workflows by providing data assurance form developing quality software.It lets you and your team of developers work together on the same project from anywhere. Team members can work on files and easily merge their changes into one source.

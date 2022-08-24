@@ -1,0 +1,7 @@
+
+359) What are Rest api and why do we use them? -
+* In recent times, we want only data (JSON, XML) instead of HTML page, when we fetch data from our web application or mobile app or anything else.
+
+
+360) Accessing data with Rest API's -
+* accessing data with Rest API, will be possible in following ways - HTML, plain text, XML, JSON

@@ -1,0 +1,25 @@
+Software Developement Principles -
+Ref url ( https://betterprogramming.pub/7-software-development-principles-that-should-be-embraced-daily-c26a94ec4ecc )
+
+*YAGNI
+*DRY
+*KISS
+*Big Design Up Front
+*SOLID
+*Avoid Premature Optimization
+*Occam's Razor
+
+
+*SOLID -
+	S (Single Responsibility Principle) - 
+	* A class should have one and only one reason to change, meaning that a class should have only one job.
+	* Explanation - suppose we have class called "book" with some methods related to book. As per Principle, we should not add any extra functionality to our class. It should have only book related methods only. If you want to add another methods, then add those to other class and use it.
+
+	O (Open-Closed Principle) - 
+	* Objects or entities should be open for extension but closed for modification.
+	* You should be able to extend a classes behavior, without modifying it.
+	* Explanation - Suppose we have class "A" with the help of interface and have "addition" and "substraction" method in class. In future, if we have requirement to add support for "multiplication", then we can create new class "B" with extending interface. Here, we don't touch our old codebase, instead of that we create new one. So there's no possibility to create bugs.
+
+	L (Liskov Substitution Principle) -
+	* you should be able to change an instance using a sub-type and your code should still work.
+

@@ -1,0 +1,224 @@
+
+5) start applying for jobs, even you just started applying.
+
+6) 
+use "resumemaker.com",
+* Imp points - one page, Relevant skills, Personalized, Online Link
+* change every time little bit, as per JD
+
+7) 
+* resume cheatsheet - https://github.com/aneagoie/resume-checklist
+
+* Use a pre-designed resume template - download resume from resume template website
+* Make the resume fit on 1 page
+* Include words from job description - add words to resume from JD
+* Include company name you are applying to
+* Does your first item on your resume reflect what they are looking for?
+* Experience titles demonstrate value
+* Do you have an online link?
+* Remove the word “I”
+* No buzzwords describing how great you are
+* Are you using Action words?
+* Measure everything in terms of impact, don’t just describe your responsibilities
+* Technical Knowledge/Skills should include what they are looking for. Only show years if it is impressive
+* Include only sections/items that are impressive: Experience, Projects, Education, Technical Skills
+* No typos or bad grammar
+
+
+12) LinkedIN -
+* use search to search jobs and applied to it
+* update keywords and skills weekly
+* Ask for Recommendations
+* connect with person through message 
+
+
+
+23) Setting up Your Enviornment =
+* use - https://replit.com/
+
+24) Section Overview = 
+* Learn Big O concepts to understand each language properly.
+
+
+26) Big O cheatsheet = 
+* https://zerotomastery.io/cheatsheets/big-o-cheat-sheet/?utm_source=udemy&utm_medium=coursecontent
+
+
+27) What is Good Code? =
+* Good code can be describe in 2 things - Readable and Scalable
+* Scalable - big O notation is what allows us to measure this idea of scalable code that can scale.
+* Programmer can code which might be efficient or inefficient way.
+* write function called "FindNemo".
+
+
+28) Big O and scalability =
+* as input increases, findNemo function increase time to print character.
+* output will be faster or slower based on CPU power and how many programms are running simultaneously and many other factors. So we can't predict based on this parameter, which one is good code and bad code?
+* so for that, we have big o notation, to calculate efficiency.
+* Here, we got chart of Big o. Now, with help of big O, we can found efficiency of our code.
+
+
+29) O(n) -
+* lets find out big O notation for functions.
+* O(n) - as input increases, output increase linearly.
+* Big O doesn't measure in seconds, instead we're focusing on how quickly our runtime grows. we do this with size of input and compare the operations that increases.
+* O(n) -  this is most common notation.
+* findNemo has for loop.
+var array1 = [nemo];
+var array2 = [..., nemo, ... many other];
+function findNemo(array){
+	for (let i=0;i< array.length; i++){
+		if(array[i] === "nemo"){
+			console.log("found nemo");
+		}
+	}
+}
+findNemo(array2);
+
+
+30) O(1) =
+* we call this "constant time", no matter how many input increases, we just grab 1st item of array.
+* with O(1), we can execute code once, not needed to execute again and again.
+
+
+
+36) Big O rule 1 - 
+* first rule - always think about worst case.
+
+
+37) Big O rule 2 -
+* second rule - Remove constants
+* O(2n)	becomes O(n)
+
+
+38) Big O rule 3 -
+* third rule - different terms for input.
+* 2 loops, one by one - O(a + b)
+* 2 loops, one inside one, different input - O(a * b)
+
+
+39) O(n^2) - 
+* 2 loops, one inside one, same input - O(n * n) => O(n^2)
+
+
+40) Big O rule 4 -
+* last rule - drop non dominants.
+* if we have something like follow - O(x^2 + 100 + 2n )  =>  O(x^2)
+* we are more concerned about O(n^2) than O(1), O(n).
+
+
+41) Big O Cheatsheet -
+-Big Os -
+	O(1) Constant- no loops
+	O(log N) Logarithmic- usually searching algorithms have log n if they are sorted (Binary Search)
+	O(n) Linear- for loops, while loops through n items
+	O(n log(n)) Log Liniear- usually sorting operations
+	O(n^2) Quadratic- every element in a collection needs to be compared to ever other element. Two
+	nested loops
+	O(2^n) Exponential- recursive algorithms that solves a problem of size N
+	O(n!) Factorial- you are adding a loop for every element
+
+Iterating through half a collection is still O(n)
+Two separate collections: O(a * b)
+
+
+-What can cause time in a function?-
+	Operations (+, -, *, /)
+	Comparisons (<, >, ==)
+	Looping (for, while)
+	Outside Function call (function())
+
+
+-Rule Book
+	Rule 1: Always worst Case
+	Rule 2: Remove Constants
+	Rule 3: Different inputs should have different variables. O(a+b). A and B arrays nested would be O(a*b)
+			+ for steps in order
+			* for nested steps
+	Rule 4: Drop Non-dominant terms
+
+
+-What causes Space complexity?-
+	Variables
+	Data Structures
+	Function Call
+	Allocations
+
+
+
+42) What does this all mean?
+* scalable means we worry about large inputs.
+* https://www.bigocheatsheet.com/
+* data structure + algorithms = Programs
+* Big O is about write scalable code for smaller and larger input in future too.
+
+
+220) During the interview - 
+* Think like, i do have more offer letter in hand before starting interview and take this inerview as practice.
+* Think like, you are going to meet a old friend with big smile and having fun, so it help increase positive bond between interviewer and me.
+* 4 heroes - 
+	create stories of 4 types - Technical, Success, Leadership, Challenge
+
+
+222) Tell me about yourself -
+* Triggers of success, mention things you want to get asked, Skills should be relevant to Job
+* Use this opportunity of asking this question, take it to your skills area.
+* Triggers of success - Use 4 heroes stories, past companies and projects,
+* Mention things you want to get asked, Skills should be relevant to Job - use 4 heroes stories to demonstrate you as good candidate for this job
+* they can ask question in different version, we can give this answer.
+
+
+224) Why Us? -
+* i've been researching your company and found you are working on some X, and in past, I worked on something like that.
+* use 4 heroes stories to show them you are interested.
+* why leave previous? - to grow, and for new challenges
+
+
+225) Tell me about a problem you have solved -
+* use 2 old great projects to 
+* use SAR method - Situation, Action, Result - tell story in these 3 steps. be ready with exact implementation you did it.
+* Tell me about an interesting project? - show how you differenet, relate it to this job
+
+
+227) what is your biggest weakness -
+* real answer
+* show how you improved it
+
+
+229) Any question for us?
+* focus on them(you), not company
+* ask future plans, projects, work culture
+
+
+
+
+------------------------------------------------------------------------------------------------
+Principles -
+
+Why Principles?
+* These principles will help us to understand, how to structure the code, so that the code will be robust, maintainable and flexible, easy to test.
+
+SOLID Principles =
+* Single Responsibily Principle - Single Function should do only one task. it should not do multiple things in single function.
+* Open / Close Principle - Open for modification and closed for extension.
+* Liskov Substitution - Liskov Substitution Principle (LSP) states that objects of a superclass should be replaceable with objects of its subclasses without breaking the application.
+ex. class Bird {
+		layEgg(){
+			....
+		}
+	}
+
+	class Eagle Extends Bird {
+		fly(){
+			....
+		}
+	}
+
+	class Penguin Extends Bird {
+		dive(){
+			....
+		}
+	}
+
+* Interface Segregation - Interface segregation principle (ISP) states that no code should be forced to depend on methods it does not use.
+* Dependancy Inversion - 

@@ -1,0 +1,123 @@
+
+
+React - The Complete Guide (incl Hooks, React Router, Redux) (Udemy Course) =
+
+2) what is React?
+* React is JS library for building "Interactive User Interfaces".
+* It gives highly reactive user experiences like mobile app. Previously, its not possible with website, but now its possible with react.
+* now with React, we will be able to change what user sees instantly, without fetching new page.
+* react js is a client side JS library.
+* it helps us to write modern, reactive user interfaces for the web.
+
+
+3) Why React instead of "Just JS"?
+* Here, we are seeing comparison between JS and react code.
+* With JS, we will have much code and need to handle also in multiple places. It makes code more verbose.
+* If programmer writes each and every steps, and that brings to something on screen, called "Imperative Approach".
+* but with react, we can write robust and less code.
+* React is all about those components. React is all about splitting your application into small building blocks, small components, where every building block, every component, has a clear task and therefore your code stays maintainable and  manageable. And React, the library will do the heavy lifting of rendering something on the screen and of combining all your code.
+
+
+4) building SPS's with react =
+* without requesting new html file, we can change UI with the help of React. It gives better user experience.
+
+
+5) Exploring React js Alternatives =
+* 
+
+6) 
+
+
+
+
+
+Summary 1st section =
+* React is JS library will help to build "Highly Interactive User Interface". With Component based approach, It's maintainable and manageable.
+
+
+
+
+
+
+C) React Basics and Working with Components =
+
+25) What are components? and why is React all about them?
+* React makes building complex, interactive and reactive user interfaces simpler. React takes care of nitty gritty task, so you will be able to focus on business logic. For that, react embrace concept called "component".
+* React is all about "Components".
+* UI are actually made up of "Components".
+* Components are "Reusable building blocks" in UI. It's mostly, combination of HTML, CSS, JS code.
+* We build those components and we tell react, how to compose them together into final UI.
+* Why React? - Reusability aspect and separate concerns (task).
+* Reusability - "Reusability" means create multiple components. and attach in UI whenever it required.
+* separate of conerns - we create multiple function, for separate task. so we can use it whenever reuired.
+
+
+26) React code is written in A "Declarative Way"! =
+* we combine "HTML", "CSS" and "JS" in all these components and then we combine all of these components together to build UI.
+* React allows you to create "re-usable" and "reactive" components consisting HTML, CSS and JS.
+* React uses "declarative approach". It means, we define desired end states, and based on certain conditions, React will decide which state should be used. And react, will do rest.
+
+
+28) Creating a new React Project = 
+* npx create-react-app@5.0.0 my-app1
+* cd my-app
+* npm start
+
+
+
+30) Analyzing a standard React Project = 
+
+
+
+31) Introduction to JSX =
+* JSX stands for Javascript XML
+* npm process help to convert JSX code to JS code, which runs in browser.
+
+
+32) How React Works = 
+* We build "component" in React using "Declarative Approach". ex. <Text>This is text</Text>
+* const para = document.createElement("p");
+  para.innerHTML = "some text";
+  This called "Imperative Approach".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+More words =
+* building "Interactive User Interfaces"
+* called "Imperative Approach".
+* React uses "declarative approach". 
+
+
+
+
+
+Interview Questions = 
+* Virtual DOM - lightweight object, change less expensive, min memory wastage, faster update, JSX element updated if avalaible, cannot update html directly
+* Real DOM - no lightweight object, changes more expensive, max memory wastage, slower update, create new DOM every time an element gets updated, able to directly manipulate HTML
+
+* What is React JS - UI library , component based approach, declarative approach react, help to design complex UI and web applicaiton, developed by fb, 
+
+* What is Virtual DOM - 
+1) The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. This process is called reconciliation.
+2) when updated 

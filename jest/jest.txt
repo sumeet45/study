@@ -1,0 +1,17 @@
+maximillian video (youtube) =
+
+* Why Testing - when we update any changes in code, does it affect our application by using Automated Testing.
+
+* Why Test? (advantages) = get an error if you break code, save time, Think about possible issues and bugs, integrate into build workflow, break up complex dependancies, improves code
+
+*Test are of 3 types = 
+1) Fully Isloated (testing 1 function),
+2) Unit Tests (testing a function that calls a function),
+3) E2E test(Full Flow or part application test, feature)
+
+* we need test runner, assertions library, Headless browser to test code.
+* Test runner - execute tests, summarize results. e.g. mocha
+* assertions library - Defining test logic, expected outcome to compare with conditions. eg. chai
+* Jest is great replacement for mocha and chai.
+
+

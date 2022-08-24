@@ -1,0 +1,173 @@
+Git Commands
+git init foldername - to create folder 
+git add - to add keep file ready to commit
+git commit -m  - to save updated file with message
+git checkout master - to check repository
+git push origin - 
+git pull 
+git merge
+
+
+
+working flow - 
+1) First set username & email. we use it to give credits to us who changes
+	* git config --global user.name "Sumeet Shedge"
+	* git config --global user.email "sumeetshedge@gmail.com"
+
+2) for Creating project folder
+	git init foldername
+	cd foldername
+
+3) Adding & commit - Add files which is available under that folder
+	
+	* git add file1.txt  -this add is not permanent till commit
+	* git commit --m "add two files" - here we add files with commit message
+
+
+Commands -
+1) git status - give status report till now
+
+2) git add filename - add file to version control but it's not permanent record still we commit
+
+3) git commit -m "new file added" - submit commit message
+
+add repository of same name of folder to github account 
+
+4) use - push an existing repository from the command line
+
+
+https://www.youtube.com/watch?v=U8GBXvdmHT4
+
+/-------------------------------------------------------------/
+
+First Time git setup
+1) After installation to check is it installed or not
+	git --version
+
+2) set user and email 
+git config --global user.name 'sumeet shedge'
+git config --global user.email 'sumeetshedge@gmail.com'
+
+ to check - 
+ git config --list
+
+3) if u need help -
+	git help <verb>
+	git <verb> help
+
+	ex. git help config / git add help
+
+
+Two scenarios -
+A) Existing project on local Machine, that we want to track it.
+
+	4) to track our git 
+		git init
+
+	5) to check status what is unmerged
+	   git status
+
+	6) create gitignore file to ignore that file which is listed in gitignore file
+	   touch gitignore
+	   //and write files that u want to ignore 
+
+	7) add file to staging area before commiting. u can do it one by one
+	   git add -A
+
+	8) we can reset what we add
+	   git reset .gitignore
+	   //and check git status
+
+	7) after adding all files lets commit
+		git commit -m "merge complete"
+
+	8) to check all commit till now
+		git log 
+
+
+B) Existing project on remote repo,
+	9) to clone git repository
+		git clone <url> <directory url>
+		ex. git clone ../repo/repo.git .
+
+	10) view info
+		git remote -v
+			or
+		git branch -a
+
+	* Pushing Changes
+	11) To check difference between remote and local
+		git diff
+		git status
+		git add -A
+		git status
+		git commit -m "change"
+
+	12) before pushing u have to take pull
+		git pull origin master
+		git push origin master
+
+
+Common WorkFlow -
+13) Before working on master, create branch and then work on that
+	git branch calc-divide
+
+14) to change to the branch 
+	git checkout calc-divide
+
+// changes made to file
+15) git status
+
+16) git add -a 							//add changes to locally
+
+17) git commit -m "updated"				//message commited
+
+18) git push -u origin calc-divide 		//push branch to remote
+
+19) git branch -a    			 //show all branch remote and locally
+
+
+
+// update master with updated code
+20) git checkout master			//transfer to master branch
+
+21) git pull origin master		//take pull from git
+
+22) git branch --merged
+
+23) git merge calc-divide		//merge master with calc-divide
+
+24) git push origin master		//push changes
+
+
+
+
+// deleting branch
+25) git branch --merged
+
+26) git branch -d calc-divide  //delete branch locally
+
+27) git branch -a  //show all branch remote and locally
+
+28) git push origin -delete calc-divide		//delete branch remote
+
+
+
+quick example - 
+git branch substract
+git checkout substract
+git status		//after updating code.
+git add -A
+git commit -m "substract"
+git push -u origin substract
+git checkout master
+git pull origin master
+git merge substract
+git push origin master
+git branch -d substract
+git branch -a
+git push origin -delete substract
+
+
+
+https://www.youtube.com/watch?v=HVsySz-h9r4

@@ -1,0 +1,82 @@
+React Native Website - 
+
+The Basics =
+
+1) Core Components and Native Components =
+* React Native is an open source framework for building Android and iOS applications using React and the app platform’s native capabilities.
+* using JavaScript to access your platform’s APIs as well as to describe the appearance and behavior of your UI using React components
+
+a) Views and mobile development
+* a view is the basic building block of UI
+* used to display text, images, or respond to user input
+
+b) Native Components
+* With React Native, you can invoke platform specific views with JavaScript using React components.
+* At runtime, React Native creates the corresponding Android and iOS views for those components.
+* We call these platform-backed components "Native Components".
+* React Native comes with a set of essential, ready-to-use Native Components you can use to start building your app today. These are React Native's Core Components.
+
+c) Core Components
+* React Native has many Core Components for everything from form controls to activity indicators.
+* React Native uses the same API structure as React components
+* React Native Components contain-
+	React components, React Native Components (Community Components, Core Components, Own Native Component)
+
+
+
+2) React Fundamentals =
+* React Native runs on React, a popular open source library for building user interfaces with JavaScript.
+* First Component =
+	
+	import React from "react";
+	import { Text } from "react-native";
+
+	const cat = () => {
+		return <Text>Cat</Text>
+	}
+	export default cat;
+
+* JSX = 
+	* React and React Native use JSX, a syntax that lets you write elements inside JavaScript.
+
+* Custom Components =
+
+* Developer notes =
+	* On Android, you usually put your views inside LinearLayout, FrameLayout, RelativeLayout, etc. to define how the view’s children will be arranged on the screen.
+	* Any component that renders other components is a parent component. And those other components are child components.
+
+* Props =
+	* Props is short for “properties”.
+	* Image has many different props, including style, which accepts a JS object of design and layout related property-value pairs.
+
+* State =
+	* While you can think of props as arguments you use to configure how components render, state is like a component’s personal data storage.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Interview Questions
+
+
+
+
+
+Important Websites -
+https://reactnative.directory/

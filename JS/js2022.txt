@@ -1,0 +1,1379 @@
+Tony Alicea Udemy -
+
+7) Conceptual Aside: Syntax Parsers, Execution Contexts, and Lexical Environments =
+
+* Syntax Parsers = 
+	1) Program that reads your code and determines what it does and if its grammer is valid.
+	2) There's program that convert code to machine understandable code. Those one called compilers.
+	3) Here, compiler reads code word by word and convert to computer instructions ( machine code ).
+	4) JS Code >> Compiler >> Machine Code
+	5) while compiling our code to machine readable code, compiler also do extra stuff, which needed.
+
+* lexical enviornment =
+	1) where something sits physically in the code you write.
+	2) "lexical" means "having to do with words or grammar"
+	3) Defn - "A Lexical environment exists in programming languages in which where you write something is important".
+	4) In programming languages, where lexical enviornment is important, that means that where you see things written gives you an idea of where it will actually sit in computer memory's. It gives you an idea that where variable sits lexically in computer memory.
+	5) Ex. 
+			function hello() {
+				var a = "hello world";
+			}
+		Here, variable "a" sits lexically inside the function. So, variable "a" live within that lexical enviornment where its created.
+
+* Execution Context -
+	1) "A wrapper to help manage the code that is running".
+	2) There's lots of lexical enviornments, which one  is currently running is managed  via execution context. It can contain things beyond what you've written in your code.
+	3) Defn - Execution context is wrapper that helps to manage code that is running. Execution context is important in JS. Its always created on function invocation with lots of things like "window object, this variable, reference to outer variable enviornment, lexical enviornment"  
+
+
+8) Conceptual Aside: Name/Value Pairs and Objects =
+* Objects are really important.
+* A name/value pair is a name which maps to a unique value.
+* Name can be defined more than once, but it can only have one value in any given context. Remember we're talking about execution context.
+* Here, value could be another name/value pairs collection.
+* ex.
+  {
+  Address: [
+    	{
+    		street: 'main',
+    		number: 100,
+    		Apartment: {
+    			Floor: 3,
+    			Number: 201
+    		}
+    	},
+    	{
+    		street: 'another main',
+    		number: 100,
+    		Apartment: {
+    			Floor: 4,
+    			Number: 201
+    		}
+    	}
+    ]}
+
+
+  10) Global enviornment & Global object - 
+  * whenever code is run in JS, its run inside in Execution Context. "When code run, JS engine (compiler) create Execution Context and wrap our code in it."
+  * Base Execution Context is your global Execution Context and it has special properties and methods which is provided by JS engine (compiler).
+  * its accessible everywhere in code.
+  * Global Execution Context create 2 things for us - 1) Global Object ( window ), 2) this (a special variable).
+  * JS engine create Execution Context and assign whole tab as value to "this" variable.
+  * Window object is the Global object inside browser. in case of nodejs, there's another Global Object. Whenever JS run, it create global object.
+  * At the global level, "Global Object" and "this", those two things are equal.
+  * Global means "not inside a Function".
+  * Each other tab has its own separate "Global object" and "this".
+
+
+
+11) The Execution Context: Creation and Hoisting -
+* We saw JS engine, wraps our code in execution context.
+* Execution context is created using 2 phase -
+  1)creation phase
+  2)Code Execution phase
+
+  Creation phase - in creation phase, we get global object(only for Global execution context), this and Reference to outer enviornment(except Global Execution context) by JS engine. And JS engine setup memory space for variable and function in creation phase. 
+  
+*  note - global object is only come when we deal with global execution
+
+
+  ex. b();
+  console.log(a);
+
+  var a = "Hello World";
+  function b(){
+    console.log("b is called");
+  }
+
+  in console window-
+  b is called
+  undefined
+
+  Here, when browser run your code and first it create memory space for variable and function in creation phase. when it runs your code, so here they first execute function and variable.function is called properly but variable not. because when browser sets memory for variable, it store with "undefined" value. And in example, second line get executed before assign value. It will called "Hoisting".
+
+* In video, it say's, While creating execution context, it works in 2 phase - 1) Creation and 2) Execution phase. In creation phase, JS engine sets memory space for variables and functions. This phenonmenon called "Hoisting". In terms with variable, Variables are assigned with "undefined" value.
+* if we don't specify value to variable, it will assign value "undefined" by default.
+
+
+
+
+12) Conceptual aside : javascript and undefined - 
+* in JS, variable not defined and variable with "undefined" value are two differenet things.
+* When GEC created, in creation phase we assign space to variable with predefined value called "undefined".
+example 1- 
+	console.log(myvar);		//error - reference error
+
+example 2- 
+	var myvar;		//declared variable
+	console.log(myvar);		//error - reference error
+
+
+
+
+13) The Execution Context: Code Execution - 
+* In this phase, we already have all those things set up from creation phase and now it runs our code line by line. It will output the result.
+
+
+14) Single Threaded, Synchronous Execution - 
+* Single Threaded - one command at a time.
+* Synchronous Execution - one command at a time in order that it appears.
+
+
+
+
+
+15) Function Invocation And The Execution Stack
+* Function invocation - In JS, by using parenthesis().
+* till now,we discuss about Global Execution context,now lets discuss about Functional Execution Context.
+* Invocation - means calling(Running) a function using parenthesis ().
+
+ex. 
+function b(){ ....}
+function a(){ b(); }
+a();
+
+In above invocation, this steps are occured in "Execution Stack"-
+1)create Global execution context - here creation phase happen, and create global object, this, and set memory.
+
+start execution phase
+2)after reaching invocation of a(), it create new execution context for a(), place on top of GEC in Execution stack. It will have its own space for variables and functions.
+3)after reaching invocation of b(), it create new execution context for b(), place on top of execution context of a() in Execution stack.  It will have its own space for variables and functions.
+4)At last, it pop out of the stack and go to the GEC.
+
+Here in each fuction call, it create a New Execution context with this variable.
+
+
+
+
+16) Function, Context And Variable Enviornments
+* variale enviorments - where the variable live. and how they related to each other in memory.
+* Each execution context has its own variable enviorments, where variables are declared with "undefined" values in creation phase of execution context.
+* In following code, every "myvar" is different and they are live in different execution context.
+
+ex. 
+var myvar = 3;
+a();
+function a(){
+  var myvar = 2;
+  console.log(myvar);   //display 2
+}
+console.log(myvar);   //display 3
+
+
+
+17) The Scope Chain -
+Scope - where can i access variable
+Chain - is those links where we get variable  
+
+Scope Chain - In it, browser use reference to outer ennviornment for execution context and search variable declaration till GEC. This chain is called Scope Chain.
+
+Every execution context has its own reference to outer enviornment. Here, Function a() execution context sits lexically on top of Global enviornment(not inside) in execution stack, so  outer enviornment is GEC. Lexically means where code write, in which contexts. 
+
+ex. 1)
+ function a() {
+  console.log(myvar); //undefined
+}
+a();
+var myvar = 1;
+console.log(myvar); //1
+
+2) function sits lexically in another function
+function a() {
+  var myvar = 3; 
+  console.log(myvar); //3
+  b(); 
+function b(){
+  console.log(myvar); //3
+  } 
+}; 
+  var myvar = 2; 
+  console.log(myvar); //2
+  a();
+
+
+
+18) Scope, ES6 and let
+scope - where variable is available in your code. If function will call twice, then there is 2 different variables in 2 different execution context.
+ES6 - ECMAScript 6
+let - its block level declaration. JS engine also set memory space with undefined value for let in variable enviornment. but JS engine won't allow us to use that till variable declaration. Let also available only within that curly braces.
+
+
+
+19) What about Asynchronous callbacks?
+* Asynchronous - It means more than one at time.
+
+* Event Queue - it's queue of events which will not work untill execution stack is empty.
+
+* Browser won't look at event queue untill execution stack is empty.
+* browser will continue to watch event queue in the loop, the event loop. That's what called the continuous check.
+* asynchronous part is really about what's happening outside the JS engine and Javascript, via this event loop, via list of events are happening, when its ready.
+
+ex. 
+function waitforseconds(){
+  setTimeout(3000, function(){
+    console.log("3 seconds late");
+  });
+}
+
+document.addEventListener("click", addHandler);
+function addHandler() {
+  console.log("check");
+}
+
+waitforseconds();
+console.log("finished execution");
+
+output -
+
+check
+finished execution
+3 seconds late
+
+
+
+
+
+
+
+20) Conceptual Aside: Types And Javascript
+* Dynamic Typing - You Don't have to tell the engine what type of data a variable holds, it figures it out while your code is running.
+
+* varaible can hold different types of values because it's all figured out during examination.
+
+* You can change variable at any time dynamically. JS engine will able to figure out type of data, at the time of execution. 
+
+
+
+21) Primitive Types
+Primitive type - a type of data that represent a single value. there are 6 types of primitive type -
+1) Undefined - it is special value defined by browser to variable, till we assign value to variable. it means lack of existence.
+2) Null - it's represents lack of existence like undefined. u can set to the variable unlike "undefined".
+3) Boolean - true or false
+4) Number - floating point number
+5) String - sequence of characters enclosed by '' or "".
+6) Symbol - Used in ES6.
+
+
+
+
+
+22) Conceptual Aside: Operators -
+Operators - It is a special function that is written differently.
+
+* Add -  " + " to add
+
+Example -  var a = 3 + 4;
+
+browser look at above example as follows -
+
+function +(3,4){
+  return  //output
+}
+
+Prefix  - + (3 4)
+Infix  - 3 + 4
+Postfix - (3, 4)+
+
+
+
+23) Operators Precedence and Associativity
+Operator Precedence - 
+* Which operator function gets called first if more than 1 are present.
+* Functions are called in order of precendence.(Higher precedence wins)
+
+ex- var a = 3 + 4 * 5
+console.log(a);  //23
+
+* Here according to operator precedence pdf, * function called first and then + function.
+
+Operator Associativity -
+* What order operator functions get called in: left-to-right or right-to-left,
+when functions have same precedence
+
+ex - var a= 3, b=4, c=5;
+a = b = c;
+
+console.log(a);  //4
+console.log(b);  //4 
+console.log(c);  //4
+
+* According to associativity, = function has right to left associativity, so first solve,
+b = c, and assign 4 to b. After that assign 4 to a.
+
+
+
+
+24) Operators Precedence and Associativity PDF
+
+
+
+
+
+25) Conceptual Aside: Coercion
+* Coercion - converting value from one type to another.
+
+ex. var a = 1 + '2'  // 12
+* Here, 1 will change to string from number bcz it's came just before '2' which is string. It's done by javascript engine bcz of coercion and give us output like 12.
+
+ex. var e = 3 + 4 +"sss"
+console.log(e);   // 7sss
+* Above ex, first addition happen bcz of operator precedence and then coercion happen, and conversion happen which convert 7 to string '7'.  
+* JS engine coerce value, bcz JS is dynamic type language and to avoid errors.
+
+
+
+
+26) Comparison Operator
+Look at below example - 
+      console.log(1 > 2 > 3)   //true
+It's logically fine
+
+      console.log(3 < 2 < 1)   //true
+* Here in 2nd example, according to asscociativity, we start from left to right. first  we get false value for (3 > 2). After that engine apply coercion to that false, for making it comparable, and get value 0. So 0 is always less than 1 so finally answer is "True".
+
+* some coercion -
+  "3" == 3 //true
+  " " == 0  //true
+  " " == false  //true
+
+  false == 0   //true
+  null == 0   //false
+  null < 1    //true
+
+* null is never coerced in some situation.
+
+* strict equality ( === ) - 
+with this function(operator), engine don't convert(conercion). If we don't have same operands of same type, then it will return false.
+ex. 3 === 3  // true
+    "3"  === "3"  //true
+    3 === "3"  //false
+
+* use " === " for if.
+
+
+
+27) Equality comparison table -
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness 
+
+
+
+28) Existence and Booleans - 
+* we can check existence with if statement using boolean coercion.
+	boolean(undefined)  // false
+	boolean(null)  //false
+	boolean("")    //false
+* above all statements imply they lack of existance.
+ex.  var a;
+	// suppose we set value for a
+	if(a) {
+	  console.log("set");
+	}
+
+* whatever we put in () of if statement, it will attempt to convert to boolean. And it take it as statement as the thing of checking, it will attempt to convert boolean.
+
+* if a is something, not "undefined", not "null" or not " ", then it will execute if block.
+
+* boolean(0)  //false
+
+* 0 is also valid value, but it returns false. so use it like this way,
+
+	if(a || a===0)  {
+	  console.log("set");
+	}
+
+
+
+29) Default Values - 
+* In ES6, we can set default value for parameter, but for earlier versions, we need to set legacy code.
+ex. function greet(name){
+	var name = name || "sumeet";
+  	console.log(name);
+}
+
+greet("swati");
+greet(0);
+greet();
+greet('Tony');  
+
+
+
+30) Framework Aside: Default value - 
+* sometime we have 2 or more js files, which has same variables on global object. so last one override others.
+* so to overcome, we can use this in following manner -
+* window.libraryname = window.libraryname || "Lib 2";
+
+
+31) Objects and the dot - 
+* Objects are name-value pairs.
+* objects have properties and methods.
+* objects have primitive setting of it, that we call Property. like string,boolean etc.
+* object have object as child, so we call it as Property. Remember name:value pairs, in this pair we have another name value pair instead of value.
+* Object has also function, so we call it as "Method".
+* Object will have some sort of address in computer's memory and it will have references of addresses to these differenet properties and methods
+* Methods and properties are sits in memory and have refrences with main object.
+
+ex. var person = new Object();   
+
+//it's creating new object
+
+    person["firstname"]="Sumeet";     
+
+//method for setting object property
+//here, [] is operator, "firstname" is name who has value "Sumeet". 
+//here, we create firstname in meomory and assign to person with reference.
+
+person["firstname"] = "Tony";  			// created spot in memory with property called "firstname"
+person["surname"] = "alicea";   	    // created spot in memory with property called "surname"
+var firstnameproperty = "firstname";
+
+console.log(person); 
+  
+console.log(person["firstnameproperty"]);   //Tony
+  // method for accesing object property
+
+console.log(person.firstname);          //Tony
+  //using DOT operator
+  
+console.log(person.firstnameproperty);   //undefined
+
+console.log(person.surname);    //alicea
+
+* Using DOT operator '*', we can easily access and modified or update properties. like person.surname
+* ' . ' operator is very clear and easily undestandable, so we recommend to use it.
+
+
+
+
+32) Objects and Objects Literals -
+* Shorthand for object creation - With Object Literals
+* syntax- var person = {};
+* JS engine parses syntax and convert "{}" syntax to brand new object. It can also add properties and methods, by attaching name and value pairs.
+* {} === new Object(), Object literal is same as Object using "new Object()".
+* Object Literals are much quicker to write and faster way to do this.
+* We can create object on the fly and pass it to function.
+* syntax - function greet(person){
+	console.log(`Hi ${person.name}`);
+}
+greet({ name: "sumeet" });
+* we can add new object to Object literal using "Dot" operator. person.address = { roadName: "MK" }.
+* With  Object Literals, we can write clean and easy code.
+
+
+
+33)Framework Aside: Faking Namespaces -
+* Namespace - is a container for variables and functions.Typically to keep variables and functions with the same name separate.
+* JS don't have namespace feature. Bcz of nature of Objects, we don't need namespaces as a feature.
+* Issue - 
+	var greet = "Helllo";
+	var greet = "Hola";
+	console.log(greet);		//Hola
+	Here, "Helllo" get replaced. so using faking namespace, we can access both values.
+
+* with Objects, we can separate properties and methods of "english" and "spanish" language, it won't override value.
+   var english = { greet: "hello"};
+   var spanish = { greet: "hola"};
+* so here, "english" and "spanish" become container.
+* we can't assign value like following - 
+	var english = {};
+	english.greeting.greet = "hello";	//error, english.greeting gives "undefined" value. So that doesn't work.
+* Finally, we use Object as container for faking namespace, so it can hold properties and methods. And other's code won't affect my code.
+
+
+34) JSON and Object Literals -
+* JSON - Javascript Object Notation. inspired by Object Literal syntax.
+* JSON has some diffn -  1) property must be wrapped with ` "" `
+* Object Literal work with or without ` "" `, 
+	but JSON should have ` "" `;
+* JSON.stringify({"name": "sumeet"}) - use to convert Object to JSON string.
+* JSON.parse({ name: "sumeet" }) - use to convert JSON string to Object.
+* JSON is more strict, like it want quotes around the names and doesn't let you put functions as values.
+* JSON help us to transfer data.
+
+
+35) Functions are Objects -
+* In JS, functions are objects. 
+* Evrything you can do with other types like number, boolean, string etc, you can do with functions. like Assign them to variables, pass them around, create them on the fly. hence we call function as "first class function".
+* In JS, functions are objects. It has all features of normal object and some special properties.
+* we can attach properties and methods to function, bcz functions are objects. we can attach primitive, objects and function too.
+* Function object has 2 special properties - 1) name, 2) code
+* "Name", can be anonymous.
+* "code", what we write to run. It's invocable. When we call function, behind the scene, JS engine invoke (call) this property. Here, execution context creation and execution happen.
+* we can add property to function.
+function greet(){ console.log('hi'); }
+greet.name = "sumeet";		//add property
+
+
+
+36) Function statement and Function expressions - 
+* Expression - a unit of code that results in value. Function Expreesion ends up in creating a value.
+
+* In JS, function expression or any expression ends up in creating a value and that value doesn't necessarily have to save inside a variable.
+
+* what is an expression? = 
+var a = 3;
+3	// print "3" in console.
+Here, " = " is opearator, a function that takes 2 value, does some work and returns some value.
+So any function which returns a value, called function expression.
+
+* statement - 
+ex. if( a === 3)	// if statement does only work.
+statement just does work. and expression returns value
+
+* function greet(){
+	console.log("hi");
+}
+Here, it didn't return a value. so it's funciton statemnent.
+
+* Functions are hoisted and it's put into memory. And when we invoke function, it looks into memory and connected to it, where function object lives and invoke it.
+
+* var anonymousGreet = function(){
+	console.log("hi");
+}
+Here, function put it inside memory and "anonymousGreet" pointing to that function address. "anonymousGreet" knows address of function. This functions are called "anonymous" function. They don't have name. 
+
+* In anonomous function, we used some concepts used here - 
+	1) First Class Function have capability of assigning function to variable
+	2) and function after "=" operator, returns a object.
+
+* Even we trying to call "anonymous function" before assigning to variable, it will give me undefined error.
+
+* A function expression creates an object, a function object on the fly.
+
+* A function pass to other function like we do with variables, called Functional Programming.
+
+
+
+37) By Value or By Reference -
+A) By Value - Here, variable a has an address location where it knows where that primitive value sits, in memory. When new variable b created (OR I pass variable to function) and assigned with variable "a" value, it means it create new spot in memory and filled with "a"'s value. 
+ex. 1)
+		var a = 3;
+		var b = a;
+		a = 5;
+		console.log(a, b);	// 5, 3		//both value stored in separate locations in memory.
+
+
+ex. 2)	//by passing variable as parameter
+		var c = 3;
+		console.log(c); 			// 3
+		var a = (b) => { 
+			console.log(b); 		// 3
+			b = 4; 
+			console.log(b);			// 4 - here, variable "b" assigned with 4.
+		}
+		a(c);
+		console.log(c); 			//	3 - but variable "c" remains same.
+
+* I'm passing, or referencing, or setting equal one value to another, by copying the value. These two variables become the same, by copying the value into two separate spots in memory.
+
+
+B) By Ref - 
+* Now, if i have an object in JavaScript, and this goes for all objects, that includes functions which are special types of objects and others. When I set a variable equal to an object, I still get a location, an address in memory that it knows where that object lives. And that's how I reference it.
+
+* Here, variable "a" stored with object and another variable "b" assigned with value of variable "a". both point to same address. It didn't create any new location, it refer to old location of variable "a". Its same for when i pass object to function.
+
+* mutate - to change something.
+
+
+
+38) Objects, functions and this - 
+* When function called, it created its own execution context, which contain variable enviornment, this, reference to outer enviornment. Here, we are discussing "this" value at different scenario.
+* global level - it gives "window" object.
+* Global level [function statement, function expression  & with fat arrow function] - it gives "window" object. 
+* Object Method - it gives "Parent Object".
+* nested function in Object Method - points to "Global Object", hence we create another variable called "self" in object method and used it as reference in "nested function".
+
+* example 1 -
+		function a(){
+		  console.log(this);
+		  this.newe = "ello";
+		}
+		var b = function() {
+		  console.log(this);
+		}
+		a();
+		console.log(newe);
+		b();
+
+* When function is in object, it will take var as "this". like below
+		var c = {
+		  name: 'the c object',
+		  log: function() {
+		    this.name = "update c object";
+		    console.log(this);  //it will return var c
+		  }
+		};
+		c.log();
+* So we will change c object's property and function easily or access.
+* Suppose any function within function, in object, it will point to global execution context.
+
+var c = {
+  name: 'the c object',
+  log: function() {
+    this.name = "update c object";
+    console.log(this);  //it will return var c
+    var self = this;
+    var setname = function(){
+      self.name = "updated many times";
+      console.log(self);
+    }
+    console.log(self);
+    setname();
+  }
+};
+c.log();
+
+
+
+
+39) Conceptual Aside - Array of Anything
+Array - Array is collection of Anything. access it like this way - arr[0]
+ex. var arr = [
+  1,
+  false,
+  {
+    name: "tony", 
+    address: "101"
+  },
+  function(name) {
+    var greeting = "hello";
+    console.log(greeting + name);
+  },
+  "hello"
+]
+console.log(arr[3](arr[2].name)); // call function
+
+
+
+40) "Arguments" and Spread -
+* Arguments - when execution context created with variable enviornment, this, and outer reference, "Arguement" created. It contain list of all values passed to the function.
+
+* In ES6, we can set default value to parameter
+
+
+* The Parameters you pass to a function.
+function greet(firstname, lastname, language) {
+  //language = language || 'en';    //to set default value
+  if(arguments.length === 0){
+    console.log('missing parameters');
+    return;               //return statement will return function
+  }
+
+  console.log(firstname);
+  console.log(lastname);
+  console.log(language);      
+  console.log(arguments);     //to show all arguments, within array
+  console.log(arguments[2]);     //to show selected arguments
+}
+greet("sumeet","shedge","english");		// sumeet, shedge, english
+greet('may');						
+greet('may','dsdad');
+greet();					// shows 3 undefined, bcz all 3 variables are set with undefined (Hoisting)
+
+* Spread - it's ES6 keyword which is used as parameters
+
+function greet(firstname, lastname, language, ...other) {
+  //code body
+}
+greet("sumeet","shedge","english", "111","22","2323","dsada","das");
+
+* Here all remaining arguments are covered by '...other' parameters
+
+
+
+
+41) Framework Aside : Function Overloading -
+* JS don't have function overloading.
+
+	function greet(fname, lname, greeting){
+	  //code
+	}
+
+	function greetHi(fname, lname){
+	  greet(fname, lname,"hi");
+	}
+
+	function greetHello(fname, lname){
+	  greet(fname, lname,"hello");
+	}
+
+	greetHi('sumeet','shedge');
+	greetHello('sumeet','shedge');
+
+this is one pattern
+
+
+
+42) Conceptual Aside : Syntax Parsers -
+* Syntax Parsers : JS engine who convert your code to machine readable code. It has different aspects and elements to it, one of them being a syntax parser, which reads your code and try to convert.
+
+
+43)  Dangerous aside: Automatic Semicolon Insertion -
+* ; is optional in core javascript.
+
+* engine by default add, if ";" is absent. bcz of it, bugs will come, so try to write it most of time and do not let engine to do ur work.
+
+* suppose, u want to return object.
+ex. function getnumber(){
+  return
+    {
+      firstname:'sumeet'
+    }
+}
+console.log(getnumber());
+output - undefined
+
+*bcz browser write code for u. browser add ' ; ' after return. so we don't get any value.
+
+
+
+
+44) Framework Aside: Whitespace -
+Whitespace - invisible characters that create literal space in 'your' written code.
+
+* js igonre whitespace.
+* use comment and whitespace to make readable code for future.
+
+
+
+
+45) Immediately Invoked Function Expressions(IIFE)s -
+* you will never put statement within ' () '.
+
+//by function statement
+function greet(argument) {
+  console.log('hello '+ argument);
+}
+greet('dda');
+
+
+//by funciton expression
+var greetexp = function (argument) {
+  console.log('hello' + argument);
+}
+greetexp('mfff');
+
+
+//by IIFE's
+var greetimd = function(argument) {
+  console.log('hola' + argument);   //Hola dada // it's save in greetimd
+}('dada');
+
+//console.log(greetimd());  //it cause error bcz function executed after getting parameter. it's already change to a string.
+
+
+//without expression and statement
+//without () it's invalid statement. we put our funciton in (). it's now invokable. we create code on the fly
+//this style of calling function is mostly used in major framework.
+
+(function(name){
+  console.log('Inside hello' + name);
+}('sumeet'));
+
+// we can call function iife in 2 ways.
+
+(function(name){
+  console.log('Inside hello' + name);
+})('sumeet');
+
+
+
+
+
+46) Framework Aside : IIFE's and safe code
+var greeting = "Hola";
+
+( function(name){
+var greeting = "Hello";
+  console.log(greeting + " "+ name);   //Hello John
+})('john'); //IIFE's code
+
+console.log(greeting);   //hola
+
+* () cause new execution context created. It's safe to avoid collision with global code.
+
+
+
+
+
+47) Understanding Closures -
+* Link =  https://www.javascripttutorial.net/javascript-closure/
+
+Closure - it is feature. Closure function, means a function which returns functions with its parents scope which still present after finishing execution with its reference variables. we can access parents variables even if parent function execution is done.
+
+function greet(whattosay){
+
+  return function(name){
+    console.log(whattosay + ' '+ name);
+  }
+}
+greet('hi')('tony');  //hi tony
+
+//    OR
+
+var sayHi = greet('Hi');
+sayHi('tony');    //hi tony
+
+* here,first execution context created at top of GEC. after reaching return, it will stop execution and returned. but whattosay value is still in memory. so when anonymous function get called, it takes reference from for whattosay using scope chain even though it's not even in any execution context. you can say that anonymous fn execution context bind it's outer variable.
+
+w3school ex. -
+var add = (function () {
+    var counter = 0;
+    console.log(counter);
+    
+    return function () {
+      console.log(counter);
+      return counter += 1;
+    }
+})();
+
+console.log(add);
+function myFunction(){
+    document.getElementById("demo").innerHTML = add();
+    console.log(add);
+}
+
+
+48)  Understanding Closures - part 2 =
+* ex -
+	function buildFn() {
+	  var arr = [];
+	  for (var i=0; i < 3; i++){
+	    arr.push(function(){        //here function doesn't invoke, so nothing happen & i++
+	      console.log(i); 
+	    });
+	  }
+	    return arr;     //finally 3 will come
+	}
+	var dd= build();    // build function get called
+
+	//After execute variable will remain still in variable enviornment
+	/* Closure is feature that will function get refernce from parent function who's already return */
+
+	dd[0]();		// 3
+	dd[1]();		// 3
+	dd[2]();		// 3
+
+* When we call "dd[0]()", it still has reference to outer enviorment to its parent function, which has variables and functions available like we studied in closure. Even if its finished, we can still have access to variables and functions. 
+
+* when we execute function, it still has access to outer variables. these are also called "free variables".
+
+* suppose, if we want output 0, 1, & 2 instead of "3". we need to store value of "i" somewhere. lets try this with closures -
+	
+	function buildFn(){
+		var arr = [];
+
+		for(var i = 0; i< 3; i++){
+			arr.push(
+				(function(j){
+					return function(){
+						console.log(j);
+					}
+				}
+			)(i))
+		}
+
+		return arr;
+	}
+
+	var res = buildFn();
+	res[0]();
+	res[1]();
+	res[2]();
+* Above example showing that closure also contain closure. In closure, function return function which has access to variables of parent's function, even if it's execution finished.
+
+
+
+49) Framework Aside: Function Factories =
+* Factories will make another thing for me
+* here, first makegreeting('hello') will call and it return. but it language who has value "en" is still in memory. and then makegreeting('HOla') call and it also retun with laguage variable in memory who has value "es".
+
+* engine knows function sits lexically in which enviornment. so when they need reference to search for language variable and they will get their respective langauge variable.
+
+* here, function get created using closures.
+
+
+
+50) Closures and callbacks =
+Callbacks - a function you give to another function, to be run when the other function is finished.
+
+function call(callback){
+  //code body
+}
+callback(); 
+* in this video, we come to know that, we already frequently used closure, function expression, first class function. we saw example of function with settimeout for closure. we saw example of jquery with first class function for callback.
+
+
+
+51) call(), apply(), and bind() -
+* All functions have access to a call, apply and bind method. All these have to do with "this" and arguments that you pass to functions.
+
+* With these method, we can decide, where our "this" keyword will point.
+
+syntax - 
+		var person = {
+		  firstname: "john",
+		  lastname: "doe",
+		  getFullname: function(){
+		    var fullname = this.firstname + ' ' + this.lastname;
+		    return fullname; 
+		  }
+		}
+		var logname = function(log1, log2){
+		  console.log('logged: '+ this.getFullName());
+		}
+
+		var logPersonName = logname.bind(person);
+		logPersonName();
+
+* in bind, here it create copy of person and bind it to the logname, so it will check for "this" in that object.
+
+logName.call(person, 'en', 'es');
+* .call works like calling function with variable which helps to find this object and parameter.
+
+ex -  logname.call(person, "en", "es");		//"person" will decide "this" value, and others are parameter.
+
+
+logName.apply(person, ['en', 'es']);
+* .apply does the same thing like call(), but with 1 difference is that, it takes parameter list in array.
+ex -  logname.call(person, ["en", "es"] );		//"person" will decide "this" value, and others are parameter.
+
+
+When will u use that?
+1) //function borrowing
+	var person2 = {
+	  fname: "sumeet",
+	  lname: "shedge"
+	}
+	person.getFullname.apply(person2);
+
+* if u want to use same method over and over again, we use this technique. it call getFullname which is in person object, but with person2 object using bind, and takes person2 as "this" object.
+
+2) Function Currying -
+	function mult(a,b){
+	  return a*b;
+	}
+	var multtwo = multiply.bind(this, 2, 2);  //permanent parameter
+	console.log(multtwo(3,54));  //4
+
+* here we set our permanent parameter using bind.
+
+Currying - 
+* creating a copy of a function but with some perset parameters.
+* It is a technique in functional programming, transformation of the function of multiple arguments into several functions of a single argument in sequence. 
+
+
+
+
+
+52) Functional Programming - 
+* So having first class functions in a JS programming language means that we can implement what's called functional programming, where we think and code in terms of functions
+* 
+
+
+
+53) Functional Programming - part 2
+
+
+
+
+
+54) Conceptual Aside: Classical and Prototypal inheritance =
+* Inheritance - One object gets access to the properties and methods of another object.
+* Prototyapal inheritance - it is simple, flexible and easy to understand
+
+
+
+
+
+55) Understanding the prototype =
+* JavaScript implements something called prototypal inheritance.
+* All objects and functions have a prototype property. The property is simply a reference to another object, we'll call it proto. But the object property that we'll call proto, that's it's prototype.
+
+* When we looks for any property, if it doesn't find it in obj, so it looks at the prototype, that proto object. it goes down the further in next prototype, to finding value. it's actually a ways down what's called the prototype chain.
+
+
+* all objects and function have "prototype" property.
+* Every object has '__proto__'. 
+
+* Object access property which is under '__proto__'. First, we access it's properties and search it. If it's not found then it will search in '__proto__'. You can even access another object using '__proto__'.
+
+* Object search with prototype chain.
+
+var person = {
+  firstname: 'default',
+  surname: 'Default',
+  getFullName: function() {
+        return this.firstname + " " + this.surname
+    }
+}
+
+var john = {
+  firstname: 'John',
+  surname: 'Doe'
+}
+
+//Don't use this technique, it's already done for u by browser
+john.__proto__ = person;    // In Javascript, we don't do this like we show in example, bcz of perfromance problem. 
+console.log(john.getFullName());  //John Doe
+
+var jane = {
+  firstname: 'jane'
+}
+jane.__proto__ = person;
+console.log(jane.getFullName());    //jane default
+
+* That's what we called "prototype chain". we can go much more deeper with "__proto__".
+
+
+
+
+
+
+56)  Everything is an object (or a Primitive) =
+* Everything in JS an object (or a Primitive). They all have a prototype, except for base object.
+* Function, array, basic objects, all have prototype.
+* Each prototype, contain its by default methods. like Array's map,push function are available in prototype.
+
+var a = {};  
+var b = function() { }; 
+var c = [];
+
+a.__proto__			// Object{}, 	gives base object, very bottom of prototype chain
+
+With Object =
+  a.__proto__.toString      //you can access in prototype
+  a.toString();             //Generally, we use in this way
+
+with Function = 
+  b.__proto__.toString      //you can access in prototype
+  b.toString();           //Generally, we use in this way
+
+with array =
+  b.__proto__.push        //you can access in prototype
+  b.__proto__.push()      //Generally, we use in this way
+
+
+a.__proto__     //it give basic object and it's has property and method already
+b.__proto__     //it give basic object and it's has property and method already
+c.__proto__     //it give basic object and it's has property and method already
+
+
+
+
+
+
+
+
+
+
+58) Function constructors, 'new' and the history of Javascript -
+* In past days, to attract Java developers to JS, they added feature that help to create objects using "new" keyword.
+syntax - var a = new Person();
+	function Person(){
+		this.name = "sumeet";
+	}
+	var e = new Person();
+* In js, to build objects we need to create an object, give it properties and methods, and set its prototypes.
+* "new" keyword is an operator like "+", "-" etc.
+* While parsing "new" keyword, it creates empty object. And Then it calls function which sets properties , methods and prototypes.
+* In this case, "this" keyword points to new empty object and it adds "properties" and "methods" to empty object.
+	function Person(){
+		console.log(this);
+		this.name = "sumeet";
+		this.surname = "shedge";
+		console.log("function is invoked");
+
+		// return { greeting: "another" }		//if we returned, we will get this object with "greeting" property.
+	}
+	var sumeet = new Person();
+	console.log(sumeet);		// { name: "sumeet", surname: "shedge" }
+
+* suppose we have to create multiple object with different "name" and "surname" using function constructor, then we need to pass arguments in function and use it as follows
+
+	function Person(n1, n2){
+		this.name = n1;
+		this.surname = n2;
+	}
+	var sumeet = new Person("sumeet", "shedge");
+	console.log(sumeet);
+* Function Constructor - normal function to construct objects.
+
+
+
+
+59) Function constructors and Prototype - 
+* Function constructor actually create prototype for us.
+* Function has "name", "code", "method", "property" and "prototype". Here, "prototype" property never used, until we used function as function constructor.
+* the prototype property on a function is not the prototype of the function. It's prototype of any objects created if you're using the function as a function constructor.
+* adding method to prototype - 
+Person.prototype.getFullName = function () {
+	return this.firstname + ` ` + this.lastName;
+}
+* when we call new Keyword, it creates empty object. It sets prototype of that empty object to the prototype of function that you call. So if we create multiple objects from Function constructor, they all have prototype set by function constructor like below - 
+
+	function Person(n1, n2){
+		this.name = n1;
+		this.surname = n2;
+	}
+	Person.prototype.getFullName = function (){
+		return `${this.name} ${this.surname}`;
+	}
+	var sumeet = new Person("sumeet", "shedge");
+	console.log(sumeet.getFullName());
+	var swati = new Person("swati", "shedge");
+	console.log(swati.getFullName());
+	var asmita = new Person("asmita", "shedge");
+	console.log(asmita.getFullName());
+
+* we can set "getFullName" method in function too, but it will takes space and if we create lots of objects using "new" it will take much more space. Instead we can use prototype. we can give access to all object by adding method to prototype.
+
+
+
+60) Dangerous aside: "new" and functions -
+* Don't forget "new" keyword while using function constructor.
+* Use capital letter for first letter of function constructor.
+
+
+61) Conceptual Aside: Built in Function constructors - 
+* we have built in function constructors, like "String", "Number", "Date" and so on.
+* these built in function constructors, gives us a object not primitive value. 
+* we can add methods to built in function constructors.
+	String.prototype.newMethod = function(){
+		return true;
+	}
+* ex. Number.prototype.isPositive = function(){
+		return this > 0;
+	}
+	3.isPositive();			// will give error
+	var a = new Number(3);
+	a.isPositive();
+
+
+
+62) Dangerous aside: Built in function constructors -
+* ex. var a = 3;
+	  var b = new Number(3);
+
+	  a == b 		//true
+	  a === b 		//false, bcz here b is an object and a is primitive. "===" wont allow us to Coercion.
+
+
+63) Dangerous aside: Arrays and for... in - 
+*   Array.prototype.myCustomFeature = "cool";		// other developer added to array prototype
+	var arr = ["sumeet", "asmita", "swati"];
+	for(var prop in arr){
+		console.log(`${prop} ${arr[prop]});
+	}
+* in above example, array iterate and goes to prototype chain also and iterate over there. so it print "mycustomfeature cool" too. so better use simple for loop, like follows.
+	for(var i = 0; i < arr.length; i++){
+		console.log(arr[i])
+	}
+
+
+64) Object.create and Pure prototypal inheritance -
+* Javascript does use prototypal inheritance.
+* JS have 1 more way to create object, called "Object.create".
+* ex. var person = {
+			name: "default",
+			greet: function () {
+				return `Hi ${this.name}`
+			}
+		}
+    var sumeet = Object.create(person);
+    console.log(sumeet);		
+    	//will give empty object and person object added in prototype. That's pure prototypal inheritance.
+    sumeet.name = "sumeet";
+  * In older browser, you might not have support for it. so for that we need polyfill.
+  * Polyfill - for older versions of browser, we create work aroud code for feature. so they can use that feature.
+
+
+65) ES6 and classes -
+* ES6 gives us one way to create object with "class".
+* constructor will help us to set initial value of object.
+* "class" is an object. we can create object using "class object".
+* To achieve "prototypal inheritance", we can use "extends".
+* class is syntactic sugar in JS.
+
+
+66) Initialization -
+* initialize array with value.
+
+
+67) 'typeof', 'instanceof' and Figuring Out what something is -
+* JS has utility to find out types of variables programmatically.
+ex. var a = 2;
+console.log(typeof 2);		//number
+
+* instanceof - used for to check is instance of Function constructor.
+ex - 
+	function Person(){
+		this.name = "sumeet";
+	}
+	var e = new Person();
+	console.log(typeof e);
+	console.log(e instanceof Person);
+
+
+
+
+68) Strict Mode -
+* strict mode will help you to prevent errors under certain circumstances.
+* syntax - "use strict"
+* we can use this at global level and function level (only for that function).
+
+
+
+82 & 83) TS, ES6 and Transpiled languages -
+* Transpile - convert the syntax of one programming language to another.
+* we are talking about language that dont ever run anywhere. There's no engine that runs them. Instead, they're processed by a transpiler and all that means is it generates Javascript.
+
+
+84 & 85) ES6 link -
+Please refer following link -  https://github.com/lukehoban/es6features
+
+
+86 & 87) Promises, async and await -
+* functions in js are first class functions. it means they can be assigned as value and passed around.
+* JS have 2 queues, called "Execution stack" and "Event Queue".
+* JS engine cleared "execution stack" first, then it will look in "Event Queue".
+* Pyramid of Doom -  when we have nested set of callback function, it crates "pyramid of doom". Asynchronous events won't be able to handle by JS callback properly.
+* Promise - A promise object represents a future value, a value we know eventually we're going to get, but we may not have yet.
+* Promise object wraps up the idea of waiting for that work to complete and then figuring out what to do after the work is completed.
+
+
+
+=======================================================================================================================
+Mozilla Developer Network =
+
+
+References:
+
+A) Built-in objects
+B) Expressions & operators
+
+C) Statements & declarations
+	1)	async function
+	2)	block
+	3)	break
+	4)	class
+	5)	const
+	6)	continue
+	7)	debugger
+	8)	do...while
+	9)	empty
+	
+	10)	Export
+	* export statement is used when creating JavaScript modules to export live bindings to functions, objects, or primitive values from the module so they can be used by other programs with the import statement.
+	* When a module updates the value of a binding that it exports, the update will be visible in its imported value.
+	* two types of exports: 
+		Named Exports (Zero or more exports per module),
+		Default Exports (One per module)
+	* Syntax -
+		// Exporting individual features
+		export let name1, name2, …, nameN; // also var, const
+		export let name1 = …, name2 = …, …, nameN; // also var, const
+		export function functionName(){...}
+		export class ClassName {...}
+
+		// Export list
+		export { name1, name2, …, nameN };
+
+		// Renaming exports
+		export { variable1 as name1, variable2 as name2, …, nameN };
+
+		// Exporting destructured assignments with renaming
+		export const { name1, name2: bar } = o;
+
+		// Default exports
+		export default expression;
+		export default function (…) { … } // also class, function*
+		export default function name1(…) { … } // also class, function*
+		export { name1 as default, … };
+
+		// Aggregating modules
+		export * from …; // does not set the default export
+		export * as name1 from …; // ECMAScript® 2O20
+		export { name1, name2, …, nameN } from …;
+		export { import1 as name1, import2 as name2, …, nameN } from …;
+		export { default, … } from …;
+
+	* default export can be imported with any name. eg. import m from './test';
+	* rename named exports to avoid naming conflicts. eg. export { myFunction as function1, myVariable as variable };
+	* one can create a single module concentrating various exports from various modules.
+		export { default as function1, function2 } from 'bar.js';
+	* 
+
+
+	* Description -
+
+	11)	for await...of
+	12)	for...in
+	13)	for...of
+	14)	for
+	15)	function*
+	16)	function declaration
+	17)	if...else
+	18)	import.meta
+	19)	import
+	20)	label
+	21)	let
+	22)	return
+	23)	switch
+	24)	throw
+	25)	try...catch
+	26)	var
+	27)	while
+	28)	with
+
+
+
+
+
+Features of JS - 
+1) coercion - JS has feature called "coercion". JS is dynamic typed language. So while code execution, JS engine don't know what type of value contained by variable, ahead of time. As execution reaches to code, if its required JS engine change value from 1 type to another, if its required. Then, engine will be able to do operation on that variable.
+suppose,  
+	console.log(false < 1);		//true
+Here, false convert to 0, and 0 is less than 1, hence it becomes true.
+
+----------------------------------------------------------------------------------------------------
+
+Methods -
+* methods are marked with "*" which returned new array.
+* methods are marked with "@" which mutate original array.
+
+1) Array -
+
+[*] concat()      Joins tow or more arrays and returns an array with the joined arrays. ex. arr.concat(arr1, arr2)
+[ ] constructor   Returns the function that created the Array object's prototype.
+[@] copyWithin()  Copies array elements within the array, to and from specified positions. arr.copywithin(target,start,end)
+[ ] entries()         Returns a key/value pair Array Iteration Object
+[ ] every()           Checks if every element in an array pass a test. Executes a function for each array element( Except empty elements ).
+[@] fill()            Fill the elements in an array with a static value. array.fill(value, start, end)
+[*] filter()          Creates a new array with every element in an array that pass a test(Except empty elements).
+[ ] find()            Returns the value of the first element in an array that pass a test(Except empty elements).
+[ ] findIndex()       Returns the index of the first element in an array that pass a test(Except empty elements).
+[ ] forEach()         Calls a function for each array element(Except empty elements).
+[ ] from()            Creates an array from an object(with a length property).
+[ ] includes()        Check if an array contains the specified element(returns true if available).
+[ ] indexOf()         Search the array for an element and returns its position. array.indexOf(item, start)
+[ ] isArray()         Checks whether an object is an array.
+[ ] join()            Joins all elements of an array into a string.
+[ ] keys()            Returns a Array Iteration Object, containing the keys of the original array.
+[ ] lastIndexOf()     Search the array for an element, starting at the end, and returns its position
+[ ] length            Sets or returns the number of elements in an array
+[ ] map()             Creates a new array with the result of calling a function for each array element
+[ ] pop()             Removes the last element of an array, and returns that element
+[ ] prototype         Allows you to add properties and methods to an Array object
+[ ] push()            Adds new elements to the end of an array, and returns the new length
+[ ] reduce()          Reduce the values of an array to a single value (going left-to-right)
+[ ] reduceRight()     Reduce the values of an array to a single value (going right-to-left)
+[ ] reverse()         Reverses the order of the elements in an array
+[ ] shift()           Removes the first element of an array, and returns that element
+[ ] slice()           Selects a part of an array, and returns the new array
+[ ] some()            Checks if any of the elements in an array pass a test
+[ ] sort()            Sorts the elements of an array
+[ ] splice()          Adds/Removes elements from an array
+[ ] toString()        Converts an array to a string, and returns the result
+[ ] unshift()         Adds new elements to the beginning of an array, and returns the new length
+[ ] valueOf()         Returns the primitive value of an array
