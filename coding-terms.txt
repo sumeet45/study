@@ -1,0 +1,84 @@
+A -
+* Argument :- argument is, which is used while calling, like myFunction(4, 6). in it, 4 & 6 are argument.
+
+
+
+
+C -
+* Class - class is blueprint of object.
+* Constructor -  is a special type of subroutine called to create an object.
+* Coercion - converting value from one type to another.
+* Currying - Currying is a technique of evaluating function with multiple arguments, into sequence of function with single argument.
+
+
+
+
+D -
+* Dynamically Typed language - dynamically-typed languages perform type checking at runtime like Javascript. we don't need to assign data type to variable. compiler decide on own basis.
+
+
+
+
+F -
+* Function constructor - A normal function that is used to construct objects and we do this by using "new" keyword. while using Function Constructor, we use "new" keyword with Function invocation.  used in Javascript.
+* First Class Function - Evrything you can do with other types, you can do with functions. like Assign them to variables, pass them around, create them on the fly. used in Javascript.
+* Functions statements - its just do work, and nothing return value. used in Javascript.
+* Function Expression - unit of code that results in a value. used in Javascript.
+
+
+
+
+H -
+* Higher Order Function - take function as arguments or return function as result.
+* Higher Order Components - Available in React. HOC is an advanced technique in React for reusing component logic. we can create HOC with functionality and make available to all components who needs it at any level of Component tree in react project.
+
+
+
+
+
+I -
+* IIFE (Immediately Invoked Function Expressions) - it call itself immediately. used in Javascript.
+* Inheritance - Inheritance in Java is a mechanism in which one object acquires all the properties and behaviors of a parent object. One object gets access to the properties and methods of another methods.
+* Interface - Interface is the blueprint of the class.
+* Identifier - "Identifiers" or "symbols" are the names you supply for variables, types, functions, and labels in your program.
+
+
+
+M -
+* Module - A set of functions you want to include in your application. used in Javascript
+* Method - A method is a "Function" within a class.
+
+
+
+
+
+
+O -
+* Object Literal Method - method to create object, { name: "sumeet" }. used in Javascript
+
+
+
+
+
+
+
+
+P -
+* Prototpe inheritance - inherit through prototype.
+* Parameter - Parameter is, which we get in funciton. like:- funciton myfunciton(a, b){}. In it, we call a & b as parameters.
+* Polyfill - code that adds a feature which the engine may lack.
+
+
+
+S - 
+* String Interpolation:- String interpolation is replacing placeholders with values in a string literal. 
+* statically typed/ Typed Language - statically typed languages perform type checking at compile time like Java. we need to assign data type to variable. 
+* Syntactic Sugar = A different way to type something that doesn't change how it works under the hood.
+
+
+
+T -
+* Typecasting - converting one data type to another.
+* Type inference - Type inference is the automatic deduction of the data types of specific expressions in a programming language, usually done at compile time
+* Transpile - convert the syntax of one programming language to another.
+* Type Checking - Type checking is the process of verifying and enforcing constraints of types in values. A compiler must check that the source program should follow the syntactic and semantic conventions of the source language and it should also check the type rules of the language.

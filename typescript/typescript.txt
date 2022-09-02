@@ -1,0 +1,345 @@
+Understanding TypeScript - 2022 Edition ( Maximillian, Udemy )
+
+5)
+TS Advantages - 
+* TS adds types and data.we can avoid errors with the help of types.
+* we can use next gen JS feature, by adding TS file and converting it to JS workaround for older version of browser.
+* TS introduce interface and generics
+* TS also have decorators
+* rich configuation options
+
+
+9)
+* create simple setup 
+* add another package called 'lite-server', development server to keep reload website on saving new changes.
+* install "sudo npm i -g typescript"
+* tsc app.ts
+* npm init -y
+* npm i --save-dev lite-server
+
+
+11) Using Types =
+Core Types
+* Number = number is type which available in JS and TS. ex. 4,4.2,-19
+* String = string is type which available in JS and TS. ex. "s", 's', `s`
+* boolean = true and false
+
+12, 13)* typescript uses for mostly preventing errors by specifying types.
+* Using TS, we can assign types and much more, so we avoid mistakes by other developer.
+* TS work at compilation level, means it converts ts files into JS files. bcz browser doesnt understand ts.
+* JS uses "dynamic types" (resolved at runtime) and TS uses "static types" (resolved at development).
+* Core primitives in TS, all are lowercase.
+
+
+14) Working with number, string and boolean:-
+
+
+
+15) Type Assignment & Type Inference = 
+* we can assign type to variable in TS. var a: number = 34; It's redundant, not necessary.
+* TS provide type Inference, which decide type of variable on its own. var a = 34
+* TS using Type Inference, yells on us when assigning another type of value.
+
+
+16) Object Types =
+* Object Types are look like JS objects, but do have ";" instead ","
+* Object Types inferred by TS, we do have key-type pairs.
+* like number, we do have generic type called "object".
+* we can use "object" type instead to be more generic. "object" is built in generic type.
+ex. var person: {
+    name: string;
+    age: number
+} = {
+    name: "sumeet",
+    age: 30
+}
+
+
+17) Nested Objects and types =
+* Of course object types can also be created for nested objects.
+* Let's say you have this JavaScript object:
+    const product = {
+      id: 'abc1',
+      price: 12.99,
+      tags: ['great-offer', 'hot-and-new'],
+      details: {
+        title: 'Red Carpet',
+        description: 'A great carpet - almost brand-new!'
+      }
+    }
+* This would be the type of such an object:
+    {
+      id: string;
+      price: number;
+      tags: string[];
+      details: {
+        title: string;
+        description: string;
+      }
+    }
+
+
+18) Array Types = 
+* var a = ["cooking", "travel"]     // IDE able to show => a: string[]
+* In above statement, it shows we can add only value of "string" type. It won't allow other types of data.
+
+
+19) Working with Tuples = 
+* tuple = its fixed length and fixed type array
+* TypeScript introduced a new data type called Tuple. If we know in advance, about value and its type, then we can able to apply more strictness using tuple also.
+* You can declare an array of tuple also.
+* push is allow with tuples. its an exception.
+* ex. 
+    var employee: [number, string][];
+    employee = [[1, "Steve"], [2, "Bill"], [3, "Jeff"]];
+* ex. 
+    const person: {
+        name: string;
+        role: [number, number, string]
+    } = {
+        name: "sumeet",
+        role: [2,4, "sumeett"]
+    }
+
+    person.role.push(4, 5, "sdsdd");        // exception with push
+    console.log("ohjhhhhhhhhhhhhhhh", person.role);
+
+
+20) Working with Enums =
+* Enums or enumerations are a new data type supported in TypeScript.
+* In simple words, enums allow us to declare a set of named constants i.e. a collection of related values that can be numeric or string values.
+* enums are like global variable with value. so when we want to update value, we need to update at single place.
+* ex. 
+    enum Role { Admin, Author, Developer }          //
+    enum Role { Admin = "R", Author = 100, Developer = "code" }     // contain string, number and so on.
+
+
+21) Any type =
+* variable contain any value
+* if you know types of data, just specify.
+
+
+
+22) Union types = 
+* To use one from multiple types.
+* ex.
+    var a: string | number | boolean = 23;
+
+
+
+23) Literal Types =
+* using value as type.
+* ex. let result: "sumeet" | "shedge" = "sumeet";
+
+
+
+24) Type Aliases/ Custom Types =
+* Type Aliases used as Aliases.
+
+ex. type Combinable = number | string;
+var a: Combinable | boolean = 23;
+
+
+25) Type Aliases & Object Types
+* Type aliases can be used to "create" your own types. You're not limited to storing union types though - you can also provide an alias to a (possibly complex) object type.
+
+For example:
+    type User = { name: string; age: number };
+    const u1: User = { name: 'Max', age: 30 }; // this works!
+* This allows you to avoid unnecessary repetition and manage types centrally.
+
+For example, you can simplify this code:
+    function greet(user: { name: string; age: number }) {
+        console.log('Hi, I am ' + user.name);
+    }
+    
+    function isOlder(user: { name: string; age: number }, checkAge: number) {
+        return checkAge > user.age;
+    }
+To:
+
+    type User = { name: string; age: number };
+    function greet(user: User) {
+        console.log('Hi, I am ' + user.name);
+    }
+    
+    function isOlder(user: User, checkAge: number) {
+        return checkAge > user.age;
+    }
+
+
+26) function return types and void
+* TS provide way to infer type of return value.
+*ex. function vv(a: number, b: number): number {
+    return a + b;
+}
+* when function doesnt return anything, TS provide "void" for this.
+
+
+27) Functions as Types =
+* To add function as type.
+* var examFunc: (a: number, b: number) => number        // Take 2 arguments and return value
+
+
+28) function Types and callbacks =
+* we can pass function as callback.
+* callback functions can return something, even if the argument on which they're passed does NOT expect a returned value.
+* ex. function sayHi(): void {
+    ...
+}
+* "void" doesn't force you to return anything if you don't want to return something.
+
+
+29) Unknown =
+* use "Unknown" instead of "any", if you knew something will assigned there in future.
+* its bit risky.
+
+
+30)The "Never" type =
+* "Never" assign to Error function
+
+
+31) wrap up -
+
+
+
+34) The typescript compiler and its configuration -
+* use "-- watch" mode to see new changes without re-running command.
+* command  - tsc index.ts --watch
+
+
+35) compiling the Entire Project / Multiple Files -
+* run "tsc --init" to create TS configuration.
+* run "tsc --watch" or "tsc -w".
+
+
+36) Including and Excluding Files -
+* to exclude and include file, we can add property in tsconfig.json.
+* "file" option also used for add files. but it only takes single files.
+
+37) Setting a Compilation Target -
+* by setting target, we can target to specific version. 
+
+
+38) Understanding TypeScript Core Libs -
+* TS config has "lib" property, which helps to provide support for "dom", "es6" and many more. TS don't know about Dom, es6 and others. by including these options, we can able to give support. by default, it has support for browser related features.
+
+
+39) 
+
+
+
+
+
+58) what are classes?
+* class are blueprint of object.
+
+59) Creating a First Class -
+* ex. 
+class Department {
+    name: string;
+
+    constructor(n: string){
+        this.name = n;
+    }
+}
+
+const accounting = new Department("accounting");
+console.log(accounting);
+
+
+61) constructor function and this keyword =
+* ex. 
+class Department {
+    name: string;
+
+    constructor(n: string){
+        this.name = n;
+    }
+    describe(){
+        console.log(`value ${this.name}`);
+    }
+}
+
+const accounting = new Department("accounting");
+console.log(accounting);
+
+const accountingCopy = { describe: accounting.describe, name: "sumeet" }
+console.log(accounting);
+
+
+
+62) "private" and "public" access modifiers =
+
+class Department {
+    public name: string;
+    private employee: string[] = [];
+    constructor(n){
+        this.name = n;
+    }
+    describe(){
+        console.log(`value ${this.name}`);
+        this.employee.push("s");
+    }
+    rr = () => {
+        console.log(`value ${this.name}`)
+        this.employee.push("s");
+    }
+}
+
+const accounting = new Department("accounting");
+console.log(accounting);
+
+const accounting1 = new Department("accounting");
+console.log(accounting1);
+
+accounting.describe()
+accounting.rr()
+
+accounting1.describe()
+accounting1.rr()
+
+
+63) shorthand initialization = 
+
+class Department {
+    // public name: string;
+    // private id: string
+    private employee: string[] = [];
+    constructor(public name: string, private id: string){
+        // this.name = n;
+    }
+    ....
+}
+
+const accounting = new Department("accounting", "d1");
+
+
+64) "readonly" properties =
+* we have certain fields which should not just be private or public. they also shouldn't change after their initialization.
+ex.  
+    public readonly name: string;
+    or
+    constructor(public name: string, private readonly id: string){
+* to add some extra safety, we can add "readonly"
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Number
+String
+boolean
+object
+array
+enum
+any
+union
+literal
+type aliases
+function return type and void type
+Functions as types
+Function types and callbacks
+unknown
+never

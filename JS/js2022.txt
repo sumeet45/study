@@ -1362,18 +1362,118 @@ Methods -
 [ ] keys()            Returns a Array Iteration Object, containing the keys of the original array.
 [ ] lastIndexOf()     Search the array for an element, starting at the end, and returns its position
 [ ] length            Sets or returns the number of elements in an array
-[ ] map()             Creates a new array with the result of calling a function for each array element
-[ ] pop()             Removes the last element of an array, and returns that element
+[ ] map()             Creates a new array with the result of calling a function for each array element(Except empty elements).
+[@] pop()             Removes the last element of an array, and returns that element
 [ ] prototype         Allows you to add properties and methods to an Array object
-[ ] push()            Adds new elements to the end of an array, and returns the new length
-[ ] reduce()          Reduce the values of an array to a single value (going left-to-right)
-[ ] reduceRight()     Reduce the values of an array to a single value (going right-to-left)
-[ ] reverse()         Reverses the order of the elements in an array
-[ ] shift()           Removes the first element of an array, and returns that element
-[ ] slice()           Selects a part of an array, and returns the new array
-[ ] some()            Checks if any of the elements in an array pass a test
-[ ] sort()            Sorts the elements of an array
-[ ] splice()          Adds/Removes elements from an array
+[@] push()            Adds new elements to the end of an array, and returns the new length
+[ ] reduce()          Reduce the values of an array to a single value (going left-to-right)(Except empty elements).
+[ ] reduceRight()     Reduce the values of an array to a single value (going right-to-left)(Except empty elements)
+[@] reverse()         Reverses the order of the elements in an array
+[@] shift()           Removes the first element of an array, and returns that element
+[*] slice()           Selects a part of an array, and returns the new array. arr.slice(start, end)
+[ ] some()            Checks if any of the elements in an array pass a test(Except empty elements).
+[@] sort()            Sorts the elements of an array
+[@] splice()          Adds/Removes elements from an array. arr.splice(index, count, item1... item N);
 [ ] toString()        Converts an array to a string, and returns the result
-[ ] unshift()         Adds new elements to the beginning of an array, and returns the new length
+[@] unshift()         Adds new elements to the beginning of an array, and returns the new length
 [ ] valueOf()         Returns the primitive value of an array
+
+
+2) Number -
+isFinite()            Checks whether a value is a finite number
+isInteger()           Checks whether a value is an integer
+isNaN()               Checks whether a value is Number.NaN
+isSafeInteger()       Checks whether a value is a safe integer
+toExponential(x)      Converts a number into an exponential notation
+toFixed(x)            Formats a number with x numbers of digits after the decimal point
+toLocaleString()      Converts a number into a string, based on the locale settings
+toPrecision(x)        Formats a number to x length
+toString()            Converts a number to a string
+valueOf()             Returns the primitive value of a number
+
+
+3) Date -
+constructor           Returns the function that created the Date object's prototype
+getDate()             Returns the day of the month (from 1-31)
+getDay()              Returns the day of the week (from 0-6)
+getFullYear()         Returns the year
+getHours()            Returns the hour (from 0-23)
+getMilliseconds()     returns the milliseconds (from 0-999)
+getMinutes()          returns the minutes (from 0-59)
+getMonth()            returns the month (from 0-11)
+getSeconds()          Returns the seconds (from 0-59)
+getTime()             Returns the number of milliseconds since midnight Jan 1 1970, and a specified date
+getTimezoneOffset()   Returns the time difference between UTC time and local time, in minutes
+getUTCDate()          Returns the day of the month, according to universal time (from 1-31)
+getUTCDay()           Returns the day of the week, according to universal time (from 0-6)
+getUTCFullYear()      Returns the year, according to universal time
+getUTCHours()         Returns the hour, according to universal time (from 0-23)
+getUTCMilliseconds()  Returns the milliseconds, according to universal time (from 0-999)
+getUTCMinutes()       Returns the minutes, according to universal time (from 0-59)
+getUTCMonth()         Returns the month, according to universal time (from 0-11)
+getUTCSeconds()       Returns the seconds, according to universal time (from 0-59)
+getYear()             Deprecated. Use the getFullYear() method instead
+now()                 Returns the number of milliseconds since midnight Jan 1, 1970
+parse()               Parses a date string and returns the number of milliseconds since January 1, 1970
+prototype             Allows you to add properties and methods to an object
+setDate()             Sets the day of the month of a date object
+setFullYear()         Sets the year of a date object
+setHours()            Sets the hour of a date object
+setMilliseconds()     Sets the milliseconds of a date object
+setMinutes()          Set the minutes of a date object
+setMonth()            Sets the month of a date object
+setSeconds()          Sets the seconds of a date object
+setTime()             Sets a date to a specified number of milliseconds after/before January 1, 1970
+setUTCDate()          Sets the day of the month of a date object, according to universal time
+setUTCFullYear()      Sets the year of a date object, according to universal time
+setUTCHours()         Sets the hour of a date object, according to universal time
+setUTCMilliseconds()  Sets the milliseconds of a date object, according to universal time
+setUTCMinutes()       Set the minutes of a date object, according to universal time
+setUTCMonth()         Sets the month of a date object, according to universal time
+setUTCSeconds()       Set the seconds of a date object, according to universal time
+setYear()             Deprecated. Use the setFullYear() method instead
+toDateString()        Converts the date portion of a Date object into a readable string
+toGMTString()         Deprecated. Use the toUTCString() method instead
+toISOString()         Returns the date as a string, using the ISO standard
+toJSON()              Returns the date as a string, formatted as a JSON date
+toLocaleDateString()  Returns the date portion of a Date object as a string, using locale conventions
+toLocaleTimeString()  Returns the time portion of a Date object as a string, using locale conventions
+toLocaleString()      Converts a Date object to a string, using locale conventions
+toString()            Converts a Date object to a string
+toTimeString()        Converts the time portion of a Date object to a string
+toUTCString()         Converts a Date object to a string, according to universal time
+UTC()                 Returns the number of milliseconds in a date since midnight of January 1, 1970, according to UTC time
+valueOf()             Returns the primitive value of a Date object
+
+
+4) String -
+charAt()              Returns the character at a specified index (position)
+charCodeAt()          Returns the Unicode of the character at a specified index
+concat()              Returns two or more joined strings
+constructor           Returns the string's constructor function
+endsWith()            Returns if a string ends with a specified value
+fromCharCode()        Returns Unicode values as characters
+includes()            Returns if a string contains a specified value
+indexOf()             Returns the index (position) of the first occurrence of a value in a string
+lastIndexOf()         Returns the index (position) of the last occurrence of a value in a string
+length                Returns the length of a string
+localeCompare()       Compares two strings in the current locale
+match()               Searches a string for a value, or a regular expression, and returns the matches
+prototype             Allows you to add properties and methods to an object
+repeat()              Returns a new string with a number of copies of a string
+replace()             Searches a string for a value, or a regular expression, and returns a string where the values are replaced
+search()              Searches a string for a value, or regular expression, and returns the index (position) of the match
+slice()               Extracts a part of a string and returns a new string
+split()               Splits a string into an array of substrings
+startsWith()          Checks whether a string begins with specified characters
+substr()              Extracts a number of characters from a string, from a start index (position)
+substring()           Extracts characters from a string, between two specified indices (positions)
+toLocaleLowerCase()   Returns a string converted to lowercase letters, using the host's locale
+toLocaleUpperCase()   Returns a string converted to uppercase letters, using the host's locale
+toLowerCase()         Returns a string converted to lowercase letters
+toString()            Returns a string or a string object as a string
+toUpperCase()         Returns a string converted to uppercase letters
+trim()                Returns a string with removed whitespaces
+valueOf()             Returns the primitive value of a string or a string object
+
+

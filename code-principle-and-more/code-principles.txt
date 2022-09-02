@@ -9,8 +9,11 @@ Ref url ( https://betterprogramming.pub/7-software-development-principles-that-s
 *Avoid Premature Optimization
 *Occam's Razor
 
+Why Principles?
+* These principles will help us to understand, how to structure the code, so that the code will be robust, maintainable and flexible, easy to test.
 
-*SOLID -
+
+1) SOLID -
 	S (Single Responsibility Principle) - 
 	* A class should have one and only one reason to change, meaning that a class should have only one job.
 	* Explanation - suppose we have class called "book" with some methods related to book. As per Principle, we should not add any extra functionality to our class. It should have only book related methods only. If you want to add another methods, then add those to other class and use it.
@@ -22,4 +25,49 @@ Ref url ( https://betterprogramming.pub/7-software-development-principles-that-s
 
 	L (Liskov Substitution Principle) -
 	* you should be able to change an instance using a sub-type and your code should still work.
+	* Liskov Substitution Principle (LSP) states that objects of a superclass should be replaceable with objects of its subclasses without breaking the application.
+		ex. class Bird {
+				layEgg(){
+					....
+				}
+			}
 
+			class Eagle Extends Bird {
+				fly(){
+					....
+				}
+			}
+
+			class Penguin Extends Bird {
+				dive(){
+					....
+				}
+			}
+
+	
+	I ( Interface Segregation ) - 
+	* Interface segregation principle (ISP) states that no code should be forced to depend on methods it does not use.
+	* The software should be split into multiple independents parts. Side-effects should be reduced as much as possible to ensure independence.
+	* Interface should segregate into multiple one.
+	
+	D ( Dependancy Inversion ) -
+	* High-level modules, which provide complex logic, should be easily reusable and unaffected by changes in low-level modules, which provide utility features. To achieve that, you need to introduce an abstraction that decouples the high-level and low-level modules from each other.
+	A) High-level modules should not import anything from low-level modules. Both should depend on abstractions (e.g., interfaces).
+	B) Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.
+
+
+
+2) You Aren’t Gonna Need It — YAGNI
+	* It’s simple and self-explanatory — but not everybody follows it. When adding code, make sure it’s needed right away. Don’t leave code hanging because you think it might be useful later on.
+
+
+3) Don’t Repeat Yourself — DRY
+	* Having duplicated code is a waste. You will have to maintain the same logic in two places, do the tests in two places, and when one place changes, you will have to remember to change the other one.
+
+
+4) Keep It Simple, Stupid — KISS
+	* Applied to software development, it means exactly that — don’t overengineer. Sometimes the smartest solution is the easiest one. Building performant and efficient code with simplicity is beautiful.
+
+
+5) Avoid Premature Optimization -
+	* Premature optimization is the practice that encourages developers to perform unnecessary optimization before it’s proven that it is needed. I think if you apply KISS and YAGNI you shouldn’t fall for this
