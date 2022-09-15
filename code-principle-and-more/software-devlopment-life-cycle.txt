@@ -1,0 +1,29 @@
+Software Developement Life Cycle ( SDLC ) -
+Software Development Life Cycle (SDLC / Software Development Process ) is a process used by the software industry to design, develop and test high quality softwares. The SDLC aims to produce a high-quality software that meets or exceeds customer expectations, reaches completion within times and cost estimates.
+	different stages of sdlc -
+	a) Planning and Requirement Analysis
+	b) Defining Requirements
+	c) Designing the Product Architecture
+	d) Building or Developing the Product
+	e) Testing the Product
+	f) Deployment in the Market and Maintenance
+
+
+SDLC Models =
+1) Agile Methodologies -
+	* In Agile, instead of Delivering Complete solution, we can split into several services or features and release it in interval.
+	* The Agile methodology is a way to manage a project by breaking it up into several phases. It involves constant collaboration with stakeholders and continuous improvement at every stage. Once the work begins, teams cycle through a process of planning, executing, and evaluating. Continuous collaboration is vital, both with team members and project stakeholders.
+	* Scrum, kanban, are frameworks of agile.
+	* Agile methodologies is adaptive in nature. In it, we take updates constantly from Client.
+	*
+
+	SCRUM Framework - 
+	* Unlike waterfall, in Scrum, we create small feature and doing it within short span of time. 
+	* we decide sprint ( small period of 1 to 3 weeks ) in which we decide and create modules.
+	* 1 sprint contain requirement gathering, design, coding, testing, deploy and review again.
+	* Scrum has multiple candidates like Product owner, team (BA, QA, developers, scrum master), stakeholder (client).
+	* Daily meeting about daily task ( contain daily updates of task, completion status ) and improvment of previous sprint.
+	* SCRUM contain waterfall model in small iterative manner.
+
+
+2) 

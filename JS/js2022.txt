@@ -1338,7 +1338,7 @@ Here, false convert to 0, and 0 is less than 1, hence it becomes true.
 
 ----------------------------------------------------------------------------------------------------
 
-Methods -
+JS Objects -
 * methods are marked with "*" which returned new array.
 * methods are marked with "@" which mutate original array.
 
@@ -1477,3 +1477,137 @@ trim()                Returns a string with removed whitespaces
 valueOf()             Returns the primitive value of a string or a string object
 
 
+5) Math -
+abs(x)                Returns the absolute value of x
+acos(x)               Returns the arccosine of x, in radians
+acosh(x)              Returns the hyperbolic arccosine of x
+asin(x)               Returns the arcsine of x, in radians
+asinh(x)              Returns the hyperbolic arcsine of x
+atan(x)               Returns the arctangent of x as a numeric value between -PI/2 and PI/2 radians
+atan2(y, x)           Returns the arctangent of the quotient of its arguments
+atanh(x)              Returns the hyperbolic arctangent of x
+cbrt(x)               Returns the cubic root of x
+ceil(x)               Returns x, rounded upwards to the nearest integer
+clz32(x)              Returns the number of leading zeros in a 32-bit binary representation of x
+cos(x)                Returns the cosine of x (x is in radians)
+cosh(x)               Returns the hyperbolic cosine of x
+E                     Returns Euler's number (approx. 2.718)
+exp(x)                Returns the value of Ex
+expm1(x)              Returns the value of Ex minus 1
+floor(x)              Returns x, rounded downwards to the nearest integer
+fround(x)             Returns the nearest (32-bit single precision) float representation of a number
+LN2                   Returns the natural logarithm of 2 (approx. 0.693)
+LN10                  Returns the natural logarithm of 10 (approx. 2.302)
+log(x)                Returns the natural logarithmof x
+log10(x)              Returns the base-10 logarithm of x
+LOG10E                Returns the base-10 logarithm of E (approx. 0.434)
+log1p(x)              Returns the natural logarithm of 1 + x
+log2(x)               Returns the base-2 logarithm of x
+LOG2E                 Returns the base-2 logarithm of E (approx. 1.442)
+max(x1,x2,..)         Returns the number with the highest value
+min(x1,x2,..)         Returns the number with the lowest value
+PI                    Returns PI (approx. 3.14)
+pow(x, y)             Returns the value of x to the power of y
+random()              Returns a random number between 0 and 1
+round(x)              Rounds x to the nearest integer
+sign(x)               Returns the sign of a number (checks whether it is positive, negative or zero)
+sin(x)                Returns the sine of x (x is in radians)
+sinh(x)               Returns the hyperbolic sine of x
+sqrt(x)               Returns the square root of x
+SQRT1_2               Returns the square root of 1/2 (approx. 0.707)
+SQRT2                 Returns the square root of 2 (approx. 1.414)
+tan(x)                Returns the tangent of an angle
+tanh(x)               Returns the hyperbolic tangent of a number
+trunc(x)              Returns the integer part of a number (x)
+
+
+
+
+6) Statement -
+break                       Exits a switch or a loop
+class                       Declares a class
+const                       Declares a variable with a constant value
+continue                    Breaks one iteration (in the loop) if a specified condition occurs, and continues with the next iteration in the loop
+debugger                    Stops the execution of JavaScript, and calls (if available) the debugging function
+do ... while                Executes a block of statements and repeats the block while a condition is true
+for                         Loops through a block of code a number of times
+for ... in                  Loops through the properties of an object
+for ... of                  Loops through the values of an iterable object
+function                    Declares a function
+if ... else ... else if     Marks a block of statements to be executed depending on a condition
+let                         Declares a variable
+return                      Stops the execution of a function and returns a value from that function
+switch                      Marks a block of statements to be executed depending on different cases
+throw                       Throws (generates) an error
+try ... catch ... finally   Marks the block of statements to be executed when an error occurs in a try block, and implements error handling
+var                         Declares a variable
+while                       Marks a block of statements to be executed while a condition is true
+
+
+------------------------------------------------------------------------------------------------
+
+Browser Objects -
+
+1) Window -
+
+A) Properties -
+closed                      Returns a boolean true if a window is closed.
+console                     Returns the Console Object for the window. (See also The Console Object.)
+defaultStatus               Deprecated.
+document                    Returns the Document object for the window.( See also The Document Object. )
+frameElement                Returns the frame in which the window runs.
+frames                      Returns all window objects running in the window.
+history                     Returns the History object for the window.(See also The History Object.)
+innerHeight                 Returns the height of the window's content area (viewport) including scrollbars
+innerWidth                  Returns the width of a window's content area (viewport) including scrollbars
+length                      Returns the number of <iframe> elements in the current window
+localStorage                Allows to save key/value pairs in a web browser. Stores the data with no expiration date
+location                    Returns the Location object for the window.(See also the The Location Object.)
+name                        Sets or returns the name of a window
+navigator                   Returns the Navigator object for the window.( See also The Navigator object. )
+opener                      Returns a reference to the window that created the window
+outerHeight                 Returns the height of the browser window, including toolbars/scrollbars
+outerWidth                  Returns the width of the browser window, including toolbars/scrollbars
+pageXOffset                 Returns the pixels the current document has been scrolled (horizontally) from the upper left corner of the window
+pageYOffset                 Returns the pixels the current document has been scrolled (vertically) from the upper left corner of the window
+parent                      Returns the parent window of the current window
+screen                      Returns the Screen object for the window (See also The Screen object)
+screenLeft                  Returns the horizontal coordinate of the window relative to the screen
+screenTop                   Returns the vertical coordinate of the window relative to the screen
+screenX                     Returns the horizontal coordinate of the window relative to the screen
+screenY                     Returns the vertical coordinate of the window relative to the screen
+sessionStorage              Allows to save key/value pairs in a web browser. Stores the data for one session
+scrollX                     An alias of pageXOffset
+scrollY                     An alias of pageYOffset
+self                        Returns the current window
+status                      Deprecated. Avoid using it.
+top                         Returns the topmost browser window
+
+
+B) Methods
+alert()                     Displays an alert box with a message and an OK button
+atob()                      Decodes a base-64 encoded string
+blur()                      Removes focus from the current window
+btoa()                      Encodes a string in base-64
+clearInterval()             Clears a timer set with setInterval()
+clearTimeout()              Clears a timer set with setTimeout()
+close()                     Closes the current window
+confirm()                   Displays a dialog box with a message and an OK and a Cancel button
+focus()                     Sets focus to the current window
+getComputedStyle()          Gets the current computed CSS styles applied to an element
+getSelection()              Returns a Selection object representing the range of text selected by the user
+matchMedia()                Returns a MediaQueryList object representing the specified CSS media query string
+moveBy()                    Moves a window relative to its current position
+moveTo()                    Moves a window to the specified position
+open()                      Opens a new browser window
+print()                     Prints the content of the current window
+prompt()                    Displays a dialog box that prompts the visitor for input
+requestAnimationFrame()     Requests the browser to call a function to update an animation before the next repaint
+resizeBy()                  Resizes the window by the specified pixels
+resizeTo()                  Resizes the window to the specified width and height
+scroll()                    Deprecated. This method has been replaced by the scrollTo() method.
+scrollBy()                  Scrolls the document by the specified number of pixels
+scrollTo()                  Scrolls the document to the specified coordinates
+setInterval()               Calls a function or evaluates an expression at specified intervals (in milliseconds)
+setTimeout()                Calls a function or evaluates an expression after a specified number of milliseconds
+stop()                      Stops the window from loading

@@ -1,0 +1,102 @@
+Youtube - TechWorld with Nana
+
+1) Container - 
+	* A way to package application with all the necessary dependencies and configuration. Package is portable artifact, which is easily shared and move around.
+	* Portability of containers plus everything packaged in one isolated enviornment gives it some advantages that makes development and deployment process  more efficient.
+	* Technically, container is stacked layers of images, which has linux base image at base bcz its small in size. keeping small size of linux base images makes container size small.
+
+2) Container Repository -
+	* container lives in container repo. some private company have private repo. We also have public repo for docker container where you can browse and probably find any application container that you want.
+	* docker hub is public repo for docker image/container.
+
+3) Container vs image -
+	* image is actual package, which has config and dependancies. It is movable artifact. 
+	* container is when i pull image on our local machine, started to run. It creates container enviornment. If image 
+	* If image is lying inside local machine, then its image. If we started to run image, it create container enviornment, so we call container.
+	* Container is running enviorment for an image.
+	* in image, It coulbe be collection of application images() or config, or enviormental configuration. Container has port bind to it, which makes possible to talk to application which is present in container.
+
+4) Docker vs VM -
+	* In OS, we have following layer structure =>
+					Application layer
+					OS Kernel
+					Hardware
+	* Every OS have same kernel, but bcz of Application layer, it look different and works differently.
+	* when we download docker image, it contain the application layer of OS and some other application installed on top of it.
+	* in VM, it virtualize both "application" and "OS Kernel" layer. so it has its own kernel.
+	diffn -
+	1) size - docker is very small in compare to VM, bcz it contain own kernel
+	2) speed - docker container are faster than VM
+	3) compatibility - VM of any OS can run on any OS host, but it's not possible with Docker. some time Docker won't be compatible with host OS. So we have workaround for this, using "Docker ToolBox".
+
+6) Docker Installation - 
+* If computer doesn't meet requirements to run docker, theres a workaround for that, which is called docker toolbox.
+* we setup docker using package.
+* run command  - sudo docker run hello-world
+
+7) bind two redis from same port with two different ports of host -
+* docker run -p6000:6379 redis
+* docker run -p6000:6379 -d redis
+* docker run -p6001:6379 redis:4.0
+* docker run -p6001:6379 -d redis:4.0
+
+8) Docker Network - 
+* Here, it creates isolated docker network, where the containers are running in. when we deploy 2 container in same docker network, they can talk to each other using names, without localhost, port or anything else.
+
+9) Create simple project -
+* First, create network which contains mongo db and mongo express.
+* command to execute - 
+		sudo docker run -d \
+		> -p 27017:27017 \
+		> -e MONGO_INITDB_ROOT_USERNAME=admin \
+		> -e MONGO_INITDB_ROOT_PASSWORD=password \
+		> --name mongodb \
+		> --net mongo-network \
+		> mongo
+* command to execute mongo-express =
+	sudo docker run -d \
+	-p 8081:8081 \
+	-e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
+	-e ME_CONFIG_MONGODB_ADMINPASSWORD=password \
+	--net mongo-network \
+	--name mongo-express \
+	-e ME_CONFIG_MONGODB_SERVER=mongodb \
+	mongo-express
+
+
+
+10) Docker Compose -
+* sometime we need to deal with multiple containers. so it became tedious job to write and run those container for multiple time. Hence we use docker compose feature. docker compose is collection of docker commands, it becomes easy to edit and run it.
+* Docker compose takes care of container. it create common network for these containers.
+
+
+commands -
+* docker run postgres:10.10			// to download from docker hub
+* docker ps 						// to show running container
+* docker images						// list of downloaded images
+* docker pull redis					// download redis image 
+* docker run redis					// run images and create new container enviornment
+* docker ps 						// list of running container 
+* docker run -d redis 				// run container in detached mode
+* docker stop container_id			// to stop container, first get container id using "docker ps" and replaced with "container_id"
+* docker start container_id			// to restart stop container
+* docker ps -a 						// show start and stopped container list
+* docker run redis:4.0				// download and run redis image 
+* docker run -p6000:6379 redis		// bind host port to container port 
+* docker run -d -p6001:6379 --name redis-older redis:4.0  	// to update name
+* docker logs container_id/names	// get logs of container
+* docker exec -it container_id /bin/bash   // get terminal of running container to check logs, env_variables and many more.
+* docker network ls 				// to get list of docker network
+* docker network create mongo-network  	//to create mongo network
+* docker-compose -f mongo.yaml		// to execute yaml file
+
+
+
+
+docker engine	- docker itself
+docker ToolBox 	- helps to run docker, where docker is not supported
+docker desktop
+docker hub - same as github
+
+
+1:16

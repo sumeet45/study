@@ -35,7 +35,7 @@ Core Types
 
 
 
-15) Type Assignment & Type Inference = 
+15) Type Assignment and Type Inference = 
 * we can assign type to variable in TS. var a: number = 34; It's redundant, not necessary.
 * TS provide type Inference, which decide type of variable on its own. var a = 34
 * TS using Type Inference, yells on us when assigning another type of value.
@@ -230,21 +230,23 @@ To:
 
 
 
+Classes and Interfaces -
 
 58) what are classes?
 * class are blueprint of object.
+* we call object as "instance of class".
 
 59) Creating a First Class -
 * ex. 
 class Department {
-    name: string;
+    name: string;       // field of class (key: type)
 
-    constructor(n: string){
+    constructor(n: string){     // called when creating obj from class
         this.name = n;
     }
 }
 
-const accounting = new Department("accounting");
+const accounting = new Department("accounting");    // create obj
 console.log(accounting);
 
 
@@ -270,10 +272,11 @@ console.log(accounting);
 
 
 62) "private" and "public" access modifiers =
+* "private" and "public" are available in TS compilation time, not runtime
 
 class Department {
-    public name: string;
-    private employee: string[] = [];
+    public name: string;                    // public is default
+    private employee: string[] = [];        // properties becomes private, accessible only from inside
     constructor(n){
         this.name = n;
     }
@@ -301,12 +304,14 @@ accounting1.rr()
 
 
 63) shorthand initialization = 
+*  here, in following code,we can initialize and assign "id" and "name" in constructor, instead of seprate declaration and initialization
+*
 
 class Department {
-    // public name: string;
-    // private id: string
+    // public name: string;         // no need
+    // private id: string;          // no need
     private employee: string[] = [];
-    constructor(public name: string, private id: string){
+    constructor(public name: string, private id: string){       // we need to use same name for property declaration
         // this.name = n;
     }
     ....
@@ -325,6 +330,158 @@ ex.
 
 
 
+65) Inheritance -
+* we can't inherit multiple class, only one class inherited
+
+class ITDepart extends Department {
+    constructor(id: string, admins: string[] ){
+        super(id, "IT");                    // will call constructor of base class.
+    }
+}
+var de = new ITDepart("name", "Information Tech");
+
+
+
+66) Overriding Properties and the "protected" modifier =
+* we can't access "private" property of parent class from child class. in above code, ITDepart one.
+* hence, we will use "protected" instead "private". so we can access from any child class, and at the same time, it's not accessible from outside of class like "private".
+* we can override methods of your base class.
+
+class Department {
+    ...
+    protected employee: string[] = [];
+    ...
+}
+
+
+67) Getters and Setters -
+* if we want to read or change the values of private members outside the class, we'll have to use the public get and set methods. The get method is used to return the data/value. It is also known as an accessor method. The set method is used to set or update the value/data.
+* ex - 
+    class ITDepart extends Department {
+        private lastReport: string;
+        get mostRecentReport(){
+            return this.lastReport;
+        }
+        set mostRecentReport(val:string){
+            this.addReport(val);
+        }
+        addReport(text:string){
+            this.lastReport = text
+        }
+    }
+    ITDepart.mostRecentReport = "Year end report";
+    ITDepart.addReport('something went wrong');
+    console.log(ITDepart.mostRecentReport);
+
+
+68) Static Methods and Properties -
+* Static properties and methods allow you to add properties and methods to classes which are not accessed on an instance of class. Instead you can access directly from class.
+* you cannot access static properties and methods within non static code.
+ex. class Dep {
+        static fiscalYear = 2020;
+        static createEmployee (name: string){
+            return { name: name }
+        }
+        callApi = () => {
+            console.log(this.fiscalYear);       // error, won't allow
+        }
+    }
+    console.log(Dep.createEmployee());
+    console.log(Dep.fiscalYear);
+}
+
+
+69) Abstract Classes -
+* when you can't provide general implementation in base class and inheriting class need to provide their own implementation. we can acheive this by using "abstract class".
+* abstract method should be available in abstract class.
+* abstract class Dep {
+    abstract display(this: Department): void;
+}
+class ITDepart extends Dep {
+    display(){
+        console.log("abstract class")
+    }
+}
+* All classes based on some other class share common method or property. but at the same time you want to make sure that you don't have to provide concrete value, the concrete implementation in base class, but instead inheriting class do that.
+* abstract class can't be instantiate
+
+
+70) Singletons and Private Constructors -
+* we can create only exactly one object based on this class in singleton pattern.
+* need to learn again
+
+
+71) Classes - A summary =
+* we learned about classes, their properties, access modifier, private for internal access, protected for internal classes and inherited class, and public for access from anywhere, inheritance, get and set, readonly.
+* static method and properties , abstract class,method and properties
+* singleton pattern and private constructor
+
+
+72) A First Interface =
+* Interface - use it to describe how an object should look like. we can use interface as custom type. we can define structure not concrete value.
+* interface Person {
+    name: string;
+    age: number;
+
+    greet(phrase: string):void
+}
+
+
+73) Using interfacess with Classes -
+* diff between custom types and interface - 
+    1) interface and type can only be used to describe the structure of an object. but inside of custom type, we can store other things like union types and so on. But Interface is more clearer than custom type.
+    2) when it comes to defining object types, you more often see interfaces out there in the wild, than custom types.
+
+* implement interface with class - we can implement interface to multiple class like we do with extending ( inheritance ) a class. we can implement more than 1 interface. That's diff between inheritance and interface.
+* So often we use interface to share functionality among the mulitple classes. Here, diff between abstract and interface, interface doesn't have implementation details at all. And abstract class have mixture of overwrite part and concrete implementation.
+
+    class Person implements Greetable, Greetable1 {     // multiple interface implement
+        name:string;
+        constructor(name:string ){
+            this.name = name;
+        }
+        greet(str:string){
+            console.log("hi");
+        }
+    }
+
+
+74) Why interfaces? =
+* 
+
+
+75) readonly interface properties =
+* readonly modifier used in interface to set property of object once and bceomes read only. so after that, we can't be able to change after that. we can use "readonly" with custom type
+
+76) Extendin interfaces =
+* Interface can inherit multiple interface with "extend" keyword. we use this when we want to create small interface, which is required in multiple interface
+
+*   interface Named {
+        readonly name: string;
+    }
+    interface Greetable extends Named, AnotherInterface {
+        greet(str: string): void;
+    }
+
+
+76) Interface as function types =
+*   interface AddFn {
+        (a: number, b: number): number
+    }
+    let add: AddFn;
+    add = (n1: number, n2: number) => {
+        return n1+n2;
+    }
+
+
+77) Optional Parameters and Properties =
+* you can specify property "Optional" in class and interface as well.
+* ex. - interface Named {
+            optionalName?: string
+        }
+        class Names extend Named {
+            name?: string;              // not necessary to make optional here
+        }
 
 --------------------------------------------------------------------------------------------------------------------------------
 
