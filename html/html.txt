@@ -1,0 +1,2272 @@
+HTML - 
+* know tags, defn and uses of tags, imp attributes
+* know concepts like semantic element, empty elements
+
+
+HTML - 
+* HTML stands for Hyper Text Markup Language
+* HTML is the standard markup language for creating Web pages
+* HTML describes the structure of a Web page
+* HTML consists of a series of elements
+* HTML elements tell the browser how to display the content
+
+HTML Element -
+* HTML element includes start tag, attributes, content and end tag too.
+
+
+Reference -
+* <!-- ... --> =
+	* To insert comments.
+	syntax - <!-- this is comment -->
+
+* <!Doctype html> =
+	* All HTML documents must start with a <!DOCTYPE> declaration.
+	* It is an "information" to the browser about what document type to expect.
+	* In older documents (HTML 4 or XHTML), the declaration is more complicated because the declaration must refer to a DTD (Document Type Definition).
+	syntax - <!Doctype html>
+
+* <a> -
+	* tag defines a hyperlink, which is used to link from one page to another.
+	* Attributes =  
+	  
+	* download  - filename - 
+		Specifies that the target will be downloaded when a user clicks on the hyperlink
+	* href	-  URL  
+		Specifies the URL of the page the link goes to
+	* hreflang	- language_code 
+		Specifies the language of the linked document
+	* media  -  media_query  
+		Specifies what media/device the linked document is optimized for
+	* ping  -  list_of_URLs  
+		Specifies a space-separated list of URLs to which, when the link is followed, post requests with the body ping will be sent by the browser (in the background). Typically used for tracking.
+	* referrerpolicy  -  no-referrer, no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin-when-cross-origin, unsafe-url  
+		Specifies which referrer information to send with the link
+	* rel  -  alternate, author, bookmark, external, help, license, next, nofollow, noreferrer, noopener, prev, search 
+		tag Specifies the relationship between the current document and the linked document
+	* target  -  _blank, _parent, _self, _top 
+		Specifies where to open the linked document
+	* type	 -  media_type	
+		Specifies the media type of the linked document
+
+
+* <abbr> -
+	The <abbr> tag defines an abbreviation or an acronym, like "HTML", "CSS", "Mr.", "Dr.", "ASAP", "ATM".
+	* "title" attribute - attribute to show the description for the abbreviation/acronym when you mouse over the element.
+	* <abbr> tag replace acronym in html5
+
+* <address> -
+	The <address> tag defines the contact information for the author/owner of a document or an article.
+	* syntax - <address> address </address>
+
+*<area> -
+	* The <area> tag defines an area inside an image map (an image map is an image with clickable areas).
+	* <area> elements are always nested inside a <map> tag.
+	* Attributes =
+	* alt  -  text 
+		Specifies an alternate text for the area. Required if the href attribute is present
+	* coords - coordinates	
+		Specifies the coordinates of the area
+	* download  - filename	
+		Specifies that the target will be downloaded when a user clicks on the hyperlink
+	* href	URL	
+		Specifies the hyperlink target for the area
+	* hreflang	language_code	
+		Specifies the language of the target URL
+	* media		media query	
+		Specifies what media/device the target URL is optimized for
+	* referrerpolicy  - no-referrer
+						no-referrer-when-downgrade
+						origin
+						origin-when-cross-origin
+						same-origin
+						strict-origin-when-cross-origin
+						unsafe-url	
+		Specifies which referrer information to send with the link
+
+	* rel - alternate
+			author
+			bookmark
+			help
+			license
+			next
+			nofollow
+			noreferrer
+			prefetch
+			prev
+			search
+			tag	
+		Specifies the relationship between the current document and the target URL
+	* shape	 -  default
+				rect
+				circle
+				poly
+		Specifies the shape of the area
+	* target  - _blank
+				_parent
+				_self
+				_top
+				framename
+		Specifies where to open the target URL
+	* type   -  media_type	
+		Specifies the media type of the target URL
+
+	* syntax -
+		<img src="planets.gif" width="145" height="126" alt="Planets" usemap="#planetmap">
+
+		<map name="planetmap">
+		  <area shape="rect" coords="0,0,82,126" alt="Sun" href="sun.htm">
+		  <area shape="circle" coords="90,58,3" alt="Mercury" href="mercur.htm">
+		  <area shape="circle" coords="124,58,8" alt="Venus" href="venus.htm">
+		</map>
+
+* <article> -
+	* The <article> tag specifies independent, self-contained content.
+	*syntax - <article> article text </article>
+
+* <aside> - 
+	* The <aside> tag defines some content aside from the content it is placed in. The aside content should be indirectly related to the surrounding content.
+	* syntax - <aside> aside content </aside>
+
+* <audio> -
+	* The <audio> tag is used to embed sound content in a document, such as music or other audio streams.
+	* The <audio> tag contains one or more <source> tags with different audio sources. The browser will choose the first source it supports.
+	* attributes =
+	* autoplay - autoplay	
+		Specifies that the audio will start playing as soon as it is ready
+	* controls - controls	
+		Specifies that audio controls should be displayed (such as a play/pause button etc)
+	* loop  -loop	
+		Specifies that the audio will start over again, every time it is finished
+	* muted	- 	muted	
+		Specifies that the audio output should be muted
+	* preload	auto
+				metadata
+				none	
+		Specifies if and how the author thinks the audio should be loaded when the page loads
+	* src	URL	
+		Specifies the URL of the audio file
+
+	* syntax -
+		<audio controls>
+		  <source src="horse.ogg" type="audio/ogg">
+		  <source src="horse.mp3" type="audio/mpeg">
+		  Your browser does not support the audio tag.
+		</audio>
+
+* <b> - 
+	* The <b> tag specifies bold text without any extra importance.
+	* According to the HTML5 specification, the <b> tag should be used as a LAST resort when no other tag is more appropriate. The specification states that headings should be denoted with the <h1> to <h6> tags, emphasized text should be denoted with the <em> tag, important text should be denoted with the <strong> tag, and marked/highlighted text should be denoted with the <mark> tag.
+	* syntax - <b> b tag </b>
+
+
+* <base> -
+	* The <base> tag specifies the base URL and/or target for all relative URLs in a document.
+	* The <base> tag must have either an href or a target attribute present, or both.
+	* There can only be one single <base> element in a document, and it must be inside the <head> element.
+	* attributes =
+	* href  - URL	
+		Specifies the base URL for all relative URLs in the page
+	* target  -	_blank
+				_parent
+				_self
+				_top
+		Specifies the default target for all hyperlinks and forms in the page
+	* syntax - 
+		<head>
+		  <base href="https://www.w3schools.com/" target="_blank">
+		</head>
+
+
+* <bdi> -
+	* BDI stands for Bi-Directional Isolation.
+	* The <bdi> tag isolates a part of text that might be formatted in a different direction from other text outside it.
+
+* <bdo> -
+	* BDO stands for Bi-Directional Override.
+	* dir	ltr, rtl	Required. Specifies the text direction of the text inside the <bdo> element
+	* syntax - <bdo> this text </bdo>
+
+* <blockquote> -
+	* The <blockquote> tag specifies a section that is quoted from another source. Browsers usually indent <blockquote> elements.
+	* syntax - 
+		<blockquote cite="http://www.worldwildlife.org/who/index.html">
+			For 50 years, WWF has been protecting the future of nature. The world's leading conservation organization, WWF works in 100 countries and is supported by 1.2 million members in the United States and close to 5 million globally.
+		</blockquote>
+
+* <body> - 
+	* The <body> tag defines the document's body.
+	* The <body> element contains all the contents of an HTML document, such as headings, paragraphs, images, hyperlinks, tables, lists, etc.
+	* syntax - <body> content </body>
+
+* <br> -
+	* The <br> tag inserts a single line break.
+	* The <br> tag is an empty tag which means that it has no end tag.
+	* syntax - <br>
+
+* <button> -
+	* The <button> tag defines a clickable button.
+	* Inside a <button> element you can put text (and tags like <i>, <b>, <strong>, <br>, <img>, etc.). That is not possible with a button created with the <input> element!
+	* attributes =
+	* autofocus - autofocus	
+		Specifies that a button should automatically get focus when the page loads
+	* disabled - disabled	
+		Specifies that a button should be disabled
+	* form  - form_id	
+		Specifies which form the button belongs to
+	* formaction	URL	
+		Specifies where to send the form-data when a form is submitted. Only for type="submit"
+	* formenctype	application/x-www-form-urlencoded
+					multipart/form-data
+					text/plain	
+	* Specifies how form-data should be encoded before sending it to a server. Only for type="submit"
+	* formmethod	get
+					post	
+		Specifies how to send the form-data (which HTTP method to use). Only for type="submit"
+	* formnovalidate	formnovalidate	
+		Specifies that the form-data should not be validated on submission. Only for type="submit"
+	* formtarget	_blank
+					_self
+					_parent
+					_top
+					framename	
+		Specifies where to display the response after submitting the form. Only for type="submit"
+	* name			name	
+		Specifies a name for the button
+	* type		button
+				reset
+				submit	
+		Specifies the type of button
+	* value		text	
+		Specifies an initial value for the button
+
+
+* <canvas> -
+	* The <canvas> tag is used to draw graphics, on the fly, via scripting (usually JavaScript).
+	* The <canvas> tag is transparent, and is only a container for graphics, you must use a script to actually draw the graphics.
+	* Any text inside the <canvas> element will be displayed in browsers with JavaScript disabled and in browsers that do not support <canvas>.
+	* attributes =
+	* height	pixels	
+		Specifies the height of the canvas. Default value is 150
+	* width		pixels	
+		Specifies the width of the canvas Default value is 300
+
+
+* <caption> -
+	* The <caption> tag defines a table caption.
+	* The <caption> tag must be inserted immediately after the <table> tag.
+	* syntax - <caption> caption text </caption>
+
+* <cite> -
+	* The <cite> tag defines the title of a creative work (e.g. a book, a poem, a song, a movie, a painting, a sculpture, etc.).
+
+* <code> -
+	* The <code> tag is used to define a piece of computer code. The content inside is displayed in the browser's default monospace font.
+
+* <col> -
+	* The <col> tag specifies column properties for each column within a <colgroup> element.
+	* The <col> tag is useful for applying styles to entire columns, instead of repeating the styles for each cell, for each row.
+	* attributes =
+	* span  - number	
+		Specifies the number of columns a <col> element should span
+	* syntax - <col span="2">
+
+* <colgroup> -
+	* The <colgroup> tag specifies a group of one or more columns in a table for formatting.
+	* The <colgroup> tag is useful for applying styles to entire columns, instead of repeating the styles for each cell, for each row.
+	* Note: The <colgroup> tag must be a child of a <table> element, after any <caption> elements and before any <thead>, <tbody>, <tfoot>, and <tr> elements.
+	* attributes =
+	* span	number	
+		Specifies the number of columns a column group should span
+
+* <data> -
+	* The <data> tag is used to add a machine-readable translation of a given content.
+	* This element provides both a machine-readable value for data processors, and a human-readable value for rendering in a browser.
+	* attributes =
+	* value		machine-readable format	
+		Specifies the machine-readable translation of the content of the element
+	* syntax -
+		<ul>
+		  <li><data value="21053">Cherry Tomato</data></li>
+		  <li><data value="21054">Beef Tomato</data></li>
+		  <li><data value="21055">Snack Tomato</data></li>
+		</ul>
+
+* <datalist> - 
+	* The <datalist> tag specifies a list of pre-defined options for an <input> element.
+	* The <datalist> tag is used to provide an "autocomplete" feature for <input> elements. Users will see a drop-down list of pre-defined options as they input data.
+	* The <datalist> element's id attribute must be equal to the <input> element's list attribute (this binds them together).
+	* syntax -
+		<datalist id="browsers">
+		    <option value="Edge">
+		    <option value="Firefox">
+		    <option value="Chrome">
+		    <option value="Opera">
+		    <option value="Safari">
+		 </datalist>
+
+* <dd> -
+	* The <dd> tag is used to describe a term/name in a description list.
+	* The <dd> tag is used in conjunction with <dl> (defines a description list) and <dt> (defines terms/names).
+	* Inside a <dd> tag you can put paragraphs, line breaks, images, links, lists, etc.
+	* syntax -
+		<dl>
+		  <dt>Coffee</dt>
+		  <dd>Black hot drink</dd>
+		  <dt>Milk</dt>
+		  <dd>White cold drink</dd>
+		</dl>
+
+* <del> -
+	* The <del> tag defines text that has been deleted from a document. Browsers will usually strike a line through deleted text.
+	* attributes -
+	* cite		URL	
+		Specifies a URL to a document that explains the reason why the text was deleted/changed
+	* datetime	YYYY-MM-DDThh:mm:ssTZD	
+		Specifies the date and time of when the text was deleted/changed
+	* syntax - <p>My favorite color is <del>blue</del> <ins>red</ins>!</p>
+
+* <details> -
+	* The <details> tag specifies additional details that the user can open and close on demand.
+	* The <details> tag is often used to create an interactive widget that the user can open and close. By default, the widget is closed. When open, it expands, and displays the content within.
+	* Any sort of content can be put inside the <details> tag. 
+	* Tip: The <summary> tag is used in conjunction with <details> to specify a visible heading for the details.
+	* attributes =
+	* open	open	
+		Specifies that the details should be visible (open) to the user
+	* syntax -
+		<details>
+		  <summary>Epcot Center</summary>
+		  <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>
+		</details>
+
+
+* <dfn> -
+	* The <dfn> tag stands for the "definition element", and it specifies a term that is going to be defined within the content.
+	* The nearest parent of the <dfn> tag must also contain the definition/explanation for the term.
+	* The term inside the <dfn> tag can be any of the following:
+		1) Just as the content of the <dfn> element:
+		2) Or, with the title attribute added:
+		3) Or, with an <abbr> tag inside the <dfn> element:
+		4) Or, with the id attribute added. Then, whenever a term is used, it can refer back to the definition with an <a> tag:
+
+	* syntax -
+		<p><dfn>HTML</dfn> is the standard markup language for creating web pages.</p>
+
+* <dialog> -
+	* The <dialog> tag defines a dialog box or subwindow.
+	* The <dialog> element makes it easy to create popup dialogs and modals on a web page.
+	* attributes =
+	* open	open	
+		Specifies that the dialog element is active and that the user can interact with it
+	* syntax - <dialog open>This is an open dialog window</dialog>
+
+* <div> -
+	* The <div> tag defines a division or a section in an HTML document.
+	* The <div> tag is used as a container for HTML elements - which is then styled with CSS or manipulated with JavaScript.
+	* The <div> tag is easily styled by using the class or id attribute.
+	* Any sort of content can be put inside the <div> tag! 
+
+* <dl> -
+	* The <dl> tag defines a description list.
+	* The <dl> tag is used in conjunction with <dt> (defines terms/names) and <dd> (describes each term/name).
+	* syntax -
+		<dl>
+		  <dt>Coffee</dt>
+		  <dd>Black hot drink</dd>
+		  <dt>Milk</dt>
+		  <dd>White cold drink</dd>
+		</dl>
+
+* <dt> -
+	* The <dt> tag defines a term/name in a description list.
+	* The <dt> tag is used in conjunction with <dl> (defines a description list) and <dd> (describes each term/name).
+
+* <em> -
+	* The <em> tag is used to define emphasized text. The content inside is typically displayed in italic.
+	* A screen reader will pronounce the words in <em> with an emphasis, using verbal stress.
+	* syntax - <p>We <em>cannot</em> live like this.</p>
+
+* <embed> -
+	* The <embed> tag defines a container for an external resource, such as a web page, a picture, a media player, or a plug-in application.
+	* To display a picture, it is better to use the <img> tag.
+	* To display HTML, it is better to use the <iframe> tag.
+	* To display video or audio, it is better to use the <video> and <audio> tags.
+	* attributes -
+	* height	pixels	
+		Specifies the height of the embedded content
+	* src		URL	
+		Specifies the address of the external file to embed
+	* type		media_type	
+		Specifies the media type of the embedded content
+	* width		pixels	
+		Specifies the width of the embedded content
+
+* <fieldset> -
+	* The <fieldset> tag is used to group related elements in a form.
+	* The <fieldset> tag draws a box around the related elements.
+	* attriutes =
+	* disabled	disabled	
+		Specifies that a group of related form elements should be disabled
+	* form	form_id	
+		Specifies which form the fieldset belongs to
+	* name	text	
+		Specifies a name for the fieldset
+	* syntax - 
+		<fieldset>
+		    <legend>Personalia:</legend>
+		    <label for="fname">First name:</label>
+		    <input type="text" id="fname" name="fname"><br><br>
+		    <label for="lname">Last name:</label>
+		    <input type="text" id="lname" name="lname"><br><br>
+		    <label for="email">Email:</label>
+		    <input type="email" id="email" name="email"><br><br>
+		    <label for="birthday">Birthday:</label>
+		    <input type="date" id="birthday" name="birthday"><br><br>
+		    <input type="submit" value="Submit">
+		</fieldset>
+
+* <figcaption> -
+	* The <figcaption> tag defines a caption for a <figure> element.
+	* The <figcaption> element can be placed as the first or last child of the <figure> element.
+	* syntax - 
+		<figure>
+		  <img src="pic_trulli.jpg" alt="Trulli" style="width:100%">
+		  <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
+		</figure>
+
+* <figure> =
+	* The <figure> tag specifies self-contained content, like illustrations, diagrams, photos, code listings, etc.
+	* While the content of the <figure> element is related to the main flow, its position is independent of the main flow, and if removed it should not affect the flow of the document.
+	* Tip: The <figcaption> element is used to add a caption for the <figure> element.
+	* syntax -
+		<figure>
+		  <img src="pic_trulli.jpg" alt="Trulli" style="width:100%">
+		  <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
+		</figure>
+
+* <footer> -
+	* The <footer> tag defines a footer for a document or section.
+	* A <footer> element typically contains:
+		* authorship information
+		* copyright information
+		* contact information
+		* sitemap
+		* back to top links
+		* related documents
+	* You can have several <footer> elements in one document.
+	* syntax -
+		<footer>
+		  <p>Author: Hege Refsnes</p>
+		  <p><a href="mailto:hege@example.com">hege@example.com</a></p>
+		</footer>
+
+
+* <form> -
+	* The <form> tag is used to create an HTML form for user input.
+	* The <form> element can contain one or more of the following form elements:
+		<input>
+		<textarea>
+		<button>
+		<select>
+		<option>
+		<optgroup>
+		<fieldset>
+		<label>
+		<output>
+	* attributes =
+	* accept-charset	character_set	
+		Specifies the character encodings that are to be used for the form submission
+	* action	URL	
+		Specifies where to send the form-data when a form is submitted
+	* autocomplete		on
+						off	
+		Specifies whether a form should have autocomplete on or off
+	* enctype		application/x-www-form-urlencoded
+					multipart/form-data
+					text/plain	
+		Specifies how the form-data should be encoded when submitting it to the server (only for method="post")
+	* method	get
+				post	
+		Specifies the HTTP method to use when sending form-data
+	* name	text	
+		Specifies the name of a form
+	* novalidate	novalidate	
+		Specifies that the form should not be validated when submitted
+	* rel	external
+			help
+			license
+			next
+			nofollow
+			noopener
+			noreferrer
+			opener
+			prev
+			search	
+		Specifies the relationship between a linked resource and the current document
+	* target	_blank
+				_self
+				_parent
+				_top	
+		Specifies where to display the response that is received after submitting the form.
+
+
+* <h1> to <h6> -
+	* The <h1> to <h6> tags are used to define HTML headings.
+	* <h1> defines the most important heading. <h6> defines the least important heading.
+	* Note: Only use one <h1> per page - this should represent the main heading/subject for the whole page. Also, do not skip heading levels - start with <h1>, then use <h2>, and so on.
+	syntax - <h1> heading </h1>
+
+
+* <head> -
+	* The <head> element is a container for metadata (data about data) and is placed between the <html> tag and the <body> tag.
+	* Metadata is data about the HTML document. Metadata is not displayed.
+	* Metadata typically define the document title, character set, styles, scripts, and other meta information.
+	* The following elements can go inside the <head> element:
+		<title> (required in every HTML document)
+		<style>
+		<base>
+		<link>
+		<meta>
+		<script>
+		<noscript>
+	* syntax - 
+		<head>
+		  <title>Title of the document</title>
+		</head>
+
+
+* <header> -
+	* The <header> element represents a container for introductory content or a set of navigational links.
+	* A <header> element typically contains:
+		one or more heading elements (<h1> - <h6>)
+		logo or icon
+		authorship information
+	* Note: You can have several <header> elements in one HTML document. However, <header> cannot be placed within a <footer>, <address> or another <header> element.
+	* syntax - 
+		<article>
+		  <header>
+		    <h1>A heading here</h1>
+		  </header>
+    	</article>
+
+
+* <hr> -
+	* The <hr> tag defines a thematic break in an HTML page (e.g. a shift of topic).
+	* The <hr> element is most often displayed as a horizontal rule that is used to separate content (or define a change) in an HTML page.
+	*syntax - <hr>
+
+
+* <html> -
+	* The <html> tag represents the root of an HTML document.
+	* The <html> tag is the container for all other HTML elements (except for the <!DOCTYPE> tag).
+	* Note: You should always include the lang attribute inside the <html> tag, to declare the language of the Web page. This is meant to assist search engines and browsers.
+
+
+
+* <i> -
+	* The <i> tag defines a part of text in an alternate voice or mood. The content inside is typically displayed in italic.
+	* The <i> tag is often used to indicate a technical term, a phrase from another language, a thought, a ship name, etc.
+	* Use the <i> element only when there is not a more appropriate semantic element, such as:
+		<em> (emphasized text)
+		<strong> (important text)
+		<mark> (marked/highlighted text)
+		<cite> (the title of a work)
+		<dfn> (a definition term)
+	* syntax - <i>Lorem ipsum</i> 
+
+* <iframe> -
+	* The <iframe> tag specifies an inline frame.
+	* An inline frame is used to embed another document within the current HTML document.
+	* Tip: Use CSS to style the <iframe> (see example below). 
+	* Tip: It is a good practice to always include a title attribute for the <iframe>. This is used by screen readers to read out what the content of the <iframe> is.
+	* syntax - <iframe src="https://www.w3schools.com" title="W3Schools Free Online Web Tutorials"></iframe>
+	* attributes =
+	* allow	 	
+		Specifies a feature policy for the <iframe>
+	* allowfullscreen	true
+						false	
+		Set to true if the <iframe> can activate fullscreen mode by calling the requestFullscreen() method
+	* allowpaymentrequest	true
+							false	
+		Set to true if a cross-origin <iframe> should be allowed to invoke the Payment Request API
+	* height	pixels	
+		Specifies the height of an <iframe>. Default height is 150 pixels
+	* loading	eager
+				lazy	
+		Specifies whether a browser should load an iframe immediately or to defer loading of iframes until some conditions are met
+	* name		text	
+		Specifies the name of an <iframe>
+	* referrerpolicy	no-referrer
+						no-referrer-when-downgrade
+						origin
+						origin-when-cross-origin
+						same-origin
+						strict-origin-when-cross-origin
+						unsafe-url	
+		Specifies which referrer information to send when fetching the iframe
+	* sandbox	allow-forms
+				allow-pointer-lock
+				allow-popups
+				allow-same-origin
+				allow-scripts
+				allow-top-navigation	
+		Enables an extra set of restrictions for the content in an <iframe>
+	* src	URL	
+		Specifies the address of the document to embed in the <iframe>
+	* srcdoc	HTML_code	
+		Specifies the HTML content of the page to show in the <iframe>
+	* width		pixels	
+		Specifies the width of an <iframe>. Default width is 300 pixels
+
+* <img> -
+	* The <img> tag is used to embed an image in an HTML page.
+	* Images are not technically inserted into a web page; images are linked to web pages. The <img> tag creates a holding space for the referenced image.
+	* The <img> tag has two required attributes:
+	* src - Specifies the path to the image
+	* alt - Specifies an alternate text for the image, if the image for some reason cannot be displayed
+	* Note: Also, always specify the width and height of an image. If width and height are not specified, the page might flicker while the image loads.
+	* Tip: To link an image to another document, simply nest the <img> tag inside an <a> tag
+	* attributes =
+	* alt	text	
+		Specifies an alternate text for an image
+	* crossorigin	anonymous
+					use-credentials	
+		Allow images from third-party sites that allow cross-origin access to be used with canvas
+	* height	pixels	
+		Specifies the height of an image
+	* ismap		ismap	
+		Specifies an image as a server-side image map
+	* loading	eager
+				lazy	
+		Specifies whether a browser should load an image immediately or to defer loading of images until some conditions are met
+	* longdesc	URL	Specifies a URL to a detailed description of an image
+	referrerpolicy	no-referrer
+					no-referrer-when-downgrade
+					origin
+					origin-when-cross-origin
+	* unsafe-url	Specifies which referrer information to use when fetching an image
+	* sizes		sizes	
+		Specifies image sizes for different page layouts
+	* src	URL		
+		Specifies the path to the image
+	* srcset	URL-list	
+		Specifies a list of image files to use in different situations
+	* usemap	#mapname	
+		Specifies an image as a client-side image map
+	* width		pixels	
+		Specifies the width of an image
+
+
+* <input> -
+	* The <input> tag specifies an input field where the user can enter data.
+	* The <input> element is the most important form element.
+	* The <input> element can be displayed in several ways, depending on the type attribute.
+	* The different input types are as follows:
+		<input type="button">
+		<input type="checkbox">
+		<input type="color">
+		<input type="date">
+		<input type="datetime-local">
+		<input type="email">
+		<input type="file">
+		<input type="hidden">
+		<input type="image">
+		<input type="month">
+		<input type="number">
+		<input type="password">
+		<input type="radio">
+		<input type="range">
+		<input type="reset">
+		<input type="search">
+		<input type="submit">
+		<input type="tel">
+		<input type="text"> (default value)
+		<input type="time">
+		<input type="url">
+		<input type="week">
+	Look at the type attribute to see examples for each input type!
+	* Tip: Always use the <label> tag to define labels for <input type="text">, <input type="checkbox">, <input type="radio">, <input type="file">, and <input type="password">.
+	* accept	file_extension
+				audio/*
+				video/*
+				image/*
+				media_type	
+		Specifies a filter for what file types the user can pick from the file input dialog box (only for type="file")
+	* alt	text	
+		Specifies an alternate text for images (only for type="image")
+	* autocomplete	on
+					off	
+		Specifies whether an <input> element should have autocomplete enabled
+	* autofocus		autofocus	
+		Specifies that an <input> element should automatically get focus when the page loads
+	* checked		checked	
+		Specifies that an <input> element should be pre-selected when the page loads (for type="checkbox" or type="radio")
+	* dirname		inputname.dir	
+		Specifies that the text direction will be submitted
+	* disabled		disabled	
+		Specifies that an <input> element should be disabled
+	* form		form_id	
+		Specifies the form the <input> element belongs to
+	* formaction	URL	
+		Specifies the URL of the file that will process the input control when the form is submitted (for type="submit" and type="image")
+	* formenctype	application/x-www-form-urlencoded
+					multipart/form-data
+					text/plain	
+		Specifies how the form-data should be encoded when submitting it to the server (for type="submit" and type="image")
+	* formmethod	get
+					post	
+		Defines the HTTP method for sending data to the action URL (for type="submit" and type="image")
+	* formnovalidate	formnovalidate	
+		Defines that form elements should not be validated when submitted
+	* formtarget	_blank
+					_self
+					_parent
+					_top
+	* framename		Specifies where to display the response that is received after submitting the form (for type="submit" and type="image")
+	* height	pixels	
+		Specifies the height of an <input> element (only for type="image")
+	* list		datalist_id	
+		Refers to a <datalist> element that contains pre-defined options for an <input> element
+	* max		number
+				date	
+		Specifies the maximum value for an <input> element
+	* maxlength		number	
+		Specifies the maximum number of characters allowed in an <input> element
+	* min		number
+				date	
+		Specifies a minimum value for an <input> element
+	* minlength		number	
+		Specifies the minimum number of characters required in an <input> element
+	* multiple		multiple	
+		Specifies that a user can enter more than one value in an <input> element
+	* name		text	
+		Specifies the name of an <input> element
+	* pattern		regexp	
+		Specifies a regular expression that an <input> element's value is checked against
+	* placeholder	text	
+		Specifies a short hint that describes the expected value of an <input> element
+	* readonly		readonly	
+		Specifies that an input field is read-only
+	* required		required	
+		Specifies that an input field must be filled out before submitting the form
+	* size		number	
+		Specifies the width, in characters, of an <input> element
+	* src	URL	
+		Specifies the URL of the image to use as a submit button (only for type="image")
+	* step	number
+			any	
+		Specifies the interval between legal numbers in an input field
+	* type	button
+			checkbox
+			color
+			date
+			datetime-local
+			email
+			file
+			hidden
+			image
+			month
+			number
+			password
+			radio
+			range
+			reset
+			search
+			submit
+			tel
+			text
+			time
+			url
+			week	
+	Specifies the type <input> element to display
+	* value		text	
+		Specifies the value of an <input> element	 
+	* width		pixels	
+		Specifies the width of an <input> element (only for type="image")
+
+
+* <ins> -
+	* The <ins> tag defines a text that has been inserted into a document. Browsers will usually underline inserted text.
+	* Tip: Also look at the <del> tag to markup deleted text.
+	* syntax - <p>My favorite color is <del>blue</del> <ins>red</ins>!</p>
+	* attributes -
+	* cite		URL	
+		Specifies a URL to a document that explains the reason why the text was inserted/changed
+	* datetime	YYYY-MM-DDThh:mm:ssTZD	
+		Specifies the date and time when the text was inserted/changed
+
+
+* <kbd> -
+	* The <kbd> tag is used to define keyboard input. The content inside is displayed in the browser's default monospace font.
+	* Tip: This tag is not deprecated. However, it is possible to achieve richer effect by using CSS (see example below).
+	* Also look at:
+		<code>	Defines a piece of computer code
+		<samp>	Defines sample output from a computer program
+		<var>	Defines a variable
+		<pre>	Defines preformatted text
+	* syntax - <p>Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text (Windows).</p>
+
+
+* <label> -
+	* The <label> tag defines a label for several elements:
+		<input type="checkbox">
+		<input type="color">
+		<input type="date">
+		<input type="datetime-local">
+		<input type="email">
+		<input type="file">
+		<input type="month">
+		<input type="number">
+		<input type="password">
+		<input type="radio">
+		<input type="range">
+		<input type="search">
+		<input type="tel">
+		<input type="text">
+		<input type="time">
+		<input type="url">
+		<input type="week">
+		<meter>
+		<progress>
+		<select>
+		<textarea>
+	* Proper use of labels with the elements above will benefit:
+	* Screen reader users (will read out loud the label, when the user is focused on the element)
+	* Users who have difficulty clicking on very small regions (such as checkboxes) - because when a user clicks the text within the <label> element, it toggles the input (this increases the hit area). 
+	* Tip: The for attribute of <label> must be equal to the id attribute of the related element to bind them together. A label can also be bound to an element by placing the element inside the <label> element. 
+	* attributes =
+	* for		element_id	
+		Specifies the id of the form element the label should be bound to
+	* form		form_id	
+		Specifies which form the label belongs to.
+
+
+* <legend> -
+	* The <legend> tag defines a caption for the <fieldset> element.
+	* syntax - 
+	<form action="/action_page.php">
+  		<fieldset>
+    		<legend>Personalia:</legend>
+  		</fieldset>
+  	</form>
+
+* <li> -
+	* The <li> tag defines a list item.
+	* The <li> tag is used inside ordered lists(<ol>), unordered lists (<ul>), and in menu lists (<menu>).
+	* In <ul> and <menu>, the list items will usually be displayed with bullet points.
+	* In <ol>, the list items will usually be displayed with numbers or letters.
+	* value		number	
+		Only for <ol> lists. Specifies the start value of a list item. The following list items will increment from that number
+
+
+* <link> -
+	* The <link> tag defines the relationship between the current document and an external resource.
+	* The <link> tag is most often used to link to external style sheets or to add a favicon to your website.
+	* The <link> element is an empty element, it contains attributes only.
+	* attributes =
+	* crossorigin	anonymous
+					use-credentials	
+		Specifies how the element handles cross-origin requests
+	* href			URL	
+		Specifies the location of the linked document
+	* hreflang		language_code	
+		Specifies the language of the text in the linked document
+	* media			media_query	
+		Specifies on what device the linked document will be displayed
+	* referrerpolicy	no-referrer
+						no-referrer-when-downgrade
+						origin
+						origin-when-cross-origin
+						unsafe-url	
+		Specifies which referrer to use when fetching the resource
+	* rel			alternate
+					author
+					dns-prefetch
+					help
+					icon
+					license
+					next
+					pingback
+					preconnect
+					prefetch
+					preload
+					prerender
+					prev
+					search
+					stylesheet	
+		Required. Specifies the relationship between the current document and the linked document
+	* sizes			HeightxWidth
+					any	
+		Specifies the size of the linked resource. Only for rel="icon"
+	* title	 		Defines a preferred or an alternate stylesheet
+	* type			media_type	
+		Specifies the media type of the linked document
+	*syntax - 
+			<head>
+			  <link rel="stylesheet" href="styles.css">
+			</head>
+
+
+* <main> -
+	* The <main> tag specifies the main content of a document.
+	* The content inside the <main> element should be unique to the document. It should not contain any content that is repeated across documents such as sidebars, navigation links, copyright information, site logos, and search forms.
+	* Note: There must not be more than one <main> element in a document. The <main> element must NOT be a descendant of an <article>, <aside>, <footer>, <header>, or <nav> element.
+	* syntax - 
+		<main>
+		  <h1>Most Popular Browsers</h1>
+		  <p>Chrome, Firefox, and Edge are the most used browsers today.</p>
+		</main>
+
+
+* <map> -
+	* The <map> tag is used to define an image map. An image map is an image with clickable areas.
+	* The required name attribute of the <map> element is associated with the <img>'s usemap attribute and creates a relationship between the image and the map.
+	* The <map> element contains a number of <area> elements, that defines the clickable areas in the image map.
+	* attributes =
+	* name		mapname	
+		Required. Specifies the name of the image map
+	* syntax - check in <area> tag
+
+
+* <mark> -
+	* The <mark> tag defines text that should be marked or highlighted.
+	* syntax - <p>Do not forget to buy <mark>milk</mark> today.</p>
+
+
+* <meta> -
+	* The <meta> tag defines metadata about an HTML document. Metadata is data (information) about data.
+	* <meta> tags always go inside the <head> element, and are typically used to specify character set, page description, keywords, author of the document, and viewport settings.
+	* Metadata will not be displayed on the page, but is machine parsable.
+	* Metadata is used by browsers (how to display content or reload page), search engines (keywords), and other web services.
+	* There is a method to let web designers take control over the viewport (the user's visible area of a web page), through the <meta> tag (See "Setting The Viewport" example below).
+
+	* attributes =
+	* charset	character_set	
+		Specifies the character encoding for the HTML document
+	* content	text	
+		Specifies the value associated with the http-equiv or name attribute
+	* http-equiv	content-security-policy
+					content-type
+					default-style
+					refresh	
+		Provides an HTTP header for the information/value of the content attribute
+	* name		application-name
+				author
+				description
+				generator
+				keywords
+				viewport	
+		Specifies a name for the metadata
+
+	* Setting the Viewport =
+		* The viewport is the user's visible area of a web page. It varies with the device - it will be smaller on a mobile phone than on a computer screen.
+		* You should include the following <meta> element in all your web pages:
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		* This gives the browser instructions on how to control the page's dimensions and scaling.
+		* The width=device-width part sets the width of the page to follow the screen-width of the device (which will vary depending on the device).
+		* The initial-scale=1.0 part sets the initial zoom level when the page is first loaded by the browser.
+
+	* syntax - 
+		<head>
+		  <meta charset="UTF-8">
+		  <meta name="description" content="Free Web tutorials">
+		  <meta name="keywords" content="HTML, CSS, JavaScript">
+		  <meta name="author" content="John Doe">
+		  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		</head>
+
+
+* <meter> -
+	* The <meter> tag defines a scalar measurement within a known range, or a fractional value. This is also known as a gauge.
+	* Examples: Disk usage, the relevance of a query result, etc.
+	* Note: The <meter> tag should not be used to indicate progress (as in a progress bar). For progress bars, use the <progress> tag.
+	* Tip: Always add the <label> tag for best accessibility practices!
+	* attributes =
+	* form		form_id	
+		Specifies which form the <meter> element belongs to
+	* high		number	
+		Specifies the range that is considered to be a high value
+	* low		number	
+		Specifies the range that is considered to be a low value
+	* max		number	
+		Specifies the maximum value of the range
+	* min		number	
+		Specifies the minimum value of the range. Default value is 0
+	* optimum	number	
+		Specifies what value is the optimal value for the gauge
+	* value		number	
+		Required. Specifies the current value of the gauge
+
+
+* <nav> -
+	* The <nav> tag defines a set of navigation links.
+	* Notice that NOT all links of a document should be inside a <nav> element. The <nav> element is intended only for major blocks of navigation links.
+	* Browsers, such as screen readers for disabled users, can use this element to determine whether to omit the initial rendering of this content.
+	* syntax -
+		<nav>
+		  <a href="/html/">HTML</a> |
+		  <a href="/css/">CSS</a> |
+		  <a href="/js/">JavaScript</a> |
+		  <a href="/python/">Python</a>
+		</nav>
+
+
+* <noscript> -
+	* The <noscript> tag defines an alternate content to be displayed to users that have disabled scripts in their browser or have a browser that doesn't support script.
+	* The <noscript> element can be used in both <head> and <body>. When used inside <head>, the <noscript> element could only contain <link>, <style>, and <meta> elements.
+	* syntax - <noscript>Your browser does not support JavaScript!</noscript>
+
+
+* <object> -
+	* The <object> tag defines a container for an external resource.
+	* The external resource can be a web page, a picture, a media player, or a plug-in application.
+
+
+* <ol> -
+	* The <ol> tag defines an ordered list. An ordered list can be numerical or alphabetical.
+	* The <li> tag is used to define each list item.
+	* Tip: Use CSS to style lists.
+	* Tip: For unordered list, use the <ul> tag. 
+	* attributes =
+	* reversed		reversed	
+		Specifies that the list order should be reversed (9,8,7...)
+	* start			number	
+		Specifies the start value of an ordered list
+	* type		1
+				A
+				a
+				I
+				i	
+		Specifies the kind of marker to use in the list
+
+
+* <optgroup> -
+	* The <optgroup> tag is used to group related options in a <select> element (drop-down list).
+	* If you have a long list of options, groups of related options are easier to handle for a user.
+	* attributes -
+	* disabled		disabled	
+		Specifies that an option-group should be disabled
+	* label		text	
+		Specifies a label for an option-group
+	* syntax -
+		<select  name="cars" id="cars">
+		  <optgroup label="Swedish Cars">
+		    <option value="volvo">Volvo</option>
+		    <option value="saab">Saab</option>
+		  </optgroup>
+		</select>
+
+
+* <option> -
+	* The <option> tag defines an option in a select list.
+	* <option> elements go inside a <select>, <optgroup>, or <datalist> element.
+	* Note: The <option> tag can be used without any attributes, but you usually need the value attribute, which indicates what is sent to the server on form submission.
+	* Tip: If you have a long list of options, you can group related options within the <optgroup> tag. 
+	* attributes =
+	* disabled		disabled	
+		Specifies that an option should be disabled
+	* label			text	
+		Specifies a shorter label for an option
+	* selected		selected	
+		Specifies that an option should be pre-selected when the page loads
+	* value			text	
+		Specifies the value to be sent to a server
+	* syntax - <option value="volvo">Volvo</option>
+
+* <optout> -
+	* The <output> tag is used to represent the result of a calculation (like one performed by a script).
+	* attributes =
+	* for		element_id	
+		Specifies the relationship between the result of the calculation, and the elements used in the calculation
+	* form		form_id	
+		Specifies which form the output element belongs to
+	* name		name	
+		Specifies a name for the output element
+
+
+* <p> -
+	* The <p> tag defines a paragraph.
+	* Browsers automatically add a single blank line before and after each <p> element.
+	* syntax - <p>This is some text in a paragraph.</p>
+
+
+* <param> -
+	* The <param> tag is used to define parameters for an <object> element.
+	* attributes =
+	* name		name	
+		Specifies the name of a parameter
+	* value		value	
+		Specifies the value of the parameter
+	* syntax -
+		<object data="horse.wav">
+		  <param name="autoplay" value="true">
+		</object>
+
+
+* <picture> -
+	* The <picture> tag gives web developers more flexibility in specifying image resources.
+	* The most common use of the <picture> element will be for art direction in responsive designs. Instead of having one image that is scaled up or down based on the viewport width, multiple images can be designed to more nicely fill the browser viewport.
+	* The <picture> element contains two tags: one or more <source> tags and one <img> tag.
+	* The browser will look for the first <source> element where the media query matches the current viewport width, and then it will display the proper image (specified in the srcset attribute). The <img> element is required as the last child of the <picture> element, as a fallback option if none of the source tags matches.
+	* Tip: The <picture> element works "similar" to <video> and <audio>. You set up different sources, and the first source that fits the preferences is the one being used.
+	* syntax -
+		<picture>
+		  <source media="(min-width:650px)" srcset="img_pink_flowers.jpg">
+		  <source media="(min-width:465px)" srcset="img_white_flower.jpg">
+		  <img src="img_orange_flowers.jpg" alt="Flowers" style="width:auto;">
+		</picture>
+
+
+* <pre> -
+	* The <pre> tag defines preformatted text.
+	* Text in a <pre> element is displayed in a fixed-width font, and the text preserves both spaces and line breaks. The text will be displayed exactly as written in the HTML source code.
+	* <code>	Defines a piece of computer code
+	* <samp>	Defines sample output from a computer program
+	* <kbd>		Defines keyboard input
+	* <var>		Defines a variable
+	* syntax -
+		<pre>
+			Text in a pre element
+			is displayed in a fixed-width
+			font, and it preserves
+			both      spaces and
+			line breaks
+		</pre>
+
+
+* <progress> -
+	* The <progress> tag represents the completion progress of a task.
+	* Tip: Use the <progress> tag in conjunction with JavaScript to display the progress of a task.
+	* Note: The <progress> tag is not suitable for representing a gauge (e.g. disk space usage or relevance of a query result). To represent a gauge, use the <meter> tag instead.
+	* attributes =
+	* max		number	
+		Specifies how much work the task requires in total. Default value is 1
+	* value		number	
+		Specifies how much of the task has been completed
+	* syntax -
+		<label for="file">Downloading progress:</label>
+		<progress id="file" value="32" max="100"> 32% </progress>
+
+
+* <q> -
+	* The <q> tag defines a short quotation.
+	* Browsers normally insert quotation marks around the quotation.
+	* cite		URL	
+		Specifies the source URL of the quote
+	* syntax - <q>Build a future where people live in harmony with nature.</q>
+
+* <rp> -
+	* The <rp> tag can be used to provide parentheses around a ruby text, to be shown by browsers that do not support ruby annotations.
+	* Use <rp> together with <ruby> and <rt>: The <ruby> element consists of one or more characters that needs an explanation/pronunciation, and an <rt> element that gives that information, and an optional <rp> element that defines what to show for browsers that not support ruby annotations.
+
+	* syntax - <ruby>
+				漢 <rp>(</rp><rt>ㄏㄢˋ</rt><rp>)</rp>
+				</ruby>
+
+* <rt> -
+	* The <rt> tag defines an explanation or pronunciation of characters (for East Asian typography) in a ruby annotation.
+	* Use <rt> together with <ruby> and <rp>: The <ruby> element consists of one or more characters that needs an explanation/pronunciation, and an <rt> element that gives that information, and an optional <rp> element that defines what to show for browsers that not support ruby annotations.
+	* syntax -
+		<ruby>
+		漢 <rt> ㄏㄢˋ </rt>
+		</ruby>
+
+
+* <ruby> -
+	* The <ruby> tag specifies a ruby annotation.
+	* A ruby annotation is a small extra text, attached to the main text to indicate the pronunciation or meaning of the corresponding characters. This kind of annotation is often used in Japanese publications.
+	* Use <ruby> together with <rt> and <rp>: The <ruby> element consists of one or more characters that needs an explanation/pronunciation, and an <rt> element that gives that information, and an optional <rp> element that defines what to show for browsers that do not support ruby annotations.
+
+
+
+* <s> -
+	* The <s> tag specifies text that is no longer correct, accurate or relevant. The text will be displayed with a line through it.
+	* The <s> tag should not be used to define deleted text in a document, use the <del> tag for that.
+	* syntax - <p><s>Only 50 tickets left!</s></p>
+
+
+* <samp> -
+	* The <samp> tag is used to define sample output from a computer program. The content inside is displayed in the browser's default monospace font.
+	* Tip: This tag is not deprecated. However, it is possible to achieve richer effect by using CSS.
+
+* <script> -
+	* The <script> tag is used to embed a client-side script (JavaScript).
+	* The <script> element either contains scripting statements, or it points to an external script file through the src attribute.
+	* Common uses for JavaScript are image manipulation, form validation, and dynamic changes of content.
+	* attributes =
+	* async			async	
+		Specifies that the script is downloaded in parallel to parsing the page, and executed as soon as it is available (before parsing completes) (only for external scripts)
+	* crossorigin		anonymous
+						use-credentials	
+		Sets the mode of the request to an HTTP CORS Request
+	* defer			defer	
+		Specifies that the script is downloaded in parallel to parsing the page, and executed after the page has finished parsing (only for external scripts)
+	* integrity		filehash	
+		Allows a browser to check the fetched script to ensure that the code is never loaded if the source has been manipulated
+	* nomodule		True
+					False	
+		Specifies that the script should not be executed in browsers supporting ES2015 modules
+	* referrerpolicy		no-referrer
+							no-referrer-when-downgrade
+							origin
+							origin-when-cross-origin
+							same-origin
+							strict-origin
+							strict-origin-when-cross-origin
+							unsafe-url	
+		Specifies which referrer information to send when fetching a script
+	* src					URL	
+		Specifies the URL of an external script file
+	* type					scripttype	
+		Specifies the media type of the script
+	* syntax - <script>
+					document.getElementById("demo").innerHTML = "Hello JavaScript!";
+				</script>
+
+* <section> -
+	* The <section> tag defines a section in a document.
+	* syntax - 
+		<section>
+			<h2>WWF's Symbol</h2>
+			<p>The Panda has become the symbol of WWF. The well-known panda logo of WWF originated from a panda named Chi Chi that was transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.</p>
+		</section>
+
+
+* <select> -
+	* The <select> element is used to create a drop-down list.
+	* The <select> element is most often used in a form, to collect user input.
+	* The name attribute is needed to reference the form data after the form is submitted (if you omit the name attribute, no data from the drop-down list will be submitted).
+	* The id attribute is needed to associate the drop-down list with a label.
+	* The <option> tags inside the <select> element define the available options in the drop-down list.
+	Tip: Always add the <label> tag for best accessibility practices!
+	* attributes =
+	* autofocus		autofocus	
+		Specifies that the drop-down list should automatically get focus when the page loads
+	* disabled		disabled	
+		Specifies that a drop-down list should be disabled
+	* form			form_id	
+		Defines which form the drop-down list belongs to
+	* multiple		multiple	
+		Specifies that multiple options can be selected at once
+	* name			name	
+		Defines a name for the drop-down list
+	* required		required	
+		Specifies that the user is required to select a value before submitting the form
+	* size			number	
+		Defines the number of visible options in a drop-down list
+	* syntax -
+		<select name="cars" id="cars">
+		  <optgroup label="Swedish Cars">
+		    <option value="volvo">Volvo</option>
+		    <option value="saab">Saab</option>
+		  </optgroup>
+		  <optgroup label="German Cars">
+		    <option value="mercedes">Mercedes</option>
+		    <option value="audi">Audi</option>
+		  </optgroup>
+		</select>
+
+* <small> -
+	* The <small> tag defines smaller text (like copyright and other side-comments).
+	* Tip: This tag is not deprecated, but it is possible to achieve richer (or the same) effect with CSS.
+	* syntax - <p><small>This is some smaller text.</small></p>
+
+
+* <source> -
+	* The <source> tag is used to specify multiple media resources for media elements, such as <video>, <audio>, and <picture>.
+	* The <source> tag allows you to specify alternative video/audio/image files which the browser may choose from, based on browser support or viewport width. The browser will choose the first <source> it supports.
+	* attributes =
+	* media		media_query	
+		Accepts any valid media query that would normally be defined in a CSS
+	* sizes	 	Specifies image sizes for different page layouts
+	* src		URL	
+		Required when <source> is used in <audio> and <video>. Specifies the URL of the media file
+	* srcset	URL	
+		Required when <source> is used in <picture>. Specifies the URL of the image to use in different situations
+	* type		MIME-type	
+		Specifies the MIME-type of the resource
+	* syntax - check <audio>
+
+
+* <span> -
+	* The <span> tag is an inline container used to mark up a part of a text, or a part of a document.
+	* The <span> tag is easily styled by CSS or manipulated with JavaScript using the class or id attribute.
+	* The <span> tag is much like the <div> element, but <div> is a block-level element and <span> is an inline element.
+	* <p>My mother has <span style="color:blue">blue</span> eyes.</p>
+
+
+* <strong> -
+	* The <strong> tag is used to define text with strong importance. The content inside is typically displayed in bold.
+	* Tip: Use the <b> tag to specify bold text without any extra importance!
+	* <strong>This text is important!</strong>
+
+* <style> -
+	* The <style> tag is used to define style information (CSS) for a document.
+	* Inside the <style> element you specify how HTML elements should render in a browser.
+	* Note: When a browser reads a style sheet, it will format the HTML document according to the information in the style sheet. If some properties have been defined for the same selector (element) in different style sheets, the value from the last read style sheet will be used (see example below)!
+	* Tip: To link to an external style sheet, use the <link> tag.
+	* Tip: To learn more about style sheets, please read our CSS Tutorial.
+	* attributes =
+	* media		media_query	
+		Specifies what media/device the media resource is optimized for
+	* type		text/css	
+		Specifies the media type of the <style> tag
+
+
+* <sub> -
+	* The <sub> tag defines subscript text. Subscript text appears half a character below the normal line, and is sometimes rendered in a smaller font. Subscript text can be used for chemical formulas, like H2O.
+	* Tip: Use the <sup> tag to define superscripted text.
+	* <p>This text contains <sub>subscript</sub> text.</p>
+
+
+
+* <summary> -
+	* The <summary> tag defines a visible heading for the <details> element. The heading can be clicked to view/hide the details.
+	* Note: The <summary> element should be the first child element of the <details> element.
+	* syntax- 	
+		<details>
+		  <summary>Epcot Center</summary>
+		  <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>
+	  	</details>
+
+
+* <sup> -
+	* The <sup> tag defines superscript text. Superscript text appears half a character above the normal line, and is sometimes rendered in a smaller font. Superscript text can be used for footnotes, like WWW[1].
+	* <p>This text contains <sup>superscript</sup> text.</p>
+
+
+* <svg> -
+	* The <svg> tag defines a container for SVG graphics.
+	* SVG has several methods for drawing paths, boxes, circles, text, and graphic images.
+	
+
+* <table> -
+	* The <table> tag defines an HTML table.
+	* An HTML table consists of one <table> element and one or more <tr>, <th>, and <td> elements.
+	* The <tr> element defines a table row, the <th> element defines a table header, and the <td> element defines a table cell.
+	* An HTML table may also include <caption>, <colgroup>, <thead>, <tfoot>, and <tbody> elements.
+
+* <tbody> -
+	* The <tbody> tag is used to group the body content in an HTML table.
+	* The <tbody> element is used in conjunction with the <thead> and <tfoot> elements to specify each part of a table (body, header, footer).
+	* Browsers can use these elements to enable scrolling of the table body independently of the header and footer. Also, when printing a large table that spans multiple pages, these elements can enable the table header and footer to be printed at the top and bottom of each page.
+	* Note: The <tbody> element must have one or more <tr> tags inside.
+	* The <tbody> tag must be used in the following context: As a child of a <table> element, after any <caption>, <colgroup>, and <thead> elements.
+	* Tip: The <thead>, <tbody>, and <tfoot> elements will not affect the layout of the table by default. However, you can use CSS to style these elements (see example below)!
+
+
+* <td> -
+	* The <td> tag defines a standard data cell in an HTML table.
+	* An HTML table has two kinds of cells:
+	* Header cells - contains header information (created with the <th> element)
+	* Data cells - contains data (created with the <td> element)
+	* The text in <td> elements are regular and left-aligned by default.
+	* The text in <th> elements are bold and centered by default. 
+
+
+* <template> -
+	* The <template> tag is used as a container to hold some HTML content hidden from the user when the page loads.
+	* The content inside <template> can be rendered later with a JavaScript.
+	* You can use the <template> tag if you have some HTML code you want to use over and over again, but not until you ask for it. To do this without the <template> tag, you have to create the HTML code with JavaScript to prevent the browser from rendering the code.
+
+
+* <textarea> -
+	* The <textarea> tag defines a multi-line text input control.
+	* The <textarea> element is often used in a form, to collect user inputs like comments or reviews.
+	* A text area can hold an unlimited number of characters, and the text renders in a fixed-width font (usually Courier).
+	* The size of a text area is specified by the cols and rows attributes (or with CSS).
+	* The name attribute is needed to reference the form data after the form is submitted (if you omit the name attribute, no data from the text area will be submitted).
+	* The id attribute is needed to associate the text area with a label. 
+	* Tip: Always add the <label> tag for best accessibility practices!
+	* autofocus		autofocus	
+		Specifies that a text area should automatically get focus when the page loads
+	* cols			number	
+		Specifies the visible width of a text area
+	* dirname		textareaname.dir	
+		Specifies that the text direction of the textarea will be submitted
+	* disabled		disabled	
+		Specifies that a text area should be disabled
+	* form			form_id	
+		Specifies which form the text area belongs to
+	* maxlength		number	
+		Specifies the maximum number of characters allowed in the text area
+	* name			text	
+		Specifies a name for a text area
+	* placeholder	text	
+		Specifies a short hint that describes the expected value of a text area
+	* readonly		readonly	
+		Specifies that a text area should be read-only
+	* required		required	
+		Specifies that a text area is required/must be filled out
+	* rows			number	
+		Specifies the visible number of lines in a text area
+	* wrap			hard
+					soft			
+		Specifies how the text in a text area is to be wrapped when submitted in a form
+	* syntax -
+		<label for="w3review">Review of W3Schools:</label>
+		<textarea id="w3review" name="w3review" rows="4" cols="50">
+		At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+		</textarea>
+
+
+* <tfoot> -
+	* The <tfoot> tag is used to group footer content in an HTML table.
+	* The <tfoot> element is used in conjunction with the <thead> and <tbody> elements to specify each part of a table (footer, header, body).
+	* Browsers can use these elements to enable scrolling of the table body independently of the header and footer. Also, when printing a large table that spans multiple pages, these elements can enable the table header and footer to be printed at the top and bottom of each page.
+	* Note: The <tfoot> element must have one or more <tr> tags inside.
+	* The <tfoot> tag must be used in the following context: As a child of a <table> element, after any <caption>, <colgroup>, <thead>, and <tbody> elements.
+	* Tip: The <thead>, <tbody>, and <tfoot> elements will not affect the layout of the table by default. However, you can use CSS to style these elements (see example below)!
+
+* <th> -
+	* The <th> tag defines a header cell in an HTML table.
+	* An HTML table has two kinds of cells:
+	* Header cells - contains header information (created with the <th> element)
+	* Data cells - contains data (created with the <td> element)
+	* The text in <th> elements are bold and centered by default.
+	* The text in <td> elements are regular and left-aligned by default.
+	* attributes =
+	* abbr	text	Specifies an abbreviated version of the content in a header cell
+	* colspan	number	
+		Specifies the number of columns a header cell should span
+	* headers	header_id	
+		Specifies one or more header cells a cell is related to
+	* rowspan	number	
+		Specifies the number of rows a header cell should span
+	* scope		col
+				colgroup
+				row
+				rowgroup	Specifies whether a header cell is a header for a column, row, or group of columns or rows
+	* syntax -
+		<tr>
+		    <th style="background-color:#FF0000">Month</th>
+		    <th style="background-color:#00FF00">Savings</th>
+		</tr>
+
+
+* <thead> - 
+	* The <thead> tag is used to group header content in an HTML table.
+	* The <thead> element is used in conjunction with the <tbody> and <tfoot> elements to specify each part of a table (header, body, footer).
+	* Browsers can use these elements to enable scrolling of the table body independently of the header and footer. Also, when printing a large table that spans multiple pages, these elements can enable the table header and footer to be printed at the top and bottom of each page.
+	* Note: The <thead> element must have one or more <tr> tags inside.
+	* The <thead> tag must be used in the following context: As a child of a <table> element, after any <caption> and <colgroup> elements, and before any <tbody>, <tfoot>, and <tr> elements.
+	* syntax - 
+		<thead>
+		    <tr>
+		      <th>Month</th>
+		      <th>Savings</th>
+		    </tr>
+		</thead>
+
+
+* <time> -
+	*The <time> tag defines a specific time (or datetime).
+	* The datetime attribute of this element is used translate the time into a machine-readable format so that browsers can offer to add date reminders through the user's calendar, and search engines can produce smarter search results.
+	* syntax - <p>I have a date on <time datetime="2008-02-14 20:00">Valentines day</time>.</p>
+
+
+* <title> -
+	* The <title> tag defines the title of the document. The title must be text-only, and it is shown in the browser's title bar or in the page's tab.
+	* The <title> tag is required in HTML documents!
+	* The contents of a page title is very important for search engine optimization (SEO)! The page title is used by search engine algorithms to decide the order when listing pages in search results.
+	* The <title> element:
+		defines a title in the browser toolbar
+		provides a title for the page when it is added to favorites
+		displays a title for the page in search-engine results
+	* Here are some tips for creating good titles:
+		Go for a longer, descriptive title (avoid one- or two-word titles)
+		Search engines will display about 50-60 characters of the title, so try not to have titles longer than that
+		Do not use just a list of words as the title (this may reduce the page's position in search results)
+		So, try to make the title as accurate and meaningful as possible!
+	* Note: You can NOT have more than one <title> element in an HTML document.
+
+
+* <tr> -
+	* The <tr> tag defines a row in an HTML table.
+	* A <tr> element contains one or more <th> or <td> elements.
+
+
+* <track> -
+	* The <track> tag specifies text tracks for <audio> or <video> elements.
+	* This element is used to specify subtitles, caption files or other files containing text, that should be visible when the media is playing.
+	* Tracks are formatted in WebVTT format (.vtt files).
+	* attributes =
+	* default	default	
+		Specifies that the track is to be enabled if the user's preferences do not indicate that another track would be more appropriate
+	* kind		captions
+				chapters
+				descriptions
+				metadata
+				subtitles	
+		Specifies the kind of text track
+	* label		text	
+		Specifies the title of the text track
+	* src		URL	
+		Required. Specifies the URL of the track file
+	* srclang		language_code	
+		Specifies the language of the track text data (required if kind="subtitles")
+
+
+* <u> -
+	* The <u> tag represents some text that is unarticulated and styled differently from normal text, such as misspelled words or proper names in Chinese text. The content inside is typically displayed with an underline. You can change this with CSS (see example below). 
+	* Tip: Avoid using the <u> element where it could be confused for a hyperlink!
+	* syntax - <p>This is some <u class="spelling-error">mispeled</u> text.</p>
+
+
+* <ul> -
+	* The <ul> tag defines an unordered (bulleted) list.
+	* Use the <ul> tag together with the <li> tag to create unordered lists.
+	* Tip: Use CSS to style lists.
+	* Tip: For ordered lists, use the <ol> tag. 
+	* syntax -
+		<ul>
+		  <li>Coffee</li>
+		  <li>Tea</li>
+		  <li>Milk</li>
+		</ul>
+
+
+* <var> -
+	* The <var> tag is used to defines a variable in programming or in a mathematical expression. The content inside is typically displayed in italic.
+	* Tip: This tag is not deprecated. However, it is possible to achieve richer effect by using CSS.
+
+
+* <video> -
+	* The <video> tag is used to embed video content in a document, such as a movie clip or other video streams.
+	* The <video> tag contains one or more <source> tags with different video sources. The browser will choose the first source it supports.
+	* The text between the <video> and </video> tags will only be displayed in browsers that do not support the <video> element.
+	* There are three supported video formats in HTML: MP4, WebM, and OGG.
+	* attributes =
+	* autoplay		autoplay	
+		Specifies that the video will start playing as soon as it is ready
+	* controls		controls	
+		Specifies that video controls should be displayed (such as a play/pause button etc).
+	* height		pixels	
+		Sets the height of the video player
+	* loop			loop	
+		Specifies that the video will start over again, every time it is finished
+	* muted			muted	
+		Specifies that the audio output of the video should be muted
+	* poster		URL	
+		Specifies an image to be shown while the video is downloading, or until the user hits the play button
+	* preload		auto
+					metadata
+					none	
+		Specifies if and how the author thinks the video should be loaded when the page loads
+	* src			URL	
+		Specifies the URL of the video file
+	* width			pixels	
+		Sets the width of the video player
+	* syntax -
+		<video width="320" height="240" controls>
+		  <source src="movie.mp4" type="video/mp4">
+		  <source src="movie.ogg" type="video/ogg">
+		  Your browser does not support the video tag.
+		</video>
+
+
+
+
+* <wbr> -
+	* The <wbr> (Word Break Opportunity) tag specifies where in a text it would be ok to add a line-break.
+	* Tip: When a word is too long, the browser might break it at the wrong place. You can use the <wbr> element to add word break opportunities.
+	* syntax - <p>To learn AJAX, you must be familiar with the XML<wbr>Http<wbr>Request Object.</p>
+
+
+
+
+* 
+Attribute			Belongs to			Description
+* accept				<input>				
+	Specifies the types of files that the server accepts (only for type="file")
+* accept-charset		<form>				
+	Specifies the character encodings that are to be used for the form submission
+* accesskey				Global Attributes	
+	Specifies a shortcut key to activate/focus an element
+* action				<form>	
+	Specifies where to send the form-data when a form is submitted
+* align					Not supported in HTML 5.	
+	Specifies the alignment according to surrounding elements. Use CSS instead
+* alt					<area>, <img>, <input>	
+	Specifies an alternate text when the original element fails to display
+* async					<script>	
+	Specifies that the script is executed asynchronously (only for external scripts)
+* autocomplete			<form>, <input>	
+	Specifies whether the <form> or the <input> element should have autocomplete enabled
+* autofocus				<button>, <input>, <select>, <textarea>	
+	Specifies that the element should automatically get focus when the page loads
+* autoplay				<audio>, <video>	
+	Specifies that the audio/video will start playing as soon as it is ready
+* bgcolor				Not supported in HTML 5.	
+	Specifies the background color of an element. Use CSS instead
+* border				Not supported in HTML 5.	
+	Specifies the width of the border of an element. Use CSS instead
+* charset				<meta>, <script>	
+	Specifies the character encoding
+* checked				<input>	
+	Specifies that an <input> element should be pre-selected when the page loads (for type="checkbox" or type="radio")
+* cite					<blockquote>, <del>, <ins>, <q>	
+	Specifies a URL which explains the quote/deleted/inserted text
+* class					Global Attributes	
+	Specifies one or more classnames for an element (refers to a class in a style sheet)
+* color					Not supported in HTML 5.	
+	Specifies the text color of an element. Use CSS instead
+* cols					<textarea>	
+	Specifies the visible width of a text area
+* colspan				<td>, <th>	
+	Specifies the number of columns a table cell should span
+* content				<meta>	
+	Gives the value associated with the http-equiv or name attribute
+* contenteditable		Global Attributes	
+	Specifies whether the content of an element is editable or not
+* controls				<audio>, <video>	
+	Specifies that audio/video controls should be displayed (such as a play/pause button etc)
+* coords				<area>	
+	Specifies the coordinates of the area
+* data					<object>	
+	Specifies the URL of the resource to be used by the object
+* data-*				Global Attributes	
+	Used to store custom data private to the page or application
+* datetime				<del>, <ins>, <time>	
+	Specifies the date and time
+* default				<track>	
+	Specifies that the track is to be enabled if the user's preferences do not indicate that another track would be more appropriate
+* defer					<script>	
+	Specifies that the script is executed when the page has finished parsing (only for external scripts)
+* dir					Global Attributes	
+	Specifies the text direction for the content in an element
+* dirname				<input>, <textarea>	
+	Specifies that the text direction will be submitted
+* disabled				<button>, <fieldset>, <input>, <optgroup>, <option>, <select>, <textarea>	
+	Specifies that the specified element/group of elements should be disabled
+* download				<a>, <area>	
+	Specifies that the target will be downloaded when a user clicks on the hyperlink
+* draggable				Global Attributes	
+	Specifies whether an element is draggable or not
+* enctype				<form>	
+	Specifies how the form-data should be encoded when submitting it to the server (only for method="post")
+* for					<label>, <output>	
+	Specifies which form element(s) a label/calculation is bound to
+* form					<button>, <fieldset>, <input>, <label>, <meter>, <object>, <output>, <select>, <textarea>	
+	Specifies the name of the form the element belongs to
+* formaction			<button>, <input>	
+	Specifies where to send the form-data when a form is submitted. Only for type="submit"
+* headers				<td>, <th>	
+	Specifies one or more headers cells a cell is related to
+* height				<canvas>, <embed>, <iframe>, <img>, <input>, <object>, <video>	
+	Specifies the height of the element
+* hidden				Global Attributes	
+	Specifies that an element is not yet, or is no longer, relevant
+* high					<meter>	
+	Specifies the range that is considered to be a high value
+* href					<a>, <area>, <base>, <link>	
+	Specifies the URL of the page the link goes to
+* hreflang				<a>, <area>, <link>	
+	Specifies the language of the linked document
+* http-equiv			<meta>	
+	Provides an HTTP header for the information/value of the content attribute
+* id						Global Attributes	
+	Specifies a unique id for an element
+* ismap					<img>	
+	Specifies an image as a server-side image map
+* kind					<track>	
+	Specifies the kind of text track
+* label					<track>, <option>, <optgroup>	
+	Specifies the title of the text track
+* lang					Global Attributes	
+	Specifies the language of the element's content
+* list					<input>	
+	Refers to a <datalist> element that contains pre-defined options for an <input> element
+* loop					<audio>, <video>	
+	Specifies that the audio/video will start over again, every time it is finished
+* low					<meter>
+	Specifies the range that is considered to be a low value
+* max					<input>, <meter>, <progress>
+	Specifies the maximum value
+* maxlength				<input>, <textarea>
+	Specifies the maximum number of characters allowed in an element
+* media					<a>, <area>, <link>, <source>, <style>
+	Specifies what media/device the linked document is optimized for
+* method				<form>
+	Specifies the HTTP method to use when sending form-data
+* min					<input>, <meter>
+	Specifies a minimum value
+* multiple				<input>, <select>
+	Specifies that a user can enter more than one value
+* muted					<video>, <audio>
+	Specifies that the audio output of the video should be muted
+* name					<button>, <fieldset>, <form>, <iframe>, <input>, <map>, <meta>, <object>, <output>, <param>, <select>, <textarea>
+	Specifies the name of the element
+* novalidate			<form>	
+	Specifies that the form should not be validated when submitted
+* onabort				<audio>, <embed>, <img>, <object>, <video>	
+	Script to be run on abort
+* onafterprint			<body>	
+	Script to be run after the document is printed
+* onbeforeprint			<body>	
+	Script to be run before the document is printed
+* onbeforeunload		<body>	
+	Script to be run when the document is about to be unloaded
+* onblur				All visible elements.	
+	Script to be run when the element loses focus
+* oncanplay				<audio>, <embed>, <object>, <video>	
+	Script to be run when a file is ready to start playing (when it has buffered enough to begin)
+* oncanplaythrough		<audio>, <video>	
+	Script to be run when a file can be played all the way to the end without pausing for buffering
+* onchange				All visible elements.	
+	Script to be run when the value of the element is changed
+* onclick				All visible elements.	
+	Script to be run when the element is being clicked
+* oncontextmenu			All visible elements.	
+	Script to be run when a context menu is triggered
+* oncopy				All visible elements.	
+	Script to be run when the content of the element is being copied
+* oncuechange			<track>	
+	Script to be run when the cue changes in a <track> element
+* oncut					All visible elements.	
+	Script to be run when the content of the element is being cut
+* ondblclick			All visible elements.	
+	Script to be run when the element is being double-clicked
+* ondrag				All visible elements.	
+	Script to be run when the element is being dragged
+* ondragend				All visible elements.	
+	Script to be run at the end of a drag operation
+* ondragenter			All visible elements.	
+	Script to be run when an element has been dragged to a valid drop target
+* ondragleave			All visible elements.	
+	Script to be run when an element leaves a valid drop target
+* ondragover			All visible elements.	
+	Script to be run when an element is being dragged over a valid drop target
+* ondragstart			All visible elements.	
+	Script to be run at the start of a drag operation
+* ondrop				All visible elements.	
+	Script to be run when dragged element is being dropped
+* ondurationchange		<audio>, <video>	
+	Script to be run when the length of the media changes
+* onemptied				<audio>, <video>	
+	Script to be run when something bad happens and the file is suddenly unavailable (like unexpectedly disconnects)
+* onended				<audio>, <video>	
+	Script to be run when the media has reach the end (a useful event for messages like "thanks for listening")
+* onerror				<audio>, <body>, <embed>, <img>, <object>, <script>, <style>, <video>	
+	Script to be run when an error occurs
+* onfocus				All visible elements.	
+	Script to be run when the element gets focus
+* onhashchange			<body>	
+	Script to be run when there has been changes to the anchor part of the a URL
+* oninput				All visible elements.	
+	Script to be run when the element gets user input
+* oninvalid				All visible elements.	
+	Script to be run when the element is invalid
+* onkeydown				All visible elements.	
+	Script to be run when a user is pressing a key
+* onkeypress			All visible elements.	
+	Script to be run when a user presses a key
+* onkeyup				All visible elements.	
+	Script to be run when a user releases a key
+* onload				<body>, <iframe>, <img>, <input>, <link>, <script>, <style>	
+	Script to be run when the element is finished loading
+* onloadeddata			<audio>, <video>	
+	Script to be run when media data is loaded
+* onloadedmetadata		<audio>, <video>	
+	Script to be run when meta data (like dimensions and duration) are loaded
+* onloadstart			<audio>, <video>	
+	Script to be run just as the file begins to load before anything is actually loaded
+* onmousedown			All visible elements.	
+	Script to be run when a mouse button is pressed down on an element
+* onmousemove			All visible elements.	
+	Script to be run as long as the  mouse pointer is moving over an element
+* onmouseout			All visible elements.	
+	Script to be run when a mouse pointer moves out of an element
+* onmouseover			All visible elements.	
+	Script to be run when a mouse pointer moves over an element
+* onmouseup				All visible elements.	
+	Script to be run when a mouse button is released over an element
+* onmousewheel			All visible elements.	
+	Script to be run when a mouse wheel is being scrolled over an element
+* onoffline				<body>	
+	Script to be run when the browser starts to work offline
+* ononline				<body>	
+	Script to be run when the browser starts to work online
+* onpagehide			<body>	
+	Script to be run when a user navigates away from a page
+* onpageshow			<body>	
+	Script to be run when a user navigates to a page
+* onpaste				All visible elements.	
+	Script to be run when the user pastes some content in an element
+* onpause				<audio>, <video>	
+	Script to be run when the media is paused either by the user or programmatically
+* onplay				<audio>, <video>	
+	Script to be run when the media has started playing
+* onplaying				<audio>, <video>	
+	Script to be run when the media has started playing
+* onpopstate			<body>	
+	Script to be run when the window's history changes.
+* onprogress			<audio>, <video>	
+	Script to be run when the browser is in the process of getting the media data
+* onratechange			<audio>, <video>	
+	Script to be run each time the playback rate changes (like when a user switches to a slow motion or fast forward mode).
+* onreset				<form>	
+	Script to be run when a reset button in a form is clicked.
+* onresize				<body>	
+	Script to be run when the browser window is being resized.
+* onscroll				All visible elements.	
+	Script to be run when an element's scrollbar is being scrolled
+* onsearch				<input>	
+	Script to be run when the user writes something in a search field (for <input="search">)
+* onseeked				<audio>, <video>	
+	Script to be run when the seeking attribute is set to false indicating that seeking has ended
+* onseeking				<audio>, <video>	
+	Script to be run when the seeking attribute is set to true indicating that seeking is active
+* onselect				All visible elements.	
+	Script to be run when the element gets selected
+* onstalled				<audio>, <video>	
+	Script to be run when the browser is unable to fetch the media data for whatever reason
+* onstorage				<body>	
+	Script to be run when a Web Storage area is updated
+* onsubmit				<form>	
+	Script to be run when a form is submitted
+* onsuspend				<audio>, <video>	
+	Script to be run when fetching the media data is stopped before it is completely loaded for whatever reason
+* ontimeupdate			<audio>, <video>	
+	Script to be run when the playing position has changed (like when the user fast forwards to a different point in the media)
+* ontoggle				<details>	
+	Script to be run when the user opens or closes the <details> element
+* onunload				<body>	
+	Script to be run when a page has unloaded (or the browser window has been closed)
+* onvolumechange		<audio>, <video>	
+	Script to be run each time the volume of a video/audio has been changed
+* onwaiting				<audio>, <video>	
+	Script to be run when the media has paused but is expected to resume (like when the media pauses to buffer more data)
+* onwheel				All visible elements.	
+	Script to be run when the mouse wheel rolls up or down over an element
+* open					<details>	
+	Specifies that the details should be visible (open) to the user
+* optimum				<meter>	
+	Specifies what value is the optimal value for the gauge
+* pattern				<input>	
+	Specifies a regular expression that an <input> element's value is checked against
+* placeholder			<input>, <textarea>	
+	Specifies a short hint that describes the expected value of the element
+* poster				<video>	
+	Specifies an image to be shown while the video is downloading, or until the user hits the play button
+* preload				<audio>, <video>	
+	Specifies if and how the author thinks the audio/video should be loaded when the page loads
+* readonly				<input>, <textarea>	
+	Specifies that the element is read-only
+* rel					<a>, <area>, <form>, <link>	
+	Specifies the relationship between the current document and the linked document
+* required				<input>, <select>, <textarea>	
+	Specifies that the element must be filled out before submitting the form
+* reversed				<ol>	
+	Specifies that the list order should be descending (9,8,7...)
+* rows					<textarea>	
+	Specifies the visible number of lines in a text area
+* rowspan				<td>, <th>	
+	Specifies the number of rows a table cell should span
+* sandbox				<iframe>	
+	Enables an extra set of restrictions for the content in an <iframe>
+* scope					<th>	
+	Specifies whether a header cell is a header for a column, row, or group of columns or rows
+* selected				<option>	
+	Specifies that an option should be pre-selected when the page loads
+* shape					<area>	
+	Specifies the shape of the area
+* size					<input>, <select>	
+	Specifies the width, in characters (for <input>) or specifies the number of visible options (for <select>)
+* sizes					<img>, <link>, <source>	
+	Specifies the size of the linked resource
+* span					<col>, <colgroup>	
+	Specifies the number of columns to span
+* spellcheck			Global Attributes	
+	Specifies whether the element is to have its spelling and grammar checked or not
+* src					<audio>, <embed>, <iframe>, <img>, <input>, <script>, <source>, <track>, <video>	
+	Specifies the URL of the media file
+* srcdoc				<iframe>	
+	Specifies the HTML content of the page to show in the <iframe>
+* srclang				<track>	
+	Specifies the language of the track text data (required if kind="subtitles")
+* srcset				<img>, <source>	
+	Specifies the URL of the image to use in different situations
+* start					<ol>	
+	Specifies the start value of an ordered list
+* step					<input>	
+	Specifies the legal number intervals for an input field
+* style					Global Attributes	
+	Specifies an inline CSS style for an element
+* tabindex				Global Attributes	
+	Specifies the tabbing order of an element
+* target				<a>, <area>, <base>, <form>	
+	Specifies the target for where to open the linked document or where to submit the form
+* title					Global Attributes	
+	Specifies extra information about an element
+* translate				Global Attributes	
+	Specifies whether the content of an element should be translated or not
+* type					<a>, <button>, <embed>, <input>, <link>, <menu>, <object>, <script>, <source>, <style>	
+	Specifies the type of element
+* usemap				<img>, <object>	
+	Specifies an image as a client-side image map
+* value					<button>, <input>, <li>, <option>, <meter>, <progress>, <param>	
+	Specifies the value of the element
+* width					<canvas>, <embed>, <iframe>, <img>, <input>, <object>, <video>	
+	Specifies the width of the element
+* wrap					<textarea>	
+	Specifies how the text in a text area is to be wrapped when submitted in a form
+
+
+* <Canvas> =
+	* The HTML <canvas> tag is used to draw graphics, on the fly, via scripting (usually JavaScript).
+	* To learn more about <canvas>, please read our HTML Canvas tutorial.
+
+	* Colors, Styles, and Shadows
+		* Property				Description
+		fillStyle				Sets or returns the color, gradient, or pattern used to fill the drawing
+		strokeStyle				Sets or returns the color, gradient, or pattern used for strokes
+		shadowColor				Sets or returns the color to use for shadows
+		shadowBlur				Sets or returns the blur level for shadows
+		shadowOffsetX			Sets or returns the horizontal distance of the shadow from the shape
+		shadowOffsetY			Sets or returns the vertical distance of the shadow from the shape
+
+		* Method				Description
+		createLinearGradient()	Creates a linear gradient (to use on canvas content)
+		createPattern()			Repeats a specified element in the specified direction
+		createRadialGradient()	Creates a radial/circular gradient (to use on canvas content)
+		addColorStop()			Specifies the colors and stop positions in a gradient object
+
+	* Line Styles
+		* Property			Description
+		lineCap				Sets or returns the style of the end caps for a line
+		lineJoin			Sets or returns the type of corner created, when two lines meet
+		lineWidth			Sets or returns the current line width
+		miterLimit			Sets or returns the maximum miter length
+
+	* Rectangles
+		* Method		Description
+		rect()			Creates a rectangle
+		fillRect()		Draws a "filled" rectangle
+		strokeRect()	Draws a rectangle (no fill)
+		clearRect()		Clears the specified pixels within a given rectangle
+	
+	* Paths
+		* Method			Description
+		fill()				Fills the current drawing (path)
+		stroke()			Actually draws the path you have defined
+		beginPath()			Begins a path, or resets the current path
+		moveTo()			Moves the path to the specified point in the canvas, without creating a line
+		closePath()			Creates a path from the current point back to the starting point
+		lineTo()			Adds a new point and creates a line to that point from the last specified point in the canvas
+		clip()				Clips a region of any shape and size from the original canvas
+		quadraticCurveTo()	Creates a quadratic Bézier curve
+		bezierCurveTo()		Creates a cubic Bézier curve
+		arc()				Creates an arc/curve (used to create circles, or parts of circles)
+		arcTo()				Creates an arc/curve between two tangents
+		isPointInPath()		Returns true if the specified point is in the current path, otherwise false
+
+	* Transformations
+		* Method			Description
+		scale()				Scales the current drawing bigger or smaller
+		rotate()			Rotates the current drawing
+		translate()			Remaps the (0,0) position on the canvas
+		transform()			Replaces the current transformation matrix for the drawing
+		setTransform()		Resets the current transform to the identity matrix. Then runs transform()
+	
+	* Text
+		* Property			Description
+		font				Sets or returns the current font properties for text content
+		textAlign			Sets or returns the current alignment for text content
+		textBaseline		Sets or returns the current text baseline used when drawing text
+
+		* Method			Description
+		fillText()			Draws "filled" text on the canvas
+		strokeText()		Draws text on the canvas (no fill)
+		measureText()		Returns an object that contains the width of the specified text
+	
+	* Image Drawing
+		* Method			Description
+		drawImage()	Draws an image, canvas, or video onto the canvas
+	
+	* Pixel Manipulation
+		* Property			Description
+		width				Returns the width of an ImageData object
+		height				Returns the height of an ImageData object
+		data				Returns an object that contains image data of a specified ImageData object
+		
+		* Method			Description
+		createImageData()	Creates a new, blank ImageData object
+		getImageData()		Returns an ImageData object that copies the pixel data for the specified rectangle on a canvas
+		putImageData()		Puts the image data (from a specified ImageData object) back onto the canvas
+
+	* Compositing
+		* Property			Description
+		globalAlpha			Sets or returns the current alpha or transparency value of the drawing
+		globalCompositeOperation	Sets or returns how a new image is drawn onto an existing image
+		Other
+
+		* Method			Description
+		save()				Saves the state of the current context
+		restore()			Returns previously saved path state and attributes
+		createEvent()	 
+		getContext()	 
+		toDataURL()	 
+
+
+
+
+* Audio and Video =
+The HTML5 DOM has methods, properties, and events for the <audio> and <video> elements.
+
+	* HTML Audio/Video Methods
+	addTextTrack()		Adds a new text track to the audio/video
+	canPlayType()		Checks if the browser can play the specified audio/video type
+	load()				Re-loads the audio/video element
+	play()				Starts playing the audio/video
+	pause()				Pauses the currently playing audio/video
+
+	* HTML Audio/Video Properties
+	audioTracks				Returns an AudioTrackList object representing available audio tracks
+	autoplay				Sets or returns whether the audio/video should start playing as soon as it is loaded
+	buffered				Returns a TimeRanges object representing the buffered parts of the audio/video
+	controller				Returns the MediaController object representing the current media controller of the audio/video
+	controls				Sets or returns whether the audio/video should display controls (like play/pause etc.)
+	crossOrigin				Sets or returns the CORS settings of the audio/video
+	currentSrc				Returns the URL of the current audio/video
+	currentTime				Sets or returns the current playback position in the audio/video (in seconds)
+	defaultMuted			Sets or returns whether the audio/video should be muted by default
+	defaultPlaybackRate		Sets or returns the default speed of the audio/video playback
+	duration				Returns the length of the current audio/video (in seconds)
+	ended					Returns whether the playback of the audio/video has ended or not
+	error					Returns a MediaError object representing the error state of the audio/video
+	loop					Sets or returns whether the audio/video should start over again when finished
+	mediaGroup				Sets or returns the group the audio/video belongs to (used to link multiple audio/video elements)
+	muted					Sets or returns whether the audio/video is muted or not
+	networkState			Returns the current network state of the audio/video
+	paused					Returns whether the audio/video is paused or not
+	playbackRate			Sets or returns the speed of the audio/video playback
+	played					Returns a TimeRanges object representing the played parts of the audio/video
+	preload					Sets or returns whether the audio/video should be loaded when the page loads
+	readyState				Returns the current ready state of the audio/video
+	seekable				Returns a TimeRanges object representing the seekable parts of the audio/video
+	seeking					Returns whether the user is currently seeking in the audio/video
+	src						Sets or returns the current source of the audio/video element
+	startDate				Returns a Date object representing the current time offset
+	textTracks				Returns a TextTrackList object representing the available text tracks
+	videoTracks				Returns a VideoTrackList object representing the available video tracks
+	volume					Sets or returns the volume of the audio/video
+
+	* HTML Audio/Video Events
+	abort						Fires when the loading of an audio/video is aborted
+	canplay						Fires when the browser can start playing the audio/video
+	canplaythrough				Fires when the browser can play through the audio/video without stopping for buffering
+	durationchange				Fires when the duration of the audio/video is changed
+	emptied						Fires when the current playlist is empty
+	ended						Fires when the current playlist is ended
+	error						Fires when an error occurred during the loading of an audio/video
+	loadeddata					Fires when the browser has loaded the current frame of the audio/video
+	loadedmetadata				Fires when the browser has loaded meta data for the audio/video
+	loadstart					Fires when the browser starts looking for the audio/video
+	pause						Fires when the audio/video has been paused
+	play						Fires when the audio/video has been started or is no longer paused
+	playing						Fires when the audio/video is playing after having been paused or stopped for buffering
+	progress					Fires when the browser is downloading the audio/video
+	ratechange					Fires when the playing speed of the audio/video is changed
+	seeked						Fires when the user is finished moving/skipping to a new position in the audio/video
+	seeking						Fires when the user starts moving/skipping to a new position in the audio/video
+	stalled						Fires when the browser is trying to get media data, but data is not available
+	suspend						Fires when the browser is intentionally not getting media data
+	timeupdate					Fires when the current playback position has changed
+	volumechange				Fires when the volume has been changed
+	waiting						Fires when the video stops because it needs to buffer the next frame
+
+
+
+
+* HTML Error Messages
+	* When a browser requests a service from a web server, an error might occur, and the server might return an error code like "404 Not Found".
+	* It is common to name these errors HTML error messages.
+	* But these messages are something called HTTP status messages. In fact, the server always returns a message for every request. The most common message is 200 OK.
+	* Below is a list of HTTP status messages that might be returned:
+		* 1xx: Information
+		Message:				Description:
+		100 Continue			- The server has received the request headers, and the client should proceed to send the request body
+		101 Switching Protocols	- The requester has asked the server to switch protocols
+		103 Early Hints			- Used with the Link header to allow the browser to start preloading resources while the server prepares a response
+		
+		2xx: Successful
+		Message:				Description:
+		200 OK					- The request is OK (this is the standard response for successful HTTP requests)
+		201 					- Created	The request has been fulfilled, and a new resource is created 
+		202 Accepted			- The request has been accepted for processing, but the processing has not been completed
+		203 Non-Authoritative Information	- The request has been successfully processed, but is returning information that may be from another source
+		204 No Content			- The request has been successfully processed, but is not returning any content
+		205 Reset Content		- The request has been successfully processed, but is not returning any content, and requires that the requester reset the document view
+		206 Partial Content		- The server is delivering only part of the resource due to a range header sent by the client
+
+		3xx: Redirection
+		Message:	Description:
+		300 Multiple Choices	- A link list. The user can select a link and go to that location. Maximum five addresses  
+		301 Moved Permanently	- The requested page has moved to a new URL 
+		302 Found				- The requested page has moved temporarily to a new URL 
+		303 See Other			- The requested page can be found under a different URL
+		304 Not Modified		- Indicates the requested page has not been modified since last requested
+		307 Temporary Redirect	- The requested page has moved temporarily to a new URL
+		308 Permanent Redirect	- The requested page has moved permanently to a new URL
+
+		4xx: Client Error
+		Message:	Description:
+		400 Bad Request			- The request cannot be fulfilled due to bad syntax
+		401 Unauthorized		- The request was a legal request, but the server is refusing to respond to it. For use when authentication is possible but has failed or not yet been provided
+		402 Payment Required	- Reserved for future use
+		403 Forbidden			- The request was a legal request, but the server is refusing to respond to it
+		404 Not Found			- The requested page could not be found but may be available again in the future
+		405 Method Not Allowed	- A request was made of a page using a request method not supported by that page
+		406 Not Acceptable		- The server can only generate a response that is not accepted by the client
+		407 Proxy Authentication Required	- The client must first authenticate itself with the proxy
+		408 Request Timeout		- The server timed out waiting for the request
+		409 Conflict			- The request could not be completed because of a conflict in the request
+		410 Gone				- The requested page is no longer available
+		411 Length Required		- The "Content-Length" is not defined. The server will not accept the request without it 
+		412 Precondition Failed	- The precondition given in the request evaluated to false by the server
+		413 Request Too Large	- The server will not accept the request, because the request entity is too large
+		414 Request-URI Too Long	- The server will not accept the request, because the URI is too long. Occurs when you convert a POST request to a GET request with a long query information 
+		415 Unsupported Media Type	- The server will not accept the request, because the media type is not supported 
+		416 Range Not Satisfiable	- The client has asked for a portion of the file, but the server cannot supply that portion
+		417 Expectation Failed		- The server cannot meet the requirements of the Expect request-header field
+		
+		5xx: Server Error
+		Message:	Description:
+		500 Internal Server Error	- A generic error message, given when no more specific message is suitable
+		501 Not Implemented			- The server either does not recognize the request method, or it lacks the ability to fulfill the request
+		502 Bad Gateway				- The server was acting as a gateway or proxy and received an invalid response from the upstream server
+		503 Service Unavailable		- The server is currently unavailable (overloaded or down)
+		504 Gateway Timeout			- The server was acting as a gateway or proxy and did not receive a timely response from the upstream server
+		505 HTTP Version Not Supported	- The server does not support the HTTP protocol version used in the request
+		511 Network Authentication Required		- The client needs to authenticate to gain network access
+
+
+
+
+* HTTP Methods -
+
+* What is HTTP?
+	* The Hypertext Transfer Protocol (HTTP) is designed to enable communications between clients and servers.
+	* HTTP works as a request-response protocol between a client and server.
+	* Example: A client (browser) sends an HTTP request to the server; then the server returns a response to the client. The response contains status information about the request and may also contain the requested content.
+
+* HTTP Methods =
+	GET
+	POST
+	PUT
+	HEAD
+	DELETE
+	PATCH
+	OPTIONS
+	CONNECT
+	TRACE
+
+* The two most common HTTP methods are: GET and POST.
+
+* The GET Method
+	* GET is used to request data from a specified resource.
+	* Note that the query string (name/value pairs) is sent in the URL of a GET request:
+		/test/demo_form.php?name1=value1&name2=value2
+
+* Some notes on GET requests:
+	GET requests can be cached
+	GET requests remain in the browser history
+	GET requests can be bookmarked
+	GET requests should never be used when dealing with sensitive data
+	GET requests have length restrictions
+	GET requests are only used to request data (not modify)
+* The POST Method
+	* POST is used to send data to a server to create/update a resource.
+	* The data sent to the server with POST is stored in the request body of the HTTP request:
+		POST /test/demo_form.php HTTP/1.1
+		Host: w3schools.com
+		name1=value1&name2=value2
+* Some notes on POST requests:
+	POST requests are never cached
+	POST requests do not remain in the browser history
+	POST requests cannot be bookmarked
+	POST requests have no restrictions on data length
+
+
+* Compare GET vs. POST
+The following table compares the two HTTP methods: GET and POST.
+
+
+BACK button/Reload	
+				GET - Harmless	
+				POST - Data will be re-submitted (the browser should alert the user that the data are about to be re-submitted)
+Bookmarked			
+				GET - Can be bookmarked	
+				POST - Cannot be bookmarked
+Cached	
+				GET - Can be cached	
+				POST - Not cached
+Encoding type	
+				GET - application/x-www-form-urlencoded	
+				POST - application/x-www-form-urlencoded or multipart/form-data. Use multipart encoding for binary data
+History			
+				GET - Parameters remain in browser history	
+				POST - Parameters are not saved in browser history
+Restrictions on data length	
+				GET - Yes, when sending data, the GET method adds the data to the URL; and the length of a URL is limited (maximum URL length is 2048 characters)	
+				POST - No restrictions
+
+Restrictions on data type	
+				GET - Only ASCII characters allowed	No restrictions. 
+				POST - Binary data is also allowed
+Security		
+				GET - GET is less secure compared to POST because data sent is part of the URL. Never use GET when sending passwords or other sensitive information!	
+				POST - POST is a little safer than GET because the parameters are not stored in browser history or in web server logs
+Visibility	
+				GET - Data is visible to everyone in the URL	
+				POST - Data is not displayed in the URL
+
+
+
+* The PUT Method
+	* PUT is used to send data to a server to create/update a resource.
+	* The difference between POST and PUT is that PUT requests are idempotent. That is, calling the same PUT request multiple times will always produce the same result. In contrast, calling a POST request repeatedly have side effects of creating the same resource multiple times.
+
+* The HEAD Method
+	* HEAD is almost identical to GET, but without the response body.
+	* In other words, if GET /users returns a list of users, then HEAD /users will make the same request but will not return the list of users.
+	* HEAD requests are useful for checking what a GET request will return before actually making a GET request - like before downloading a large file or response body.
+
+* The DELETE Method
+	* The DELETE method deletes the specified resource.
+
+* The PATCH Method
+	* The PATCH method is used to apply partial modifications to a resource.
+
+* The OPTIONS Method
+	* The OPTIONS method describes the communication options for the target resource.
+
+* The CONNECT Method
+	* The CONNECT method is used to start a two-way communications (a tunnel) with the requested resource.
+
+* The TRACE Method
+	* The TRACE method is used to perform a message loop-back test that tests the path for the target resource (useful for debugging purposes).
+
+
+
+
+What are Semantic Elements?
+A semantic element clearly describes its meaning to both the browser and the developer.
+
+Examples of non-semantic elements: <div> and <span> - Tells nothing about its content.
+
+Examples of semantic elements: <form>, <table>, and <article> - Clearly defines its content.
+	<article>
+	<aside>
+	<details>
+	<figcaption>
+	<figure>
+	<footer>
+	<header>
+	<main>
+	<mark>
+	<nav>
+	<section>
+	<summary>
+	<time>
