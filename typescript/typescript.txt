@@ -500,3 +500,20 @@ Functions as types
 Function types and callbacks
 unknown
 never
+
+
+class Dep { 
+    constructor(){ 
+        this.tak = () => {
+            console.log(this);      // { name: 'sumeet', age: 30, dis: ƒ, tak: ƒ }
+        } 
+    } 
+    name = "sumeet";                
+    age = 30;                       // instance member
+    display(){                      // prototype member
+        console.log(this);          // { name: 'sumeet', age: 30, dis: ƒ, tak: ƒ }
+    }; 
+    dis = () => {
+        console.log(this);          // { name: 'sumeet', age: 30, dis: ƒ, tak: ƒ }
+    }
+}

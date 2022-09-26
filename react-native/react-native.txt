@@ -1,26 +1,35 @@
 React Native Website - 
 
-The Basics =
+------------------------------------------------------------------------------------------------
+GUIDES
 
-1) Core Components and Native Components =
-* React Native is an open source framework for building Android and iOS applications using React and the app platform’s native capabilities.
-* using JavaScript to access your platform’s APIs as well as to describe the appearance and behavior of your UI using React components
+A) The Basics
+* Core Components and Native Components =
 
-a) Views and mobile development
-* a view is the basic building block of UI
-* used to display text, images, or respond to user input
+	1) Core Components and Native Components =
+	* React Native is an open source framework for building Android and iOS applications using React and the app platform’s native capabilities.
+	* using JavaScript to access your platform’s APIs as well as to describe the appearance and behavior of your UI using React components
 
-b) Native Components
-* With React Native, you can invoke platform specific views with JavaScript using React components.
-* At runtime, React Native creates the corresponding Android and iOS views for those components.
-* We call these platform-backed components "Native Components".
-* React Native comes with a set of essential, ready-to-use Native Components you can use to start building your app today. These are React Native's Core Components.
+	a) Views and mobile development
+	* a view is the basic building block of UI
+	* used to display text, images, or respond to user input
 
-c) Core Components
-* React Native has many Core Components for everything from form controls to activity indicators.
-* React Native uses the same API structure as React components
-* React Native Components contain-
-	React components, React Native Components (Community Components, Core Components, Own Native Component)
+	b) Native Components
+	* With React Native, you can invoke platform specific views with JavaScript using React components.
+	* At runtime, React Native creates the corresponding Android and iOS views for those components.
+	* We call these platform-backed components "Native Components".
+	* React Native comes with a set of essential, ready-to-use Native Components you can use to start building your app today. These are "React Native's Core Components".
+	* React Native also lets you build your own Native Components for Android and iOS to suit your app’s unique needs. We also have a thriving ecosystem of these community-contributed components.
+
+
+	c) Core Components
+	* React Native has many Core Components for everything from form controls to activity indicators.
+	* REACT NATIVE UI COMPONENT - <View>, <Text>,  <Image>, <ScrollView>, <TextInput>
+	* React Native uses the same API structure as React components
+	* React Native Components contain-
+		React components -> 
+			React Native Components > 
+				Community Components, Core Components, Own Native Component
 
 
 
@@ -38,6 +47,13 @@ c) Core Components
 
 * JSX = 
 	* React and React Native use JSX, a syntax that lets you write elements inside JavaScript.
+	* it is a syntax extension to JavaScript.
+	* Fundamentally, JSX just provides syntactic sugar for the React.createElement(component, props, ...children) function. Babel compiles JSX down to React.createElement() calls.
+	* It's been easier to write in JSX instead with "createElement".
+	* we can put valid "JS expression" inside curly braces in JSX.
+	* we can add attributes too in JSX using curly braces (for expression) and quotes (for string value).
+	* we can add children within JSX.
+
 
 * Custom Components =
 
@@ -48,27 +64,1703 @@ c) Core Components
 * Props =
 	* Props is short for “properties”.
 	* Image has many different props, including style, which accepts a JS object of design and layout related property-value pairs.
+	* Props are Read-Only.
+	* Props are arguments passed into React components.
 
 * State =
-	* While you can think of props as arguments you use to configure how components render, state is like a component’s personal data storage.
+	* state is like a component’s personal data storage.
+	* State is useful for handling data that changes over time or that comes from user interaction.
+	* As a general rule, use props to configure a component when it renders. Use state to keep track of any component data that you expect to change over time.
+	* we use "this.setState" and "useState" hook to update state value.
+	* ex. 
+		// to register in class component
+		state = {
+			val: "sumeet"
+		}
+		console.log(this.state.val);	// to access in Class Component
+		this.setState((prevState, props) => ({ val: !prevState.val }), () => console.log("callback function"));
+
+
+
+		// to register in function component 	
+		const [val, setVal] = useState(true);		// General Rule -  [val, setval] = useState(true)
+		console.log(val);	// to access in Function Component
+		setVal(!val);		// to update state
 
 
 
 
+3) Handling Text Input -
+
+4) Using a ScrollView -
+* ScrollViews can be configured to allow paging through views using swiping gestures by using the pagingEnabled props. Swiping horizontally between views can also be implemented on Android using the ViewPager component.
+* On iOS a ScrollView with a single item can be used to allow the user to zoom content. Set up the maximumZoomScale and minimumZoomScale props and your user will be able to use pinch and expand gestures to zoom in and out.
+* The ScrollView works best to present a small number of things of a limited size. All the elements and views of a ScrollView are rendered, even if they are not currently shown on the screen. 
+* If you have a long list of items which cannot fit on the screen, you should use a FlatList instead.
+
+
+5) Using List Views -
+* The FlatList component displays a scrolling list of changing, but similarly structured, data.
+* FlatList works well for long lists of data, where the number of items might change over time.
+* Unlike the more generic ScrollView, the FlatList only renders elements that are currently showing on the screen, not all the elements at once.
+* The FlatList component requires two props: data and renderItem.
+* If you want to render a set of data broken into logical sections, maybe with section headers, similar to UITableViews on iOS, then a SectionList is the way to go.
+
+
+6) Troubleshooting -
+* React Native uses 8081 port.
+* if any other process running on 8081. then do the following -
+	sudo lsof -i :8081	//  to find the id for the process that is listening on port 8081
+	kill -9 <PID>		// run the following to terminate the process
+
+* we can also use another port -
+	npx react-native start --port=8088 		// use another port
+	
+	If running on device from Xcode, you can do this by updating occurrences of 8081 to your chosen port in the ios/__App_Name__.xcodeproj/project.pbxproj file.
+
+* If you encounter an error such as npm WARN locking Error: EACCES while using the React Native CLI, try running the following:
+	sudo chown -R $USER ~/.npm
+	sudo chown -R $USER /usr/local/lib/node_modules
+
+
+* Missing libraries for React -
+	1) More detailed steps are here: Linking Libraries.
+	Need More Time ...
+
+* No transports available -
+	1) React Native implements a polyfill for WebSockets.
+	2) These polyfills are initialized as part of the react-native module that you include in your application through import React from 'react'. If you load another module that requires WebSockets, such as Firebase, be sure to load/require it after react-native.
+
+* react-native init hangs -
+	* If you run into issues where running npx react-native init hangs in your system, try running it again in verbose mode.
+		npx react-native init --verbose
+
+	* When you're debugging a process or need to know a little more about the error being thrown, you may want to use the verbose option to output more logs and information to nail down your issue. Run the following command in your root directory.
+		npx react-native run-android --verbose
+
+
+7) Platform Specific Code -
+* React Native provides two ways to organize your code and separate it by platform -
+	1) Using the Platform module.
+	2) Using platform-specific file extensions.
+
+* Platform module -
+	1) React Native provides a module that detects the platform in which the app is running. You can use the detection logic to implement platform-specific code. Use this option when only small parts of a component are platform-specific.
+	2) Platform.OS will be ios when running on iOS and android when running on Android.
+	3) ex. Platform.OS === "ios"? true: false
+	4) There is also a Platform.select method available, that given an object where keys can be one of 'ios' | 'android' | 'native' | 'default', returns the most fitting value for the platform you are currently running on. we can use this for css also.
+	5) priority in following - 
+		1) ios and android, 2) Native, 3) default
+	6) ex.
+		const styles = StyleSheet.create({
+			container: {
+				flex: 1,
+				...Platform.select({
+					android: { backgroundColor: "red" },
+					ios: { backgroundColor: "red" },
+					default: { backgroundColor: "red" }
+				})
+			}
+		});
+		
+
+* Detecting the Android version - 
+	1) On Android, the Platform module can also be used to detect the version of the Android Platform in which the app is running:
+	console.log(Platform.Version);		//25
+
+* Detecting the iOS version -
+ On iOS, the Version is a result of -[UIDevice systemVersion], which is a string with the current version of the operating system. 
+
+* Platform-specific extensions -
+	1) When your platform-specific code is more complex, you should consider splitting the code out into separate files. React Native will detect when a file has a .ios. or .android. extension and load the relevant platform file when required from other components.
+	2) For example, say you have the following files in your project:
+		BigButton.ios.js
+		BigButton.android.js
+	3) You can then require the component as follows:
+		import BigButton from './BigButton';
+	4) React Native will automatically pick up the right file based on the running platform.
+
+
+* Native-specific extensions (i.e. sharing code with NodeJS and Web) -
+	1) You can also use the .native.js extension when a module needs to be shared between NodeJS/Web and React Native but it has no Android/iOS differences. This is especially useful for projects that have common code shared among React Native and ReactJS.
+	2) For example, say you have the following files in your project:
+		Container.js # picked up by Webpack, Rollup or any other Web bundler
+		Container.native.js # picked up by the React Native bundler for both Android and iOS (Metro)
+	3) You can still require it without the .native extension, as follows:
+		import Container from './Container';
+
+
+8) More Resources -
+* IDEs - We recommend using the VS Code code editor and its handy React Native tools.
+* Platforms to try - 
+	1) EXPO
+	2) Ignite is a starter kit CLI with several React Native boilerplates.
+
+* Find, make, and share your own Native Components and TurboModules -
+	1)  Visit React Native Directory to find what the community has been creating.
+
+
+
+B) Enviornment Setup -
+1) Setting up the development environment -
+* Installing dependencies - 
+	Need more time...
+* Watchman -
+	1) Watchman is a tool by Facebook for watching changes in the filesystem. It is highly recommended you install it for better performance and increased compatibility in certain edge cases.
+* React Native Command Line Interface -
+	1) we recommend you access the current version at runtime using npx, which ships with Node.js. With npx react-native <command>.
+	npx react-native init
+* Creating a new application -
+	1) npx react-native init AwesomeProject
+	2) npx react-native init AwesomeProject --version 0.68.2	// Using a specific version or template
+	3) npx react-native init AwesomeTSProject --template react-native-template-typescript	// With Template
+* Running your React Native application -
+	1) Step 1: Start Metro - 
+		npx react-native start 		//To start metro (JS bundler) which ships with react native.
+	2) Note - If you're familiar with web development, Metro is a lot like webpack—for React Native apps.
+	3) Step 2: Start your application -
+		npx react-native run-android	//To start react native project in another terminal
+
+
+2) Integration with Existing Apps -
+	Take help from directly official website
+
+3) Integration with an Android Fragment -
+	Take help from directly official website
+
+4) Building For TV Devices -
+	Take help from directly official website
+
+5) Out-of-Tree Platforms -
+	Take help from directly official website
+
+
+
+C) Workflow -
+1) Running On Device -
+* Running your app on Android devices -
+	1) Enable Debugging over USB - To enable USB debugging on your device, you will first need to enable the "Developer options" menu by going to Settings → About phone → Software information and then tapping the Build number row at the bottom seven times. You can then go back to Settings → Developer options to enable "USB debugging".
+
+	2) Plug in your device via USB -  plug in your device via USB to your development machine. Next, check the manufacturer code by using lsusb (on mac, you must first install lsusb).  This is an utility to easily list USB devices in Mac OS X, just like the lsusb command in Linux. 
+
+	3) npx react-native run-android
+
+* Connecting to the development server -
+	1) if our phone and laptop are on different network and we have to reach development server through laptop, we have 2 ways -
+	2) using adb reverse - we need to use "adb revese".
+		article link - https://blog.grio.com/2015/07/android-tip-adb-reverse.html
+	3) using WiFi -
+		Take help from directly official website
+
+
+2) Fast Refresh - 
+article link - https://aboutreact.com/fast-refresh-in-react-native/
+	1) Fast Refresh is a React Native feature that allows you to get near-instant feedback for changes in your React components.
+* Error Resilience -
+	1) fast refresh is error resilience.
+* Limitations -
+	1) Local state is not preserved for class components (only function components and Hooks preserve state).
+	2) The module you're editing might have other exports in addition to a React component.
+	3) Sometimes, a module would export the result of calling higher-order component like createNavigationContainer(MyScreen). If the returned component is a class, state will be reset.
+* Tips -
+	1) Fast Refresh preserves React local state in function components (and Hooks) by default.
+	2) Sometimes you might want to force the state to be reset, and a component to be remounted. To do this, you can add "// @refresh reset" anywhere in the file you're editing. This directive is local to the file, and instructs Fast Refresh to remount components defined in that file on every edit.
+* Fast Refresh and Hooks -
+	1) When possible, Fast Refresh attempts to preserve the state of your component between edits.
+	2) In particular, useState and useRef preserve their previous values as long as you don't change their arguments or the order of the Hook calls.
+	3) Hooks with dependencies—such as useEffect, useMemo, and useCallback—will always update during Fast Refresh. Their list of dependencies will be ignored while Fast Refresh is happening.
+
+3) Debugging -
+* Accessing the In-App Developer Menu -
+	1) You can access the developer menu by shaking your device or by selecting "Shake Gesture" inside the Hardware menu in the iOS Simulator.
+	2) OR command "adb shell input keyevent 82" to open the dev menu (82 being the Menu key code)
+
+* Enabling Fast Refresh - 
+	1) Fast Refresh is a React Native feature that allows you to get near-instant feedback for changes in your React components.
+	2) Fast Refresh is enabled by default, and you can toggle "Enable Fast Refresh" in the React Native developer menu. When enabled, most of your edits should be visible within a second or two.
+
+* Enabling Keyboard Shortcuts -
+	1) React Native supports a few keyboard shortcuts in the iOS Simulator. They are described below. To enable them on macOS, inside the Simulator app, open the I/O menu, select Keyboard, and make sure that "Connect Hardware Keyboard" is checked.
+
+* LogBox -
+	1) Errors and warnings in development builds are displayed in LogBox inside your app.
+
+* Console Errors and Warnings -
+	1) Console errors and warnings are displayed as on-screen notifications with a red or yellow badge, and the number of errors or warning in the console respectively.
+	2) These notifications can be hidden using LogBox.ignoreAllLogs().
+	3) ex.
+		import { LogBox } from 'react-native';
+
+		// Ignore log notification by message:
+		LogBox.ignoreLogs(['Warning: ...']);
+
+		// Ignore all log notifications:
+		LogBox.ignoreAllLogs();
+
+* Unhandled Errors -
+	1) Unhandled JavaScript errors such as undefined is not a function will automatically open a full screen LogBox error with the source of the error.
+* Syntax Errors -
+	1) When syntax error occurs the full screen LogBox error will automatically open with the stack trace and location of the syntax error. This error is not dismissable because it represents invalid JavaScript execution that must be fixed before continuing with your app.
+
+* Chrome Developer Tools -
+	1) To debug the JavaScript code in Chrome, select "Debug JS Remotely" from the Developer Menu. This will open a new tab at http://localhost:8081/debugger-ui.
+* Debugging using a custom JavaScript debugger -
+	Take help from directly official website
+
+* Safari Developer Tools -
+	Take help from directly official website
+
+* React Developer Tools -
+	1) You can use the standalone version of React Developer Tools to debug the React component hierarchy.
 
 
 
 
+------------------------------------------------------------------------------------------------
+COMPONENTS
+
+A) Core Components -
+
+1) Core Components and APIs -
+	1) React Native provides a number of built-in Core Components ready for you to use in your app. 
+	2) lets categorize -
+		Basic Components - View, Image, Text, TextInput, ScrollView, StyleSheet
+		User Interface - Button, Switch
+		List Views - FlatList, SectionList
+		Android-specific - BackHandler, DrawerLayoutAndroid, PermissionAndroid, ToastAndroid
+		iOS-specific - ActionSheetIOS
+		Others - 
+		ActivityIndicator, Alert, Animated, Dimensions, KeyboardAvoidingView, Linking, Modal, PixelRatio, RefreshControl, StatusBar
+
+2) ActivityIndicator -
+	1) Displays a circular loading indicator.
+	2) Props -
+		* inherits view props
+		* animating - Whether to show the indicator (true) or hide it (false). DEFAULT = true
+		* color - The foreground color of the spinner.  "null" or "#000"
+		* hidesWhenStopped (IOS) - Whether the indicator should hide when not animating. DEFAULT = true
+		* size - Size of the indicator. 'small'
+	
+3) Button -
+	1) A basic button component that should render nicely on any platform. Supports a minimal level of customization.
+	2) You can build your own button using TouchableOpacity or TouchableWithoutFeedback.
+	3) ex. 
+		<Button title="Press me" onPress={() => Alert.alert('Simple Button pressed')} />
+	4) Props -
+		* onPress (Required) - Handler to be called when the user taps the button.  
+			TYPE: ({ nativeEvent: PressEvent })
+
+		*  title (Required) - Text to display inside the button. On Android the given title will be converted to the uppercased form.
+			TYPE - string
+
+		* accessibilityLabel - Text to display for blindness accessibility features.
+			TYPE - string			
+
+		* accessibilityLanguage (IOS) - A value indicating which language should be used by the screen reader when the user interacts with the element. It should follow the BCP 47 specification. See the iOS accessibilityLanguage doc for more information.
+			TYPE - string
+
+		* accessibilityActions - Accessibility actions allow an assistive technology to programmatically invoke the actions of a component. The accessibilityActions property should contain a list of action objects. Each action object should contain the field name and label.
+			TYPE - array    REQUIRED - NO
+
+		* onAccessibilityAction - Invoked when the user performs the accessibility actions. The only argument to this function is an event containing the name of the action to perform.
+			TYPE - function     REQUIRED - NO
+
+		* color - Color of the text (iOS), or background color of the button (Android).
+			TYPE - color 		DEFAULT - `'#2196F3'` (android)   '#007AFF' (ios)
+
+		* disabled - If true, disable all interactions for this component.   TYPE- bool   DEFAULT - false
+		* hasTVPreferredFocus - TV preferred focus. 		TYPE - bool 	DEFAULT - false
+		* nextFocusDown - Designates the next view to receive focus when the user navigates down. See the Android documentation.
+			TYPE - number
+
+		* nextFocusForward - Designates the next view to receive focus when the user navigates forward. See the Android documentation.
+			TYPE - number
+
+		* nextFocusLeft - Designates the next view to receive focus when the user navigates left. See the Android documentation.
+			TYPE - number
+
+		* nextFocusRight - Designates the next view to receive focus when the user navigates right. See the Android documentation.
+			TYPE - number
+
+		* nextFocusUp - Designates the next view to receive focus when the user navigates up. See the Android documentation.
+			TYPE - number		
+
+		* testID - Used to locate this view in end-to-end tests.
+			TYPE - string
+
+		* touchSoundDisabled - If true, doesn't play system sound on touch.
+			TYPE - boolean 		DEFAULT - false
+
+
+4) Flatlist - 
+	1) A performant interface for rendering basic, flat lists, supporting the most handy features:
+		Fully cross-platform.
+		Optional horizontal mode.
+		Configurable viewability callbacks.
+		Header support.
+		Footer support.
+		Separator support.
+		Pull to Refresh.
+		Scroll loading.
+		ScrollToIndex support.
+		Multiple column support.
+
+	2) To render multiple columns, use the numColumns prop. Using this approach instead of a flexWrap layout can prevent conflicts with the item height logic.
+	3) By passing extraData={selectedId} to FlatList we make sure FlatList itself will re-render when the state changes. Without setting this prop, FlatList would not know it needs to re-render any items because it is a PureComponent and the prop comparison will not show any changes.
+	4) keyExtractor tells the list to use the ids for the react keys instead of the default key property.
+	5) This is a convenience wrapper around <VirtualizedList>, and thus inherits its props (as well as those of <ScrollView>) that aren't explicitly listed here, along with the following caveats:
+		* Internal state is not preserved when content scrolls out of the render window. Make sure all your data is captured in the item data or external stores like Flux, Redux, or Relay.
+		* This is a PureComponent which means that it will not re-render if props remain shallow-equal. Make sure that everything your renderItem function depends on is passed as a prop (e.g. extraData) that is not === after updates, otherwise your UI may not update on changes. This includes the data prop and parent component state.
+		* In order to constrain memory and enable smooth scrolling, content is rendered asynchronously offscreen. This means it's possible to scroll faster than the fill rate and momentarily see blank content.
+		* By default, the list looks for a key prop on each item and uses that for the React key. Alternatively, you can provide a custom keyExtractor prop.
+	6) Props -
+		* ScrollView Props - Inherits ScrollView Props, unless it is nested in another FlatList of same orientation.
+
+		* renderItem (Required) -
+			* renderItem({ item, index, separators });		
+			* Takes an item from data and renders it into the list.
+			* Provides additional metadata like index if you need it, 
+			* as well as a more generic separators.updateProps function which let you set whatever props you want to change the rendering of either the leading separator or trailing separator in case the more common highlight and unhighlight (which set the highlighted: boolean prop) are insufficient for your use case.
+			 	TYPE  function
+
+			*	item (Object): The item from data being rendered.
+				index (number): The index corresponding to this item in the data array.
+				separators (Object)
+				highlight (Function)
+				unhighlight (Function)
+				updateProps (Function)
+				select (enum('leading', 'trailing'))
+				newProps (Object)
+
+		* data - For simplicity, data is a plain array. If you want to use something else, like an immutable list, use the underlying VirtualizedList directly.
+			TYPE  - array
+
+		* ItemSeparatorComponent - 
+			* Rendered in between each item, but not at the top or bottom.
+			TYPE  -  component, function, element
+		
+		* ListEmptyComponent - 
+			* Rendered when the list is empty. Can be a React Component (e.g. SomeComponent), or a React element (e.g. <SomeComponent />).
+			TYPE - component, element
+
+		* ListFooterComponent -
+			Rendered at the bottom of all the items. Can be a React Component (e.g. SomeComponent), or a React element (e.g. <SomeComponent />).
+			TYPE - component, element
+
+		* ListFooterComponentStyle -
+			Styling for internal View for ListFooterComponent.
+			TYPE - View Style
+
+		* ListHeaderComponent - 
+			Rendered at the top of all the items. Can be a React Component (e.g. SomeComponent), or a React element (e.g. <SomeComponent />).
+			TYPE - component, element
+
+		* ListHeaderComponentStyle - 
+			Styling for internal View for ListHeaderComponent
+			TYPE - View Style
+
+		* columnWrapperStyle -
+			Optional custom style for multi-item rows generated when numColumns > 1.
+			TYPE - View Style
+
+		* extraData -
+			A marker property for telling the list to re-render (since it implements PureComponent). If any of your renderItem, Header, Footer, etc. functions depend on anything outside of the data prop, stick it here and treat it immutably.
+			TYPE - any
+
+		* getItemLayout - 
+			* (data, index) => {length: number, offset: number, index: number}
+			* getItemLayout is an optional optimization that allows skipping the measurement of dynamic content if you know the size (height or width) of items ahead of time.
+			* getItemLayout is efficient if you have fixed size items, for example:
+				  getItemLayout={(data, index) => (
+				    {length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index}
+				  )}
+			* Adding getItemLayout can be a great performance boost for lists of several hundred items. Remember to include separator length (height or width) in your offset calculation if you specify ItemSeparatorComponent.
+			TYPE - function
+
+		* horizontal -
+			* If true, renders items next to each other horizontally instead of stacked vertically.
+			TYPE - boolean
+
+		* initialNumToRender -
+			* How many items to render in the initial batch. This should be enough to fill the screen but not much more. Note these items will never be unmounted as part of the windowed rendering in order to improve perceived performance of scroll-to-top actions.
+			TYPE - number		DEFAULT - 10
+
+		* initialScrollIndex -
+			* Instead of starting at the top with the first item, start at initialScrollIndex. This disables the "scroll to top" optimization that keeps the first initialNumToRender items always rendered and immediately renders the items starting at this initial index. Requires getItemLayout to be implemented.
+			TYPE - number
+
+		* inverted -
+			* Reverses the direction of scroll. Uses scale transforms of -1.
+			TYPE  boolean
+
+		* keyExtractor -
+			* Used to extract a unique key for a given item at the specified index. Key is used for caching and as the react key to track item re-ordering. The default extractor checks item.key, then item.id, and then falls back to using the index, like React does.
+			TYPE 	function
+
+		* numColumns -
+			Multiple columns can only be rendered with horizontal={false} and will zig-zag like a flexWrap layout. Items should all be the same height - masonry layouts are not supported.
+			TYPE  	number
+
+		* onEndReached -
+			* (info: {distanceFromEnd: number}) => void 
+			* Called once when the scroll position gets within onEndReachedThreshold of the rendered content.
+			TYPE  function
+
+		* onEndReachedThreshold -
+			* How far from the end (in units of visible length of the list) the bottom edge of the list must be from the end of the content to trigger the onEndReached callback. Thus a value of 0.5 will trigger onEndReached when the end of the content is within half the visible length of the list.
+			TYPE  number
+
+		* onRefresh -
+			* () => void
+			* If provided, a standard RefreshControl will be added for "Pull to Refresh" functionality. Make sure to also set the refreshing prop correctly.
+				TYPE  function
+
+		* onViewableItemsChanged -
+			* Called when the viewability of rows changes, as defined by the viewabilityConfig prop.
+			* (callback: { changed: array of ViewTokens, viewableItems: array of ViewTokens }) => void
+
+		* progressViewOffset -
+			* Set this when offset is needed for the loading indicator to show correctly.
+			TYPE  number
+
+		* refreshing - 
+			Set this true while waiting for new data from a refresh.
+			TYPE  boolean
+
+		* removeClippedSubviews -
+			This may improve scroll performance for large lists. On Android the default value is true.
+			TYPE  boolean
+
+		* viewabilityConfig -
+			* See ViewabilityHelper.js for flow type and further documentation.
+			* viewabilityConfig takes a type ViewabilityConfig an object with following properties
+			PROPERTY							TYPE
+			minimumViewTime						number
+			viewAreaCoveragePercentThreshold	number
+			itemVisiblePercentThreshold			number
+			waitForInteraction					boolean
+			* Take help from directly official website
+
+		* viewabilityConfigCallbackPairs -
+			* List of ViewabilityConfig/onViewableItemsChanged pairs. A specific onViewableItemsChanged will be called when its corresponding ViewabilityConfig's conditions are met. See ViewabilityHelper.js for flow type and further documentation.
+			* TYPE 	array of ViewabilityConfigCallbackPair
+
+	7) Methods -
+		* flashScrollIndicators() - Displays the scroll indicators momentarily.
+		* getNativeScrollRef() - Provides a reference to the underlying scroll component
+		* getScrollResponder() - Provides a handle to the underlying scroll responder.
+		* getScrollableNode() - Provides a handle to the underlying scroll node.
+		* recordInteraction() - Tells the list an interaction has occurred, which should trigger viewability calculations, e.g. if waitForInteractions is true and the user has not scrolled. This is typically called by taps on items or by navigation actions.
+		* scrollToEnd(params) - Scrolls to the end of the content. May be janky without getItemLayout prop.
+				NAME - params	TYPE - object
+			Valid params keys are:
+			* 'animated' (boolean) - Whether the list should do an animation while scrolling. Defaults to true.
+
+		* scrollToIndex(params) - 
+			* Scrolls to the item at the specified index such that it is positioned in the viewable area such that viewPosition 0 places it at the top, 1 at the bottom, and 0.5 centered in the middle.
+			* Note: Cannot scroll to locations outside the render window without specifying the getItemLayout prop.
+				NAME - params	TYPE - object
+			* Valid params keys are:
+				* 'animated' (boolean) - Whether the list should do an animation while scrolling. Defaults to true.
+				* 'index' (number) - The index to scroll to. Required.
+				* 'viewOffset' (number) - A fixed number of pixels to offset the final target position.
+				* 'viewPosition' (number) - A value of 0 places the item specified by index at the top, 1 at the bottom, and 0.5 centered in the middle.
+
+		* scrollToItem(params) - 
+			* Requires linear scan through data - use scrollToIndex instead if possible.
+			* Note: Cannot scroll to locations outside the render window without specifying the getItemLayout prop.
+				NAME - params	TYPE - object
+			* Valid params keys are:
+				* 'animated' (boolean) - Whether the list should do an animation while scrolling. Defaults to true.
+				* 'item' (object) - The item to scroll to. Required.
+				* 'viewPosition' (number)
+
+		* scrollToOffset(params) -
+			* Scroll to a specific content pixel offset in the list.
+				NAME - params	TYPE - object
+			* Valid params keys are:
+				* 'offset' (number) - The offset to scroll to. In case of horizontal being true, the offset is the x-value, in any other case the offset is the y-value. Required.
+				* 'animated' (boolean) - Whether the list should do an animation while scrolling. Defaults to true.
+
+
+5) Image -
+	1) A React component for displaying different types of images, including network images, static resources, temporary local images, and images from local disk, such as the camera roll.
+	2) This example shows fetching and displaying an image from local storage as well as one from network and even from data provided in the 'data:' uri scheme.
+	3) When building your own native code, GIF and WebP are not supported by default on Android.
+	4) You will need to add some optional modules in android/app/build.gradle, depending on the needs of your app.
+		* Take help from directly official website
+	5) Props -
+		* View Props - Inherits View Props.
+		* accessible - When true, indicates the image is an accessibility element
+			TYPE - bool		DEFAULT - false
+
+		* accessibilityLabel - The text that's read by the screen reader when the user interacts with the image.
+			TYPE - string
+
+		* blurRadius - blurRadius: the blur radius of the blur filter added to the image.
+			TYPE - number
+
+		* capInsets (iOS) - When the image is resized, the corners of the size specified by capInsets will stay a fixed size, but the center content and borders of the image will be stretched. This is useful for creating resizable rounded buttons, shadows, and other resizable assets. More info in the official Apple documentation.
+			TYPE - Rect
+
+		* defaultSource - A static image to display while loading the image source.
+			TYPE  ImageSource
+
+		* fadeDuration (Android) - Fade animation duration in miliseconds.
+			TYPE - number		DEFAULT - 300
+
+		* loadingIndicatorSource - Similarly to source, this property represents the resource used to render the loading indicator for the image. The loading indicator is displayed until image is ready to be displayed, typically after the image is downloaded.
+			TYPE - ImageSource (uri only), number
+
+		* onError - Invoked on load error.
+		* onLayout - Invoked on mount and on layout changes.
+		* onLoad - Invoked when load completes successfully.
+		* onLoadEnd - Invoked when load either succeeds or fails.
+		* onLoadStart - Invoked on load start.
+		* onPartialLoad (iOS) - Invoked when a partial load of the image is complete. The definition of what constitutes a "partial load" is loader specific though this is meant for progressive JPEG loads.
+		* onProgress - Invoked on download progress
+		* progressiveRenderingEnabledAndroid - When true, enables progressive jpeg streaming - https://frescolib.org/docs/progressive-jpegs.
+			TYPE	bool	DEFAULT false
+
+		* resizeMethod(Android) - 
+			* The mechanism that should be used to resize the image when the image's dimensions differ from the image view's dimensions. Defaults to auto.
+
+		* resizeMode - 
+			* Determines how to resize the image when the frame doesn't match the raw image dimensions. Defaults to cover.
+			* cover: Scale the image uniformly (maintain the image's aspect ratio) so that
+				* both dimensions (width and height) of the image will be equal to or larger than the corresponding dimension of the view (minus padding)
+				* at least one dimension of the scaled image will be equal to the corresponding dimension of the view (minus padding)
+				contain: Scale the image uniformly (maintain the image's aspect ratio) so that both dimensions (width and height) of the image will be equal to or less than the corresponding dimension of the view (minus padding).
+
+			* stretch: Scale width and height independently, This may change the aspect ratio of the src.
+			* repeat: Repeat the image to cover the frame of the view. The image will keep its size and aspect ratio, unless it is larger than the view, in which case it will be scaled down uniformly so that it is contained in the view.
+			* center: Center the image in the view along both dimensions. If the image is larger than the view, scale it down uniformly so that it is contained in the view.
+
+		* source - 
+			* The image source (either a remote URL or a local file resource).
+			* This prop can also contain several remote URLs, specified together with their width and height and potentially with scale/other URI arguments.
+			* Take help from directly official website
+				TYPE  ImageSource
+
+		* style -
+			TYPE - Image Style Props, Layout Props, Shadow Props, Transforms
+		
+		* testID - A unique identifier for this element to be used in UI Automation testing scripts.
+			TYPE - string
+
+	6) Methods -
+		* abortPrefetch() (Android) - Abort prefetch request.
+			NAME		TYPE		DESCRIPTION
+			requestId 	Required	number	Request id as returned by prefetch().
+
+		* getSize() - Retrieve the width and height (in pixels) of an image prior to displaying it. This method can fail if the image cannot be found, or fails to download.
+
+		NAME 		TYPE		DESCRIPTION
+		uri 		Required	string	The location of the image.
+		success 	Required	function	The function that will be called if the image was successfully found and width and height retrieved.
+		failure		function	The function that will be called if there was an error, such as failing to retrieve the image.
+
+		* getSizeWithHeaders() - 
+			* Image.getSizeWithHeaders(uri, headers, success, [failure]);
+			* Retrieve the width and height (in pixels) of an image prior to displaying it with the ability to provide the headers for the request. This method can fail if the image cannot be found, or fails to download. It also does not work for static image resources.
+
+			NAME 				TYPE		DESCRIPTION
+			uri 	Required	string		The location of the image.
+			headers Required	object		The headers for the request.
+			success Required	function	The function that will be called if the image was successfully found and width and height retrieved.
+			failure				function	The function that will be called if there was an error, such as failing to retrieve the image.
+
+Will come back for image ....
+
+
+6) ImageBackground -
+	* A common feature request from developers familiar with the web is background-image. To handle this use case, you can use the <ImageBackground> component, which has the same props as <Image>, and add whatever children to it you would like to layer on top of it.
+	* props -
+		1) Image Props - Inherits Image Props.
+		2) imageStyle - TYPE - Image Style
+		3) imageRef - Allows to set a reference to the inner Image component
+			TYPE - Ref
+		4) style - TYPE View Style
+
+7) KeyboardAvoidingView -
+	* This component will automatically adjust its height, position, or bottom padding based on the keyboard height to remain visible while the virtual keyboard is displayed.
+	* Props - 
+		1) View Props - Inherits View Props.
+		2) behavior - Specify how to react to the presence of the keyboard.
+			TYPE - enum('height', 'position', 'padding')
+		3) contentContainerStyle - The style of the content container (View) when behavior is 'position'.
+			TYPE - View Style
+		4) enabled - Enabled or disabled KeyboardAvoidingView.
+			TYPE - boolean		DEFAULT - true
+		5) keyboardVerticalOffset - This is the distance between the top of the user screen and the react native view, may be non-zero in some use cases.
+			TYPE - number		DEFAULT - 0
+
+8) Modal -
+	* The Modal component is a basic way to present content above an enclosing view.
+	* Props -
+		View Props
+		animated
+		animationType
+		hardwareAcceleratedAndroid
+		onDismissiOS
+		onOrientationChangeiOS
+		onRequestClose
+		onShow
+		presentationStyleiOS
+		statusBarTranslucentAndroid
+		supportedOrientationsiOS
+		transparent
+		visible
+
+
+9) Pressable -
+	* Pressable is a Core Component wrapper that can detect various stages of press interactions on any of its defined children.
+	* ex. 
+		<Pressable onPress={onPressFunction}>
+		  <Text>I'm pressable!</Text>
+		</Pressable>
+	* 2 types of things will happen with Pressable-
+		onPressIn, onPressOut
+		After onPressIn, two things will happen -
+			1) instant onPressOut
+			2) delayed onPressOut, like onLongPress
+	* Props -
+		android_disableSoundAndroid
+		android_rippleAndroid
+		children
+		unstable_pressDelay
+		delayLongPress
+		disabled
+		hitSlop
+		onLongPress
+		onPress
+		onPressIn
+		onPressOut
+		pressRetentionOffset
+		style
+		testOnly_pressed
+		Type Definitions
+		RippleConfig
 
 
 
+10) RefreshControl -
+	* This component is used inside a ScrollView or ListView to add pull to refresh functionality. When the ScrollView is at scrollY: 0, swiping down triggers an onRefresh event.
+	* Props -
+		* View Props
+		* refreshing (Required)
+		* colorsAndroid
+		* enabledAndroid
+		* onRefresh
+		* progressBackgroundColorAndroid
+		* progressViewOffset
+		* sizeAndroid
+		* tintColoriOS
+		* titleiOS
+		* titleColor
+
+11) ScrollView -
+	* Component that wraps platform ScrollView while providing integration with touch locking "responder" system.
+	* ScrollView renders all its react child components at once, but this has a performance downside.
+	* Imagine you have a very long list of items you want to display, maybe several screens worth of content. Creating JS components and native views for everything all at once, much of which may not even be shown, will contribute to slow rendering and increased memory usage.
+	* This is where FlatList comes into play. FlatList renders items lazily, when they are about to appear, and removes items that scroll way off screen to save memory and processing time.
+	* FlatList is also handy if you want to render separators between your items, multiple columns, infinite scroll loading, or any number of other features it supports out of the box.
+
+	* Props -
+		View Props
+		StickyHeaderComponent
+		alwaysBounceHorizontal	(iOS)
+		alwaysBounceVertical	(iOS)
+		automaticallyAdjustContentInsets	(iOS)
+		automaticallyAdjustKeyboardInsets	(iOS)
+		automaticallyAdjustsScrollIndicatorInsets	(iOS)
+		bounces	(iOS)
+		bouncesZoom	(iOS)
+		canCancelContentTouches	(iOS)
+		centerContent	(iOS)
+		contentContainerStyle
+		contentInset	(iOS)
+		contentInsetAdjustmentBehavior	(iOS)
+		contentOffset
+		decelerationRate
+		directionalLockEnabled	(iOS)
+		disableIntervalMomentum
+		disableScrollViewPanResponder
+		endFillColor 	(Android)
+		fadingEdgeLength 	(Android)
+		horizontal
+		indicatorStyle	(iOS)
+		invertStickyHeaders
+		keyboardDismissMode
+		keyboardShouldPersistTaps
+		maintainVisibleContentPosition	(iOS)
+		maximumZoomScale	(iOS)
+		minimumZoomScale	(iOS)
+		nestedScrollEnabled 	(Android)
+		onContentSizeChange
+		onMomentumScrollBegin
+		onMomentumScrollEnd
+		onScroll
+		onScrollBeginDrag
+		onScrollEndDrag
+		onScrollToTop	(iOS)
+		overScrollMode 	(Android)
+		pagingEnabled
+		persistentScrollbar 	(Android)
+		pinchGestureEnabled	(iOS)
+		refreshControl
+		removeClippedSubviews
+		scrollEnabled
+		scrollEventThrottle	(iOS)
+		scrollIndicatorInsets	(iOS)
+		scrollPerfTag 	(Android)
+		scrollToOverflowEnabled	(iOS)
+		scrollsToTop	(iOS)
+		showsHorizontalScrollIndicator
+		showsVerticalScrollIndicator
+		snapToAlignment	(iOS)
+		snapToEnd
+		snapToInterval
+		snapToOffsets
+		snapToStart
+		stickyHeaderHiddenOnScroll
+		stickyHeaderIndices
+		zoomScalei
+
+	* Methods -
+		flashScrollIndicators()
+		scrollTo()
+		scrollToEnd()
+
+12) SectionList -
+	* A performant interface for rendering sectioned lists, supporting the most handy features:
+		Fully cross-platform.
+		Configurable viewability callbacks.
+		List header support.
+		List footer support.
+		Item separator support.
+		Section header support.
+		Section separator support.
+		Heterogeneous data and item rendering support.
+		Pull to Refresh.
+		Scroll loading.
+	* This is a convenience wrapper around <VirtualizedList>, and thus inherits its props (as well as those of <ScrollView>) that aren't explicitly listed here, along with the following caveats:
+		1) Internal state is not preserved when content scrolls out of the render window. Make sure all your data is captured in the item data or external stores like Flux, Redux, or Relay.
+		
+		2) This is a PureComponent which means that it will not re-render if props remain shallow-equal. Make sure that everything your renderItem function depends on is passed as a prop (e.g. extraData) that is not === after updates, otherwise your UI may not update on changes. This includes the data prop and parent component state.
+		
+		3) In order to constrain memory and enable smooth scrolling, content is rendered asynchronously offscreen. This means it's possible to scroll faster than the fill rate and momentarily see blank content. This is a tradeoff that can be adjusted to suit the needs of each application, and we are working on improving it behind the scenes.
+
+		4) By default, the list looks for a key prop on each item and uses that for the React key. Alternatively, you can provide a custom keyExtractor prop.
+
+	* Props -
+		VirtualizedList Props
+		renderItem (Required)
+		sections (Required)
+		extraData
+		initialNumToRender
+		inverted
+		ItemSeparatorComponent
+		keyExtractor
+		ListEmptyComponent
+		ListFooterComponent
+		ListHeaderComponent
+		onEndReached
+		onEndReachedThreshold
+		onRefresh
+		onViewableItemsChanged
+		refreshing
+		removeClippedSubviews
+		renderSectionFooter
+		renderSectionHeader
+		SectionSeparatorComponent
+		stickySectionHeadersEnabled
+
+	* Methods -
+		flashScrollIndicators() (iOS)
+		recordInteraction()
+		scrollToLocation()
+		Type Definitions
+		Section
+
+13) StatusBar -
+	* Component to control the app's status bar. The status bar is the zone, typically at the top of the screen, that displays the current time, Wi-Fi and cellular network information, battery level and/or other status icons.
+* Usage with Navigator -
+	1) It is possible to have multiple StatusBar components mounted at the same time. The props will be merged in the order the StatusBar components were mounted.
+
+	* Constants -
+		currentHeightAndroid
+	* Props -
+		animated
+		backgroundColor	(Android)
+		barStyle
+		hidden
+		networkActivityIndicatorVisible	(iOS)
+		showHideTransition	(iOS)
+		translucent	(Android)
+
+	* Methods -
+		popStackEntry()
+		pushStackEntry()
+		replaceStackEntry()
+		setBackgroundColor()	(Android)
+		setBarStyle()
+		setHidden()
+		setNetworkActivityIndicatorVisible()	(iOS)
+		setTranslucent()	(Android)
+		Type Definitions
+		StatusBarAnimation
+		StatusBarStyle
+
+14) Switch -
+	* Renders a boolean input.
+	* This is a controlled component that requires an onValueChange callback that updates the value prop in order for the component to reflect user actions. If the value prop is not updated, the component will continue to render the supplied value prop instead of the expected result of any user actions.
+	* Props -
+		View Props
+		disabled
+		ios_backgroundColoriOS
+		onChange
+		onValueChange
+		thumbColor
+		trackColor
+		value
+
+15) Text -
+	* A React component for displaying text.
+	* Text supports nesting, styling, and touch handling.
+* Nested text -
+	Both Android and iOS allow you to display formatted text by annotating ranges of a string with specific formatting like bold or colored text (NSAttributedString on iOS, SpannableString on Android). In practice, this is very tedious. For React Native, we decided to use web paradigm for this where you can nest text to achieve the same effect.
+* Containers -
+	The <Text> element is unique relative to layout: everything inside is no longer using the Flexbox layout but using text layout. This means that elements inside of a <Text> are no longer rectangles, but wrap when they see the end of the line.
+* Need More Time ...
+
+	* Props -
+		accessibilityHint
+		accessibilityLanguage (iOS)
+		accessibilityLabel
+		accessibilityRole
+		accessibilityState
+		accessibilityActions
+		onAccessibilityAction
+		accessible
+		adjustsFontSizeToFit
+		allowFontScaling
+		android_hyphenationFrequencyAndroid
+		dataDetectorType (Android)
+		disabled (Android)
+		ellipsizeMode
+		maxFontSizeMultiplier
+		minimumFontScale (iOS)
+		nativeID
+		numberOfLines
+		onLayout
+		onLongPress
+		onMoveShouldSetResponder
+		onPress
+		onResponderGrant
+		onResponderMove
+		onResponderRelease
+		onResponderTerminate
+		onResponderTerminationRequest
+		onStartShouldSetResponderCapture
+		onTextLayout
+		pressRetentionOffset
+		selectable
+		selectionColor (Android)
+		style
+		suppressHighlighting (iOS)
+		testID
+		textBreakStrategyAndroid
+	* Type Definitions
+		TextLayout
+		TextLayoutEvent
+
+16) TextInput -
+	* A foundational component for inputting text into the app via a keyboard. Props provide configurability for several features, such as auto-correction, auto-capitalization, placeholder text, and different keyboard types, such as a numeric keypad.
+	* The most basic use case is to plop down a TextInput and subscribe to the onChangeText events to read the user input. There are also other events, such as onSubmitEditing and onFocus that can be subscribed to.
+
+	* Props -
+		View Props
+		allowFontScaling
+		autoCapitalize
+		autoComplete	(Android)
+		autoCorrect
+		autoFocus
+		blurOnSubmit
+		caretHidden
+		clearButtonModeiOS
+		clearTextOnFocusiOS
+		contextMenuHidden
+		dataDetectorTypesiOS
+		defaultValue
+		cursorColor	(Android)
+		disableFullscreenUI	(Android)
+		editable
+		enablesReturnKeyAutomaticallyiOS
+		importantForAutofill	(Android)
+		inlineImageLeft	(Android)
+		inlineImagePadding	(Android)
+		inputAccessoryViewIDiOS
+		keyboardAppearanceiOS
+		keyboardType
+		maxFontSizeMultiplier
+		maxLength
+		multiline
+		numberOfLines	(Android)
+		onBlur
+		onChange
+		onChangeText
+		onContentSizeChange
+		onEndEditing
+		onPressIn
+		onPressOut
+		onFocus
+		onKeyPress
+		onLayout
+		onScroll
+		onSelectionChange
+		onSubmitEditing
+		placeholder
+		placeholderTextColor
+		returnKeyLabel	(Android)
+		returnKeyType
+		rejectResponderTerminationiOS
+		scrollEnablediOS
+		secureTextEntry
+		selection
+		selectionColor
+		selectTextOnFocus
+		showSoftInputOnFocus
+		spellCheckiOS
+		textAlign
+		textContentTypeiOS
+		passwordRulesiOS
+		style
+		textBreakStrategy	(Android)
+		underlineColorAndroid	(Android)
+		value
+		Methods
+		.focus()
+		.blur()
+		clear()
+		isFocused()
+
+20) View -
+	* The most fundamental component for building a UI, View is a container that supports layout with flexbox, style, some touch handling, and accessibility controls. View maps directly to the native view equivalent on whatever platform React Native is running on, whether that is a UIView, <div>, android.view, etc.
+	* View is designed to be nested inside other views and can have 0 to many children of any type.
+	* Props -
+		accessibilityActions
+		accessibilityElementsHidden (iOS)
+		accessibilityHint
+		accessibilityLanguage (iOS)
+		accessibilityIgnoresInvertColors (iOS)
+		accessibilityLabel
+		accessibilityLiveRegion (Android)
+		accessibilityRole
+		accessibilityState
+		accessibilityValue
+		accessibilityViewIsModal (iOS)
+		accessible
+		collapsable (Android)
+		focusable (Android)
+		hitSlop
+		importantForAccessibility (Android)
+		nativeID
+		needsOffscreenAlphaCompositing
+		nextFocusDown (Android)
+		nextFocusForward (Android)
+		nextFocusLeft (Android)
+		nextFocusRight (Android)
+		nextFocusUp (Android)
+		onAccessibilityAction
+		onAccessibilityEscape (iOS)
+		onAccessibilityTap
+		onLayout
+		onMagicTap (iOS)
+		onMoveShouldSetResponder
+		onMoveShouldSetResponderCapture
+		onResponderGrant
+		onResponderMove
+		onResponderReject
+		onResponderRelease
+		onResponderTerminate
+		onResponderTerminationRequest
+		onStartShouldSetResponder
+		onStartShouldSetResponderCapture
+		pointerEvents
+		removeClippedSubviews
+		renderToHardwareTextureAndroid (Android)
+		shouldRasterizeIOS (iOS)
+		style
+		testID
+
+21) VirtualizedList -
+	* . In general, this should only really be used if you need more flexibility than FlatList provides, e.g. for use with immutable data instead of plain arrays.
+	* Virtualization massively improves memory consumption and performance of large lists by maintaining a finite render window of active items and replacing all items outside of the render window with appropriately sized blank space. 
+	* The window adapts to scrolling behavior, and items are rendered incrementally with low-pri (after any running interactions) if they are far from the visible area, or with hi-pri otherwise to minimize the potential of seeing blank space.
+	* some caveats -
+		same as Flatlist and Sectionlist
+	* Props -
+		ScrollView Props
+		data 	(Required)
+		getItem 	(Required)
+		getItemCount 	(Required)
+		renderItem 	(Required)
+		CellRendererComponent
+		ItemSeparatorComponent
+		ListEmptyComponent
+		ListItemComponent
+		ListFooterComponent
+		ListFooterComponentStyle
+		ListHeaderComponent
+		ListHeaderComponentStyle
+		debug
+		disableVirtualization
+		extraData
+		getItemLayout
+		horizontal
+		initialNumToRender
+		initialScrollIndex
+		inverted
+		listKey
+		keyExtractor
+		maxToRenderPerBatch
+		onEndReached
+		onEndReachedThreshold
+		onRefresh
+		onScrollToIndexFailed
+		onViewableItemsChanged
+		persistentScrollbar
+		progressViewOffset
+		refreshControl
+		refreshing
+		removeClippedSubviews
+		renderScrollComponent
+		viewabilityConfig
+		viewabilityConfigCallbackPairs
+		updateCellsBatchingPeriod
+		windowSize
+		Methods
+		flashScrollIndicators()
+		getChildContext()
+		getScrollableNode()
+		getScrollRef()
+		getScrollResponder()
+		hasMore()
+		scrollToEnd()
+		scrollToIndex()
+		scrollToItem()
+		scrollToOffset()
+		recordInteraction()
+		setNativeProps()
 
 
 
+B) Android Components -
+1) DrawerLayoutAndroid -
+	* React component that wraps the platform DrawerLayout (Android only). 
+	* The Drawer (typically used for navigation) is rendered with renderNavigationView and direct children are the main view (where your content goes).
+	Need More Time ...
+
+2) TouchableNativeFeedback -
+	* Used Pressable.
+	* A wrapper for making views respond properly to touches (Android only). On Android this component uses native state drawable to display touch feedback.
+	Need More Time ...
+
+
+C) iOS Components -
+1) InputAccessoryView -
+	* A component which enables customization of the keyboard input accessory view on iOS. The input accessory view is displayed above the keyboard whenever a TextInput has focus. This component can be used to create custom toolbars.
+	* To use this component wrap your custom toolbar with the InputAccessoryView component, and set a nativeID. Then, pass that nativeID as the inputAccessoryViewID of whatever TextInput you desire. 
+	* Props -
+		backgroundColor
+		nativeID
+		style
+
+2) SafeAreaView -
+	* The purpose of SafeAreaView is to render content within the safe area boundaries of a device. It is currently only applicable to iOS devices with iOS version 11 or later.
+	* SafeAreaView renders nested content and automatically applies padding to reflect the portion of the view that is not covered by navigation bars, tab bars, toolbars, and other ancestor views. Moreover, and most importantly, Safe Area's paddings reflect the physical limitation of the screen, such as rounded corners or camera notches (i.e. the sensor housing area on iPhone 13).
+
+
+D) Props -
+1) Image Style Props -
+	backfaceVisibility
+	backgroundColor
+	borderBottomLeftRadius
+	borderBottomRightRadius
+	borderColor
+	borderRadius
+	borderTopLeftRadius
+	borderTopRightRadius
+	borderWidth
+	opacity
+	overflow
+	overlayColorAndroid
+	resizeMode
+	tintColor
+
+2) Layout Props -
+	alignContent
+	alignItems
+	alignSelf
+	aspectRatio
+	borderBottomWidth
+	borderEndWidth
+	borderLeftWidth
+	borderRightWidth
+	borderStartWidth
+	borderTopWidth
+	borderWidth
+	bottom
+	direction
+	display
+	end
+	flex
+	flexBasis
+	flexDirection
+	flexGrow
+	flexShrink
+	flexWrap
+	height
+	justifyContent
+	left
+	margin
+	marginBottom
+	marginEnd
+	marginHorizontal
+	marginLeft
+	marginRight
+	marginStart
+	marginTop
+	marginVertical
+	maxHeight
+	maxWidth
+	minHeight
+	minWidth
+	overflow
+	padding
+	paddingBottom
+	paddingEnd
+	paddingHorizontal
+	paddingLeft
+	paddingRight
+	paddingStart
+	paddingTop
+	paddingVertical
+	position
+	right
+	start
+	top
+	width
+	zIndex
+
+3) Shadow Props -
+	shadowColor
+	shadowOffset (iOS)
+	shadowOpacity (iOS)
+	shadowRadius
+
+4) Text Style Props -
+	color
+	fontFamily
+	fontSize
+	fontStyle
+	fontWeight
+	includeFontPaddingAndroid
+	fontVariant
+	letterSpacing
+	lineHeight
+	textAlign
+	textAlignVerticalAndroid
+	textDecorationColoriOS
+	textDecorationLine
+	textDecorationStyleiOS
+	textShadowColor
+	textShadowOffset
+	textShadowRadius
+	textTransform
+	writingDirection
+
+5) View Style Props -
+	backfaceVisibility
+	backgroundColor
+	borderBottomColor
+	borderBottomEndRadius
+	borderBottomLeftRadius
+	borderBottomRightRadius
+	borderBottomStartRadius
+	borderBottomWidth
+	borderColor
+	borderEndColor
+	borderLeftColor
+	borderLeftWidth
+	borderRadius
+	borderRightColor
+	borderRightWidth
+	borderStartColor
+	borderStyle
+	borderTopColor
+	borderTopEndRadius
+	borderTopLeftRadius
+	borderTopRightRadius
+	borderTopStartRadius
+	borderTopWidth
+	borderWidth
+	elevationAndroid
+	opacity
+
+
+E) Object Types -
+1)	LayoutEvent Object Type -
+	* LayoutEvent object is returned in the callback as a result of component layout change, for example onLayout in View component.
+	* Keys and Value -
+		height
+		width
+		x
+		y
+		target
+	* Used by -
+		Image
+		Pressable
+		ScrollView
+		Text
+		TextInput
+		TouchableWithoutFeedback
+		View
+
+2) PressEvent Object Type -
+	* PressEvent object is returned in the callback as a result of user press interaction, for example onPress in Button component.
+	* Keys and value -
+		changedTouches
+		force (iOS)
+		identifier
+		locationX
+		locationY
+		pageX
+		pageY
+		target
+		timestamp
+		touches
+
+	* Used by
+		Button
+		PanResponder
+		Pressable
+		ScrollView
+		Text
+		TextInput
+		TouchableHighlight
+		TouchableOpacity
+		TouchableNativeFeedback
+		TouchableWithoutFeedback
+		View
+
+3) React Node Object Type -
+	* A React Node is one of the following types:
+		Boolean (which is ignored)
+		null or undefined (which is ignored)
+		Number
+		String
+		A React element (result of JSX)
+		An array of any of the above, possibly a nested one
+
+
+4) Rect Object Type -
+	* Rect accepts numeric pixel values to describe how far to extend a rectangular area. These values are added to the original area's size to expand it.
+	* Keys and values -
+		bottom
+		left
+		right
+		top
+	* Used by -
+		Image
+		Pressable
+		Text
+		TouchableWithoutFeedback
+
+
+5) ViewToken Object Type -
+	* ViewToken object is returned as one of properties in the onViewableItemsChanged callback, for example in FlatList component. It is exported by ViewabilityHelper.js.
+	* Keys and values - 
+		index
+		isViewable
+		item
+		key
+		section
+
+	* Used by -
+		FlatList
+		SectionList
+		VirtualizedList
+------------------------------------------------------------------------------------------------
+API -
+
+A) APIs
+1) AccessibilityInfo -
+	* Sometimes it's useful to know whether or not the device has a screen reader that is currently active. The AccessibilityInfo API is designed for this purpose. You can use it to query the current state of the screen reader as well as to register to be notified when the state of the screen reader changes.
+	* Methods -
+		addEventListener()
+		announceForAccessibility()
+		announceForAccessibilityWithOptions()
+		getRecommendedTimeoutMillis()  (Android)
+		isAccessibilityServiceEnabled()  (Android)
+		isBoldTextEnabled() (iOS)
+		isGrayscaleEnabled() (iOS)
+		isInvertColorsEnabled() (iOS)
+		isReduceMotionEnabled()
+		isReduceTransparencyEnabled() (iOS)
+		isScreenReaderEnabled()
+		removeEventListener()
+		setAccessibilityFocus()
+2) Alert - 
+	* Launches an alert dialog with the specified title and message.
+	* Optionally provide a list of buttons. Tapping any button will fire the respective onPress callback and dismiss the alert. By default, the only button will be an 'OK' button.
+	* This is an API that works both on Android and iOS and can show static alerts. Alert that prompts the user to enter some information is available on iOS only.
+	* iOS - On iOS you can specify any number of buttons. Each button can optionally specify a style, available options are represented by the AlertButtonStyle enum.
+	* Android - On Android at most three buttons can be specified. Android has a concept of a neutral, negative and a positive button:
+		If you specify one button, it will be the 'positive' one (such as 'OK')
+		Two buttons mean 'negative', 'positive' (such as 'Cancel', 'OK')
+		Three buttons mean 'neutral', 'negative', 'positive' (such as 'Later', 'Cancel', 'OK')
+
+	* Alerts on Android can be dismissed by tapping outside of the alert box. It is disabled by default and can be enabled by providing an optional Options parameter with the cancelable property set to true i.e.
+	{ cancelable: true }.
+
+	* The cancel event can be handled by providing an onDismiss callback property inside the options parameter.
+	* Methods -
+		alert()
+		prompt() (iOS)
+	* Type Definitions -
+		AlertButtonStyle (iOS)
+		AlertType (iOS)
+		Buttons
+		Options
+
+3) Animatied -
+	* The Animated library is designed to make animations fluid, powerful, and painless to build and maintain. Animated focuses on declarative relationships between inputs and outputs, configurable transforms in between, and start/stop methods to control time-based animation execution.
+	* The core workflow for creating an animation is to create an Animated.Value, hook it up to one or more style attributes of an animated component, and then drive updates via animations using Animated.timing().
+	Need More Time
+
+4) Animated.Value -
+
+5) Animated.ValueXY -
+
+6) Appearance - 
+	* The Appearance module exposes information about the user's appearance preferences, such as their preferred color scheme (light or dark).
+	* Methods -
+		getColorScheme()
+		addChangeListener()
+		removeChangeListener()
+
+7) AppRegistry -
+	* AppRegistry is the JS entry point to running all React Native apps. App root components should register themselves with AppRegistry.registerComponent, then the native system can load the bundle for the app and then actually run the app when it's ready by invoking AppRegistry.runApplication.
+	* To "stop" an application when a view should be destroyed, call AppRegistry.unmountApplicationComponentAtRootTag with the tag that was passed into runApplication. These should always be used as a pair.
+	* AppRegistry should be required early in the require sequence to make sure the JS execution environment is setup before other modules are required.
+	* Methods -
+		cancelHeadlessTask()
+		enableArchitectureIndicator()
+		getAppKeys()
+		getRegistry()
+		getRunnable()
+		getSectionKeys()
+		getSections()
+		registerCancellableHeadlessTask()
+		registerComponent()
+		registerConfig()
+		registerHeadlessTask()
+		registerRunnable()
+		registerSection()
+		runApplication()
+		setComponentProviderInstrumentationHook()
+		setWrapperComponentProvider()
+		startHeadlessTask()
+		unmountApplicationComponentAtRootTag()
+	* Type Definitions -
+		AppConfig
+		Registry
+		Runnable
+		Runnables
+		Task
+		TaskCanceller
+		TaskCancelProvider
+		TaskProvider
+
+8) AppState -
+	* AppState can tell you if the app is in the foreground or background, and notify you when the state changes.
+	* AppState is frequently used to determine the intent and proper behavior when handling push notifications.
+* App States -
+	1) active - The app is running in the foreground
+	2) background - The app is running in the background. 
+		The user is either:
+			in another app
+			on the home screen
+			[Android] on another Activity (even if it was launched by your app)
+	3) [iOS] inactive - This is a state that occurs when transitioning between foreground & background, and during periods of inactivity such as entering the multitasking view, opening the Notification Center or in the event of an incoming call.
+	4) Events -
+		change
+		memoryWarning
+		focusAndroid
+		blurAndroid
+	5) Methods -
+		addEventListener()
+		removeEventListener()
+	6) Properties -
+		currentState
+
+9) DevSettings -
+	* The DevSettings module exposes methods for customizing settings for developers in development.
+	* Methods -
+		addMenuItem()
+		reload()
+
+10) Dimensions -
+	* useWindowDimensions is the preferred API for React components. Unlike Dimensions, it updates as the window's dimensions update. This works nicely with the React paradigm.
+	* import { Dimensions } from 'react-native';
+	You can get the application window's width and height using the following code:
+		const windowWidth = Dimensions.get('window').width;
+		const windowHeight = Dimensions.get('window').height;
+	* Although dimensions are available immediately, they may change (e.g due to device rotation, foldable devices etc) so any rendering logic or styles that depend on these constants should try to call this function on every render, rather than caching the value (for example, using inline styles rather than setting a value in a StyleSheet).
+	* If you are targeting foldable devices or devices which can change the screen size or app window size, you can use the event listener available in the Dimensions module.
+	* Methods -
+		addEventListener()
+		get()
+		removeEventListener()
+		set()
+	* Type Definitions
+		DimensionsValue
+		DisplayMetrics
+
+11) Easing -
+	* The Easing module implements common easing functions. This module is used by Animated.timing() to convey physically believable motion in animations.
+	* Predefined animations -
+		The Easing module provides several predefined animations through the following methods:
+			* back provides a basic animation where the object goes slightly back before moving forward
+			* bounce provides a bouncing animation
+			* ease provides a basic inertial animation
+			* elastic provides a basic spring interaction
+	* Standard functions -
+		Three standard easing functions are provided:
+			linear
+			quad
+			cubic
+		The poly function can be used to implement quartic, quintic, and other higher power functions.
+	* Additional Functions -
+		Additional mathematical functions are provided by the following methods:
+			* bezier provides a cubic bezier curve
+			* circle provides a circular function
+			* sin provides a sinusoidal function
+			* exp provides an exponential function
+		The following helpers are used to modify other easing functions.
+			* in runs an easing function forwards
+			* inOut makes any easing function symmetrical
+			* out runs an easing function backwards
+	* Methods -
+		step0()
+		step1()
+		linear()
+		ease()
+		quad()
+		cubic()
+		poly()
+		sin()
+		circle()
+		exp()
+		elastic()
+		back()
+		bounce()
+		bezier()
+		in()
+		out()
+		inOut()
+
+
+12) InteractionManager -
+	* InteractionManager allows long-running work to be scheduled after any interactions/animations have completed. In particular, this allows JavaScript animations to run smoothly.
+	* Need More time...
+	* Method -
+		runAfterInteractions()
+		createInteractionHandle()
+		clearInteractionHandle()
+		setDeadline()
+
+13) Keyboard -
+	* Keyboard module to control keyboard events.
+	* Method -
+		addListener()
+		removeListener()
+		removeAllListeners()
+		dismiss()
+		scheduleLayoutAnimation
+
+14) LayoutAnimation -
+	* Automatically animates views to their new positions when the next layout happens.
+	* A common way to use this API is to call it before updating the state hook in functional components and calling setState in class components.
+	* Note that in order to get this to work on Android you need to set the following flags via UIManager:
+		if (Platform.OS === 'android') {
+		  if (UIManager.setLayoutAnimationEnabledExperimental) {
+		    UIManager.setLayoutAnimationEnabledExperimental(true);
+		  }
+		}
+
+	* Methods -
+		configureNext()
+		create()
+	* Properties -
+		Types
+		Properties
+		Presets
+		easeInEaseOut
+		linear
+		spring
+
+15) Linking -
+	* Linking gives you a general interface to interact with both incoming and outgoing app links.
+	* Every Link (URL) has a URL Scheme, some websites are prefixed with https:// or http:// and the http is the URL Scheme. Let's call it scheme for short.
+	
+	* In addition to https, you're likely also familiar with the mailto scheme. When you open a link with the mailto scheme, your operating system will open an installed mail application. Similarly, there are schemes for making phone calls and sending SMS. Read more about built-in URL schemes below.
+
+	* Like using the mailto scheme, it's possible to link to other applications by using custom url schemes. For example, when you get a Magic Link email from Slack, the Launch Slack button is an anchor tag with an href that looks something like: slack://secret/magic-login/other-secret. Like with Slack, you can tell the operating system that you want to handle a custom scheme. When the Slack app opens, it receives the URL that was used to open it. This is often referred to as deep linking. Read more about how to get the deep link into your app.
+
+	* Custom URL scheme isn't the only way to open your application on mobile. You don't want to use a custom URL scheme in links in the email because then the links would be broken on desktop. Instead, you want to use a regular https links such as https://www.myapp.io/records/1234546. and on mobile you want that link open your app. Android calls it Deep Links (Universal Links - iOS).
+
+* Enabling Deep Links -
+	Take help from directly official website
+
+* Handling Deep Links
+	There are two ways to handle URLs that open your app.
+
+	1. If the app is already open, the app is foregrounded and a Linking 'url' event is fired
+	You can handle these events with Linking.addEventListener('url', callback) - it calls callback({ url }) with the linked URL
+
+	2. If the app is not already open, it is opened and the url is passed in as the initialURL
+	You can handle these events with Linking.getInitialURL() - it returns a Promise that resolves to the URL, if there is one.
+
+	* Methods -
+		addEventListener()
+		canOpenURL()
+		getInitialURL()
+		openSettings()
+		openURL()
+		removeEventListener()
+		sendIntent()
 
 
 
+16) PanResponder -
+	* PanResponder reconciles several touches into a single gesture. It makes single-touch gestures resilient to extra touches, and can be used to recognize basic multi-touch gestures.
+	Need More Time...
 
+17) PixelRatio -
+	* PixelRatio gives you access to the device's pixel density and font scale.
+* Fetching a correctly sized image -
+	1) You should get a higher resolution image if you are on a high pixel density device. A good rule of thumb is to multiply the size of the image you display by the pixel ratio.
+
+	var image = getImage({
+	  width: PixelRatio.getPixelSizeForLayoutSize(200),
+	  height: PixelRatio.getPixelSizeForLayoutSize(100)
+	});
+	<Image source={image} style={{ width: 200, height: 100 }} />;
+
+* Pixel grid snapping -
+	Need More Time ...
+	* Method -
+		get()
+		getFontScale()
+		getPixelSizeForLayoutSize()
+		roundToNearestPixel()
+
+18) Platform -
+	* Properties -
+		constants
+		isPadiOS
+		isTV
+		isTesting
+		OS
+		Version
+	* Methods
+		select()
+
+
+19) PlatformColor -
+	
+
+
+
+20) RootTag -
+	* RootTag is an opaque identifier assigned to the native root view of your React Native surface — i.e. the ReactRootView or RCTRootView instance for Android or iOS respectively. In short, it is a surface identifier.
+
+21) Share -
+	* Methods -
+		share()
+	* Properties
+		sharedAction
+		dismissedAction
+
+22) StyleSheet -
+	* A StyleSheet is an abstraction similar to CSS StyleSheets
+	* Code quality tips:
+		1) By moving styles away from the render function, you're making the code easier to understand.
+		2) Naming the styles is a good way to add meaning to the low level components in the render function.
+	* Method -
+		compose()
+		create()
+		flatten()
+		setStyleAttributePreprocessor()
+	* Properties -
+		absoluteFill
+		absoluteFillObject
+		hairlineWidth
+		absoluteFill vs. absoluteFillObject
+
+23) Systrace -
+	* Systrace is a standard Android marker-based profiling tool (and is installed when you install the Android platform-tools package). Profiled code blocks are surrounded by start/end markers which are then visualized in a colorful chart format. Both the Android SDK and React Native framework provide standard markers that you can visualize.
+	* Method -
+		installReactHook()
+		setEnabled()
+		isEnabled()
+		beginEvent()
+		endEvent()
+		beginAsyncEvent()
+		endAsyncEvent()
+		counterEvent()
+
+24) Transforms -
+	Transforms are style properties that will help you modify the appearance and position of your components using 2D or 3D transformations. However, once you apply transforms, the layouts remain the same around the transformed component hence it might overlap with the nearby components. You can apply margin to the transformed component, the nearby components or padding to the container to prevent such overlaps.
+
+25) Vibration -
+	Vibrates the device.
+	* Method -
+		cancel()
+		vibrate()
+
+
+B) Hooks -
+1) useColorScheme -
+	The useColorScheme React hook provides and subscribes to color scheme updates from the Appearance module. The return value indicates the current user preferred color scheme. The value may be updated later, either through direct user action (e.g. theme selection in device settings) or on a schedule (e.g. light and dark themes that follow the day/night cycle).
+2) useWindowDimensions -
+	* useWindowDimensions automatically updates width and height values when screen size changes. You can get your application window's width and height like so:
+
+	const { height, width } = useWindowDimensions();
+
+	* Properties -
+		fontScale
+		height
+		scale
+		width
+
+
+
+C) Android APIs -
+1) Backhandler -
+	* The Backhandler API detects hardware button presses for back navigation, lets you register event listeners for the system's back action, and lets you control how your application responds. It is Android-only.
+	* The event subscriptions are called in reverse order (i.e. the last registered subscription is called first).
+		1) If one subscription returns true, then subscriptions registered earlier will not be called.
+		2) If no subscription returns true or none are registered, it programmatically invokes the default back button functionality to exit the app.
+	* Methods
+		addEventListener()
+		exitApp()
+		removeEventListener()
+
+------------------------------------------------------------------------------------------------
 
 
 
@@ -80,3 +1772,4 @@ Interview Questions
 
 Important Websites -
 https://reactnative.directory/
+https://www.reactnative.guide/

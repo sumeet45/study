@@ -45,14 +45,15 @@ Youtube - TechWorld with Nana
 
 9) Create simple project -
 * First, create network which contains mongo db and mongo express.
+* docker network create mongo-network  	//to create mongo network
 * command to execute - 
 		sudo docker run -d \
-		> -p 27017:27017 \
-		> -e MONGO_INITDB_ROOT_USERNAME=admin \
-		> -e MONGO_INITDB_ROOT_PASSWORD=password \
-		> --name mongodb \
-		> --net mongo-network \
-		> mongo
+		-p 27017:27017 \
+		-e MONGO_INITDB_ROOT_USERNAME=admin \
+		-e MONGO_INITDB_ROOT_PASSWORD=password \
+		--name mongodb \
+		--net mongo-network \
+		mongo
 * command to execute mongo-express =
 	sudo docker run -d \
 	-p 8081:8081 \
@@ -66,8 +67,22 @@ Youtube - TechWorld with Nana
 
 
 10) Docker Compose -
-* sometime we need to deal with multiple containers. so it became tedious job to write and run those container for multiple time. Hence we use docker compose feature. docker compose is collection of docker commands, it becomes easy to edit and run it.
+* sometime we need to deal with multiple containers. so it became tedious job to write and run those container for multiple time. Hence we use docker compose feature. docker compose is collection of docker commands in yaml file, it becomes easy to edit and run it.
 * Docker compose takes care of container. it create common network for these containers.
+
+* edit yaml file -
+ version: "3"		= latest version of docker-compose
+ services:			= now container list comes here
+ 	mongodb:
+ 		image:mongo
+ 		ports:
+ 			-27017:27017	= HOST:CONTAINER
+ 		enviornment:
+ 			-MONGO_INITDB_ROOT_USERNAME=admin
+ 			-MONGO_INITDB_ROOT_PASSWORD=password
+ 	mongo-express:
+
+
 
 
 commands -
@@ -99,4 +114,4 @@ docker desktop
 docker hub - same as github
 
 
-1:16
+1:34

@@ -121,3 +121,70 @@ Interview Questions =
 * What is Virtual DOM - 
 1) The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. This process is called reconciliation.
 2) when updated 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// hooks
+//useState
+var [counter, setCounter] = useState(0);
+{counter},setCounter(prevCounter => prevCounter+1)
+
+
+// if we have multiple states and we need to manage them in same time
+var reducer = (state, action) => {
+    switch (action.type) {
+        case "INCREMENT":
+            return {...state, counter: state.counter+ 1}
+        break;
+        case "TOGGLE":
+            return {...state, val: !state.val}
+        break;
+        default:
+            return { ...state }
+    }
+}
+const [state, dispatch] = useReducer(reducer, {val:false, counter:0});
+dispatch({ type: "TOGGLE" });
+
+
+
+// useEffect for every render
+useEffect(() => {
+    console.log("api call");
+    return () => console.log("unmounting");
+});         // every render
+}, []);     // only when mount and unmount
+}, [ counter ]);    // when counter changes
+
+
+
+// useRef 
+const inputRef = useRef(null);
+onClick = () => {
+    inputRef.current.focus()
+}
+<input type="text" ref={inputRef} />
+
+
+//useLayoutEffect run before every useEffect
+useLayoutEffect(() => console.log("run before useEffect"));
+
+
+
+Why React over Angular?
+Because of its virtual DOM implementation and rendering optimizations, React outperforms Angular. It's also simple to switch between React versions; unlike Angular, you don't have to install updates one by one. Finally, using React, developers have access to a wide range of pre-built solutions.
