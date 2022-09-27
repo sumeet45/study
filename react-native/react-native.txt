@@ -1773,3 +1773,104 @@ Interview Questions
 Important Websites -
 https://reactnative.directory/
 https://www.reactnative.guide/
+
+------------------------------------------------------------------------------------------------
+Architecture -
+
+Metro - acts as JS bundler, manages assets, caches, builds and perform hot module reloading.
+
+
+RN use 3 threads -
+
+Platform UI - create UI using native manager
+
+Shadow Thread- 
+	* uses Fabric Architecture
+	* create layout and calculate width and height. create copy of react tree, hence it called shadow thread.
+	* uses yoga layout engine
+
+JS thread- 
+	* js thread uses compiler called "JSC" previously, now we can also use "v8" or "hermes" also, to run JS code.
+	* contain all JS logic and business logic
+	* declaratively told react to add element, react does reconcilation and perform actions.
+
+------------------------------------------------------------------------------------------------
+
+React Native's New Architecture - Parashuram N - React Conf 2018 
+* We declaratively tells react to add node. React does its magic of reconcillation, figures out that whether we need dom operations or not and did it. we don't need to worry about it.
+* react holds a ref to the dom, that we created. so using that ref, we can add style or attribute in web.
+* Diffn between react and react native - 
+	in RN, we can connect two realms called "JS realm" and "android or IOS realm".
+
+----------------
+About Old Architecture -
+RN bridge -
+* 1 more diff, in RN, we don't have any nodes ref of native element in JS realm. so we cannot call any methods using those nodes.
+* Hence, communicating within two realm, we do have 1 bridge, called "RN bridge". It passes message within these two realm.
+* Suppose, lets create node in RN. It grab all required data in Array, serialize it as string and simply pass it.
+
+Shadow thread (Shadow tree)-
+* android and IOS has different layout system, so to ensure, it works in all devices, RN implement its own version of "flexbox" in a library called "yoga".
+* For Yoga, inputs are style and output is relative positions of where each elements should be structured.
+* once layout done, it sends all data to UI layer as serialized JSON array. Then UI draws all of it.
+
+
+RN has 3 main threads -
+
+Platform UI (UI Layer/ Android UI) - 
+* here, all scrolling, and view rendering happens
+* Android thread most of time empty, so it can respond to our request immediately.
+
+Shadow Tree (Layout Thread / Shadow thread) - 
+* here, all layout and its calculations happens.
+* in Layout, it create copy of react tree in Shadow thread, hence it call "Shadow tree".
+
+JS Thread -
+* Here, all react, business logic code worked.
+* Most heavy operations happened in JS thread.
+
+
+Summary -
+* UI updates, JS and Layout operations run on separate threads.
+* communication between thread is asynchronous.
+* RN is asynchronous with old architecture.
+----------------
+
+Issues with old architecture -
+* cannot cancel events.
+* on fast scrolling, sometime we can face blank space, bcz of asynchronous nature of JS thread and its not in sync with main thread.
+
+----------------
+About New Architecture -
+* To solve our problem, lets looks at browser implementation in web. Layout engine (part of browser) create node element using native OS. 
+* While creating element, we get object "HTMLinputelement" from browser using layout engine. it has ref to element.
+
+JSI -
+* like browser, we will create node with ref to that native element. So we have ref of element. Now, we don't need bridge and passing message throught that bridge.
+* communicate betn JS and Java/ObjC
+* Host objects in C++ expose methods and variables to JS
+* JS holds references to hostObjects ( similar to HTMLinputelement), can call methods on them.
+* Based on JSI, we build next generations of RN "view managers" and "native modules".
+
+Fabric -
+* Here, it shows how "fabric" UI manager, manages async as well as synchronus call.
+
+Native Module -
+* Using JSI, we can make available hostObjects to JS realm. so we can call methods of native modules directly from JS realm.
+* Hence, this kind of native module, we called turbo module.
+* getModule(moduleName) to get a JSI Host Object.
+* call Methods on Host Object.
+* values returned in functions can also be host objects.
+
+Core Community - 
+* ex. webview removed from react-native and move it to core-community. it help to slim react native and upgrading react native.
+
+
+Block Diagram  - 
+
+
+JSC - JavaScriptCore runs the bundle when the user starts the app.
+V8 engine for react native- microsoft working on it.
+
+-------------------------------------
+1 more explanation about architecture - https://litslink.com/blog/new-react-native-architecture
