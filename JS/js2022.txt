@@ -1249,7 +1249,26 @@ Mozilla Developer Network =
 
 References:
 
-A) Built-in objects
+A) Built-in objects -
+  1) AggregateError -
+    * The AggregateError object represents an error when several errors need to be wrapped in a single error. It is thrown when multiple errors need to be reported by an operation, for example by Promise.any(), when all promises passed to it reject.
+
+    constructor -
+      1) AggregateError() - Creates a new AggregateError object.
+
+    Instance properties
+      1) AggregateError.prototype.message - Error message. Inherited from Error.
+
+      2) AggregateError.prototype.name - Error name. Inherited from Error.
+
+      3) AggregateError.prototype.cause - Error cause. Inherited from Error.
+
+      4) AggregateError.prototype.errors -
+      An array that essentially reflects the iterable with which the AggregateError was instantiated; for example, if the AggregateError was created using the AggregateError() constructor, an array produced from whatever iterable was passed to the constructor as its first argument.
+
+
+
+
 B) Expressions & operators
 
 C) Statements & declarations
@@ -1337,6 +1356,7 @@ suppose,
 Here, false convert to 0, and 0 is less than 1, hence it becomes true.
 
 ----------------------------------------------------------------------------------------------------
+From W3Schools -
 
 JS Objects -
 * methods are marked with "*" which returned new array.

@@ -1760,6 +1760,114 @@ C) Android APIs -
 		exitApp()
 		removeEventListener()
 
+2) PermissionsAndroid -
+	* PermissionsAndroid provides access to Android M's new permissions model. The so-called "normal" permissions are granted by default when the application is installed as long as they appear in AndroidManifest.xml. However, "dangerous" permissions require a dialog prompt. You should use this module for those permissions.
+	* On devices before SDK version 23, the permissions are automatically granted if they appear in the manifest, so check should always result to true and request should always resolve to PermissionsAndroid.RESULTS.GRANTED.
+
+	* Permissions that require prompting the user
+	Available as constants under PermissionsAndroid.PERMISSIONS:
+
+	READ_CALENDAR: 'android.permission.READ_CALENDAR'
+	WRITE_CALENDAR: 'android.permission.WRITE_CALENDAR'
+	CAMERA: 'android.permission.CAMERA'
+	READ_CONTACTS: 'android.permission.READ_CONTACTS'
+	WRITE_CONTACTS: 'android.permission.WRITE_CONTACTS'
+	GET_ACCOUNTS: 'android.permission.GET_ACCOUNTS'
+	ACCESS_FINE_LOCATION: 'android.permission.ACCESS_FINE_LOCATION'
+	ACCESS_COARSE_LOCATION: 'android.permission.ACCESS_COARSE_LOCATION'
+	ACCESS_BACKGROUND_LOCATION: 'android.permission.ACCESS_BACKGROUND_LOCATION'
+	RECORD_AUDIO: 'android.permission.RECORD_AUDIO'
+	READ_PHONE_STATE: 'android.permission.READ_PHONE_STATE'
+	CALL_PHONE: 'android.permission.CALL_PHONE'
+	READ_CALL_LOG: 'android.permission.READ_CALL_LOG'
+	WRITE_CALL_LOG: 'android.permission.WRITE_CALL_LOG'
+	ADD_VOICEMAIL: 'com.android.voicemail.permission.ADD_VOICEMAIL'
+	USE_SIP: 'android.permission.USE_SIP'
+	PROCESS_OUTGOING_CALLS: 'android.permission.PROCESS_OUTGOING_CALLS'
+	BODY_SENSORS: 'android.permission.BODY_SENSORS'
+	SEND_SMS: 'android.permission.SEND_SMS'
+	RECEIVE_SMS: 'android.permission.RECEIVE_SMS'
+	READ_SMS: 'android.permission.READ_SMS'
+	RECEIVE_WAP_PUSH: 'android.permission.RECEIVE_WAP_PUSH'
+	RECEIVE_MMS: 'android.permission.RECEIVE_MMS'
+	READ_EXTERNAL_STORAGE: 'android.permission.READ_EXTERNAL_STORAGE'
+	WRITE_EXTERNAL_STORAGE: 'android.permission.WRITE_EXTERNAL_STORAGE'
+	BLUETOOTH_CONNECT: 'android.permission.BLUETOOTH_CONNECT'
+	BLUETOOTH_SCAN: 'android.permission.BLUETOOTH_SCAN'
+	BLUETOOTH_ADVERTISE: 'android.permission.BLUETOOTH_ADVERTISE'
+	ACCESS_MEDIA_LOCATION: 'android.permission.ACCESS_MEDIA_LOCATION'
+	ACCEPT_HANDOVER: 'android.permission.ACCEPT_HANDOVER'
+	ACTIVITY_RECOGNITION: 'android.permission.ACTIVITY_RECOGNITION'
+	ANSWER_PHONE_CALLS: 'android.permission.ANSWER_PHONE_CALLS'
+	READ_PHONE_NUMBERS: 'android.permission.READ_PHONE_NUMBERS'
+	UWB_RANGING: 'android.permission.UWB_RANGING'
+	BODY_SENSORS_BACKGROUND: 'android.permission.BODY_SENSORS_BACKGROUND'
+	READ_MEDIA_IMAGES: 'android.permission.READ_MEDIA_IMAGES'
+	READ_MEDIA_VIDEO: 'android.permission.READ_MEDIA_VIDEO'
+	READ_MEDIA_AUDIO: 'android.permission.READ_MEDIA_AUDIO'
+	POST_NOTIFICATION: 'android.permission.POST_NOTIFICATIONS'
+	NEARBY_WIFI_DEVICES: 'android.permission.NEARBY_WIFI_DEVICES'
+	READ_VOICEMAIL: 'com.android.voicemail.permission.READ_VOICEMAIL',
+	WRITE_VOICEMAIL: 'com.android.voicemail.permission.WRITE_VOICEMAIL',
+
+	* Result strings for requesting permissions
+	Available as constants under PermissionsAndroid.RESULTS:
+
+	GRANTED: 'granted'
+	DENIED: 'denied'
+	NEVER_ASK_AGAIN: 'never_ask_again'
+
+	* Method -
+	constructor()
+	check()
+	request()
+	requestMultiple()
+
+
+3) ToastAndroid -
+	* React Native's ToastAndroid API exposes the Android platform's ToastAndroid module as a JS module. It provides the method show(message, duration) which takes the following parameters:
+		message A string with the text to toast
+		duration The duration of the toast—either ToastAndroid.SHORT or ToastAndroid.LONG
+	* You can alternatively use showWithGravity(message, duration, gravity) to specify where the toast appears in the screen's layout. May be ToastAndroid.TOP, ToastAndroid.BOTTOM or ToastAndroid.CENTER.
+	* The 'showWithGravityAndOffset(message, duration, gravity, xOffset, yOffset)' method adds the ability to specify an offset with in pixels.
+	* Methods
+		show()
+		showWithGravity()
+		showWithGravityAndOffset()
+	* Properties
+		SHORT
+		LONG
+		TOP
+		BOTTOM
+		CENTER
+
+
+D) iOS APIs -
+1) ActionSheetIOS -
+	* Displays native to iOS Action Sheet component.
+	* Methods
+	showActionSheetWithOptions()
+	dismissActionSheet()
+	showShareActionSheetWithOptions()
+
+2) DynamicColorIOS - 
+	* The DynamicColorIOS function is a platform color type specific to iOS.
+	DynamicColorIOS({
+	  light: color,
+	  dark: color,
+	  highContrastLight: color, // (optional) will fallback to "light" if not provided
+	  highContrastDark: color // (optional) will fallback to "dark" if not provided
+	});
+	* DynamicColorIOS takes a single argument as an object with two mandatory keys: dark and light, and two optional keys highContrastLight and highContrastDark. These correspond to the colors you want to use for "light mode" and "dark mode" on iOS, and when high contrast accessibility mode is enabled, high contrast version of them.
+	* At runtime, the system will choose which of the colors to display depending on the current system appearance and accessibility settings. Dynamic colors are useful for branding colors or other app specific colors that still respond automatically to system setting changes.
+
+3) Settings -
+	* Settings serves as a wrapper for NSUserDefaults, a persistent key-value store available only on iOS.
+	* Methods
+		clearWatch()
+		get()
+		set()
+		watchKeys()
 ------------------------------------------------------------------------------------------------
 
 
