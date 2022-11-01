@@ -203,23 +203,79 @@ A) The Basics
 
 B) Enviornment Setup -
 1) Setting up the development environment -
+
+* If you are already familiar with mobile development, you may want to use React Native CLI. It requires Xcode or Android Studio to get started. If you already have one of these tools installed, you should be able to get up and running within a few minutes. If they are not installed, you should expect to spend about an hour installing and configuring them.
+
 * Installing dependencies - 
-	Need more time...
+	You will need Node, the React Native command line interface, a JDK, and Android Studio.
+
+	While you can use any editor of your choice to develop your app, you will need to install Android Studio in order to set up the necessary tooling to build your React Native app for Android.
+
+	Node - version 14 or newer
+	Java Development Kit ( JDK ) - version 11 or newwer
+	Android development environment - 
+	
+	1) Install Android Studio -
+	Download and install Android Studio. While on Android Studio installation wizard, make sure the boxes next to all of the following items are checked:
+		Android SDK
+		Android SDK Platform
+		Android Virtual Device
+	Then, click "Next" to install all of these components.
+	
+	2) Install the Android SDK -
+		Android Studio installs the latest Android SDK by default. Building a React Native app with native code, however, requires the Android 12 (S) SDK in particular. Additional Android SDKs can be installed through the SDK Manager in Android Studio.
+
+		To do that, open Android Studio, click on "Configure" button and select "SDK Manager".
+
+		The SDK Manager can also be found within the Android Studio "Preferences" dialog, under Appearance & Behavior → System Settings → Android SDK.
+
+		Select the "SDK Platforms" tab from within the SDK Manager, then check the box next to "Show Package Details" in the bottom right corner. Look for and expand the Android 12 (S) entry, then make sure the following items are checked:
+
+			Android SDK Platform 31
+			Intel x86 Atom_64 System Image or Google APIs Intel x86 Atom System Image
+
+		Next, select the "SDK Tools" tab and check the box next to "Show Package Details" here as well. Look for and expand the "Android SDK Build-Tools" entry, then make sure that 31.0.0 is selected.
+
+		Finally, click "Apply" to download and install the Android SDK and related build tools.
+
+
+	3) Configure the ANDROID_SDK_ROOT environment variable -
+	The React Native tools require some environment variables to be set up in order to build apps with native code.
+
+	Add the following lines to your $HOME/.bash_profile or $HOME/.bashrc (if you are using zsh then ~/.zprofile or ~/.zshrc) config file:
+		export ANDROID_SDK_ROOT=$HOME/Library/Android/Sdk
+		export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+		export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
+	.bash_profile is specific to bash. If you're using another shell, you will need to edit the appropriate shell-specific config file.
+
+	Type source $HOME/.bash_profile for bash or source $HOME/.zprofile to load the config into your current shell. Verify that ANDROID_SDK_ROOT has been set by running echo $ANDROID_SDK_ROOT and the appropriate directories have been added to your path by running echo $PATH.
+
+	Please make sure you use the correct Android SDK path. You can find the actual location of the SDK in the Android Studio "Preferences" dialog, under Appearance & Behavior → System Settings → Android SDK.
+
+
+
 * Watchman -
 	1) Watchman is a tool by Facebook for watching changes in the filesystem. It is highly recommended you install it for better performance and increased compatibility in certain edge cases.
+
 * React Native Command Line Interface -
 	1) we recommend you access the current version at runtime using npx, which ships with Node.js. With npx react-native <command>.
-	npx react-native init
+	npx react-native init projectName
+
 * Creating a new application -
 	1) npx react-native init AwesomeProject
 	2) npx react-native init AwesomeProject --version 0.68.2	// Using a specific version or template
 	3) npx react-native init AwesomeTSProject --template react-native-template-typescript	// With Template
+	
 * Running your React Native application -
 	1) Step 1: Start Metro - 
 		npx react-native start 		//To start metro (JS bundler) which ships with react native.
 	2) Note - If you're familiar with web development, Metro is a lot like webpack—for React Native apps.
 	3) Step 2: Start your application -
 		npx react-native run-android	//To start react native project in another terminal
+
+
+
 
 
 2) Integration with Existing Apps -
@@ -978,72 +1034,278 @@ Will come back for image ....
 16) TextInput -
 	* A foundational component for inputting text into the app via a keyboard. Props provide configurability for several features, such as auto-correction, auto-capitalization, placeholder text, and different keyboard types, such as a numeric keypad.
 	* The most basic use case is to plop down a TextInput and subscribe to the onChangeText events to read the user input. There are also other events, such as onSubmitEditing and onFocus that can be subscribed to.
+	* Two methods exposed via the native element are .focus() and .blur() that will focus or blur the TextInput programmatically.
+	* Note that some props are only available with multiline={true/false}. Additionally, border styles that apply to only one side of the element (e.g., borderBottomColor, borderLeftWidth, etc.) will not be applied if multiline=true.
 
 	* Props -
-		View Props
-		allowFontScaling
-		autoCapitalize
-		autoComplete	(Android)
-		autoCorrect
-		autoFocus
-		blurOnSubmit
-		caretHidden
-		clearButtonModeiOS
-		clearTextOnFocusiOS
-		contextMenuHidden
-		dataDetectorTypesiOS
-		defaultValue
-		cursorColor	(Android)
-		disableFullscreenUI	(Android)
-		editable
-		enablesReturnKeyAutomaticallyiOS
-		importantForAutofill	(Android)
-		inlineImageLeft	(Android)
-		inlineImagePadding	(Android)
-		inputAccessoryViewIDiOS
-		keyboardAppearanceiOS
-		keyboardType
-		maxFontSizeMultiplier
-		maxLength
-		multiline
-		numberOfLines	(Android)
-		onBlur
-		onChange
-		onChangeText
-		onContentSizeChange
-		onEndEditing
-		onPressIn
-		onPressOut
-		onFocus
-		onKeyPress
-		onLayout
-		onScroll
-		onSelectionChange
-		onSubmitEditing
-		placeholder
-		placeholderTextColor
-		returnKeyLabel	(Android)
-		returnKeyType
-		rejectResponderTerminationiOS
-		scrollEnablediOS
-		secureTextEntry
-		selection
-		selectionColor
-		selectTextOnFocus
-		showSoftInputOnFocus
-		spellCheckiOS
-		textAlign
-		textContentTypeiOS
-		passwordRulesiOS
-		style
-		textBreakStrategy	(Android)
-		underlineColorAndroid	(Android)
-		value
-		Methods
-		.focus()
-		.blur()
-		clear()
-		isFocused()
+		* View Props
+		
+		* allowFontScaling - Specifies whether fonts should scale to respect Text Size accessibility settings. The default is true.
+
+		* autoCapitalize - 
+			* Tells TextInput to automatically capitalize certain characters. This property is not supported by some keyboard types such as name-phone-pad.
+			TYPE 	enum('none', 'sentences', 'words', 'characters')
+
+		* autoComplete	(Android)- 
+			* Specifies autocomplete hints for the system, so it can provide autofill. On Android, the system will always attempt to offer autofill by using heuristics to identify the type of content. To disable autocomplete, set autoComplete to off.
+			* Possible values for autoComplete are:
+				enum('birthdate-day', 'birthdate-full', 'birthdate-month', 'birthdate-year', 'cc-csc', 'cc-exp', 'cc-exp-day', 'cc-exp-month', 'cc-exp-year', 'cc-number', 'email', 'gender', 'name', 'name-family', 'name-given', 'name-middle', 'name-middle-initial', 'name-prefix', 'name-suffix', 'password', 'password-new', 'postal-address', 'postal-address-country', 'postal-address-extended', 'postal-address-extended-postal-code', 'postal-address-locality', 'postal-address-region', 'postal-code', 'street-address', 'sms-otp', 'tel', 'tel-country-code', 'tel-national', 'tel-device', 'username', 'username-new', 'off')
+
+
+		* autoCorrect - If false, disables auto-correct. The default value is true.
+
+		* autoFocus - If true, focuses the input on componentDidMount or useEffect. The default value is false.
+
+		* blurOnSubmit - If true, the text field will blur when submitted. The default value is true for single-line fields and false for multiline fields. Note that for multiline fields, setting blurOnSubmit to true means that pressing return will blur the field and trigger the onSubmitEditing event instead of inserting a newline into the field.
+
+		* caretHidden - If true, caret is hidden. The default value is false.
+
+		* clearButtonModeiOS - When the clear button should appear on the right side of the text view. This property is supported only for single-line TextInput component. The default value is never.
+
+		* clearTextOnFocus (iOS) - If true, clears the text field automatically when editing begins.
+
+		* contextMenuHidden - If true, context menu is hidden. The default value is false.
+
+		* dataDetectorTypes(iOS) - 
+			* Determines the types of data converted to clickable URLs in the text input. Only valid if multiline={true} and editable={false}. By default no data types are detected.
+			* You can provide one type or an array of many types.
+			enum('phoneNumber', 'link', 'address', 'calendarEvent', 'none', 'all'), ,array of enum('phoneNumber', 'link', 'address', 'calendarEvent', 'none', 'all')
+
+
+		* defaultValue - Provides an initial value that will change when the user starts typing. Useful for use-cases where you do not want to deal with listening to events and updating the value prop to keep the controlled state in sync.
+
+		* cursorColor	(Android) -
+			* When provided it will set the color of the cursor (or "caret") in the component. Unlike the behavior of selectionColor the cursor color will be set independently from the color of the text selection box.
+
+		* disableFullscreenUI (Android) -
+			* When false, if there is a small amount of space available around a text input (e.g. landscape orientation on a phone), the OS may choose to have the user edit the text inside of a full screen text input mode. When true, this feature is disabled and users will always edit the text directly inside of the text input. Defaults to false.
+
+		* editable - If false, text is not editable. The default value is true.
+
+		* enablesReturnKeyAutomatically(iOS)- 
+			* If true, the keyboard disables the return key when there is no text and automatically enables it when there is text. The default value is false.
+			TYPE 	bool
+
+		* importantForAutofill(Android) - 
+			* Tells the operating system whether the individual fields in your app should be included in a view structure for autofill purposes on Android API Level 26+. Possible values are auto, no, noExcludeDescendants, yes, and yesExcludeDescendants. The default value is auto.
+			* auto: Let the Android System use its heuristics to determine if the view is important for autofill.
+			* no: This view isn't important for autofill.
+			* noExcludeDescendants: This view and its children aren't important for autofill.
+			* yes: This view is important for autofill.
+			* yesExcludeDescendants: This view is important for autofill, but its children aren't important for autofill.
+
+		* inlineImageLeft(Android) -
+			* If defined, the provided image resource will be rendered on the left. The image resource must be inside /android/app/src/main/res/drawable and referenced like -
+				<TextInput	inlineImageLeft='search_icon' />
+
+
+		* inlineImagePadding(Android) -
+			* Padding between the inline image, if any, and the text input itself.
+			Type 	number
+
+		* inputAccessoryViewID(iOS) - An optional identifier which links a custom InputAccessoryView to this text input. The InputAccessoryView is rendered above the keyboard when this text input is focused.
+			Type 	string
+ 
+
+		* keyboardAppearance(iOS) -
+			* Determines the color of the keyboard
+			Type 	enum('default', 'light', 'dark')
+
+		* keyboardType - 
+			* Determines which keyboard to open, e.g.numeric.
+			* The following values work across platforms:
+				* default
+				* number-pad
+				* decimal-pad
+				* numeric
+				* email-address
+				* phone-pad
+				* url
+			* iOS Only =
+				The following values work on iOS only:
+					* ascii-capable
+					* numbers-and-punctuation
+					* name-phone-pad
+					* twitter
+					* web-search
+			* Android Only
+				* visible-password
+
+		* maxFontSizeMultiplier - 
+			* Specifies largest possible scale a font can reach when allowFontScaling is enabled. Possible values:
+				* null/undefined (default): inherit from the parent node or the global default (0)
+				* 0: no max, ignore parent/global default
+				* >= 1: sets the maxFontSizeMultiplier of this node to this value
+
+		* maxLength - 
+			* Limits the maximum number of characters that can be entered. Use this instead of implementing the logic in JS to avoid flicker.
+			TYPE  number
+
+		* multiline - If true, the text input can be multiple lines. The default value is false.
+			TYPE 	bool
+
+		* numberOfLines(Android) - Sets the number of lines for a TextInput. Use it with multiline set to true to be able to fill the lines. TYPE 	number
+
+		* onBlur - Callback that is called when the text input is blurred. TYPE 	function
+
+		* onChange - Callback that is called when the text input's text changes. 
+			TYPE  ({ nativeEvent: { eventCount, target, text} }) => void
+
+		* onChangeText - Callback that is called when the text input's text changes. Changed text is passed as a single string argument to the callback handler. TYPE 	function
+
+		* onContentSizeChange - Callback that is called when the text input's content size changes.Only called for multiline text inputs.	TYPE 	({ nativeEvent: { contentSize: { width, height } } }) => void
+
+		* onEndEditing - Callback that is called when text input ends. TYPE 	function
+
+		* onPressIn - Callback that is called when a touch is engaged. TYPE 	({ nativeEvent: PressEvent }) => void
+
+		* onPressOut - Callback that is called when a touch is released. TYPE    ({ nativeEvent: PressEvent }) => void
+
+		* onFocus - Callback that is called when the text input is focused. TYPE   ({ nativeEvent: LayoutEvent }) => void
+		
+		* onKeyPress - 
+			* Callback that is called when a key is pressed. This will be called with object where keyValue is 'Enter' or 'Backspace' for respective keys and the typed-in character otherwise including ' ' for space. Fires before onChange callbacks. Note: on Android only the inputs from soft keyboard are handled, not the hardware keyboard inputs.
+
+		* onLayout - Invoked on mount and on layout changes.
+			TYPE 	({ nativeEvent: LayoutEvent }) => void
+
+		* onScroll - 
+			* Invoked on content scroll. May also contain other properties from ScrollEvent but on Android contentSize is not provided for performance reasons.
+			* TYPE 	({ nativeEvent: { contentOffset: { x, y } } }) => void
+
+		* onSelectionChange - Callback that is called when the text input selection is changed.
+			TYPE 	({ nativeEvent: { selection: { start, end } } }) => void
+
+		* onSubmitEditing - Callback that is called when the text input's submit button is pressed.
+			TYPE 	({ nativeEvent: { text, eventCount, target }}) => void
+
+		* placeholder - The string that will be rendered before text input has been entered.
+			TYPE 	string
+
+		* placeholderTextColor - The text color of the placeholder string.
+			TYPE 	color
+
+		* returnKeyLabel(Android) - Sets the return key to the label. Use it instead of returnKeyType.
+			TYPE 	string
+
+		* returnKeyType - 
+			* Determines how the return key should look. On Android you can also use returnKeyLabel.
+
+			* Cross platform -
+				* The following values work across platforms:
+					done
+					go
+					next
+					search
+					send
+			* Android Only -
+				The following values work on Android only:
+					* none
+					* previous
+			* iOS Only -
+				The following values work on iOS only:
+					* default
+					* emergency-call
+					* google
+					* join
+					* route
+					* yahoo
+
+		* rejectResponderTermination(iOS) -
+			* If true, allows TextInput to pass touch events to the parent component. This allows components such as SwipeableListView to be swipeable from the TextInput on iOS, as is the case on Android by default. If false, TextInput always asks to handle the input (except when disabled). The default value is true.
+			TYPE  bool
+
+		* scrollEnabled(iOS) - 
+			* If false, scrolling of the text view will be disabled. The default value is true. Only works with multiline={true}.
+			TYPE 	bool
+
+		* secureTextEntry -
+			If true, the text input obscures the text entered so that sensitive text like passwords stay secure. The default value is false. Does not work with multiline={true}.
+				TYPE 	bool
+
+		* selection - 
+			* The start and end of the text input's selection. Set start and end to the same value to position the cursor.
+			TYPE 	object: {start: number,end: number}
+
+		* selectionColor =
+			* The highlight and cursor color of the text input.
+			TYPE 	color
+
+		* selectTextOnFocus - If true, all text will automatically be selected on focus.
+			TYPE 	bool
+
+		* showSoftInputOnFocus - When false, it will prevent the soft keyboard from showing when the field is focused. The default value is true.
+			TYPE 	bool
+
+		* spellCheck(iOS) - If false, disables spell-check style (i.e. red underlines). The default value is inherited from autoCorrect. TYPE  bool
+
+		* textAlign - Align the input text to the left, center, or right sides of the input field.
+			* Possible values for textAlign are: left, center, right
+
+		* textContentType(iOS) -
+			* Give the keyboard and the system information about the expected semantic meaning for the content that users enter.
+			* For iOS 11+ you can set textContentType to username or password to enable autofill of login details from the device keychain.
+			* For iOS 12+ newPassword can be used to indicate a new password input the user may want to save in the keychain, and oneTimeCode can be used to indicate that a field can be autofilled by a code arriving in an SMS.
+			* To disable autofill, set textContentType to none.
+
+			Possible values for textContentType are:
+				none
+				URL
+				addressCity
+				addressCityAndState
+				addressState
+				countryName
+				creditCardNumber
+				emailAddress
+				familyName
+				fullStreetAddress
+				givenName
+				jobTitle
+				location
+				middleName
+				name
+				namePrefix
+				nameSuffix
+				nickname
+				organizationName
+				postalCode
+				streetAddressLine1
+				streetAddressLine2
+				sublocality
+				telephoneNumber
+				username
+				password
+				newPassword
+				oneTimeCode
+
+		* passwordRules(iOS) - When using textContentType as newPassword on iOS we can let the OS know the minimum requirements of the password so that it can generate one that will satisfy them. In order to create a valid string for PasswordRules take a look to the Apple Docs.
+
+		* style - Note that not all Text styles are supported, an incomplete list of what is not supported includes:
+			borderLeftWidth
+			borderTopWidth
+			borderRightWidth
+			borderBottomWidth
+			borderTopLeftRadius
+			borderTopRightRadius
+			borderBottomRightRadius
+			borderBottomLeftRadius
+
+		* textBreakStrategy	(Android) - Set text break strategy on Android API Level 23+, possible values are simple, highQuality, balanced The default value is simple.
+			TYPE 	enum('simple', 'highQuality', 'balanced')
+
+		* underlineColorAndroid	(Android) - The color of the TextInput underline.
+			TYPE 	color
+
+		* value - 
+			* The value to show for the text input. TextInput is a controlled component, which means the native value will be forced to match this value prop if provided. For most uses, this works great, but in some cases this may cause flickering - one common cause is preventing edits by keeping value the same. In addition to setting the same value, either set editable={false}, or set/update maxLength to prevent unwanted edits without flicker.
+				TYPE string
+
+	* Methods
+		.focus() - Makes the native input request focus.
+		.blur() - Makes the native input lose focus.
+		clear() - Removes all text from the TextInput.
+		isFocused() - Returns true if the input is currently focused; false otherwise.
+
 
 20) View -
 	* The most fundamental component for building a UI, View is a container that supports layout with flexbox, style, some touch handling, and accessibility controls. View maps directly to the native view equivalent on whatever platform React Native is running on, whether that is a UIView, <div>, android.view, etc.
@@ -1902,7 +2164,12 @@ JS thread-
 	* contain all JS logic and business logic
 	* declaratively told react to add element, react does reconcilation and perform actions.
 
-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+
+============================================================================================================
+
+--------------------------------Architecture Explained by Parshuram N-------------------------------------
+
 
 React Native's New Architecture - Parashuram N - React Conf 2018 
 * We declaratively tells react to add node. React does its magic of reconcillation, figures out that whether we need dom operations or not and did it. we don't need to worry about it.
@@ -1980,5 +2247,481 @@ Block Diagram  -
 JSC - JavaScriptCore runs the bundle when the user starts the app.
 V8 engine for react native- microsoft working on it.
 
--------------------------------------
-1 more explanation about architecture - https://litslink.com/blog/new-react-native-architecture
+----------------------------------------Explaination Ends Here----------------------------------------------
+
+Artcile link - 1 more explanation about architecture - https://litslink.com/blog/new-react-native-architecture
+
+Article Link - https://www.reactnative.guide/3-react-native-internals/3.1-react-native-internals.html
+
+Article Link - https://collectivemind.dev/blog/react-native-re-architecture
+
+Article Link - https://deepstash.com/idea/148397/the-new-flow
+
+https://medium.com/coox-tech/deep-dive-into-react-natives-new-architecture-fb67ae615ccd
+https://engineering.fb.com/2019/07/12/android/hermes/
+
+
+
+
+Old architecture - 
+1) Metro - Metro is a development platform for React Native. This project acts as a JavaScript bundler; it manages assets, caches builds and performs hot module reloading.
+
+2) JSC - the JavaScriptCore runs the bundle when the user starts the app.
+React Native needs an engine to run JavaScript code on mobile devices. Apple includes JavaScriptCore (JSCore) on iOS devices, but Android does not have a JavaScript engine.
+So React Native included a version of JSCore in Android builds to execute JavaScript.
+This resulted in larger Android application packages (APKs) for React Native apps, and some noticeable performance issues.
+
+In 2019, the React Native team announced Hermes as “a new JavaScript engine optimized for React Native.” Android apps built with React Native and Hermes were smaller, interactive faster, and used less memory.
+
+3) Flipper - used for debugging purpose.It comes with a variety of useful features, which makes it easier for developers to spot vulnerabilities and fix them quickly.
+
+Turbo
+Controlled components
+Uncontrolled components
+
+
+
+New architecture -
+1) React Native CodeGen -
+CodeGen will utilise your TypeScript/Flow types to generate more native code at build time, instead of run time. TL:DR: smaller code size, faster execution, fewer errors.
+The Codegen is typically invoked at build time, but you may find it useful to generate your native interface code on demand for troubleshooting.
+
+2) Hermes -
+Hermes, which is a JavaScript engine specially optimized for running apps on Android. Its update resulted in reduced start-up time, optimized app size, and better performance.
+
+3) Yoga - available for both architecture.
+Layout is an important part of building user interfaces for any mobile, desktop, or web application, because it describes the size and position of views on the screen and their relationship to one another.
+
+
+4) JSI -
+One more advantage brought by JSI is the entire synchronization of JS thread and native modules. With the help of the JavaScriptInterface, JS will be able to hold reference to Host Objects and invoke methods on them. It will also come with a concept of shared ownership, allowing the native side to communicate directly with the JS thread.
+
+
+5) Fabric -
+Fabric is basically a re-architecture of the UI manager, which is expected to transform the rendering layer by eliminating the need in bridges. The new approach allows creating the Shadow Tree right in C++ that brings swiftness to the process and reduces the number of steps necessary to render a particular element.
+
+
+6) Turbo Modules -
+Turbomodules are basically the old Native modules, but implemented and behaving differently.
+The best thing about Turbomodules is that they’re lazy loaded, meaning the Javascript code is going to load each module only when it’s needed and hold a direct reference to it. This can significantly improve startup time for apps with lots of Native modules.
+
+============================================================================================================
+
+
+React Native CLI comes with following commands:
+
+bundle
+clean
+config
+doctor
+init
+info
+log-android
+log-ios
+ram-bundle
+run-android
+run-ios
+start
+upgrade
+profile-hermes
+
+
+1) 	bundle
+	
+	react-native bundle <flag>
+	Builds the JavaScript bundle for offline use.
+
+	--entry-file <path>
+	Path to the root JS file, either absolute or relative to JS root.
+
+	--platform <string>
+	default: ios
+
+	Either "ios" or "android".
+
+	--transformer <string>
+	Specify a custom transformer to be used.
+
+	--dev [boolean]
+	default: true
+
+	If false, warnings are disabled and the bundle is minified.
+
+	--minify [boolean]
+	Allows overriding whether bundle is minified. This defaults to false if dev is true, and true if dev is false. Disabling minification can be useful for speeding up production builds for testing purposes.
+
+	--bundle-output <string>
+	File name where to store the resulting bundle, ex. /tmp/groups.bundle.
+
+	If you are planning on building a debug APK, that will run without the packager, by invoking ./gradlew assembleDebug you can simply set bundleInDebug: true in your app/build.gradle file, inside the project.ext.react map.
+
+	Details
+	--bundle-encoding <string>
+	default: utf8
+
+	Encoding the bundle should be written in (https://nodejs.org/api/buffer.html#buffer_buffer).
+
+	--max-workers <number>
+	Specifies the maximum number of workers the worker-pool will spawn for transforming files. This defaults to the number of the cores available on your machine.
+
+	--sourcemap-output <string>
+	File name where to store the sourcemap file for resulting bundle, ex. /tmp/groups.map.
+
+	--sourcemap-sources-root <string>
+	Path to make sourcemap sources entries relative to, ex. /root/dir.
+
+	--sourcemap-use-absolute-path
+	default: false
+
+	Report SourceMapURL using its full path.
+
+	--assets-dest <string>
+	Directory name where to store assets referenced in the bundle.
+
+	If you are planning on building a debug APK that will run without the packager, see (--bundle-output)
+
+	Details
+	--reset-cache
+	default: false
+
+	Removes cached files.
+
+	--read-global-cache
+	default: false
+
+	Try to fetch transformed JS code from the global cache, if configured.
+
+	--config <string>
+	Path to the CLI configuration file.
+
+
+2) clean
+
+	react-native clean
+	Cleans caches. Commonly used to ensure build failures are not due to stale cache. By default, it will prompt which caches to purge, with Watchman and Metro already checked. To omit interactive prompt (e.g. in scripts), please use --include flag.
+
+	Options
+	--include <string>
+	Comma-separated flag of caches to clear e.g. npm,yarn. If omitted, an interactive prompt will appear. Valid values include android, cocoapods, metro, npm, watchman, and yarn.
+
+	--project-root <string>
+	default: current working directory
+
+	Root path to your React Native project. When not specified, defaults to current working directory.
+
+	--verify-cache
+	default: false
+
+	Whether to verify the cache. Currently only applies to npm cache.
+
+
+3) config -
+
+	react-native config
+	Output project and dependencies configuration in JSON format to stdout. Used by autolinking.
+
+	doctor
+	Usage:
+
+	react-native doctor
+	[EXPERIMENTAL] Diagnose and fix common Node.js, iOS, Android & React Native issues.
+
+
+
+4) init -
+
+	Available since 0.60.0
+
+	IMPORTANT: Please note that this command is not available through react-native-cli, hence you need to either invoke it directly from @react-native-community/cli or react-native package which proxies binary to this CLI since 0.60.0, so it's possible to use it with e.g. npx.
+
+	Usage (with npx):
+
+	npx react-native init <projectName> [options]
+	Initialize a new React Native project named in a directory of the same name. You can find out more use cases in init docs.
+
+	Options
+	--version <string>
+	Shortcut for --template react-native@version.
+
+	--directory <string>
+	Uses a custom directory instead of <projectName>.
+
+	--title <string>
+	Uses a custom app title instead of <projectName>.
+
+	--template <string>
+	Uses a custom template. Accepts following template sources:
+
+	an npm package name
+	an absolute path to a local directory
+	an absolute path to a tarball created using npm pack
+	link to a GitHub repository (supports username/repo format)
+	Example:
+
+	npx react-native init MyApp --template react-native-custom-template
+	npx react-native init MyApp --template file:///Users/name/template-path
+	npx react-native init MyApp --template file:///Users/name/template-name-1.0.0.tgz
+	npx react-native init MyApp --template Esemesek/react-native-new-template
+	A template is any directory or npm package that contains a template.config.js file in the root with the following type:
+
+	type Template = {
+	  // Placeholder used to rename and replace in files
+	  // package.json, index.json, android/, ios/
+	  placeholderName: string;
+	  // Directory with template
+	  templateDir: string;
+	  // Path to script, which will be executed after init
+	  postInitScript?: string;
+	  // Placeholder used to rename app title inside values.xml and Info.plist
+	  titlePlaceholder?: string;
+	};
+	Example template.config.js:
+
+	module.exports = {
+	  placeholderName: 'ProjectName',
+	  titlePlaceholder: 'Project Display Name',
+	  templateDir: './template',
+	  postInitScript: './script.js',
+	};
+	--skip-install
+	Skip dependencies installation
+
+	--npm
+	Force use of npm during initialization
+
+
+5) info -
+
+	react-native info
+	Get relevant version info about OS, toolchain and libraries. Useful when sending bug reports.
+
+
+6) log-android -
+
+	react-native log-android
+	Starts logkitty displaying pretty Android logs.
+
+
+
+7) log-ios - 
+
+	react-native log-ios
+	Starts iOS device syslog tail.
+
+
+
+8) ram-bundle -
+
+	react-native ram-bundle [options]
+	Builds JavaScript as a "Random Access Module" bundle for offline use.
+
+	Options
+	Accepts all of bundle commands and following:
+
+	--indexed-ram-bundle
+	Force the "Indexed RAM" bundle file format, even when building for Android.
+
+
+9) run-android
+
+	react-native run-android [options]
+	Builds your app and starts it on a connected Android emulator or device.
+
+	Options
+	--root <string>
+	DEPRECATED – root is discovered automatically
+
+	Override the root directory for the Android build (which contains the android directory)'.
+
+	--variant <string>
+	default: 'debug'
+
+	Specify your app's build variant.
+
+	--appFolder <string>
+	DEPRECATED – use "project.android.appName" in react-native.config.js
+
+	default: 'app'
+
+	Specify a different application folder name for the Android source. If not, we assume is "app".
+
+	--appId <string>
+	Specify an applicationId to launch after build. If not specified, package from AndroidManifest.xml will be used.
+
+	--appIdSuffix <string>
+	Specify an applicationIdSuffix to launch after build.
+
+	--main-activity <string>
+	default: 'MainActivity'
+
+	Name of the activity to start.
+
+	--deviceId <string>
+	builds your app and starts it on a specific device/simulator with the given device id (listed by running "adb devices" on the command line).
+
+	--no-packager
+	Do not launch packager while building.
+
+	--port <number>
+	default: process.env.RCT_METRO_PORT || 8081
+
+	--terminal <string>
+	default: process.env.REACT_TERMINAL || process.env.TERM_PROGRAM
+
+	Launches the Metro Bundler in a new window using the specified terminal path.
+
+	--tasks <list>
+	default: 'installDebug'
+
+	Run custom gradle tasks. If this argument is provided, then --variant option is ignored. Example: yarn react-native run-android --tasks clean,installDebug.
+
+	--active-arch-only
+	default: false
+
+	Build native libraries only for the current device architecture for debug builds.
+
+10) run-ios
+	Usage:
+
+	react-native run-ios [options]
+	Builds your app and starts it on iOS simulator.
+
+	Options
+	--simulator <simulator_name>
+	default: iPhone 11
+
+	Explicitly set the simulator to use. Optionally include iOS version between parenthesis at the end to match an exact version, e.g. "iPhone 6 (10.0)".
+
+	Notes: If selected simulator does not exist, cli will try to run fallback simulators in following order:
+
+	iPhone X
+	iPhone 8
+	Notes: simulator_name must be a valid iOS simulator name. If in doubt, open your AwesomeApp/ios/AwesomeApp.xcodeproj folder on XCode and unroll the dropdown menu containing the simulator list. The dropdown menu is situated on the right hand side of the play button (top left corner).
+
+	Example: this will launch your project directly onto the iPhone XS Max simulator:
+
+	react-native run-ios --simulator "iPhone XS Max"
+	--configuration <string>
+	Explicitly set the scheme configuration to use default: 'Debug'.
+
+	--scheme <string>
+	Explicitly set Xcode scheme to use.
+
+	--device [string]
+	Explicitly set device to use by name. The value is not required if you have a single device connected.
+
+	--udid <string>
+	Explicitly set device to use by udid.
+
+	--no-packager
+	Do not launch packager while building.
+
+	--verbose
+	Do not use xcbeautify or xcpretty even if installed.
+
+	--port <number>
+	Runs packager on specified port
+
+	Default: process.env.RCT_METRO_PORT || 8081
+
+	--xcconfig <string>
+	Explicitly pass xcconfig options from the command line
+
+	start
+	Usage:
+
+11) react-native start [option]
+	Starts the server that communicates with connected devices
+
+	Options
+	--port <number>
+	Specify port to listen on
+
+	--projectRoot <path>
+	Path to a custom project root
+
+	--watchFolders <list>
+	Specify any additional folders to be added to the watch list
+
+	--assetPlugins <list>
+	Specify any additional asset plugins to be used by the packager by full filepath
+
+	--sourceExts <list>
+	Specify any additional source extensions to be used by the packager
+
+	--max-workers <number>
+	Specifies the maximum number of workers the worker-pool will spawn for transforming files. This defaults to the number of the cores available on your machine
+
+	--transformer <string>
+	Specify a custom transformer to be used
+
+	--reset-cache, --resetCache
+	Removes cached files
+
+	--custom-log-reporter-path, --customLogReporterPath <string>
+	Path to a JavaScript file that exports a log reporter as a replacement for TerminalReporter
+
+	--https
+	Enables https connections to the server
+
+	--key <path>
+	Path to custom SSL key
+
+	--cert <path>
+	Path to custom SSL cert
+
+	--config <string>
+	Path to the CLI configuration file
+
+	--no-interactive
+	Disables interactive mode
+
+	upgrade
+	Usage:
+
+12) react-native upgrade [npm-version]
+	Upgrade your app's template files to the specified or latest npm version using rn-diff-purge project. Only valid semver versions are allowed.
+
+	Using this command is a recommended way of upgrading relatively simple React Native apps with not too many native libraries linked. The more iOS and Android build files are modified, the higher chance for a conflicts. The command will guide you on how to continue upgrade process manually in case of failure.
+
+	Note: If you'd like to upgrade using this method from React Native version lower than 0.59.0, you may use a standalone version of this CLI: npx @react-native-community/cli upgrade.
+
+	profile-hermes
+	Usage:
+
+	react-native profile-hermes [destinationDir] <flag>
+	Pull and convert a Hermes tracing profile to Chrome tracing profile, then store it in the directory of the local machine.
+
+	destinationDir is optional, if provided, pull the file to that directory
+	default: pull to the current React Native app root directory
+
+	Options
+	--filename <string>
+	File name of the profile to be downloaded, eg. sampling-profiler-trace8593107139682635366.cpuprofile.
+
+	default: pull the latest file
+
+	--raw
+	Pulls the original Hermes tracing profile without any transformation
+
+	--sourcemap-path <string>
+	The local path to your source map file if you generated it manually, ex. /tmp/sourcemap.json
+
+	--generate-sourcemap
+	Generate the JS bundle and source map in os.tmpdir()
+
+	--port <number>
+	The running metro server port number
+
+	default: 8081
+
+	--appId <string>
+	Specify an applicationId to launch after build. If not specified, package from AndroidManifest.xml will be used.
+
+	--appIdSuffix <string>
+	Specify an applicationIdSuffix to launch after build.
+
+	Notes on source map
+	This step is recommended in order for the source map to be generated:
+
+	If you are planning on building a debug APK, that will run without the packager, by invoking ./gradlew assembleDebug you can simply set bundleInDebug: true in your app/build.gradle file, inside the project.ext.react map.

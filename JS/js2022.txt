@@ -1246,6 +1246,11 @@ Please refer following link -  https://github.com/lukehoban/es6features
 =======================================================================================================================
 Mozilla Developer Network =
 
+how to read -
+constructor
+instance properties
+
+
 
 References:
 
@@ -1631,3 +1636,10 @@ scrollTo()                  Scrolls the document to the specified coordinates
 setInterval()               Calls a function or evaluates an expression at specified intervals (in milliseconds)
 setTimeout()                Calls a function or evaluates an expression after a specified number of milliseconds
 stop()                      Stops the window from loading
+
+
+
+
+---------------------------------------------------------------------------------------------------------
+Scope vs Context - 
+  1) https://blog.kevinchisholm.com/javascript/difference-between-scope-and-context/#:~:text=Context%20is%20related%20to%20objects,to%20which%20a%20function%20belongs.

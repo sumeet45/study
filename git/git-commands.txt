@@ -175,3 +175,11 @@ link- https://www.youtube.com/watch?v=HVsySz-h9r4
 
 username - sumeetshedge
 Password ( PTA ) - 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
+
+
+* Push local project to github (First time initialize)
+git init
+git add .
+git commit -m "message"
+git remote add origin  <link>
+git push -u origin main
