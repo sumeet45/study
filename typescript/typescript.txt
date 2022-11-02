@@ -517,3 +517,27 @@ class Dep {
         console.log(this);          // { name: 'sumeet', age: 30, dis: ƒ, tak: ƒ }
     }
 }
+
+
+
+enum Role { Admin = "R" }
+type TypeName = { 
+    name: string;
+    age: number; 
+}
+
+var person: {
+    name: string;
+    age: number;
+    arrayVal: string[];
+    tuplesEx: [number, string][];
+    unionType: string | number | array;
+    literalType: "sumeet" | "shedge";
+    typeEx: TypeName;
+} = {}
+
+function A (): number {
+    return a+b      // OR   void
+}
+
+var examFunc: (a: number; b: number) => number  // function as types
