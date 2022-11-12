@@ -1307,6 +1307,43 @@ Will come back for image ....
 		isFocused() - Returns true if the input is currently focused; false otherwise.
 
 
+17) TouchableHighlight -
+	* A wrapper for making views respond properly to touches. On press down, the opacity of the wrapped view is decreased, which allows the underlay color to show through, darkening or tinting the view.
+
+	* The underlay comes from wrapping the child in a new View, which can affect layout, and sometimes cause unwanted visual artifacts if not used correctly, for example if the backgroundColor of the wrapped view isn't explicitly set to an opaque color.
+
+	* TouchableHighlight must have one child (not zero or more than one). If you wish to have several child components, wrap them in a View.
+
+	* props -
+		TouchableWithoutFeedback Props - Inherits TouchableWithoutFeedback Props.
+
+		* activeOpacity - Determines what the opacity of the wrapped view should be when touch is active. The value should be between 0 and 1. Defaults to 0.85. Requires underlayColor to be set.
+
+		* onHideUnderlay - Called immediately after the underlay is hidden.
+
+		* onShowUnderlay - Called immediately after the underlay is shown.
+
+		* style - 
+		
+		* underlayColor - The color of the underlay that will show through when the touch is active.
+
+		* hasTVPreferredFocus(iOS) - (Apple TV only) TV preferred focus (see documentation for the View component).
+
+		* nextFocusDown(Android) - TV next focus down (see documentation for the View component).
+
+		* nextFocusForward(Android) - TV next focus forward (see documentation for the View component).
+
+		* nextFocusLeftAndroid -
+
+		* nextFocusRightAndroid -
+
+		* nextFocusUpAndroid -
+
+		* testOnly_pressed -
+
+
+
+
 20) View -
 	* The most fundamental component for building a UI, View is a container that supports layout with flexbox, style, some touch handling, and accessibility controls. View maps directly to the native view equivalent on whatever platform React Native is running on, whether that is a UIView, <div>, android.view, etc.
 	* View is designed to be nested inside other views and can have 0 to many children of any type.
@@ -2136,6 +2173,10 @@ D) iOS APIs -
 
 Interview Questions
 
+1) flatlist optimization = https://reactnative.dev/docs/optimizing-flatlist-configuration
+	removeClippedSubviews, maxToRenderPerBatch, updateCellsBatchingPeriod, initialNumToRender, windowSize, Use basic components, Use light components, Use shouldComponentUpdate, Use cached optimized images, Use getItemLayout, Use keyExtractor or key, Avoid anonymous function on renderItem
+2) optimization in react = https://blog.codemagic.io/improve-react-native-app-performance/
+use flatlist or sectionlist, Avoid Passing Inline Functions as Props, Scale and Resize Images, Cache Images, Avoid Updating state or dispatch Actions in componentWillUpdate, Avoid Rendering Overhead and Unnecessary Renders, Hermes, Avoid Arrow Functions, Use Style References Correctly, Remove Console Statements, Make Use of Uncontrolled Inputs
 
 
 
