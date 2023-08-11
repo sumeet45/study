@@ -541,7 +541,7 @@ function A (): number {
 }
 
 var examFunc: (a: number; b: number) => number  // function as types
------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 StyleGuide for Typescript -
 https://google.github.io/styleguide/tsguide.html
