@@ -13,40 +13,45 @@ Basic Concepts =
 * clause is a combination of words with a subject and verb.
 ex - ram enjoyed
 
-Types of clause -
-* independant clause ( main clause )
-* dependant clause  (subOrdinating clause)
+	A) Types of clause -
+	* independant clause ( main clause )
+	* dependant clause  (subOrdinating clause)
+	
+		A) independant clause ( main clause )-
+		* it makes complete sense and can stand alone.
+		* clause = subject + verb;
+		ex. ram shouted
+	
+		ex. laxman watched a movie.
+			(sub)   (verb)   (obj)
+	
+	
+		B) Dependant clause  ( SubOrdinate clause )-
+		* something depend on something, like clause, statement or sentence.
+		* depend on main clause for its meaning.
+		* ex. I went out on the bike that Mary gave me for my birthday.
 
-	A) independant clause ( main clause )-
-	* it makes complete sense and can stand alone.
-	* clause = subject + verb;
-	ex. ram shouted
-
-	ex. laxman watched a movie.
-		(sub)   (verb)   (obj)
-
-
-	B) Dependant clause  ( SubOrdinate clause )-
-	* something depend on something, like clause, statement or sentence.
-	* depend on main clause for its meaning.
-
+------------------------------------------------------------------------
 
 2) Coordinating Conjuction =
 * helps to independent clauses to come together to form compound sentences.
 * FANBOYS - for, and, nor, but, or, yet, so
 
-
+------------------------------------------------------------------------
 3) Subordinating Conjuction =
 * A WHITE BUS - Although, Whenever, However, If, Though, Even if, Because, Unless, Since
 
+------------------------------------------------------------------------
 
 
 
 
+4) Types of Sentence =
+1) Simple Sentence - contains only 1 clause and make complete sense independently. It has a subject and a verb or contains one clause.
+	ex. Ram is a good boy
+	In above one, "ram" is subject and 'is' is helping verb, which create 1 clause. 'a good boy' is object in sentence.
 
-Types of Sentence =
-1) Simple Sentence - contains only 1 clause and make complete sense independently.
-	ex. 
+	other ex. Tiger ran
 
 2) Compound Sentence - need 2 indepedent clause (which makes sense independent) with Coordinating Conjuction 
 	ex. ram sang and she danced.
@@ -58,7 +63,7 @@ Types of Sentence =
 4) Compound Complex Sentence - 2 or more Independent clauses and 1 or more subordinate clauses With "Coordinating Conjuction" and "Subordinating Conjuction"
     ex. My son cried when i left the room, but i didn't hear.
 
-
+------------------------------------------------------------------------
 
 
 Connectors and linking words = 
