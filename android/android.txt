@@ -1,2 +1,68 @@
 youtube - 
 search "Google Developers India" - Android Developer Fundamentals
+
+
+----------------------------------------------------------------------------------
+https://www.youtube.com/watch?v=UmPSe1j9aE4
+
+device type -> smartphone, tablet, wear, tv,
+screen size -> small, normal, large, and extra large
+screen density -> ldpi, mdpi, hdpi, xhdpi, xxhdpi, xxxhdpi
+
+what is pixel?
+ everything we see on screen is made up of these pixels.
+ pixel denoted by "px", unit of pixel.
+ single selection/dot is called picture element (PEL)
+ picture element in short is called "pixel"
+ one pixel is a one physical dot on the screen
+
+screen resolution?
+total number of pixel on the screen in horizontal and vertical
+ex. 1080 x 1920 
+
+Table
+screen category     screen size            screen Resolution
+small                 2 - 2.7              at least 426dp x 320dp
+normal                2.7 - 4.3            at least 470dp x 320dp
+large                 4 - 7                at least 640dp x 480dp
+extra large           7 - 10               at least 960dp x 720dp
+
+
+what is pixel density(dpi)?
+pixel/dot > dpi/ppi (dot per inch/pixel per inch /pixel density per inch) 
+
+how dpi effects User Interface?
+1) more pixels in 1 inch > more dpi/ppi > clear image
+2) less pixels in 1 inch > less dpi/ppi > blur image
+
+pixel density buckets -
+ldpi(120 dpi), mdpi(160 dpi), hdpi(240 dpi), xhdpi(320 dpi), xxhdpi(480 dpi), xxxhdpi(640 dpi)
+
+* Always look for more ppi/dpi, not for higher resolution
+
+--------------------------------------------------------------------------------
+https://www.youtube.com/watch?v=iBsOakAI2nw
+
+What is device-independent-pixel(dp) & why we use it?
+we want to design 1 layout and will give UI which works on all type of screen perfectly.
+
+dp/ dip -
+* Abbreviated "dp" or "dip", is a virtual pixel unit, equivalent to one physical pixel on mdpi screen & scaled proportionally on higher or lower density screens
+* "dp"/"dip" is unit of "device-independent-pixels"
+* like a pixel, "dp" is also unit of Screen measurement
+* "dp" is logical measurement, not like pixel one.
+* "dp" is independent of Screen density
+* "1 dp" = different physcial pixels depending on the device screen
+* used to define layout or views dimensions
+* we specify dimensions in dp, eg height of button = 100dp
+* at runtime, Android framework automatically converts the dp value into px value
+
+dp to px conversion -
+* 1dp = 1px on 160dpi(mdpi) screen (hence we call 160dpi is called baseline dpi)
+* for other dpi screen, android converts dp into px using this formula,  px = dp*(screen dpi / 160)
+* eg. app running on 200 dpi screen
+    1px = 1dp * (screen dpi/160)
+    1px = 1dp * (200/160)
+    1px = 1.25dp
+
+------------------------------------------------------------------------
