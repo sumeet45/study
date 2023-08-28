@@ -14,4 +14,5 @@ maximillian video (youtube) =
 * assertions library - Defining test logic, expected outcome to compare with conditions. eg. chai
 * Jest is great replacement for mocha and chai.
 
-
+------------------------------------------------------
+Jest Coverage link - https://medium.com/steve-cruz/awesome-jest-tip-coverage-report-6f1e303ef07
