@@ -545,3 +545,77 @@ var examFunc: (a: number; b: number) => number  // function as types
 
 StyleGuide for Typescript -
 https://google.github.io/styleguide/tsguide.html
+
+
+------------------
+
+Handbook-
+
+The Basics ->
+* Static Type-Checking
+
+The primitives:  string,  number, and boolean -
+ex.
+let ex1: string = "Hello world!"
+let ex2: number = 43
+let ex3: boolean = true
+
+Arrays - 
+let ex4: number[] = [1,2,3]
+let ex5: string[] = ["i", "j", "k"]
+let ex6: Array<number> = [4,5,6]    //we can write this way also
+
+any -
+let ex7: any = true
+noImplicitAny - Use the compiler flag noImplicitAny to flag any implicit any as an error.
+
+Type Annotations on Variables -
+let ex8: string = "sumeet"
+
+Functions -
+Functions are the primary means of passing data around in JavaScript. TypeScript allows you to specify the types of both the input and output values of functions.
+
+Parameter Type Annotations -
+    function ex9 (a: string){}
+
+Return Type Annotations -
+    function ex9 (a: string): string{}
+
+Functions Which Return Promises -
+    async function getFavoriteNumber(): Promise<number> {
+        return 26;
+    }
+
+Anonymous Functions -
+    const names = ["Alice", "Bob", "Eve"];
+    
+    // Contextual typing for function - parameter s inferred to have type string
+    names.forEach(function (s) {
+        console.log(s.toUpperCase());
+    });
+    
+    // Contextual typing also applies to arrow functions
+    names.forEach((s) => {
+        console.log(s.toUpperCase());
+    });
+
+* Even though the parameter s didn’t have a type annotation, TypeScript used the types of the forEach function, along with the inferred type of the array, to determine the type s will have.
+* This process is called contextual typing because the context that the function occurred within informs what type it should have.
+
+Object Types - 
+    function printCoord(pt: { x: number; y: number }) {}
+
+Optional Properties -
+    functoin printName(pt: { x: number, y?: number }) {
+        if (obj.last !== undefined) {
+            console.log(obj.last.toUpperCase());
+        }
+        console.log(obj.last?.toUpperCase());   //modern approach
+    }
+
+
+Union Types -
+TypeScript’s type system allows you to build new types out of existing ones using a large variety of operators
+
+Defining a Union Type -
+A union type is a type formed from two or more other types, representing values that may be any one of those types. 
