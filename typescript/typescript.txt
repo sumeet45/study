@@ -619,3 +619,62 @@ TypeScript’s type system allows you to build new types out of existing ones us
 
 Defining a Union Type -
 A union type is a type formed from two or more other types, representing values that may be any one of those types. 
+
+
+---------------------------------------------------------------------------------------------
+typescript Class - 22092023
+
+class Point {
+  x: number = 0; //here, x is declaration, "number" is type annotation and x is initalize with 0
+  
+  y // if type not specified, by default "any" will be present
+  readonly readOnlyEx: string = "hello world!"
+
+  constructor(readonlyName:string = "default val"){   //constructors are very similar to functions
+    this.readOnlyEx = readonlyName  // readonly-prevents assignments to the field outside of the constructor.
+  }
+}
+const pt = new Point()
+console.log(`${pt.x}${pt.y} - ${pt.readOnlyEx}`);
+
+// Constructors
+// few differences between class constructor signatures and function signatures:
+// 1.Constructors can’t have type parameters - these belong on the outer class declaration,
+// 2.Constructors can’t have return type annotations - the class instance type is always what’s returned
+
+
+class Base {
+  k = 4
+}
+class Derived extends Base {
+  _length = 0;
+  constructor(){
+    super();    //dervied class must have "super" call.
+  }
+  scale(n: number): void{   //A function property on a class is called a method. 
+    console.log(this.k);    //to access fields and other methods via "this"
+  }
+  get length(){
+    return this._length
+  }
+  set length(val){
+    this._length = val
+  }
+}
+
+class IndexSignatureEx {
+  [s: string]: boolean | ((s:string) => boolean);
+}
+
+interface Address {
+  add: string;
+  phone: number;
+}
+interface PinCode{
+  pin: number
+}
+class InterfaceExample implements Address, PinCode{
+  add = "Omkara hills";
+  phone = 80880990;
+  pin = 201230;
+}
