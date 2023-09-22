@@ -666,6 +666,8 @@ class IndexSignatureEx {
   [s: string]: boolean | ((s:string) => boolean);
 }
 
+
+// interface
 interface Address {
   add: string;
   phone: number;
@@ -678,3 +680,77 @@ class InterfaceExample implements Address, PinCode{
   phone = 80880990;
   pin = 201230;
 }
+
+
+// extends
+// Classes may extend from a base class. A derived class has all the properties and methods of its base class, and can also define additional members.
+class Animal {
+  move(){}
+  greet(){}
+}
+class Dog extends Animal {
+  checkSpeed(){}
+
+  // A derived class can also override a base class field or property. You can use the super. 
+  greet(val?:string){
+    if(val){
+      console.log("val", val);
+    } else {
+      super.greet()
+    }
+  }
+}
+const extendExample = new Dog();
+extendExample.checkSpeed(); // child method
+extendExample.move();   // parent method
+
+class ParentClass1 {
+  greet(){}
+}
+class ChildClass1 extends ParentClass1 {
+  greet(){}
+}
+const d:ParentClass1 = new ChildClass1()
+
+
+//Type-only Field Declarations ?
+
+
+// Initialization Order
+class Base1 {
+  name = "base";
+  constructor(){
+    console.log(`this name is ${this.name}`)
+  }
+}
+class Derived1 extends Base1 {
+  name = "Derived";
+}
+const d1 = new Derived1();
+
+// The order of class initialization, as defined by JavaScript, is:
+//1. The base class fields are initialized
+//2. The base class constructor runs
+//3. The derived class fields are initialized
+//4. The derived class constructor runs
+// This means that the base class constructor saw its own value for name during its own constructor, because the derived class field initializations hadn’t run yet.
+
+
+//Inheriting Built-in Types ?
+
+
+
+// Member Visibility - Public, Protected, Private
+// Public - The default visibility of class members is public.
+class Greeter {
+  public greet(){}
+  protected greetName(){ return "Hi!!!"}
+}
+class GreetSpecial extends Greeter {
+  greetSpecial(){
+    console.log(`this is value: ${this.greetName()}`)
+  }
+}
+const g = new GreetSpecial();
+g.greetSpecial();
+// g.greetName(); - will give error
