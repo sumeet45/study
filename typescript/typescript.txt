@@ -742,9 +742,12 @@ const d1 = new Derived1();
 
 // Member Visibility - Public, Protected, Private
 // Public - The default visibility of class members is public.
+// Protected - protected members are only visible to subclasses of the class they’re declared in
+// Private - private is like protected, but doesn’t allow access to the member even from subclasses
 class Greeter {
   public greet(){}
   protected greetName(){ return "Hi!!!"}
+  private x = 0;
 }
 class GreetSpecial extends Greeter {
   greetSpecial(){
@@ -753,4 +756,9 @@ class GreetSpecial extends Greeter {
 }
 const g = new GreetSpecial();
 g.greetSpecial();
+// console.log(g.x); - will give error, bcz x is private
 // g.greetName(); - will give error
+
+
+
+// Exposure of protected members
