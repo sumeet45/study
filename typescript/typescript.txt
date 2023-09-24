@@ -736,6 +736,7 @@ const d1 = new Derived1();
 // This means that the base class constructor saw its own value for name during its own constructor, because the derived class field initializations hadn’t run yet.
 
 
+
 //Inheriting Built-in Types ?
 
 
@@ -762,3 +763,138 @@ g.greetSpecial();
 
 
 // Exposure of protected members
+class Base2 {
+  protected m = 10;
+  private n = 11;
+}
+class Derived2 extends Base2 {
+  m = 15;
+}
+let a = new Derived2()
+console.log(a.m)
+a.m = 19
+console.log(a.m)
+
+
+// Cross-hierarchy protected access
+
+
+// Cross-instance private access
+
+// Caveats
+
+
+// Static Members
+// Classes may have static members. These members aren’t associated with a particular instance of the class. They can be accessed through the class constructor object itself.
+// Static members can also use the same public, protected, and private visibility modifiers
+class MyClass {
+  static x = 0;
+  private static y = 10;
+  static getGreeting(){
+    return "Hello world";
+  }
+  static printX(){
+    console.log(MyClass.x)
+  }
+}
+class Der extends MyClass {
+  myGreeting = MyClass.getGreeting();  // Static members are also inherited:
+}
+console.log(MyClass.x)
+console.log(MyClass.printX)
+//MyClass.y = 10;  will give error
+
+
+// Special Static Names
+// TypeScript (and JavaScript) don’t have a construct called static class the same way as, for example, C# does.
+// Function properties like name, length, and call aren’t valid to define as static members.
+
+
+// Why No Static Classes?
+// TypeScript (and JavaScript) don’t have a construct called static class the same way as, for example, C# does.
+// Those constructs only exist because those languages force all data and functions to be inside a class; because that restriction doesn’t exist in TypeScript, there’s no need for them. 
+// For example, we don’t need a “static class” syntax in TypeScript because a regular object (or even top-level function) will do the job just as well:
+
+
+// static Blocks in Classes
+// Static blocks allow you to write a sequence of statements with their own scope that can access private fields within the containing class. This means that we can write initialization code with all the capabilities of writing statements, no leakage of variables, and full access to our class’s internals.
+
+
+
+// Generic Classes
+// Classes can use generic constraints and defaults the same way as interfaces.
+class Base3<Type> {
+  content: Type
+  constructor(value: Type){
+    this.content = value
+  }
+}
+const gc = new Base3("Hello")
+const g1c = new Base3(90)
+
+// Type Parameters in Static Members
+
+
+
+// this at Runtime in Classes
+// by default, the value of this inside a function depends on how the function was called. 
+class MyClass1 {
+  name = "MyClass";
+  getName(){
+    return this.name;
+  }
+}
+const myClass12 = new MyClass1()
+let obj = {
+  name: "obj",
+  getName: myClass12.getName
+}
+console.log(obj.getName()); // will print "obj", not "MyClass"
+
+
+// Arrow Functions
+// If you have a function that will often be called in a way that loses its this context, it can make sense to use an arrow function property instead of a method definition:
+
+
+
+// this parameters
+// In a method or function definition, an initial parameter named this has special meaning in TypeScript. These parameters are erased during compilation:
+// TypeScript input with 'this' parameter
+
+
+// this Types
+
+
+
+// this -based type guards
+
+
+
+// Parameter Properties
+// TypeScript offers special syntax for turning a constructor parameter into a class property with the same name and value. These are called parameter properties and are created by prefixing a constructor argument with one of the visibility modifiers public, private, protected, or readonly. The resulting field gets those modifier(s):
+class Params {
+  constructor(
+     public readonly x: number,
+     protected y: number,
+     private z: number
+  ){
+  }
+  getName(){
+    console.log(this.x, this.y, this.z)
+  }
+}
+const Pa = new Params(1,2,3)
+console.log(Pa.x, )
+
+
+// Class Expressions
+const someClass = class<Type>{
+  content: Type;
+  constructor(value: Type){
+    this.content = value
+  }
+}
+const n = new someClass(90)
+
+
+// Constructor Signatures
