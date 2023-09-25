@@ -898,3 +898,44 @@ const n = new someClass(90)
 
 
 // Constructor Signatures
+
+
+
+// abstract Classes and Members
+// Classes, methods, and fields in TypeScript may be abstract.
+// An abstract method or abstract field is one that hasn’t had an implementation provided. These members must exist inside an abstract class, which cannot be directly instantiated.
+// The role of abstract classes is to serve as a base class for subclasses which do implement all the abstract members. When a class doesn’t have any abstract members, it is said to be concrete
+
+abstract class Base4 {
+  abstract getName():string
+  printName(){
+    console.log(this.getName())
+  }
+}
+class Derived4 extends Base4 {
+  getTeam(){}
+  getName(){
+    return "Hello"
+  }
+}
+// const a1 = new Base4();  //Cannot create an instance of an abstract class.(2511)
+// if getName method implementation not done in Derived4, will give error => Non-abstract class 'Derived4' does not implement all abstract members of 'Base4'(18052)
+
+
+
+// Abstract Construct Signatures
+
+
+// Relationships Between Classes
+// In most cases, classes in TypeScript are compared structurally, the same as other types.
+class Point1 {
+  x = 0;
+  y = 0;
+}
+class Point2 {
+  x = 0;
+  y = 0;
+} 
+// OK
+const p: Point1 = new Point2();
+
