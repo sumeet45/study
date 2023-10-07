@@ -14,6 +14,8 @@ Why Principles?
 
 
 1) SOLID -
+	* Refer - https://www.linkedin.com/in/prithveesh/recent-activity/articles/
+
 	S (Single Responsibility Principle) - 
 	* A class should have one and only one reason to change, meaning that a class should have only one job.
 	* Explanation - suppose we have class called "book" with some methods related to book. As per Principle, we should not add any extra functionality to our class. It should have only book related methods only. If you want to add another methods, then add those to other class and use it.
@@ -26,34 +28,24 @@ Why Principles?
 	L (Liskov Substitution Principle) -
 	* you should be able to change an instance using a sub-type and your code should still work.
 	* Liskov Substitution Principle (LSP) states that objects of a superclass should be replaceable with objects of its subclasses without breaking the application.
-		ex. class Bird {
-				layEgg(){
-					....
-				}
-			}
-
-			class Eagle Extends Bird {
-				fly(){
-					....
-				}
-			}
-
-			class Penguin Extends Bird {
-				dive(){
-					....
-				}
-			}
+	* The Liskov Substitution Principle in frontend development emphasises that derived components, which inherit from a base component, should be able to replace the base component in any scenario without causing unexpected errors or breaking the expected behaviour.
+	* This means that the derived components should support the same props, methods, and expected behaviour as the base component, while potentially adding additional features specific to their context, such as custom input validation or specific form submission logic. They should be substitutable for the base component without introducing errors or unexpected behaviour.
+	* link - https://www.linkedin.com/pulse/liskov-substitution-principle-lsp-frontend-prithveesh-goel/
+	* Note - base class features extends to derived class, so derived class able to use instead of base class where it's required.
 
 	
 	I ( Interface Segregation ) - 
 	* Interface segregation principle (ISP) states that no code should be forced to depend on methods it does not use.
 	* The software should be split into multiple independents parts. Side-effects should be reduced as much as possible to ensure independence.
 	* Interface should segregate into multiple one.
-	
+
+
+
 	D ( Dependancy Inversion ) -
 	* High-level modules, which provide complex logic, should be easily reusable and unaffected by changes in low-level modules, which provide utility features. To achieve that, you need to introduce an abstraction that decouples the high-level and low-level modules from each other.
 	A) High-level modules should not import anything from low-level modules. Both should depend on abstractions (e.g., interfaces).
 	B) Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.
+	* Note - https://www.linkedin.com/pulse/solid-principles-applied-frontend-prithveesh-goel/
 
 
 
@@ -71,3 +63,28 @@ Why Principles?
 
 5) Avoid Premature Optimization -
 	* Premature optimization is the practice that encourages developers to perform unnecessary optimization before it’s proven that it is needed. I think if you apply KISS and YAGNI you shouldn’t fall for this
+
+----------------------------------------------------------
+SOLID -
+// Single Responsibility Model
+// bad
+const userOperations = (val) => {
+  const verifyCredentials = () => {
+    console.log("API call for authentication");
+  }
+  const changeUserSetting = () => {
+    console.log("change user setting");
+  }
+  return {
+    verifyCredentials,
+    changeUserSetting
+  }
+}
+
+// Good 
+const userAuthentication = () => {
+  console.log("API call for authentication")
+}
+const updateUserSetting = () => {
+  console.log("change user setting")
+}
