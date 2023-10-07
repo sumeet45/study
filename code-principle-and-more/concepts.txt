@@ -1,0 +1,27 @@
+1) OOPS with mobile exmaple - 
+  link - https://www.youtube.com/watch?v=bYOeUrqIXOM
+
+  class - 
+    . blueprint of object, which have methods and fields
+    . we can create mulitple object from one class
+
+  Object - Object can have methods and fields. And its created from class
+
+  Encapsulation - 
+    . binding data and function into single unit together, is known as encapsulation
+    . it provide data hiding.
+    . we can hide details of class from outside world
+    . eg. of Encapsulation - Mobile encapsulate circuit, component, camera, and so on,
+
+  Abstraction -
+    . Showing essential information and hiding its detail implementation
+    . eg. clicking picture, but we don't know how its implemented
+
+  Polymorphism -
+    . same function behave differently in different situation
+    . mobile restart button, helps to switch off and switch on based on current mobile condition
+
+  Inheritance - 
+    . inherit props and methods of base class. (  )
+    . derived class can have their own feature also. ( in android, we have ble. but for ios, we don't have ble )
+    . 
