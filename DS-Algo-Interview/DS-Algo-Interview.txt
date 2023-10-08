@@ -153,6 +153,29 @@ Two separate collections: O(a * b)
 * Big O is about write scalable code for smaller and larger input in future too.
 
 
+52) Section Overview -
+* In this section, we will see about how to solve problem
+
+53) What are companies looking for?
+*  companies looking following skill - Analytic Skills, Coding Skills, Technical Skills, Communication Skills
+* Analytic skills - want to know about, how u think through problems and analyze things, as well thought process and solving procedure.
+* Coding skills - they check our code. is it clean, organised and readable?
+* Technical Skills - fundamental knowledge 
+* communication skills - must one
+* Company want to know when you should use a certain data structures and algo over the other. companies need smart people.
+
+
+54) What we need for coding interviews -
+* Following DS and Algo, used mostly in 90% problems
+* Data Structures - 
+	Arrays, Trees, Stacks, Trees, Queues, Graphs, Linked lists, Hash Tables
+* Algorithms -
+	Sorting, Dynamic Programming, BFS + DFS (Searching), Recursion
+
+55) Exercise: Google Interview -
+*
+
+
 220) During the interview - 
 * Think like, i do have more offer letter in hand before starting interview and take this inerview as practice.
 * Think like, you are going to meet a old friend with big smile and having fun, so it help increase positive bond between interviewer and me.
