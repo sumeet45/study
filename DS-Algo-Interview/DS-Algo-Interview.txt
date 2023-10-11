@@ -176,6 +176,14 @@ Two separate collections: O(a * b)
 * How to: work at Google - Example coding/engineering interview
 
 
+62) What is A Data Structure?
+* Data Structure - It's way for us to organize data
+* the goal in this course is to understand data structures so that you can pick the right data structure
+* based on certain scenario, data needs to store in specific format
+
+63) How Computers stores data?
+* To run code, we need to keep track of variable, array and so on. it store in "RAM"
+
 220) During the interview - 
 * Think like, i do have more offer letter in hand before starting interview and take this inerview as practice.
 * Think like, you are going to meet a old friend with big smile and having fun, so it help increase positive bond between interviewer and me.
