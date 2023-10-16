@@ -183,6 +183,94 @@ Two separate collections: O(a * b)
 
 63) How Computers stores data?
 * To run code, we need to keep track of variable, array and so on. it store in "RAM"
+* Need to rewatch
+
+64) Data structures In different Languages-
+https://coggle.it/diagram/W5E5tqYlrXvFJPsq/t/master-the-interview-click-here-for-course-link/c25f98c73a03f5b1107cd0e2f4bce29c9d78e31655e55cb0b785d56f0036c9d1
+
+65) Operations on DS -
+Operations mostly used - 
+Insertion, Deletion, Traversal ( iterate over each item ), searching, sorting, Access
+
+
+66) Arrays Introduction -
+* arrays operations- 
+	push, lookup, pop, are quick operations - o(1)  And  unshift and splice will take time - o(n)
+
+67) Static and Dynamic Arrays -
+* 
+
+
+70) Implementing An Array -
+* create own data structure with class. 
+* Here took Array and its operations implemented within that class
+
+71) Strings and Arrays -
+* we should convert string into array. bcz string are simply array of characters. so whenever u got string related problem, convert it into array.
+
+72) Reverse a string 
+73) Solution:  Reverse a string -
+const reverse = str => str.split("").reverse().join("")
+
+74) Merge Sorted Arrays
+75) Solution: Merge Sorted Arrays -
+const merge = (arr1, arr2) => [...arr1, ...arr2].sort((a, b) => a - b)
+merge([0, 3, 4, 31], [8, 6, 30])
+
+
+77) Arrays Review -
+Pros- 
+fast lookups
+fast push/pop
+ordered
+
+cons -
+slow inserts
+slow deletes
+Fixed size* (for static array)
+
+78) Hash Tables (Objects) -
+In JS, we call Objects instead of "Hash Tables"
+
+79) Hash function -
+* Hash functions, which gives us output when we give input, which is same everytime. 
+* Md5 is one of it types. there are more than this.
+* It happens under the hood. we leaves it to languages.
+
+80) Hash collisions -
+* Hash collisions- It happen in Hash tables. so it suggest to use liknked list also.
+* It gives us solution to resolve issue - https://en.wikipedia.org/wiki/Hash_table#Collision_resolution
+
+81) Hash tables in different languages -
+* 
+
+
+
+
+
+154) Introduction to Algorithm -
+* Algo allows us to use language built in data structures like arrays and objects or primitives such
+* DS + algo = program
+
+155) Recursion Introduction -
+* recursive function - recursive function is a function that referes to itself
+
+156) Stack overflow -
+* with recursion, we may face stack overflow problem. 
+
+157) Anatomy of Recursion -
+* recursive function must have breaking point. we need to add condition to stop recursive function.
+
+let counter = 0;
+function inception(){
+   console.log(counter);
+   if(counter > 3){
+    return "done"
+   }
+   counter++;
+   inception()
+}
+
 
 220) During the interview - 
 * Think like, i do have more offer letter in hand before starting interview and take this inerview as practice.
