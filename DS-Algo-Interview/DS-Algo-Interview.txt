@@ -36,11 +36,11 @@ use "resumemaker.com",
 23) Setting up Your Enviornment =
 * use - https://replit.com/
 
-24) Section Overview = 
-* Learn Big O concepts to understand each language properly.
+27) Section Overview = 
+* Learn Big O concepts to be better at coding
+* It's called "Big O asymptotic analysis"
 
-
-26) Big O cheatsheet = 
+28) Big O cheatsheet = 
 * https://zerotomastery.io/cheatsheets/big-o-cheat-sheet/?utm_source=udemy&utm_medium=coursecontent
 
 
