@@ -58,7 +58,7 @@ use "resumemaker.com",
 * Here, we got chart of Big o. Now, with help of big O, we can found efficiency of our code.
 * when we talk about big 0 and scalability, we simply mean when we grow bigger and bigger with input. how much does the algo slows down. min slower algo makes it better algo than others.
 
-29) O(n) -
+31) O(n) -
 * lets find out big O notation for functions.
 * O(n) - as input increases, output increase linearly.
 * Big O doesn't measure in seconds, instead we're focusing on how quickly our runtime grows. we do this with size of input and compare the operations that increases.
@@ -76,38 +76,57 @@ function findNemo(array){
 findNemo(array2);
 
 
-30) O(1) =
+32) O(1) =
 * we call this "constant time", no matter how many input increases, we just grab 1st item of array.
 * with O(1), we can execute code once, not needed to execute again and again.
+* function checkFunc(arr){
+    console.log(arr[0]); //O(1)
+    console.log(arr[1]); //O(1)
+}
+checkFunc([1, 2, 4])
+* above function gives O(2) for two operations, which is constant for any array. so it become finally O(1)
 
+34) Solution: Big O Calculation -
+* shows method with following big O notation -
+ O(3 + 4n)
 
+36) Solution: big O Calculation 2 -
+* shows method with following big o Notation -
+O(4 + 5n)
 
-36) Big O rule 1 - 
+37) Simplifying Big O -
+* To simplify, big o calculation, we can follow following rules -
+1) worst case
+2) remove constants
+3) Different terms for inputs
+4) Drop Non Dominants
+
+38) Big O rule 1 - 
 * first rule - always think about worst case.
 
 
-37) Big O rule 2 -
+39) Big O rule 2 -
 * second rule - Remove constants
 * O(2n)	becomes O(n)
 
 
-38) Big O rule 3 -
+40) Big O rule 3 -
 * third rule - different terms for input.
 * 2 loops, one by one - O(a + b)
 * 2 loops, one inside one, different input - O(a * b)
 
 
-39) O(n^2) - 
+41) O(n^2) - 
 * 2 loops, one inside one, same input - O(n * n) => O(n^2)
 
 
-40) Big O rule 4 -
+42) Big O rule 4 -
 * last rule - drop non dominants.
 * if we have something like follow - O(x^2 + 100 + 2n )  =>  O(x^2)
 * we are more concerned about O(n^2) than O(1), O(n).
 
 
-41) Big O Cheatsheet -
+43) Big O Cheatsheet -
 -Big Os -
 	O(1) Constant- no loops
 	O(log N) Logarithmic- usually searching algorithms have log n if they are sorted (Binary Search)
@@ -146,7 +165,7 @@ Two separate collections: O(a * b)
 
 
 
-42) What does this all mean?
+44) What does this all mean?
 * scalable means we worry about large inputs.
 * https://www.bigocheatsheet.com/
 * data structure + algorithms = Programs
