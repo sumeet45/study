@@ -44,19 +44,19 @@ use "resumemaker.com",
 * https://zerotomastery.io/cheatsheets/big-o-cheat-sheet/?utm_source=udemy&utm_medium=coursecontent
 
 
-27) What is Good Code? =
+29) What is Good Code? =
 * Good code can be describe in 2 things - Readable and Scalable
 * Scalable - big O notation is what allows us to measure this idea of scalable code that can scale.
 * Programmer can code which might be efficient or inefficient way.
 * write function called "FindNemo".
 
 
-28) Big O and scalability =
+30) Big O and scalability =
 * as input increases, findNemo function increase time to print character.
 * output will be faster or slower based on CPU power and how many programms are running simultaneously and many other factors. So we can't predict based on this parameter, which one is good code and bad code?
 * so for that, we have big o notation, to calculate efficiency.
 * Here, we got chart of Big o. Now, with help of big O, we can found efficiency of our code.
-
+* when we talk about big 0 and scalability, we simply mean when we grow bigger and bigger with input. how much does the algo slows down. min slower algo makes it better algo than others.
 
 29) O(n) -
 * lets find out big O notation for functions.
@@ -162,7 +162,9 @@ Two separate collections: O(a * b)
 * Coding skills - they check our code. is it clean, organised and readable?
 * Technical Skills - fundamental knowledge 
 * communication skills - must one
+* Not a single one of us has everything memorized in our head. Companies know this. They're not dumb. What they're looking for are people who know how to look for answers, and they want to know that, you know your data structures and algorithms and you know of their existence.
 * Company want to know when you should use a certain data structures and algo over the other. companies need smart people.
+
 
 
 54) What we need for coding interviews -
