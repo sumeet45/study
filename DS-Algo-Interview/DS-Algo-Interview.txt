@@ -171,6 +171,16 @@ Two separate collections: O(a * b)
 * data structure + algorithms = Programs
 * Big O is about write scalable code for smaller and larger input in future too.
 
+45) O(n!) -
+* Not happened mostly
+
+46) 3 Pillards of Programming -
+* code should be scalable and readable
+* scalable - we can check code based on speed and memory
+* which code is best? Readable, memory and speed
+
+47) Space Complexity -
+* what causes space complexity? variables, Data Structures, Function Call, Allocations
 
 52) Section Overview -
 * In this section, we will see about how to solve problem
