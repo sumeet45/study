@@ -273,7 +273,7 @@ slow deletes
 Fixed size* (for static array)
 
 78) Hash Tables (Objects) -
-In JS, we call Objects instead of "Hash Tables"
+In JS, object are a type of hash table.
 
 79) Hash function -
 * Hash functions, which gives us output when we give input, which is same everytime. 
