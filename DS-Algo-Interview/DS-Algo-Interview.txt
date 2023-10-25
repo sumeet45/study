@@ -182,6 +182,18 @@ Two separate collections: O(a * b)
 47) Space Complexity -
 * what causes space complexity? variables, Data Structures, Function Call, Allocations
 
+48) Exercise: Space Complexity -
+
+49) Exercise: Twitter -
+
+50) Optional: Javascript Loops -
+* shows for loop, forEach and "for of" method 
+
+51) Section summary -
+* Good Code depends on "readability" and "scalability" of code.
+* "scalability" can be classified into 2 - Space and Time complexity
+* don't optimize, if it's affect time and space complexity
+
 52) Section Overview -
 * In this section, we will see about how to solve problem
 
