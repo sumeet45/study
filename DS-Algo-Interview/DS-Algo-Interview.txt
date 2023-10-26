@@ -288,7 +288,16 @@ In JS, object are a type of hash table.
 * 
 
 
+86) Hash Tables vs arrays
 
+90) Hash Tables review
+* Pros - Fast lookup, Fast Insets, Flexible Keys
+* Cons - Unordered, slow key iteration
+
+
+91) Linked Lists introduction
+
+92) 
 
 
 154) Introduction to Algorithm -
