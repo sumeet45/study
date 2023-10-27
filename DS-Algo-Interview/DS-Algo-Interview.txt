@@ -300,6 +300,19 @@ In JS, object are a type of hash table.
 92) 
 
 
+
+112) Stacks + Queues Introduction -
+* 
+
+113) Stacks
+* stacks like pile of plates. used "LIFO"
+* operations - lookup O(n), pop O(1), push O(1), peek O(1)
+
+114) Queues
+* used "FIFO"
+* operations - lookup O(n), enqueue O(1), dequeue O(1), peek O(1)
+
+
 154) Introduction to Algorithm -
 * Algo allows us to use language built in data structures like arrays and objects or primitives such
 * DS + algo = program
