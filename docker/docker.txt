@@ -34,7 +34,7 @@ Youtube - TechWorld with Nana
 * we setup docker using package.
 * run command  - sudo docker run hello-world
 
-7) bind two redis from same port with two different ports of host -
+7) bind two redis from same port with two different ports of host machines-
 * docker run -p6000:6379 redis
 * docker run -p6000:6379 -d redis
 * docker run -p6001:6379 redis:4.0
@@ -94,10 +94,10 @@ commands -
 * docker ps 						// list of running container 
 * docker run -d redis 				// run container in detached mode
 * docker stop container_id			// to stop container, first get container id using "docker ps" and replaced with "container_id"
-* docker start container_id			// to restart stop container
+* docker start container_id			// to start container using container_id
 * docker ps -a 						// show start and stopped container list
 * docker run redis:4.0				// download and run redis image 
-* docker run -p6000:6379 redis		// bind host port to container port 
+* docker run -p6000:6379 redis		// bind host port to container port, 6000 (host port) and 6379 (container port) 
 * docker run -d -p6001:6379 --name redis-older redis:4.0  	// to update name
 * docker logs container_id/names	// get logs of container
 * docker exec -it container_id /bin/bash   // get terminal of running container to check logs, env_variables and many more.
