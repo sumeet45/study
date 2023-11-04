@@ -168,3 +168,7 @@ docker hub - same as github
 * Need to check this section
 
 14) Docker Volumes
+* for data persistance
+
+she teaches docker in following format -
+single container > within network > within yaml file > within dockerfile > pushing to AWS > pulling from AWS and run
