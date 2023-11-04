@@ -69,20 +69,31 @@ Youtube - TechWorld with Nana
 10) Docker Compose -
 * sometime we need to deal with multiple containers. so it became tedious job to write and run those container for multiple time. Hence we use docker compose feature. docker compose is collection of docker commands in yaml file, it becomes easy to edit and run it.
 * Docker compose takes care of container. it create common network for these containers.
+* store it in root folder of project.
 
 * edit yaml file -
  version: "3"		= latest version of docker-compose
  services:			= now container list comes here
- 	mongodb:
- 		image:mongo
- 		ports:
- 			-27017:27017	= HOST:CONTAINER
- 		enviornment:
- 			-MONGO_INITDB_ROOT_USERNAME=admin
- 			-MONGO_INITDB_ROOT_PASSWORD=password
- 	mongo-express:
+   mongodb:
+     image:mongo
+     ports:
+       - 27017:27017	= HOST:CONTAINER
+     enviornment:
+       - MONGO_INITDB_ROOT_USERNAME=admin
+       - MONGO_INITDB_ROOT_PASSWORD=password
+   mongo-express:
+    image: mongo-express
+    ports: 
+      - 8080:8080
+    enviorment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_MONGODB_SERVER=mongodb			
 
-
+* to run above yaml file and create new container using it, Need to run following command - 
+	docker-compose -f mongo.yaml up
+* to stop network and available containers in it, used following command - 
+	docker-compose -f mongo.yaml down
 
 
 commands -
@@ -100,12 +111,46 @@ commands -
 * docker run -p6000:6379 redis		// bind host port to container port, 6000 (host port) and 6379 (container port) 
 * docker run -d -p6001:6379 --name redis-older redis:4.0  	// to update name
 * docker logs container_id/names	// get logs of container
+* docker logs container_id/names | tail		//shows last activity of container
+* docker logs container_id/names -f		//shows logs in string manner
 * docker exec -it container_id /bin/bash   // get terminal of running container to check logs, env_variables and many more.
 * docker network ls 				// to get list of docker network
 * docker network create mongo-network  	//to create mongo network
 * docker-compose -f mongo.yaml		// to execute yaml file
+* docker-compose -f mongo.yaml up	//to create network and start containers in it
+* docker-compose -f mongo.yaml down	//to close network and stop containers which is available within it
+* docker build -t my-app:1.0 .		//create docker image of our project
+* docker rmi image_number		//delete image
+* docker rm container_number
+* docker tag my-app:1.0  amazonaws.com/my-app:1.0 	//to copy and rename image
+* docker push my-app:1.0		//push image to dockerhub
 
 
+11) DockerFile -
+* In order to build a docker image from an application, we basically have to copy the contents of that applications into docker file. It could be an artifact that we built. in our case, we just have 3 files (jar, war, bundles.js) so we can copy them directly in the image and we're going to configure it. In order to do that, we're going to use a blueprint for building images, which is called docker file.
+* Docker file is blueprint for creating docker images
+* we can configure enviornment variables also in dockerfile
+* "/home/app" directory is going to live inside of the container, it means it will created in container not on laptop(host)
+* save it as "Dockerfile" in root folder
+* create docker image using Dockerfile - docker build -t my-app:1.0 .
+* need to apply last 4 mins on actual example
+
+
+* dockerFile -
+FROM node:13-alpine
+ENV MONGO_DB_USERNAME=admin \
+    MONGO_DB_PWD=password
+RUN mkdir -p /home/app
+COPY . /home/app
+CMD ["node", "/home/app/server.js"]
+
+
+12) Docker Registry -
+* Docker Registry is repository we created on AWS to store image using AWS ECR service.
+* In AWS, For each repositoy, we can add only 1 image of same name ( we can add different versions)
+* Before pushing image to Repo, 
+	1) have to login into private repo - all the steps given on AWS ECR
+* "tag" in AWS pushing command - it means we renaming image
 
 
 docker engine	- docker itself
@@ -114,4 +159,12 @@ docker desktop
 docker hub - same as github
 
 
-1:34
+13) Deply our containerized app -
+*  add it in yaml file -
+	my-app:
+	  image: amazonaws.com/my-app:1.0
+	  ports: 
+	    - 3000:3000
+* Need to check this section
+
+14) Docker Volumes
