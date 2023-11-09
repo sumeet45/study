@@ -1643,3 +1643,15 @@ stop()                      Stops the window from loading
 ---------------------------------------------------------------------------------------------------------
 Scope vs Context - 
   1) https://blog.kevinchisholm.com/javascript/difference-between-scope-and-context/#:~:text=Context%20is%20related%20to%20objects,to%20which%20a%20function%20belongs.
+
+Need to try on following -
+* Fundamental Objects - Symbol
+* Error Objects -
+* Text processing - String
+* Keyed collections - Map, Set, WeakMap, WeakSet
+* Structured data -
+* Managing memory -
+* Control abstraction objects - Iterator, AsyncIterator, GeneratorFunction, AsyncGeneratorFunction , Generator, AsyncGenerator, AsyncFunction
+* Reflection
+* Internationalization
+
