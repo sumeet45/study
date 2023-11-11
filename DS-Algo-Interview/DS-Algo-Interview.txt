@@ -406,3 +406,16 @@ ex. class Bird {
 
 * Interface Segregation - Interface segregation principle (ISP) states that no code should be forced to depend on methods it does not use.
 * Dependancy Inversion - 
+------------------------------------------------------------------------------------------
+
+youtube - Apna college DSA
+1) Binary Tree in Data Structures | All about Binary Tree | DSA Course
+* In binary tree, we called "node" for starting point which stores data. we connect nodes using "branches".
+* Some nodes don't have any child nodes. We call them as "leaf node".
+* in binary tree, we can have max 2 child nodes for each node.
+* terms to remember - left child node, right child node, parent node, sibling node, leaf node, ancestors, level, subtree, depth
+* build tree preorder - 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 
+* start with left node first. once u got -1, it means move to it's right node. And somehow both are -1, then move to parent's next node.
+* preorder Traverse - Root, left subtree, right subtree
+* Inorder Traverse - Left subtree, Root , right subtree
+* postorder Traverse - left subtree, right subtree, root
