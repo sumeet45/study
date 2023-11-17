@@ -1,5 +1,7 @@
 A -
 * Argument :- argument is, which is used while calling, like myFunction(4, 6). in it, 4 & 6 are argument.
+Algorithm - 
+Array
 
 
 
@@ -9,8 +11,53 @@ C -
 * Constructor -  is a special type of subroutine called to create an object.
 * Coercion - converting value from one type to another.
 * Currying - Currying is a technique of evaluating function with multiple arguments, into sequence of function with single argument.
-
-
+camel case
+char
+conditional statements
+constant
+else statement
+event
+expression
+for loop
+if statement
+iteration
+nested
+operator
+syntax
+while loop
+do while loop
+block coding
+asynchronous programming language
+pixel
+integrated development enviorment
+inheritance
+git
+hardcode
+compilation
+command line interface
+bit
+byte
+UX
+UI
+stack
+url
+source code
+server
+IP address
+input
+front end
+framework
+debugging
+data structure
+data
+code review
+command
+bug
+build
+code
+cloud
+backend
+agile software development
 
 
 D -
