@@ -68,4 +68,4 @@ dp to px conversion -
 ------------------------------------------------------------------------
 
 
-WsCube Tech 
+WsCube Tech - For Android development
