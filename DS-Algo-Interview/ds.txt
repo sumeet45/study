@@ -14,3 +14,6 @@ Array -
 * showing how to calculate bytes for a[5] array - [1, 2,3, 4,......., 30]
 
 
+----------------------------------------------------------------
+https://www.youtube.com/watch?v=txjmvEPlAtU&list=PLC3y8-rFHvwg6nsAOfC5Is18KB2DrVOJy&index=2
+2) JavaScript Data Structures - 2 - Array
