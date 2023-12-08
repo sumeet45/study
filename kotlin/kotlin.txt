@@ -1,0 +1,20 @@
+Smartherd 
+Kotlin - 
+* kotlin is statically typed language. It also called as JVM language, bcz it needs JVM to execute its bytecode.
+* support to avoid nullPointerException.
+* support immutability
+* OOPS language
+* less code
+
+
+7) Hello world -
+fun main(){
+  println("hello world")
+}
+
+8) how it works -
+
+------------------------------------------------------------
+Kotlin - LearnCodeWithDurgesh
+
+Notes- https://github.com/LearnCodeWithDurgesh/Kotlin-Yt
