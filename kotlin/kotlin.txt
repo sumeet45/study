@@ -18,3 +18,26 @@ fun main(){
 Kotlin - LearnCodeWithDurgesh
 
 Notes- https://github.com/LearnCodeWithDurgesh/Kotlin-Yt
+
+
+-----------------------------
+Kotlin - wsCubetech
+
+kotlin -
+* kotlin is statically typed, general-purpose programming language developed by Jetbrains
+* combines object-oriented and functional programming features
+
+Why concise -
+* concise - less code
+* Interoperability - 
+* feature-rich - more features than java
+* Easy -
+* less error-prone - bcz of statically typed
+* safe - help to avoid nullPointerException. Every variable in kotlin is non-null by default.
+* smart cast - 
+
+Kotlin use -
+* android application
+* easily compile to JS, so available for frontend
+* available for web-development as well backend development
+
