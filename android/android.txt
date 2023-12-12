@@ -82,3 +82,41 @@ What is OS?
 
 3) Android versions A to Z -
 * 
+
+4) What is IDE for android -
+* android studio for android development
+
+8) What is Front end and Back end in Android app?
+* Static and Dynamic app- 
+  * Static application based on data which is available in apk. For dynamic app, it's mostly depend on server for its dynamic content.
+* 
+
+
+------------------------------------------------------------------------
+
+7) Setting up our First project -
+* adjust setting for android studio
+* SDK - Software Development Kit, which is basically a set of softwares tools and libraries.
+
+8) Day 1- Overview of the android studio interface
+* giving little intro about Android studio, will tell in depth later videos.
+
+9) Day 1 - understanding gradle -
+* gradle fetches required things and helps to build application
+* it's bit like package.json.
+
+10) Day 1 - Changing the Scaling in android studio
+* adjustin zoom level to see code properly
+
+11) Setting up our Emulator -
+* choose model from device manager (Pixel 7
+* System image Optoin - choose android system image 
+* AVD manager - adjust setting and create device
+* run our app firs time with "Hello Android" text
+* we have emulator setup and ran our first application in this video
+
+12) Tip of the day -
+* we can go through tips provided by android studio on opening editor.
+* it will show various tips
+
+13) 
