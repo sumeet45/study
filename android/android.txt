@@ -69,3 +69,16 @@ dp to px conversion -
 
 
 WsCube Tech - For Android development
+1) Android Introduction -
+* android is open source, linux-based operating system
+
+What is OS?
+* An OS is software programm that enables the hardware to communicate and operate with the software.
+* OS is a interface between user and hardware
+
+2) History Of android -
+* in Oct 2003, 4 people created Android Inc.
+* google acquired android inc. in 2005. In 2008, first android phone released.
+
+3) Android versions A to Z -
+* 
