@@ -117,6 +117,36 @@ What is OS?
 
 12) Tip of the day -
 * we can go through tips provided by android studio on opening editor.
-* it will show various tips
+* it will show various tips to developer
 
-13) 
+13) Changing our code for the first time -
+* change "hello world" to "welcome denis"
+
+14) Understanding preview -
+* To see preview, without reloading whole application we can update content.
+
+15) Imports and Packages -
+* Teaching about imports and packages. 
+* like Javascript, we also got packages and libraries readymade, which we import and use it in MainActivity.kt
+
+16) Understanding the MainActivity Oncreate and Composable -
+* Giving basic Understanding of MainActivity file. In future, we will go deeper.
+* Activity is like whole page. 
+
+17) finishing day 1
+* summary - 
+* set up android studio, android virtual device, and run app also
+* also got high level understanding android studio, MainActivity, and preview also
+
+19) Welcome to day 2
+
+20) Overview of what Rock Paper Scissors is build of
+
+21) Overview of what variables are
+* variable - use as storage or container to store data, which we use later in programm
+* can hold various types of data
+* name for variable should be descriptive
+* kotlin take care of how much space will need for variable, we need to create only variable and assign value.
+
+22) Int data type -
+* 
