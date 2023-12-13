@@ -149,4 +149,45 @@ What is OS?
 * kotlin take care of how much space will need for variable, we need to create only variable and assign value.
 
 22) Int data type -
+* In kotlin, we have multiple type for number with sizes - byte(8), short(16), Int(32), Long(64)
+* val one = 1 // Int
+  val threeBillion = 1200000000 // Long
+  val ch = 1L  // Long
+  val ch1: Byte = 1  // Byte
+* for byte and short, we need to specify with initialization
+
+23) Running Hello World -
+* in it, he states that, main function given already by kotlin. 
+* he show how to run programm and give reference of website - https://play.kotlinlang.org/
+
+24) Val vs Var and print its on the console -
+* val - for constant (immutable)
+* var - for mutable storage
+
+25) Int, long, Short, Byte, and specifying the type manually -
+* Kotlin uses given data type. if its not specified then it will take int or long only.
+* once variable created with specific data type, you can't add other type of data in it like below.
+  var myAge = 35
+  myAge = 232323232323232323   // will give error. so while declaring variable myAge, add data type "long"
+* val a1: Byte = 12; 
+  val s2: Short = 3112;
+  val s3: Int = 22323232;
+  val s4: Long = 232332323232323232323;
+
+26) Float and double -
+* float and double for decimal numbers
+* byDefault kotlin uses double
+* val pi = 3.13  //double data type on hover
+* we can add "f" or "F" at the end of variable declaration.
+ val e = 2.8239393f
+* val a1: Float = 3.124;
+  val a2: Double = 23.22233333;
+  var s3 = 1.233f
+
+27) unsigned integers -
+* it starts from 0 to 255
+* it should be only positive number
+* var age: UShort = 35u
+
+28) Booelans true false negation -
 * 
