@@ -190,4 +190,42 @@ What is OS?
 * var age: UShort = 35u
 
 28) Booelans true false negation -
+* var a : Boolean = true;
+* shows how to store boolean value in variable.
+
+29) Char, unicode and Backslash escape character -
+* It can store only 1 character and just use single quotes.
+* var myChar = 'a'
+* var myChar = '\u00AE'
+
+30) Strings -
+* In string type, you can add long string in variable.
+* strings are objects
+* each string has own methods also like we have in JS.
+* let a = "Very long string in string variable"
+* a.lowercase()
+* var name = "sumeet";
+  println(name + " shedge")
+
+31) If else statement -
+* showed if else statement in kotlin
+
+32) ReadIn and toInt to convert strings into int variables -
+* var enteredValue = readln()
+  age = enteredValue.toInt()
+if(age > 18){
+  println("you can enter")
+} else {
+  println("nope, you won't")
+}
+
+33) Else if and the in keyword -
+* else if condition added in above if statement
+* one more way - 
+using "in" operator
+if( age in 18 ..  39){
+ println("you can enter")
+}
+
+34) Rock Paper Scissors Part 1 - Getting the computers choice -
 * 
