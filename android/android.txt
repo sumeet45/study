@@ -228,4 +228,17 @@ if( age in 18 ..  39){
 }
 
 34) Rock Paper Scissors Part 1 - Getting the computers choice -
-* 
+* Added if else condition and read from user input
+
+35) Rock Paper Scissors Part 2 - Finding out the winner -
+* update suggestion of "when" with "if else"
+* added if conditions 
+
+36) RPS Part 3 - Presenting the winner -
+* update code to show winner
+
+37) Day 2 - While loops with counters -
+* code added to show how while loop works
+
+38) Day 2 - while loops with user input -
+* code improved to take user input using "readln" and check within while loop. If condition satisfie, then execute code.
