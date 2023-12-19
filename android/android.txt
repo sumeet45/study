@@ -242,3 +242,95 @@ if( age in 18 ..  39){
 
 38) Day 2 - while loops with user input -
 * code improved to take user input using "readln" and check within while loop. If condition satisfie, then execute code.
+
+42) Day 3 - Amy and her coffee Function -
+* Showed how to create function and called from main function.
+
+43) Day 3 - Adding Sugar - Functions with Parameters -
+*  Showed function calling with parameter
+
+44) Day 3 - Quiz Challenge Solution - 1 spoon 2 spoons -
+* solved "spoon grammer issue" in this video
+
+45) Day 3 - Quiz Challenge solution - who is the coffee for -
+* Showed function with another parameter "name", which show user name for whom we prepare coffee
+
+46) Day 3 - BONUS Quiz Challenge Solution - Who is the coffee for with user input -
+* Showed function with more details taken from users like name and sugarcount 
+
+47) Day 3 - Functions that return show something -
+* Showed simple add function to return value.
+
+48) Day 3 - Quiz challenge solution - Get user Input to add two numbers -
+* Showed simple add function which accept number from user
+
+49) Day 3 - More about Return types -
+* Showed divide function with double data type
+
+50) Day 3 - Limitation of Output - Return Types
+* 
+
+51) Day 3 - Classes Story Time -
+* class is blueprint of objects
+
+52) Day 3 - Creating our First class and Object -
+* Classes can contain - Constructor and initializer blocks, Functions, Properties, Nested and inner classes, Object declarations
+* init in Kotlin - It will get called while creating( Initialization of) object from class
+* initializer and function - are class member
+* ex. 
+     // creating object using Dog class
+    val myDog = Dog()
+    myDog.bark();
+
+  class Dog {
+    init {}
+    fun bark(){
+        println("bark function")
+    }
+}
+
+53) Day 3 - Understanding constructors and default values -
+* constructor - preceding the initializer or it starts the initializer
+* we can pass parameter in class with constructor.
+* class Dog constructor(){
+ ...
+}
+* we can omit "constructor" keyword.
+* we can give default values in constructor
+* object creation process in following direction - constructor, initializer
+ex.
+class Dog(val name: String, val breed : String, val age: Int = 0) {
+    init {}
+    fun bark(){
+        println("${this.name} bark function with ${this.breed} breed of age ${this.age}")
+    }
+}
+
+val myDog = Dog("daisy", "b1")
+myDog.bark();
+
+
+54) Day 3 - Accessing and Changing Properties - 
+* in constructor, if we want values are immutable, then we should use val and vice versa
+
+55) Day 3 - Data classes and coffee -
+* Data classes - Data classes in Kotlin are classes whose main purpose is to hold data
+ex -
+data class CoffeeDetails(val sugarCount: Int, val name: String, val size: String, val creamAmount: Int){
+}
+var coffeForSumeet = CoffeeDetails(9,"sumeet", "3", 2)
+createCoffee(coffeForSumeet)
+
+fun createCoffee(coffee: CoffeeDetails){
+    println("let's create coffee for ${coffee.name}")
+    var sugarText = if ( coffee.sugarCount  > 1) "spoons" else "spoon";
+    println("use ${coffee.sugarCount} ${sugarText} and creamAmount ${coffee.creamAmount} with ${coffee.size}")
+}
+
+
+55) Day 3 - Finishing Day 3 -
+* Tap on shoulder!!!
+
+56) Summary of Day 3 -
+* https://tutorials.eu/basic-kotlin-syntax-functions-objects-and-classes-in-kotlin-day-3-android-14-masterclass/
+
