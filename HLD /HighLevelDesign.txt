@@ -1,6 +1,14 @@
+Scaler - 
+Designing data intensive application - martin clifman
+bytebyteGo
+gaurav sen, tushar roy - utube
+educative.io - 
+
+
+
+------------------------------------------------------------------------
 designing data intensive application pdf 
 
 youtube - https://www.youtube.com/watch?v=BDxGNhnZaEc&list=PLGPe9uvn5fMZ1__Z6yrvcMqiyo5SEeSqP
-
 Chapter 1 - RELIABLE SCALABLE & MAINTAINABLE APPLICATIONS
 * 
