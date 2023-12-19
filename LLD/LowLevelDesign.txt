@@ -1,0 +1,8 @@
+Scaler - https://refactoring.guru/,	Head First Design Patterns: Building Extensible and Maintainable Object-Oriented Software
+
+https://www.youtube.com/watch?v=aJxx-Y42rF0 -
+  The Object Oriented Thought Process - https://amzn.to/3oqxt9g
+  ✒ Design Patterns: Elements of Reusable Object-Oriented Software - https://amzn.to/31m2RgB
+  ✒ Head First Design Patterns: Building Extensible and Maintainable Object-Oriented Software - https://amzn.to/3xTUwMZ
+  ✒ Clean Code: A Handbook of Agile Software Craftsmanship - https://amzn.to/3pmfkZy
+  ✒ Head First Object-Oriented Analysis and Design - https://amzn.to/3lB7QRt
