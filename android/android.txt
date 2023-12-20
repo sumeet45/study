@@ -328,9 +328,101 @@ fun createCoffee(coffee: CoffeeDetails){
 }
 
 
-55) Day 3 - Finishing Day 3 -
+56) Day 3 - Finishing Day 3 -
 * Tap on shoulder!!!
 
-56) Summary of Day 3 -
+57) Summary of Day 3 -
 * https://tutorials.eu/basic-kotlin-syntax-functions-objects-and-classes-in-kotlin-day-3-android-14-masterclass/
 
+58) Welcome to day 4 -
+
+59) Day 4 - Multiline comments -
+* js and kotlin have same commenting style.
+* for single line - // This is comment
+* for multiline - /* This is comments */
+
+60) Day 4 - Listof and MutableListOf -
+* ListOf - create list with given items. 
+* ex. val shoppingList = listOf<String>("Processor", "RAM", "SSD", "Screen")
+ this is immutable list. It won't change once it created.
+* Mutable list example - 
+ ex. val mutableList = mutableListOf<String>("Processor", "RAM", "SSD", "Screen")
+println(mutableList)
+mutableList.add("Graphics Card")
+println(mutableList)
+mutableList.add(5, "Another")
+println(mutableList)
+
+61) Day 4 - Index in Lists -
+* index starts in list start with 0.
+* Showing adding and removing at specific index with given value.
+* ex - 
+    mutableList.removeAt(2)
+    println(mutableList)
+    mutableList.add(3, "RAM11")
+
+
+62) Day 4 - Modifying specific items in a List -
+* To access index in list - 
+ex. println(mutableList[2])  //access index
+    mutableList[4] = "AMD Card";   //direct accessing
+    println(mutableList)
+
+63) Day 4 - Set Metohd on Lists -
+* another way to set list item at particular index
+* ex. mutableList.set(2,  "ScreenBig")
+      println(mutableList)
+* we can do above like folllowing also - mutableList[2] = "ScreenBig"
+
+64)  Day 4 - Contains Method - check if item in the list -
+* to check whether item is available or not
+* println(mutableList.contains("RAM")) // return boolean
+
+65) Day 4 - For loops with lists -
+* for loop with list 
+* ex.
+  for (item in fruitsList){
+   println(item)
+   if( item == "RAM"){
+    break;
+   }
+ }
+
+66) Day 4 - Getting the index in a for loop -
+* Show index and item using for loop
+*     for( index in 0 until  fruitsList.size){
+        println("item is ${fruitsList[index]} at ${index}")
+    }
+* one more way -
+ex. for( index in 0..4){
+        println("item is ${fruitsList[index]} at ${index}")
+    }
+
+67) Day 4 - BankAccountApp - Private Keyword and Defining List type -
+* private keyword makes it private property which is accessible within class only
+* ex.
+ class BankAccount(var accountHolder: String, var balance: Double) {
+    private  val transactionHistory = mutableListOf<String>()
+ }
+ fun main(){
+   val denisBankAccount = BankAccount("Denis", 4000.00)
+   denisBankAccount.transactionHistory // will not available. give error
+ }
+
+68) Day 4 - BankAccountApp - Implementing the functionality -
+* Completed bankAccountApp
+
+69) Day 4 - Finishing day 4
+* Tap on shoulder...
+
+70) Summary of Day 4 -
+* https://tutorials.eu/kotlin-basics-for-loops-and-list-manipulations-day-4-android-14-masterclass/
+
+71) Day 5 - welcome to day 5
+* ready for day 5
+
+72) Day 5 - XML and Jepack compose -
+* XML is structured programming language
+* Jetpack compose is new way by google
+
+73) Day 5 - Creating a Project and Understanding the Code with our New Knowledge
