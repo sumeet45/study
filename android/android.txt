@@ -427,4 +427,16 @@ ex. for( index in 0..4){
 
 73) Day 5 - Creating a Project and Understanding the Code with our New Knowledge
 * override fun onCreate - it helps to override general implementation
+* composable is special function which has certain behaviour
+* surface - background of our application
+
+74) Day 5 - Creating our own Composables and Understanding Column -
+* Composable function - which should be rendered as a user interface element
+* That's just a different way of displaying the user interface elements in comparison to XML
+* ex. 
+@Composable
+fun Greeting(){ }
+* It enables the declarative way, which takes care of rendering and updating the UI
+
+75) OutlinedTextField and Anonymous Functions -
 * 
