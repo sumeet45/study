@@ -1,1 +1,70 @@
+
 Udemy course - https://www.udemy.com/course/regular-expressions-mastery/
+
+Steps -
+1) Find Pattern
+2) Understand pattern
+3) write patterns with regex symbols
+
+1) Introduction -
+* Regular expressions are a way to search for patterns within data sets
+* To find result from data
+* regular expression is not programming language, it's feature.
+* Defn - A Regular expression, regex or regexp is a sequence of characters that define a search pattern.
+
+2) Use Cases for Regular Expressions-
+* While working with password
+* Notepad++ comes with regex engine
+
+3) Courses RoadMap
+
+4) About Course Subtitles
+
+5) Deep Dive - First Example -
+* a* - Zero or more occurences of "a"
+ex. const str = `fooaaaabar
+fooabar
+foobar
+fooaabar
+fooxxxbar
+fooxbar`;
+const regex = /fooa*bar/gm;
+
+
+6) Resources for Download
+
+7) A generic solution to any regex problem -
+* steps -
+  1) Understand the requirements? - what needs to be included? and what needs to be excluded?
+  2) Identify the patterns in the inclusion list or exclusions list.
+  3) Represent the patterns using regular expressions.
+
+8) Hands-on with Linux Grep regex 
+* All major programming language comes with a regex engine. eg. Java, Python, linux commands like grep, sed, awk etc.
+* Though regex engines share the same fundamental philosophy, the complete feature set of each regex engine may vary.
+* Almost all major regex engines are POSIX standards compliant.
+* grep command preview -
+  cat regex01.txt
+  grep 'fooa*bar' regex01.txt
+
+9) Hands-on with Java regex engine -
+* 
+
+Regex: The Basic Set -
+10) Introduction-
+* Basic set module
+
+11) The wildcard symbol -
+* . - single wildcard, a period or dot is a wildcard that represents exactly one character in a single position
+ex.
+let string = "fooabar
+fooxbar
+baryfoo
+foobar
+fooxybar
+foocbar"
+const pattern = foo.bar/gm;
+
+
+a* - zero or more occurance of "a"
+. - represents exactly one character in a string
