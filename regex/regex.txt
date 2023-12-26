@@ -66,5 +66,234 @@ foocbar"
 const pattern = foo.bar/gm;
 
 
-a* - zero or more occurance of "a"
-. - represents exactly one character in a string
+12) Wildcard asterisk combo -
+* var str = "foobar, barfoo, fooabcbar, foobxcbar, barcbyfoo, foozbar, barafoo, barabfoo"
+ var pattern = foo[a-z]*bar
+
+* var str = "foobar
+barfoo
+fooabcbar
+foobxcbar
+barcbyfoo
+foozbar
+barafoo
+barabfoo"
+var pattern = foo.*bar
+
+13) Representing whitespaces -
+* var str = "fooxxxbat
+foo   bar
+fooxbar
+fooxxbar
+foo bar
+foo      bar
+foobar
+fooyyybar"
+var pattern = foo\s*bar
+
+14) Character classes -
+* [abc] - this is called character class.
+* var str = "foo
+moo
+coo
+doo
+poo
+loo
+boo
+hoo"
+var pattern = [fcl]oo
+
+* var str = "foo
+moo
+coo
+doo
+poo
+loo
+boo
+hoo"
+var pattern = [fcdplb]oo
+
+* var str = "foo
+moo
+coo
+doo
+poo
+loo
+boo
+hoo"
+var pattern = [^mh]oo
+
+
+15) Character classes with ranges -
+* var str = "joo
+boo
+koo
+loo
+woo
+moo
+zoo
+coo"
+ var pattern = [j-m]oo
+
+* var str = "joo
+boo
+koo
+loo
+woo
+moo
+zoo
+coo"
+var patterns = [j-mz]oo
+
+* var str = "joo
+boo
+Koo
+Loo
+woo
+moo
+zoo
+coo"
+var pattern = [j-mzKL]oo
+
+16) Escaping with backslash -
+* var str = "xxx.yy
+xx.yyyy
+x.yy
+xy
+xxyy
+yyxx
+yx
+yxxx"
+var pattern = x*\.y*
+
+* var str = "x#y
+x:y
+x.y
+x&y
+x%y"
+var pattern = x*[#:.]y*
+
+* we saw "-" sign used for range and caret symbol for negation. these symbol have special meaning inside square brackets, so they need "\" help. It's not same for "."(period). Period work as literal in brackets
+
+* var str = "x#y
+x:y
+x^y
+x&y
+x%y"
+var pattern = x*[#:^]y*
+
+* var str = "x#y
+x\y
+x^y
+x&y
+x%y"
+var pattern = x*[#\\^]y*
+
+
+
+17) Anchors -
+* var str = "foo bar baz
+bar foo baz
+baz foo bar
+bar baz foo
+foo baz bar
+baz bar foo"
+var pattern = ^foo.*
+
+* var str = "foo
+foo bar
+baz foo
+foo bar baz
+baz bar foo"
+var pattern = ^foo$
+
+Section 3:Regex: The extended set
+18) Introduction -
+* till now we do basic set. lets continue with extended set.
+
+19) Curly braces reporter
+* var str = "834
+519
+4874
+5
+89
+45687
+25
+645"
+var pattern = ^[0-9]{3}$
+* The -E option is required, if you are using any symbol from POSIX extended set in the regex
+
+
+* var str = "lion
+tiger
+leopard
+fox
+kangaroo
+bat
+mouse
+cuckoo
+deer"
+var pattern = ^[a-z]{4,6}$
+
+20) Single ended Curly braces repeater -
+* var str = "ha
+hahahahaha
+hahaha
+hahahaha
+haha
+
+hahahahahaha
+hahahahahahahaha
+hahahahahahahahaha"
+var pattern = (ha){4,}
+
+
+21) The Plus Repeater -
+* var str = "fooaaaabar
+fooabar
+foobar
+fooaabar
+fooxxxbar
+fooxbar
+"
+var pattern = fooa+bar
+
+
+22) The Question Mark Binary -
+* var str = "https://website
+http://website
+httpss://website
+httpx://website
+httpxx://website"
+var pattern = https?:\/\/website
+
+
+23) Making choices with Pipe -
+* var str = "sapwood
+rosewood
+logwood
+teakwood
+plywood
+redwood"
+var pattern = (log|ply)wood
+
+
+Symbols =
+a* = zero or more occurance of "a"
+. = represents exactly one character in a string
+.* = zero or more occurence of wildcard, which means zero or more occurences of any character
+\s = represents whitespace. \s* represents zero or more occurence of whitespace
+[abc] = character class. one of the characters inside the square brackets - a, b or c
+[^mh] = caret symbol within character class. sometimes its called the exponent operator.
+[j-m] = character range class
+[a-cx] = combination character class. one of the characters falling in the range OR any of the other choices given in square brackets - a,b,c,x
+\. = escape character. following characters should be escaped with a backslash as these characters have special meaning otherwise - ^$*.[()\
+^ = caret symbol outside of character class. ^ is placeholder that signifies begining of line. The interpretation of ^ differs within square brackets and outside of it. Inside square brackets, ^ stands for negation. Outside, it is a placeholder for begining of line.
+$ = is a placeholder that signifies end of line
+a{m} = represents exactly "m" repetitions of whatever immediately precedes this. i.e. "a"
+a{m}{n} = represents at least "m" and at most "n" repetitions of whatever immediately precedes this. i.e. "a"
+(ha){m,} = parenthesis are used to group and treat as a single entity
+(ha){,n} = represent at most "n" repetitions of whatever immediately precedes this
+a+ = One or more occurences of "a"
+a? = Zero or one occurences of "a"
+(a | b) = represents either a or b, where a and b can be multicharacter strings
