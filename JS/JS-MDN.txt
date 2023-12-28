@@ -1,0 +1,36 @@
+	
+Complete beginners	=
+  JavaScript basics
+	JavaScript first steps
+	JavaScript building blocks
+	Introducing JavaScript objects
+JS Guide	=
+  Grammar and types
+	Control flow and error handling
+	Loops and iteration
+	Functions
+	Expressions and operators
+	Numbers and dates
+	Text formatting
+	Regular expressions
+	Indexed collections
+	Keyed collections
+	Working with objects
+	Using classes
+	Using promises
+	JavaScript typed arrays
+	Iterators and generators
+	Meta programming
+	JavaScript modules
+Intermediate	=
+  Client-side JavaScript frameworks
+	Client-side web APIs
+	Language overview
+	JavaScript data structures
+	Equality comparisons and sameness
+	Enumerability and ownership of properties
+	Closures
+Advanced	=
+  Inheritance and the prototype chain
+	Memory Management
+	Concurrency model and Event Loop
