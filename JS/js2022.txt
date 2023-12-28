@@ -1251,7 +1251,48 @@ constructor
 instance properties
 
 
+------------------
+Tutoraials -
+	
+Complete beginners	=
+1. JavaScript basics -
+	JavaScript is a programming language that adds interactivity to your website
+JavaScript first steps
+JavaScript building blocks
+Introducing JavaScript objects
 
+2.JS Guide	=
+  Grammar and types
+	Control flow and error handling
+	Loops and iteration
+	Functions
+	Expressions and operators
+	Numbers and dates
+	Text formatting
+	Regular expressions
+	Indexed collections
+	Keyed collections
+	Working with objects
+	Using classes
+	Using promises
+	JavaScript typed arrays
+	Iterators and generators
+	Meta programming
+	JavaScript modules
+Intermediate	=
+  Client-side JavaScript frameworks
+	Client-side web APIs
+	Language overview
+	JavaScript data structures
+	Equality comparisons and sameness
+	Enumerability and ownership of properties
+	Closures
+Advanced	=
+  Inheritance and the prototype chain
+	Memory Management
+	Concurrency model and Event Loop
+
+------------------
 References:
 
 A) Built-in objects -
