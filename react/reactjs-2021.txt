@@ -1,0 +1,1980 @@
+Important Points to remember while coading:-
+* Use Actual Terms
+* Work Smartly like use spread (...)
+* Dont Imitate, understand code and practice it and write it in study files.
+* Divide and Rule (think about scenario, divide problem in chunks and solve it)
+
+
+-----------------------------------------------------------------------------
+different ways of creating Component - 
+using Class
+using function
+using React.createClass
+using React.createElement
+using array.map
+-----------------------------------------------------------------------------
+React JS by Max -
+
+-----------------------------------------------------------
+Section 1 = Getting Started
+
+    #) what is react?:- 
+    * React JS definition - "A javascript Library is used for building interface"
+    * It's Library and It uses to create "User Interface".
+    * we can split up interface into "Components", so we can use it later whenever we required.
+
+
+    #) Real-World SPAs & React Web Apps:- 
+    * Component is used to create reusable components.
+    * react.js contain logic to create React Component.
+    * React Component is about rendering into Real DOM.
+
+
+    #) why choose react:- 
+    * UI state management, large support, well maintained by FB
+
+
+    #) SPA and MPA:- 
+    * SPA will update only some small part. in MPA, will update module. it require more data.
+
+
+    Summary of Getting Started :-
+    * React JS definition - "A javascript Library is used for building interface".
+    * We use Components to create User Interface.
+    * Why use React :- UI state management, large support, well maintained by FB
+
+
+-----------------------------------------------------------
+section 2 = Refreshing Next Generation Javascript
+
+    #) let & const:-
+    * let & const introduced in ES6. const won't assign value again after assign first.
+
+    #) arrow function:-
+    * eg:-
+        const myF = number => number*2;
+        function keyword replace with "=>" and its placement too.
+
+    #) exports & imports:-
+    * eg:-
+        f1.JS
+        const person = () => 2;
+        export default person;
+
+        f2.JS
+        export const clean = 10;
+
+        f3.JS
+        import person from './f1';   //bcz of default , we can use person, otherwise we need to apply {}
+        import {clean} from './f2';
+
+    import types:
+        default export : 
+        import person from "./f1"
+        
+        named export : 
+        import {clean} from "./f2";
+        import {cle as Clean} from "./f2";
+        import * as Bundled from "./f2";
+
+    #) classes:-
+    * classes are blueprint of object.
+    * super is used to generate extended class.
+    eg:-
+        class Gender {
+            constructor(){
+                this.gender = "male"
+            }
+        }
+        class Person extends Gender {
+            constructor(){
+                super();
+                this.name = "sumeet"
+            }
+            printMyName(){
+                console.log(this.name, this.gender)
+            }
+        }
+        var mm = new Person();
+        mm.printMyName();
+
+    #) classes, properties, methods:-
+    * in ES7, we can easily write this way in class-
+    * eg:-
+        class Megan { 
+          name = "sumeet";  // no need to write in constructor, browser will do for us
+          printName = () => {console.log(this.name);}
+        }
+        const mm = new Megan();
+        mm.printName();
+
+    #) spread & rest operator:-
+    * if we write without (...), it will add whole variable as it is.
+    * (...) used to create one more new copy.
+    * rest are used with function to summarize args whereas, spread is used while creating variable
+    * eg:-
+            spread ex: it add old to new.   //IMP
+            var arr2 = [...arr1,2,3]; var newObj = { ...oldObj, new:2}
+
+            rest ex: for function arguments
+            function myF(...arr2){}
+
+
+    #) Array & Object Destructuring)
+    * Destructuring is only available with Array and Object.
+    * Destructuring allows you to pull out single elements or properties and store them in variables for arrays.
+    * eg:-
+        var {mm,k} ={mm:"2",k:"3",l:"6"}    //need to write same property name
+        var [a,b,c] = [1,2,3];
+
+    
+    #) References and Primitive Types Refresher)
+    * references type : object, array
+    * primitive type: string, number, boolean
+    * eg:-
+        var oldObj = {a:"33"}; var newObj = {...oldObj}
+        oldObj.s = "ss";
+        newObj // {a: "33"}
+
+        //exception , if u add without (...), it gives same memory location and same variable to new Obj.
+        var oldObj = {a:"33"}; var newObj = {oldObj}
+        oldObj.s = "ss";
+        newObj // {oldObj:{a: "33", ss: "ss"}}
+
+
+    #) Array functions:-
+        map = returns new array
+
+----------------------------------------------------------------
+Section 3 = Understanding the base Features & syntax
+
+    #) The Build WorkFlow :-
+    *) Why React:- Optimized Code, Use Next-gen Javascript features, Be more Productive
+    *) How :- NPM / Yarn, Bundler (webpack), Compiler (Babel), Server
+
+
+    #) Using Create React App:-
+    *)  "Create React apps" used to create React App with no build configuration.
+    *)  ex- npx create-react-app my-app
+           cd my-app
+           npm start
+
+
+    #)  Understanding Folder Structure:-
+    *)  Few files of listed of projec with description :-
+    *)  Package-lock.json - (for more info - https://dev.to/saurabhdaware/but-what-the-hell-is-package-lock-json-b04, https://www.youtube.com/watch?v=H3n75nHN5qY )
+    *)  Manifest.json - contain meta data about project.
+
+
+    #) understanding component basics:-
+    * we need render function in every component
+    * we must have only one root component, it might contain one or more component
+    * define react component with class:-
+        export default class App extends Component
+    * Above, It export "App" Component which extends "Component" class (object)
+    * we import React, Component from "React" library
+    * Component must return html in render.
+    * html will be JSX (Javascript XML) which will be compiled to JS object using babel
+
+
+    #) understanding JSX:-
+    * JSX is actually javascript object.
+    * react.createElement make code verbose, thus we can use JSX
+    * this is cumbersome to write code without JSX
+    * in react, react js contain logic for creating component and react-dom used for creating component.
+    * syntax : react.createElement(element, attribute, childrens/content);
+    * eg:-    
+        react.createElement("div",{ className: "app"}, 
+            react.createElement("h1",{},"This is Content")
+        )
+    
+
+    #) JSX restrictions:-
+    * here, react convert our JSX code to actual html tags with the help of react.js
+    * className should used instead of class in JSX
+    * need only 1 root element needed in JSX
+
+
+    #) Creating functional Component:-
+    * here, we see how to create Functional Component, with react.
+    * we import react here, and use it.
+    * eg:- 
+        const person = () => {
+           return <p>I'm a Person</p>
+        }
+    export default person
+
+    import Person from "./person/person"
+    return (<Person />)     //in class render()
+
+
+    #) Component & JSX cheat sheet:-
+        * Components are the core building block of React apps. Actually, React really is just a library for creating components in its core.
+
+        * A typical React app therefore could be depicted as a component tree - having one root component ("App") and then an potentially infinite amount of nested child components.
+
+        * Each component needs to return/ render some JSX code - it defines which HTML code React should render to the real DOM in the end.
+
+        * JSX is NOT HTML but it looks a lot like it. Differences can be seen when looking closely though (for example className in JSX vs class in "normal HTML"). JSX is just syntactic sugar for JavaScript, allowing you to write HTMLish code instead of nested React.createElement(...) calls.
+
+        * When creating components, you have the choice between two different ways:
+
+        * Functional components (also referred to as "presentational", "dumb" or "stateless" components - more about this later in the course) => const cmp = () => { return <div>some JSX</div> } (using ES6 arrow functions as shown here is recommended but optional)
+
+        * class-based components (also referred to as "containers", "smart" or "stateful" components) => class Cmp extends Component { render () { return <div>some JSX</div> } } 
+        
+        * We'll of course dive into the difference throughout this course, you can already note that you should use 1) as often as possible though. It's the best-practice.
+
+
+    #) Working with Component & reusing them:-
+    * we can reuse anywhere when rendering another Component
+    * we can configure Component and get other output.
+
+
+    #) Outputting Dynamic content:-
+    * single curly braces, {} used to call function and returns results too.
+    * we use {} for single line expressions.
+    * eg:-
+        class Max1 extends React.Component {
+            render() {<p>I am person and i'm {Math.floor(Math.random() * 30)} years old</p>}
+        }
+        class MaxApp extends React.Component {
+            render() {return <div><Max1 /></div>}
+        }
+        ReactDOM.render(<MaxApp />, document.querySelector("#maxApp"));
+
+
+    #) Working with props:-
+    * we might need Dynamic Component to show dynamic data, so we can do it with props.
+    * we can pass that data using atributes.
+    * child needs to call super(props) to access props, if we use constructor.
+    * with class, u can access name using {this.props.name} and for function, {props.name}
+    * eg:-
+        class MaxApp extends React.Component {
+            render() {
+                return (<div className="app">
+                    <Max1 name="Sumeet" age="24" />
+                    <Max1 name="akshay"  age="25" />
+                    <Max1 name="paresh"  age="26" />
+                </div>)}
+        }
+        class Max1 extends React.Component {
+            constructor(props){
+                super(props);
+            }
+            render() {return (<p>I am {this.props.name} and i'm {this.props.age} years old</p>)}
+        }
+        ReactDOM.render(<MaxApp />, document.querySelector("#maxApp"));
+
+
+    #) understanding children property:-
+    * we might want to share Content, between Opening and Closing tag, not as attribute.
+    * we can access children using {this.props.children}
+    * eg:-
+        class MaxApp extends React.Component {
+            render() {
+                return (<div className="app">
+                    <Max1 name="Sumeet" age="24"></Max1>
+                    <Max1 name="akshay"  age="25">This is children text</Max1>
+                    <Max1 name="paresh"  age="26"></Max1>
+                </div>)}
+        }
+        class Max1 extends React.Component {
+            constructor(props){
+                super(props);
+            }
+            render() {return (
+                <div>
+                <p>I am {this.props.name} and i'm {this.props.age} years old</p>
+                <p>{this.props.children}</p>
+                </div>
+            )}
+        }
+        ReactDOM.render(<MaxApp />, document.querySelector("#maxApp"));
+
+
+    #) understanding & using state:-
+    * state is available only to class based Component
+    * we use "state" to update Component from inside of Component.
+    * Its only available to Class Based Component.
+    * from version 16.8, react introduce state management in Functional Based Component using "useState" Hooks, we will discuss later.
+    * here, we see how to show state data in Component.
+
+
+    #) Props & states:-
+    *only changes in props  and/ or state  trigger React to re-render your components and potentially update the DOM in the browser
+    *props: allow you to pass data from a parent (wrapping) component to a child (embedded) component.
+    *states: Whilst props allow you to pass data down the component tree (and hence trigger an UI update), state is used to change the component, well, state from within. Changes to state also trigger an UI update.
+
+
+    #) Handling events with methods:-
+    * don't use function like following, it get call while rendering Component :- 
+        <button onClick={this.switchNameHandler()}></button>    //don't do this
+        <button onClick={this.switchNameHandler}></button>    // do this
+
+    * we can attach event using following:
+        <button onClick={this.switchNameHandler}>Switch</button>
+        switchNameHandler = () =>{ 
+            this.setState({persons: [{name: "sumeet shedge",age:"24"},{name: "akshay gaykar",age:"25"},{name: "paresh kanjani",age:"26"}]})
+        }    
+    * it will only update data, not All DOM.
+
+    #) To which events can you listen?:-
+    * all events are listed here, which is possible
+
+
+    #) Manipulate state:-
+    * react won't recognise any state changes, if we try to update by just assigning, it need only this.setState() method.
+    * when we update particular state it won't discard other state properties.
+    * eg:-
+        <button onClick={this.switchNameHandler}>Switch</button>
+        switchNameHandler = () =>{ 
+            this.setState({persons: [{name: "sumeet shedge",age:"24"},{name: "akshay gaykar",age:"25"},{name: "paresh kanjani",age:"26"}]})
+
+
+    #) function(stateless) vs class(statefull):-
+    * simple function component need to do only specific task and they are very clear about that
+    * Most important, it can't update state of your any component state.
+    * component who don't have state, called stateLess component and who have state called stateFull component.
+
+    
+    #) Using useState() hook for state manipulation -
+    * prior to 16.8 (React version), we can use state with Class Based Component.
+    * from 16.8, React provide "React Hooks". we get useState hook for State management in Functional Component.
+    * useState() hook is mostly used hooks for state manipulation in react.
+    * it will return object and function to update data like setState of class.
+    * it will return data and method, to update in future and while updating it will update Component.
+    * while using setPersonState, keep in mind, that we need to give all properties, otherwise it won't remember.
+    * suppose:- var [stateData, stateMethod] = useState({ msg1: "sss", msg2: "ssssaa" })
+        stateMethod({ msg1: "hi", msg2: "ssssaa"})  // while updating state, we have to provide all data. otherwise we will loose it.
+    * or we can use multiple useState, for multiple state.
+    * eg:-
+        var [personState, setPersonState] = useState({
+            person: [{ name: "sumeet"}, { name: "sumeet1"}]
+        })
+        setPersonState({ person: [{ name: "sumeet"}, { name: "akshay"}] })
+
+        return (<div>this is {personState.person[0].name}</div>)
+
+
+    #) Passing method references between component:-
+    * when we want to child should trigger some method of parent, we can pass it as attribute, so it can able to get called.
+    * we can pass method using props from parent to child.
+    * child component who don't have access also can change props using passing method
+    * we can bind method following way when we pass some data :
+        * {this.switchNameHandler.bind(this, "Sumeet Shedge")}  //efficient way
+        * {(e)=>this.switchNameHandler("Sumeet Shedge")}    //inefficient way
+
+
+    #) Adding styling with stylesheet:-
+    * there are 2 ways if styling - External and Internal
+    * using import to specific JS, so its available to only that component
+    * ex. import "./person.css"
+    * we need to add ".css" to css file to use it. webpack check .css extension and bundle it like css file.
+
+
+    #) Working with Inling style:-
+    * second way of adding styles in react js is using inline style.
+    * in react js, inline style works when we create variable of style, apply in return () with JSX.
+    * eg:- 
+        const style= {color:"red"}
+        <div style={style}/>
+
+
+
+Summary of Understanding Base Features and Syntax :-
+    * using "Create React apps" to create react app in no time.
+    * We must have only one Root Component, and it might contain 1 or more component.
+    * Component return JSX (Javascript XML) which look like html tags
+    * Use JSX code to avoid code verbose.
+    * JSX have restrictions like following:- className, 1 component as Root Components.
+    * Functional Component are just simple Function, and they called as "presentational", "dumb" or "stateless" components.
+    * class-based components also referred to as "containers", "smart" or "stateful" components.
+    * {} ( single curly braces ) is used to generate dynamic content within JSX
+    * we access data which passed by parent Component, using "this.props." or "props." in Components respectively for "statefull" or "stateless"
+    * we can access children using "this.props.children"
+    * "state" is only available in "stateFull" Component and "stateLess" Component has React Hooks
+    * props and state is used to update UI.
+    * this.setState() will used to update state of Component.
+    * useState() used in FC, will give method and state. so we can update state.
+    * 2 ways of adding CSS:- Inline and External
+
+
+
+--------------------------------------------------
+Section 4 = Working with Lists and conditional
+
+    #) Rendering content condionally:-
+    * when we write method in following way, we didn't get "this" in that method to use :- switchNameHandler(){console.log(this);}
+    * recommend way for writing function is following :- switchNameHandler = (e) => console.log(e);
+    * we can add if statement or any block statement in return of component :- return ({ this.state.showPersons ? "content show": "content hide"})
+    * you can use single line expressions to show or hide content in JSX
+
+    
+    #) Handling Dynamic content "the javascript way":-
+    * we might have multiple if conditions. so here, it shows way to handle to if condition within render().
+    * ex- 
+        render(){
+            var person = null;
+            if(this.state.person){
+                person = <div>ss</div>
+            }
+            return (<div>{person}</div>)
+        }
+    
+
+
+    #) Outputting List:-
+    * in react, everything is Object, so it's easy to handle.
+    * suppose, we want to persons data, and we have array of persons, like "this.state.persons"
+    * each array has map method, it will help to generate JSX code for each element.
+    * we pass function with 2 parameter, "v" & "i". "v" is element and "i" is index.
+    * map function return JSX and it will store to another variable.
+    * then, we using {} with that variable, we can show list of persons
+        var personData = this.state.persons.map((v, i) => <div>{v.name}</div>)
+    * pass "key" props to parent JSX div for better performance, react need in future to check with older DOM
+
+    
+    #) Lists and State:-
+    * it shows how to use method to delete person from array.
+    * click={this.deleteHandler.bind(this, id)}
+
+
+
+    #) Updating State Immutably:-
+    * creating object or array from existed array or object, like following format-
+        let student = this.state.students
+    * it takes same references to old object.
+    * we need to create another place for it in memory location using spread operator, 
+        let student = [...this.state.students]
+
+
+    #) Lists and Keys:-
+    * we need key in while generating list, so react will compare that keys and will track on which component should re-render.
+    * otherwise it will go through deep checking with each component.
+    * so it good to have keys for each list item.
+    * its super efficient to have key with list of data.
+
+
+    #) Flexible Lists:-
+    * show how to use of "findIndex" method of array.
+
+
+Summary of Working with Lists and Conditionals :-
+    * using ternay operator (short Hand of "if else") with {}, to show or hide content conditionaly :- {true?10:11}
+    * use proper way of rendering if statement, to write clutter free code
+    * show how to use method with React
+    * use good practice, by creating copy of objects, before updating it.
+    * use "key" props
+
+
+--------------------------------------------------
+Section 5 = Styling React Components and Elements
+
+    #) Setting styles Dynamically:-
+    if() { style.backgroundColor = "Red"; }
+
+
+    #) Setting class names Dynamically:-
+    * eg:-
+        let classes = ["red", "bold"].join(" ");
+        <p className={classes}>This is text</p>
+
+
+    #) Using radium:-
+    * use radium for adding pseudo selectors, like :hover
+        var styles= { ":hover": {"color": "red"}}
+
+    #) Using radium for media queries:-
+    * we should use StyleRoot from radium for media queries.
+    
+    #) using enabling & css modules:-
+    * css module is simply superb.
+
+    In Post.css File:-
+        .Post { color: red; }
+    
+    In Post Component File:-
+        import classes from './Post.css'; 
+        const post = () =>  <div className={classes.Post}>...</div>
+
+
+* In this section, 2 npm packages are introduced "radium" & "styled-components"
+
+Summary of Styling React Components and elements :-
+* inline and external Css styling
+* for hover of css, we can use External css
+* for inline hover functionality, use npm package 'radium'
+* using "radium", we can make available pseudo, hover functionality to internal css styling
+* there's one more package called "styled components"
+* use css module mostly
+
+
+-----------------------------
+Section 6 = Debugging React Apps:-
+    * read error properly, understand and look at line number.
+
+    #) Error boundary :-
+    * error boundary component use when, you knew you can't handle this error somehow. then go with error boundary Component.
+    * its uses componentDidCatch to handle errors
+    * use wisely, if we know it might get fail then use this to show custom messages.
+
+
+Summary of Debugging React Apps :-
+* read error properly, understand and look at line number.
+* use ErrorBoundary Component smartly
+
+-----------------------------
+
+    Better App Structure :- for better structure, add folders like components, containers, assets.
+
+-----------------------------
+Section 7 = Diving Deeper into Components & React Internals:-
+
+    #) Splitting App into Components:-
+    * splitting app into components, for better code management.
+    * splitting Components will use in multiple places where we required.
+    * It improve app structure by splitting code. it helps to improve code readability and help to update only affected component. others won't get affected.
+    * Lean Class Components and use functional components for presentational purpose.
+    
+
+    #) Stateless and statefull components:-
+    Stateless components are also called dumb/presentational components.
+       
+
+    #) comparing stateless and statefull component:-
+    * after release 16.8, now Functional Component also has state updation.
+    * use stateless, for components which we can used it in multiple places. they have small focus.
+    * use statefull, for containers where we can add another components in it. they have huge focus.
+    
+    statefull(containers)                               stateless
+    class Xyz extends Component                         const Xyz = (props) => {}
+    access to state                                     no access to state
+    lifecycle hooks                                     no lifecycle hooks
+    access state and props via "this"                   access state and props
+        this.props.kk                                       props.kk
+    use it, if need lifecycle and state                 used in all other cases
+
+
+    #) understanding component lifecycle - creation:-
+    * LifeCycle of React link :- (http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+    * constructor, componentwillmount, render, (render child components), componentDidMount - (till 16.8)
+    * constructor, getDerivedStateFromProps, render, (render child components), componentDidMount
+
+    Creation lifecycle in action:-
+        Example done
+
+    #) component Updating lifecycle hooks(for props changes):-
+    * componentwillreceiveprops(nextprops), shouldComponentUpdate(nextProps, nextState), componentwillupdate(nextprops, nextstate), render(), update child components, componentDidUpdate()
+    * getDerivedStateFromProps, shouldComponentFromProps, render, (render child components), getSnapshotBeforeUpdate, componentDidUpdate
+ 
+    #) Updating lifecycle hooks (triggered by state changes):-
+    shouldComponentUpdate(prop,state), componentWillUpdate(), render(), update child component, componentDidUpdate()
+
+    
+    #) using useEffect() in Functional Components:-
+    * it covers all lifecycle hooks of class based components for Functional Component
+    * useEffect will call in each lifecycle of Functional Components
+    * its just basic function in another function.
+    * so it is componentDidMount and componentDidUpdate in one effect.
+    * eg:-
+        useEffect(() => {
+            console.log("useEffect")
+        })
+
+    #) controlling the useEffect() behavior:-
+    * if we don't provide second argument of array, useEffect will run on each render.
+    * we can handle useEffect with the help of array of props.
+    * suppose, you want to update based on specific proper changes (like componentDidUpdate). do as follows:-
+    * eg:- useEffect(() => console.log("useEffect"), [props.persons, props.answer])
+    * suppose, you want to run your code while rendering and unmounting only, (like componentDidMount and componentwillunmount). do as follows:-
+    * eg:- useEffect(() => console.log("useEffect"), [])
+
+    #) Cleaning up with lifecycle hooks:-
+    * componentWillUnmount hook: its used to clear data, while unmounting class component and release timer.
+    * useEffect:- you can use useEffect for cleanup work for Functional Component. we can use it for release timer.
+
+    
+    #) Using shouldcomponentUpdate :-
+    * stop unnecessary life cycle and rendering to improve performance.
+    * by returning false, we can stop rendering component and its child too. will avoid unnecessary update.
+
+
+    #) Optimizing functional Components with React.memo()-
+    * like shouldComponentUpdate, for functional Components, we have React.memo().
+    * This means that React will skip rendering the component if props are same, and reuse the last rendered result.
+    * By default it will only shallowly compare complex objects in the props object. If you want control over the comparison, you can also provide a custom comparison function as the second argument.
+    * ex-
+        const MyComponent = props => {
+            return <div>L</div>;
+        }
+        export default React.memo(MyComponent);
+
+    #) when should you optimize?
+    * use wisely shouldComponentUpdate / React.memo().
+    * because, for just small update append heavy checking in shouldComponentUpdate, will cost performance optimization.
+    * so first decide and then do apply checks.
+
+
+    #) PureComponents instead of shouldComponentUpdate:-
+    * PureComponent is used to handle renders like "React.memo" of Functional Component.
+    * Means if there's any props change, it will render Component otherwise it will show older Virtual DOM and skip rendering.
+    * PureComponents doesn't need shouldComponentUpdate hook.
+    * Suppose, you have multiple props and you have to check all props in shouldComponentUpdate. so for that time, instead of using Component, we can use PureComponent.
+    * Note:-    If props or state are primitives, then it easily check with older one. 
+                but for Reference types, like array and object, it pointed to same memory location. hence it won't update Component bcz of same props or state. So while updating Component, keep in mind that.
+    * link :- https://blog.usejournal.com/performance-optimization-using-pure-components-and-memo-620faaf57392                
+
+
+    #) How react Updates the DOM:-
+    * while updating props in react, before rendering actual DOM, it create new virtual DOM and compare with old virtual DOM and checks if there are any differences.
+    * If it detects differences, it reaches out to the Real DOM and updates it.
+    * And while updating DOM, it update only changes, like button text.
+    * react make sure that the real DOM is only touched if needed.
+
+
+    #) Rendering Adjacent JSX Elements & using React.Fragment:-
+    * We can render Component without Root element, using array, like when we had list of person array.
+    * ex:- render [
+                <div key="1">1</div>,
+                <div key="2">2</div>,
+                <div key="3">3</div>,
+            ]
+    * In this, it shows ways of replacing "<div>" with Adjacent elements by creating <Aux> Component
+    * using Aux Component throughout the course, we will skip extra "div" element rendering.
+    * It's almost similar as HOC. difference is only that, how we used it "Aux" Component and Higher Order Component.
+    * ex-   const Aux = props => props.children
+            export default Aux;
+    * React already created "Fragment" for us like "Aux" component
+    * Fragment won't rendered to DOM and we can use it as Container.
+    * link:- https://reactjs.org/docs/fragments.html
+    * return (
+      <React.Fragment>
+        <td>Hello</td>
+        <td>World</td>
+      </React.Fragment>
+    );
+    * we can use <></> also insted of Fragment.
+ 
+
+    #) Higher Order Components :-
+    * A higher-order component (HOC) is an advanced technique in React for reusing component logic.
+    * Higher Order Components who were used to wrap Components.
+    * Its simple javascript function, which return Components with extra css or javascript logic.
+    * link :- https://www.youtube.com/watch?v=B6aNv8nkUSw
+    * in above link, it shows that why we need HOC. when we need same functionality like incrementing counter for multiple component, so we can create HOC with that functionality and will available to all components who needs it at any level of Component tree in react project.
+    * it improve code redundancy
+    * HOC is pattern where a function takes a component as an argument and return new Component
+    * const NewComponent = HigherOrderComponent(originalComponent)
+
+    * const UpdatedComponent =  OriginalComponent => {
+        class NewComponent extends Component{
+            state = {
+                count: 0
+            }
+            clickHandler = () => {
+                this.setState({ count: this.state.count+1 })
+            }
+            render(){
+                return <OriginalComponent {...this.props} clickHandler={this.clickHandler} count={this.state.count}/>
+            }
+        }
+        return NewComponent
+    }
+
+    * in another component,
+    export default UpdatedComponent(ClickCounter)
+    export default UpdatedComponent(HoverCounter)
+
+    
+    #) Another Form of HOC :-
+    * there's another one way of creating HOC.
+
+
+    #) Passing Unkown Props:-
+    * in it, it shows that it's missing props. so we need to pass props to wrappedComponent
+ 
+    #) Setting state correctly:-
+    * sometime setting State will not work properly. it might be asynchronous.
+    * setting state based upon old state, we should use following example.
+    * this.setState((state, props) => (
+        return {
+            counter: state.counter + 1
+        }
+    ))
+
+
+    #) Using propTypes:-
+    * proptypes are used to set property types, developer who will use, will come to know that it required specific types
+    * While working in bigger team or publishing Package on npm, we need to specify props types also, so other developer would know it.
+    * install prop-types package. using this package, we can ensure that component will get proper data and functions in development mode.
+    * ex -
+        export class default Person extends Components{
+            render(){
+                return <div>s</div>
+            }
+        }
+        Person.propTypes = {
+            click: PropTypes.func,
+            age: PropTypes.number
+        }
+ 
+
+    #) Using Ref's:-
+    * we can use ref with 2 ways:-
+    * older approach, <input ref={e => this.sElement = e} />
+    * newer approach, <input ref={this.inputRefs} />
+        with in constructor,    this.inputRefs = React.createRef();
+
+
+    #) Refs with Hooks:-
+    * we can use Refs with hooks also in functional component using "useRef()" hooks.
+    * "useEffect" hook get called after render process done. so its nice place to call any HTTP call
+
+    #) Using Context API:-
+    * Context API is all about managing data across components without the need to pass data around with props.
+    * Context API is another way of transfering data from component to another Component, like redux
+
+    #) contextType and ContextAPI:-
+    * in this tutorial, we see, how to use Context API without verbose code.
+    * with class Component, we use:-
+        static contextType = AuthContext
+    * with Functional Component, we use:-
+        var authContext = useContext(AuthContext)
+
+
+    skipped all legacy lectures.
+
+--------------------------------------------
+section 8 = A Real App: The Burger builder :-
+    Project Starts
+
+--------------------------------------------
+section 9 = React out to the Web (Http/ajax) :-
+
+    * Understanding HTTP request in React:-  to call API and get data in JSON format.
+    * Understanding Axios:- library to help call API
+    * creating HTTP request to GET Data:- to get data using API
+    * rendering Fetched data to Screen:- render data to screen.
+    * Transforming Data:- slice data to 4 objects and render it
+    * Making a post Selectable:- on click, shows id of selected Post and color it.
+    * Fetching data on update:- call API in componentDidMount.
+    * Posting Data on server :- call post API  and post data
+    * sending Delete request :- call delete API and delete data from server
+    * Handling Errors locally:- use .catch with promise if url fail
+    * Adding interceptors to Execute Code Globally:- Interceptors are those, which work before when data come or call went. Axios provide this functionality. find out npm module "axios".
+    * Setting Default Global Configuration for axios:- 
+
+-----------------------------
+Section 10 = Burger Builder project: Accessing a server :-
+    Project Starts
+
+-----------------------------
+Section 11 = Multi Page feeling in Single Page App: routing :-
+    * need to look in it
+
+-----------------------------
+Section 12 = Adding Routing to our Burger Project:-
+    * project continue
+
+-----------------------------
+Section 13 = Forms and Form Validation :-
+    * need to look in it
+
+-----------------------------
+Section 14 = Redux :-
+    #) Important :-
+                           ----react-redux bind redux and react app-----
+                           |                                            |
+              component send actions                              store bind with reducer
+
+    #) The complexity of Managing State:-
+    * sometime we need to pass state to another components which is in anoher part of app. so it quite cumbersome by passing parent or child. so here, redux comes in show.
+
+
+    #) Understanding redux flow:-
+    * redux is central storage, who stores data and pass to react application components.
+    * its totally independant on react.
+    * in redux, first component dispatch action which include type and payload also.
+    * these action reaches to reducers, and then reducers will do update store with new Data. reducers are function which receives action, with old state which gives new state in store.
+    * store triggers all subscriptions, so all components which subscribe for state, will get updated.
+
+    #) Setting up Reducer and Store:-
+    * npm install redux
+    * create file redux-basic.js and we will execute code with node js for time being.
+    * we need to create first store, reducer, Action, subscription
+    * remember we must have only one root reducer with store while initialization of store, bcz its only will update state.
+    * state should be initialize with default value.
+    * eg:- 
+        const store = redux.createStore((state = { counter: 0 }, action) => {
+            return state;
+        })
+        console.log(store.getState());      // {counter: 0}
+
+    
+    #) Dispatching Actions:-
+    * action is command to update store which must include "type" property and other payload properties.
+    * mostly use object as payload.
+    * use Uppercase like :- {type:"INCREMENT"}
+    * you can add as many as you want.
+    * whenever we dispatch action, reducers must know how to react this action. for that we need to update reducer for that "action" type
+    * while updating store, use spread operator
+    * eg:- {...state,  counter: counter + actino.payload}
+
+    
+    #) Adding Subscriptions:-
+    *) Adding Subscriptions to store, it will call function what we ask to do.
+    *) eg:- store.subscribe(() => { 
+                console.log(store.getState());
+            })
+
+
+    #) Connecting React to Redux:-
+    * till now, we understand how redux work and saw general flow of redux work.
+    * show code of creating store and reducer.
+    * and bind store with reducer.
+
+
+    #) Connecting Store to react:-
+    * for connecting store and react application, we need "react-redux"
+    * herer use "connect" HOC for connecting react with store.
+    * create mapStateToProps
+    * eg:-
+        <Provide store={store}><App></Provide>
+
+
+    #) Dispatching Actions from within components:-
+    * create mapDispatchToProps for dispatching actions by component and add its handler code in reducer
+
+    #) Passing and retrieving Data with action:-
+    * pass data with action using payload 
+    * get data using mapStateToProps after triggering by store.
+
+    #) switch case in the reducer:-
+    * its easy to handle and concise way to write reducer
+
+    #) update state immutably:-
+    * If we dispatch action, which we didn't handle in reducer. it get handled by default statement.
+    * update value or object in reducer but using spread operator. it is safe way.
+
+    #) updating Array immutably:-
+    * 
+
+    #) Immutable Update Patterns:-
+    * Proper way of updating state immutably
+    * eg:-
+            return {
+                ...state,
+                first : {
+                    ...state.first,
+                    second : {
+                        ...state.first.second,
+                        [action.someId] : {
+                            ...state.first.second[action.someId],
+                            fourth : action.someValue
+                        }
+                    }
+                }
+            }
+
+    #) Outsourcing Action types:-
+    * create ActionNames.js to comprise all actions Names
+
+    #) Combining Multiple Reducers:-
+    * we can have multiple reducers but we need only one root reducer, so react-redux provide "combineReducers"
+
+-----------------------------
+section 15 = Adding Redux to our project :-
+    * project continue
+
+-----------------------------
+section 16 = Redux Advanced :-
+    #) Adding Middleware:-
+        * Middleware is function or code, which you hook into a process then gets executed as part of that process without stopping it. if we add middleware, we can execute anything before reaching to reducer, what we want.
+        * create own logger, and check logs
+
+    #) using the Redux Devtools:-
+        * install "redux-devtools-extension"
+        * check "redux-devtools-extension" github documentation, to use "redux-devtools-extension" with React App.
+
+    #) Executing Asynchronous code - introduction:-
+        * show the need of asynchronous code.
+        * we need to update server and store asynchronously while we playing with API.
+
+    #) Introducing Action Creators:-
+        * create action.js with actions.
+        * create synchronous action creater for dispatch action.
+
+    #) Action Create & Async Code:-
+        * create others actions for project.
+
+    #) Handling Asynchronous code:-
+        * show asynchronous way of handling actions using settimeout.
+
+    #) Restructuring Actions:-
+        * create separate actions file for each Component, to keep codebase clean.
+
+    #) Using Action creators and Get State:-
+        * actions now have 1 more parameter called "getState",which gives current state of property.
+
+    #) Using Utility Functions:-
+        * create Utility.js, to update store. so we pass oldObject and updatedValue to update store.
+
+    #) A Linear Switch case Statement:-
+        * remove logic from reduer and store it in function, which make reducer leaner.
+    
+
+
+-----------------------------
+section 17 = Redux Advanced: Burger Project :-
+    * project continue
+
+-----------------------------
+section 16 = Adding Authentication to our Burger Project :-
+    * project continue
+    
+-----------------------------
+section 19 = Improving our Burger Project :-
+    * project continue
+
+-----------------------------
+section 20 = Testing :-
+    * project continue
+
+-----------------------------
+section 21 = Deploying the App to the web :-
+    * npm run build
+    
+-----------------------------
+section 22 = Bonus: Working with webpack :-
+    
+    #) Introduction to Webpack:-
+    * webpack is bundler, who's concate, optimize files, and hook in various plugins and so called loaders.
+    * It also transpile next generation javascript to current generation javascript.
+    * having multiple html, css, javascript, image files into one.
+
+    #) How Webpack Works:-
+    * webpack has 4 imp features:- one entry point, loaders, Plugins
+    * it look for root point, traverse in deep for more dependancies and bundled them together. Then it will put in dist folder and save as bundle.js, as we specify.
+    * loaders are applied on per file level, javascript file handled by loaderX, Css file handled by loaderY. babel-loader, css loader are best example.
+    * Plugins will apply after loader apply, like Uglify.
+    * this is all set up in a webpack configuration file which we will set up.
+
+    #) Basic workflow requirements:-
+    * Compile Next gen Javascript Features, Handle JSX, CSS AutoPrefixing, image imports, optimize code
+    *
+
+    #) Project and NPM setup:-
+    * npm install --save-dev webpack webpack-dev-server
+
+    
+    #) Creating Basic Folder and File Structure:-
+    * create src folder with index.html file.
+
+
+    #) Creating Basic React Application:-
+    * created 
+        "components" > pizzaImage.js,pizzaImage.css, 
+        "containers" > Pizza.js,
+        "assets" > images.jpg, 
+        "hoc" > asynComponent.js,
+        "App.js"
+
+    #) 
+    * npm install --save react react-dom react-router-dom webpack-cli
+    * create webpack configuration file. create "webpack.cofig.js"
+    * webpack.config.js:-
+        const path = require("path");
+        module.exports = {
+            mode: "development",
+            entry: "./src/index.js",
+            output: {
+                path: path.resolve(__dirname, 'dist'),
+                filename: "bundle.js",
+                publicPath: ""
+            },
+            devtool: "cheap-module-eval-source-map"
+        }
+
+    #) Adding File Rules and Babel:-
+    npm install --save-dev @babel/core  @babel/preset-env  @babel/preset-react  @babel/preset-stage-2  babel-loader  @babel/plugin-proposal-class-properties
+
+
+-----------------------------
+section 23 = Bonus: Next.js :-
+    * need to look in it
+
+-----------------------------
+section 24 = Bonus: Animations in React Apps :-
+    * need to look in it
+
+-----------------------------
+section 25 = Bonus: A Brief Introduction to Redux Saga :-
+    * need to look in it
+
+-----------------------------
+section 26 = React Hooks :-
+    #) What are react hooks?
+    * Suppose we have functional component with presentation purpose. and then you want to add state in it.
+    * so its cumbersome to convert functional component to class based component.
+    * so, react added React hooks for functional components.
+    * Hooks will provide functionality like state management and component lifecycle in functional component.
+    * it is JS function, which used inside functional components or other hooks
+    * idea is to expose certain functionalities to functional components
+    * Hooks are highly reusable and independent to each other
+
+    #) Getting Started with useState():-
+    * useState returned 2 values:- [stateData, funToSetData]
+    * eg:- const [inputState, setInputState] = useState({ firstName: "", lastName: "" })
+            <input type="text" id="firstName" value={inputState.firstName} onChange={e => inputState(state =>{ firstName: e.target.value, lastName: state.lastName })} />
+    * more from another tutorial:-
+        * it lets you add state to functional components
+        * In class, the state is always an object.
+        * with the useState hook, the state doesn't have to be an object, they might be string, number, boolean, array, object.
+        * the first element is the current value of the state, and the second element is a state setter function.
+        * New state value depends on the previous state value?, you can pass a function to the setter function.
+        * when dealing with objects or arrays, always make sure to spread your state variable and then call the setter function.
+
+    #) Array Destructuring:-
+    * const [inputState, setInputState] = useState({ firstName: "", lastName: "" })
+
+    #) Multiple States:-
+    * while updating in functional component, you need to take care of other states also, thus we can separate state as string. so it became easy to manage.
+    * eg:- const [inputFirstName, setInputFirstName] = useState('');
+           const [inputLasttName, setInputLasttName] = useState('');
+           <Text>{inputFirstName}</Text>
+           setInputFirstName(e.target.value)
+
+           if new state value depend upon previous state:- 
+           setCounter((state, props) => state.counter + 1)
+
+    * split your state into multiple states.
+
+    #) Rules of Hooks:-
+    * use React hooks in Functional Component, hooks and custom hooks
+    * use React hooks at root level.
+
+    #) Passing Data across Components:-
+    * create form and save data in state and show array of objects as list.
+
+    #) Sending Http request:-
+    * send POST http request to firebase, so it will add to database of firebase.
+
+    #) useEffect() and Loading Data:-
+    * useEffect will called after every render.
+    * useEffect will stop based on props or state changes.
+    * eg:- 
+        useEffect(() => {
+          fetch("adds.json").then(r => r.json()).then(r =>{
+              const data = [];
+              for(m in r){ data.push({ id: m, firstName: r[m].firstName, lastName: r[m].lastName });}
+              setPersonList(data);
+            })
+        }, [personList])
+    * More from other tutorials:-
+        * it it close replacement of componentDidMount, componentDidUpdate, ComponentWillUnMount
+        * useEffect will always called after every render.
+        * useEffect will have one function and one array.
+        * function is used to execute actions after every render and array is used to check props and state is change or not. if given props or state didn't change, then it won't run.
+        * while calling API, pass [] as condition in useEffect, so it will check before calling API.
+        * when unmounting component, remove subscriptions, timers. for that, return function with unsubscribe code, like following:-
+
+            useEffect(() => {
+                console.log("useEffect code");
+                return () => {
+                    window.removeEventListener("mousemove", logoutMousePosition)
+                }
+            }, [])
+
+
+    #) More on useEffect():-
+    * search component code
+-----------------------------
+section 27 = Using Hooks in the Burger Builder :-
+    * project continue
+
+-----------------------------
+section 28 = Bonus:Replacing Redux with React Hooks :-
+    * project Continue
+
+-----------------------------
+section 29 = Bonus:Building the Burger CSS :-
+    * project Continue
+
+-----------------------------
+section 30 = Next Steps and course Roundup :-
+    * project Continue
+
+
+
+(Skip to 143)
+-----------------------------
+section 9 - 146: (Creating HTTP request to GET Data)-
+    fetch("http://jsonplaceholder.typicode.com/posts")
+            .then(r => {
+                return r.json();
+            })
+            .then(r => {
+                this.setState({ posts: r });
+            });
+
+Default interceptors :
+    axios.defaults.baseUrl = ""
+    axios.defaults.headers.common["Authorization"] = "Auth Token"
+    axios.defaults.headers.post["Content-type"] = "application/json"
+
+-----------------------------------------------------------------------------
+
+----------------------------------
+react native project -
+
+
+
+-------------------------------------------
+steps for react website with redux:
+    create app using create-react-app
+    create folder actions, assets, components, containers, reducers
+    create store.js - const store = createStore(combineReducers({...reducers}), {}, applyMiddleware(logger));
+    add redux-logger, redux, react-redux from npm
+
+-------------------------------------------
+diff between flux and redux -
+    * Flux is a pattern and Redux is a library,
+    * In Flux, an action is a simple JavaScript object, and that’s the default case in Redux too, but when using Redux middleware, actions can also be functions and promises.
+    * With Flux it is a convention to have multiple stores per application, In Redux, the convention is to have a single store per application.
+    * 
+
+===================================================
+React JS Hooks:-
+    #) useContext :-
+    * it is used to pass props through multiple child. using simple props, it became cumbersome.
+    * eg:- 
+            #) Parent component:-
+            export const UserContext = React.createContext();
+
+            render(
+                <UserContext.Provider value={"sumeet"} >
+                    <ComponentE />
+                </UserContext>
+            )
+
+            #) child component:-
+            import {UserContext} from "./parentComponent";
+
+            const user = useContext(UserContext);
+
+            return (
+                <div> useContext {user} </div>
+            )
+
+    #) useReducer:-
+    * useReducer is hook that is used for state management
+    * useReducer is related to reducer function
+    * 
+
+    #) useMemo:-
+    
+    
+    #) useRef :-
+    * to access any dom nodes
+    * eg:- 
+        const inputRef = useRef(null);
+        useEffect(() => {
+            inputRef.current.focus();
+        }, [])
+        <input type="text" ref={inputRef} />
+    * we can use to store for immutable objects too
+
+
+    #) custom hook:-
+    * custom hook is used to develop extra functionalities required by app.
+    * eg:- 
+            useDocumentTitle(count);
+
+            function useDocumentTitle(count){
+                useEffect(() => {
+                    document.title = `count ${count}`;
+                }, [count])
+            }
+
+
+
+==============================================================
+
+
+React JS by Max (2021) =
+
+2) What is React JS?
+* Javascript help to manipulate DOM, so React uses Javascript to create single page app.
+* React.js is a client-side JavaScript library. It helps us with writing that client-side JavaScript code and it's all about building modern reactive user interfaces for websites.
+* React.js -
+    1) a client side JS library
+    2) all about building modern, reactive user interfaces for the web.
+    3) Declarative, component focused approach.
+
+
+
+3) Why React instead of "Just Javascript"? =
+* In this video, we see code of JS and react's and compare them. based on this, React has more advantages compare to Javascript.
+* With Javascript, you have to write loads of code, instead we can wrap up this with little concise code in React.
+
+
+4) Building Single Page Applications (SPAs) and React =
+* Using React, it is quite efficient to toggle pages without requesting new pages from server. Because of this, it gives best UI experience and smooth transitions. So we didn't ask for another page, and React handles it.
+
+9) Getting most of out of this course =
+* 
+
+
+12) Understanding "let" and "const" =
+* Let and const -  Let and const are different ways of creating variables. You know var, var creates a variable in javascript.
+* const - they didn't change, unmuted one's.
+* let - use instead of "var". let has limited scope between near "{}".
+
+
+13) Arrow functions -
+* use arrow function.
+* arrow function has different scope based on where its placed.
+* ex. var a = {sd: "sds", aa: function(){ console.log(this) }, aa2: () => console.log(this)}
+
+
+25) What are components? Why is React All about them? =
+* React is javascript library to building User Interfaces
+* React makes building complex, interactive, and reactive user interfaces simpler.
+* React is all about Component.
+* Components are resusable buiding blocks in your user interface.
+* All user interfaces are made up of components.
+* bcz of components, we can acheive reusability and separation of concerns
+
+
+26) React Code is written in a "Declarative Way!" =
+* we use html, css, JS combinely and create User interface.
+* React uses declarative approach to building components
+* In react, we decide end states and conditions. so on the basis of conditions, react will decide which state should be shown.
+
+
+27) Creating a new React app =
+* using create-react-app
+
+
+
+
+29) Analyzing a standard React Project = 
+* Here, he said, mostly react code trasform and then delivered to browser
+* using HTML, CSS and JS, component get created.
+* component is at the core of react.
+
+
+
+
+30) Introducing JSX -
+* JSX, means Javascript XML
+* using JSX, we can write code for layout. On running, React transform JSX to html code, replace with "App" id.
+
+
+
+33) Writing mode Complex JSX code =
+* only 1 root element available in JSX code.
+
+
+34) Adding Basic CSS Styling =
+* use "className" instead "class"
+
+
+35) Outputting Dynamic Data and working with Expressions in JSX = 
+* using hardcoded dynamic data, bind to the component.
+
+
+36) Passing data via "props" =
+* passing data as props to bind with component And make component reusable.
+
+
+37) Adding normal JS logic to components = 
+* shows how to get date, year and month and display it in component
+
+
+38) Splitting components into Multiple Components =
+* creating multiple small components and importing them will help lot.
+
+
+39) The Concept of "Composition" =
+* Told about "props.children". So we will able to show children components within our custom components
+* whenever we combine components, you are using compositions.
+
+
+
+40) A First summary =
+* build user interfaces by building and combining react components.
+* JSX, component, props
+
+
+
+
+42) Organizing Component Files =
+* segregate components into multiple components folder.
+
+
+43) An alternative function syntax = 
+* told about arrow function syntax.
+
+
+46) Listening to Events & working with Event Handlers =
+* pass function to "onClick" event listener.
+* React uses "onClick" in JSX as props.
+* its better practice to write functions as "clickHandler", by adding "handler" in the end.
+
+
+47) How component Functions are executed =
+* Told how react process from root to last child element as well told about we need something to update component.
+* So in next chapter, he will start to telling about "state".
+
+
+
+48)Working with State =
+* useState will create special type of variable, a variable where changes will lead to load function again. so we can assign initial value too. It gives us function to update variable value.
+
+* const [title, setTitle]  = useState(props.title)
+
+
+49) A closer look at the "useState" Hook =
+* useState will update only that component and its child.
+
+
+
+50) State can be updated in many ways!
+* Thus far, we update our state upon user events (e.g. upon a click).
+
+* That's very common but not required for state updates! You can update states for whatever reason you may have.
+
+* Later in the course, we'll see Http requests that complete (where we then want to update the state based on the Http response we got back) but you could also be updating state because a timer (set with setTimeout()) expired for example.
+
+
+
+
+52) Listening to user input = 
+* use "e.target.value" for onChange of "input type='text' "
+
+
+53) Working with multiple states =
+* we can assign create multiple states using separate useState in same component.
+
+
+54) Using one state instead (And Whats better) =
+* we can use 1 "useState" instead multiple "useState". This can be achieved through using "spread" operator
+* here, it shows the same.
+
+
+55) Updating state that depends on previous state =
+* let's update multiple state with "spread" operator which is based on previous state
+* remember react schedule state updates, so we don't get proper state. so its quite good to use anonymous function within "setUserInput".
+* ex =  based on previous state approach
+setUserInput((prevState) => {
+    return { ...prevState, enteredTitle: event.target.value }
+});
+
+
+56) Handling form submission =
+* added code for form's onSubmit to stop default behaviour.
+
+
+57) Adding Two way binding = 
+* by assigning value to the input and using state, we will achieve two way binding.
+
+
+58) Child to Parent Component Communication =
+* i did that before seeing the video, congrats buddy.
+* pass function to child from parent. and call that function when needed.
+* so we can achieve child to parent relationship.
+
+
+59) Lifting the state up =
+* Lifting the state up, it's about moving data from child component to parent component. either use it there or pass down it to other component.
+
+
+60) Controller Vs uncontrolled component, Stateless vs statefull, dumb vs presentational =
+* Component which can handle state, we can call them as statefull component.
+
+
+//==================================
+Section 6 =
+
+74) Setting Dynamic Inline Styles =
+* Setting color based on condition with the help of inline styling.
+
+75) Setting CSS classes Dynamically =
+* setting css dynamically contain 2 works = 
+    1) add css code in css file
+    2) add class based on some condition in component
+
+ex = 
+    JS =   <div className={`form-control ${isValid?"invalid":""}`}>
+    CSS = .form-control.invalid input {}
+
+
+76) Introducing Styled components =
+* Applied CSS to that components are actually not application to that only. it will be available for entire page.
+* so limiting to that only element, we use here "styled components" package.
+* in styled comopnents, we did with help of "template literls".
+* ex = 
+        const Button = styled.button`
+              background: transparent;
+              border-radius: 3px;
+              border: 2px solid palevioletred;
+              color: palevioletred;
+              margin: 0 1em;
+              padding: 0.25em 1em;
+
+              ${props =>
+                props.primary &&
+                css`
+                  background: palevioletred;
+                  color: white;
+                `};
+            `
+
+78) Styled component and media queries =
+* in above code, it added code of media query.
+
+79) Using CSS Modules =
+* CSS modules are easy to use. we have separate file for css and component
+* ex = 
+    import styles from "./Btn.module.css"
+    <div className={styles.btn}>Button</div>
+
+80) Dynamic styles with CSS modules =
+* ex =
+    <div className={` ${styles.formControl} ${!isValid && styles.inValid}`} />
+
+
+
+//==================================
+
+Section 9 =
+
+100) JSX limitations and workarounds =
+* we need only 1 root element to wrap JSX elements
+* Or we need to pass elements in array, so without root element we can show.
+* Problem =  to wrapping elements, if we apply new <div> as root element, each time browser need to create unnecessary extra divs. Rendering these extra divs will impact on performance. so for that we can create wrapper component
+
+
+101) Creating a wrapper component =
+* Create Wrapper component and apply whenever it is required with functional component.
+
+
+102) React Fragments =
+* <React.Fragment> is same as wrapper component.
+
+104) Working with Portals = 
+* It helps you to port your element outside "root" div.
+* some modals or code need to place at the right location. sometime outside of react root element.
+* so here, react portals come to help.
+* React-Dom gives us a method called "createPortal", will help to create port where our JSX element reside.
+* ex =
+    return (
+        <React.Fragment>
+            {ReactDOM.createPortal(
+                <Backdrop onConfirm={props.onConfirm} />,           // JSX code of backdrop 
+                document.getElementById('backdrop-root')            // where backdrop should append in html
+            )}
+        </React.Fragment />
+    )
+
+    html =
+    <body>
+        <div id='backdrop-root'></div>
+        <div id='root'></div>
+    </body>
+
+
+
+
+105) Working with "ref's" =
+* Like all react hooks, we can use "useRef" hooks only in functional components.
+* assign input element with "ref" will help to get element and its current value.
+* this "ref" is like referencing input element. like we assign "ref" for flatlist in react native.
+* Mostly if we want to read a value, ref's are probably better choice than state.
+
+
+
+106) Controlled vs Uncontrolled Components =
+* controlled components means, input elements with state management. so we can handle them using react properly
+* uncontrolled components means, input elements with ref's. we can handle them also, but in the end, you can't access properly in authentic way.
+
+//==================================
+
+
+
+//==================================
+Section 10 =
+
+109) What are "side effects" & Introducing useEffect =
+* Sometime, we have code which trigger loops of http requests. so to stop and segragate them, we can use "useEffect" hook.
+* syntax = 
+    useEffect(() => { ... }, [ dependancies ]);
+    * first is function, that should execute after every component evaluation if dependancies are changed.
+    * second is dependancies, specify your dependancies of your function here
+
+
+
+110) Using the useEffect() Hook =
+* useEffect will run after app initialize, and when dependancies changes.
+
+
+
+111) useEffect & Dependancies =
+* shows login scenario.
+* on the changes in username and password, useEffect run again and again.
+* username and password are dependancies. so if its changes, our useEffect run our passed function.
+* ex = 
+    useEffect(() => {
+        setForm(enteredName.include("@") && enteredPassword.trim().length > 6)
+    }, [enteredName, enteredPassword] )
+* useEffect will be used for in future code running.
+
+
+
+
+
+112) What to add & Not to add as Dependencies =
+
+In the previous lecture, we explored useEffect() dependencies.
+
+You learned, that you should add "everything" you use in the effect function as a dependency - i.e. all state variables and functions you use in there.
+
+That is correct, but there are a few exceptions you should be aware of:
+
+You DON'T need to add state updating functions (as we did in the last lecture with setFormIsValid): React guarantees that those functions never change, hence you don't need to add them as dependencies (you could though)
+
+You also DON'T need to add "built-in" APIs or functions like fetch(), localStorage etc (functions and features built-into the browser and hence available globally): These browser APIs / global functions are not related to the React component render cycle and they also never change
+
+You also DON'T need to add variables or functions you might've defined OUTSIDE of your components (e.g. if you create a new helper function in a separate file): Such functions or variables also are not created inside of a component function and hence changing them won't affect your components (components won't be re-evaluated if such variables or functions change and vice-versa)
+
+So long story short: You must add all "things" you use in your effect function if those "things" could change because your component (or some parent component) re-rendered. That's why variables or state defined in component functions, props or functions defined in component functions have to be added as dependencies!
+
+Here's a made-up dummy example to further clarify the above-mentioned scenarios:
+
+import { useEffect, useState } from 'react';
+ 
+let myTimer;
+ 
+const MyComponent = (props) => {
+  const [timerIsActive, setTimerIsActive] = useState(false);
+ 
+  const { timerDuration } = props; // using destructuring to pull out specific props values
+ 
+  useEffect(() => {
+    if (!timerIsActive) {
+      setTimerIsActive(true);
+      myTimer = setTimeout(() => {
+        setTimerIsActive(false);
+      }, timerDuration);
+    }
+  }, [timerIsActive, timerDuration]);
+};
+In this example:
+
+timerIsActive is added as a dependency because it's component state that may change when the component changes (e.g. because the state was updated)
+
+timerDuration is added as a dependency because it's a prop value of that component - so it may change if a parent component changes that value (causing this MyComponent component to re-render as well)
+
+setTimerIsActive is NOT added as a dependency because it's that exception: State updating functions could be added but don't have to be added since React guarantees that the functions themselves never change
+
+myTimer is NOT added as a dependency because it's not a component-internal variable (i.e. not some state or a prop value) - it's defined outside of the component and changing it (no matter where) wouldn't cause the component to be re-evaluated
+
+setTimeout is NOT added as a dependency because it's a built-in API (built-into the browser) - it's independent from React and your components, it doesn't change.
+
+
+
+
+113) Using the useEffect Cleanup Function =
+* shows how to not run code on single keypress. instead it shows run code when user stopped to type.
+* ex =
+    useEffect(() => {
+        const identifier = setTimeout(() => {
+            console.log("Checking form validity");
+            setForm(enteredName.include("@") && enteredPassword.trim().length > 6)
+        }, 500)
+        
+        return () => {
+            console.log("Clean up");
+            clearTimeout(identifier);
+        }
+    }, [enteredName, enteredPassword] )
+
+
+
+114) useEffect Summary =
+* useEffect function will runs after every component render cycle including initialization.
+* if we provide dependancies for useEffect, it will call function, based on dependancies changes.
+
+
+115) Introducing useReducer and Reducers in General =
+* we can use "useReducer" instead of "useState". but only when we required complex state management.
+* 
+
+
+
+//==================================
+
+
+//==================================
+section 12 = A look behind the scenes of React and Optimization
+
+151) How React Really works =
+* React library is responsible for props, state, component management. And ReactDOM is responsible for what users sees.
+* In react, when changes happen in component, it affects only some components not an entire app. it increases performance.
+* Virtual DOM 
+
+
+152) Component updates in Action =
+* whenever update happens, it goes through entire component itself.
+* Only some part updated based on comparison.
+
+
+153) Component updates in Action =
+* when state update, it updates parent and its child also.
+* Imp note- When state update in parent, it child also get re-evaluate. But don't get re-render if there's no props changes in Real DOM.
+* re-evaluate and re-runing component is not same as re-rendering or manipulating Real DOM.
+* re-evaluate and re-running component means, like do some other tasks based on state update. Here, it doesn't require re-rendering. Here, react library is only used.
+* re-rendering component means, on the state changes we will re-render component. ReactDOM helps to achieve this.
+* In next video, we will find solution to prevent some unnecessary updates in child to stop, if props are not changed.
+
+
+
+154) Preventing unnecessary Re-evaluations with React.memo() =
+* Like shouldComponent, we can finding solution here.
+* React.memo() will help to avoid unnecessary re-executions by comparing props with previous props.
+* bind memo with functional component = 
+    React.memo(DisplayOt)
+* we can't use React.memo() on all components bcz, it takes cost as performance. Some time, there might be more childs so to stop unnecessary renders we can use "memo".
+* with "React.memo()", we can compare primitive values like number, string, booleans and find out easily that values are changed or not. But with object and array, it's not possible. so it re-execute.
+
+
+155) Preventing Function re-creation with useCallBack() =
+* here, we pass function as props with "useCallBack" hook.
+* so that function won't change. And with the help of React.memo(), it won't re-execute.
+* ex = 
+    const handler = useCallback(() => {
+        setShowPara((prevPara) => !prevPara);
+    }, [])
+
+
+156) useCallBack() and its Dependancies = 
+* useCallback has dependancies array. if we specified condition, then we need dependancies to check regularly to update function.
+* ex =
+    const handler = useCallback(() => {
+        if(allowToggle){
+            setShowPara((prevPara) => !prevPara);
+        }
+    }, [allowToggle])
+
+
+157) 
+* on update in state, will affect state, props or context. and subsequently affect component UI.
+
+
+158) A Closer look at state & Components =
+* while re-evaulating, no new state is created and it only access same variable created earlier.
+
+
+160) Optimizing with useMemo() =
+* shows example with useMemo().
+
+
+
+
+
+//==================================
+section 18, 19, 20, 21, 23, 25, 26, 27, 28, 29, 13, 14, 15, 16, 17, 6, 11, 8, 
+
+section 18 = Diving into Redux ( An alternative to the Context API )
+
+225) Another look at state In React apps =
+* redux is state management system for cross-component or app-wide state.
+* we can split state's definition into 3 types = local state, cross component, or app wide
+* these all 3 are achieve using "useState/useReducer".
+* local state - state that belongs to a single component. this state, we manage with 'useState' or "useReducer".
+* cross component state - state that affects to multiple components.
+* app wide state - state that affects app wide components. ex- user authentication shows more content, options etc.
+* we have React Context which is doing same like redux. so let's find out, why we prefer redux over React context?
+
+226) Redux vs React Context =
+* state management system for cross component or app wide state.
+* React context also help to do same thing like redux.
+* React Context has potential disadvantages. following = 
+    1) React Context has complex setup.
+    2) Perfromance issue with React Context.
+
+227) How Redux works =
+* Redux is 1 central data store in application. here, data refers to state for app wide components
+* while doing setup, components subscribed to redux store.
+* there's also reducer method, called "reducer", which takes input, calculate it and update state of store.
+* Here, component dispatch actions to reducer. And ask reducer to do it. On completion task, reducer spit out new state to store. On updation of new state with existing state in store, store noified to subscribed components.
+
+228) Exploring the core redux concepts =
+* create store = 
+    const store = redux.createStore();
+* here, store contatins data. And that data updated by reducer function.
+    ex =
+        const counterReducer = (state = { counter: 0 }, action) => {
+            return  {
+                counter: state.counter + 1
+            }
+        }
+        const store = redux.createStore(counterReducer);
+
+* Reducer will have 2 piece of parameters, old state and action that was dispatched. Then this reducer dispatch new state.
+* fetching result using API or other promise task should avoid in reducer. It should done before dispatching action to reducer function. Reducer function will have 2 parameters, "old or existing state" and "action".
+
+* Now create subscription for JS.
+    const counterSubscribe = () => {
+        const lateststate = store.getState();
+        console.log(lateststate);
+    }
+    store.subscribe(counterSubscribe);
+* store has dispatch method too. it will help to call the action.
+
+229) More redux Basics = 
+* here, we see how to write code for multiple action types.
+* we add code for action.type === "decrement" and "increment".
+
+230) Preparing a new Project =
+* install react-redux, readux.
+
+231) Creating a Redux Store for React = 
+* code for store in react project.
+* create reducer and add in store.
+
+232) Providing the store =
+* using "provide" from "react-redux", you will provide access of redux to whole app.
+* It means, to use redux efficiently with react, we need to wrap up with "provide" from "react-redux" package.
+* we could use "provider" to specific components too, but here we need it for whole app.
+* <Provider><App></Provider>
+
+233) Using Redux data in React Components =
+* showing binding functional component with "useSelector".
+* ex = 
+    const counter = useSelector(state => state.counter);
+* in above statement, we achieve subscription also.
+
+234) Dispatching actions from inside components =
+
+235) Redux with class based components =
+
+236) Attaching Payloads to Actions =
+
+237) Working with Multiple state properties =
+
+238) How to work with Redux state Correctly =
+
+239) Redux challenges and introducing Redux toolkit =
+
+240) Adding state slices =
+
+241) connecting Redux toolkit state = 
+
+242) Migrating everything to redux toolkit =
+
+243) working with multiple slices =
+
+244) Reading and dispatchig from a new slice =
+
+245) splitting our code =
+
+246) summary =
+
+//==================================
+
+Section 19 = Advanced Redux
+
+249) Redux and side effects (and async code)
+
+250) Refresher/Practice: Part 1/2
+
+251) Refresher/Practice: Part 2/2
+
+252) Redux and Async code
+
+253) Frontend code vs Backend code
+
+254) Where to put our logic
+
+255) Using useEffect with Redux 
+
+256) A problem with useEffect
+
+257) Handling http states and Feedback with redux
+
+258) using an action creator thunk
+
+259) getting started with fetching data
+
+260) finalizing the fetching logic
+
+261) Exploring the redux DevTools
+
+262) summary =
+
+
+//==================================
+
+section 20
+
+
+
+//==================================
+Section 27
+
+393) What and Why?
+* Typescript is superset of Javascript.
+* Typescript added more feature to Javascript. It adds static typing to Javascript.
+
+ex. function add(a, b){
+    return a + b;
+}
+console.log(add(3, 4))       // 7
+console.log(add("3", "4"))       // 34  // wrong argument, wrong output
+
+* To avoid errors because of types, we use Typescript.
+* In bigger project, we can accidentally wrong arguments, so to avoid issue, we use typescript. 
+
+
+
+394) Installing and USing Typescript =
+* to install typescript use "npm install typescript"
+* Befor running our code into browser, our TS code compile to JS code. For that we need to run compiler.
+* to run command, "npx tsc". And we need config file too for Typescript.
+* and to run specific file = "npx tsc with-typescript.ts". so it takes "ts" file and compile to "JS" file.
+
+
+
+395) Exploring The Base Types:-
+* Primitives - number, string, boolean
+* more complex types - array, objects
+* Function types, parameters
+
+* in TS, we have to write "number" instead of "Number" for type declaration. same for boolean and string.
+
+let age: number = 5
+let name: string = "sumeet"
+
+* we can assign base type, without value declaration.
+
+
+396) Working with Array and Object Types =
+*  to store array of same primitive type =
+    var userName: string[];     //"username"
+
+* For Array, 
+    let names: string[] = ['sumeet', 'shedge', 34];       //34 will create issue, only strings are allowed
+    let names: string[] = ['sumeet', 'shedge'];         //this works
+
+* set type, for entire objects =
+* using "any", we can allow any types of data within variable.
+* for Objects,
+    let obj1: {
+        name: string;
+        age: number;
+    }
+    with this, we can add particular object who has same properties in variable.
+* For Multiple objects in 1 array,
+    let person: {
+        name: string;
+    }[];
+
+
+397) Type inference -
+* TS provides us "Type inference". It finds on it own type of variable.
+* let person = "sumeet";        // no need to define data type, TS will find out
+
+
+398) using UNION types -
+* some time, variable can have values of  2 or more types. so we can use it for this.
+* Using " | ", we can assign multiple types.
+* let person: string | number = "sumeet shedge"
+* let person: string | number[] = "sumeet shedge"
+
+
+
+399) Understanding Type Aliases =
+* some time, same type of definiton are appeared in multiple places. so we can define your own base type. Then we can use this type alias at multiple places.
+* type Person = {
+    name: string;
+    age: number;
+}
+
+* let person: Person;
+
+
+400) Function and function types:-
+* function add(a:number, b: number): number{
+    return a+b
+}
+* in above code, function returns value. And returned value also can type infered using TS. we didn't need to specify type.
+* some functions don't return value, so for them, TS return special type called "void".
+
+
+401) Diving into Generics -
+* Generic stands for function which we can run for multiple types, and that function takes that types and works same as we want.
+* Generic function, are those which we can use same functions for multiple types.
+* Its' simply helps you write functions in this case which are type safe yet flexible. They are flexible. They work with any type, but then once a certain type is used for that function execution that type is locked in and known.
+
+
+function insertNumberBegin<T>(array: T[], value: T){
+    const newArr = [ value, ...arrya ];
+    return newArr;
+}
+const demoArr = [1,2,3]
+const updatedArr = insertNumberBegin(demoArr, -1);
+const stringArr = insertNumberBegin(['a', 'b', 'c'], 'd');
+
+updatedArr[0].split('');        // will show error.
+
+
+
+
+402) A Closer Look At Generics =
+Generic Types ("Generics") can be tricky to wrap your head around.
+
+But indeed, we are working with them all the time - one of the most prominent examples is an array.
+
+Consider this example array:
+
+let numbers = [1, 2, 3];
+Here, the type is inferred, but if we would assign it explicitly, we could do it like this:
+
+let numbers: number[] = [1, 2, 3];
+number[] is the TypeScript notation for saying "this is an array of numbers".
+
+But actually, number[] is just syntactic sugar!
+
+The actual type is Array. ALL arrays are of the Array type.
+
+BUT: Since an array type really only makes sense if we also describe the type of items in the array, Array actually is a generic type.
+
+You could also write the above example liks this:
+
+let numbers: Array<number> = [1, 2, 3];
+Here we have the angle brackets (<>) again! But this time NOT to create our own type (as we did it in the previous lecture) but instead to tell TypeScript which actual type should be used for the "generic type placeholder" (T in the previous lecture).
+
+Just as shown in the last lecture, TypeScript would be able to infer this as well - we rely on that when we just write:
+
+let numbers = [1, 2, 3];
+But if we want to explicitly set a type, we could do it like this:
+
+let numbers: Array<number> = [1, 2, 3];
+Of course it can be a bit annoying to write this rather long and clunky type, that's why we have this alternative (syntactic sugar) for arrays:
+
+let numbers: number[] = [1, 2, 3];
+If we take the example from the previous lecture, we could've also set the concrete type for our placeholder T explicitly:
+
+const stringArray = insertAtBeginning<string>(['a', 'b', 'c'], 'd');
+So we can not just use the angle brackets to define a generic type but also to USE a generic type and explicitly set the placeholder type that should be used - sometimes this is required if TypeScript is not able to infer the (correct) type. We'll see this later in this course section!
+
+
+
+403) Creating a React + TypeScript project
+* create React project with typescript template. It contains ts files. Behind the scenes, typescript converts to Javascript using typescript compiler.
+
+
+404) Working with Components and Typescript =
