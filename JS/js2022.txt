@@ -1299,6 +1299,8 @@ D) Advanced
 			3. Release the allocated memory when it is not needed anymore
 			The second part is explicit in all languages. The first and last parts are explicit in low-level languages but are mostly implicit in high-level languages like JavaScript.
 		* Some high-level languages, such as JavaScript, utilize a form of automatic memory management known as garbage collection (GC). The purpose of a garbage collector is to monitor memory allocation and determine when a block of allocated memory is no longer needed and reclaim it.
+		* Mark-and-sweep algorithm - This algorithm reduces the definition of "an object is no longer needed" to "an object is unreachable". In this algorithm, all objects get marked which has referenced with variables. After this, it delete all unmarked objects.
+		* 
 
 	
 	3) Concurrency model and Event Loop - 
