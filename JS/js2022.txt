@@ -1254,15 +1254,17 @@ instance properties
 ------------------
 Tutoraials -
 	
-Complete beginners	=
-1. JavaScript basics -
-	JavaScript is a programming language that adds interactivity to your website
-JavaScript first steps
-JavaScript building blocks
-Introducing JavaScript objects
+A) Complete beginners
+	1) JavaScript basics -
+	* JavaScript is a programming language that adds interactivity to your website
+	
+	
+	2) JavaScript first steps
+	3) JavaScript building blocks
+	4) Introducing JavaScript objects
 
-2.JS Guide	=
-  Grammar and types
+B) JS Guide
+  	Grammar and types
 	Control flow and error handling
 	Loops and iteration
 	Functions
@@ -1279,19 +1281,27 @@ Introducing JavaScript objects
 	Iterators and generators
 	Meta programming
 	JavaScript modules
-Intermediate	=
-  Client-side JavaScript frameworks
+C) Intermediate	
+	Client-side JavaScript frameworks
 	Client-side web APIs
 	Language overview
 	JavaScript data structures
 	Equality comparisons and sameness
 	Enumerability and ownership of properties
 	Closures
-Advanced	=
-  Inheritance and the prototype chain
-	Memory Management
-	Concurrency model and Event Loop
-
+D) Advanced
+	1) Inheritance and the prototype chain
+	2) Memory Management
+		* 
+	3) Concurrency model and Event Loop - 
+		* JavaScript has a runtime model based on an event loop.
+		* Here, we saw how event loop works. It's same as tony described. There's image which show how event loop works
+		* In that image, they mention heap, stack, and queue
+		* Heap - Objects are allocated in a heap which is just a name to denote a large (mostly unstructured) region of memory.
+		* Stack - Here, we add execution context on each other
+		* queue (Event Queue) - where async operations are added here.
+		* In Event loop, sometime async operations have to wait more than given time bcz it might have already opeartions in queue
+		* A very interesting property of the event loop model is that JavaScript, unlike a lot of other languages, never blocks.
 ------------------
 References:
 
