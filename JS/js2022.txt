@@ -1291,8 +1291,10 @@ C) Intermediate
 	Closures
 D) Advanced
 	1) Inheritance and the prototype chain
+		* 
 	2) Memory Management
 		* JavaScript automatically allocates memory when objects are created and frees it when they are not used anymore (garbage collection)
+		* The main concept that garbage collection algorithms rely on is the concept of reference.
 		* Regardless of the programming language, the memory life cycle is pretty much always the same:
 			1. Allocate the memory you need
 			2. Use the allocated memory (read, write)
@@ -1300,8 +1302,9 @@ D) Advanced
 			The second part is explicit in all languages. The first and last parts are explicit in low-level languages but are mostly implicit in high-level languages like JavaScript.
 		* Some high-level languages, such as JavaScript, utilize a form of automatic memory management known as garbage collection (GC). The purpose of a garbage collector is to monitor memory allocation and determine when a block of allocated memory is no longer needed and reclaim it.
 		* Mark-and-sweep algorithm - This algorithm reduces the definition of "an object is no longer needed" to "an object is unreachable". In this algorithm, all objects get marked which has referenced with variables. After this, it delete all unmarked objects.
-		* 
+		* Although JavaScript does not directly expose the garbage collector API, the language offers several data structures that indirectly observe garbage collection and can be used to manage memory usage.
 
+		* need to learn about WeakMaps and WeakSets, WeakRefs and FinalizationRegistry ......
 	
 	3) Concurrency model and Event Loop - 
 		* JavaScript has a runtime model based on an event loop.
