@@ -1289,9 +1289,17 @@ C) Intermediate
 	Equality comparisons and sameness
 	Enumerability and ownership of properties
 	Closures
+
 D) Advanced
 	1) Inheritance and the prototype chain
-		* 
+		* In programming, inheritance refers to passing down characteristics from a parent to a child so that a new piece of code can reuse and build upon the features of an existing one.
+		* JavaScript implements inheritance by using objects
+		* Each object has an internal link to another object called its prototype.
+		* That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype
+	 Inheritance with the prototype chain
+		* need to learn 
+
+
 	2) Memory Management
 		* JavaScript automatically allocates memory when objects are created and frees it when they are not used anymore (garbage collection)
 		* The main concept that garbage collection algorithms rely on is the concept of reference.
@@ -1304,7 +1312,8 @@ D) Advanced
 		* Mark-and-sweep algorithm - This algorithm reduces the definition of "an object is no longer needed" to "an object is unreachable". In this algorithm, all objects get marked which has referenced with variables. After this, it delete all unmarked objects.
 		* Although JavaScript does not directly expose the garbage collector API, the language offers several data structures that indirectly observe garbage collection and can be used to manage memory usage.
 
-		* need to learn about WeakMaps and WeakSets, WeakRefs and FinalizationRegistry ......
+		* need to learn 
+			about WeakMaps and WeakSets, WeakRefs and FinalizationRegistry ......
 	
 	3) Concurrency model and Event Loop - 
 		* JavaScript has a runtime model based on an event loop.
