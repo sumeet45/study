@@ -1297,6 +1297,86 @@ D) Advanced
 		* Each object has an internal link to another object called its prototype.
 		* That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype
 	 Inheritance with the prototype chain
+	* Inheriting Properties - 
+		* The [[Prototype]] internal slot can be accessed and modified with the Object.getPrototypeOf() and Object.setPrototypeOf() functions respectively. This is equivalent to the JavaScript accessor __proto__ which is non-standard but de-facto implemented by many JavaScript engines.
+		* const o = {
+			  a: 1,
+			  b: 2,
+			  // __proto__ sets the [[Prototype]]. It's specified here
+			  // as another object literal.
+			  __proto__: {
+			    b: 3,
+			    c: 4,
+			  },
+			};
+		// Thus, the full prototype chain looks like:
+		// { a: 1, b: 2 } ---> { b: 3, c: 4 } ---> Object.prototype ---> null
+		
+		* console.log(o.b); // 2
+		// Is there a 'b' own property on o? Yes, and its value is 2.
+		// The prototype also has a 'b' property, but it's not visited.
+		// This is called Property Shadowing
+
+		* console.log(o.d); // undefined
+		// no property found, return undefined.
+
+	* Inheriting "methods" -
+		* In JavaScript, any function can be added to an object in the form of a property. An inherited function acts just as any other property, including property shadowing as shown above (in this case, a form of method overriding).
+		* When an inherited function is executed, the value of this points to the inheriting object, not to the prototype object where the function is an own property
+
+	* Constructors -
+		* The power of prototypes is that we can reuse a set of properties if they should be present on every instance — especially for methods
+		* const boxPrototype = {
+		  getValue() {
+		    return this.value;
+		  },
+		};
+		
+		const boxes = [
+		  { value: 1, __proto__: boxPrototype },
+		  { value: 2, __proto__: boxPrototype },
+		  { value: 3, __proto__: boxPrototype },
+		];
+		* so for creating object with prototype, we can use function constructor
+	
+	* using classes -
+		class Box {
+		  constructor(value) {
+		    this.value = value;
+		  }
+		
+		  // Methods are created on Box.prototype
+		  getValue() {
+		    return this;
+		  } 
+		   getc = () => {return this}   // Methods are created on Object created by " new Box(5) "
+		}
+
+
+	* Implicit constructors of literals
+		* // Object literals (without the `__proto__` key) automatically
+		// have `Object.prototype` as their `[[Prototype]]`
+		const object = { a: 1 };
+		Object.getPrototypeOf(object) === Object.prototype; // true
+		
+		// Array literals automatically have `Array.prototype` as their `[[Prototype]]`
+		const array = [1, 2, 3];
+		Object.getPrototypeOf(array) === Array.prototype; // true
+		
+		// RegExp literals automatically have `RegExp.prototype` as their `[[Prototype]]`
+		const regexp = /abc/;
+		Object.getPrototypeOf(regexp) === RegExp.prototype; // true
+
+
+		* Number.prototype + 1; // 1
+		Array.prototype.map((x) => x + 1); // []
+		String.prototype + "a"; // "a"
+		RegExp.prototype.source; // "(?:)"
+		Function.prototype(); // Function.prototype is a no-op function by itself
+
+	* Inspecting prototypes: a deeper dive
+
+
 		* need to learn 
 
 
