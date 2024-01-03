@@ -1282,13 +1282,15 @@ B) JS Guide
 	Meta programming
 	JavaScript modules
 C) Intermediate	
-	Client-side JavaScript frameworks
-	Client-side web APIs
-	Language overview
-	JavaScript data structures
-	Equality comparisons and sameness
-	Enumerability and ownership of properties
-	Closures
+	1) Client-side JavaScript frameworks
+	2) Client-side web APIs
+	3) Language overview
+	4) JavaScript data structures
+	5) Equality comparisons and sameness
+	6) Enumerability and ownership of properties
+	7) Closures -
+		* a closure gives you access to an outer function's scope from an inner function 
+	
 
 D) Advanced
 	1) Inheritance and the prototype chain
@@ -1387,9 +1389,6 @@ D) Advanced
 
 	* Different ways of creating and mutating prototype chains -
 		* Objects created with syntax constructs -
-		
-
-
 		* need to learn 
 
 
