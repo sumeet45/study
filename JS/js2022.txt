@@ -18,12 +18,12 @@ Tony Alicea Udemy -
 			function hello() {
 				var a = "hello world";
 			}
-		Here, variable "a" sits lexically inside the function. So, variable "a" live within that lexical enviornment where its created.
+		Here, the variable "a" sits lexically inside the function. So, variable "a" lives within that lexical environment where it is created.
 
 * Execution Context -
 	1) "A wrapper to help manage the code that is running".
-	2) There's lots of lexical enviornments, which one  is currently running is managed  via execution context. It can contain things beyond what you've written in your code.
-	3) Defn - Execution context is wrapper that helps to manage code that is running. Execution context is important in JS. Its always created on function invocation with lots of things like "window object, this variable, reference to outer variable enviornment, lexical enviornment"  
+	2) There are lots of lexical environments, which one  is currently running is managed  via execution context. It can contain things beyond what you've written in your code.
+	3) Defn - Execution context is a wrapper that helps to manage code that is running. Execution context is important in JS. It is always created on function invocation with lots of things like "window object, this variable, reference to outer variable environment, lexical environment, own variable environment"  
 
 
 8) Conceptual Aside: Name/Value Pairs and Objects =
