@@ -19,6 +19,7 @@ Tony Alicea Udemy -
 				var a = "hello world";
 			}
 		Here, the variable "a" sits lexically inside the function. So, variable "a" lives within that lexical environment where it is created.
+	6) The variable's lexical scope is the place in which the item got created
 
 * Execution Context -
 	1) "A wrapper to help manage the code that is running".
