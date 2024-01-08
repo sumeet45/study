@@ -460,3 +460,23 @@ D) Regular Expressions
 
 Reference Links -
 * https://codedamn.com/news/programming/comprehensive-guide-javascript-event-loop ( Event Queue / Loop, microtask, async await)  
+
+
+Points need to be done to improve interview -
+async await
+promise
+prototype and its chain
+class
+call, apply, bind
+object.create and object.assign
+methods of array, object, string, number
+date
+event propagation
+recursion
+symbol
+Iterators and generators
+Map, set, 
+
+
+
+
