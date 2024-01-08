@@ -166,26 +166,168 @@ D) Advanced
 References:
 
 A) Built-in objects -
-  1) AggregateError -
-    * The AggregateError object represents an error when several errors need to be wrapped in a single error. It is thrown when multiple errors need to be reported by an operation, for example by Promise.any(), when all promises passed to it reject.
+	1) AggregateError -
+    		* The AggregateError object represents an error when several errors need to be wrapped in a single error. It is thrown when multiple errors need to be reported by an operation, for example by Promise.any(), when all promises passed to it reject.
 
-    constructor -
-      1) AggregateError() - Creates a new AggregateError object.
+	    constructor -
+	      * AggregateError() - Creates a new AggregateError object.
+	
+	    Instance properties
+	      * AggregateError.prototype.message - Error message. Inherited from Error.
+	
+	      * AggregateError.prototype.name - Error name. Inherited from Error.
+	
+	      * AggregateError.prototype.cause - Error cause. Inherited from Error.
+	
+	      * AggregateError.prototype.errors -
+	      An array that essentially reflects the iterable with which the AggregateError was instantiated; for example, if the AggregateError was created using the AggregateError() constructor, an array produced from whatever iterable was passed to the constructor as its first argument.
 
-    Instance properties
-      1) AggregateError.prototype.message - Error message. Inherited from Error.
-
-      2) AggregateError.prototype.name - Error name. Inherited from Error.
-
-      3) AggregateError.prototype.cause - Error cause. Inherited from Error.
-
-      4) AggregateError.prototype.errors -
-      An array that essentially reflects the iterable with which the AggregateError was instantiated; for example, if the AggregateError was created using the AggregateError() constructor, an array produced from whatever iterable was passed to the constructor as its first argument.
-
+	2) Array
+	3) ArrayBuffer
+	4) AsyncFunction
+	5) AsyncGenerator
+	6) AsyncGeneratorFunction
+	7) AsyncIterator
+	8) Atomics
+	9) BigInt
+	10) BigInt64Array
+	11) BigUint64Array
+	12) Boolean
+	13) DataView
+	14) Date
+	15) decodeURI()
+	16) decodeURIComponent()
+	17) encodeURI()
+	18) encodeURIComponent()
+	19) Error
+	20) escape() Deprecated
+	21) eval()
+	22) EvalError
+	23) FinalizationRegistry
+	24) Float32Array
+	25) Float64Array
+	26) Function
+	27) Generator
+	28) GeneratorFunction
+	29) globalThis
+	30) Infinity
+	31) Int16Array
+	32) Int32Array
+	33) Int8Array
+	34) InternalErrorNon-standard
+	35) Intl
+	36) isFinite()
+	37) isNaN()
+	38) Iterator
+	39) JSON
+	40) Map
+	41) Math
+	42) NaN
+	43) Number
+	44) Object
+	45) parseFloat()
+	46) parseInt()
+	47) Promise
+	48) Proxy
+	49) RangeError
+	50) ReferenceError
+	51) Reflect
+	52) RegExp
+	53) Set
+	54) SharedArrayBuffer
+	55) String
+	56) Symbol
+	57) SyntaxError
+	58) TypedArray
+	59) TypeError
+	60) Uint16Array
+	61) Uint32Array
+	62) Uint8Array
+	63) Uint8ClampedArray
+	64) undefined
+	65) unescape()Deprecated
+	66) URIError
+	67) WeakMap
+	68) WeakRef
+	69) WeakSet
 
 
 
 B) Expressions & operators
+	1) Addition (+)
+	2) Addition assignment (+=)
+	3) Assignment (=)
+	4) async function expression
+	5) async function* expression
+	6) await
+	7) Bitwise AND (&)
+	8) Bitwise AND assignment (&=)
+	9) Bitwise NOT (~)
+	10) Bitwise OR (|)
+	11) Bitwise OR assignment (|=)
+	12) Bitwise XOR (^)
+	13) Bitwise XOR assignment (^=)
+	14) class expression
+	15) Comma operator (,)
+	16) Conditional (ternary) operator
+	17) Decrement (--)
+	18) delete
+	19) Destructuring assignment
+	20) Division (/)
+	21) Division assignment (/=)
+	22) Equality (==)
+	23) Exponentiation (**)
+	24) Exponentiation assignment (**=)
+	25) function expression
+	26) function* expression
+	27) Greater than (>)
+	28) Greater than or equal (>=)
+	29) Grouping operator ( )
+	30) import.meta
+	31) import()
+	32) in
+	33) Increment (++)
+	34) Inequality (!=)
+	35) instanceof
+	36) Left shift (<<)
+	37) Left shift assignment (<<=)
+	38) Less than (<)
+	39) Less than or equal (<=)
+	40) Logical AND (&&)
+	41) Logical AND assignment (&&=)
+	42) Logical NOT (!)
+	43) Logical OR (||)
+	44) Logical OR assignment (||=)
+	45) Multiplication (*)
+	46) Multiplication assignment (*=)
+	47) new
+	48) new.target
+	49) null
+	50) Nullish coalescing assignment (??=)
+	51) Nullish coalescing operator (??)
+	52) Object initializer
+	53) Operator precedence
+	54) Optional chaining (?.)
+	55) Property accessors
+	56) Remainder (%)
+	57) Remainder assignment (%=)
+	58) Right shift (>>)
+	59) Right shift assignment (>>=)
+	60) Spread syntax (...)
+	61) Strict equality (===)
+	62) Strict inequality (!==)
+	63) Subtraction (-)
+	64) Subtraction assignment (-=)
+	65) super
+	66) this
+	67) typeof
+	68) Unary negation (-)
+	69) Unary plus (+)
+	70) Unsigned right shift (>>>)
+	71) Unsigned right shift assignment (>>>=)
+	72) void operator
+	73) yield
+	74) yield*
 
 C) Statements & declarations
 	1)	async function
