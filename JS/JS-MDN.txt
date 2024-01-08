@@ -1,11 +1,16 @@
+Tutoraials -
 	
-Complete beginners	=
-  JavaScript basics
-	JavaScript first steps
-	JavaScript building blocks
-	Introducing JavaScript objects
-JS Guide	=
-  Grammar and types
+A) Complete beginners
+	1) JavaScript basics -
+	* JavaScript is a programming language that adds interactivity to your website
+	
+	
+	2) JavaScript first steps
+	3) JavaScript building blocks
+	4) Introducing JavaScript objects
+
+B) JS Guide
+  	Grammar and types
 	Control flow and error handling
 	Loops and iteration
 	Functions
@@ -22,15 +27,238 @@ JS Guide	=
 	Iterators and generators
 	Meta programming
 	JavaScript modules
-Intermediate	=
-  Client-side JavaScript frameworks
-	Client-side web APIs
-	Language overview
-	JavaScript data structures
-	Equality comparisons and sameness
-	Enumerability and ownership of properties
-	Closures
-Advanced	=
-  Inheritance and the prototype chain
-	Memory Management
-	Concurrency model and Event Loop
+C) Intermediate	
+	1) Client-side JavaScript frameworks
+	2) Client-side web APIs
+	3) Language overview
+	4) JavaScript data structures
+	5) Equality comparisons and sameness
+	6) Enumerability and ownership of properties
+	7) Closures -
+		* a closure gives you access to an outer function's scope from an inner function 
+	
+
+D) Advanced
+	1) Inheritance and the prototype chain
+		* In programming, inheritance refers to passing down characteristics from a parent to a child so that a new piece of code can reuse and build upon the features of an existing one.
+		* JavaScript implements inheritance by using objects
+		* Each object has an internal link to another object called its prototype.
+		* That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype
+	 Inheritance with the prototype chain
+	* Inheriting Properties - 
+		* The [[Prototype]] internal slot can be accessed and modified with the Object.getPrototypeOf() and Object.setPrototypeOf() functions respectively. This is equivalent to the JavaScript accessor __proto__ which is non-standard but de-facto implemented by many JavaScript engines.
+		* const o = {
+			  a: 1,
+			  b: 2,
+			  // __proto__ sets the [[Prototype]]. It's specified here
+			  // as another object literal.
+			  __proto__: {
+			    b: 3,
+			    c: 4,
+			  },
+			};
+		// Thus, the full prototype chain looks like:
+		// { a: 1, b: 2 } ---> { b: 3, c: 4 } ---> Object.prototype ---> null
+		
+		* console.log(o.b); // 2
+		// Is there a 'b' own property on o? Yes, and its value is 2.
+		// The prototype also has a 'b' property, but it's not visited.
+		// This is called Property Shadowing
+
+		* console.log(o.d); // undefined
+		// no property found, return undefined.
+
+	* Inheriting "methods" -
+		* In JavaScript, any function can be added to an object in the form of a property. An inherited function acts just as any other property, including property shadowing as shown above (in this case, a form of method overriding).
+		* When an inherited function is executed, the value of this points to the inheriting object, not to the prototype object where the function is an own property
+
+	* Constructors -
+		* The power of prototypes is that we can reuse a set of properties if they should be present on every instance — especially for methods
+		* const boxPrototype = {
+		  getValue() {
+		    return this.value;
+		  },
+		};
+		
+		const boxes = [
+		  { value: 1, __proto__: boxPrototype },
+		  { value: 2, __proto__: boxPrototype },
+		  { value: 3, __proto__: boxPrototype },
+		];
+		* so for creating object with prototype, we can use function constructor
+	
+	* using classes -
+		class Box {
+		  constructor(value) {
+		    this.value = value;
+		  }
+		
+		  // Methods are created on Box.prototype
+		  getValue() {
+		    return this;
+		  } 
+		   getc = () => {return this}   // Methods are created on Object created by " new Box(5) "
+		}
+
+
+	* Implicit constructors of literals
+		* // Object literals (without the `__proto__` key) automatically
+		// have `Object.prototype` as their `[[Prototype]]`
+		const object = { a: 1 };
+		Object.getPrototypeOf(object) === Object.prototype; // true
+		
+		// Array literals automatically have `Array.prototype` as their `[[Prototype]]`
+		const array = [1, 2, 3];
+		Object.getPrototypeOf(array) === Array.prototype; // true
+		
+		// RegExp literals automatically have `RegExp.prototype` as their `[[Prototype]]`
+		const regexp = /abc/;
+		Object.getPrototypeOf(regexp) === RegExp.prototype; // true
+
+
+		* Number.prototype + 1; // 1
+		Array.prototype.map((x) => x + 1); // []
+		String.prototype + "a"; // "a"
+		RegExp.prototype.source; // "(?:)"
+		Function.prototype(); // Function.prototype is a no-op function by itself
+
+	* Inspecting prototypes: a deeper dive
+		* function doSomething() {}
+		console.log(doSomething.prototype);
+		// It does not matter how you declare the function; a
+		// function in JavaScript will always have a default
+		// prototype property — with one exception: an arrow
+		// function doesn't have a default prototype property:
+		const doSomethingFromArrowFunction = () => {};
+		console.log(doSomethingFromArrowFunction.prototype);
+
+
+	* Different ways of creating and mutating prototype chains -
+		* Objects created with syntax constructs -
+		* need to learn 
+
+
+	2) Memory Management
+		* JavaScript automatically allocates memory when objects are created and frees it when they are not used anymore (garbage collection)
+		* The main concept that garbage collection algorithms rely on is the concept of reference.
+		* Regardless of the programming language, the memory life cycle is pretty much always the same:
+			1. Allocate the memory you need
+			2. Use the allocated memory (read, write)
+			3. Release the allocated memory when it is not needed anymore
+			The second part is explicit in all languages. The first and last parts are explicit in low-level languages but are mostly implicit in high-level languages like JavaScript.
+		* Some high-level languages, such as JavaScript, utilize a form of automatic memory management known as garbage collection (GC). The purpose of a garbage collector is to monitor memory allocation and determine when a block of allocated memory is no longer needed and reclaim it.
+		* Mark-and-sweep algorithm - This algorithm reduces the definition of "an object is no longer needed" to "an object is unreachable". In this algorithm, all objects get marked which has referenced with variables. After this, it delete all unmarked objects.
+		* Although JavaScript does not directly expose the garbage collector API, the language offers several data structures that indirectly observe garbage collection and can be used to manage memory usage.
+
+		* need to learn 
+			about WeakMaps and WeakSets, WeakRefs and FinalizationRegistry ......
+	
+	3) Concurrency model and Event Loop - 
+		* JavaScript has a runtime model based on an event loop.
+		* Here, we saw how event loop works. It's same as tony described. There's image which show how event loop works
+		* In that image, they mention heap, stack, and queue
+		* Heap - Objects are allocated in a heap which is just a name to denote a large (mostly unstructured) region of memory.
+		* Stack - Here, we add execution context on each other
+		* queue (Event Queue) - where async operations are added here.
+		* In Event loop, sometime async operations have to wait more than given time bcz it might have already opeartions in queue
+		* A very interesting property of the event loop model is that JavaScript, unlike a lot of other languages, never blocks.
+------------------
+References:
+
+A) Built-in objects -
+  1) AggregateError -
+    * The AggregateError object represents an error when several errors need to be wrapped in a single error. It is thrown when multiple errors need to be reported by an operation, for example by Promise.any(), when all promises passed to it reject.
+
+    constructor -
+      1) AggregateError() - Creates a new AggregateError object.
+
+    Instance properties
+      1) AggregateError.prototype.message - Error message. Inherited from Error.
+
+      2) AggregateError.prototype.name - Error name. Inherited from Error.
+
+      3) AggregateError.prototype.cause - Error cause. Inherited from Error.
+
+      4) AggregateError.prototype.errors -
+      An array that essentially reflects the iterable with which the AggregateError was instantiated; for example, if the AggregateError was created using the AggregateError() constructor, an array produced from whatever iterable was passed to the constructor as its first argument.
+
+
+
+
+B) Expressions & operators
+
+C) Statements & declarations
+	1)	async function
+	2)	block
+	3)	break
+	4)	class
+	5)	const
+	6)	continue
+	7)	debugger
+	8)	do...while
+	9)	empty
+	
+	10)	Export
+	* export statement is used when creating JavaScript modules to export live bindings to functions, objects, or primitive values from the module so they can be used by other programs with the import statement.
+	* When a module updates the value of a binding that it exports, the update will be visible in its imported value.
+	* two types of exports: 
+		Named Exports (Zero or more exports per module),
+		Default Exports (One per module)
+	* Syntax -
+		// Exporting individual features
+		export let name1, name2, …, nameN; // also var, const
+		export let name1 = …, name2 = …, …, nameN; // also var, const
+		export function functionName(){...}
+		export class ClassName {...}
+
+		// Export list
+		export { name1, name2, …, nameN };
+
+		// Renaming exports
+		export { variable1 as name1, variable2 as name2, …, nameN };
+
+		// Exporting destructured assignments with renaming
+		export const { name1, name2: bar } = o;
+
+		// Default exports
+		export default expression;
+		export default function (…) { … } // also class, function*
+		export default function name1(…) { … } // also class, function*
+		export { name1 as default, … };
+
+		// Aggregating modules
+		export * from …; // does not set the default export
+		export * as name1 from …; // ECMAScript® 2O20
+		export { name1, name2, …, nameN } from …;
+		export { import1 as name1, import2 as name2, …, nameN } from …;
+		export { default, … } from …;
+
+	* default export can be imported with any name. eg. import m from './test';
+	* rename named exports to avoid naming conflicts. eg. export { myFunction as function1, myVariable as variable };
+	* one can create a single module concentrating various exports from various modules.
+		export { default as function1, function2 } from 'bar.js';
+	* 
+
+
+	* Description -
+
+	11)	for await...of
+	12)	for...in
+	13)	for...of
+	14)	for
+	15)	function*
+	16)	function declaration
+	17)	if...else
+	18)	import.meta
+	19)	import
+	20)	label
+	21)	let
+	22)	return
+	23)	switch
+	24)	throw
+	25)	try...catch
+	26)	var
+	27)	while
+	28)	with
+
+
