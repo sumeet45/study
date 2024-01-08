@@ -330,17 +330,50 @@ B) Expressions & operators
 	74) yield*
 
 C) Statements & declarations
-	1)	async function
-	2)	block
-	3)	break
-	4)	class
-	5)	const
-	6)	continue
-	7)	debugger
-	8)	do...while
-	9)	empty
+	1) async function - 
+		The await keyword is permitted within the function body, enabling asynchronous, promise-based behaviour to be written in a cleaner style and avoiding the need to configure promise chains explicitly.
+		* eg.
+			function waitForData () {
+			    return new Promise((res, rej) => {
+			        setTimeout(() => {
+			            res(10)
+			        }, 3000)
+			    })
+			}
+			console.log("before call");
+			async function testAsyncFun(){
+			    try {
+			        console.log("line1");
+			        const data = await waitForData();
+			        console.log("line2", data);
+			    } catch(e){
+			        console.log("error", e)
+			    }
+			}
+			testAsyncFun()
+			console.log("outside line call");
+		* In the above example, output like below -
+			before call
+			line1
+			outside line call
+			line2 10
+		* Here, await help to stop execution till "waitForData" returns something and starts working on other code synchronously. once done with synchronous code, then moves to the "waitForData" function which is in microtask queues. 
+		* Async functions can contain zero or more await expressions. Await expressions make promise-returning functions behave as though they're synchronous by suspending execution until the returned promise is fulfilled or rejected. The resolved value of the promise is treated as the return value of the await expression. Use of async and await enables the use of ordinary try / catch blocks around asynchronous code.
+		* In situations like following - promise.all or promise.allSettled, don't use async await. 
+
+
+
+	2) async function*
+	3) block
+	3) break
+	4) class
+	5) const
+	6) continue
+	7) debugger
+	8) do...while
+	9) empty
 	
-	10)	Export
+	10) Export
 	* export statement is used when creating JavaScript modules to export live bindings to functions, objects, or primitive values from the module so they can be used by other programs with the import statement.
 	* When a module updates the value of a binding that it exports, the update will be visible in its imported value.
 	* two types of exports: 
@@ -383,24 +416,47 @@ C) Statements & declarations
 
 
 	* Description -
+	11) Expression Statement
+	11) for
+	12) for await...of
+	13) for...in
+	14) for...of
+	14) for
+	15) function*
+	16) function declaration
+	17) if...else
+	18) import.meta
+	19) import
+	20) label
+	21) let
+	22) return
+	23) switch
+	24) throw
+	25) try...catch
+	26) var
+	27) while
+	28) with
 
-	11)	for await...of
-	12)	for...in
-	13)	for...of
-	14)	for
-	15)	function*
-	16)	function declaration
-	17)	if...else
-	18)	import.meta
-	19)	import
-	20)	label
-	21)	let
-	22)	return
-	23)	switch
-	24)	throw
-	25)	try...catch
-	26)	var
-	27)	while
-	28)	with
+
+D) Regular Expressions 
+	1) Backreference: \1, \2
+	2) Capturing group: (...)
+	3) Character class escape: \d, \D, \w, \W, \s, \S
+	4) Character class: [...], [^...]
+	5) Character escape: \n, \u{...}
+	6) Disjunction: |
+	7) Input boundary assertion: ^, $
+	8) Literal character: a, b
+	9) Lookahead assertion: (?=...), (?!...)
+	10) Lookbehind assertion: (?<=...), (?<!...)
+	11) Named backreference: \k<name>
+	12) Named capturing group: (?<name>...)
+	13) Non-capturing group: (?:...)
+	14) Quantifier: *, +, ?, {n}, {n,}, {n,m}
+	15) Unicode character class escape: \p{...}, \P{...}
+	16) Wildcard: .
+	17) Word boundary assertion: \b, \B
 
 
+Reference Links -
+* https://codedamn.com/news/programming/comprehensive-guide-javascript-event-loop ( Event Queue / Loop, microtask, async await)  
