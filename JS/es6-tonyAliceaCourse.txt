@@ -1,1 +1,12 @@
 
+4) Block Scoping: why?
+* Block Scoping: Variable scope is defined lexically by a block. In Js, curly braces.
+* Block scoping added to es6, to reduce bugs
+
+5) Block statements and Lexical Enviornments -
+* In creation of execution context, we will get following - "window, this, reference to outer variable enviornment, variable enviornment, lexical enviornment and code".
+* In code, if there's block using curl braces, it will create separate lexical environments in execution contexts.
+* If we declare variable in that block using var keyword, then it will store it in variable enviorment
+
+6) let -
+* In execution context, whenever 
