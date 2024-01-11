@@ -285,6 +285,39 @@ var pattern = (log|ply)wood
   3)  Come up with a substitution string by using the captured pattern groups.
   4)  Use a regex enabled to do the replacement.
 
+25) The monitor resolutions problems -
+* var str = "1280x820";
+const regex = /([0-9]+)x([0-9]+)/gm;
+const subst = `$1 pix by $2 pix`; 
+
+26) The First name Last name Problem -
+* var str = "sumeet shedge";
+const regex = /([a-z]+)\s([a-z]+)/gm;
+const subst = `$2,$1`;
+
+27) The clock time problem -
+* const regex = /([0-9]{1,2}):([0-9]{2})/gm;
+const str = `7:32`;
+const subst = `$2 mins past $1`;
+const result = str.replace(regex, subst);
+
+28) The Phone number problem -
+* 
+const regex = /[0-9]{3}\.[0-9]{3}\.([0-9]{4})/gm;
+const str = `809.739.0271`;
+const subst = `xxx.xxx.$1`;
+
+29) The Date Problem -
+* 
+
+30) Another phone number problem -
+*
+
+32) Email Challenge
+* 
+
+
+
 
 Symbols =
 a* = zero or more occurance of "a"
