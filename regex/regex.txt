@@ -278,6 +278,14 @@ redwood"
 var pattern = (log|ply)wood
 
 
+24) Introduction -
+* Steps -
+  1)  Understand the requrement: what needs to be replaced? What should be the replacement?
+  2)  Represent the patterns using regex. Enclose the patterns that needs to be replaced with parenthesis to segregate them into  capture groups.
+  3)  Come up with a substitution string by using the captured pattern groups.
+  4)  Use a regex enabled to do the replacement.
+
+
 Symbols =
 a* = zero or more occurance of "a"
 . = represents exactly one character in a string
