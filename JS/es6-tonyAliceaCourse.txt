@@ -23,3 +23,97 @@
         }
       }
 * In above example, engine won't be able to find in same lexical enviorment and above one too. hence it gives error.
+* If we declare variable with let, we won't be able to log using "window.myVar". 
+      let myVar = true
+      console.log(myVar);      //true
+      console.log(windw.myVar)      // undefined
+      Bcz "myVar" is store it in lexical enviornment not in variable enviorment.
+* redeclaring variable using var keyword is allow in JS, but not with let.
+* {} will declare block scope
+* ex. let myVar = 1;
+      {
+            console.log(myVar);           // 1. bcz of reference of outer lexical enviornment
+      }
+* ex. let myVar = 1;
+      {
+            let myVar = 2;
+            console.log(myVar);      // 2. in same scope, myVar declared with 2
+      }
+* ex. let myVar = 1;
+      {
+            let myVar = 2;
+            console.log(myVar);      //2
+      }
+      console.log(myVar);            //1
+* ex. let myVar = 1;
+      {
+            console.log(myVar);      // give error.  initialization required with or without value before using let variable
+            let myVar = 2;
+      }
+      console.log(myVar);            //1
+* curly braces with code is required for block scope. In switch statement and object literal method, it won't create extra lexical enviornment.
+* double declaration of let variable in switch statement create error. If we add block within case, it will create another lexical enviornment.
+* ex. let person = {
+      firstName: ["s", "s2"]
+}
+for(let person of person.firstName){
+      console.log(person);      //error. bcz person actually pointing to same variable which we declare in for loop, not the one which we declare with let before
+}
+* let person of person.firstName - is actually within block, not outside
+*  ex. let person = {
+            firstName: ["s", "s2"]
+      }
+      let person2 = person;
+      for(let person of person2.firstName){
+            console.log(person);      // s, s2
+      }
+* ex. let person = {
+            firstName: ["s", "s2"]
+      }
+      for(person of person.firstName){
+            console.log(person);      // s, s2
+      }
+      console.log(person);      //s2. eventually we update person object
+
+
+7) Conceptual Aside: Bindings -
+* Binding - connection (pointer) between a variable name and a specific location in computer's memory that holds the value.
+
+8) Const -
+* When variable is declare with const, binding is immutable.
+* ex. const myVar = 1;
+      {
+            const myVar = 2;
+            console.log(myVar);      //2
+      }
+      console.log(myVar);            //1
+works same like let.
+* ex. const myVar = 1;
+      myVar = 2;                 // error
+      console.log(myVar);
+* In above example, assignment operator is trying connection between existing name and new memory location and const won't allow this.
+* ex. 
+      let me = {
+            fname: "s", lname: "s2"
+      }
+      me.fname = "sss"
+      console.log(me.fname);      //sss
+Here, we are looking for memory location of fname. for that, it will check for object memory location using binding and from there it will find memory location of fname. once we got location, we can update the values of fname.
+* but if we try to update the value of actual object, it will give error. Bcz we try to change binding and binding is immutable for const.
+
+
+9) Templates: Why -
+* It is cumbersome to write with old-fashioned methods.
+
+10) Conceptual Aside: Whitespace Characters -
+* 
+
+11) Multi-line Strings -
+* It's pretty easy to write multiline strings in template literal.
+* let a = `sumeet
+shedge`
+* whitespaces are actually invisible characters, just remember it.
+
+
+12) Interpolation -
+* Interpolation - Replacing portions of strings with other strings. You "insert" or "inject" strings into another string.
