@@ -9,4 +9,17 @@
 * If we declare variable in that block using var keyword, then it will store it in variable enviorment
 
 6) let -
-* In execution context, whenever 
+* ex. let myVar = 1;
+      if(true) {
+        console.log(myVar);  //will print 1.
+        if(true){
+        }
+      }
+* In above example, it will create 3 lexical enviornments, one above another. Our console statement is in  2nd lexical enviorment. when it won't be able to find variable in that lexical enviornment, it moves to outer lexical enviornment to look for myVar. Hence, we were able to print 1. Here, we also have reference to outer lexical enviorment for each lexical enviorment.
+* if(true) {
+        console.log(myVar);  // give error.
+        if(true){
+        let myVar = 1;        
+        }
+      }
+* In above example, engine won't be able to find in same lexical enviorment and above one too. hence it gives error.
