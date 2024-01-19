@@ -185,3 +185,17 @@ console.log(me);      // { firstName: "Tony" }
 console.log(me2);      // { firstName: "Anthony"}
 * above example shows, objects created using class, is completely different two objects.
 
+
+
+18) Constructor -
+* using constructor, we can create objects with given values.
+* within constructor, we can set value to fields
+* ex. 
+class Person{
+      firstName = "Tony"      // default value
+      constructor(name){
+            this.firstName = name
+      }
+}
+* there is always a constructor function even if we don't create one. class without constructor will create empty object.
+* prototype chain in class - It's actually same like function constructor.
