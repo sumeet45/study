@@ -161,3 +161,27 @@ p.bind      // available
 * so it's clear that creating class is really just creating functions
 
 
+16) Conceptual Aside: Instances -
+* Instances - the actual object created from an object creation feature (like a class)
+* we created this object using object creation feature. so its now an instance of that object creation feature. using a class or other creation method, we can create various instances, various separate objects with same structure.
+
+17) Public Instances Fields -
+* public - Directly accessible to both code written inside the object (methods) and code written outside the project.
+* field - this is more generic name. A property created using the field syntax. Fields may or may not be accessible outside the object.
+* for most part, field and property are almost interchangable names. Field is bit more generic and can be both public or not public
+* ex. 
+class Person {
+      firstName = "Sumeet"
+}
+var me = new Person()
+console.log(me);      //{ firstName: "sumeet" }
+Person();      // will give error with following - class can't invoke without new keyword
+
+* ex.
+var me = new Person();
+var me2 = new Person();
+me2.firstName = "Anthony";
+console.log(me);      // { firstName: "Tony" }
+console.log(me2);      // { firstName: "Anthony"}
+* above example shows, objects created using class, is completely different two objects.
+
