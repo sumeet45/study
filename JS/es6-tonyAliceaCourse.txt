@@ -117,3 +117,47 @@ shedge`
 
 12) Interpolation -
 * Interpolation - Replacing portions of strings with other strings. You "insert" or "inject" strings into another string.
+* Tagged Template Literals -  
+function greet(strings, firstName, lastName){
+      console.log(strings);  //array ["Hello, ", " ", ""]
+      console.log(firstName);  //"Tony"
+      console.log(lastName);  //"Alicea"
+}
+const firstName = "Tony"
+const lastName = "Alicea"
+const greeting = greet`Hello, ${firstName} ${lastName}`
+
+
+13) Classes -
+* classes are another way to create objects in JS
+* JS have prototyped based languages, hence class in JS works differently as compared to other language classes.
+
+14) Conceptual Aside: Classes -
+* A structure in a programming language that provides a way to create objects 
+* In other languages, classes are able to create new types and objects too. In Js, only create objects and prototype chain.
+* Syntactic sugar - A different way of accomplish something in a programming language, that doesn't actually introduce anything new under-the-hood.
+
+15) Declarations and Expressions -
+* classes in JS are actually just functions.
+* ex. 
+class Person {}      // this is declaration much like function declaration
+* ex.
+let p = class {}      //anonymous class assigned to variable "p"
+typeof(p);      //function
+* when you create a class, you're creating a function object.
+* Parser add a special value to the function object ( isClassConstructor = true ). It will mark the function object as a class constructor. this property is hidden under the hood.
+
+* ex. 
+function logClass(c){
+      console.log(c);
+}
+logClass(p);
+logClass(class {
+
+})
+* even we observe call, apply, bind in class.
+let p = class {}
+p.bind      // available
+* so it's clear that creating class is really just creating functions
+
+
