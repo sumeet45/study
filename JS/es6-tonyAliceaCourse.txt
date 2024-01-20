@@ -304,3 +304,92 @@ let me = new Tony("Tony");
 console.log(me.greet());      //"hi Tony Hi:". will call greet from Tony class and inside method, will call Person class method
 
 
+22) Public static fields -
+* suppose, we don't want any field or method belongs to dervied object, then we can declare with static keyword. It stick to class only.
+* 
+class Person {
+      static name = "XYX"
+      static checkMsg(){
+            console.log("ssdsdsds")
+      }
+}
+Person.name      //XYX
+Person.checkMsg()      //ssdsdsds
+* In method, if there's no reference of any field or method of class which is not static, then it should declare static.
+
+
+23) Private Fields with Getters and Setters -
+* putting "#" infront of property will make it private.
+class Person {
+      #fname;
+      #lname;
+      constructor(fname, lname){
+            this.#fname = fname;
+            this.#lname = lname;
+      }
+      get fname(){
+            return this.#fname;
+      }
+      set fname(fn){
+            this.#fname = fn;
+      }
+      greet(){
+            return `Hello, ${this.#fname}`
+      }
+}
+let me = new Person("Tony", "Alicea")
+console.log(me.greet())
+me.fname = "Anthony"
+me.greet()      //Hello, Anthony
+me.fname      //Anthony
+
+
+24) Private methods -
+* adding "#" in front of method, we can convert it to private methods.
+class Person {
+      #greet(){
+            return `this is speical one`
+      }
+}
+let c = new Person();
+c.#greet()      //error 
+
+
+25) Arrow functions: why?
+* 
+
+26) Conceptual Aside: Arrow Functions and Mathematics -
+* Here, we are seeing link between Arrow functions and mathematics
+
+27) Syntax and parsing -
+* talking about Arrow function syntax
+* arrow functions are anonymous, so we are talking about arrow function expressions not declarations
+
+
+28) Arrow functions and this -
+* let me = {
+      fname: "Tony",
+      greet: function(){
+            let self = this;
+            let logMe = function(){
+                  console.log(self);      //me object
+            }
+            logMe()
+      },
+      greet2: function(){
+            console.log(this);      //me object
+            let logMe = () => {
+                  console.log(this);      //me object
+            }
+      }
+}
+* whenever arrow function executed, it create execution context but without "this" value. hence, using scope chain it looks in parent execution context for this value.
+
+
+29) Returning values -
+* let a = (a, v) => a + v;      // without render and curly braces
+* let b = c => c * c;            //remove unnecessary parenthesis
+
+
+30) Limitations and readability -
+* 
