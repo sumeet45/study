@@ -392,4 +392,71 @@ c.#greet()      //error
 
 
 30) Limitations and readability -
-* 
+* ex. 
+let longExpression = x => y => z => z? x:y
+let longExpression2 = function(x) {
+      return function(y){
+            return function(z){
+                  return z ? x: y
+            }
+      }
+}
+let res1 = longExpression("Tony")("Anthony")(true);      //tony
+let res2 = longExpression("Tony")("Anthony")(false);      //anthony
+let res1 = longExpression2("Tony")("Anthony")(true);      //tony
+
+* from above functions, arrow function are hard to read. But it delivers the same with compact code.
+
+* arrow function don't have own this value in their execution context, so they look in outer scope till GEC.
+* let obj = {
+      firstName: "Tony",
+      greet: function(){
+            console.log(this.firstName);      //Tony
+            console.log(this);                 //obj
+      },
+      greet2: () => {
+            console.log(this.firstName);      //undefined
+            console.log(this);                  //window object
+      }
+}
+* arrow function expression are not great to be used as object methods
+class Person {
+      constructor(fname){
+            this.fname = fname;
+            this.greet = () => {
+                  console.log(this.fname);
+            }
+      }
+}
+let na = new Person("tony")
+na.greet();      //tony
+
+
+31) Symbols -
+* symbol is primitive type
+* sometime, we can overwrite earlier method in JS. symbol helps to resolve this issue.
+
+32) Using sybols -
+* symbol is a fundamental type of thing in the JS engine.
+const grt = Symbol("greet");
+* Hash code - a value generated from another value. The same value is always generated for the same input.
+* every time we give, let's say one, two, three, I would always get out A, B, C.
+
+* const grt = Symbol("greet");      // created new value and store it in grt
+const grt2 = Symbol("greet");      // created new value and store it in grt2
+const fname = Symbol("fname");
+
+console.log(grt === grt2);      // false
+
+
+
+
+34) Iterators and Iterables -
+* JS didn't gives us ways to create new types of things ourselves that work similarly to those other objects in ES6 and beyond.
+
+35) Conceptual Aside: Iteration -
+* Iteration - repeating a block of code, often by moving through a list or sequence of values.
+* shows example of for loop with array 
+
+36) for ..of and for..in
+* enumberable - a property which will appear when looping over the properties of an object (it's "enumberable" flag is set to true). The term comes from mathematics , where it means "countable"
