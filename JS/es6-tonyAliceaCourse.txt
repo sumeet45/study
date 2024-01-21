@@ -460,3 +460,38 @@ console.log(grt === grt2);      // false
 
 36) for ..of and for..in
 * enumberable - a property which will appear when looping over the properties of an object (it's "enumberable" flag is set to true). The term comes from mathematics , where it means "countable"
+
+
+
+
+40) Default Parameters: why?
+* default parameter is new addition to es6. 
+
+41) Default Parameters (Part 1) -
+* as long as the value of the parameter is undefined, the default value will be used instead.
+* ex.
+function greet(fname = "Tony", lname = "Alicea"){
+      return `Hi ${fname} ${lname}`
+}
+let grt1 = greet();      // Hi Tony Alicea
+let grt2 = greet("Anthony");      //Hi Anthony Alicea
+let grt3 = greet(null, "P. alicea");      //Hi null P. alicea
+let grt4 = greet(undefined, "P. alicea");      //Hi Tony P. alicea
+
+42) Default Parameters (Part 2) -
+* ex.
+function greet(fname = "Tony", lname = "Alicea", phrase = () => `Hi ${fname} ${lname}` ){
+      return phrase()
+}
+let grt1 = greet();      //Hi Tony Alicea
+
+function greet2(fname = "Tony",  phrase = () => `Hi ${fname} ${lname}` , lname = "Alicea"){
+      return phrase()
+}
+let grt2 = greet2();      //Hi Tony Alicea
+
+function greet3(fname = "Tony",  phrase = `Hi ${fname} ${lname}` , lname = "Alicea"){
+      return phrase()
+}
+let grt3 = greet3();      //error - bcz lname is not set till now.
+* 
