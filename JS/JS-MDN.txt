@@ -364,11 +364,21 @@ B) Expressions & operators
 		// object1  += [2,3,4]        //  '[object Object]2,3,4'
 		// object1  += {}             //  '[object Object][object Object]'
 
-		
-
-
 
 	3) Assignment (=)
+		* The assignment (=) operator is used to assign a value to a variable or property. The assignment expression itself has a value, which is the assigned value. This allows multiple assignments to be chained in order to assign a single value to multiple variables.
+		ex. let x = 2;
+			x = x + 3
+			const x = y = 5;		//x = 5, y = 5
+			let x = 5;
+			let y = 10;
+			let z = 25;
+			
+			x = y; // x is 10
+			x = y = z; // x, y and z are all 25
+
+		
+
 	4) async function expression
 	5) async function* expression
 	6) await
