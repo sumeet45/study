@@ -1,0 +1,26 @@
+Udemy course -
+
+1)
+
+2) What is clean code?
+* clean code - easy to read and understand, 
+              should reduce cognitive load, 
+              should be concise and "to the point", 
+              should avoid unintuitive names, 
+              complex nesting and big code rocks, 
+              should follow common best practices and patterns
+              should be fun to write and to maintain
+* write code like you are writing essay. And it should be fun and easy to read and understand.
+
+3) Clean code - Key Pain points & how to write clean code
+* topics - names ( variables, functions, classes), 
+           Structure and Comments ( Code formatting, Good and Bad Comments), 
+           function (lenght, parameter), 
+           Conditionals & Error Handling (Deep Nesting, Missing Error Handling), 
+           Classes & Data Structure (Missing Distinction, Bloated Classes)
+
+* solutions - Rules & Concepts, Patterns and Principle, TDD
+
+
+4) How is this course structured?
+5) Course Prerequisite
