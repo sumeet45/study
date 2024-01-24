@@ -1,4 +1,4 @@
-How to Become a Senior Developer - Beyond coding skills
+Udemy.com - How to Become a Senior Developer - Beyond coding skills
 
 * google shortcuts for IDE which we gonna use ( and learn about IDE in details)
 * run course with 1.25 speed, so ur attention will increase
