@@ -24,3 +24,11 @@ Udemy course -
 
 4) How is this course structured?
 5) Course Prerequisite
+6) Clean code & Strongly typed Languages -
+7) About the course Code examples -
+8) Join community
+9) Functional, OOP, Procedural: The course concepts Always apply!
+10) clean code, Principles  & Patterns & clean Architecture
+
+11) clean code vs quick code
+* 
