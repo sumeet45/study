@@ -1,0 +1,62 @@
+How to Become a Senior Developer - Beyond coding skills
+
+* google shortcuts for IDE which we gonna use ( and learn about IDE in details)
+* run course with 1.25 speed, so ur attention will increase
+* this course explaining about how to learn anything faster
+
+2) who is senior developer
+* proficient - 
+	1) write high quality code according to best practices. 
+	2) it means he awares about latest and greatest technology and methodology
+	3) Find and solve bugs quickly
+* Manage himself - priotize and handles tasks efficiently
+* Professional - brings value to organization, always looking for continuous improvement,
+* team player - he looks beyond his tasks to promote his team
+
+
+3) How this course is built
+* 
+
+
+Excel
+4) Introduction -
+* Lessons in this module - Understanding the task, solving, implementing the solution, testing, bugs
+* you don't need to use all this steps for each bugs or task. sometime, you just use your wisdom for small task or bugs.
+
+
+5) Understand the task -
+* 3 questions -
+	a) why deep understanding of task before coding?
+	b) How to tell you understand the task?
+	c) How to remember what you understand?
+
+	a) why deep understanding of task before coding?
+	ans - less bugs, 
+	      minimize changes after coding begins
+	      better time management
+* spend is adequate amount of time on reading specs.
+	
+	b) How to tell you understand the task?
+	ans - 1) what does the user see?, 2) how does each part behave?, 3) what interaction is there with other components? 4) what are the tasks, edge cases and how to handle them?
+
+	c) How to remember what you understand?
+	 documenting
+	* in documenting, comment the mockup
+	* mark/comment key info
+	* flow chart
+	* writing down edge cases 
+
+
+
+6) Solve -
+* 2 questions -
+	1) Why spend time on planning a solution?
+	* No reinventing the wheel
+	* write compatible code
+	* not waste time on implementing suboptimal solutions
+	* Not find later that the solution doesn't work
+	
+	Solve -
+	* Define Technically-
+		1) What already exists?
+		2) What needs to be done?
