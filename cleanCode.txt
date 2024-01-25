@@ -32,3 +32,9 @@ Udemy course -
 
 11) clean code vs quick code
 * 
+
+
+14) Why Good Names Matter-
+* name should be meaningful.
+* Well-named "Things" allow readers to understand your code without going through it in detail.
+* 
