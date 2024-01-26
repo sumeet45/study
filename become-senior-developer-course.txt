@@ -50,13 +50,74 @@ Excel
 
 6) Solve -
 * 2 questions -
-	1) Why spend time on planning a solution?
+	1) Why spend time on planning a solution, and do not go with first solution which comes in mind?
 	* No reinventing the wheel
 	* write compatible code
 	* not waste time on implementing suboptimal solutions
 	* Not find later that the solution doesn't work
 	
 	Solve -
+	Business scope -
 	* Define Technically-
-		1) What already exists?
-		2) What needs to be done?
+		Scope -
+			1) What already exists?
+			2) What needs to be done?
+		context - 
+			1) Part of the system that interacts with your code, ex. exception handling mechanism
+			2) Code you can learn from or use
+			3) Coding standard
+	* Find Optimal Solution -
+		* what are some relevant solutions?
+		* which solution is the optimal? why?
+
+7) Implement -
+* What is considered a good coding session?
+	1) concentrate solely on solving a specific issue
+	2) clear image of what you're trying to accomplish
+* If you stop often to ask questions or assume things and tell yourself you'll check them later, you'll find concentrating harder and might find some of your assumptions wrong, which will cause you to backtrack, as we discussed on previous lessons. So that answers the first question.
+* Mockup comments, key info comments, charts and diagram, edge cases, specs
+
+review - 
+1) be aware of all the task's details
+2) Concentrate on the big picture
+3) main flow is where you should start coding
+
+* understand the task, found the optimal solution and implement the solution
+
+
+8) Test
+* why, how, how much, when to test?
+	- Test code with various edge cases and test mercilessly
+	- as much as it takes for you to be sure there aren't any bugs
+	- 
+
+
+
+12) set yourself goal -
+* Smart goal - Specific, Measurable, Achievable, Relevant, Time-bound
+
+
+13) Know your resources -
+* Free time in front of computer
+* Time at work
+	* Work in an organization
+	* Completing tasks
+* Free time not in front of a computer
+
+
+
+25) 
+* senior developer should be proficient - high quality code, aware of technologies and methodologies inside and outside company, Finds and solves bugs quickly
+* manages himself - prioritize & handles tasks
+* Professional - brings value to organization, strives for excellence
+* Team Player - Looks beyond his tasks, selfless
+
+
+
+
+Process -
+* Specification Document
+* Clear understanding of the task
+* Optimal Solution
+* Working software
+* Flawless software
