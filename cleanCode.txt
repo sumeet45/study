@@ -38,3 +38,88 @@ Udemy course -
 * name should be meaningful.
 * Well-named "Things" allow readers to understand your code without going through it in detail.
 * 
+
+
+
+15) choosing good names -
+* variables & constants - use nouns or short phrases with adjectives, ex. const userData = {}
+* functinos/methods - use verbs or short phrases with adjectives, ex. sendData(), inputIsValid()
+* classes - use noun or short phrases with nouns, ex. class User, class RequestBody
+
+16) casing conventions & Programming languages -
+snake case - used in python, ex. is_valid, send_response
+camelCase - used in JS, ex. isValid, sendResponse
+PascalCase - used for class in python, JS, Java, ex. AdminRole, UserRepository
+Kebab_case - used in HTML, ex.	<side-drawer>
+
+17) Naming variables & Properties -
+* value is an object = user, database, authenticatedUser ( more detailing)
+* value is Number or string = name, age, firstName ( more detailing)
+* value is Boolean = isActive, isLoggedIn, isActiveUser ( more detailing)
+
+18) Naming variables & Properties - Example -
+* good example - User, Customer, isCorrect, isValid
+
+19) Naming Functions & Methods - Theory -
+* function performs an operation - getUser(), response.send(), getUserByEmail() (more detailing)
+* function computes a boolean - isValid(), purchase.isPaid(), isEmailValid() (more detailing)
+
+20) Naming Functions & Methods - Ex -
+* good exmaple - saveUser(), user.store(), isValid(), isChecked()
+
+21) Naming classes - Theory =
+* User, Product 
+* Keep class names meaningful
+
+22) Naming classes - example =
+* class User, class Admin ( specific name )
+
+23) exceptions you should be aware of =
+* 
+
+24) Common erros and pitfalls -
+* Don't include Redundant information in Names
+* Avoid slang, unclear abbreviations & disinformation
+* choose distinctive names
+* be consistent
+
+
+25) Demo time-
+* Entity => BlogPost, ymdm => date, output => printBlogPost
+
+26) challenge
+27) solution
+
+
+28) Module resources -
+https://github.com/academind/clean-code-course-code/tree/naming-extra-attachments
+
+
+
+B) Code structures, comments and formatting -
+
+29) Introduction
+30) Bad comments -
+* avoid comments with some exception
+* if naming is done properly, then its self explanatory. no need to add comments
+
+* Bad comments - redundant info, dividers/block marker, missing comments, commented-out code
+
+
+31) Good comments -
+* Good comments - legal info, explanations which can't be replaced by good naming, warnings, Todo Notes\
+
+
+32) What is "Code formatting" Really about?
+*  improves readability and transports meaning - vertical and horizantal formatting
+* formatting rules differ between languages
+
+33) Vertical Formatting -
+* should be readable
+* divide in multiple files if code is bigger
+* different methods should be separated by spacing
+* related concepts should be close to other, ( like method used in method, create after parent method )
+
+
+34) Formatting: Language-specific considerations -
+* 
