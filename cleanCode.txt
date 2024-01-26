@@ -118,8 +118,24 @@ B) Code structures, comments and formatting -
 * should be readable
 * divide in multiple files if code is bigger
 * different methods should be separated by spacing
-* related concepts should be close to other, ( like method used in method, create after parent method )
+* related concepts should be close to other, ( like method used in method, create after parent method ) WWritten in order
 
 
 34) Formatting: Language-specific considerations -
+* Shows diff between JS and python - not important
+
+35) Horizontal Formatting -
+* Use indentation
+* break long statements into smaller ones
+* use clear but not unreadably long names
+
+
+36) Functions and Methods -
 * 
+
+
+
+
+Summary -
+* write meaningful names
+* formatting done in following terms - indention, spacing, in order
