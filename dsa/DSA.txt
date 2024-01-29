@@ -40,3 +40,29 @@ for(i = 0; i < 5; i++){
 
 
 4) Practice: Array Basics:
+5) Structures:
+* DS can be defined as collection of data members under one name
+* structure is used for defining user defined data types apart from primitive types.
+ex. 
+// definition of structure
+struct Rectangle {
+  int length;    // 2 byte
+  int breadth;    // 2 byte
+}
+// total 4 byte 
+* size of structure is the total amount of memory consumed by all its members
+* ex.
+    main(){
+      struct Rectangle r;    //declaration
+      struct Rectangle r = {10, 5};    //declaration
+      r.length = 15;
+      r.breadth = 10;
+      printf("Area of Rectangle is %d", r.length * r.breadth)
+    }
+* r created in stack of memory.
+
+* complex no. -
+ struct Complex {
+    int read;
+    int imginary;
+}
