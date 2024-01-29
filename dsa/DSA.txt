@@ -1,1 +1,39 @@
 
+2) Introduction -
+* Data structures - programm is a set of instructions which performs operations on data. so data is important part of programm. so when a program is dealing with the data, how it will organize the data in the main memory, that's what its data structure. The way you organize the data in the main memory during execution time of programm, that is DS.
+* list of DS - 
+  Physical DS (how data arrange in memory)=
+      Arrays,
+      Matrices,
+      Linked list
+  Logical DS (how data can be utilize) =
+      Stack
+      Queues
+      Trees
+      Graph
+      Hashing
+  Recurssion
+  Sortings
+
+* 3 level of programmer -
+ beginner - know DS and how they work
+ intermediate - how they work in detail and able to do analysis (based on time and space complexities)
+ pro - can create own DS
+
+* using c for course
+
+
+3) Arrays Basics -
+* learn c language
+* features need to learn - Arrays, Structure, Pointers, Referrence, Parameter Passing, Classes, constructor, template
+* array - is a collection of similar data elements. 
+  ex. 
+int main(){
+  int A[5];
+}
+* when above programmer run,it runs in main memory, which consists code section, stack, and heap. Array will created in stack.
+int B[4] = {2, 4, 6, 8, 9}        // declaration : initialization
+int i;
+for(i = 0; i < 5; i++){
+  print(%d, B[i]);
+}
