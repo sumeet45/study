@@ -1,1 +1,66 @@
+4) Practice: Array Basics -
+
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <stdio.h>
+
+int main() {
+    // Write C++ code here
+    std::cout << "Hello world!";
+    // int A[5] = {2,4, 6, 8, 10};
+    // int A[] = {2,4, 6, 8, 10};   //size will be determined based on elements
+    // A[0] = 10;
+    // A[1] = 12;
+    // A[2] = 14;
+    // latest compilers take 4 byte for integeer, but assume it take 2 byte for understanding DS
+    // std::cout << sizeof(A) << std::endl;
+    // std::cout << A[1];
+    // printf("%d \n", A[2]);
+    
+    // 2 example
+    // int A[10] = {2,4,6,8, 10, 12, 14};
+    // std::cout << sizeof(A) << std::endl;
+    // std::cout << A[8];       // 0
+    // printf("%d \n", A[9]);       // 0
+    
+    // 3 example
+    // int A[10] = {2,4};
+    // std::cout << sizeof(A) << std::endl;
+    // std::cout << A[2];      // 0
+    // printf("%d \n", A[3]);      // 0
+    
+    // 4 example
+    // int A[10] = {0};
+    // for(int i = 0; i< 10; i++){
+    //     std::cout<<A[i]<<std::endl;         //0,0,0,0,0,0,0,0,0,0
+    // }
+    
+    // 5 example
+    // int A[10] = {2,4,6,8,10,12};
+    // for(int i=0;i<10; i++){
+    //     std::cout<<A[i]<<std::endl;      //2,4,6,8,10,12,0,0,0,0,
+    // }
+    
+    // 6 example
+    // int A[10] = {2,4,6,8,10,12};
+    // for(int x:A){
+    //     std::cout<<x<<std::endl;        //2,4,6,8,10,12,0,0,0,0,
+    // }
+    
+    // 7 example
+    int n;
+    std::cout<<"Enter size";        //7
+    std::cin>>n;
+    int A[n];
+    A[0] = 2;
+    
+    for(int x:A){
+        std::cout<<x<<std::endl;    //2,32765,0,0,-1612086032,32765,4198876, (filled with garbage values)
+    }
+    // variable size array don't initialize it
+    
+    return 0;
+}
+
+
 
