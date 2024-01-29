@@ -37,3 +37,6 @@ int i;
 for(i = 0; i < 5; i++){
   print(%d, B[i]);
 }
+
+
+4) Practice: Array Basics:
