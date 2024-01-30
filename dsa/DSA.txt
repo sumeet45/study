@@ -66,3 +66,34 @@ struct Rectangle {
     int read;
     int imginary;
 }
+// memory used - 4 bytes
+
+2. Students
+struct Student {
+  int roll,
+  char name[25];
+  char dept[10];
+  char address[50];
+}
+// memory used by  - 87 bytes
+struct Student s1;
+s1.roll = 20;
+s1.name = "Sumeet"
+s1.dept = "IT"
+s1.address = "long address"
+
+3. PLaying Cards
+struct Card {
+  int face;
+  int shape;
+  int color;
+}
+main(){
+  struct Card c;
+  c.face = 1;
+  c.shape = 0;
+  c.color = 0;
+// struct Card c = { 1, 0, 0}    // for single card
+// struct Card deck[52];         // for multiple cards - using array of structures // 312 cards
+}
+
