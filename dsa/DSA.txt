@@ -95,5 +95,9 @@ main(){
   c.color = 0;
 // struct Card c = { 1, 0, 0}    // for single card
 // struct Card deck[52];         // for multiple cards - using array of structures // 312 cards
+// struct Card deck[52] = { {1,0,0}, {2,0,0} }; 
+// printf("%d", deck[0].face);
+// printf("%d", deck[0].shape);
+
 }
 
