@@ -101,3 +101,27 @@ main(){
 
 }
 
+
+7) Pointers -
+* Pointers is an address variable that is meant for storing address of data. It is used for indirect accessing the data.
+* programm can't access heap directly. Programm need pointer to access data from heap. Major usage of pointer to accessing the resources which are outside the programmm.
+* usage - accessing in heap, accessing resoures, parameter passing
+* using malloc(), we can get memory in heap.
+
+ex. 
+// accessing within stack memory
+int a = 10;    //variable
+int *p;        // pointer variable
+p = &a;        // initialization
+printf("%d", a);        // 10
+printf("%d", *p);      // 10  - this is dereferencing
+
+
+// access heap memory
+int *p;      // takes place in stack. Whichever variable declared, it will be inside stack.
+p = (int *)malloc(5 * sizeof(int));      // will allocate 5 integers in heap memory
+// p = new int[5];         // for c++, for creating heap memory
+
+
+
+9) 
