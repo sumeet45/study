@@ -63,4 +63,39 @@ int main() {
 }
 
 
+6) Practice: Structures -
+* 
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <stdio.h>
+
+// struct Rectangle {
+//     int length;
+//     int bredth;
+// } r1, r2, r3;    // declare variable with type
+
+struct Rectangle {
+    int length;
+    int bredth;
+    char x;
+};
+
+int main() {
+    struct Rectangle r1 = {10, 5};
+    printf("%d", sizeof(r1));  
+    // without char x, show 8
+    // with char x, shows 12. Bcz 4 bytes allocate to character, but using 1 byte only
+    // Char taking 1 byte, it will take nearest bigger size that is integer. this is called padding
+    r1.length = 20;
+    r1.bredth = 10;
+    
+    std::cout<<r1.length<<std::endl;    //20
+    std::cout<<r1.bredth<<std::endl;    //10
+    
+    return 0;
+}
+
+
+
+
 
