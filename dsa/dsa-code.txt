@@ -97,5 +97,53 @@ int main() {
 
 
 
+8) Practice: Pointers -
+
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    // ex 1
+    // int a = 10;
+    // int *p;     //declaration of pointer
+    // p = &a;     //address of a stored in p
+    // std::cout<<a<<std::endl;
+    // printf("using pointer %d", *p);     //dereferencing of pointer //using pointer 10
+    
+    // printf("using pointer %d %d", p, &a);     //will print address //using pointer 1184723108 1184723108
+    
+    
+    // ex 2
+    // whenever array created, its created in stack of that function
+    // int A[5] = {2,3,5,6,7};
+    // int *p = A;     // when array is giving to pointer, it should be without *
+    // p = A;
+    // // p = &A;  // invalid, either choose A or A[0]
+    
+    // for(int i = 0; i < 5; i++){
+    //     // std::cout<<A[i]<<std::endl;     //2,3,5,6,7
+    //     std::cout<<p[i]<<std::endl;     //2,3,5,6,7
+    // }
+    
+    
+    // ex 3
+    // int *p;
+    // p = (int *)malloc(5*sizeof(int));   //c style
+    // // p = new int[5];     //c++ style
+    // p[0] = 2, p[1] = 45, p[2] = 56, p[3]= 78, p[4] = 23;
+    // for(int i = 0; i < 5; i++){
+    //     std::cout<<p[i]<<std::endl; //2,45,56,78,23
+    // }
+    // // delete [ ] p;   //c++ way, to free memory of heap, once work is done
+    // free(p);    //c way, to free memory of heap, once work is done 
+    
+    //  ex 4
+    
+    
+    return 0;
+}
+
 
 
