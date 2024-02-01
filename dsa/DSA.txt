@@ -124,4 +124,15 @@ p = (int *)malloc(5 * sizeof(int));      // will allocate 5 integers in heap mem
 
 
 
-9) 
+9) Referrence -
+* nothing before variable name is normal variable, "*" before variable is pointer and "&" before variable is referenece.
+int a = 10;
+int &r = a;    //must be initialized too, while declaring
+cout<<a;    //10
+r++;        
+cout<<r;    //11
+cout<<a;    //11
+* reference - another name to variable. useful in parameter passing.
+
+
+
