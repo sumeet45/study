@@ -135,4 +135,11 @@ cout<<a;    //11
 * reference - another name to variable. useful in parameter passing.
 
 
+11) Pointer to structure -
+* ex.
+struct Rectangle r = {10,5};
+struct Rectangle *p = &r;
 
+r.length = 15;
+(*p).length = 20;
+p -> length = 20;
