@@ -159,3 +159,39 @@ int main() {
     
     return 0;
 }
+
+
+10) Practice: Referrence -
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Rectangle {
+    int length;
+    int breadth;
+};
+int main() {
+    int a = 20;
+    int &r = a; // referrence variable, need to initialize when declaring
+    std::cout<<a<<std::endl;    //20
+    std::cout<<r<<std::endl;    //20
+    a = 30;
+    std::cout<<a<<std::endl;    //30
+    std::cout<<r<<std::endl;    //30
+    r = 40;
+    std::cout<<a<<std::endl;    //40
+    std::cout<<r<<std::endl;    //40
+    
+    int b = 65;
+    r = b;  // when change "r" with value of "b", "a" also changes
+    std::cout<<a<<std::endl;    //65
+    std::cout<<r<<std::endl;    //65
+    std::cout<<b<<std::endl;    //65
+    
+    
+    return 0;
+}
+
+
+12) 
