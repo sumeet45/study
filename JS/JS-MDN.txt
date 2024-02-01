@@ -367,19 +367,67 @@ B) Expressions & operators
 
 	3) Assignment (=)
 		* The assignment (=) operator is used to assign a value to a variable or property. The assignment expression itself has a value, which is the assigned value. This allows multiple assignments to be chained in order to assign a single value to multiple variables.
-		ex. let x = 2;
+		*  To declare two variables within the same declaration, use:  const x = 5, y = 5;
+		* Examples -
+			let x = 2;
 			x = x + 3
 			const x = y = 5;		//x = 5, y = 5
+		1) Simple assignment and chaining
 			let x = 5;
 			let y = 10;
 			let z = 25;
 			
 			x = y; // x is 10
 			x = y = z; // x, y and z are all 25
+		2) Unqualified identifier assignment - need to understand
+
+		3) Assignment with destructuring
+		const result = /(a+)(b+)(c+)/.exec("aaabcc");
+			let a = "", b = "", c = "";
+			[, a, b, c] = result;
+			console.log(a, b, c); // "aaa" "b" "cc"
 
 		
 
-	4) async function expression
+	4) async function expression 
+		* The async function keywords can be used to define an async function inside an expression.
+		syntax.
+			async function (param1, param2,....., paramN) { }	// for anonymous function
+			async function name (param1, param2,....., paramN) { }	// for function
+		* The main difference between an async function expression and an async function declaration is the function name, which can be omitted in async function expressions to create anonymous functions.
+		*  An async function expression can be used as an IIFE (Immediately Invoked Function Expression) which runs as soon as it is defined, allowing you to mimic top-level await.
+			
+		* example -
+		function resolveAfter2Seconds(x) {
+		  return new Promise((resolve) => {
+		    setTimeout(() => {
+		      resolve(x);
+		    }, 2000);
+		  });
+		}
+		
+		// async function expression assigned to a variable
+		const add = async function (x) {
+		  const a = await resolveAfter2Seconds(20);
+		  const b = await resolveAfter2Seconds(30);
+		  return x + a + b;
+		};
+		
+		add(10).then((v) => {
+		  console.log(v); // prints 60 after 4 seconds.
+		});
+		
+		// async function expression used as an IIFE
+		(async function (x) {
+		  const p1 = resolveAfter2Seconds(20);
+		  const p2 = resolveAfter2Seconds(30);
+		  return x + (await p1) + (await p2);
+		})(10).then((v) => {
+		  console.log(v); // prints 60 after 2 seconds.
+		});
+
+
+
 	5) async function* expression
 	6) await
 	7) Bitwise AND (&)
