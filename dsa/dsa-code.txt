@@ -98,12 +98,15 @@ int main() {
 
 
 8) Practice: Pointers -
-
 // Online C++ compiler to run C++ program online
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 
+struct Rectangle {
+    int length;
+    int breadth;
+};
 int main() {
     // ex 1
     // int a = 10;
@@ -140,10 +143,19 @@ int main() {
     // free(p);    //c way, to free memory of heap, once work is done 
     
     //  ex 4
+    // here, we can see whichever pointer is created, have size of 8
+    int *p1;
+    char *c1;
+    float *f1;
+    double *d1;
+    struct Rectangle *r1;
+    
+    std::cout<<sizeof(p1)<<std::endl;   //8
+    std::cout<<sizeof(c1)<<std::endl;   //8
+    std::cout<<sizeof(f1)<<std::endl;   //8
+    std::cout<<sizeof(d1)<<std::endl;   //8
+    std::cout<<sizeof(r1)<<std::endl;   //8
     
     
     return 0;
 }
-
-
-
