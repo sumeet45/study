@@ -158,3 +158,48 @@ P -> breadth = 10;
 int add(int a, int c){
   return a + b
 }
+
+
+14) Parameter passing methods -
+* pass by value or call by value - use when any changes are done to formal parameters will not reflect in actual parameters.
+void swap(int x, int y){
+  int temp;
+  temp = x;
+  x = y;
+  y = temp;
+}
+int main(){
+  int a = 10, b= 20;
+  swap(a,b);
+  printf(" %d %d", a,b);
+}
+
+
+* pass by address or call by address - use when any changes are done to formal parameters will reflect in actual parameters. using pointer
+void swap(int *x, int *y){
+  int temp;
+  temp = *x;
+  *x = *y;
+  *y = temp;
+}
+int main(){
+  int a = 10, b= 20;
+  swap(&a, &b);
+  printf(" %d %d", a,b);
+}
+
+
+* pass by referrence - will update formal and actual parameters are updated. here, swap is not separate function, it's actually part of main function.
+void swap(int &x, int &y){
+  int temp;
+  temp = x;
+  x = y;
+  y = temp;
+}
+int main(){
+  int a = 10, b= 20;
+  swap(a,b);
+  printf(" %d %d", a,b);
+}
+
+* more common, call by value and address.
