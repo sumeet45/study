@@ -137,9 +137,16 @@ cout<<a;    //11
 
 11) Pointer to structure -
 * ex.
+//Example 1
 struct Rectangle r = {10,5};
 struct Rectangle *p = &r;
 
 r.length = 15;
 (*p).length = 20;
 p -> length = 20;
+
+
+// Example 2
+P = (Struct Rectangle *) malloc(sizeof(struct Rectangle));
+P -> length = 10;
+P -> breadth = 10;
