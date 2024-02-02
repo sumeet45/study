@@ -194,4 +194,37 @@ int main() {
 }
 
 
-12) 
+12) Practice: Pointer to Structure -
+
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Rectangle {
+    int length;
+    int breadth;
+};
+int main() {
+    // whenever we declare anything, it created in stacks only
+    // struct Rectangle r = {10, 5};   //struct is not manadatory in C++
+    // std::cout<<r.length<<std::endl;
+    // std::cout<<r.breadth<<std::endl;
+    
+    // Rectangle *p = &r;      //created in stack
+    // std::cout<<p->length<<std::endl;
+    // std::cout<<p->breadth<<std::endl;
+    
+    Rectangle *p;
+    p = (struct Rectangle *)malloc(sizeof(struct Rectangle));
+    
+    p -> length = 10;
+    p -> breadth = 6;
+    std::cout<<p->length<<std::endl;
+    std::cout<<p->breadth<<std::endl;
+    
+    return 0;
+}
+
+
+
