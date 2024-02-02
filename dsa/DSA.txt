@@ -150,3 +150,11 @@ p -> length = 20;
 P = (Struct Rectangle *) malloc(sizeof(struct Rectangle));
 P -> length = 10;
 P -> breadth = 10;
+
+
+13) Functions -
+* whole code in 1 function, called Monolithic programming
+* whole code divides in multiple functions, called Modular or Procedural programming.
+int add(int a, int c){
+  return a + b
+}
