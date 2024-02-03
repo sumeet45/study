@@ -243,3 +243,57 @@ int main() {
 }
 
 
+16) Practice: Parameter passing methods -
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+
+// call by value
+// int add(int a, int b){
+//     return a + b;
+// }
+
+
+// call by address
+// void swap(int *x, int *y){
+//     int temp;
+//     temp = *x;
+//     *x = *y;
+//     *y = temp;
+// }
+
+
+// call by Referrence
+void swap(int &x, int &y){
+    int temp;
+    temp = x;
+    x = y;
+    y = temp;
+}
+
+
+
+int main() {
+    // int a = 5, b = 6, c;
+    // c = add(a, b);  // pass by value example. won't update actual parameter
+    // std::cout<<c<<std::endl;
+    
+    
+    // call by address
+    // when want to update actual parameters 
+    // int num1= 10, num2 = 20;
+    // swap(&num1, &num2);
+    // std::cout<<"First Number"<<num1<<std::endl;
+    // std::cout<<"Second Number"<<num2<<std::endl;    
+    
+    // call by referrence
+    // referrence - nickname of variable
+    int num1= 10, num2 = 20;
+    swap(num1, num2);
+    std::cout<<"First Number "<<num1<<std::endl;
+    std::cout<<"Second Number "<<num2<<std::endl;    
+    
+    // we can different types of parameters like by value, by referrence and by address
+    return 0;
+}
