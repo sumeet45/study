@@ -297,3 +297,44 @@ int main() {
     // we can different types of parameters like by value, by referrence and by address
     return 0;
 }
+
+
+18) Array as Parameter -
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+
+// void fun(int A[], int n){       // u can write in following way also -fun(int *A,int n)
+    // std::cout<<sizeof(A)/sizeof(int);   //2
+    // for(int i = 0; i < n; i++){
+    //     std::cout<<A[i]<<std::endl;
+    // }
+    // A[0] = 15;  // will replace 2 with 15 in array
+// }
+
+int * fun (int size){
+    int *p;
+    p = new int[size];  //created in heap
+    for(int i = 0; i < size; i++){
+        p[i] = i + 1;
+    }
+    return p;
+}
+int main() {
+    // Arrays cannont be passed by value at all, only by address.
+    // int A[] = {2,4,6,8,10};
+    // int n = 5;
+    // for(int x:A){
+    //     std::cout<<x<<" "<<std::endl;
+    // }
+    // fun(A, 5);
+    
+    int *ptr, sz = 7;
+    ptr = fun(sz);
+    for(int i = 0; i < sz; i++){
+        std::cout<<ptr[i]<<std::endl;
+    }
+    
+    return 0;
+}
