@@ -258,3 +258,16 @@ class Rctangle {
 
 23) Monolithic programm -
 * 
+
+
+Section 3
+39) Introduction
+*  Data structure can be defined as arrangement of collection of data items so that they can be utilized efficiently, operations on that data can be done efficiently.
+* DS all about arrangement and operations of data.
+* So the arrangement or organizing of the data inside the main memory for efficient utilization by the application that arrangement is called as a Data Structure. So data structures are formed in the main memory, during the execution time of a program.
+
+* Database - application program is using that database then data has to be brought into the main memory, Then only you can use it.
+* arrangement of data here in the main memory is data structure. Then how this data is organized in form of table on the disk, This is database.
+
+* commercial data are 2 types - legacy data and operational data. this legacy data keeps in data warehouse. algorithms written for analyzing that data are data mining algorithms.
+* by analyzing that data we can take a lot of decisions, that is for management, for governance, or for business analysis. Storing and utilizing that very large sized data, that study is big data.
