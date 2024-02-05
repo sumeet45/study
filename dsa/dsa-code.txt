@@ -338,3 +338,57 @@ int main() {
     
     return 0;
 }
+
+
+23) Practice: Monolithic Programm -
+
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+     std::cout << "Hello, World!";
+    
+    int length = 0, breadth = 0;
+    std::cout << "Enter length and breadth \n";
+    std::cin >> length >> breadth;
+    
+    int area1 = length * breadth;
+    int peri1 = 2 * (length + breadth);
+    
+    std::cout << area1 << std::endl;
+    std::cout << peri1 << std::endl;
+
+    return 0;
+}
+
+
+
+24) Practice:  Modular Programm -
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+
+int area (int l, int b){
+    return l * b;
+}
+int perimeter ( int l, int b){
+    return 2 * (l + b);
+}
+
+int main() {
+     std::cout << "Hello, World! \n";
+    
+    int length = 0, breadth = 0;
+    std::cout << "Enter length and breadth \n";
+    std::cin >> length >> breadth;
+    
+    int area1 = area(length, breadth);
+    int peri1 = perimeter(length, breadth);
+    
+    std::cout << area1 << std::endl;
+    std::cout << peri1 << std::endl;
+
+    return 0;
+}
