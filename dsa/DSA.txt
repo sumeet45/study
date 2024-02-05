@@ -227,10 +227,34 @@ int [] fun(int n){
   return p;
 }
 int main(){
-int *A;
-A = fun(5);
+  int *A;
+  A = fun(5);
+}
 
 
 19) Structure as Parameter -
 
+
+21) Structures and Functions -
+* Shows styling of how to code in c language
+
+22) Converting a c programm to c++ class -
+* classes and constructor -
+class Rctangle {
+  private int length;
+  private int breadth;
+
+  Rectangle(int l, int b){
+      length = l;
+      breadth = b;
+  }
+  int area(){
+    return lenght * breadth;
+  }
+  void changelength(int l){
+    length = l
+  }
 }
+
+23) Monolithic programm -
+* 
