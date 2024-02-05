@@ -490,3 +490,117 @@ int main() {
 
 
 26) Practice: Object-oriented program
+
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+
+// inside structure, we can write down functions
+// all the function inside structure, its also object oriented
+struct Rectangle {
+    int length;
+    int breadth;
+    
+    int area (){
+        return length * breadth;
+    }
+    
+    int perimeter (){
+        return 2 * (length + breadth);
+    }
+    
+    void initialize (int l, int b){
+       length = l;
+       breadth = b;
+    };
+};
+// int area (int l, int b){
+//     return l * b;
+// }
+// int perimeter ( int l, int b){
+//     return 2 * (l + b);
+// }
+
+int main() {
+    
+    Rectangle r = {0, 0};
+    int l, b;
+    
+    std::cout << "Enter length and breadth \n";
+    std::cin >> l >> b;
+    
+    r.initialize( l, b);
+    
+    // int area1 = area(r.length, r.breadth);   //18
+    // int peri1 = perimeter(r.length, r.breadth);      //18
+    
+    int area1 = r.area();   //18
+    int peri1 = r.perimeter();      //18
+    
+    std::cout << area1 << std::endl;
+    std::cout << peri1 << std::endl;
+
+    return 0;
+}
+
+
+* Ex 2
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+
+// inside structure, we can write down functions
+// all the function inside structure, its also object oriented
+// in c++, structure and class are same, except in class, everything is private. In structure, everything is public.
+class Rectangle {
+    public:
+    int length;
+    int breadth;
+    
+    int area (){
+        return length * breadth;
+    }
+    
+    int perimeter (){
+        return 2 * (length + breadth);
+    }
+    
+    void initialize (int l, int b){
+       length = l;
+       breadth = b;
+    };
+};
+// int area (int l, int b){
+//     return l * b;
+// }
+// int perimeter ( int l, int b){
+//     return 2 * (l + b);
+// }
+
+int main() {
+    
+    Rectangle r;
+    int l, b;
+    
+    std::cout << "Enter length and breadth \n";
+    std::cin >> l >> b;
+    
+    r.initialize( l, b);
+    
+    // int area1 = area(r.length, r.breadth);   //18
+    // int peri1 = perimeter(r.length, r.breadth);      //18
+    
+    int area1 = r.area();   //18
+    int peri1 = r.perimeter();      //18
+    
+    std::cout << area1 << std::endl;
+    std::cout << peri1 << std::endl;
+
+    return 0;
+}
+
+
+27) c++ class and constructor -
+* 
