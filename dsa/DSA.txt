@@ -289,4 +289,16 @@ ex.
 
 
 42) Physical vs Logical DS -
-* physical DS - array and LinkedList - it decide
+* physical DS - array and LinkedList - it decide and defines how the memory is organized.
+* array - continuous collection of items. array is static in nature (size of array is static). when u know length of the list, then we can choose array.
+* linked list -each node contains data and linked to next node. we can add more number of items in it, so it's dynamic in nature. It's always created in heap.
+
+* Logical DS - discipline for insertion and deletion operation defined by Logical DS. 
+    Linear -stack ( LIFO ), queues, ( FIFO )
+    non-linear - trees (  ), graph, (  )
+    tabular - hash table
+* Logical DS actually used in applications. For implementing these DS, we either use array or linked list.
+
+
+43) ADT -
+* Abstract Data type - data type is representation of data.
