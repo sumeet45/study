@@ -271,3 +271,22 @@ Section 3
 
 * commercial data are 2 types - legacy data and operational data. this legacy data keeps in data warehouse. algorithms written for analyzing that data are data mining algorithms.
 * by analyzing that data we can take a lot of decisions, that is for management, for governance, or for business analysis. Storing and utilizing that very large sized data, that study is big data.
+
+
+40) Stack vs Heap Memory -
+* portion of memory that is given to the function is called as activation record of that function.
+
+41) Stack vs Heap continued -
+* same like executino context creation and deletion from stack.
+
+* heap - used in 2 cases, 1) things are properly organised like a tower like thing, then also it is a heap. 2) if it is not organised and also it's looking like a tower, then also we call it as Heap.
+* heap should treat like as a resource. when u require, use it and then once done using, also release it.
+* program can't really access heap memory. using pointer, program can access.
+ex. 
+  int *p = new int[5];  // new means, memory allocating in heap.
+  delete [] p;    // release memory from heap.
+* heap memory explicitly requested, and explicitly released or disposed. If that memory not released properly, it will belong to that programm. And same things occurs multiple times, then it create memory leak.
+
+
+42) Physical vs Logical DS -
+* physical DS - array and LinkedList - it decide
