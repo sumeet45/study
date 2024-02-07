@@ -316,4 +316,15 @@ ex.
 
 
 46) How Recursion works ( Tracing ) -
-* 
+* Recursive function - function calling itself. It needs base condition to terminate recursion. Recursive functions trace in form of tree.
+* shows example for tracing recursive functions in form of tree -
+  first example - gives o/p = 3 2 1
+  second example - gives o/p = 1 2 3
+* It shows recursion has 2 phases - calling phase and returning phase
+
+47) Generalising Recursion -
+* In the recursive function, called before the function, if anything is there , then that will be executed at calling time.
+* After the function call, it is executed at a returning time.
+* like for loop, recursion have repeating. but loop will have only ascending phase and recursive functions have both ( ascending and descending phase )
+
+
