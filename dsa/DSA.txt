@@ -301,4 +301,11 @@ ex.
 
 
 43) ADT -
-* Abstract Data type - data type is representation of data.
+* Data type - define in 2 terms - data type is representation of data and operations of data
+* when we write any class in c++ which has the data representation and operations together, it defines an ADT.
+* operations on data - add(using element) /append (using element), add( index/element )/ insert(using index/element), remove(using index)/delete(index), set(using index/element)/replace(using index/element), get(using index), search(using key)/ contains(key), sort()
+
+
+44) Time and space complexity -
+* time complexity depends on the procedure  (means task on number of elements) that you are adopting or using program code.
+* 
