@@ -149,12 +149,15 @@ What is OS?
 * kotlin take care of how much space will need for variable, we need to create only variable and assign value.
 
 22) Int data type -
+* In kotlin, everything is an object.
 * In kotlin, we have multiple type for number with sizes - byte(8), short(16), Int(32), Long(64)
 * val one = 1 // Int
   val threeBillion = 1200000000 // Long
   val ch = 1L  // Long
   val ch1: Byte = 1  // Byte
 * for byte and short, we need to specify with initialization
+* if we don't specify type for number, then it will automatically assign Int type. 
+* in kotlin type inferrence are available.
 
 23) Running Hello World -
 * in it, he states that, main function given already by kotlin. 
