@@ -328,3 +328,17 @@ ex.
 * like for loop, recursion have repeating. but loop will have only ascending phase and recursive functions have both ( ascending and descending phase )
 
 
+48) How recursion uses stack -
+* shows how program got executed and how stack filling for every functional call.
+* for recursive function, O(n+1) => O(n) ( Space complexity )
+* like JS execution stack, stack get filled and emptied here also.
+
+49) Recurrence Relation - Time Complexity of Recursion -
+* time complexity - O(n)
+* need to understand
+
+50) Lets code recursion -
+* Showing same example with xcode and debugger. 
+
+51) Static and Global variables in Recursion -
+* for static variable, it will have single copy. so we have to update same for each function call.
