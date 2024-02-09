@@ -342,3 +342,27 @@ ex.
 
 51) Static and Global variables in Recursion -
 * for static variable, it will have single copy. so we have to update same for each function call.
+
+52) Tail recursion -
+* if recursive call is last statement in function, then it's tail recursion.
+* shows comparison of tail recursion example with while loop.
+* For tail recursion, complexity Time - O(n), space - O(n)
+* For while loop, complexity time - O(n), space - O(1)
+
+53) Head Recursion -
+* Head recursion are difficult to convert it into loops
+
+54) Tree recursion -
+* if function calls more than 1 time in function, it called as Tree recursion.
+* need to understand
+
+
+
+
+
+
+79) Introduction to array -
+* in simple variable, we can call scalar variable
+* collection of similar elements
+
+
