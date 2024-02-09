@@ -158,6 +158,9 @@ What is OS?
 * for byte and short, we need to specify with initialization
 * if we don't specify type for number, then it will automatically assign Int type. 
 * in kotlin type inferrence are available.
+* ex.
+    var a: Byte = 2;
+    println( a::class.simpleName);   //Byte
 
 23) Running Hello World -
 * in it, he states that, main function given already by kotlin. 
@@ -169,6 +172,7 @@ What is OS?
 
 25) Int, long, Short, Byte, and specifying the type manually -
 * Kotlin uses given data type. if its not specified then it will take int or long only.
+* While assigning data type, consider how much value going to be stored and then give data type.
 * once variable created with specific data type, you can't add other type of data in it like below.
   var myAge = 35
   myAge = 232323232323232323   // will give error. so while declaring variable myAge, add data type "long"
