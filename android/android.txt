@@ -194,19 +194,20 @@ What is OS?
 27) unsigned integers -
 * it starts from 0 to 255
 * it should be only positive number
+* unsigned integers contains uByte, uShort, uInt, uLong. It can store only positive number.
 * var age: UShort = 35u
 
 28) Booelans true false negation -
 * var a : Boolean = true;
-* shows how to store boolean value in variable.
+* shows how to store boolean value in variable. ex. true, false, (maybe null)
 
 29) Char, unicode and Backslash escape character -
 * It can store only 1 character and just use single quotes.
 * var myChar = 'a'
-* var myChar = '\u00AE'
+* var myChar = '\u00AE'  // gives copyright icon
 
 30) Strings -
-* In string type, you can add long string in variable.
+* In string type, you can add long string in variable. can use double quotes.
 * strings are objects
 * each string has own methods also like we have in JS.
 * let a = "Very long string in string variable"
