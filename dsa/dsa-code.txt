@@ -625,3 +625,52 @@ int main(){
     // printf("%d \n", r);    //50
     return 0;
 }
+
+
+81) Demo - Array Declaration -
+ex.
+int A[5];        //{0,0,0,0, -22922}
+int B[5] = {2,3,5,6,7};    //{2,3,5,6,7}
+int C[10] = {2,4,6};        //{2,4,6,0,0,0,0,0,0,0}
+int D[5]  = {2};            //{2,0,0,0,0}
+int E[] = {1,2,3,4,5,6};        //{1,2,3,4,5,6}    
+
+* to check array elements addresses are contangious. 
+ex.
+int A[5];
+int i = 0;
+for(i; i< 5;i++){
+    printf("%u    \n", &A[i]);  
+}
+
+output -
+1262458624    
+1262458628    
+1262458632    
+1262458636    
+1262458640
+
+
+83) Demo - Static vs Dynamic Array -
+* ex.
+int main() {
+    int A[5] = {2,4,6,8, 10};
+    int *p;
+    int i;
+    
+    p = new int[5];
+    p[0] = 3;
+    p[1] = 4;
+    p[2] = 5;
+    p[3] = 6;
+    p[4] = 7;
+    
+    for(i = 0;i<5; i++){
+        printf("%d ", A[i]);
+    }
+    printf("\n");
+    for(i = 0;i<5; i++){
+        printf("%d ", p[i]);
+    }
+    return 0;
+}
