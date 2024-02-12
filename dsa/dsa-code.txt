@@ -674,3 +674,30 @@ int main() {
     }
     return 0;
 }
+
+
+85) Demo - Increasing Array Size -
+int main() {
+    int *p, *q;
+    p = new int[5];
+    p[0] = 1, p[1] = 2, p[2] = 3, p[3] = 4, p[4] = 5;
+    
+    q = new int[10];
+    for(int i = 0; i< 5; i++){
+        printf("%d ", p[i]);    //1 2 3 4 5  
+        q[i] = p[i];
+    }
+    printf(" \n");
+    delete []p;
+    p = q;
+    q = NULL;
+    
+    // for(int i = 0; i< 5; i++){
+    //     printf("%d ", q[i]);    //error 
+    // }
+    for(int i = 0; i< 10; i++){
+        printf("%d ", p[i]);    //1 2 3 4 5 0 0 0 0 0 
+    }
+    
+    return 0;
+}
