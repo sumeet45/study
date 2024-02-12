@@ -383,3 +383,9 @@ ex.
 // pointer with array
 int *P = new int[5];
 P[0] = 2;
+
+
+83) How to increase Array Size -
+* we cannot update the size of array. so alternate is create bigger size array and shift elements of old array to new array.
+* array can't be grown once initialized, bcz memory for array should be contingous. 
+
