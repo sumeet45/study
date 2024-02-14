@@ -385,7 +385,28 @@ int *P = new int[5];
 P[0] = 2;
 
 
-83) How to increase Array Size -
+84) How to increase Array Size -
 * we cannot update the size of array. so alternate is create bigger size array and shift elements of old array to new array.
 * array can't be grown once initialized, bcz memory for array should be contingous. 
 
+86) 2D array - 
+* memory allocated like a single dimension array, but compilers allow us to access that single dimensional array as 2D array
+ex. 
+1) int A[3][4] = {{1,2,3,4},{2,4,6,8}, {2,5,7,9}}    // store in stack
+2) int *A[3];          // pointer in stack and array in heap
+  A[0] = new int[4];
+  A[1] = new int[4];
+  A[2] = new int[4];
+3) int **A;      //created in stack, remaining created with new are in heap now
+    A = new int *[3];
+    A[0] = new int[4];
+    A[1] = new int[4];
+    A[2] = new int[4];
+* can access 2d array using for loop
+
+88) Array representation by compiler -
+* showing how compilers find the address of index
+* how to obtain memory address of index of array during running time.
+* address(A[3]) = 200 (base address) + 3 (index) * 2 (bytes)
+* base formula = L0 + index * size of data type
+* this is relative address formula, based on base address of array
