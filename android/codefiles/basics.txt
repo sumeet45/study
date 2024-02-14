@@ -1,1 +1,54 @@
 
+Day 2 Code-
+
+1) fun main(){
+    println("enter age");
+    var age = readln().toInt();
+    if(age >= 40){
+        println("too young")
+    } else if(age >= 18){
+        println("can enter")
+    } else {
+        println("not allowed")
+    }
+    var count = 0
+    while (count < 10){
+        println("count $count");
+        count++;
+    }
+}
+
+2) fun main(){
+    var playerChoice = "";
+    var computerChoice = "";
+    println("enter choice");
+    playerChoice = readln();
+    val randomNumber = (1..3).random();
+    val rock = "rock";
+    val paper = "paper";
+    val scissors = "scissors";
+
+    when (randomNumber) {
+        1 -> {
+            computerChoice = rock;
+        }
+        2 -> {
+            computerChoice = paper;
+        }
+        3 -> {
+            computerChoice = scissors;
+        }
+    }
+    println("computer choice $computerChoice");
+    val winner = when {
+        playerChoice == computerChoice -> "Tie"
+        playerChoice == rock && computerChoice == scissors -> "Player"
+        playerChoice == paper && computerChoice == rock -> "Player"
+        playerChoice == scissors && computerChoice == paper -> "Player"
+        else -> "Computer"
+    }
+    println("winner is $winner");
+
+}
+
+
