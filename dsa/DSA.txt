@@ -410,3 +410,10 @@ ex.
 * address(A[3]) = 200 (base address) + 3 (index) * 2 (bytes)
 * base formula = L0 + index * size of data type
 * this is relative address formula, based on base address of array
+
+89) Row major formula for 2D arrays -
+* how the elements of two dimensional arrays are stored in single dimensional array? using row major mapping/ colum major mapping
+* formula - 
+Address(A[i][j]) = L0 + [ i * n + j ] * w
+A[1][2] = 200 + [1 * 4 + 2] * 2
+        = 200 + 6 * 2 = 212    // physical address
