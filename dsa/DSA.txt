@@ -417,3 +417,6 @@ ex.
 Address(A[i][j]) = L0 + [ i * n + j ] * w
 A[1][2] = 200 + [1 * 4 + 2] * 2
         = 200 + 6 * 2 = 212    // physical address
+
+for index start with 1 - 
+ = L0 + [(i - 1) * n + (j-1) ] * w
