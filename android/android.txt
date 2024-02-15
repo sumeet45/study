@@ -264,7 +264,7 @@ if( age in 18 ..  39){
 * Showed function with another parameter "name", which show user name for whom we prepare coffee
 
 46) Day 3 - BONUS Quiz Challenge Solution - Who is the coffee for with user input -
-* Showed function with more details taken from users like name and sugarcount 
+* Showed function with more details taken from users like name and sugarcount using "readln()"
 
 47) Day 3 - Functions that return show something -
 * Showed simple add function to return value.
@@ -298,7 +298,7 @@ if( age in 18 ..  39){
 }
 
 53) Day 3 - Understanding constructors and default values -
-* constructor - preceding the initializer or it starts the initializer
+* constructor - preceding the initializer or it calls after the initializer
 * we can pass parameter in class with constructor.
 * class Dog constructor(){
  ...
@@ -306,6 +306,8 @@ if( age in 18 ..  39){
 * we can omit "constructor" keyword.
 * we can give default values in constructor
 * object creation process in following direction - constructor, initializer
+* if we don't declare "name" with val or var, it won't become property. so to add as property, val should be added. 
+* we can only access property with object, like following - println(myDog.name); If it's only parameter, we won't be able to do this.
 ex.
 class Dog(val name: String, val breed : String, val age: Int = 0) {
     init {}
@@ -320,9 +322,12 @@ myDog.bark();
 
 54) Day 3 - Accessing and Changing Properties - 
 * in constructor, if we want values are immutable, then we should use val and vice versa
+ val myDog = Dog("daisy", "b1");
+ myDog.name = "daisy1";  // can change value if it's declared with var.
 
 55) Day 3 - Data classes and coffee -
 * Data classes - Data classes in Kotlin are classes whose main purpose is to hold data
+* data class can write within class or outside of class also, depend upon requirement.
 ex -
 data class CoffeeDetails(val sugarCount: Int, val name: String, val size: String, val creamAmount: Int){
 }
@@ -448,3 +453,7 @@ fun Greeting(){ }
 
 75) OutlinedTextField and Anonymous Functions -
 * 
+
+
+-------------------------
+Primitive Data type - byte, short, Int, long, Float, Double, 
