@@ -52,3 +52,30 @@ Day 2 Code-
 }
 
 
+
+2) 
+data class CoffeeDetails (val sugarCount: Int, val name: String, val size: String, val creamAmount: Int)
+fun main(){
+//  create object of class
+    var daisy: Dog = Dog("D");
+    println(daisy.bark());
+
+    val coffeeForDenis = CoffeeDetails(4, "Denis", "large", 3);
+    makeCoffee(coffeeForDenis);
+}
+
+fun makeCoffee(coffeeForDenis: CoffeeDetails){
+    if(coffeeForDenis.sugarCount == 1){
+        println("spoons count ${coffeeForDenis.sugarCount} for ${coffeeForDenis.name} with size ${coffeeForDenis.size} and creamamount ${coffeeForDenis.creamAmount}")
+    } else {
+        println("spoon count ${coffeeForDenis.sugarCount} for ${coffeeForDenis.name} with size ${coffeeForDenis.size} and creamamount  ${coffeeForDenis.creamAmount} ")
+    }
+}
+class Dog(val name: String) {
+    init {
+        bark();
+    }
+    fun bark(){
+        println("bark $name")
+    }
+}
