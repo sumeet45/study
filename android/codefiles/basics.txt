@@ -79,3 +79,66 @@ class Dog(val name: String) {
         println("bark $name")
     }
 }
+
+
+3)
+fun main(){
+//  immutable list - can't change after initialization
+    val shoppingList = listOf("Processor", "Ram", "mouse", "keyboard");
+//  mutable list
+    val mutableLists = mutableListOf("Processor", "Ram", "mouse", "keyboard");
+    mutableLists.add("Speaker");
+    println(mutableLists);
+    mutableLists.removeAt(2);
+    println(mutableLists);
+    mutableLists.removeAt(1);
+    println(mutableLists);
+    mutableLists.add(1, "mouse");
+    println(mutableLists);
+    mutableLists[2] = "headset";
+    println(mutableLists);
+    mutableLists.set(1, "Cooling Fan");
+    println(mutableLists);
+    println(mutableLists.contains("headset"));
+
+    for(item in mutableLists){
+        println(item);
+        if(item == "headset"){
+            break;
+        }
+    }
+    for(index in 0 until mutableLists.size){
+        println("index $index, and value ${mutableLists[index]}")
+    }
+//    for(index in 0 .. mutableLists.size){
+//        println("index $index, and value ${mutableLists[index]}")
+//    }
+
+    val userBankAccount = BankAccount("Denis", 23000.02);
+    userBankAccount.deposit(3000.90);
+    userBankAccount.deposit(3000.90);
+    userBankAccount.withdraw(200.90);
+    userBankAccount.displayHistory();
+}
+
+class BankAccount( val name: String, var balance: Double) {
+    private val history = mutableListOf<String>();  //visible within class only, bcz of private
+    fun withdraw(amount: Double){
+        if(amount < balance){
+            balance -= amount
+            history.add("$name withdraw $$balance");
+        } else {
+            history.add("$name won't be able to withdraw amount");
+        }
+    }
+    fun deposit(amount: Double){
+        balance += amount;
+        history.add("$name deposited $$balance");
+    }
+    fun displayHistory(){
+        println(history);
+        for (item in history){
+            println("$item");
+        }
+    }
+}
