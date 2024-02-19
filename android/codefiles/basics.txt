@@ -53,7 +53,7 @@ Day 2 Code-
 
 
 
-2) 
+3) 
 data class CoffeeDetails (val sugarCount: Int, val name: String, val size: String, val creamAmount: Int)
 fun main(){
 //  create object of class
@@ -81,7 +81,7 @@ class Dog(val name: String) {
 }
 
 
-3)
+4)
 fun main(){
 //  immutable list - can't change after initialization
     val shoppingList = listOf("Processor", "Ram", "mouse", "keyboard");
@@ -142,3 +142,5 @@ class BankAccount( val name: String, var balance: Double) {
         }
     }
 }
+
+
