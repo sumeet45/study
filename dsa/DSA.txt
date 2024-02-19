@@ -420,3 +420,24 @@ A[1][2] = 200 + [1 * 4 + 2] * 2
 
 for index start with 1 - 
  = L0 + [(i - 1) * n + (j-1) ] * w
+
+
+
+94) Array ADT -
+* Data structure and set of operations together we can call it ADT.
+* two ways to create array - 
+  int A[10];
+  int *A;
+  A = new int[size];
+* array length is based on available elements in array.
+
+95) Demo - Array ADT 
+*
+
+
+131) Introduction to strings 
+* ASCII -  range start from 0 to 127
+* unicode - present in hexadecimal form
+
+* char - take 1 bytes of memory.
+char temp = 'A';    // store "65" in memory, bcz ascii value of A is 65
