@@ -444,15 +444,27 @@ ex. for( index in 0..4){
 * surface - background of our application
 
 74) Day 5 - Creating our own Composables and Understanding Column -
+* Composable function - it's special function and to use that, we need to use @Composable keyword. It tells compiler to create user interface, in both times ( initially and re-rendering )
 * Composable function - which should be rendered as a user interface element
 * That's just a different way of displaying the user interface elements in comparison to XML
 * ex. 
 @Composable
 fun Greeting(){ }
 * It enables the declarative way, which takes care of rendering and updating the UI
+* we can use composable inside of other composable.
+* show column and row composable
+* In column - Here all the elements will be stacked below each other
+* In row - Here all the elements will be placed beside each other in 1 row
 
 75) OutlinedTextField and Anonymous Functions -
-* 
+* Show Text composable
+* in kotlin, we have 3 text field. we will use outlineTextField.
+* OutlinedTextField(value = "Enter value", onValueChange = {})  // we pass anonymous function
+
+76) Day 5 - Adding a Preview -
+* to see latest changes in split screen. so we can avoid extra re-render to just view the UI changes
+
+77) Button, onClick and Toast -
 
 
 -------------------------
