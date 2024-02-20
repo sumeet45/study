@@ -465,6 +465,34 @@ fun Greeting(){ }
 * to see latest changes in split screen. so we can avoid extra re-render to just view the UI changes
 
 77) Button, onClick and Toast -
+* showed button element and with onclick functionality
+
+78) Box, Icons and DropDownMenus -
+* Box - layout element just like row or column. commonly used to create custom and complex layouts, because dropdown menu cannot stand on its own, as it requires a parent, which can help it position itself on the screen.
+
+
+79) Modifier, VerticalArrangement and HorizontalArrangement -
+* Every compose element has a parameter called modifier. using modifiers we can control properties like padding, margin, size, and position of our UI elements.
+* Showed how to arrange vertically and horizontally center using modifier.
+
+80) Spacer vs Padding -
+* padding modifier - offer simplicity, perfect for adding space around individual element but lack reusability for consistent spacing across multiple components.
+* spacer - excel in reusability and clarity in design intent but add slight complexity and code verbosity.
+
+81) Adding DropdownMenus and DropdownMenuItems -
+* Dropdown menu component enables the creation of the option selector. It's like a menu and can display a list of choice using its child element dropdown 
+
+82) Finishing day 5
+* 
+
+83) summary of day 5 -
+https://tutorials.eu/the-power-of-jetpack-compose-and-ui-customization-day-5-android-14-masterclass/
+
+84) Welcome to day 6-
+
+
+
+
 
 
 -------------------------
