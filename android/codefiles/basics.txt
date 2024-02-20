@@ -144,3 +144,100 @@ class BankAccount( val name: String, var balance: Double) {
 }
 
 
+
+
+5) 
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            UnitconverterTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    UnitConverter()
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun UnitConverterPreview() {        // name should end with Preview
+    UnitConverter()
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun UnitConverter(){
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+    // Here all the elements will be stacked below each other
+//        Greeting(name = "Android")
+//        Greeting(name = "Android")
+        Text(text = "Unit Converter", modifier = Modifier.padding(10.dp))
+        Spacer(modifier = Modifier.height(16.dp))
+        OutlinedTextField(value = "Enter value here", onValueChange = {})
+
+        Spacer(modifier = Modifier.height(16.dp))
+        Row {
+            // Here all the elements will be placed beside each other in 1 row
+//            Greeting(name = "Sumeet")
+//            Greeting(name = "Sumeet")
+//            val context = LocalContext.current;
+
+            Box {
+                Button(onClick = {}) {
+                    Text(text = "Select")
+                    Icon(Icons.Default.ArrowDropDown, contentDescription = "")
+                }
+                DropdownMenu(expanded = true, onDismissRequest = { /*TODO*/ }) {
+                    DropdownMenuItem(text = { Text(text = "Centimeters") }, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Meters") }, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Feet") }, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Millimeters") }, onClick = { /*TODO*/ })
+                }
+                
+            }
+            Box {
+                Button(onClick = {}) {
+                    Text(text = "Select")
+                    Icon(Icons.Default.ArrowDropDown, contentDescription = "")
+                }
+                DropdownMenu(expanded = true, onDismissRequest = { /*TODO*/ }) {
+                    DropdownMenuItem(text = { Text(text = "Centimeters") }, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Meters") }, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Feet") }, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Millimeters") }, onClick = { /*TODO*/ })
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+//            Button(onClick = {
+////                Toast.makeText(context, "Thanks for clicking", Toast.LENGTH_LONG).show()
+//            }) {
+//                Text(text = "Click here")
+//            }
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(text = "Result")
+    }
+}
+
+
+
