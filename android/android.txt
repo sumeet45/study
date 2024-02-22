@@ -490,8 +490,27 @@ https://tutorials.eu/the-power-of-jetpack-compose-and-ui-customization-day-5-and
 
 84) Welcome to day 6-
 
+85) State - Recomposition - Remember and MutableState -
+* when data changes UI should be updated as per data
+
+86) Captains remember states and treasures -
+* state store using "mutableStateOf" and "remember"
+
+87) Solution
+
+88) Understanding the by Keyword -
+* syntax - var inputValue by remember { mutableStateOf("") }
+
+89) to 94) 
+only coding
+
+95) 
+https://tutorials.eu/mastering-state-management-and-essential-kotlin-syntax-day-6-android-14-masterclass/
 
 
+97) Welcome to day 7-
+
+98) The shopping List App -
 
 
 
