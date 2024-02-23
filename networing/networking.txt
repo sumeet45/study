@@ -1,0 +1,16 @@
+
+HTTP - 
+* 7 layer protocol which enables communitcation between client and server
+* sends and receives data in plain text
+* insecure
+* light weight
+* default port - :80
+
+HTTPS -
+* it's http with additional layer of security through SSL/TLS
+* Secure Socket layer (SSL) is former version.
+* Transport Layer Security is recent version.
+* SSL certificate signed through "certificate authority" and CA is installed on browser
+* features-  Encrypted data, Layer 4 protocol, key exchange, heavier than http, default port :443
+* SSL encryption are of 2 types - symmetrics or asymmetrics encryption
+* in asymmetrics, we have 2 keys - public key and private key
