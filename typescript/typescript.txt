@@ -939,3 +939,101 @@ class Point2 {
 // OK
 const p: Point1 = new Point2();
 
+----------------------------------------------------------------------------------------------------
+From Google Keep -
+
+// class is syntactic sugar over the object constructor function
+class Department {
+  
+  /*---Property Declaration -First way ---*/ 
+  // public name: string = "Default";     // property declare and initialize it with default val, public is default
+  // private id: string;       // private property
+  // private employees: string[] = []; // private property, only accessible within class
+  // constructor(id: string,name: string) {  // called first, when object created from Class 
+  //   this.name = name;   // setting property
+  //   this.id = id;
+  // }
+  
+  
+  /*---Property Declaration - Second way (shorter version)---*/ 
+  // identifier in constructor tells to create property which has same name as propName and assign value which comes through arguments
+  // syntax - constructor( identifier propName: dataType ) { }
+  protected employees: string[] = [];
+  static desStaticExp = "2022";
+  constructor(private readonly id:string, public name: string, employees: string[]){ // readonly helps to initialize once and to not update again
+    this.employees = employees;
+    console.log("static var", Department.desStaticExp);
+  }
+
+  describe(){   // available within objects prototype, can access Obj1.describe()
+    console.log(this, this.name);  // give object itself and "name" property val
+  }
+  describeArrow = () => {   // available within objects itself
+    console.log(this, this.name);  // give object itself and "name" property val
+  }
+  static describeProto() {  // available with only Class, not with instance of Class(object), 
+    // console.log(this, this.name);  // give whole code and "Department", the class name
+  }
+  
+  addEmployee(emp: string){
+      this.employees.push(emp);
+  }
+}
+
+const sumeet = new Department("1","sumeet", ["emp1"]);
+console.log("log", sumeet, Department.describeProto);
+
+sumeet.addEmployee("akshay");
+Department.describeProto(); // static method, only able to call using class name.
+
+
+// About private modifier
+// sumeet.employees.push("sss"); // give error, when updating private property
+// we can make method also private. Only accessible from same class
+
+// About protected modifier
+// can't access from outside of class, but able to access from child class.
+
+console.log("log", sumeet);
+
+
+// If ITDepartment constructor not present, then it will reach out to parent "Department" constructor.
+// you can't inherit multiple class, only 1 at time
+class ITDepartment extends Department {
+    private dep_Id: string;
+  constructor(id: string, employees: string[], public admins: string []){
+    super(id, "IT", employees);
+  }
+  
+  get comDepID(){   //to get private property access
+    return this.dep_Id;   // to access private 
+  }
+  set comDepID(name: string){   //to set private property access
+    this.dep_Id = name;     
+  }
+  
+  addEmployee(name: string){    // override method, parent has already same method
+      this.employees.push(`s-${name}`);
+  }
+}
+var it1 = new ITDepartment("1",[],[], "111");
+it1.addEmployee("s1");  // call method from child class, overriding example
+
+// to access or set private property we need getters and setters
+it1.comDepID ='dep_id_1';   // Setters example
+console.log(it1.comDepID);  // Getters example
+console.log("log ITDepartment", it1);
+
+
+// abstract class can't be instantiated, like var c = new AbstractExpParent
+// if abstract method or property present, then class should start with abstract keyword
+abstract class AbstractExpParent {
+    abstract description(name: string): void
+}
+class AbstractExpChild extends AbstractExpParent {
+    description(name: string){
+        console.log("Abstraction example");
+    }
+}
+var absExmaple = new AbstractExpChild();
+absExmaple.description();
