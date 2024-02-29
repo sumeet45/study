@@ -440,7 +440,18 @@ B) Expressions & operators
 		* the await expression never blocks the main thread and only defers execution of code that actually depends on the result, i.e. anything after the await expression.
 		need to understand
 
-	7) Bitwise AND (&)
+	7) Bitwise AND (&) -
+		* The bitwise AND (&) operator returns a number or BigInt whose binary representation has a 1 in each bit position for which the corresponding bits of both operands are 1.
+		ex. 
+			const a = 5; // 00000000000000000000000000000101
+			const b = 3; // 00000000000000000000000000000011
+			
+			console.log(a & b); // 00000000000000000000000000000001
+			// Expected output: 1
+
+
+
+
 	8) Bitwise AND assignment (&=)
 	9) Bitwise NOT (~)
 	10) Bitwise OR (|)
