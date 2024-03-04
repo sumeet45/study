@@ -311,20 +311,80 @@ C) Workflow -
 
 2) Fast Refresh - 
 article link - https://aboutreact.com/fast-refresh-in-react-native/
-	1) Fast Refresh is a React Native feature that allows you to get near-instant feedback for changes in your React components.
+	* Fast Refresh is a React Native feature that allows you to get near-instant feedback for changes in your React components.
 * Error Resilience -
-	1) fast refresh is error resilience.
+	* fast refresh is error resilience.
 * Limitations -
-	1) Local state is not preserved for class components (only function components and Hooks preserve state).
-	2) The module you're editing might have other exports in addition to a React component.
-	3) Sometimes, a module would export the result of calling higher-order component like createNavigationContainer(MyScreen). If the returned component is a class, state will be reset.
+	* Local state is not preserved for class components (only function components and Hooks preserve state).
+	* The module you're editing might have other exports in addition to a React component.
+	* Sometimes, a module would export the result of calling higher-order component like createNavigationContainer(MyScreen). If the returned component is a class, state will be reset.
 * Tips -
-	1) Fast Refresh preserves React local state in function components (and Hooks) by default.
-	2) Sometimes you might want to force the state to be reset, and a component to be remounted. To do this, you can add "// @refresh reset" anywhere in the file you're editing. This directive is local to the file, and instructs Fast Refresh to remount components defined in that file on every edit.
+	* Fast Refresh preserves React local state in function components (and Hooks) by default.
+	* Sometimes you might want to force the state to be reset, and a component to be remounted. To do this, you can add "// @refresh reset" anywhere in the file you're editing. This directive is local to the file, and instructs Fast Refresh to remount components defined in that file on every edit.
 * Fast Refresh and Hooks -
-	1) When possible, Fast Refresh attempts to preserve the state of your component between edits.
-	2) In particular, useState and useRef preserve their previous values as long as you don't change their arguments or the order of the Hook calls.
-	3) Hooks with dependencies—such as useEffect, useMemo, and useCallback—will always update during Fast Refresh. Their list of dependencies will be ignored while Fast Refresh is happening.
+	* When possible, Fast Refresh attempts to preserve the state of your component between edits.
+	* In particular, useState and useRef preserve their previous values as long as you don't change their arguments or the order of the Hook calls.
+	* Hooks with dependencies—such as useEffect, useMemo, and useCallback—will always update during Fast Refresh. Their list of dependencies will be ignored while Fast Refresh is happening.
+
+3) Metro -
+	* React Native uses Metro to build your JavaScript code and assets.
+	* Configuring Metro -
+		Configuration options for Metro can be customized in your project's metro.config.js file. This can export either:
+			1) An object (recommended) that will be merged on top of Metro's internal config defaults.
+			2) A function that will be called with Metro's internal config defaults and should return a final config object.
+	* In React Native, your Metro config should extend either @react-native/metro-config or @expo/metro-config. These packages contain essential defaults necessary to build and run React Native apps.
+	* Below is the default metro.config.js file in a React Native template project:
+	 Code :-	
+		const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
+		/**
+		 * Metro configuration
+		 * https://facebook.github.io/metro/docs/configuration
+		 *
+		 * @type {import('metro-config').MetroConfig}
+		 */
+		const config = {};
+		module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+	* Advanced: Using a config function -
+		* Exporting a config function is an opt-in to managing the final config yourself — Metro will not apply any internal defaults. This pattern can be useful when needing to read the base default config object from Metro or to set options dynamically.
+		Code -
+			const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
+			module.exports = function (baseConfig) {
+			  const defaultConfig = mergeConfig(baseConfig, getDefaultConfig(__dirname));
+			  const {resolver: {assetExts, sourceExts}} = defaultConfig;
+			
+			  return mergeConfig(
+			    defaultConfig,
+			    {
+			      resolver: {
+			        assetExts: assetExts.filter(ext => ext !== 'svg'),
+			        sourceExts: [...sourceExts, 'svg'],
+			      },
+			    },
+			  );
+			};
+	* Learn more about Metro
+		Metro website
+		Video: "Metro & React Native DevX" talk at App.js 2023
+
+
+4) Using Libraries -
+	* Selecting a Package Manager -
+		* React Native libraries are typically installed from the npm registry using a Node.js package manager such as npm CLI or Yarn Classic.
+	* Installing a Library -
+		npm install react-native-webview
+	* Linking Native Code on iOS -
+		* React Native uses CocoaPods to manage iOS project dependencies and most React Native libraries follow this same convention. If a library you are using does not, then please refer to their README for additional instruction. In most cases, the following instructions will apply.
+		* Run pod install in our ios directory in order to link it to our native iOS project. A shortcut for doing this without switching to the ios directory is to run npx pod-install.
+		* Once this is complete, re-build the app binary to start using your new library:-
+			npm run ios
+	* Linking Native Code on Android -
+		* React Native uses Gradle to manage Android project dependencies. After you install a library with native dependencies, you will need to re-build the app binary to use your new library:
+			npm run android
+	* Finding Libraries
+		* React Native Directory is a searchable database of libraries built specifically for React Native. This is the first place to look for a library for your React Native app.
+		* After React Native Directory, the npm registry is the next best place if you can't find a library specifically for React Native on the directory
+
+
 
 3) Debugging -
 * Accessing the In-App Developer Menu -
