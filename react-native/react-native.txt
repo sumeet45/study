@@ -1,3 +1,11 @@
+Tools used in RN -
+Fabric - New Renderer
+hermes - JS engine
+flipper - debugger
+yoga - cross-platform layout engine
+metro - bundler
+
+
 React Native Website - 
 
 ------------------------------------------------------------------------------------------------
@@ -293,97 +301,138 @@ B) Enviornment Setup -
 
 
 C) Workflow -
-1) Running On Device -
-* Running your app on Android devices -
-	1) Enable Debugging over USB - To enable USB debugging on your device, you will first need to enable the "Developer options" menu by going to Settings → About phone → Software information and then tapping the Build number row at the bottom seven times. You can then go back to Settings → Developer options to enable "USB debugging".
-
-	2) Plug in your device via USB -  plug in your device via USB to your development machine. Next, check the manufacturer code by using lsusb (on mac, you must first install lsusb).  This is an utility to easily list USB devices in Mac OS X, just like the lsusb command in Linux. 
-
-	3) npx react-native run-android
-
-* Connecting to the development server -
-	1) if our phone and laptop are on different network and we have to reach development server through laptop, we have 2 ways -
-	2) using adb reverse - we need to use "adb revese".
-		article link - https://blog.grio.com/2015/07/android-tip-adb-reverse.html
-	3) using WiFi -
-		Take help from directly official website
-
-
-2) Fast Refresh - 
-article link - https://aboutreact.com/fast-refresh-in-react-native/
-	* Fast Refresh is a React Native feature that allows you to get near-instant feedback for changes in your React components.
-* Error Resilience -
-	* fast refresh is error resilience.
-* Limitations -
-	* Local state is not preserved for class components (only function components and Hooks preserve state).
-	* The module you're editing might have other exports in addition to a React component.
-	* Sometimes, a module would export the result of calling higher-order component like createNavigationContainer(MyScreen). If the returned component is a class, state will be reset.
-* Tips -
-	* Fast Refresh preserves React local state in function components (and Hooks) by default.
-	* Sometimes you might want to force the state to be reset, and a component to be remounted. To do this, you can add "// @refresh reset" anywhere in the file you're editing. This directive is local to the file, and instructs Fast Refresh to remount components defined in that file on every edit.
-* Fast Refresh and Hooks -
-	* When possible, Fast Refresh attempts to preserve the state of your component between edits.
-	* In particular, useState and useRef preserve their previous values as long as you don't change their arguments or the order of the Hook calls.
-	* Hooks with dependencies—such as useEffect, useMemo, and useCallback—will always update during Fast Refresh. Their list of dependencies will be ignored while Fast Refresh is happening.
-
-3) Metro -
-	* React Native uses Metro to build your JavaScript code and assets.
-	* Configuring Metro -
-		Configuration options for Metro can be customized in your project's metro.config.js file. This can export either:
-			1) An object (recommended) that will be merged on top of Metro's internal config defaults.
-			2) A function that will be called with Metro's internal config defaults and should return a final config object.
-	* In React Native, your Metro config should extend either @react-native/metro-config or @expo/metro-config. These packages contain essential defaults necessary to build and run React Native apps.
-	* Below is the default metro.config.js file in a React Native template project:
-	 Code :-	
-		const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
-		/**
-		 * Metro configuration
-		 * https://facebook.github.io/metro/docs/configuration
-		 *
-		 * @type {import('metro-config').MetroConfig}
-		 */
-		const config = {};
-		module.exports = mergeConfig(getDefaultConfig(__dirname), config);
-	* Advanced: Using a config function -
-		* Exporting a config function is an opt-in to managing the final config yourself — Metro will not apply any internal defaults. This pattern can be useful when needing to read the base default config object from Metro or to set options dynamically.
-		Code -
+	1) Running On Device -
+	* Running your app on Android devices -
+		1) Enable Debugging over USB - To enable USB debugging on your device, you will first need to enable the "Developer options" menu by going to Settings → About phone → Software information and then tapping the Build number row at the bottom seven times. You can then go back to Settings → Developer options to enable "USB debugging".
+	
+		2) Plug in your device via USB -  plug in your device via USB to your development machine. Next, check the manufacturer code by using lsusb (on mac, you must first install lsusb).  This is an utility to easily list USB devices in Mac OS X, just like the lsusb command in Linux. 
+	
+		3) npx react-native run-android
+	
+	* Connecting to the development server -
+		1) if our phone and laptop are on different network and we have to reach development server through laptop, we have 2 ways -
+		2) using adb reverse - we need to use "adb revese".
+			article link - https://blog.grio.com/2015/07/android-tip-adb-reverse.html
+		3) using WiFi -
+			Take help from directly official website
+	
+	
+	2) Fast Refresh - 
+	article link - https://aboutreact.com/fast-refresh-in-react-native/
+		* Fast Refresh is a React Native feature that allows you to get near-instant feedback for changes in your React components.
+	* Error Resilience -
+		* fast refresh is error resilience.
+	* Limitations -
+		* Local state is not preserved for class components (only function components and Hooks preserve state).
+		* The module you're editing might have other exports in addition to a React component.
+		* Sometimes, a module would export the result of calling higher-order component like createNavigationContainer(MyScreen). If the returned component is a class, state will be reset.
+	* Tips -
+		* Fast Refresh preserves React local state in function components (and Hooks) by default.
+		* Sometimes you might want to force the state to be reset, and a component to be remounted. To do this, you can add "// @refresh reset" anywhere in the file you're editing. This directive is local to the file, and instructs Fast Refresh to remount components defined in that file on every edit.
+	* Fast Refresh and Hooks -
+		* When possible, Fast Refresh attempts to preserve the state of your component between edits.
+		* In particular, useState and useRef preserve their previous values as long as you don't change their arguments or the order of the Hook calls.
+		* Hooks with dependencies—such as useEffect, useMemo, and useCallback—will always update during Fast Refresh. Their list of dependencies will be ignored while Fast Refresh is happening.
+	
+	3) Metro -
+		* React Native uses Metro to build your JavaScript code and assets.
+		* Configuring Metro -
+			Configuration options for Metro can be customized in your project's metro.config.js file. This can export either:
+				1) An object (recommended) that will be merged on top of Metro's internal config defaults.
+				2) A function that will be called with Metro's internal config defaults and should return a final config object.
+		* In React Native, your Metro config should extend either @react-native/metro-config or @expo/metro-config. These packages contain essential defaults necessary to build and run React Native apps.
+		* Below is the default metro.config.js file in a React Native template project:
+		 Code :-	
 			const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
-			module.exports = function (baseConfig) {
-			  const defaultConfig = mergeConfig(baseConfig, getDefaultConfig(__dirname));
-			  const {resolver: {assetExts, sourceExts}} = defaultConfig;
-			
-			  return mergeConfig(
-			    defaultConfig,
-			    {
-			      resolver: {
-			        assetExts: assetExts.filter(ext => ext !== 'svg'),
-			        sourceExts: [...sourceExts, 'svg'],
-			      },
-			    },
-			  );
-			};
-	* Learn more about Metro
-		Metro website
-		Video: "Metro & React Native DevX" talk at App.js 2023
+			/**
+			 * Metro configuration
+			 * https://facebook.github.io/metro/docs/configuration
+			 *
+			 * @type {import('metro-config').MetroConfig}
+			 */
+			const config = {};
+			module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+		* Advanced: Using a config function -
+			* Exporting a config function is an opt-in to managing the final config yourself — Metro will not apply any internal defaults. This pattern can be useful when needing to read the base default config object from Metro or to set options dynamically.
+			Code -
+				const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
+				module.exports = function (baseConfig) {
+				  const defaultConfig = mergeConfig(baseConfig, getDefaultConfig(__dirname));
+				  const {resolver: {assetExts, sourceExts}} = defaultConfig;
+				
+				  return mergeConfig(
+				    defaultConfig,
+				    {
+				      resolver: {
+				        assetExts: assetExts.filter(ext => ext !== 'svg'),
+				        sourceExts: [...sourceExts, 'svg'],
+				      },
+				    },
+				  );
+				};
+		* Learn more about Metro
+			Metro website
+			Video: "Metro & React Native DevX" talk at App.js 2023
+	
+	
+	4) Using Libraries -
+		* Selecting a Package Manager -
+			* React Native libraries are typically installed from the npm registry using a Node.js package manager such as npm CLI or Yarn Classic.
+		* Installing a Library -
+			npm install react-native-webview
+		* Linking Native Code on iOS -
+			* React Native uses CocoaPods to manage iOS project dependencies and most React Native libraries follow this same convention. If a library you are using does not, then please refer to their README for additional instruction. In most cases, the following instructions will apply.
+			* Run pod install in our ios directory in order to link it to our native iOS project. A shortcut for doing this without switching to the ios directory is to run npx pod-install.
+			* Once this is complete, re-build the app binary to start using your new library:-
+				npm run ios
+		* Linking Native Code on Android -
+			* React Native uses Gradle to manage Android project dependencies. After you install a library with native dependencies, you will need to re-build the app binary to use your new library:
+				npm run android
+		* Finding Libraries
+			* React Native Directory is a searchable database of libraries built specifically for React Native. This is the first place to look for a library for your React Native app.
+			* After React Native Directory, the npm registry is the next best place if you can't find a library specifically for React Native on the directory
+	
+	
+	5) Using TypeScript -
+		* TypeScript is a language which extends JavaScript by adding type definitions. New React Native projects target TypeScript by default, but also support JavaScript and Flow.
+		* read from official docs
+		* Out of the box, TypeScript sources are transformed by Babel during bundling
+	
+	6) Upgrading to new versions -
+		* read from official docs
+		* https://react-native-community.github.io/upgrade-helper/
+		* I have done all the changes but my app is still using an old version -
+			These sort of errors are usually related to caching, it's recommended to install react-native-clean-project to clear all your project's cache and then you can run it again.
+	
+	
+D) UI & Interaction -
+	1) Style -
+		* With React Native, you style your application using JavaScript. All of the core components accept a prop named style. The style names and values usually match how CSS works on the web, except names are written using camel casing, e.g. backgroundColor rather than background-color.
+		* The style prop can be a plain old JavaScript object. You can also pass an array of styles - the last style in the array has precedence, so you can use this to inherit styles.
+		* As a component grows in complexity, it is often cleaner to use StyleSheet.create to define several styles in one place. 
+
+	2) Height and Width -
+		* A component's height and width determine its size on the screen.
+		* Fixed Dimensions -
+			* The general way to set the dimensions of a component is by adding a fixed width and height to style. All dimensions in React Native are unitless, and represent density-independent pixels.
+		* Flex Dimensions -
+			* Use flex in a component's style to have the component expand and shrink dynamically based on available space. Normally you will use flex: 1, which tells a component to fill all available space, shared evenly amongst other components with the same parent. The larger the flex given, the higher the ratio of space a component will take compared to its siblings.
+		* Percentage Dimensions -
+			* If you want to fill a certain portion of the screen, but you don't want to use the flex layout, you can use percentage values in the component's style. Similar to flex dimensions, percentage dimensions require parent with a defined size.
 
 
-4) Using Libraries -
-	* Selecting a Package Manager -
-		* React Native libraries are typically installed from the npm registry using a Node.js package manager such as npm CLI or Yarn Classic.
-	* Installing a Library -
-		npm install react-native-webview
-	* Linking Native Code on iOS -
-		* React Native uses CocoaPods to manage iOS project dependencies and most React Native libraries follow this same convention. If a library you are using does not, then please refer to their README for additional instruction. In most cases, the following instructions will apply.
-		* Run pod install in our ios directory in order to link it to our native iOS project. A shortcut for doing this without switching to the ios directory is to run npx pod-install.
-		* Once this is complete, re-build the app binary to start using your new library:-
-			npm run ios
-	* Linking Native Code on Android -
-		* React Native uses Gradle to manage Android project dependencies. After you install a library with native dependencies, you will need to re-build the app binary to use your new library:
-			npm run android
-	* Finding Libraries
-		* React Native Directory is a searchable database of libraries built specifically for React Native. This is the first place to look for a library for your React Native app.
-		* After React Native Directory, the npm registry is the next best place if you can't find a library specifically for React Native on the directory
-
+	3) Layout with Flexbox -
+		* read from official docs
+		* A component can specify the layout of its children using the Flexbox algorithm. Flexbox is designed to provide a consistent layout on different screen sizes.
+		* You will normally use a combination of flexDirection, alignItems, and justifyContent to achieve the right layout.
+		* Flex -
+			* flex will define how your items are going to “fill” over the available space along your main axis. Space will be divided according to each element's flex property.
+		* Flex Direction -
+			* flexDirection controls the direction in which the children of a node are laid out. This is also referred to as the main axis. The cross axis is the axis perpendicular to the main axis, or the axis which the wrapping lines are laid out in.
+		* Layout Direction
+		* Justify Content - 
+		* Align Items -
+	
 
 
 3) Debugging -
