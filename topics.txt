@@ -1,2 +1,5 @@
 Cookies 
 Session 
+
+* db selection based on which reason
+* why react native instead of native or vice versa
