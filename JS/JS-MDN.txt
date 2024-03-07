@@ -538,11 +538,43 @@ B) Expressions & operators
  
 	15) Comma operator (,) -
 		* The comma (,) operator evaluates each of its operands (from left to right) and returns the value of the last operand. This is commonly used to provide multiple updaters to a for loop's afterthought.
-		* 
+		* need to understand
 
-	16) Conditional (ternary) operator
+	16) Conditional (ternary) operator -
+		* syntax.	condition ? exprIfTrue : exprIfFalse
+		* function example() {
+			  return condition1 ? value1
+			    : condition2 ? value2
+			    : condition3 ? value3
+			    : value4;
+			}
+
 	17) Decrement (--)
+		* The decrement (--) operator decrements (subtracts one from) its operand and returns the value before or after the decrement, depending on where the operator is placed.
+		ex.
+			let x = 3;
+			const y = x--;
+			console.log(`x:${x}, y:${y}`);
+			// Expected output: "x:2, y:3"
+			
+			let a = 3;
+			const b = --a;
+			console.log(`a:${a}, b:${b}`);
+			// Expected output: "a:2, b:2"
+
+
 	18) delete
+		* The delete operator removes a property from an object. If the property's value is an object and there are no more references to the object, the object held by that property is eventually released automatically.
+		ex.
+			const Employee = {
+			  firstname: 'Maria',
+			  lastname: 'Sanchez',
+			};
+			
+			console.log(Employee.firstname); 	// Expected output: "Maria"
+			delete Employee.firstname;
+			console.log(Employee.firstname);	// Expected output: undefined
+
 	19) Destructuring assignment
 	20) Division (/)
 	21) Division assignment (/=)
