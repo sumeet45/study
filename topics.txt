@@ -1,5 +1,8 @@
 Cookies 
 Session 
 
-* db selection based on which reason
+* db selection based on which reason - 
+  1) read database manual of current DB. It can provide configuration know, which help to deal with any db related issue.
+  2) can ask experts to select DB
+  3) check Limit and FAQ section to learn about DB
 * why react native instead of native or vice versa
