@@ -5,4 +5,20 @@ Session
   1) read database manual of current DB. It can provide configuration know, which help to deal with any db related issue.
   2) can ask experts to select DB
   3) check Limit and FAQ section to learn about DB
+
 * why react native instead of native or vice versa
+  Choosing between native development and React Native depends on various factors, including project requirements, development resources, time constraints, and target audience. While both approaches have their advantages and disadvantages, there are scenarios where native development might be preferred over React Native:
+
+1) Performance: Native development typically offers better performance compared to cross-platform solutions like React Native. Since native apps are developed using platform-specific languages (Swift/Objective-C for iOS, Java/Kotlin for Android), they have direct access to device features and APIs, resulting in faster execution and smoother user experience, especially for graphics-intensive or CPU-intensive applications.
+
+2) Access to Native APIs: Native development allows developers to leverage platform-specific APIs and features to their full extent. This can be crucial for apps that require deep integration with device functionalities such as camera, GPS, sensors, and native UI components. While React Native provides a bridge to access native APIs, there might be limitations or delays in adopting new platform features.
+
+3) User Experience: Native apps can provide a more consistent and polished user experience by adhering to platform-specific design guidelines (Material Design for Android, Human Interface Guidelines for iOS). This can be important for apps that prioritize user interface (UI) and user experience (UX) as key differentiators.
+
+4) Tooling and Ecosystem: Native development platforms (Xcode for iOS, Android Studio for Android) offer mature development environments with comprehensive tooling, debugging capabilities, and performance profiling tools. While React Native has improved its tooling and ecosystem over the years, it may still lack some features or integrations available in native development environments.
+
+5) Platform-Specific Requirements: Some projects may have platform-specific requirements or dependencies that are challenging to implement using cross-platform frameworks like React Native. In such cases, native development provides more flexibility and control over the application architecture and implementation.
+
+6) Long-Term Maintenance and Scalability: Native apps may have lower maintenance overhead and better long-term scalability, especially for large-scale projects with complex requirements. Since native codebases are tightly coupled with platform updates and SDK changes, they can be easier to maintain and extend over time compared to cross-platform codebases, which may require additional effort for compatibility testing and updates.
+
+While native development offers advantages in performance, user experience, and access to platform-specific features, it often requires separate development efforts for each platform, resulting in higher initial development costs and longer time to market. Ultimately, the choice between native and React Native depends on your project's specific needs, resources, and trade-offs between development efficiency and application performance.
