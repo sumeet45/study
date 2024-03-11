@@ -648,14 +648,63 @@ B) Expressions & operators
 				console.log(others); // { b: 2, c: 3 }
 				const [first, ...others2] = [1, 2, 3];
 				console.log(others2); // [2, 3]
+		* Examples - take help from official docs
+
+	20) Division (/) -
+		* The division (/) operator produces the quotient of its operands where the left operand is the dividend and the right operand is the divisor.
+		* ex.	console.log(12 / 2);	// Expected output: 6
+			console.log(3 / 2);	// Expected output: 1.5
+			console.log(6 / '3');	// Expected output: 2			
+			console.log(2 / 0);	// Expected output: Infinity
+		* The / operator is overloaded for two types of operands: number and BigInt. It first coerces both operands to numeric values and tests the types of them. It performs BigInt division if both operands become BigInts; otherwise, it performs number division. A TypeError is thrown if one operand becomes a BigInt but the other becomes a number.
+		For BigInt division, the result is the quotient of the two operands truncated towards zero, and the remainder is discarded. A RangeError is thrown if the divisor y is 0n. This is because number division by zero returns Infinity or -Infinity, but BigInt has no concept of infinity.
+		* ex.
+			1 / 2; // 0.5
+			Math.floor(3 / 2); // 1
+			1.0 / 2.0; // 0.5
+			
+			1n / 2n; // 0n
+			5n / 3n; // 1n
+			-1n / 3n; // 0n
+			1n / -3n; // 0n
+			
+			2n / 2; // TypeError: Cannot mix BigInt and other types, use explicit conversions
+			
+			// To do division with a BigInt and a non-BigInt, convert either operand
+			2n / BigInt(2); // 1n
+			Number(2n) / 2; // 1
 
 
-
-
-	20) Division (/)
 	21) Division assignment (/=)
-	22) Equality (==)
-	23) Exponentiation (**)
+		* The division assignment (/=) operator performs division on the two operands and assigns the result to the left operand.
+		* ex. 	let a = 3;
+			a /= 2;
+			console.log(a);			// Expected output: 1.5
+			a /= 0;
+			console.log(a);			// Expected output: Infinity
+			a /= 'hello';
+			console.log(a);			// Expected output: NaN
+		* x /= y is equivalent to x = x / y, except that the expression x is only evaluated once.
+
+
+	22) Equality (==) 
+		* The equality (==) operator checks whether its two operands are equal, returning a Boolean result. Unlike the strict equality operator, it attempts to convert and compare operands that are of different types.
+		*ex. 	console.log(1 == 1);		// Expected output: true
+			console.log('hello' == 'hello');	// Expected output: true
+			console.log('1' == 1);		// Expected output: true
+			console.log(0 == false);	// Expected output: true
+		* The equality operators (== and !=) provide the IsLooselyEqual semantic. This can be roughly summarized as follows:
+		* need to understand
+
+
+	23) Exponentiation (**) 
+		* The exponentiation (**) operator returns the result of raising the first operand to the power of the second operand. It is equivalent to Math.pow(), except it also accepts BigInts as operands.
+		* ex.	console.log(3 ** 4);			// Expected output: 81
+			console.log(10 ** -2);			// Expected output: 0.01
+			console.log(2 ** (3 ** 2));		// Expected output: 512
+			console.log((2 ** 3) ** 2);		// Expected output: 64
+
+
 	24) Exponentiation assignment (**=)
 	25) function expression
 	26) function* expression
