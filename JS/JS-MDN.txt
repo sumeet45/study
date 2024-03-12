@@ -278,6 +278,9 @@ B) Expressions & operators
 				"foo" + false; // "foofalse"		// String + Boolean -> concatenation
 				"2" + 2; // "22"			// String + Number -> concatenation
 
+		* String concatenation is often thought to be equivalent with template literals or String.prototype.concat(), but they are not. Addition coerces the expression to a primitive, which calls valueOf() in priority; on the other hand, template literals and concat() coerce the expression to a string, which calls toString() in priority. If the expression has a @@toPrimitive method, string concatenation calls it with "default" as hint, while template literals use "string". This is important for objects that have different string and primitive representations — such as Temporal, whose valueOf() method throws.
+
+
 
 
 	2) Addition assignment (+=) -
