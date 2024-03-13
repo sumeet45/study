@@ -370,7 +370,15 @@ B) Expressions & operators
 
 	3) Assignment (=)
 		* The assignment (=) operator is used to assign a value to a variable or property. The assignment expression itself has a value, which is the assigned value. This allows multiple assignments to be chained in order to assign a single value to multiple variables.
+		* Description - The assignment operator is completely different from the equals (=) sign used as syntactic separators in other locations, which include:
+			Initializers of var, let, and const declarations
+			Default values of destructuring
+			Default parameters
+			Initializers of class fields
+		* All these places accept an assignment expression on the right-hand side of the =, so if you have multiple equals signs chained together:
+			const x = y = 5;	This is equivalents to => 	const x = (y = 5);
 		*  To declare two variables within the same declaration, use:  const x = 5, y = 5;
+
 		* Examples -
 			let x = 2;
 			x = x + 3
