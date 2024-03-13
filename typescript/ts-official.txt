@@ -1,0 +1,10 @@
+Typescript Official Site -
+
+* The Basics -
+  * It shows why we need to use typing with Javascript.
+  * TypeScript can catch bugs when we make mistakes in our code. That’s great, but TypeScript can also prevent us from making those mistakes in the first place.
+  * Need to understand...
+
+* Everyday Types -
+  * Types can also appear in many more places than just type annotations. As we learn about the types themselves, we’ll also learn about the places where we can refer to these types to form new constructs.
+  
