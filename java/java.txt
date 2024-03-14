@@ -63,4 +63,76 @@
     transient: used to declare a variable as transient, which means that it will not be serialized when the object is written to a file or transmitted over a network.
     try: used to start a try-catch block in Java.
     void: used to declare a method that does not return a value.
-volatile: used to declare a variable as volatile, which means that it is subject to optimization by the Java Virtual Machine.
+    volatile: used to declare a variable as volatile, which means that it is subject to optimization by the Java Virtual Machine.
+
+  * Rules to follow for keywords:
+      * Keywords cannot be used as an identifier for class, subclass, variables, and methods.
+      * Keywords are case-sensitive.
+
+6) Our First Java Program -
+* System.out.println()- to print on console.
+* Here, "System" is class and "out" is subclass which consist println().
+
+7) Variables and datatype -
+  * variables - variable is space in memory. It helps to store data in memory. so we can process variable later.
+  * data type - while declaring variable, we have to supply data type. Based on this, we will decide which type of data would come in variables
+ex.  int num1 = 25;
+     string str1 = "sumeet";
+
+8) Understanding varibles -
+  * when we declare variable without initialize and run application, it will crash bcz of variable without initialization like below -
+    int value1;
+    System.out.println(value1);
+
+   Output - //ERROR!
+  * int value1 = 4;
+   System.out.println(value1);    // 4
+
+  * int value1 = 1, value2 = 2;     // valid syntax
+  * we can do basic operation and store value in variable too.
+   int value3 = (2*2)-1;
+  * variable names are case sensitive. 
+
+
+9) Primitive Data types (Integer datatype) -
+  * int - stands for integer ( for whole number ). 
+    ex.   int max = 2147483647;  // int can contain number from "-2147483648" to "2147483647"
+
+  * short max = 32767;    // for short, "-32768" to "32767"
+  * long max = 9223372036854775807L;  //for long variable, "-9,223,372,036,854,775,808" to "9,223,372,036,854,775,807" and also need to add "L"
+  * byte max = 127;   // for byte variable, "-128" to "127"
+
+
+10) Primitive Data types (Floating point datatype) -
+  * whenever we want to store decimal number, we have to use "float" and "double" data type.
+  * could be 2 value - float (floating point) and double (floating point with double precision)
+  * float occupy 32 bit of space in memory
+  * double occupy 64 bit of space in memory
+  * why double? - more precise, programm will run fast
+  * int datatype preferred over long, byte, short
+  * ex.  float value2 = 3f;
+         double value3 = 9.903922dd;
+
+  * ex.  float value2 = 10f/6f;     // 1.6666666
+         double value3 = 10d/6d;    // 1.6666666666666667
+
+
+11) BigDecimal Introduction -
+  * BigDecimal helps to acheive ultra precision with decimal number
+  * ex.  BigDecimal d1 = new BigDecimal("1.05");   // used number with double quoation, it helps to do addition properly
+         BigDecimal d2 = new BigDecimal("1.05");
+         System.out.println(d1.add(d2));    // 3.60
+  * do research on BigDecimal
+
+12) Primitive data type (Boolean and Char data type) -
+  * boolean helps to store boolean values like true and false.
+  * char helps to store single character in variable with single quoates. we can add unicode in single quoates and print any character.
+        char var1 = 'b';
+        boolean var2 = false;
+        System.out.println(var1);   // b
+        System.out.println(var2);   // false
+
+13) String Basics -
+  * String is sequence of characters.
+    ex. String str = "Hello world";
+  
