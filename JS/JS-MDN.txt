@@ -376,7 +376,10 @@ B) Expressions & operators
 			Default parameters
 			Initializers of class fields
 		* All these places accept an assignment expression on the right-hand side of the =, so if you have multiple equals signs chained together:
-			const x = y = 5;	This is equivalents to => 	const x = (y = 5);
+			const x = y = 5;	this is equivalent to => 	const x = (y = 5);
+		* Which means y must be a pre-existing variable, and x is a newly declared const variable. y is assigned the value 5, and x is initialized with the value of the y = 5 expression, which is also 5. If y is not a pre-existing variable, a global variable y is implicitly created in non-strict mode, or a ReferenceError is thrown in strict mode. To declare two variables within the same declaration, use:
+
+
 		*  To declare two variables within the same declaration, use:  const x = 5, y = 5;
 
 		* Examples -
@@ -470,6 +473,12 @@ B) Expressions & operators
 			console.log(a); // 00000000000000000000000000000001
 			// Expected output: 1
 		* x &= y is equivalent to x = x & y, except that the expression x is only evaluated once.
+		* Description -
+			* The & operator is overloaded for two types of operands: number and BigInt. For numbers, the operator returns a 32-bit integer. For BigInts, the operator returns a BigInt. It first coerces both operands to numeric values and tests the types of them. It performs BigInt AND if both operands become BigInts; otherwise, it converts both operands to 32-bit integers and performs number bitwise AND. A TypeError is thrown if one operand becomes a BigInt but the other becomes a number.
+			* The operator operates on the operands' bit representations in two's complement. Each bit in the first operand is paired with the corresponding bit in the second operand: first bit to first bit, second bit to second bit, and so on. The operator is applied to each pair of bits, and the result is constructed bitwise.
+			
+
+
 
 
 	9) Bitwise NOT (~)
@@ -493,6 +502,13 @@ B) Expressions & operators
 			
 			console.log(a | b); // 00000000000000000000000000000111
 			// Expected output: 7
+		ex. 
+			// 9  (00000000000000000000000000001001)
+			// 14 (00000000000000000000000000001110)
+			
+			14 | 9;		// 15 (00000000000000000000000000001111)
+			
+			14n | 9n; 	// 15n
 
 
 	11) Bitwise OR assignment (|=)
