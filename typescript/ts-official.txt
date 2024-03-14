@@ -78,14 +78,63 @@ Typescript Official Site -
 
  * Unions - 
      * TypeScript’s type system allows you to build new types out of existing ones using a large variety of operators. 
+
      * Defining a Union Type - The first way to combine types you might see is a union type. A union type is a type formed from two or more other types, representing values that may be any one of those types. We refer to each of these types as the union’s members.
       function printId(id: number | string) {
          console.log("Your ID is: " + id);
        }
+
      * Working with Union Types -
+       * TypeScript will only allow an operation if it is valid for every member of the union. For example, if you have the union string | number, you can’t use methods that are only available on string:
+       ex.    function printId(id: number | string) {
+                console.log(id.toUpperCase());          // Property 'toUpperCase' does not exist on type 'number'.
+             }
        
+       ex.  solution for above code -
+             function printId(id: number | string) {
+               if (typeof id === "string") {
+                 // In this branch, id is of type 'string'
+                 console.log(id.toUpperCase());
+               } else {
+                 // Here, id is of type 'number'
+                 console.log(id);
+               }
+             }
 
+      * Type Aliases -
+         ex.  
+              type Point = {
+                 x: number,
+                 y: number
+              }
+              let b: Point = {
+                x: 2,
+                y: 5
+              }
+          * You can actually use a type alias to give a name to any type at all, not just an object type. For example, a type alias can name a union type:  
+              type ID = number | string;
 
+        * Interfaces 
+             * An interface declaration is another way to name an object type:
+               ex.  interface Int11 {
+                      name: string;
+                      age: number
+                    }
+                  let person: Int11 = {
+                    name: "s",
+                    age: 23
+                  }
+
+        * Differences Between Type Aliases and Interfaces -
+               * key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable.
+
+        * Type Assertions -
+             * Sometimes you will have information about the type of a value that TypeScript can’t know about.
+             ex.   const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
+                   const myCanvas = <HTMLCanvasElement>document.getElementById("main_canvas");   // can write in this way also
+
+        * Literal Types -
+            * In addition to the general types string and number, we can refer to specific strings and numbers in type positions.
 
    * you usually don’t need type annotation because TypeScript will infer type at its own
    * 
