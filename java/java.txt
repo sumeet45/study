@@ -134,5 +134,55 @@ ex.  int num1 = 25;
 
 13) String Basics -
   * String is sequence of characters.
+  * string concatenation available in Java, like JS
+  * When one of the operand is string, other operand would be typecasted and converted to string
     ex. String str = "Hello world";
-  
+    
+    ex. String var1 = "10";
+        String var2 = "20";
+        System.out.println(var1+var2);    //1020
+
+    ex. Int var1 = 10;
+        String var2 = "20";
+        System.out.println(var1+var2);    //1020
+
+   * Proper way of declaring String - String var2 = new String("Hello world");
+
+
+14) Type Casting -
+  * It means conversion of data type to antoher data type.
+   ex.  short x = 5;
+        int y = x;
+        System.out.println(y);   // 5 - this called implicit typecasting
+
+   ex. int y = 10;
+       short x = y;  // warning - type mismatch: cannot convert from int to short
+
+  * TypeCasting has 2 types - Widening (Implicit Casting) and Narrowing (Explicitly Casting)
+  * more resources - https://studyeasy.org/java/type-casting/
+  * Implicit casting done automatically
+  * For Explicity Casting ex -
+       int y = 10;
+       short x = (byte)y;  // cast to byte
+       System.out.println(x);   // 5 - this called Explicit typecasting
+
+  * ex. float v1 = 10.0f;
+        double v2 = v1;
+        System.out.println(v2);   
+    
+    ex. double v2 = 10.02d;
+        float v1 = (float)v2;
+        System.out.println(v1);   // 10.02
+ 
+    ex. double v2 = 10.0123456789d;
+        float v1 = (float)v2;
+        System.out.println(v1);   //10.012345 - need to truncate value
+
+   * we won't be able to type cast from String to int or viceversa.
+   * we can type cast from int to float and viceversa, using Explicit typecasting only
+    float f = 10.532f;
+    long l = (long)f;
+    System.out.println(v1);   //10.0
+
+  * Explicit typecasting can alter the values.
+
