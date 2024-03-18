@@ -135,6 +135,9 @@ Typescript Official Site -
 
         * Literal Types -
             * In addition to the general types string and number, we can refer to specific strings and numbers in type positions.
+              let x: "hello" = "hello";
+
+        * Literal Inference -
 
    * you usually don’t need type annotation because TypeScript will infer type at its own
    * 
