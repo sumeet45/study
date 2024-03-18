@@ -1,1 +1,34 @@
+Reference -
 
+1) Hooks -
+    Built-in React Hooks
+    Hooks let you use different React features from your components. You can either use the built-in Hooks or combine them to build your own. This page lists all built-in Hooks in React.
+
+    * use -
+        * use is a React Hook that lets you read the value of a resource like a Promise or context.
+            const value = use(resource);
+
+        * Reference -
+            * Call use in your component to read the value of a resource like a Promise or context.
+            ex.
+                    import { use } from 'react';
+
+                    function MessageComponent({ messagePromise }) {
+                      const message = use(messagePromise);
+                      const theme = use(ThemeContext);
+
+            * Unlike all other React Hooks, use can be called within loops and conditional statements like if. Like other React Hooks, the function that calls use must be a Component or Hook.
+            * When called with a Promise, the use Hook integrates with Suspense and error boundaries. The component calling use suspends while the Promise passed to use is pending. If the component that calls use is wrapped in a Suspense boundary, the fallback will be displayed.  Once the Promise is resolved, the Suspense fallback is replaced by the rendered components using the data returned by the use Hook. If the Promise passed to use is rejected, the fallback of the nearest Error Boundary will be displayed.
+
+        * Parameters -
+            resource: this is the source of the data you want to read a value from. A resource can be a Promise or a context.
+
+        * Returns - The use Hook returns the value that was read from the resource like the resolved value of a Promise or context.
+
+        * Caveats -
+            * The use Hook must be called inside a Component or a Hook.
+            * When fetching data in a Server Component, prefer async and await over use. async and await pick up rendering from the point where await was invoked, whereas use re-renders the component after the data is resolved.
+            * Prefer creating Promises in Server Components and passing them to Client Components over creating Promises in Client Components. Promises created in Client Components are recreated on every render. Promises passed from a Server Component to a Client Component are stable across re-renders.
+
+        * Usage -
+            * Reading context with use - When a context is passed to use, it works similarly to useContext. While useContext must be called at the top level of your component, use can be called inside conditionals like if and loops like for. use is preferred over useContext because it is more flexible.
