@@ -543,6 +543,7 @@ B) Expressions & operators
 
 	14) class expression
 		* The class keyword can be used to define a class inside an expression.
+		* The main difference between a class expression and a class declaration is the class name, which can be omitted in class expressions to create anonymous classes.
 		* A simple class expression -
 		const rec = class {
 		  constructor(h, w){
@@ -565,16 +566,20 @@ B) Expressions & operators
  
 	15) Comma operator (,) -
 		* The comma (,) operator evaluates each of its operands (from left to right) and returns the value of the last operand. This is commonly used to provide multiple updaters to a for loop's afterthought.
+		* Syntax - One or more expressions, the last of which is returned as the value of the compound expression.
+
 		* need to understand
 
 	16) Conditional (ternary) operator -
 		* syntax.	condition ? exprIfTrue : exprIfFalse
-		* function example() {
-			  return condition1 ? value1
-			    : condition2 ? value2
-			    : condition3 ? value3
-			    : value4;
-			}
+		* Besides false, possible falsy expressions are: null, NaN, 0, the empty string (""), and undefined. If condition is any of these, the result of the conditional expression will be the result of executing the expression exprIfFalse.
+		* Conditional chains - 
+			 function example() {
+				  return condition1 ? value1
+				    : condition2 ? value2
+				    : condition3 ? value3
+				    : value4;
+				}
 
 	17) Decrement (--)
 		* The decrement (--) operator decrements (subtracts one from) its operand and returns the value before or after the decrement, depending on where the operator is placed.
