@@ -258,6 +258,9 @@ Typescript Official Site -
         * Using type predicates - We’ve worked with existing JavaScript constructs to handle narrowing so far, however sometimes you want more direct control over how types change throughout your code.
 
 
+        * Assertion functions - Types can also be narrowed using Assertion functions.
+
+        * Discriminated unions - 
 
 
    * you usually don’t need type annotation because TypeScript will infer type at its own
