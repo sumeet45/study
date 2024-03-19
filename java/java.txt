@@ -186,3 +186,29 @@ ex.  int num1 = 25;
 
   * Explicit typecasting can alter the values.
 
+
+17) Arithmatic operator -
+  * link - https://studyeasy.org/java/arithmetic-operators/
+  * operator - 
+      * helps to perform an operation.
+      * perform computation 
+  * = operator - to assign value to variable
+  * + helps to do arithmatic operation and concatenation operator (for string)
+  * - helps to do substraction operation
+  * * helps to do multiplication operation
+  * / helps to do divide operation
+  * % helps to do modulus operation (gives reminder)
+  * x++ will print x and then increment value of x
+  * ++x will increment x and then print value of x
+
+
+18) Making decision with operators -
+  * showing if else statement with condition
+  * if we have single statement in if else block, we can skip curly brackets.
+  ex.  if(x == 5)
+         System.out.println("x is 5");
+       else
+         System.out.println("x is not 5");
+
+  * if we have multiple statement in if else block, we can have to keep curly brackets. Otherwise we can face crash.
+  
