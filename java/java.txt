@@ -253,14 +253,19 @@ ex.  int num1 = 25;
   * using getters and setters, we can set and get values of private properties.
   * ex.
      public class Hello {
-       // "Car" before "Car1" is data type
-       Car car1 = new Car();   // creating object
-       car1.setSpeed(10);
-       System.out.println(car1.getSpeed());
-
-       car1.setDoors("closed");    // set value
-       System.out.println(car1.getDoors());   // closed
-
+        public static void main(String[] args) {
+            // "Car" before "Car1" is data type
+            Car car1 = new Car();   // creating object
+            car1.setSpeed(10);
+            System.out.println(car1.getSpeed());
+     
+            car1.setDoors("closed");    // set value
+            System.out.println(car1.getDoors());   // closed
+     
+            car1.setDriver("closed");
+            car1.setEngine("closed");
+            System.out.println(car1.run());   // "running" 
+        }
      }
      public class Car {
         private int speed;
@@ -281,11 +286,24 @@ ex.  int num1 = 25;
         public String getDoors(){
           return speed;
         }
+
+       // adding functionality into class
+        public String run(){
+           if(doors.equals("closed") && engine.equals("on") && driver.equals("seated") && speed > 0){
+               return "running";
+           } else {
+               return "not running";
+           }
+        }
      }
 
 46) Classes - getters and setters -
   * showed how eclipse IDE set getters and setters for other private properties.
+  
   * showed 1 more example with doors. Added same code in above example.
 
 47) Classes - adding functionality into class -
   * whenever try to compare string, use ".equals("")"
+  * added code in above car example.
+
+48) Constructors introduction -
