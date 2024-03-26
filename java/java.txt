@@ -212,3 +212,13 @@ ex.  int num1 = 25;
 
   * if we have multiple statement in if else block, we can have to keep curly brackets. Otherwise we can face crash.
   
+19) Making decision with operators Part 2 -
+  * showing if else code with comparing 4 and 5, which shows warning about dead code.
+  * If we use variable with value instead value for comparing in if else, will give warning
+
+
+20) Making decision with operators Part 3 -
+  * showing if else code with using logical operator ( "&&" , "||", "!" ) 
+
+21) Ternary Operator -
+  * 
