@@ -79,7 +79,7 @@
 ex.  int num1 = 25;
      string str1 = "sumeet";
 
-8) Understanding varibles -
+8) Understanding variables -
   * when we declare variable without initialize and run application, it will crash bcz of variable without initialization like below -
     int value1;
     System.out.println(value1);
@@ -221,4 +221,71 @@ ex.  int num1 = 25;
   * showing if else code with using logical operator ( "&&" , "||", "!" ) 
 
 21) Ternary Operator -
+  * boolean x = ( 5 > 4 )? true: false
+
+22) Assignment Operators -
+  * boolean val = true;  // assignment operator
+  * x += 5;   // x = x + 5;  
+
+23) Making decision with if else -
+  * use {} with if block. best practice to follow
+  * scope of if and else block is single statement
+  * ex. 
+        if(5 == 5)
+           System.out.println(true);
+        else
+           System.out.println(false);
+  * nested if possible
+  
+
+25) Switch case - Part 1 
   * 
+
+
+
+44) Classes - Introduction -
+  * what is class? - class is template of object. class is blueprint of object.
+  * object is dervived from class. object has states and behaviour. 
+  * ex. car has color, doors, engine. these are properties (states) of car. And driving is functionality (behaviour) of car.
+
+45) Classes - getters and setters introduction -
+  * using access modifiers like "private", we can create private properties. These properties are accessible within current class only.
+  * using getters and setters, we can set and get values of private properties.
+  * ex.
+     public class Hello {
+       // "Car" before "Car1" is data type
+       Car car1 = new Car();   // creating object
+       car1.setSpeed(10);
+       System.out.println(car1.getSpeed());
+
+       car1.setDoors("closed");    // set value
+       System.out.println(car1.getDoors());   // closed
+
+     }
+     public class Car {
+        private int speed;
+        private String engine;
+        private String driver;
+        private String doors;
+
+        public void setSpeed(int speed){
+          this.speed = speed;
+        }
+        public int getSpeed(){
+          return speed;
+        }
+
+        public void setDoors(String doors){
+          this.doors = doors;
+        }
+        public String getDoors(){
+          return speed;
+        }
+     }
+
+46) Classes - getters and setters -
+  * showed how eclipse IDE set getters and setters for other private properties.
+  * showed 1 more example with doors. Added same code in above example.
+
+47) Classes - adding functionality into class -
+  * whenever try to compare string, use ".equals("")"
