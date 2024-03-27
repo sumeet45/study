@@ -268,10 +268,28 @@ ex.  int num1 = 25;
         }
      }
      public class Car {
+
+        // declaration
         private int speed;
         private String engine;
         private String driver;
         private String doors;
+
+        // constructor
+        public Car(){
+           doors = "opened";
+           engine = "off";
+           driver = "absent";
+           speed = 0;
+        }
+
+        // constructor overloading
+        public Car(String doors, String engine, String driver, int speed){
+           this.doors = doors;
+           this.engine = engine;
+           this.driver = driver;
+           this.speed = speed;
+        }
 
         public void setSpeed(int speed){
           this.speed = speed;
@@ -307,3 +325,10 @@ ex.  int num1 = 25;
   * added code in above car example.
 
 48) Constructors introduction -
+  * let's give default value to car properties
+  * class has same name for its constructor. Constructor doesn't return anything.
+  * constructor called automatically. so we can do initialization ( giving default value for properties ) in constructor. declaration of properties should be before constructor.
+  * create another constructor with custom values.
+  * super method is call to constructor of parent class.
+  * if there's constructor more than 1, it called constructor overloading.
+  
