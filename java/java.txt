@@ -380,3 +380,57 @@ ex.  int num1 = 25;
     Process processor = new Processor("intel", "7200", 7, 4, 4, "6MB", "2.5GHz", "2.5GHz", "2.5GHz")
     Laptop lappy = new Laptop(16.5, processor, "DDR4", "2TB", null, "backlit");        // processor pointing to above recently created object.
 
+61) Encapsulation - Part 1 -
+  * Encapsulation - we can easily access and modify value of properties from object. so to restrict, we have to use encapsulation. 
+  * Main use of encapsulation is to give shell to the data which is there in object inside. To hide information from outside of world.
+  * 1) use private modifier
+  * Encapsulate data should not be in direct contact with outer world. Data needs to encapsulated inside the object itself. rather use getter/setter and constructor.
+
+  public class Hello {
+    public static void main(String[] args){
+      Person john = new Person();
+      System.out.println(john);    // john object with default data
+      Person pooja = new Person();
+      System.out.println(pooja);   // pooja object
+      pooja.setAge(-30);
+      System.out.println(pooja);  //  pooja object
+    }
+  }
+
+  public class Person {
+    private String name;
+    private int age;
+    private String gender;
+
+    public Person(){
+      this.name = "XYZ";
+      this.age = 25;
+      this.gender = "male";
+    }
+    public Person(String name, int age, String gender){
+      this.name = name;
+      this.age = age;
+      this.gender = gender;
+    }
+
+    public boolean setAge(int age){
+      if(age >= 0 && age <= 100){
+        this.age = age;
+         return true;
+      }
+      return false;
+    }
+  }
+
+62) Encapsulation - Part 2 -
+  * code is added in above
+
+63) Polymorphism - Part 1 -
+  * shows polymorhism by using parents method, when child doesn't have its own.
+
+64) Polymorphism - Part 2 -
+  * 
+
+66) Interfaces -
+  * using interface, we can apply rules and regulations to our class. so we can create standardized application.
+  * using interface, we can put apply rules about method name and methods return type.
