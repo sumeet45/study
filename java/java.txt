@@ -331,4 +331,52 @@ ex.  int num1 = 25;
   * create another constructor with custom values.
   * super method is call to constructor of parent class.
   * if there's constructor more than 1, it called constructor overloading.
+  * added code in above car example.
+
   
+49) Default constructor -
+  * Java has default constructor. If we add own constructor in class, then java do not add default constructor.
+
+50) Usage of constructor - 
+  * constructor helps to initialize properties of object.
+
+51) Understanding inheritance - 
+  * in Inheritance, there is relationship between child and parent - "is a" relationship
+  * "car is a vehicle"
+  * combinig all common properties in vehicle class. and extend vehicle class with car class using inheritance.
+
+52) Working with inheritance - Part 1 - 
+
+53) Working with inheritance - Part 2 - 
+  * without initialization of property, if we used that property, we will get null as value.
+  * suppose we change access modifier of lights property of vehicle classs to private, then it won't be a direct accessible in bike class. Hence, it will give null pointer exception.
+  * in best practice, we mostly declare properties with private access modifier.
+  * we access parents constructor through super from child constructor.
+
+54) Working with inheritance - Part 3 -
+  * added code in code files
+
+55) Working with inheritance - Part 4 -
+  * added code in code files
+
+56) Working with inheritance - Part 5 -
+  * overriding method by adding method in child. to overriding method, we need same method signature. 
+  * added code in code files
+
+57) Composition -
+  * composition helps to depict real life scenario.
+  * shows computer example in terms of composition.
+  * laptop will have multiple properties like - screen, processor, ram, hardDrive, graphicsCard, opticalDrive, keyboard.
+  * processor and graphicsCard will have more details data, so for them we will create class. And for other, we can use simple data type like string.
+
+58) Composition setting up -
+  * composition will be really helpful than inheritance
+
+59) Working with compotsition- 
+  * showed how to access method from object of object. we can use getters for that, bcz of properties are private.\
+
+60) Adding functionality -
+  * while creating object if we have object in object, we have to create first internal object and then outermost. like below -
+    Process processor = new Processor("intel", "7200", 7, 4, 4, "6MB", "2.5GHz", "2.5GHz", "2.5GHz")
+    Laptop lappy = new Laptop(16.5, processor, "DDR4", "2TB", null, "backlit");        // processor pointing to above recently created object.
+
