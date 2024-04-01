@@ -552,7 +552,8 @@ ex.  int num1 = 25;
   * Local inner class - class inside scope of block ( block might be method as well)
   * Anonymous inner class - nameless class inside of class. it's used once in lifetime.
   * non-static nested class known as inner class, bcz instance is inside instance.
-  * Static nested class - no object creation required for Static nested class. we can directly access elements inside of static class.
+  * Static nested class - A static class is a class that is created inside a class, is called a static nested class in Java. It cannot access non-static data members and methods. It can be accessed by outer class name.
+
 
   71) Local Inner class - 
   * ex.
@@ -591,13 +592,14 @@ ex.  int num1 = 25;
 
   73) Anonymous inner class - 
   * ex.
-      abstract class Lock {
+      public abstract class Lock {
           public abstract boolean isUnlocked(String keycode);
           public void test(){
              System.out.println("test");
           }
       }
       public class Door{
+         // class implementation added after "new Lock()" for anonymous inner class
          Lock lock = new Lock(){
            @override
            public boolean isUnlocked(String keycode){
@@ -616,6 +618,73 @@ ex.  int num1 = 25;
       public class Shop {
         public static void main(String[] args){
            Door door1 = new Door();
-           
+           door1.getLock().test();   //test
+           if(door.getLock().isUnlocked("qwerty")){
+               System.out.println("we are open");  
+           } else {
+               System.out.println("we are close");  
+           }
         }
+      }
+
+
+  74) Advantage of inner class
+  * Better real life depiction
+  * Inner class could be used only by outer class
+  * Easy access, as inner object implicitly available inside outer object
+
+  75) User Input -
+  * to take data, from user we can use Scanner class.
+  * ex.
+       System.out.println("Enter name");
+       Scanner sc = new Scanner(System.in);
+       // String name = sc.nextLine();   // on enter, it will go to directly next sysout operations
+       String name = sc.next();   //will wait till user didn't provide proper name
+       sc.close();  // close operation
+       System.out.println("Hey there "+ name +", have a nice day");
+
+       
+       System.out.println("Enter age");
+       Scanner sc = new Scanner(System.in);
+       int name = sc.nextInt();   //will wait till user didn't provide proper name
+       sc.close();  // close operation
+       System.out.println("age is " + age);
+  
+  76) Static elements -
+  * static variable have independent memory location.
+  * static variable have shared between all object.
+  * we can access static variable directly without creating object.
+  * we can't mark class as static.
+  * ex.
+       public class TestStatic {
+          private static int staticVariable = 0;
+
+          public int getStaticVariable(){
+             return staticVariable;
+          }
+          public static void setStaticVar(int staticVariable){
+             TestStatic.staticVariable = staticVariable;
+          }
+       }
+        void main(){
+          System.out.println("age is " + TestStatic.staticVariable);
+        }
+
+  77) Static inner class -
+  * we can use static with class, when u write that class inside of another class.
+  * true static inner class means everything inside of class is static.
+  * ex.
+      public class Outer {
+        public static class Inner {
+          public static int x = 10;
+          public static void testMethod(){
+             System.out.println("Testing inner class");
+          }
+        }
+      }
+
+      public static void main(String[] args){
+        Outer.Inner.testMethod();           //  Testing inner class
+        System.out.println("x value" + Outer.Inner.x);        // 0
+
       }
