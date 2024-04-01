@@ -434,3 +434,96 @@ ex.  int num1 = 25;
 66) Interfaces -
   * using interface, we can apply rules and regulations to our class. so we can create standardized application.
   * using interface, we can put apply rules about method name and methods return type.
+  * In interface, we will have only declaration.
+  * ex.
+    public interface Phone {
+       public String processor;
+       public String OS;
+       public int spaceInGB;
+    }
+    public class OnePlus5 implements Phone {
+      // implement all methods which is listend in above interface
+    }
+    public class Hello {
+   Phone phone1 = new OnePlus5();  // use "Phone" interface and "OnePlus5" class to create object (  we can use interface as data type of object and still working ), using it, we will create polymorphism example
+     phone1.processor();     
+    }
+  * using it, we can standardized application and apply concept of polymorphism.
+  * here, method signature is important, so we can skip access modifier in interface.
+
+  67) Abstract Class - Introduction -
+  * Interface and Abstract class both provide abstraction. (interface provide only complete abstraction, not implementation. Implementation for interface is done only in class.)
+  * in abstract class, we can have implementation and abstract method also.
+  * abstract keyword with class makes class "a abstract class".
+  * abstract keyword with method makes class "a abstract method".
+  * when classes have "is a" connection, then we have to use "abstract class". And for something else, we can use "Interface".
+  * relationship between class and interface is "can relationship".
+  * to implement multiple inheritance, we have to use "interface"
+  * ex.
+      public class Hello {
+         Person john = new Vegan();
+         john.speak();
+         john.eat();
+         System.out.println("**************");
+         Person mia = new NonVegan();
+         mia.speak();
+         mia.eat();
+      }
+
+     // abstract class can implement interface. we can skip implementation of interface method in abstract class
+      public abstract class Person implements IsAlive, LiveLife {
+         public void speak(){
+             System.out.println("************** check speak");
+         }
+         public abstract void eat();
+         public void breathe(){
+             System.out.println("************** can breathe");       
+         }
+         public void message(){
+             System.out.println("************** can message");       
+         }
+      }
+      public class Vegan extends Person {
+          public void eat(){
+             System.out.println("************** eat vegan");
+          }
+      }
+      public class NonVegan extends Person {
+          public void eat(){
+             System.out.println("************** eat NonVegan");
+          }
+      }
+      public inteface IsAlive {
+          void breathe();
+      }
+      public interface LiveLife {
+          void message();
+      }
+
+68) Multiple inheritance using interfaces -
+  * Multiple inheritance using classes can create ambiguity.
+  * Multiple inheritance with interfaces cannot create any issue. bcz in interfaces, there's no implementation.
+  * code added in above example.
+
+70) Inner classes -
+  * Inner classes have multiple types. But in this video, we will discuss about non static inner class.
+  * Inner classes 
+  * ex.
+        public class Door {
+           private Lock lock;
+           public Door(){
+              
+           }
+           class Lock {
+             private boolean lock;
+             public Lock(boolean lock){
+               this.lock = lock;
+             }
+             public void setLock(boolean lock){
+               this.lock = lock
+             }
+             public boolean getLock(){
+               return this.lock;
+             }
+           }
+        }
