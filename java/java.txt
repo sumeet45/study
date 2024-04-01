@@ -512,9 +512,16 @@ ex.  int num1 = 25;
         public class Door {
            private Lock lock;
            public Door(){
-              
+              this.lock = new Lock(true);
            }
-           class Lock {
+           public void shopStatus(){
+              if(lock.getLock()){
+                 System.out.println("Shop is closed");
+              } else {
+                 System.out.println("Shop is opened");
+              }
+           }
+           public class Lock {
              private boolean lock;
              public Lock(boolean lock){
                this.lock = lock;
@@ -527,3 +534,88 @@ ex.  int num1 = 25;
              }
            }
         }
+
+        public class Shop {
+            public static void main(String[] args){
+               Door door = new Door();
+               door.shopStatus();   // shop is closed
+               door.getLock().setLock(true);    
+               door.shopStatus();    // true
+            }
+        }
+
+
+  70) Types of nested class -
+  * types of nested class - static and non-static 
+  * non-static has 3 types - Member inner class, Local inner class, Anonymouse inner class
+  * member inner class - non-static class inside a non-static class
+  * Local inner class - class inside scope of block ( block might be method as well)
+  * Anonymous inner class - nameless class inside of class. it's used once in lifetime.
+  * non-static nested class known as inner class, bcz instance is inside instance.
+  * Static nested class - no object creation required for Static nested class. we can directly access elements inside of static class.
+
+  71) Local Inner class - 
+  * ex.
+      public class Door {
+         public boolean isLocked(String key){
+            class Lock {                                     // this is hidden from outside world. 
+                public boolean isLocked( String key) {
+                   if(key.equals("qwerty")){
+                     return false;
+                   } else {
+                     return true;
+                   }
+                }
+            }
+            return new Lock().isLocked(key);
+         }
+      }
+      public class Shop {
+        public static void main(String[] args){
+           Door door1 = new Door();
+           System.out.println(door.isLocked("test"));  //true
+           System.out.println(door.isLocked("qwerty"));  //false
+           if(door.isLocked(args[0])){
+              System.out.println("shop is closed");   
+           } else {
+              System.out.println("shop is opened");  
+           }
+        }
+      }
+
+  72) Anonymous object -
+  * when we want to use object once in lifetime, then we can use anonymous object.
+  * In nameless object, we can directly create object and use methods of it without storing in variable.
+  * ex.
+           if(new Door().isLocked(args[0]){      // replace this code in above code
+
+  73) Anonymous inner class - 
+  * ex.
+      abstract class Lock {
+          public abstract boolean isUnlocked(String keycode);
+          public void test(){
+             System.out.println("test");
+          }
+      }
+      public class Door{
+         Lock lock = new Lock(){
+           @override
+           public boolean isUnlocked(String keycode){
+              if(keycode.equals("qwerty")){
+                  return true;
+              } else {
+                  return false;
+              }
+           }
+         };
+        public Lock getLock(){
+           return lock;
+        }
+      }
+
+      public class Shop {
+        public static void main(String[] args){
+           Door door1 = new Door();
+           
+        }
+      }
