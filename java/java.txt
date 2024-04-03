@@ -787,3 +787,69 @@ ex.  int num1 = 25;
   * In exception handling, order is important. Child exceptions should be first before parent exceptions 
 
   90) Finally block -
+  * Finally block will always get printed.
+  * catch block should be placed before finally block.
+
+  91) Throw and throws -
+  * ex. 
+        public static void someMethod(){}
+           
+        }
+
+skip to 94
+
+  94) Enum -
+  * Enum - collection of predefined constants
+  * In java, we must know these following topics - collections, core java, JSP servlets, generics, multithreading
+  * ex. 
+     public enum Learning {
+        COLLECTIONS, COREJAVA, JSPSERVELETS, GENERICS, MULTITHREADING
+     }
+     void main(){
+        Learning learn = Learning.COREJAVA;
+        switch(learn){
+            case COLLECTIONS:
+                System.out.println("Step 2: Collection");
+              break;
+
+            case COREJAVA:
+                System.out.println("Step 2: corejava");
+              break;
+            default:
+                 System.out.println("Step 2: default");
+              break;
+        }
+     }
+
+
+  95) Strings -
+  * while comparing string, use ".equals" method of String
+  * showing Strings methods available in Java
+
+
+  99) Arrays -
+  * array - array is ordered sequence of same data type elements
+
+  100) How to initialize array -
+  * ex. int[] age = {5,6};
+        System.out.println(age);   // will return memory location
+  * ex. int[] ageArray;
+        ageArray = new int[10];
+        ageArray[5] = 3;
+        ageArray[9] = 99;
+        System.out.println(age[5]);   // 3
+        System.out.println(age[9]);   // 99
+        System.out.println(age[7]);   // 0
+  * ex. int[] ageArray = { 1,2,3,4,5 };
+
+
+  101) Foreach loop - 
+  * array has 1 more property called "length"
+
+  102) Methods - call by value and reference -
+  * in call by value - variable is created with new value.
+  * call by reference - only reference pass
+
+  103) Issues with array -
+  * size- array size can't be updated once allocate
+  * arrayList - arrayList is solution for array size and memory issue.
