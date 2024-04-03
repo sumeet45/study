@@ -730,4 +730,60 @@ ex.  int num1 = 25;
        org.studyeasy.platform.Java platform = new org.studyeasy.platform.Java()
 
   83) Scope -
-  * 
+  * scope - variable available for within curly brackets
+  * scope can be of 2 type - local and global
+
+  84) Access Modifier -
+  * Access Modifier - modify the default access of variable or method by provided by java.
+  * private - means it is available within same class. and we won't share entities with outside of world
+  * default - class, method and variables have default modifier. No modifier is treated as default modifier. The default modifier is accessible only within package.
+  * protected - protected modifier is accessible both within and outside the package but through inheritance only.
+  * public - public modifier makes available for everyone.
+
+  85) Access Modifier - part 1 -
+  * access modifier, access specifier, scope modifier and scope spacifier are referred to same
+  * ex.
+      package org.studyeasy.parent;
+      public class A {
+         private int x = 10;   // available within same class
+         int y = 100;
+         public void Demo(){
+           System.out.println(" value of x is " + x);
+         }
+      }
+
+      package org.studyeasy;
+      public class App {
+         public static void main(String[] args){
+           new A().demo();  // value of x is 10
+           int test =  new A().y;     // y have default modifier and class A is in another package. so y won't be accessible. so we need to move class 'A' to  "package org.studyeasy;"
+         }
+      }
+
+  86) Access Modifier - Part 2 -
+  * https://studyeasy.org/java/access-modifier/
+
+  87) Exception Handling -
+  * using try catch we can handle exception.
+  * we can take precaution also before exception appears.
+
+  88) Exception Handling, Multiple catch blocks -
+  * if found exception, then it won't execute that line and send control to catch blocks
+  * can provide mutiple catch blocks. java will decide which catch block should run
+  * ex.
+       void main(){
+          int x;
+          try {
+             x = 10/0;
+          } catch(ArtihmaticException e){
+            System.out.println(" artithmatic exception ");
+          } catch(Exception e){
+            e.printStackTrace();
+            System.out.println(" inside exception ");
+          }
+       }
+
+  89) Exception Handling, Multiple catch blocks - Part 2 -
+  * In exception handling, order is important. Child exceptions should be first before parent exceptions 
+
+  90) Finally block -
