@@ -301,6 +301,9 @@ console.log(c);  //4
 * According to associativity, = function has right to left associativity, so first solve,
 b = c, and assign 4 to b. After that assign 4 to a.
 
+* associativity -
+	right-to-left = exponentiation, assignment and miscellaneous
+
 
 
 
@@ -1297,6 +1300,8 @@ JS Objects -
 [@] unshift()         Adds new elements to the beginning of an array, and returns the new length
 [ ] valueOf()         Returns the primitive value of an array
 
+@ (mutate original array) - unshift, splice, sort, shift, reverse, push, pop, fill, copyWithin
+* (returned new array) - filter, concat, slice
 
 2) Number -
 isFinite()            Checks whether a value is a finite number
