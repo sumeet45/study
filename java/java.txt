@@ -878,7 +878,8 @@ skip to 94
          numbers2.add(25.5);  // possible way 1
          numbers2.add(new Double(25.2));  // possible way 2
          numbers2.add(Double.valueOf(10.3));  // possible way 3 - java implement autoboxing in this way in background
-
+         System.out.println(numbers2.get(0));
+         System.out.println(numbers2.get(0).doubleValue());  // possible way  - java implement unboxing in this way in background
          class intWrapper {
             public int intValue;
             public intWrapper(int intValue){
@@ -895,4 +896,11 @@ skip to 94
          }
 
 
-107) 
+107) Collections framework overview -
+  * Collections have multiple things like set,list, queues, maps and more.
+  * collection is part of java.util package.
+  * Java collections Framework is a collection of interfaces and classes which make it easier for storing and processing collection of objects efficiently
+  * Collection - 
+       List, Queue, Deque, Set -> SortedSet
+       Map -> sortedmap
+  
