@@ -853,3 +853,46 @@ skip to 94
   103) Issues with array -
   * size- array size can't be updated once allocate
   * arrayList - arrayList is solution for array size and memory issue.
+  * code added in code files
+
+
+  105) ArrayList - Part 1 -
+  * ex.  static ArrayList<E>  - it could be arrayList of integers, string.
+  * code added in code files
+
+  106) Autoboxing and unboxing -
+  * ArrayList will have only list of objects only, not primitive one.
+  * so for primitive, we provide equivalent wrapper class for integer.
+  * ex.
+         ArrayList<Integer> numbers = new ArrayList<>();
+         numbers.add(25);    // default autoboxing
+         System.out.println(numbers[0]);   // 25
+  * so wrapper class working based on "autoboxing and unboxing".
+  * we can create custom wrapper class and for that class, we need to manually setup "autoboxing and unboxing"
+  * ex.
+         ArrayList<intWrapper> numbers = new ArrayList<>();
+         numbers.add(new intWrapper(12));  // manual autoboxing
+         System.out.println(numbers.get(0).getIntValue());   // maual unboxing
+
+         ArrayList<Double> numbers2 = new ArrayList<>():
+         numbers2.add(25.5);  // possible way 1
+         numbers2.add(new Double(25.2));  // possible way 2
+         numbers2.add(Double.valueOf(10.3));  // possible way 3 - java implement autoboxing in this way in background
+
+         class intWrapper {
+            public int intValue;
+            public intWrapper(int intValue){
+               this.intValue = intValue;   // in wrapper class, we will have only 1 value
+            }
+
+            public int getIntValue(int intValue){
+               return intValue;
+            }
+
+            public setIntValue(int intValue){
+               this.intValue = intValue;
+            }
+         }
+
+
+107) 
