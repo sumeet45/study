@@ -737,10 +737,84 @@ B) Expressions & operators
 			console.log((2 ** 3) ** 2);		// Expected output: 64
 
 
-	24) Exponentiation assignment (**=)
-	25) function expression
+	24) Exponentiation assignment (**=) -
+		* The exponentiation assignment (**=) operator performs exponentiation on the two operands and assigns the result to the left operand.
+		* x **= y is equivalent to x = x ** y, except that the expression x is only evaluated once.
+		* ex.
+						let a = 3;
+						a **= 2;		// 9
+
+
+	25) function expression -
+		* The function keyword can be used to define a function inside an expression.
+		* ex.
+					const getArea = function(name){ console.log(name, this, arguments);}
+
+		* The main difference between a function expression and a function declaration is the function name, which can be omitted in function expressions to create anonymous functions. A function expression can be used as an IIFE (Immediately Invoked Function Expression) which runs as soon as it is defined.
+		* Function expressions in JavaScript are not hoisted, unlike function declarations. You can't use function expressions before you create them.
+		* Named function expression - by providing a name for a function expression, it becomes a Named Function Expression.
+		* ex.			
+							const math = {
+									factIt: function factorial(n){
+												console.log(n);
+												if(n <= 1){
+													return 1;
+												}
+												return n * factorial(n - 1);
+									}
+							}
+							math.factIt(3);
+		* Using function expression - The following example defines an "unnamed function" and assigns it to x. The function returns the square of its argument:
+				const x = function (y) {
+						return y * y;
+				}
+			
+
+
 	26) function* expression
-	27) Greater than (>)
+	27) Greater than (>) -
+		* The greater than (>) operator returns true if the left operand is greater than the right operand, and false otherwise.
+		* ex. console.log( 5 > 3 );		// true
+		* x > y is generally equivalent to y < x, except that x > y coerces x to a primitive before y, while y < x coerces y to a primitive before x. Because coercion may have side effects, the order of the operands may matter.
+		* String to string comparison -
+				"a" > "b"; // false
+				"a" > "a"; // false
+				"a" > "3"; // true
+		* String to Number comparison -
+				"5" > 3; // true
+				"3" > 3; // false
+				"3" > 5; // false
+				
+				"hello" > 5; // false
+				5 > "hello"; // false
+				
+				"5" > 3n; // true
+				"3" > 5n; // false
+		* Number to number comparison -
+				5 > 3; // true
+				3 > 3; // false
+				3 > 5; // false
+		* Number to BigInt comparison -
+				5n > 3; // true
+				3 > 5n; // false
+		* Comparing Boolean, null, undefined, NaN -
+				true > false; // true
+				false > true; // false
+				
+				true > 0; // true
+				true > 1; // false
+				
+				null > 0; // false
+				1 > null; // true
+				
+				undefined > 3; // false
+				3 > undefined; // false
+				
+				3 > NaN; // false
+				NaN > 3; // false
+
+
+
 	28) Greater than or equal (>=)
 	29) Grouping operator ( )
 	30) import.meta
