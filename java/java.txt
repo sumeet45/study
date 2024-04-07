@@ -903,4 +903,8 @@ skip to 94
   * Collection - 
        List, Queue, Deque, Set -> SortedSet
        Map -> sortedmap
-  
+
+108) ArrayList and Stack overview -
+  * ArrayList Pros - Fast, Easy to access any element from any location
+  * ArrayList Cons - Operations are slow, Tends to use more memory while operating
+  * 
