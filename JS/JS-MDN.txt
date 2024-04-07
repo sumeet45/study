@@ -815,11 +815,35 @@ B) Expressions & operators
 
 
 
-	28) Greater than or equal (>=)
-	29) Grouping operator ( )
+	28) Greater than or equal (>=) -
+		* The greater than or equal (>=) operator returns true if the left operand is greater than or equal to the right operand, and false otherwise.
+		* ex. console.log(5 >= 3);	// true
+		* need to understand in depth
+
+
+	29) Grouping operator ( ) -
+		* The grouping ( ) operator controls the precedence of evaluation in expressions. It also acts as a container for arbitrary expressions in certain syntactic constructs, where ambiguity or syntax errors would otherwise occur.
+		* need to understand in depth
+
+
+
 	30) import.meta
-	31) import()
-	32) in
+	31) import() -
+		* The import() syntax, commonly called dynamic import, is a function-like expression that allows loading an ECMAScript module asynchronously and dynamically into a potentially non-module environment.
+
+
+	32) in -
+		* The in operator returns true if the specified property is in the specified object or its prototype chain.
+		* The in operator cannot be used to search for values in other collections. To test if a certain value exists in an array, use Array.prototype.includes(). For sets, use Set.prototype.has().
+		* const car = { make: 'Honda', model: 'Accord', year: 1998 };
+			console.log('make' in car);		// true
+		* syntax - 
+					prop in object
+					#prop in object
+		* Description -
+				
+
+
 	33) Increment (++)
 	34) Inequality (!=)
 	35) instanceof
