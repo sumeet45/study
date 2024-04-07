@@ -908,3 +908,24 @@ skip to 94
   * ArrayList Pros - Fast, Easy to access any element from any location
   * ArrayList Cons - Operations are slow, Tends to use more memory while operating
   * 
+
+
+------------------------------------------------------------------------------------------------------------------------------
+getters and setters
+constructor
+inheritance - shows inheritance with primitive data type 
+composition - shows inheritance with primitive data type and class type also
+encapsulation
+polymorphism
+interface
+abstract class
+inner classes - static and non static(inner have 3 types)
+final keyword
+package
+scope
+access modifier
+finally block
+enum
+Strings
+Arrays
+ArrayList
