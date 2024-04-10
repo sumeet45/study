@@ -18,9 +18,200 @@ maximillian video (youtube) =
 Jest Coverage link - https://medium.com/steve-cruz/awesome-jest-tip-coverage-report-6f1e303ef07
 
 
+1) Using Matchers -
+  * Common Matchers -
+    * toBe uses Object.is to test exact equality. If you want to check the value of an object, use toEqual. 
+    * toEqual recursively checks every field of an object or array.
+    * ex. test('two plus two is four', () => {
+             expect(2 + 2).toBe(4);
+           });
+      ex. test('object assignment', () => {
+          const data = {one: 1};
+          data['two'] = 2;
+          expect(data).toEqual({one: 1, two: 2});
+        });
+
+  * Truthiness - In tests, you sometimes need to distinguish between undefined, null, and false, but you sometimes do not want to treat these differently. Jest contains helpers that let you be explicit about what you want.
+     toBeNull matches only null
+     toBeUndefined matches only undefined
+     toBeDefined is the opposite of toBeUndefined
+     toBeTruthy matches anything that an if statement treats as true
+     toBeFalsy matches anything that an if statement treats as false
+
+  * Numbers -
+    test('two plus two', () => {
+      const value = 2 + 2;
+      expect(value).toBeGreaterThan(3);
+      expect(value).toBeGreaterThanOrEqual(3.5);
+      expect(value).toBeLessThan(5);
+      expect(value).toBeLessThanOrEqual(4.5);
+    
+      // toBe and toEqual are equivalent for numbers
+      expect(value).toBe(4);
+      expect(value).toEqual(4);
+    });
+
+  * Strings -
+    test('there is no I in team', () => {
+      expect('team').not.toMatch(/I/);
+    });
+    
+    test('but there is a "stop" in Christoph', () => {
+      expect('Christoph').toMatch(/stop/);
+    });
+
+  * Arrays and iterables -
+    * const shoppingList = ['diapers',  'kleenex',  'trash bags',  'paper towels',  'milk',];
+      test('the shopping list has milk on it', () => {
+        expect(shoppingList).toContain('milk');
+        expect(new Set(shoppingList)).toContain('milk');
+      });
+
+  * Exceptions -
+      function compileAndroidCode() {
+        throw new Error('you are using the wrong JDK!');
+      }
+      
+      test('compiling android goes as expected', () => {
+        expect(() => compileAndroidCode()).toThrow();
+        expect(() => compileAndroidCode()).toThrow(Error);
+      
+        // You can also use a string that must be contained in the error message or a regexp
+        expect(() => compileAndroidCode()).toThrow('you are using the wrong JDK');
+        expect(() => compileAndroidCode()).toThrow(/JDK/);
+      
+        // Or you can match an exact error message using a regexp like below
+        expect(() => compileAndroidCode()).toThrow(/^you are using the wrong JDK$/); // Test fails
+        expect(() => compileAndroidCode()).toThrow(/^you are using the wrong JDK!$/); // Test pass
+      });
 
 
-Mock Functions -
+2) Testing Asynchronous Code -
+   * Promises -
+     test('the data is peanut butter', () => {
+        return fetchData().then(data => {
+          expect(data).toBe('peanut butter');
+        });
+      });
+
+   * Async/Await -
+     test('the data is peanut butter', async () => {
+       const data = await fetchData();
+       expect(data).toBe('peanut butter');
+     });
+     
+     test('the fetch fails with an error', async () => {
+       expect.assertions(1);
+       try {
+         await fetchData();
+       } catch (error) {
+         expect(error).toMatch('error');
+       }
+     });
+
+     test('the data is peanut butter', async () => {
+       await expect(fetchData()).resolves.toBe('peanut butter');
+     });
+     
+     test('the fetch fails with an error', async () => {
+       await expect(fetchData()).rejects.toMatch('error');
+     });
+
+    * Callbacks -
+      test('the data is peanut butter', done => {
+         function callback(error, data) {
+           if (error) {
+             done(error);
+             return;
+           }
+           try {
+             expect(data).toBe('peanut butter');
+             done();
+           } catch (error) {
+             done(error);
+           }
+         }
+       
+         fetchData(callback);
+       });
+
+     * .resolves / .rejects -
+        test('the data is peanut butter', () => {
+          return expect(fetchData()).resolves.toBe('peanut butter');
+        });
+        test('the fetch fails with an error', () => {
+          return expect(fetchData()).rejects.toMatch('error');
+        });
+
+3) Setup and Teardown -
+   * Repeating Setup -
+     beforeEach(() => {
+       initializeCityDatabase();
+     });
+     
+     afterEach(() => {
+       clearCityDatabase();
+     });
+
+     * beforeEach and afterEach can handle asynchronous code in the same ways that tests can handle asynchronous code - they can either take a done parameter or return a promise. For example, if initializeCityDatabase() returned a promise that resolved when the database was initialized, we would want to return that promise:
+         beforeEach(() => {
+          return initializeCityDatabase();
+        });
+
+   * One-Time Setup -
+      beforeAll(() => {
+        return initializeCityDatabase();
+      });
+      
+      afterAll(() => {
+        return clearCityDatabase();
+      });
+
+   * Scoping -  The hooks declared inside a describe block apply only to the tests within that describe block.
+       describe('matching cities to foods', () => {
+          // Applies only to tests in this describe block
+          beforeEach(() => {
+            return initializeFoodDatabase();
+          });
+          test('Vienna <3 veal', () => {
+            expect(isValidCityFoodPair('Vienna', 'Wiener Schnitzel')).toBe(true);
+          });
+        });
+
+    * Order of Execution -
+        beforeEach(() => console.log('connection setup'));
+        beforeEach(() => console.log('database setup'));
+        
+        afterEach(() => console.log('database teardown'));
+        afterEach(() => console.log('connection teardown'));
+        
+        test('test 1', () => console.log('test 1'));
+        
+        describe('extra', () => {
+          beforeEach(() => console.log('extra database setup'));
+          afterEach(() => console.log('extra database teardown'));
+        
+          test('test 2', () => console.log('test 2'));
+        });
+        
+        // connection setup
+        // database setup
+        // test 1
+        // database teardown
+        // connection teardown
+        
+        // connection setup
+        // database setup
+        // extra database setup
+        // test 2
+        // extra database teardown
+        // database teardown
+        // connection teardown
+
+    * General Advice -
+
+
+4) Mock Functions -
   * Using a mock function -
       * when we mock function, we will get object within mock property of mock function. All mock functions have this special .mock property, which is where data about how the function has been called and what the function returned is kept. 
       ex. const mockCallback = jest.fn(x => 42 + x);
@@ -99,9 +290,49 @@ Mock Functions -
 
           //test.js
           jest.mock('../foo'); // this happens automatically with automocking
-          const foo = require('../foo');
-          
-          // foo is a mock function
-          foo.mockImplementation(() => 42);
-          foo();
-          // > 42
+          const foo = require('../foo');          
+          foo.mockImplementation(() => 42);           // foo is a mock function
+          foo();          // > 42
+
+        * When you need to recreate a complex behavior of a mock function such that multiple function calls produce different results, use the mockImplementationOnce method:
+          const myMockFn = jest.fn().mockImplementationOnce(cb => cb(null, true)).mockImplementationOnce(cb => cb(null, false));
+         
+          myMockFn((err, val) => console.log(val));         // > true
+          myMockFn((err, val) => console.log(val));         // > false
+        * When the mocked function runs out of implementations defined with mockImplementationOnce, it will execute the default implementation set with jest.fn (if it is defined).
+        * For cases where we have methods that are typically chained (and thus always need to return this), we have a sugary API to simplify this in the form of a .mockReturnThis() function that also sits on all mocks.    
+          const myObj = {
+            myMethod: jest.fn().mockReturnThis(),
+          };          
+          // is the same as
+          const otherObj = {
+            myMethod: jest.fn(function () {
+              return this;
+            }),
+          };
+
+     * Mock Names - You can optionally provide a name for your mock functions, which will be displayed instead of 'jest.fn()' in the test error output. Use .mockName() if you want to be able to quickly identify the mock function reporting an error in your test output.
+           const myMockFn = jest.fn().mockReturnValue('default').mockImplementation(scalar => 42 + scalar).mockName('add42');
+
+
+
+GUIDES -
+1) Snapshot Testing
+   * 
+
+2) An Async Example -
+   * 
+
+3)
+
+4) Manual Mocks -
+   * Mocking user modules -
+     * to mock a module called user in the models directory, create a file called user.js and put it in the models/__mocks__ directory.
+     * The __mocks__ folder is case-sensitive, so naming the directory __MOCKS__ will break on some systems.
+     * When we require that module in our tests (meaning we want to use the manual mock instead of the real implementation), explicitly calling jest.mock('./moduleName') is required.
+
+   * Mocking Node modules -
+     * If the module you are mocking is a Node module (e.g.: lodash), the mock should be placed in the __mocks__ directory adjacent to node_modules (unless you configured roots to point to a folder other than the project root) and will be automatically mocked. There's no need to explicitly call jest.mock('module_name').
+     * Scoped modules (also known as scoped packages) can be mocked by creating a file in a directory structure that matches the name of the scoped module. For example, to mock a scoped module called @scope/project-name, create a file at __mocks__/@scope/project-name.js, creating the @scope/ directory accordingly.
+     * If we want to mock Node's built-in modules (e.g.: fs or path), then explicitly calling e.g. jest.mock('path') is required, because built-in modules are not mocked by default.
+
