@@ -151,6 +151,13 @@ describe("checking an error",  () => {
 //   }
 // }
 
+
+// __mocks__/SoundPlayer.js
+// const mock = jest.fn().mockImplementation(() => {
+//     return {playSoundFile: jest.fn()}
+// })
+// export default mock;
+
 // ----------------------------------------------------------------------------------------------
 
 
