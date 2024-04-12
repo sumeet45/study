@@ -841,10 +841,51 @@ B) Expressions & operators
 					prop in object
 					#prop in object
 		* Description -
-				
+			* If you want to check for only non-inherited properties, use Object.hasOwn() instead.
+		* ex.
+			// Arrays
+			const trees = ["redwood", "bay", "cedar", "oak", "maple"];
+			0 in trees; // returns true
+			3 in trees; // returns true
+			6 in trees; // returns false
+			"bay" in trees; // returns false (you must specify the index number, not the value at that index)
+			"length" in trees; // returns true (length is an Array property)
+			Symbol.iterator in trees; // returns true
+			
+			// Predefined objects
+			"PI" in Math; // returns true
+			
+			// Custom objects
+			const mycar = { make: "Honda", model: "Accord", year: 1998 };
+			"make" in mycar; // returns true
+			"model" in mycar; // returns true
+
+			const color1 = new String("green");
+			"length" in color1; // returns true
+			
+			const color2 = "coral";			// generates an error (color2 is not a String object)
+			"length" in color2;
+
+		* Using the in operator with deleted or undefined properties -
+			const mycar = { make: "Honda", model: "Accord", year: 1998 };
+			delete mycar.make;
+			"make" in mycar; // returns false
+			
+			const trees = ["redwood", "bay", "cedar", "oak", "maple"];
+			delete trees[3];
+			3 in trees; // returns false
+		  If you set a property to undefined but do not delete it, the in operator returns true for that property.
+
+		* need to look at more example
 
 
-	33) Increment (++)
+
+
+	33) Increment (++) -
+		* The increment (++) operator increments (adds one to) its operand and returns the value before or after the increment, depending on where the operator is placed.
+		
+
+
 	34) Inequality (!=)
 	35) instanceof
 	36) Left shift (<<)
