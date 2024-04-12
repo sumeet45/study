@@ -1,0 +1,179 @@
+import SoundPlayer from "../src/SoundPlayer";
+import SoundPlayerConsumer from "../src/SoundPlayerConsumer";
+// import CheckAge from "./../src/SoundBar"
+
+// "jest.requireActual" can use for in some scenarios where we require actual implementation
+// const {Response} = jest.requireActual('node-fetch'); 
+
+
+// jest.mock used for mocking whole module, whereas jest.fn() will use for specific function mocking
+
+
+// jest.mock("../src/SoundPlayer"); //automatic mock
+
+
+// to mock a module called user in the models directory, create a file called user.js and put it in the models/__mocks__ directory.
+// jest.mock('./moduleName') is required
+jest.mock("../src/SoundPlayer");    //manual mock file available in (__mocks__)
+
+
+// jest.mock("../src/SoundBar");
+
+
+// mocking node_modules
+// the mock should be placed in the __mocks__ directory adjacent to node_modules. There's no need to explicitly call jest.mock('module_name')
+
+
+// "Calling jest.mock() with the module factory parameter" && "Spying on the constructor" && "Spying on methods of our class"
+// reason = In order to track calls to the constructor, replace the function returned by the HOF with a Jest mock function.
+// jest.mock("../src/SoundPlayer", () => {
+//     return jest.fn().mockImplementation(() => {
+//         return { playSoundFile: jest.fn() }
+//     })
+// })
+
+
+// Replacing the mock using mockImplementation() or mockImplementationOnce()
+// jest.mock("../src/SoundPlayer");
+
+
+// Manual mock that is another ES6 class
+// export default class SoundPlayer {
+//     constructor() {
+//       console.log('Mock SoundPlayer: constructor was called');
+//     }
+
+
+//     playSoundFile() {
+//       console.log('Mock SoundPlayer: playSoundFile was called');
+//     }
+//   }
+
+
+// Mock using module factory parameter
+// The module factory function passed to jest.mock(path, moduleFactory) can be a HOF that returns a function*. This will allow calling new on the mock. Again, this allows you to inject different behavior for testing, but does not provide a way to spy on calls.
+    // Module factory function must return a function
+    // jest.mock('../src/SoundPlayer', () => {
+    //     return function () {
+    //       return {playSoundFile: () => {}};
+    //     };
+    //   });
+
+
+// Mocking a specific method of a class
+// const playSoundFileMock = jest.spyOn(SoundPlayer.prototype, "playSoundFile").mockImplementation(() => { console.log("mock function")})
+
+
+// Static, getter and setter methods
+// const staticMethodMock = jest.spyOn(SoundPlayer, "brand").mockImplementation(() => "some-mocked-res")
+// const getterMethodMock = jest.spyOn(SoundPlayer, "foo", "get").mockImplementation(() => "some-mocked-res1")
+
+
+// Mocking non-default class exports
+// jest.mock('./SoundPlayer', () => {
+//   // Works and lets you check for constructor calls:
+//   return {
+//     SoundPlayer: jest.fn().mockImplementation(() => {
+//       return {playSoundFile: () => {}};
+//     }),
+//   };
+// });
+
+
+describe("checking an error",  () => {
+
+// Replacing the mock using mockImplementation() or mockImplementationOnce()
+    // beforeAll(() => {
+    //     SoundPlayer.mockImplementation(() => {
+    //         return {
+    //             playSoundFile: () => {
+    //                 throw new error("Test Error")
+    //             }
+    //         }
+    //     })
+    // })
+
+
+    it('We can check if the consumer called the class constructor', () => {
+        expect(SoundPlayer).not.toHaveBeenCalled();
+        const soundPlayerConsumer = new SoundPlayerConsumer();
+        expect(SoundPlayer).toHaveBeenCalledTimes(1);
+
+        // let str = CheckAge();
+        // console.log("check",jest.isMockFunction(CheckAge));
+        // expect(CheckAge).toHaveBeenCalled();
+        // expect(str).not.toBe("check age");
+
+        // Static, getter and setter methods
+        // const foo = player.foo;
+        // const brand = SoundPlayer.brand();
+        // expect(staticMethodMock).toHaveBeenCalled();
+        // expect(getterMethodMock).toHaveBeenCalled();
+        
+      });
+})
+
+// ----------------------------------------------------------------------------------
+// SoundBar.js
+// function CheckAge(){
+//     return "check age"
+// }
+// export default CheckAge
+
+
+// SoundPlayer.js
+// export default class SoundPlayer {
+//     constructor() {
+//       this.foo = 'bar';
+//     }
+//     playSoundFile(fileName) {
+//       console.log('Playing sound file ' + fileName);
+//     }
+//     get foo(){
+//       return "Foo";
+//     }
+//     static brand(){
+//       return "player-brand";
+//     }
+// }
+
+
+// SoundPlayerConsumer
+// import SoundPlayer from './SoundPlayer';
+// export default class SoundPlayerConsumer {
+//   constructor() {
+//     this.soundPlayer = new SoundPlayer();
+//   }
+
+//   playSomethingCool() {
+//     const coolSoundFileName = 'song.mp3';
+//     this.soundPlayer.playSoundFile(coolSoundFileName);
+//   }
+// }
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Before Mocking - 
+// Mock Module - jest.mock
+// Mock functions - jest.fn
+// fakeTimers - jest.runAllTicks
+
+
+// After Mocking (mock function will give mock obj)-
+// Mock Functions - MockFn.mock.calls
+
+
+// Matcher -
+// expect - expect(value)
+// Modifiers - .not, .resolves, .rejects
+// Matchers - expect().toBe(), expect().toHaveBeenCalled(), expect().toBeFalsy()
+// Asymmetric Matcher - expect.anything(), expect().any()
+// Assertion count - expect.assertions(number)
+// Extend utilities - expect.addEqualityTesters(testers)
+
+// Jest CLI Options
+
+// Configuring Jest
+
+// Globals - afterAll(), afterEach(), describe(), test()
