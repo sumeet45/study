@@ -883,7 +883,7 @@ B) Expressions & operators
 
 	33) Increment (++) -
 		* The increment (++) operator increments (adds one to) its operand and returns the value before or after the increment, depending on where the operator is placed.
-		
+		* 
 
 
 	34) Inequality (!=)
