@@ -930,20 +930,119 @@ B) Expressions & operators
 		
 	35) instanceof -
 		* The instanceof operator tests to see if the prototype property of a constructor appears anywhere in the prototype chain of an object. The return value is a boolean value. Its behavior can be customized with Symbol.hasInstance.
+		* ex.
+			function Car(make, model, year) {
+			  this.make = make;
+			  this.model = model;
+			  this.year = year;
+			}
+			const auto = new Car('Honda', 'Accord', 1998);
+			
+			console.log(auto instanceof Car);
+			// Expected output: true
+			
+			console.log(auto instanceof Object);
+			// Expected output: true
+
+		* ex. 	// defining constructors
+			function C() {}
+			function D() {}
+			
+			const o = new C();
+			
+			// true, because: Object.getPrototypeOf(o) === C.prototype
+			o instanceof C;
+			
+			// false, because D.prototype is nowhere in o's prototype chain
+			o instanceof D;
+			
+			o instanceof Object; // true, because:
+			C.prototype instanceof Object; // true
+			
+			// Re-assign `constructor.prototype`: you should
+			// rarely do this in practice.
+			C.prototype = {};
+			const o2 = new C();
+			
+			o2 instanceof C; // true
+			
+			// false, because C.prototype is nowhere in
+			// o's prototype chain anymore
+			o instanceof C;
+			
+			D.prototype = new C(); // add C to [[Prototype]] linkage of D
+			const o3 = new D();
+			o3 instanceof D; // true
+			o3 instanceof C; // true since C.prototype is now in o3's prototype chain
+
+		* Note that the value of an instanceof test can change if constructor.prototype is re-assigned after creating the object (which is usually discouraged). It can also be changed by changing object's prototype using Object.setPrototypeOf.
 
 
-	36) Left shift (<<)
+	36) Left shift (<<) -
+		* The left shift (<<) operator returns a number or BigInt whose binary representation is the first operand shifted by the specified number of bits to the left. Excess bits shifted off to the left are discarded, and zero bits are shifted in from the right.
+		* will see later
+
+
 	37) Left shift assignment (<<=)
-	38) Less than (<)
-	39) Less than or equal (<=)
-	40) Logical AND (&&)
+		* The left shift assignment (<<=) operator performs left shift on the two operands and assigns the result to the left operand.
+		* let a = 5; 		// 00000000000000000000000000000101
+		a <<= 2; // 20		// 00000000000000000000000000010100
+		
+		let b = 5n;
+		b <<= 2n; // 20n
+
+
+	38) Less than (<) - 
+		* The less than (<) operator returns true if the left operand is less than the right operand, and false otherwise.
+		* ex. 	
+			console.log(5 < 3); 			// Expected output: false
+			console.log(3 < 3);			// Expected output: false
+			
+			// Compare bigint to number
+			console.log(3n < 5);			// Expected output: true
+			console.log('aa' < 'ab');		// Expected output: true
+		*  need to understand in depth
+
+
+	39) Less than or equal (<=) -
+		* The less than or equal (<=) operator returns true if the left operand is less than or equal to the right operand, and false otherwise.
+		* ex.
+			console.log(5 <= 3);			// Expected output: false
+			console.log(3 <= 3);			// Expected output: true
+			
+			// Compare bigint to number
+			console.log(3n <= 5);			// Expected output: true
+			console.log('aa' <= 'ab');		// Expected output: true
+		*  need to understand in depth
+
+
+	40) Logical AND (&&) -
+		* The logical AND (&&) (logical conjunction) operator for a set of boolean operands will be true if and only if all the operands are true. Otherwise it will be false.
+		* ex. 
+			const a = 3;
+			const b = -2;
+			
+			console.log(a > 0 && b > 0);		// Expected output: false
+
+		*  need to understand in depth
+
 	41) Logical AND assignment (&&=)
 	42) Logical NOT (!)
 	43) Logical OR (||)
 	44) Logical OR assignment (||=)
 	45) Multiplication (*)
 	46) Multiplication assignment (*=)
-	47) new
+	47) new	-
+		* The new operator lets developers create an instance of a user-defined object type or of one of the built-in object types that has a constructor function.
+		* function Car(make, model, year) {
+			  this.make = make;
+			  this.model = model;
+			  this.year = year;
+		   }
+		   const car1 = new Car('Eagle', 'Talon TSi', 1993);			
+		   console.log(car1.make);	// Expected output: "Eagle"
+
+
 	48) new.target
 	49) null
 	50) Nullish coalescing assignment (??=)
