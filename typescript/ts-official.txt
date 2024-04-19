@@ -321,6 +321,73 @@ Typescript Official Site -
                           function fn(ctor: SomeConstructor) {
                               return new ctor("hello");
                           }
+            * ex.
+                    interface CallOrConstruct {
+                      (n?: number): string;
+                       new (s: string ): Date;
+                    }
+
+         * Generic Functions -
+             * generics are used when we want to describe a correspondence between two values. We do this by declaring a type parameter in the function signature
+             * ex.
+                    function firstElement<Type>(arr: Type[]): Type | undefined {
+                       return arr[0];
+                    }
+
+         * Constraints -
+             * We’ve written some generic functions that can work on any kind of value. Sometimes we want to relate two values, but can only operate on a certain subset of values. In this case, we can use a constraint to limit the kinds of types that a type parameter can accept.
+             * Let’s write a function that returns the longer of two values. To do this, we need a length property that’s a number. We constrain the type parameter to that type by writing an extends clause:
+             * ex.
+                   function longest <Type extends { length: number }>(a: Type, b: Type): Type {
+                     return (a.length >= b.length)? a: b;
+                   }
+               
+               const longerArray = longest([1, 2], [1, 2, 3]);   // longerArray is of type 'number[]'
+               const longerString = longest("alice", "bob");               // longerString is of type 'alice' | 'bob'
+               const notOK = longest(10, 100);               // Error! Numbers don't have a 'length' property
+
+          * Specifying Type Arguments -
+               * TypeScript can usually infer the intended type arguments in a generic call, but not always. For example, let’s say you wrote a function to combine two arrays:
+                   function combine<Type>(arr1: Type[], arr2: Type[]): Type[] {
+                     return arr1.concat(arr2);
+                   }
+                   const arr = combine([1, 2, 3], ["hello"]);     //Type 'string' is not assignable to type 'number'.
+               * so for this, we can write like following -
+                      const arr = combine<string | number>([1, 2, 3], ["hello"]);     //possible way
+
+          * Guidelines for Writing Good Generic Functions -
+              * Push Type Parameters Down - push type parameters down refers to the practice of passing type parameters to functions and type constructors as arguments, rather than constraining them. This can help to improve the type safety and readability of your code.
+                  check again
+              * Use Fewer Type Parameters - check again
+              * Type Parameters Should Appear Twice -check again
+
+          * Optional Parameters - we can make parameter as optional.
+                 function f(x?: number) {}
+
+          * Optional Parameters in Callbacks - 
+                 * Rule: When writing a function type for a callback, never write an optional parameter unless you intend to call the function without passing that argument
+
+          * Function Overloads -
+                * we can specify a function that can be called in different ways by writing overload signatures. 
+                * To do this, write some number of function signatures (usually two or more), followed by the body of the function
+                * In this example, we wrote two overloads: one accepting one argument, and another accepting three arguments. These first two signatures are called the overload signatures.
+                * ex.
+                     function makeDate(timestamp: number): Date;
+                     function makeDate(m: number, d: number, y: number): Date;
+                     function makeDate(mOrTimestamp: number, d?: number, y?: number): Date {
+                       if (d !== undefined && y !== undefined) {
+                         return new Date(y, mOrTimestamp, d);
+                       } else {
+                         return new Date(mOrTimestamp);
+                       }
+                     }
+                     const d1 = makeDate(12345678);
+                     const d2 = makeDate(5, 5, 5);
+                     const d3 = makeDate(1, 3);
+
+           * Overload Signatures and the Implementation Signature -
+
+                 
 
    * you usually don’t need type annotation because TypeScript will infer type at its own
    * 
