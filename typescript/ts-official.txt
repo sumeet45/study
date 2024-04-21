@@ -386,6 +386,161 @@ Typescript Official Site -
                      const d3 = makeDate(1, 3);
 
            * Overload Signatures and the Implementation Signature -
+              check again
+
+           * Writing Good Overloads - check again
+
+           * Declaring this in a Function - 
+               * The JavaScript specification states that you cannot have a parameter called this, and so TypeScript uses that syntax space to let you declare the type for this in the function body.
+               check again
+
+           * Other Types to Know About -
+               * void -
+                   * void represents the return value of functions which don’t return a value. It’s the inferred type any time a function doesn’t have any return statements, or doesn’t return any explicit value from those return statements.
+                        function noop() {
+                          return;
+                        }
+                    * However, void and undefined are not the same thing in TypeScript
+
+              * object -
+                   * The special type object refers to any value that isn’t a primitive
+                   * This is different from the empty object type { }, and also different from the global type Object. It’s very likely you will never use Object
+                   * object is not Object. Always use object!
+
+              * unknown -
+                   * The unknown type represents any value.
+                   * This is similar to the any type, but is safer because it’s not legal to do anything with an unknown value.
+                      function f2(a: unknown) {
+                        a.b();     //'a' is of type 'unknown'.
+                      }
+
+              * never - Some functions never return a value. 
+                   * The never type represents values which are never observed. In a return type, this means that the function throws an exception or terminates execution of the program.
+                     function fail(msg: string): never {
+                       throw new Error(msg);
+                     }
+             * Function -
+                * The global type Function describes properties like bind, call, apply, and others present on all function values in JavaScript. It also has the special property that values of type Function can always be called; these calls return any.
+
+             * Rest Parameters and Arguments -
+                 * Rest Parameters - A rest parameter appears after all other parameters, and uses the ... syntax.
+                 * Rest Arguments - 
+
+             * Parameter Destructuring - 
+                    * You can use parameter destructuring to conveniently unpack objects provided as an argument into one or more local variables in the function body. In JavaScript, it looks like this.
+                    function sum({ a, b, c }) {
+                      console.log(a + b + c);
+                    }
+                    sum({ a: 10, b: 3, c: 9 });
+
+              * Assignability of Functions -
+                    * Return type void
+
+
+5) Object Types -
+      * In JavaScript, the fundamental way that we group and pass around data is through objects. In TypeScript, we represent those through object types.
+      * they can be anonymous or they can be named by using either an interface
+      * cheatsheet - https://www.typescriptlang.org/cheatsheets
+
+      * Property Modifiers -
+          * Each property in an object type can specify a couple of things: the type, whether the property is optional, and whether the property can be written to.
+          * Optional Properties - we can mark properties as optional by adding a question mark (?) to the end of their names. Here, they mention about - " TS tell us that, parameter might be undefined, if they didn't set  with default value for optional property". and "we can set default value".
+
+      * readonly Properties - 
+            * Properties can also be marked as readonly for TypeScript. While it won’t change any behavior at runtime, a property marked as readonly can’t be written to during type-checking.
+          ex.
+              interface SomeType {
+                readonly prop: string;
+              }
+               
+              function doSomething(obj: SomeType) {
+                console.log(`prop has the value '${obj.prop}'.`);    // We can read from 'obj.prop'.
+                obj.prop = "hello";                // But we can't re-assign it.  Cannot assign to 'prop' because it is a read-only property.
+              }
+
+            * we cannot update the property itself. but we can update value of properties which is inside of given property.
+      * Index Signatures - 
+            * Sometimes you don’t know all the names of a type’s properties ahead of time, but you do know the shape of the values.
+             ex.   interface StringArray {
+                      [index: number]: string | number;
+                    }
+                   const myArray: StringArray = getStringArray();
+                   const secondItem = myArray[1];
+                   
+             * Only some types are allowed for index signature properties: string, number, symbol, template string patterns, and union types consisting only of these.
+             * properties of different types are acceptable if the index signature is a union of the property types
+             * you can make index signatures readonly in order to prevent assignment to their indices.
+                    interface ReadonlyStringArray {
+                      readonly [index: number]: string;
+                    }
+                    let myArray: ReadonlyStringArray = getReadOnlyStringArray();
+                    myArray[2] = "Mallory";          //Index signature in type 'ReadonlyStringArray' only permits reading.
+
+
+      * Excess Property Checks - 
+           * Where and how an object is assigned a type can make a difference in the type system. One of the key examples of this is in excess property checking, which validates the object more thoroughly when it is created and assigned to an object type during creation.
+               interface SquareConfig {
+                 color?: string;
+                 width?: number;
+               }
+               function createSquare(config: SquareConfig): { color: string; area: number } {
+                 return {
+                   color: config.color || "red",
+                   area: config.width ? config.width * config.width : 20,
+                 };
+               }
+               let mySquare = createSquare({ colour: "red", width: 100 });  // Object literal may only specify known properties, but 'colour' does not exist in type 'SquareConfig'. Did you mean to write 'color'?
+           * Object literals get special treatment and undergo excess property checking when assigning them to other variables, or passing them as arguments. 
+           * If an object literal has any properties that the “target type” doesn’t have, you’ll get an error: - 
+                   let mySquare = createSquare({ colour: "red", width: 100 }); 
+                   // Object literal may only specify known properties, but 'colour' does not exist in type 'SquareConfig'. Did you mean to write 'color'?
+
+      * Extending Types -
+            * interface Colorful {
+                color: string;
+              }
+              interface Circle {
+                radius: number;
+              }
+              interface ColorfulCircle extends Colorful, Circle {}
+              const cc: ColorfulCircle = {
+                color: "red",
+                radius: 42,
+              };
+
+      * Intersection Types - 
+            * interfaces allowed us to build up new types from other types by extending them. TypeScript provides another construct called intersection types that is mainly used to combine existing object types.
+            * An intersection type is defined using the & operator.
+            interface Colorful {
+              color: string;
+            }
+            interface Circle {
+              radius: number;
+            }
+             
+            type ColorfulCircle = Colorful & Circle;
+
+     * Interfaces vs. Intersections -
+          * We just looked at two ways to combine types which are similar, but are actually subtly different. With interfaces, we could use an extends clause to extend from other types, and we were able to do something similar with intersections and name the result with a type alias. The principal difference between the two is how conflicts are handled, and that difference is typically one of the main reasons why you’d pick one over the other between an interface and a type alias of an intersection type.
+
+     * Generic Object Types -
+         interface Box<Type> {
+            contents: Type
+         }
+         * Think of Box as a template for a real type, where Type is a placeholder that will get replaced with some other type.
+         * When TypeScript sees Box<string>, it will replace every instance of Type in Box<Type> with string, and end up working with something like { contents: string }
+         * means that we can avoid overloads entirely by instead using generic functions.
+            function setContents<Type>(box: Box<Type>, newContents: Type) {
+             box.contents = newContents;
+           }
+         * using a type alias -
+              type Box<Type> = {
+                 contents: Type;
+               };
+
+
+
+                    
 
                  
 
