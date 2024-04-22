@@ -604,9 +604,37 @@ Typescript Official Site -
                      console.log(arg.length); // Now we know it has a .length property, so no more error
                      return arg;
                    }
+                  // loggingIdentity(3);    //Error - Argument of type 'number' is not assignable to parameter of type 'Lengthwise'.
 
 
+        * Using Type Parameters in Generic Constraints -
+              * You can declare a type parameter that is constrained by another type parameter. For example, here we’d like to get a property from an object given its name. We’d like to ensure that we’re not accidentally grabbing a property that does not exist on the obj, so we’ll place a constraint between the two types.
+              * ex.
+                    function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
+                     return obj[key];
+                   }
+                   let x = { a: 1, b: 2, c: 3, d: 4 };
+                   getProperty(x, "a");
+                   getProperty(x, "m");                  // Argument of type '"m"' is not assignable to parameter of type '"a" | "b" | "c" | "d"'.
 
+
+         * Using Class Types in Generics -
+               * function create<Type>(c: { new (): Type }): Type {
+                   return new c();
+                 }
+
+         * Generic Parameter Defaults -
+                check again
+
+
+   * Keyof Type Operator -
+         * The keyof type operator - 
+              * The keyof operator takes an object type and produces a string or numeric literal union of its keys. The following type P is the same type as type P = "x" | "y":
+                type Point = { x: number; y: number };
+                type P = keyof Point;      // keyof point will represent "x" or "y"
+                let d: P = "x";    // "x" or "y"
+
+   * 
 
 
 
