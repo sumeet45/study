@@ -538,11 +538,81 @@ Typescript Official Site -
                  contents: Type;
                };
 
+         * Since type aliases, unlike interfaces, can describe more than just object types, we can also use them to write other kinds of generic helper types.
+
+      * The Array Type -
+          * Whenever we write out types like number[] or string[], that’s really just a shorthand for Array<number> and Array<string>.
+
+      * The ReadonlyArray Type -
+           * The ReadonlyArray is a special type that describes arrays that shouldn’t be changed.
+           * Unlike Array, there isn’t a ReadonlyArray constructor that we can use.
+           * Just as TypeScript provides a shorthand syntax for Array<Type> with Type[], it also provides a shorthand syntax for ReadonlyArray<Type> with readonly Type[].
+           * ex. values: readonly string[]
 
 
-                    
+      * Tuple Types -
+           * A tuple type is another sort of Array type that knows exactly how many elements it contains, and exactly which types it contains at specific positions.
+           * type StringNumberPair = [string, number];
 
-                 
+      * readonly Tuple Types -
+           * function doSomething(pair: readonly [string, number]) { // ... }
+
+
+* Type Manipulation -
+      * Generics -
+            * function identity<Type>(arg: Type): Type {
+                return arg;
+              }
+              let output = identity<string>("myString");  
+              let output = identity("myString");
+
+            * Working with Generic Type Variables -
+                   function loggingIdentity<Type>(arg: Array<Type>): Array<Type> {
+                     console.log(arg.length); // Array has a .length, so no more error
+                     return arg;
+                   }
+                    OR
+                   function loggingIdentity<Type>(arg: Type[]): Type[] {
+                     console.log(arg.length);
+                     return arg;
+                   }
+             * check in detail
+
+       * Generic Classes -
+             * A generic class has a similar shape to a generic interface. Generic classes have a generic type parameter list in angle brackets (<>) following the name of the class.
+             * ex. 
+                      class GenericNumber<NumType> {
+                         zeroValue: NumType;
+                         add: (x: NumType, y: NumType) => NumType
+                      }
+                      let myNum = new GenericNumber<number>();
+                      // let stringNumeric = new GenericNumber<string>();    // for string
+                      myNum.zeroValue = 0;
+                      myNum.add = function( x, y ) => {
+                                return x + y;
+                      }
+              * As we cover in our section on classes, a class has two sides to its type: the static side and the instance side. Generic classes are only generic over their instance side rather than their static side, so when working with classes, static members can not use the class’s type parameter.
+
+
+         * Generic Constraints -
+              * working with any and all types, we’d like to constrain this function to work with any and all types that also  have the .length property
+              * ex.
+                   interface Lengthwise {
+                     length: number;
+                   }
+                   function loggingIdentity<Type extends Lengthwise>(arg: Type): Type {
+                     console.log(arg.length); // Now we know it has a .length property, so no more error
+                     return arg;
+                   }
+
+
+
+
+
+
+
+
+
 
    * you usually don’t need type annotation because TypeScript will infer type at its own
    * 
