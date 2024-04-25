@@ -1179,6 +1179,17 @@ C) Statements & declarations
 	27) while
 	28) with
 
+D) Functions -
+	* a function is a "subprogram" that can be called by code external (or internal, in the case of recursion) to the function.
+	* a function is composed of a sequence of statements called the function body.
+	* Values can be passed to a function as parameters, and the function will return a value.
+	* functions are first-class objects, because they can be passed to other functions, returned from functions, and assigned to variables and properties.
+	* They can also have properties and methods just like any other object.
+
+	* Description -
+		* Function values are typically instances of Function
+
+E) Classes
 
 D) Regular Expressions 
 	1) Backreference: \1, \2
