@@ -423,16 +423,92 @@ D) UI & Interaction -
 
 	3) Layout with Flexbox -
 		* read from official docs
-		* A component can specify the layout of its children using the Flexbox algorithm. Flexbox is designed to provide a consistent layout on different screen sizes.
-		* You will normally use a combination of flexDirection, alignItems, and justifyContent to achieve the right layout.
-		* Flex -
-			* flex will define how your items are going to “fill” over the available space along your main axis. Space will be divided according to each element's flex property.
-		* Flex Direction -
-			* flexDirection controls the direction in which the children of a node are laid out. This is also referred to as the main axis. The cross axis is the axis perpendicular to the main axis, or the axis which the wrapping lines are laid out in.
-		* Layout Direction
-		* Justify Content - 
-		* Align Items -
-	
+		
+
+	4) Images -
+		* Static Image Resources -
+			* The image name is resolved the same way JS modules are resolved. ex. <Image source={require('./my-icon.png')} />
+			* You can use the @2x and @3x suffixes to provide images for different screen densities.
+			* On Windows, you might need to restart the bundler if you add new images to your project.
+
+			* Here are some benefits that you get:
+				1) Same system on Android and iOS.
+				2) Images live in the same folder as your JavaScript code. Components are self-contained.
+				3) No global namespace, i.e. you don't have to worry about name collisions.
+				4) Only the images that are actually used will be packaged into your app.
+				5) Adding and changing images doesn't require app recompilation, you can refresh the simulator as you normally do.
+				6) The bundler knows the image dimensions, no need to duplicate it in the code.
+				7) Images can be distributed via npm packages.
+
+		* Static Non-Image Resources -
+			* The require syntax described above can be used to statically include audio, video or document files in your project as well. Most common file types are supported including .mp3, .wav, .mp4, .mov, .html and .pdf. See bundler defaults for the full list.
+			* You can add support for other types by adding an assetExts resolver option in your Metro configuration.
+
+		* Images From Hybrid App's Resources -
+			* <Image  source={{uri: 'app_icon'}} style={{width: 40, height: 40}} /> for ios
+			* <Image  source={{uri: 'asset:/app_icon.png'}} style={{width: 40, height: 40}} /> for android
+
+		* Network Images - <Image source={{uri: 'https://reactjs.org/logo-og.png'}} style={{width: 400, height: 400}} />
+		* Network Requests for Images -
+					<Image
+					  source={{
+					    uri: 'https://reactjs.org/logo-og.png',
+					    method: 'POST',
+					    headers: {
+					      Pragma: 'no-cache',
+					    },
+					    body: 'Your Body goes here',
+					  }}
+					  style={{width: 400, height: 400}}
+					/>
+		* URI Data Images - 
+			// include at least width and height!
+			<Image
+			  style={{
+			    width: 51,
+			    height: 51,
+			    resizeMode: 'contain',
+			  }}
+			  source={{
+			    uri: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==',
+			  }}
+			/>
+
+		* Cache Control (iOS Only) -
+			* In some cases you might only want to display an image if it is already in the local cache, i.e. a low resolution placeholder until a higher resolution is available. In other cases you do not care if the image is outdated and are willing to display an outdated image to save bandwidth. The cache source property gives you control over how the network layer interacts with the cache.
+			* ... cache: 'only-if-cached',
+
+		* remaining take from official site
+
+
+	5) Color Reference -
+		* Components in React Native are styled using JavaScript. Color properties usually match how CSS works on the web.
+		* Color APIs - React Native has several color APIs designed to allow you to take full advantage of your platform's design and user preferences.
+			* PlatformColor lets you reference the platform's color system.
+			* DynamicColorIOS is iOS specific
+		* remaining take from official site
+
+	6) Handling Touches -
+		* read from official docs
+
+	7) Navigating Between Screens -
+		* use react-navigation
+
+	8) Animations
+
+	9) Gesture Responder System -
+		* read from official docs
+
+	10) Networking -
+		* read from official docs
+		* Using Fetch - React Native provides the Fetch API for your networking needs.
+		* WebSocket Support - React Native also supports WebSockets
+
+	11) Security -
+		* read from official docs
+		* Storing Sensitive Info -
+			* Tools like react-native-dotenv and react-native-config are great for adding environment-specific variables like API endpoints.
+		* Async Storage - Async Storage is a community-maintained module for React Native that provides an asynchronous, unencrypted, key-value store.
 
 
 3) Debugging -
