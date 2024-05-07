@@ -1123,14 +1123,47 @@ C) Statements & declarations
 			console.log(p === basicReturn()); // true
 			console.log(p === asyncReturn()); // false
 
-		* check "Async functions and execution order"
+		* check "Async functions and execution order" in mdn
 
 		* In situations like following - promise.all or promise.allSettled, don't use async await. 
 
 
 
-	2) async function*
-	3) block
+	2) async function* -
+		* The async function* declaration creates a binding of a new async generator function to a given name.
+		* check "async function" in mdn
+
+	3) block -
+		* A block statement is used to group zero or more statements. The block is delimited by a pair of braces ("curly braces") and contains a list of zero or more statements and declarations.
+		* {
+			StatementList
+		  }
+		* The block statement is often called the compound statement in other languages.
+		* It allows you to use multiple statements where JavaScript expects only one statement. Combining statements into blocks is a common practice in JavaScript, especially when used in association with control flow statements like if...else and for. The opposite behavior is possible using an empty statement, where you provide no statement, although one is required.
+		* In addition, combined with block-scoped declarations like let, const, and class, blocks can prevent temporary variables from polluting the global namespace, just like IIFEs do.
+		
+		* Block scoping rules with var or function declaration in non-strict mode -
+			var x = 1;
+			{
+			  var x = 2;
+			}
+			console.log(x); // 2	- bcz of variable enviornment 
+			* In non-strict code, function declarations inside blocks behave strangely. Do not use them.
+
+		* Block scoping rules with let, const, class, or function declaration in strict mode -
+			let x = 1;
+			{
+			  let x = 2;
+			}
+			console.log(x); // 1	- bcz of lexical enviornment
+			const c = 1;
+			{
+			  const c = 2;
+			}
+			console.log(c); // 1; does not throw SyntaxError
+
+
+
 	3) break
 	4) class
 	5) const
