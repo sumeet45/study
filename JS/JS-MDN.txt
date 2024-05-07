@@ -1073,7 +1073,9 @@ B) Expressions & operators
 
 C) Statements & declarations
 	1) async function - 
-		The await keyword is permitted within the function body, enabling asynchronous, promise-based behaviour to be written in a cleaner style and avoiding the need to configure promise chains explicitly.
+		* The async function declaration creates a binding of a new async function to a given name.
+		* The await keyword is permitted within the function body, enabling asynchronous, promise-based behaviour to be written in a cleaner style and avoiding the need to configure promise chains explicitly.
+		* You can also define async functions using the async function expression.
 		* eg.
 			function waitForData () {
 			    return new Promise((res, rej) => {
@@ -1100,7 +1102,9 @@ C) Statements & declarations
 			outside line call
 			line2 10
 		* Here, await help to stop execution till "waitForData" returns something and starts working on other code synchronously. once done with synchronous code, then moves to the "waitForData" function which is in microtask queues. 
+		* An async function declaration creates an AsyncFunction object. Each time when an async function is called, it returns a new Promise which will be resolved with the value returned by the async function, or rejected with an exception uncaught within the async function.
 		* Async functions can contain zero or more await expressions. Await expressions make promise-returning functions behave as though they're synchronous by suspending execution until the returned promise is fulfilled or rejected. The resolved value of the promise is treated as the return value of the await expression. Use of async and await enables the use of ordinary try / catch blocks around asynchronous code.
+		* Async functions always return a promise. If the return value of an async function is not explicitly a promise, it will be implicitly wrapped in a promise.
 		* In situations like following - promise.all or promise.allSettled, don't use async await. 
 
 
