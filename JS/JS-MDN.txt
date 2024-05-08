@@ -1164,12 +1164,150 @@ C) Statements & declarations
 
 
 
-	3) break
-	4) class
-	5) const
-	6) continue
-	7) debugger
-	8) do...while
+	3) break -
+		* The break statement terminates the current loop or switch statement and transfers program control to the statement following the terminated statement. It can also be used to jump past a labeled statement when used within that labeled statement
+		* When break; is encountered, the program breaks out of the innermost switch or looping statement and continues executing the next statement after that.
+		* break in while loop -
+		* break in switch statements -
+		* break in labeled blocks -
+			* The following code uses break statements with labeled blocks. By using break outerBlock, control is transferred to the end of the block statement marked as outerBlock.
+
+			outerBlock: {
+			  innerBlock: {
+			    console.log("1");
+			    break outerBlock; // breaks out of both innerBlock and outerBlock
+			    console.log(":-("); // skipped
+			  }
+			  console.log("2"); // skipped
+			}
+
+
+
+
+	4) class -
+		* class have more resembalnce with let.
+		* The class declaration creates a binding of a new class to a given name.
+		* You can also define classes using the class expression.
+		* ex.
+			class Polygon {
+			  constructor(height, width) {
+			    this.area = height * width;
+			  }
+			}
+			console.log(new Polygon(4, 3).area);			// Expected output: 12
+
+		* The class body of a class declaration is executed in strict mode. The class declaration is very similar to let:
+			* class declarations are scoped to blocks as well as functions.
+			* class declarations can only be accessed after the place of declaration is reached (see temporal dead zone). For this reason, class declarations are commonly regarded as non-hoisted (unlike function declarations).
+			* class declarations do not create properties on globalThis when declared at the top level of a script (unlike function declarations).
+			* class declarations cannot be redeclared by any other declaration in the same scope.
+		* Outside the class body, class declarations can be re-assigned like let, but you should avoid doing so. Within the class body, the binding is constant like const.
+			class Foo {
+			  static {
+			    Foo = 1; // TypeError: Assignment to constant variable.
+			  }
+			}
+			
+			class Foo2 {
+			  bar = (Foo2 = 1); // TypeError: Assignment to constant variable.
+			}
+			
+			class Foo3 {}
+			Foo3 = 1;
+			console.log(Foo3); // 1
+		
+		* A simple class declaration -
+			* In the following example, we first define a class named Rectangle, then extend it to create a class named FilledRectangle.
+			* Note that super(), used in the constructor, can only be used in constructors, and must be called before the this keyword can be used.
+			* ex.
+				class Rectangle {
+				  constructor(height, width) {
+				    this.name = "Rectangle";
+				    this.height = height;
+				    this.width = width;
+				  }
+				}
+				
+				class FilledRectangle extends Rectangle {
+				  constructor(height, width, color) {
+				    super(height, width);
+				    this.name = "Filled rectangle";
+				    this.color = color;
+				  }
+				}
+	
+
+	5) const -
+		* The const declaration declares block-scoped local variables. The value of a constant can't be changed through reassignment using the assignment operator, but if a constant is an object, its properties can be added, updated, or removed.
+		* ex.
+				const number = 42;
+				try {
+				  number = 99;
+				} catch (err) {
+				  console.log(err);	  // Expected output: TypeError: invalid assignment to const 'number'	// (Note: the exact output may be browser-dependent)
+				}
+				
+				console.log(number);				// Expected output: 42
+		* syntax - 
+			const name1 = value1;
+			const name1 = value1, name2 = value2;
+			const name1 = value1, name2 = value2, /* …, */ nameN = valueN;
+		* The const declaration is very similar to let:
+			* const declarations are scoped to blocks as well as functions.
+			* const declarations can only be accessed after the place of declaration is reached (see temporal dead zone). For this reason, const declarations are commonly regarded as non-hoisted.
+			* const declarations do not create properties on globalThis when declared at the top level of a script.
+			* const declarations cannot be redeclared by any other declaration in the same scope.
+			* const begins declarations, not statements. That means you cannot use a lone const declaration as the body of a block (which makes sense, since there's no way to access the variable).
+		* The const declaration creates an immutable reference ( binding ) to a value. It does not mean the value it holds is immutable — just that the variable identifier cannot be reassigned.
+		* Many style guides (including MDN's) recommend using const over let whenever a variable is not reassigned in its scope. This makes the intent clear that a variable's type (or value, in the case of a primitive) can never change. Others may prefer let for non-primitives that are mutated.
+		* Basic const usage - common convention is to use all-uppercase letters, especially for primitives because they are truly immutable.
+			const MY_FAV = 7;	console.log("my favorite number is: " + MY_FAV);	//7
+		* Block scoping -
+		* const in objects and arrays - 
+			* Attempting to overwrite the object throws an error "Assignment to constant variable".
+			* You would need to use Object.freeze() to make an object immutable.
+		* Declaration with destructuring -
+
+
+
+	6) continue -
+		* The continue statement terminates execution of the statements in the current iteration of the current or labeled loop, and continues execution of the loop with the next iteration.
+		* ex.
+			let text = '';
+			for (let i = 0; i < 10; i++) {
+			  if (i === 3) {
+			    continue;
+			  }
+			  text = text + i;
+			}
+			console.log(text);			// Expected output: "012456789"
+
+		* In contrast to the break statement, continue does not terminate the execution of the loop entirely, but instead:
+			* In a while or do...while loop, it jumps back to the condition.
+			* In a for loop, it jumps to the update expression.
+			* In a for...in, for...of, or for await...of loop, it jumps to the next iteration.
+		* The continue statement can include an optional label that allows the program to jump to the next iteration of a labeled loop statement instead of the innermost loop. In this case, the continue statement needs to be nested within this labeled statement.
+		* Using continue with while -
+		* Using continue with a label - check "Using continue with a label" in mdn
+
+
+
+	7) debugger -
+		* The debugger statement invokes any available debugging functionality, such as setting a breakpoint. If no debugging functionality is available, this statement has no effect.
+		debugger;
+
+
+	8) do...while -
+		* The do...while statement creates a loop that executes a specified statement as long as the test condition evaluates to true. The condition is evaluated after executing the statement, resulting in the specified statement executing at least once.
+		* ex.	
+			let i = 0
+			do {
+				console.log("ii", ++i);
+			} while( i < 5)
+			console.log(i);
+
+
+
 	9) empty
 	
 	10) Export
