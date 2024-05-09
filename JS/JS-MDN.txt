@@ -1104,6 +1104,8 @@ C) Statements & declarations
 		* Here, await help to stop execution till "waitForData" returns something and starts working on other code synchronously. once done with synchronous code, then moves to the "waitForData" function which is in microtask queues. 
 		* An async function declaration creates an AsyncFunction object. Each time when an async function is called, it returns a new Promise which will be resolved with the value returned by the async function, or rejected with an exception uncaught within the async function.
 		* Async functions can contain zero or more await expressions. Await expressions make promise-returning functions behave as though they're synchronous by suspending execution until the returned promise is fulfilled or rejected. The resolved value of the promise is treated as the return value of the await expression. Use of async and await enables the use of ordinary try / catch blocks around asynchronous code.
+		* Note: The await keyword is only valid inside async functions within regular JavaScript code. If you use it outside of an async function's body, you will get a SyntaxError.
+		* Note: The purpose of async/await is to simplify the syntax necessary to consume promise-based APIs. The behavior of async/await is similar to combining generators and promises.
 
 		* Async functions always return a promise. If the return value of an async function is not explicitly a promise, it will be implicitly wrapped in a promise.
 		* An async function will return a different reference, whereas Promise.resolve returns the same reference if the given value is a promise.
@@ -1123,7 +1125,9 @@ C) Statements & declarations
 			console.log(p === basicReturn()); // true
 			console.log(p === asyncReturn()); // false
 
-		* check "Async functions and execution order" in mdn
+		* Async functions and execution order - check in mdn
+		* await and concurrency - check in mdn
+		* Rewriting a Promise chain with an async function - check in mdn
 
 		* In situations like following - promise.all or promise.allSettled, don't use async await. 
 
@@ -1162,6 +1166,8 @@ C) Statements & declarations
 			}
 			console.log(c); // 1; does not throw SyntaxError
 
+		* Using a block statement as the body of a for loop
+
 
 
 	3) break -
@@ -1180,7 +1186,7 @@ C) Statements & declarations
 			  }
 			  console.log("2"); // skipped
 			}
-
+		* Unsyntactic break statements - check in mdn
 
 
 
@@ -1288,7 +1294,8 @@ C) Statements & declarations
 			* In a for...in, for...of, or for await...of loop, it jumps to the next iteration.
 		* The continue statement can include an optional label that allows the program to jump to the next iteration of a labeled loop statement instead of the innermost loop. In this case, the continue statement needs to be nested within this labeled statement.
 		* Using continue with while -
-		* Using continue with a label - check "Using continue with a label" in mdn
+		* Using continue with a label - check in mdn
+		* Unsyntactic continue statements - check in mdn
 
 
 
@@ -1305,60 +1312,206 @@ C) Statements & declarations
 				console.log("ii", ++i);
 			} while( i < 5)
 			console.log(i);
+		* Like other looping statements, you can use control flow statements inside statement:
+			* break stops statement execution and goes to the first statement after the loop.
+			* continue stops statement execution and re-evaluates condition.
+		* The do...while statement syntax requires a semicolon at the end, but the automatic semicolon insertion process may insert one for you if the lack of a semicolon results in invalid syntax.
+		* Using do...while
+		* Using false as do...while condition - check in mdn
+		* Using an assignment as a condition - check in mdn
+
+	9) empty -
+		* An empty statement is used to provide no statement, although the JavaScript syntax would expect one.
+		* ex.
+			const array1 = [1, 2, 3];
+			// Assign all array values to 0
+			for (let i = 0; i < array1.length; array1[i++] = 0) /* empty statement */ ;
+			console.log(array1);		// Expected output: Array [0, 0, 0]
+		* The empty statement is a semicolon (;) indicating that no statement will be executed, even if JavaScript syntax requires one.
+		* The opposite behavior, where you want multiple statements, but JavaScript only allows a single one, is possible using a block statement, which combines several statements into a single one.
+		* Empty loop body -
+			const arr = [1, 2, 3];
+			for (let i = 0; i < arr.length; arr[i++] = 0) /* empty statement */ ;		// Assign all array values to 0			
+			console.log(arr);			// [0, 0, 0]
+
+		* Unintentional usage - check in mdn
 
 
 
-	9) empty
 	
 	10) Export
-	* export statement is used when creating JavaScript modules to export live bindings to functions, objects, or primitive values from the module so they can be used by other programs with the import statement.
-	* When a module updates the value of a binding that it exports, the update will be visible in its imported value.
-	* two types of exports: 
-		Named Exports (Zero or more exports per module),
-		Default Exports (One per module)
-	* Syntax -
-		// Exporting individual features
-		export let name1, name2, …, nameN; // also var, const
-		export let name1 = …, name2 = …, …, nameN; // also var, const
-		export function functionName(){...}
-		export class ClassName {...}
+		* The export declaration is used to export values from a JavaScript module. Exported values can then be imported into other programs with the import declaration or dynamic import. The value of an imported binding is subject to change in the module that exports it — when a module updates the value of a binding that it exports, the update will be visible in its imported value.
+		* In order to use the export declaration in a source file, the file must be interpreted by the runtime as a module. In HTML, this is done by adding type="module" to the <script> tag, or by being imported by another module. Modules are automatically interpreted in strict mode.
+		* two types of exports: 
+			Named Exports (Zero or more exports per module),
+			Default Exports (One per module)
+		* Syntax -
+			// Exporting declarations
+			export let name1, name2/*, … */; // also var
+			export const name1 = 1, name2 = 2/*, … */; // also var, let
+			export function functionName() { /* … */ }
+			export class ClassName { /* … */ }
+			export function* generatorFunctionName() { /* … */ }
+			export const { name1, name2: bar } = o;
+			export const [ name1, name2 ] = array;
+			
+			// Export list
+			export { name1, /* …, */ nameN };
+			export { variable1 as name1, variable2 as name2, /* …, */ nameN };
+			export { variable1 as "string name" };
+			export { name1 as default /*, … */ };
+			
+			// Default exports
+			export default expression;
+			export default function functionName() { /* … */ }
+			export default class ClassName { /* … */ }
+			export default function* generatorFunctionName() { /* … */ }
+			export default function () { /* … */ }
+			export default class { /* … */ }
+			export default function* () { /* … */ }
+			
+			// Aggregating modules
+			export * from "module-name";
+			export * as name1 from "module-name";
+			export { name1, /* …, */ nameN } from "module-name";
+			export { import1 as name1, import2 as name2, /* …, */ nameN } from "module-name";
+			export { default, /* …, */ } from "module-name";
+			export { default as name1 } from "module-name";
+	
+		* Every module can have two different types of export, named export and default export. You can have multiple named exports per module but only one default export. Each type corresponds to one of the above syntax.
+		* Export declarations are not subject to temporal dead zone rules. You can declare that the module exports X before the name X itself is declared.
+		* default export can be imported with any name. eg. import m from './test';
+		* rename named exports to avoid naming conflicts. eg. export { myFunction as function1, myVariable as variable };
+		* one can create a single module concentrating various exports from various modules.
+			export { default as function1, function2 } from 'bar.js';
+		* Re-exporting / Aggregating - 
+			* A module can also "relay" values exported from other modules without the hassle of writing two separate import/export statements. This is often useful when creating a single module concentrating various exports from various modules (usually called a "barrel module").
+			export { default as function1, function2 } from "bar.js";
+		* Using named exports -
+		* Using the default export -
+		* Using export from
 
-		// Export list
-		export { name1, name2, …, nameN };
 
-		// Renaming exports
-		export { variable1 as name1, variable2 as name2, …, nameN };
+	11) Expression Statement -
+		* An expression statement is an expression used in a place where a statement is expected. The expression is evaluated and its result is discarded — therefore, it makes sense only for expressions that have side effects, such as executing a function or updating a variable.
+		* check in MDN
 
-		// Exporting destructured assignments with renaming
-		export const { name1, name2: bar } = o;
+	11) for -
+		* The for statement creates a loop that consists of three optional expressions, enclosed in parentheses and separated by semicolons, followed by a statement (usually a block statement) to be executed in the loop.
+		* ex. let str = '';
+		for (let i = 0; i < 9; i++) {
+		  str = str + i;
+		}
+		console.log(str);	// Expected output: "012345678"
+		* Like other looping statements, you can use control flow statements inside statement:
+			* break stops statement execution and goes to the first statement after the loop.
+			* continue stops statement execution and re-evaluates afterthought then condition.
+		* Using for -
+		* Initialization block syntax -
+		* Optional for expressions - All three expressions in the head of the for loop are optional
+		* Lexical declarations in the initialization block - check in MDN
+		* Using for without a body - check in MDN
+		* Using for with two iterating variables -
 
-		// Default exports
-		export default expression;
-		export default function (…) { … } // also class, function*
-		export default function name1(…) { … } // also class, function*
-		export { name1 as default, … };
+	12) for await...of -
+		* first need to learn about iterator, generator, then will come here
 
-		// Aggregating modules
-		export * from …; // does not set the default export
-		export * as name1 from …; // ECMAScript® 2O20
-		export { name1, name2, …, nameN } from …;
-		export { import1 as name1, import2 as name2, …, nameN } from …;
-		export { default, … } from …;
+	13) for...in -
+		* The for...in statement iterates over all enumerable string properties of an object (ignoring properties keyed by symbols), including inherited enumerable properties.
+		* ex.
+			const object = { a: 1, b: 2, c: 3 };
+			for (const property in object) {
+			  console.log(`${property}: ${object[property]}`);
+			}
+			// Expected output:
+			// "a: 1"
+			// "b: 2"
+			// "c: 3"
+		* The loop will iterate over all enumerable properties of the object itself and those the object inherits from its prototype chain (properties of nearer prototypes take precedence over those of prototypes further away from the object in its prototype chain).
+		* Like other looping statements, you can use control flow statements inside statement:
+			* break stops statement execution and goes to the first statement after the loop.
+			* continue stops statement execution and goes to the next iteration of the loop.
+		* A legacy syntax allows var declarations of the loop variable to have an initializer. This throws a syntax error in strict mode and is ignored in non–strict mode.
+		* Deleted, added, or modified properties -
+			* for...in visits property keys in the following fashion:
+				* It first gets all own string keys of the current object, in a fashion very similar to Object.getOwnPropertyNames().
+				* For each key, if no string with the same value has ever been visited, the property descriptor is retrieved and the property is only visited if it is enumerable. However, this property string will be marked as visited even if it's not enumerable.
+				* Then, the current object is replaced with its prototype, and the process is repeated.
 
-	* default export can be imported with any name. eg. import m from './test';
-	* rename named exports to avoid naming conflicts. eg. export { myFunction as function1, myVariable as variable };
-	* one can create a single module concentrating various exports from various modules.
-		export { default as function1, function2 } from 'bar.js';
-	* 
+				This means:
+				* Any property added to the currently visited object during iteration will not be visited, because all own properties of the current object have already been saved beforehand.
+				* If multiple objects in the prototype chain have a property with the same name, only the first one will be considered, and it is only visited if it's enumerable. If it is non-enumerable, no other properties with the same name further up the prototype chain will be visited, even if they are enumerable.
+
+			* In general, it is best not to add, modify, or remove properties from the object during iteration, other than the property currently being visited. The spec explicitly allows the implementation to not follow the algorithm above in one of the following cases:				
+				* The object's prototype chain is modified during iteration.
+				* A property is deleted from the object or its prototype chain during iteration.
+				* A property is added to the object's prototype chain during iteration.
+				* A property's enumerability is changed during iteration.
+
+		* Array iteration and for...in - check in mdn
+			* It is better to use a for loop with a numeric index, Array.prototype.forEach(), or the for...of loop, because they will return the index as a number instead of a string, and also avoid non-index properties.
+
+		* Iterating over own properties only - 
+			* If you only want to consider properties attached to the object itself, and not its prototypes, you can use one of the following techniques:	Object.keys(), Object.getOwnPropertyNames()
+			* Object.keys will return a list of enumerable own string properties, while Object.getOwnPropertyNames will also contain non-enumerable ones.
+		* Using for...in
+		* Iterating own properties - use of Object.hasOwn(): the inherited properties are not displayed.
+		* Concurrent modification - not much imp ( check in mdn )
+
+	14) for...of -
+		* The for...of statement executes a loop that operates on a sequence of values sourced from an iterable object. Iterable objects include instances of built-ins such as Array, String, TypedArray, Map, Set, NodeList (and other DOM collections), as well as the arguments object, generators produced by generator functions, and user-defined iterables.
+		* ex.
+			const array1 = ['a', 'b', 'c'];
+			for (const element of array1) {
+			  console.log(element);
+			}
+			// Expected output: "a"
+			// Expected output: "b"
+			// Expected output: "c"
+		* A for...of loop operates on the values sourced from an iterable one by one in sequential order. Each operation of the loop on a value is called an iteration, and the loop is said to iterate over the iterable. Each iteration executes statements that may refer to the current sequence value.
+		* When a for...of loop iterates over an iterable, it first calls the iterable's [@@iterator]() method, which returns an iterator, and then repeatedly calls the resulting iterator's next() method to produce the sequence of values to be assigned to variable.
+		* A for...of loop exits when the iterator has completed (the next() result is an object with done: true). Like other looping statements, you can use control flow statements inside statement:
+			break stops statement execution and goes to the first statement after the loop.
+			continue stops statement execution and goes to the next iteration of the loop.
+		* If the for...of loop exited early (e.g. a break statement is encountered or an error is thrown), the return() method of the iterator is called to perform any cleanup.
+		* The variable part of for...of accepts anything that can come before the = operator. You can use const to declare the variable as long as it's not reassigned within the loop body (it can change between iterations, because those are two separate variables). Otherwise, you can use let.
+		* Iterating over an Array
+		* Iterating over a string 
+		* Iterating over a TypedArray
+		* Iterating over a Map
+		* Iterating over a Set
+		* Iterating over the arguments object
+		* Iterating over a NodeList
+		* Iterating over a user-defined iterable
+		* Iterating over a generator
+		* Early exiting
+		* Difference between for...of and for...in - check in mdn
+			* The for...in statement iterates over the enumerable string properties ( keys )  of an object, while the for...of statement iterates over values that the iterable object defines to be iterated over.
 
 
-	* Description -
-	11) Expression Statement
-	11) for
-	12) for await...of
-	13) for...in
-	14) for...of
-	14) for
+		
+
+
+	14) function -
+		* The function declaration creates a binding of a new function to a given name.
+		* You can also define functions using the function expression.
+		* ex. 
+			function calcRectArea(width, height) {
+			  return width * height;
+			}
+			console.log(calcRectArea(5, 6));			// Expected output: 30
+		* A function declaration creates a Function object. Each time when a function is called, it returns the value specified by the last executed return statement, or undefined if the end of the function body is reached.
+		* function declarations behave like a mix of var and let:
+			* Like let, in strict mode, function declarations are scoped to the most closely containing block.
+			* Like let, function declarations at the top level of a module or within blocks in strict mode cannot be redeclared by any other declaration.
+			* Like var, function declarations at the top level of a script (strict or non-strict) become properties on globalThis. Function declarations at the top level of a script or function body (strict or non-strict) can be redeclared by another function or var.
+			* Like both, function declarations can be re-assigned, but you should avoid doing so.
+			* Unlike either, function declarations are hoisted together with its value and can be called anywhere in its scope.
+
+		* Block-level function declaration - check in mdn
+
+
+
 	15) function*
 	16) function declaration
 	17) if...else
