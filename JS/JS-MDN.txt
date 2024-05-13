@@ -1895,6 +1895,8 @@ C) Statements & declarations
 	28) with
 
 D) Functions -
+
+1) Overview -
 	* a function is a "subprogram" that can be called by code external (or internal, in the case of recursion) to the function.
 	* a function is composed of a sequence of statements called the function body.
 	* Values can be passed to a function as parameters, and the function will return a value.
@@ -1910,7 +1912,120 @@ D) Functions -
 		}
 		
 		formatNumber(2);	// 2- arguments
+		
+		* Arguments are always passed by value and never passed by reference. This means that if a function reassigns a parameter, the value won't change outside the function. More precisely, object arguments are passed by sharing, which means if the object's properties are mutated, the change will impact the outside of the function. For example:
 
+	* Defining functions -
+		* Broadly speaking, JavaScript has four kinds of functions:
+			Regular function: can return anything; always runs to completion after invocation
+			Generator function: returns a Generator object; can be paused and resumed with the yield operator
+			Async function: returns a Promise; can be paused and resumed with the await operator
+			Async generator function: returns an AsyncGenerator object; both the await and yield operators can be used
+		* For every kind of function, there are three ways to define it:
+			Declaration	-	function, function*, async function, async function*
+			Expression	-	function, function*, async function, async function*
+			Constructor	-	Function(), GeneratorFunction(), AsyncFunction(), AsyncGeneratorFunction()
+		* In addition, there are special syntaxes for defining arrow functions and methods, which provide more precise semantics for their usage
+
+		* ex.
+			// Constructor
+			const multiply = new Function("x", "y", "return x * y");
+			
+			// Declaration
+			function multiply(x, y) {
+			  return x * y;
+			} // No need for semicolon here
+			
+			// Expression; the function is anonymous but assigned to a variable
+			const multiply = function (x, y) {
+			  return x * y;
+			};
+			// Expression; the function has its own name
+			const multiply = function funcName(x, y) {
+			  return x * y;
+			};
+			
+			// Arrow function
+			const multiply = (x, y) => x * y;
+			
+			// Method
+			const obj = {
+			  multiply(x, y) {
+			    return x * y;
+			  },
+			};
+
+			* The Function() constructor, function expression, and function declaration syntaxes create full-fledged function objects, which can be constructed with new. However, arrow functions and methods cannot be constructed. Async functions, generator functions, and async generator functions are not constructible regardless of syntax.
+	The function declaration creates functions that are hoisted. Other syntaxes do not hoist the function and the function value is only visible after the definition.
+	The arrow function and Function() constructor always create anonymous functions, which means they can't easily call themselves recursively. One way to call an arrow function recursively is by assigning it to a variable.
+			* The arrow function syntax does not have access to arguments or this.
+			* The Function() constructor cannot access any local variables — it only has access to the global scope.
+			* The Function() constructor causes runtime compilation and is often slower than other syntaxes.
+
+		* For function expressions, there is a distinction between the function name and the variable the function is assigned to. The function name cannot be changed, while the variable the function is assigned to can be reassigned. The function name can be different from the variable the function is assigned to — they have no relation to each other. The function name can be used only within the function's body. Attempting to use it outside the function's body results in an error (or gets another value, if the same name is declared elsewhere).
+		* A function declaration also creates a variable with the same name as the function name. Thus, unlike those defined by function expressions, functions defined by function declarations can be accessed by their name in the scope they were defined in, as well as in their own body.
+		* A function defined by a function expression or by a function declaration inherits the current scope. That is, the function forms a closure. On the other hand, a function defined by a Function constructor does not inherit any scope other than the global scope (which all functions inherit).
+		* Function parameters -
+			* There are three special parameter syntaxes:
+				Default parameters allow formal parameters to be initialized with default values if no value or undefined is passed.
+				The rest parameter allows representing an indefinite number of arguments as an array.
+				Destructuring allows unpacking elements from arrays, or properties from objects, into distinct variables.
+
+		* The arguments object -
+			* You can refer to a function's arguments within the function by using the arguments object.
+		* Getter and setter functions -
+			* You can define accessor properties on any standard built-in object or user-defined object that supports the addition of new properties. Within object literals and classes, you can use special syntaxes to define the getter and setter of an accessor property.
+			* get - Binds an object property to a function that will be called when that property is looked up.
+			* set - Binds an object property to a function to be called when there is an attempt to set that property.
+
+		* Block-level functions -
+			* In strict mode, functions inside blocks are scoped to that block. Prior to ES2015, block-level functions were forbidden in strict mode.
+			* ex.
+				"use strict";
+				
+				function f() {
+				  return 1;
+				}
+				
+				{
+				  function f() {
+				    return 2;
+				  }
+				}
+				
+				f() === 1; // true
+				// f() === 2 in non-strict mode
+
+		* Block-level functions in non-strict code - check in mdn
+
+2) Arrow function expressions -
+	* An arrow function expression is a compact alternative to a traditional function expression, with some semantic differences and deliberate limitations in usage:
+		* Arrow functions don't have their own bindings to this, arguments, or super, and should not be used as methods.
+		* Arrow functions cannot be used as constructors. Calling them with new throws a TypeError. They also don't have access to the new.target keyword.
+		* Arrow functions cannot use yield within their body and cannot be created as generator functions.
+	* Rest parameters, default parameters, and destructuring within params are supported, and always require parentheses.
+	* Arrow functions can be async by prefixing the expression with the async keyword.
+	* Function body -
+	* Cannot be used as methods - 
+		* check in mdn
+		* Arrow function expressions should only be used for non-method functions because they do not have their own this.
+	* No binding of arguments - 
+	* Cannot be used as constructors
+		Arrow functions cannot be used as constructors and will throw an error when called with new. They also do not have a prototype property.
+	* Cannot be used as generators
+	* Line break before arrow
+	* Precedence of arrow
+
+
+3) Default parameters -
+	* Default function parameters allow named parameters to be initialized with default values if no value or undefined is passed.
+	* In JavaScript, function parameters default to undefined. However, it's often useful to set a different default value. This is where default parameters can help.
+
+4) get
+5) Method definitions
+6) Rest parameters
+7) set
+8) The arguments object
 
 
 E) Classes
