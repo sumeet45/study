@@ -1509,22 +1509,389 @@ C) Statements & declarations
 			* Unlike either, function declarations are hoisted together with its value and can be called anywhere in its scope.
 
 		* Block-level function declaration - check in mdn
+		* Hoisting - Function declarations in JavaScript are hoisted to the top of the enclosing function or global scope.
+		* Redeclarations - 
+			* Whether function declarations can be redeclared in the same scope depends on what scope it's contained in.
+			* At the top level of a script, function declarations behave like var and can be redeclared by another function or var but not by let, const, or class.
+			* When function declarations are redeclared by var, the var declaration's initializer always overrides the function's value, regardless of their relative position. This is because function declarations are hoisted before any initializer gets evaluated, so the initializer comes later and overrides the value.
+			* At the top level of a module or a block in strict mode, function declarations behave like let and cannot be redeclared by any other declaration.
+		* Using function -
 
 
 
 	15) function*
 	16) function declaration
-	17) if...else
-	18) import.meta
-	19) import
-	20) label
-	21) let
-	22) return
-	23) switch
-	24) throw
-	25) try...catch
-	26) var
-	27) while
+	17) if...else -
+		* The if...else statement executes a statement if a specified condition is truthy. If the condition is falsy, another statement in the optional else clause will be executed.
+		* ex. 
+			function testNum(a) {
+			  let result;
+			  if (a > 0) {
+			    result = 'positive';
+			  } else {
+			    result = 'NOT positive';
+			  }
+			  return result;
+			}
+			
+			console.log(testNum(-5));			// Expected output: "NOT positive"
+		* Using if...else
+		* Using else if
+		* Using an assignment as a condition
+		* 
+
+	18) import.meta -
+	19) import -
+		* check in mdn
+		* The static import declaration is used to import read-only live bindings which are exported by another module. The imported bindings are called live bindings because they are updated by the module that exported the binding, but cannot be re-assigned by the importing module.
+		* In order to use the import declaration in a source file, the file must be interpreted by the runtime as a module. In HTML, this is done by adding type="module" to the <script> tag. Modules are automatically interpreted in strict mode.
+		* There is also a function-like dynamic import(), which does not require scripts of type="module".
+		* ex.
+			import defaultExport from "module-name";
+			import * as name from "module-name";
+			import { export1 } from "module-name";
+			import { export1 as alias1 } from "module-name";
+			import { default as alias } from "module-name";
+			import { export1, export2 } from "module-name";
+			import { export1, export2 as alias2, /* … */ } from "module-name";
+			import { "string name" as alias } from "module-name";
+			import defaultExport, { export1, /* … */ } from "module-name";
+			import defaultExport, * as name from "module-name";
+			import "module-name";
+		* import declarations can only be present in modules, and only at the top-level (i.e. not inside blocks, functions, etc.). If an import declaration is encountered in non-module contexts (for example, <script> tags without type="module", eval, new Function, which all have "script" or "function body" as parsing goals), a SyntaxError is thrown. To load modules in non-module contexts, use the dynamic import syntax instead.
+		* All imported bindings cannot be in the same scope as any other declaration, including let, const, class, function, var, and import declaration.
+		* import declarations are designed to be syntactically rigid (for example, only string literal specifiers, only permitted at the top-level, all bindings must be identifiers), which allows modules to be statically analyzed and linked before getting evaluated. This is the key to making modules asynchronous by nature, powering features like top-level await.
+		* Forms of import declarations
+			There are four forms of import declarations:
+			
+			Named import: import { export1, export2 } from "module-name";
+			Default import: import defaultExport from "module-name";
+			Namespace import: import * as name from "module-name";
+			Side effect import: import "module-name";
+		* Named import -
+		* Default import -
+
+
+
+
+
+	20) labeled statement -
+		* A labeled statement is any statement that is prefixed with an identifier. You can jump to this label using a break or continue statement nested within the labeled statement.
+		* ex.	
+			let str = '';
+			loop1: for (let i = 0; i < 5; i++) {
+			  if (i === 1) {
+			    continue loop1;
+			  }
+			  str = str + i;
+			}
+			console.log(str);			// Expected output: "0234"
+		* You can use a label to identify a statement, and later refer to it using a break or continue statement. Note that JavaScript has no goto statement; you can only use labels with break or continue.
+		* Any break or continue that references label must be contained within the statement that's labeled by label. Think about label as a variable that's only available in the scope of statement.
+		* If a break label; statement is encountered when executing statement, execution of statement terminates, and execution continues at the statement immediately following the labeled statement.
+		* continue label; can only be used if statement is one of the looping statements. If a continue label; statement is encountered when executing statement, execution of statement continues at the next iteration of the loop. continue; without a label can only continue the innermost loop, while continue label; allows continuing any given loop even when the statement is nested within other loops.
+		* A statement can have multiple labels. In this case, the labels are all functionally equivalent.
+		* Using a labeled continue with for loops -
+			// The first for statement is labeled "loop1"
+			loop1: for (let i = 0; i < 3; i++) {
+			  // The second for statement is labeled "loop2"
+			  loop2: for (let j = 0; j < 3; j++) {
+			    if (i === 1 && j === 1) {
+			      continue loop1;
+			    }
+			    console.log(`i = ${i}, j = ${j}`);
+			  }
+			}
+			
+			// Logs:
+			// i = 0, j = 0
+			// i = 0, j = 1
+			// i = 0, j = 2
+			// i = 1, j = 0
+			// i = 2, j = 0
+			// i = 2, j = 1
+			// i = 2, j = 2
+		* Notice how it skips both "i = 1, j = 1" and "i = 1, j = 2".
+
+		* Using a labeled break with for loops -
+			let i, j;
+			
+			// The first for statement is labeled "loop1"
+			loop1: for (i = 0; i < 3; i++) {
+			  // The second for statement is labeled "loop2"
+			  loop2: for (j = 0; j < 3; j++) {
+			    if (i === 1 && j === 1) {
+			      break loop1;
+			    }
+			    console.log(`i = ${i}, j = ${j}`);
+			  }
+			}
+			
+			// Logs:
+			// i = 0, j = 0
+			// i = 0, j = 1
+			// i = 0, j = 2
+			// i = 1, j = 0
+		* Using a labeled continue statement - 
+			* check in mdn
+			* Given an array of items and an array of tests, this example counts the number of items that pass all the tests.
+		* Using a labeled break statement -
+		* Using a labeled block with break -
+
+
+	21) let - 
+		* The let declaration declares re-assignable, block-scoped local variables, optionally initializing each to a value.
+		* ex.
+			let x = 1;
+			if (x === 1) {
+			  let x = 2;
+			  console.log(x);		  // Expected output: 2
+			}
+			console.log(x);			// Expected output: 1
+		* The scope of a variable declared with let is one of the following curly-brace-enclosed syntaxes that most closely contains the let declaration:
+			Block statement
+			switch statement
+			try...catch statement
+			Body of one of the for statements, if the let is in the header of the statement
+			Function body
+			Static initialization block
+		* Or if none of the above applies:	
+			The current module, for code running in module mode
+			The global scope, for code running in script mode.
+
+		* Compared with var, let declarations have the following differences:
+			let declarations are scoped to blocks as well as functions.
+			let declarations can only be accessed after the place of declaration is reached (see temporal dead zone). For this reason, let declarations are commonly regarded as non-hoisted.
+			let declarations do not create properties on globalThis when declared at the top level of a script.
+			let declarations cannot be redeclared by any other declaration in the same scope.
+			let begins declarations, not statements. That means you cannot use a lone let declaration as the body of a block (which makes sense, since there's no way to access the variable).
+		* Note that let is allowed as an identifier name when declared with var or function in non-strict mode, but you should avoid using let as an identifier name to prevent unexpected syntax ambiguities.
+		* The list that follows the let keyword is called a binding list and is separated by commas, where the commas are not comma operators and the = signs are not assignment operators. Initializers of later variables can refer to earlier variables in the list.
+		* Temporal dead zone (TDZ) - 
+			* A variable declared with let, const, or class is said to be in a "temporal dead zone" (TDZ) from the start of the block until code execution reaches the place where the variable is declared and initialized.
+			* While inside the TDZ, the variable has not been initialized with a value, and any attempt to access it will result in a ReferenceError. The variable is initialized with a value when execution reaches the place in the code where it was declared. If no initial value was specified with the variable declaration, it will be initialized with a value of undefined.
+			* Using the typeof operator for a let variable in its TDZ will throw a ReferenceError.
+
+		* Redeclarations - 
+			* let declarations cannot be in the same scope as any other declaration, including let, const, class, function, var, and import declaration.
+			{
+			  let foo;
+			  let foo; // SyntaxError: Identifier 'foo' has already been declared
+			}
+			
+			* A let declaration within a function's body cannot have the same name as a parameter. A let declaration within a catch block cannot have the same name as the catch-bound identifier.
+			function foo(a) {
+			  let a = 1; // SyntaxError: Identifier 'a' has already been declared
+			}
+			try {
+			} catch (e) {
+			  let e; // SyntaxError: Identifier 'e' has already been declared
+			}
+
+			* To avoid the error, wrap each case in a new block statement.
+				let x = 1;
+				switch (x) {
+				  case 0: {
+				    let foo;
+				    break;
+				  }
+				  case 1: {
+				    let foo;
+				    break;
+				  }
+				}
+
+			* Scoping rules - Variables declared by let have their scope in the block for which they are declared, as well as in any contained sub-blocks. In this way, let works very much like var. The main difference is that the scope of a var variable is the entire enclosing function.
+			* TDZ combined with lexical scoping -
+				The following code results in a ReferenceError at the line shown:
+				function test() {
+				  var foo = 33;
+				  if (foo) {
+				    let foo = foo + 55; // ReferenceError
+				  }
+				}
+				test();
+	
+				* The if block is evaluated because the outer var foo has a value. However due to lexical scoping this value is not available inside the block: the identifier foo inside the if block is the let foo. The expression foo + 55 throws a ReferenceError because initialization of let foo has not completed — it is still in the temporal dead zone.
+
+			* Other situations
+			* Declaration with destructuring
+
+
+	22) return -
+		* The return statement ends function execution and specifies a value to be returned to the function caller.
+		* ex.
+			function getRectArea(width, height) {
+			  if (width > 0 && height > 0) {
+			    return width * height;
+			  }
+			  return 0;
+			}
+			
+			console.log(getRectArea(3, 4));
+			// Expected output: 12
+			
+			console.log(getRectArea(-3, 4));
+			// Expected output: 0
+		* The return statement can only be used within function bodies. When a return statement is used in a function body, the execution of the function is stopped. The return statement has different effects when placed in different functions:
+			In a plain function, the call to that function evaluates to the return value.
+			In an async function, the produced promise is resolved with the returned value.
+			In a generator function, the produced generator object's next() method returns { done: true, value: returnedValue }.
+			In an async generator function, the produced async generator object's next() method returns a promise fulfilled with { done: true, value: returnedValue }.
+		* If a return statement is executed within a try block, its finally block, if present, is first executed, before the value is actually returned.
+		* Automatic semicolon insertion - 
+			* The syntax forbids line terminators between the return keyword and the expression to be returned.
+			* This makes the function return undefined and the a + b expression is never evaluated. This may generate a warning in the console.
+
+		* Interrupt a function -
+		* Returning a function -
+
+
+
+	23) switch -
+		* The switch statement evaluates an expression, matching the expression's value against a series of case clauses, and executes statements after the first case clause with a matching value, until a break statement is encountered. The default clause of a switch statement will be jumped to if no case matches the expression's value.
+		* ex.
+			const expr = 'Papayas';
+			switch (expr) {
+			  case 'Oranges':
+			    console.log('Oranges are $0.59 a pound.');
+			    break;
+			  case 'Mangoes':
+			  case 'Papayas':
+			    console.log('Mangoes and papayas are $2.79 a pound.');
+			    // Expected output: "Mangoes and papayas are $2.79 a pound."
+			    break;
+			  default:
+			    console.log(`Sorry, we are out of ${expr}.`);
+			}
+		* A switch statement first evaluates its expression. It then looks for the first case clause whose expression evaluates to the same value as the result of the input expression (using the strict equality comparison) and transfers control to that clause, executing all statements following that clause.
+		* The clause expressions are only evaluated when necessary — if a match is already found, subsequent case clause expressions will not be evaluated, even when they will be visited by fall-through.
+		* If no matching case clause is found, the program looks for the optional default clause, and if found, transfers control to that clause, executing statements following that clause. If no default clause is found, the program continues execution at the statement following the end of switch. By convention, the default clause is the last clause, but it does not need to be so. A switch statement may only have one default clause; multiple default clauses will result in a SyntaxError.
+
+		* Breaking and fall-through -
+			* You can use the break statement within a switch statement's body to break out early, often when all statements between two case clauses have been executed. Execution will continue at the first statement following switch.
+			* If break is omitted, execution will proceed to the next case clause, even to the default clause, regardless of whether the value of that clause's expression matches. This behavior is called "fall-through".
+		* Lexical scoping - 
+			* The case and default clauses are like labels: they indicate possible places that control flow may jump to. However, they don't create lexical scopes themselves (neither do they automatically break out — as demonstrated above). For example:
+			* ex. 
+				const action = "say_hello";
+				switch (action) {
+				  case "say_hello":
+				    const message = "hello";
+				    console.log(message);
+				    break;
+				  case "say_hi":
+				    const message = "hi";
+				    console.log(message);
+				    break;
+				  default:
+				    console.log("Empty action received.");
+				}
+			* This example will output the error "Uncaught SyntaxError: Identifier 'message' has already been declared", because the first const message = 'hello'; conflicts with the second const message = 'hi'; declaration, even when they're within their own separate case clauses. Ultimately, this is due to both const declarations being within the same block scope created by the switch body.
+			* To fix this, whenever you need to use let or const declarations in a case clause, wrap it in a block.
+
+		* Using switch
+		* Putting the default clause between two case clauses
+			* If no match is found, execution will start from the default clause, and execute all statements after that.
+			* It also works when you put default before all other case clauses.
+
+		* Taking advantage of fall-through - check in mdn
+		* An alternative to if...else chains - 
+	
+
+	24) throw -
+		* The throw statement throws a user-defined exception. Execution of the current function will stop (the statements after throw won't be executed), and control will be passed to the first catch block in the call stack. If no catch block exists among caller functions, the program will terminate.
+		* ex.
+			function getRectArea(width, height) {
+			  if (isNaN(width) || isNaN(height)) {
+			    throw new Error('Parameter is not a number!');
+			  }
+			}
+			
+			try {
+			  getRectArea(3, 'A');
+			} catch (e) {
+			  console.error(e);
+			  // Expected output: Error: Parameter is not a number!
+			}
+		* The throw statement is valid in all contexts where statements can be used. Its execution generates an exception that penetrates through the call stack. For more information on error bubbling and handling, see Control flow and error handling.
+		* The throw keyword can be followed by any kind of expression, for example:
+			throw error; // Throws a previously defined value (e.g. within a catch block)
+			throw new Error("Required"); // Throws a new Error object
+		* Automatic semicolon insertion -
+		* Throwing a user-defined error
+		* Throwing an existing object
+
+
+	25) try...catch -
+		* The try...catch statement is comprised of a try block and either a catch block, a finally block, or both. The code in the try block is executed first, and if it throws an exception, the code in the catch block will be executed. The code in the finally block will always be executed before control flow exits the entire construct.
+		* ex.
+			try {
+			  nonExistentFunction();
+			} catch (error) {
+			  console.error(error);
+			  // Expected output: ReferenceError: nonExistentFunction is not defined
+			  // (Note: the exact output may be browser-dependent)
+			}
+		* The try statement always starts with a try block. Then, a catch block or a finally block must be present. It's also possible to have both catch and finally blocks. This gives us three forms for the try statement:
+			try...catch
+			try...finally
+			try...catch...finally
+
+		* Unlike other constructs such as if or for, the try, catch, and finally blocks must be blocks, instead of single statements.
+		* A catch block contains statements that specify what to do if an exception is thrown in the try block. If any statement within the try block (or in a function called from within the try block) throws an exception, control is immediately shifted to the catch block. If no exception is thrown in the try block, the catch block is skipped.
+		* The finally block will always execute before control flow exits the try...catch...finally construct. It always executes, regardless of whether an exception was thrown or caught.
+		* You can nest one or more try statements. If an inner try statement does not have a catch block, the enclosing try statement's catch block is used instead.
+
+		* Catch binding -
+		* The finally block -
+			* The finally block contains statements to execute after the try block and catch block(s) execute, but before the statements following the try...catch...finally block. Control flow will always enter the finally block, which can proceed in one of the following ways:
+				Immediately after the try block finishes execution normally (and no exceptions were thrown);
+				Immediately after the catch block finishes execution normally;
+				Immediately before a control-flow statement (return, throw, break, continue) is executed in the try block or catch block.
+
+		* Unconditional catch block
+		* Conditional catch blocks -
+		* Nested try blocks
+		* Returning from a finally block -
+			If the finally block returns a value, this value becomes the return value of the entire try-catch-finally statement, regardless of any return statements in the try and catch blocks. This includes exceptions thrown inside of the catch block.
+
+
+
+
+
+
+
+
+	26) var -
+		* The var statement declares function-scoped or globally-scoped variables, optionally initializing each to a value.
+		* The scope of a variable declared with var is one of the following curly-brace-enclosed syntaxes that most closely contains the var statement:
+			Function body
+			Static initialization block
+
+			Or if none of the above applies:
+			
+			The current module, for code running in module mode
+			The global scope, for code running in script mode.
+		* Importantly, other block constructs, including block statements, try...catch, switch, headers of one of the for statements, do not create scopes for var, and variables declared with var inside such a block can continue to be referenced outside the block.
+		* Hoisting -
+		* Redeclarations -
+			Duplicate variable declarations using var will not trigger an error, even in strict mode, and the variable will not lose its value, unless the declaration has an initializer.
+
+	27) while -
+		* The while statement creates a loop that executes a specified statement as long as the test condition evaluates to true. The condition is evaluated before executing the statement.
+		* ex.
+			let n = 0;
+			while (n < 3) {
+			  n++;
+			}
+			
+			console.log(n);			// Expected output: 3
+		* Like other looping statements, you can use control flow statements inside statement:
+			break stops statement execution and goes to the first statement after the loop.
+			continue stops statement execution and re-evaluates condition.
+
+
 	28) with
 
 D) Functions -
@@ -1536,6 +1903,15 @@ D) Functions -
 
 	* Description -
 		* Function values are typically instances of Function
+	* Return value - By default, if a function's execution doesn't end at a return statement, or if the return keyword doesn't have an expression after it, then the return value is undefined.
+	* Passing arguments -
+		function formatNumber(num) {		// num - parameter
+		  return num.toFixed(2);
+		}
+		
+		formatNumber(2);	// 2- arguments
+
+
 
 E) Classes
 
