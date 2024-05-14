@@ -2020,15 +2020,418 @@ D) Functions -
 3) Default parameters -
 	* Default function parameters allow named parameters to be initialized with default values if no value or undefined is passed.
 	* In JavaScript, function parameters default to undefined. However, it's often useful to set a different default value. This is where default parameters can help.
+	* Passing undefined vs. other falsy values
+	* Evaluated at call time - check in mdn
+	* Earlier parameters are available to later default parameters
+	* Destructured parameter with default value assignment
+	
 
-4) get
-5) Method definitions
-6) Rest parameters
-7) set
-8) The arguments object
+4) get -
+	* The get syntax binds an object property to a function that will be called when that property is looked up. It can also be used in classes.
+	* ex.
+		const obj = {
+		  log: ['a', 'b', 'c'],
+		  get latest() {
+		    return this.log[this.log.length - 1];
+		  },
+		};
+		
+		console.log(obj.latest);		// Expected output: "c"
+	* Sometimes it is desirable to allow access to a property that returns a dynamically computed value, or you may want to reflect the status of an internal variable without requiring the use of explicit method calls. In JavaScript, this can be accomplished with the use of a getter.
+	* An object property is either a data property or an accessor property, but it cannot simultaneously be both. Read Object.defineProperty() for more information. The getter syntax allows you to specify the getter function in an object initializer.
+
+	* Defining a getter on new objects in object initializers
+	* Using getters in classes -
+		* You can use the exact same syntax to define public instance getters that are available on class instances. In classes, you don't need the comma separator between methods.
+		* ex.
+			class ClassWithGetSet {
+			  #msg = "hello world";
+			  get msg() {
+			    return this.#msg;
+			  }
+			  set msg(x) {
+			    this.#msg = `hello ${x}`;
+			  }
+			}
+			
+			const instance = new ClassWithGetSet();
+			console.log(instance.msg); // "hello world"
+			
+			instance.msg = "cake";
+			console.log(instance.msg); // "hello cake"
+		* Getter properties are defined on the prototype property of the class and are thus shared by all instances of the class. Unlike getter properties in object literals, getter properties in classes are not enumerable.
+
+	* Deleting a getter using the delete operator - 
+		If you want to remove the getter, you can just delete it: delete obj.latest;
+	* Defining a getter on existing objects using defineProperty -
+		To append a getter to an existing object later at any time, use Object.defineProperty().
+		ex.
+			const o = { a: 0 };
+			Object.defineProperty(o, "b", {
+			  get() {
+			    return this.a + 1;
+			  },
+			});
+			
+			console.log(o.b); // Runs the getter, which yields a + 1 (which is 1)
+
+	* Using a computed property name -
+	* Defining static getters -
+	* Smart / self-overwriting / lazy getters -
+		* Getters give you a way to define a property of an object, but they do not calculate the property's value until it is accessed. A getter defers the cost of calculating the value until the value is needed. If it is never needed, you never pay the cost.
+		* An additional optimization technique to lazify or delay the calculation of a property value and cache it for later access are smart (or memoized) getters. The value is calculated the first time the getter is called, and is then cached so subsequent accesses return the cached value without recalculating it. This is useful in the following situations:
+			If the calculation of a property value is expensive (takes much RAM or CPU time, spawns worker threads, retrieves remote file, etc.).
+			If the value isn't needed just now. It will be used later, or in some case it's not used at all.
+			If it's used, it will be accessed several times, and there is no need to re-calculate that value will never be changed or shouldn't be re-calculated.
+
+
+	* get vs. defineProperty -
+		* When using get the property will be defined on the instance's prototype, while using Object.defineProperty() the property will be defined on the instance it is applied to.
+
+
+5) Method definitions -
+	* Method definition is a shorter syntax for defining a function property in an object initializer. It can also be used in classes.
+	* Properties defined using this syntax are own properties of the created object, and they are configurable, enumerable, and writable, just like normal properties.
+	* Method definitions are not constructable -
+		Methods cannot be constructors! They will throw a TypeError if you try to instantiate them. On the other hand, a property created as a function can be used as a constructor.
+	* Using super in method definitions -
+		Only functions defined as methods have access to the super keyword. super.prop looks up the property on the prototype of the object that the method was initialized on.
+		ex.
+			const obj = {
+			  __proto__: {
+			    prop: "foo",
+			  },
+			  notAMethod() {
+			    console.log(super.prop); // foo
+			  },
+			};
+	* Using method definitions -
+	* Method definitions in classes -
+		* You can use the exact same syntax to define public instance methods that are available on class instances. In classes, you don't need the comma separator between methods.
+		* ex.	class ClassWithPublicInstanceMethod {
+			  publicMethod() {
+			    return "hello world";
+			  }
+			  secondPublicMethod() {
+			    return "goodbye world";
+			  }
+			}
+			
+			const instance = new ClassWithPublicInstanceMethod();
+			console.log(instance.publicMethod()); // "hello world"
+
+		* Public instance methods are defined on the prototype property of the class and are thus shared by all instances of the class. They are writable, non-enumerable, and configurable.
+
+		* Inside instance methods, this and super work like in normal methods. Usually, this refers to the instance itself. In subclasses, super lets you access the prototype of the object that the method is attached to, allowing you to call methods from the superclass.
+		* ex. 	class BaseClass {
+			  msg = "hello world";
+			  basePublicMethod() {
+			    return this.msg;
+			  }
+			}
+			
+			class SubClass extends BaseClass {
+			  subPublicMethod() {
+			    return super.basePublicMethod();
+			  }
+			}
+			
+			const instance = new SubClass();
+			console.log(instance.subPublicMethod()); // "hello world"
+
+	* Computed property names
+	* Generator methods
+	* Async methods -
+		// Using a named property
+		const obj = {
+		  f: async function () {
+		    await somePromise;
+		  },
+		};
+		
+		// The same object using shorthand syntax
+		const obj2 = {
+		  async f() {
+		    await somePromise;
+		  },
+		};
+	* Async generator methods
+
+
+
+6) Rest parameters -
+	* The rest parameter syntax allows a function to accept an indefinite number of arguments as an array, providing a way to represent variadic functions in JavaScript.
+	* A function definition's last parameter can be prefixed with ... (three U+002E FULL STOP characters), which will cause all remaining (user supplied) parameters to be placed within an Array object.
+	* syntax- 	function f(a, b, ...theArgs) {
+			  // …
+			}
+	* ex.
+		function myFun(a, b, ...manyMoreArgs) {
+		  console.log("a", a);
+		  console.log("b", b);
+		  console.log("manyMoreArgs", manyMoreArgs);
+		}
+		
+		myFun("one", "two", "three", "four", "five", "six");
+		
+		// Console Output:
+		// a, one
+		// b, two
+		// manyMoreArgs, ["three", "four", "five", "six"]
+
+	* The difference between rest parameters and the arguments object -
+		* There are three main differences between rest parameters and the arguments object:
+			* The arguments object is not a real array, while rest parameters are Array instances, meaning methods like sort(), map(), forEach() or pop() can be applied on it directly.
+			* The arguments object has the additional (deprecated) callee property.
+			* In a non-strict function with simple parameters, the arguments object syncs its indices with the values of parameters. The rest parameter array never updates its value when the named parameters are re-assigned.
+			* The rest parameter bundles all the extra parameters into a single array, but does not contain any named argument defined before the ...restParam. The arguments object contains all of the parameters — including the parameters in the ...restParam array — bundled into one array-like object.
+
+	* Using rest parameters -
+	* Argument length
+	* Using rest parameters in combination with ordinary parameters - check in mdn
+	* From arguments to an array -
+	
+
+7) set -
+	* The set syntax binds an object property to a function to be called when there is an attempt to set that property. It can also be used in classes.
+	* A setter must have exactly one parameter.
+	* In JavaScript, a setter can be used to execute a function whenever an attempt is made to change a property's value. Setters are most often used in conjunction with getters.
+	* An object property is either a data property or an accessor property, but it cannot simultaneously be both. Read Object.defineProperty() for more information. The setter syntax allows you to specify the setter function in an object initializer.
+		const obj = {
+		  set prop() {
+		    // setter, the code executed when setting obj.prop
+		  },
+		}
+	* Defining a setter on new objects in object initializers
+	* Using setters in classes
+	* Removing a setter with the delete operator
+	* Defining a setter on existing objects using defineProperty
+	* Using a computed property name
+	
+
+8) The arguments object -
+	* arguments is an array-like object accessible inside functions that contains the values of the arguments passed to that function.
+	* The arguments object is a local variable available within all non-arrow functions. You can refer to a function's arguments inside that function by using its arguments object. It has entries for each argument the function was called with, with the first entry's index at 0.
+	* You can use arguments.length to count how many arguments the function was called with.
+	*  If you instead want to count how many parameters a function is declared to accept, inspect that function's length property.
+
+	* Assigning to indices	- check in mdn
+		* Each argument index can also be set or reassigned.	arguments[1] = "new value";
+		* Non-strict functions that only have simple parameters (that is, no rest, default, or destructured parameters) will sync the new value of parameters with the arguments object, and vice versa:
+
+	* arguments is an array-like object - check in mdn
+	* Defining a function that concatenates several strings
+	* Defining a function that creates HTML lists
+	* Using typeof with arguments - The typeof operator returns 'object' when used with arguments
 
 
 E) Classes
+
+1) Overview - 
+	* Classes are a template for creating objects. They encapsulate data with code to work on that data. Classes in JS are built on prototypes but also have some syntax and semantics that are unique to classes.
+	* Defining classes -
+		* Classes are in fact "special functions", and just as you can define function expressions and function declarations, a class can be defined in two ways: a class expression or a class declaration.
+		* ex. // Declaration
+			class Rectangle {
+			  constructor(height, width) {
+			    this.height = height;
+			    this.width = width;
+			  }
+			}
+			
+			// Expression; the class is anonymous but assigned to a variable
+			const Rectangle = class {
+			  constructor(height, width) {
+			    this.height = height;
+			    this.width = width;
+			  }
+			};
+			
+			// Expression; the class has its own name
+			const Rectangle = class Rectangle2 {
+			  constructor(height, width) {
+			    this.height = height;
+			    this.width = width;
+			  }
+			};
+		* Like function expressions, class expressions may be anonymous, or have a name that's different from the variable that it's assigned to. However, unlike function declarations, class declarations have the same temporal dead zone restrictions as let or const and behave as if they are not hoisted.
+
+	* Class body -
+		* The body of a class is the part that is in curly braces {}. This is where you define class members, such as methods or constructor.
+		* The body of a class is executed in strict mode even without the "use strict" directive.
+		* A class element can be characterized by three aspects:
+			Kind: Getter, setter, method, or field
+			Location: Static or instance
+			Visibility: Public or private
+		* Together, they add up to 16 possible combinations. To divide the reference more logically and avoid overlapping content, the different elements are introduced in detail in different pages:
+			Method definitions - Public instance method
+			getter	-	Public instance getter
+			setter -	Public instance setter
+			Public class fields - Public instance field
+			static	-	Public static method, getter, setter, and field			
+			Private properties -	Everything that's private
+		* In addition, there are two special class element syntaxes: constructor and static initialization blocks, with their own references.
+
+
+	* Constructor -
+		* The constructor method is a special method for creating and initializing an object created with a class. There can only be one special method with the name "constructor" in a class — a SyntaxError is thrown if the class contains more than one occurrence of a constructor method.
+		* A constructor can use the super keyword to call the constructor of the super class.
+		You can create instance properties inside the constructor:
+			class Rectangle {
+			  constructor(height, width) {
+			    this.height = height;
+			    this.width = width;
+			  }
+			}
+		* Alternatively, if your instance properties' values do not depend on the constructor's arguments, you can define them as class fields.
+
+	* Static initialization blocks -
+		* Static initialization blocks allow flexible initialization of static properties, including the evaluation of statements during initialization, while granting access to the private scope.
+		* Multiple static blocks can be declared, and these can be interleaved with the declaration of static fields and methods (all static items are evaluated in declaration order).
+
+	* Methods -
+		* Methods are defined on the prototype of each class instance and are shared by all instances. Methods can be plain functions, async functions, generator functions, or async generator functions. For more information, see method definitions.
+
+	* Static methods and fields -
+		* The static keyword defines a static method or field for a class. Static properties (fields and methods) are defined on the class itself instead of each instance. Static methods are often used to create utility functions for an application, whereas static fields are useful for caches, fixed-configuration, or any other data that doesn't need to be replicated across instances.
+
+	* Field declarations - 
+		* With the class field declaration syntax, the constructor example can be written as:
+			class Rectangle {
+			  height = 0;
+			  width;
+			  constructor(height, width) {
+			    this.height = height;
+			    this.width = width;
+			  }
+			}
+		* Class fields are similar to object properties, not variables, so we don't use keywords such as const to declare them. In JavaScript, private properties use a special identifier syntax, so modifier keywords like public and private should not be used either.
+		* As seen above, the fields can be declared with or without a default value. Fields without default values default to undefined. By declaring fields up-front, class definitions become more self-documenting, and the fields are always present, which help with optimizations.
+
+	* Private properties -
+		* Using private fields, the definition can be refined as below.
+			class Rectangle {
+			  #height = 0;
+			  #width;
+			  constructor(height, width) {
+			    this.#height = height;
+			    this.#width = width;
+			  }
+			}
+
+	* Inheritance - The extends keyword is used in class declarations or class expressions to create a class as a child of another constructor (either a class or a function).
+
+	* Evaluation order -
+		* When a class declaration or class expression is evaluated, its various components are evaluated in the following order:
+			1) The extends clause, if present, is first evaluated. It must evaluate to a valid constructor function or null, or a TypeError is thrown.
+			2) The constructor method is extracted, substituted with a default implementation if constructor is not present. However, because the constructor definition is only a method definition, this step is not observable.
+			3) The class elements' property keys are evaluated in the order of declaration. If the property key is computed, the computed expression is evaluated, with the this value set to the this value surrounding the class (not the class itself). None of the property values are evaluated yet.
+			4) Methods and accessors are installed in the order of declaration. Instance methods and accessors are installed on the prototype property of the current class, and static methods and accessors are installed on the class itself. Private instance methods and accessors are saved to be installed on the instance directly later. This step is not observable.
+			5) The class is now initialized with the prototype specified by extends and implementation specified by constructor. For all steps above, if an evaluated expression tries to access the name of the class, a ReferenceError is thrown because the class is not initialized yet.
+			6) The class elements' values are evaluated in the order of declaration:
+				* For each instance field (public or private), its initializer expression is saved. The initializer is evaluated during instance creation, at the start of the constructor (for base classes) or immediately before the super() call returns (for derived classes).
+				* For each static field (public or private), its initializer is evaluated with this set to the class itself, and the property is created on the class.
+				* Static initialization blocks are evaluated with this set to the class itself.
+			The class is now fully initialized and can be used as a constructor function.
+
+	* Binding this with instance and static methods -
+		* When a static or instance method is called without a value for this, such as by assigning the method to a variable and then calling it, the this value will be undefined inside the method. This behavior is the same even if the "use strict" directive isn't present, because code within the class body is always executed in strict mode.
+		* ex.
+			class Animal {
+			  speak() {
+			    return this;
+			  }
+			  static eat() {
+			    return this;
+			  }
+			}
+			
+			const obj = new Animal();
+			obj.speak(); // the Animal object
+			const speak = obj.speak;
+			speak(); // undefined
+			
+			Animal.eat(); // class Animal
+			const eat = Animal.eat;
+			eat(); // undefined
+		* If we rewrite the above using traditional function-based syntax in non–strict mode, then this method calls are automatically bound to globalThis. In strict mode, the value of this remains as undefined.
+		* ex.
+			function Animal() {}
+			
+			Animal.prototype.speak = function () {
+			  return this;
+			};
+			
+			Animal.eat = function () {
+			  return this;
+			};
+			
+			const obj = new Animal();
+			const speak = obj.speak;
+			speak(); // global object (in non–strict mode)
+			
+			const eat = Animal.eat;
+			eat(); // global object (in non-strict mode)
+
+
+2) Constructor -
+	* The constructor method is a special method of a class for creating and initializing an object instance of that class.
+	* ex.		class Polygon {
+			  constructor() {
+			    this.name = 'Polygon';
+			  }
+			}
+			
+			const poly1 = new Polygon();
+			
+			console.log(poly1.name);
+			// Expected output: "Polygon"
+
+	* There are some additional syntax restrictions:
+		A class method called constructor cannot be a getter, setter, async, or generator.
+		A class cannot have more than one constructor method.
+	* A constructor enables you to provide any custom initialization that must be done before any other methods can be called on an instantiated object.
+		class Person {
+		  constructor(name) {
+		    this.name = name;
+		  }
+		
+		  introduce() {
+		    console.log(`Hello, my name is ${this.name}`);
+		  }
+		}
+		
+		const otto = new Person("Otto");
+		
+		otto.introduce(); // Hello, my name is Otto
+	* If you don't provide your own constructor, then a default constructor will be supplied for you. If your class is a base class, the default constructor is empty:
+		constructor() {}
+	* If your class is a derived class, the default constructor calls the parent constructor, passing along any arguments that were provided:
+		constructor(...args) {
+		  super(...args);
+		}
+	* Using new on a class goes through the following steps:
+		(If it's a derived class) The constructor body before the super() call is evaluated. This part should not access this because it's not yet initialized.
+		(If it's a derived class) The super() call is evaluated, which initializes the parent class through the same process.
+		The current class's fields are initialized.
+		The constructor body after the super() call (or the entire body, if it's a base class) is evaluated.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 D) Regular Expressions 
 	1) Backreference: \1, \2
