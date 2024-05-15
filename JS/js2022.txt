@@ -1558,3 +1558,164 @@ Need to try on following -
 * Reflection
 * Internationalization
 
+---------------------------------------------------------------------------------------------------------
+let obj = {
+    name: "s",      // key-value
+
+    // prototype set 
+    __proto__: {
+        prop: "foo"
+    },
+
+    // method
+    fnMethod(x, y){
+        console.log(super.prop);                    // "foo"
+        console.log("checks", this);                // current "obj"
+        console.log("arguments", arguments, arguments[0], arguments[1]);        // argument obj, 2, 3
+    },
+    fnMethodFn: function(){
+        console.log("checks2", this);    // current "obj"
+    },
+    fnMethodArrFn: (a, b, ...arr) => {
+        console.log("checks3", this);    // window object
+        console.log("checks3", a, b, arr);    // 2, 3, [4, 6, 7]
+    },
+    log: ['a', 'b', 'c'],
+    set priProps(x){
+        this.log.push(x);
+    },
+    get priProps(){
+        return this.log[this.log.length - 1];
+    },
+}
+
+
+
+class ParentCom {
+    height = "";
+    constructor(height = "Default Val"){
+        this.height = height;
+    }
+
+    parentMethods(){
+        return "parentMethod"
+    }
+}
+
+class App extends ParentCom {
+    constructor(height){
+        super(height);       //required
+    }
+    props = "thisisprops";
+    static statProps = "statProps";
+
+    // private property
+    #priPropsAge = 32;                      
+    get age(){                                          // access private props
+        return this.#priPropsAge
+    }
+    set age(x){
+        this.#priPropsAge = x;                          // set private props
+    }
+
+    callParentMethod(){
+        super.parentMethods();              // call parent method from child class
+    }
+    
+    checks(){                               // store it in prototype
+        console.log("checks", this);        // App {props: 'thisisprops', fnArr: ƒ, fnDec: ƒ} - object instance    
+    }
+    fnDec = function() {                    // store it in object itself
+        console.log("this", this);          // App {props: 'thisisprops', fnArr: ƒ, fnDec: ƒ} - object instance
+    }
+    fnArr = () => {                         // store it in object itself
+        console.log("this", this);          // App {props: 'thisisprops', fnArr: ƒ, fnDec: ƒ} - object instance
+    }
+
+
+    static staticFn (){
+        console.log("this", this);          // gives class itself
+    }
+    static staticFnDe = function () {
+        console.log("this", this);          // gives class itself
+    }
+    static staticFnArr = () => {
+        console.log("this", this);          // gives class itself
+    }
+
+    static async staticFnAsync(){
+        console.log("this", this);          // gives class itself
+        let val = await Promise.resolve(111);
+        console.log("staticFnAsync", val);          // 111
+        return val;
+    }
+    static staticFnDeAsync = async function () {
+        console.log("this", this);          // gives class itself
+        let val = await Promise.resolve(222);
+        console.log("staticFnAsync", val);          // 111
+        return val;
+    }
+    static staticFnArrAsync = async () => {
+        console.log("this", this);          // gives class itself
+        let val = await Promise.resolve(333);
+        console.log("staticFnAsync", val);          // 111
+        return val;
+    }
+}
+
+
+let a = new App(25);    // {height: 25, props: 'thisisprops', #priPropsAge: 32, fnArr: ƒ, fnDec: ƒ}
+// a.age    // 32
+
+var class11 = class {
+    constructor(width){
+        this.width = width;
+    }
+}
+
+var class12 = class Appss {
+    constructor(width){
+        this.width = width;
+    }
+}
+
+
+// function declaration
+function A(x, y){
+    console.log("check apply, bind, call with fn - ", this.name, x, y);
+}
+
+// function expression
+const B = function(){ ... }
+const C = function fnName(){ ... }
+
+// function arrow expression
+const D = () => {}
+
+
+let person = {
+    name: "akss",
+    age: 28
+}
+let e = A.bind(person);
+e(true);                                // check apply, bind, call with fn -  akss true false
+A.call(person, true, false);           // check apply, bind, call with fn -  akss true false
+
+
+// constructor function
+function ConstructorFn(x, y, z){
+    this.name = x;
+    this.surname = y;
+    this.age = z;
+}
+let n1 = new ConstructorFn("sumeet", "shedge", 24);
+
+// how to create two different objects
+const obj1 = {
+    name: "s",
+    address: {
+        city: "mumbai"
+    },
+    pincode: 400010
+}
+const obj2 = {...obj1, address: { ...obj1.address } };
