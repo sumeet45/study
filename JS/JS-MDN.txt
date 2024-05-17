@@ -182,7 +182,16 @@ A) Built-in objects -
 	      * AggregateError.prototype.errors -
 	      An array that essentially reflects the iterable with which the AggregateError was instantiated; for example, if the AggregateError was created using the AggregateError() constructor, an array produced from whatever iterable was passed to the constructor as its first argument.
 
-	2) Array
+	2) Array -
+		* The Array object, as with arrays in other programming languages, enables storing a collection of multiple items under a single variable name, and has members for performing common array operations.
+		* JavaScript arrays are resizable and can contain a mix of different data types. (When those characteristics are undesirable, use typed arrays instead.)
+		* JavaScript arrays are not associative arrays and so, array elements cannot be accessed using arbitrary strings as indexes, but must be accessed using nonnegative integers (or their respective string form) as indexes.
+		* JavaScript arrays are zero-indexed: the first element of an array is at index 0, the second is at index 1, and so on — and the last element is at the value of the array's length property minus 1.
+		* JavaScript array-copy operations create shallow copies. (All standard built-in copy operations with any JavaScript objects create shallow copies, rather than deep copies).
+
+
+
+
 	3) ArrayBuffer
 	4) AsyncFunction
 	5) AsyncGenerator
