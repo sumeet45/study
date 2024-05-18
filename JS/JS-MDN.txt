@@ -188,6 +188,20 @@ A) Built-in objects -
 		* JavaScript arrays are not associative arrays and so, array elements cannot be accessed using arbitrary strings as indexes, but must be accessed using nonnegative integers (or their respective string form) as indexes.
 		* JavaScript arrays are zero-indexed: the first element of an array is at index 0, the second is at index 1, and so on — and the last element is at the value of the array's length property minus 1.
 		* JavaScript array-copy operations create shallow copies. (All standard built-in copy operations with any JavaScript objects create shallow copies, rather than deep copies).
+		* Setting or accessing via non-integers will not set or retrieve an element from the array list itself, but will set or access a variable associated with that array's object property collection. The array's object properties and list of array elements are separate, and the array's traversal and mutation operations cannot be applied to these named properties.
+		* JavaScript syntax requires properties beginning with a digit to be accessed using bracket notation instead of dot notation. It's also possible to quote the array indices (e.g., years['2'] instead of years[2]), although usually not necessary.
+		* The 2 in years[2] is coerced into a string by the JavaScript engine through an implicit toString conversion. As a result, '2' and '02' would refer to two different slots on the years object, and the following example could be true: console.log(years["2"] !== years["02"]);
+			Only years['2'] is an actual array index. years['02'] is an arbitrary string property that will not be visited in array iteration.
+
+		* Relationship between length and numerical properties -
+			* A JavaScript array's length property and numerical properties are connected.
+			* Several of the built-in array methods (e.g., join(), slice(), indexOf(), etc.) take into account the value of an array's length property when they're called.
+			* Other methods (e.g., push(), splice(), etc.) also result in updates to an array's length property.
+			const fruits = [];
+			fruits.push("banana", "apple", "peach");
+			console.log(fruits.length); // 3
+
+
 
 
 
