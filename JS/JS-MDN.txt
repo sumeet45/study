@@ -1144,7 +1144,67 @@ B) Expressions & operators
 	49) null
 	50) Nullish coalescing assignment (??=)
 	51) Nullish coalescing operator (??)
-	52) Object initializer
+		* The nullish coalescing (??) operator is a logical operator that returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand.
+		* The nullish coalescing operator can be seen as a special case of the logical OR (||) operator. The latter returns the right-hand side operand if the left operand is any falsy value, not only null or undefined.
+		* In other words, if you use || to provide some default value to another variable foo, you may encounter unexpected behaviors if you consider some falsy values as usable (e.g., '' or 0). See below for more examples.
+		* The nullish coalescing operator has the fifth-lowest operator precedence, directly lower than || and directly higher than the conditional (ternary) operator.
+		* It is not possible to combine both the AND (&&) and OR operators (||) directly with ??. A syntax error will be thrown in such cases.
+				null || undefined ?? "foo"; // raises a SyntaxError
+				true && undefined ?? "foo"; // raises a SyntaxError
+		* Instead, provide parenthesis to explicitly indicate precedence:   
+				(null || undefined) ?? "foo"; // returns "foo"
+		* Using the nullish coalescing operator -
+		* Assigning a default value to a variable
+				const myText = ""; // An empty string (which is also a falsy value)
+				
+				const notFalsyText = myText || "Hello world";
+				console.log(notFalsyText); // Hello world
+				
+				const preservingFalsy = myText ?? "Hi neighborhood";
+				console.log(preservingFalsy); // '' (as myText is neither undefined nor null)
+		* Short-circuiting -
+			Like the OR and AND logical operators, the right-hand side expression is not evaluated if the left-hand side proves to be neither null nor undefined.
+				function a() {
+				  console.log("a was called");
+				  return undefined;
+				}
+				function b() {
+				  console.log("b was called");
+				  return false;
+				}
+				function c() {
+				  console.log("c was called");
+				  return "foo";
+				}
+				
+				console.log(a() ?? c());
+				// Logs "a was called" then "c was called" and then "foo"
+				// as a() returned undefined so both expressions are evaluated
+				
+				console.log(b() ?? c());
+				// Logs "b was called" then "false"
+				// as b() returned false (and not null or undefined), the right
+				// hand side expression was not evaluated
+
+		* Relationship with the optional chaining operator (?.)
+			The nullish coalescing operator treats undefined and null as specific values. So does the optional chaining operator (?.), which is useful to access a property of an object which may be null or undefined. Combining them, you can safely access a property of an object which may be nullish and provide a default value if it is.
+
+				const foo = { someFooProp: "hi" };
+				console.log(foo.someFooProp?.toUpperCase() ?? "not available"); // "HI"
+				console.log(foo.someBarProp?.toUpperCase() ?? "not available"); // "not available"
+
+
+	52) Object initializer -
+		* An object initializer is a comma-delimited list of zero or more pairs of property names and associated values of an object, enclosed in curly braces ({}). Objects can also be initialized using Object.create() or by invoking a constructor function with the new operator.
+		* An object initializer is an expression that describes the initialization of an Object. Objects consist of properties, which are used to describe an object. The values of object properties can either contain primitive data types or other objects.
+		* Object literal syntax vs. JSON -
+			* JSON only permits property definition using the "property": value syntax. The property name must be double-quoted, and the definition cannot be a shorthand. Computed property names are not allowed either.
+			* JSON object property values can only be strings, numbers, true, false, null, arrays, or another JSON object. This means JSON cannot express methods or non-plain objects like Date or RegExp.
+			* In JSON, "__proto__" is a normal property key. In an object literal, it sets the object's prototype.
+			* JSON is a strict subset of the object literal syntax, meaning that every valid JSON text can be parsed as an object literal, and would likely not cause syntax errors. 
+	
+
+
 	53) Operator precedence
 	54) Optional chaining (?.)
 		* The optional chaining (?.) operator accesses an object's property or calls a function. If the object accessed or function called using this operator is undefined or null, the expression short circuits and evaluates to undefined instead of throwing an error.
@@ -1162,7 +1222,48 @@ B) Expressions & operators
 
 		* The ?. operator is like the . chaining operator, except that instead of causing an error if a reference is nullish (null or undefined), the expression short-circuits with a return value of undefined.
 		* When used with function calls, it returns undefined if the given function does not exist.
-		* 
+		* This results in shorter and simpler expressions when accessing chained properties when the possibility exists that a reference may be missing. It can also be helpful while exploring the content of an object when there's no known guarantee as to which properties are required.
+		* For example, consider an object obj which has a nested structure. Without optional chaining, looking up a deeply-nested subproperty requires validating the references in between, such as:
+			const nestedProp = obj.first && obj.first.second;
+		* The value of obj.first is confirmed to be non-null (and non-undefined) before accessing the value of obj.first.second. This prevents the error that would occur if you accessed obj.first.second directly without testing obj.first.
+		* This is an idiomatic pattern in JavaScript, but it gets verbose when the chain is long, and it's not safe. For example, if obj.first is a Falsy value that's not null or undefined, such as 0, it would still short-circuit and make nestedProp become 0, which may not be desirable.
+		* With the optional chaining operator (?.), however, you don't have to explicitly test and short-circuit based on the state of obj.first before trying to access obj.first.second:
+			const nestedProp = obj.first?.second;
+		* By using the ?. operator instead of just ., JavaScript knows to implicitly check to be sure obj.first is not null or undefined before attempting to access obj.first.second. If obj.first is null or undefined, the expression automatically short-circuits, returning undefined.
+		* Optional chaining cannot be used on a non-declared root object, but can be used with a root object with value undefined.
+
+		* Optional chaining with function calls - 
+			Using optional chaining with function calls causes the expression to automatically return undefined instead of throwing an exception if the method isn't found
+		* Optional chaining with expressions - 
+			You can also use the optional chaining operator with bracket notation, which allows passing an expression as the property name:
+				const nestedProp = obj?.["prop" + "Name"];
+		* Optional chaining not valid on the left-hand side of an assignment -
+			It is invalid to try to assign to the result of an optional chaining expression:
+				const object = {};
+				object?.property = 1; // SyntaxError: Invalid left-hand side in assignment
+		* Short-circuiting - check in mdn
+		* Basic example - 
+			This example looks for the value of the name property for the member bar in a map when there is no such member. The result is therefore undefined.
+			const myMap = new Map();
+			myMap.set("foo", { name: "baz", desc: "inga" });			
+			const nameBar = myMap.get("bar")?.name;
+		* Dealing with optional callbacks or event handlers -
+		* Stacking the optional chaining operator -
+			const customerCity = customer.details?.address?.city;
+			// This also works with optional chaining function call
+			const customerName = customer.name?.getName?.(); // Method does not exist, customerName is undefined
+		* Combining with the nullish coalescing operator -
+			The nullish coalescing operator may be used after optional chaining in order to build a default value when none was found:
+				function printCustomerCity(customer) {
+				  const customerCity = customer?.city ?? "Unknown city";
+				  console.log(customerCity);
+				}
+				
+				printCustomerCity({ name: "Nathan", city: "Paris", }); // "Paris"
+				printCustomerCity({ name: "Carl", details: { age: 82 } }); // "Unknown city"
+
+
+
 
 
 
