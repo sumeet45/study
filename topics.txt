@@ -1,3 +1,6 @@
+httpOnly cookie
+JWT
+xss
 Cookies 
 Session 
 
