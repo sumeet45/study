@@ -1,5 +1,39 @@
+DB
+API and its security 
+Libraries
+Push notifications
+IOS development
+Android development
+Tools - GitActions
+CI-CD -
+
+------------------------------------------------------------------------------------------------------------------------------
+JWT (https://youtube.com/watch?v=5mUDRQfwXuE)-
+* http is stateless protocol
+* we used sessionid and token for giving data
+* sessionid might have some issues - 
+    1) suppose server A gaves you session id while login, but your next request goes to Server B, then it might create issue. bcz server B don't know about your session id
+* JWT -
+    In JWT, client sends details to server. and Server sends back all the information in JSON format, required by client in token form after token signtaure. server didn't store anything. token share with http header authorization. Server signed token with secret key ( public-private key, secret key). 
+
+* session id is actually reference point. but JWT is actually storing all information required by user.
+* JWT has 3 parts - header, payload, signature
+* https://jwt.io/
+* JWT token - has base 64 encode
+* JWT header - has 2 props type and algorithm
+      type - tells which type of token
+      algorithm - tells which type of algorithm used  (HS256, RS256 and many more)
+* JWT payload - actual user data
+    * claim based and custom based 
+    * we don't store any confidential data in payload
+* JWT signature - using algo and available data, we create signature and store it in signature
+* JWT uses in authorization
+* JWT store it in http header authorization with "Bearer "
+------------------------------------------------------------------------------------------------------------------------------
+
+
+
 httpOnly cookie
-JWT
 xss
 Cookies 
 Session 
