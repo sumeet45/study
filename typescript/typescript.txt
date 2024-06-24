@@ -1037,3 +1037,74 @@ class AbstractExpChild extends AbstractExpParent {
 }
 var absExmaple = new AbstractExpChild();
 absExmaple.description();
+-------------------------------------------------------------------------------------------------------------
+
+let a1: number = 2;
+let a2: string = "234";
+let a3: boolean = true;
+let a4: any = 34.90;
+let a5: number[] = [2,4,5,5];
+let a6: Array<number> = [3,6,6,0];
+function a7(a1: number, a2: number): number{
+    return a1+ a2;
+}
+const a8 = (a1: number, a2: number): number =>{
+    return a1+ a2;
+}
+async function a9(a: number, b: number): Promise<number>{
+    return 26;
+}
+type Personal = {
+    name: string, age?: number
+}
+interface PersonalInterface {
+    empId: number, empName: string | number
+}
+let a10: Personal = { name: "sumeet", age: 23 }
+let a11: PersonalInterface = { empName: "sumeet", empId: 23 }
+function a12( id: number | string){
+    //narrowing
+    if(typeof id === "string"){
+        return id.toUpperCase();
+    } else {
+        return id;
+    }
+}
+type a12 = number | string;
+let a13: "hello" = "hello";
+enum Cost {Id1, Id2};
+let a14: Cost.Id1 = 0;
+let a15: Cost.Id2 = 1;
+
+
+interface Computer {
+    compile: () => void
+}
+class Desktop implements Computer {
+    compile(){
+        console.log("Desktop")
+    }
+}
+class Laptop implements Computer {
+    compile(){
+        console.log("Laptop")
+    }
+}
+class Programming {
+    check(cl: Computer){
+        cl.compile()
+    }
+}
+
+class LooseCoupling {
+    checkLC(){
+        let deskInstance = new Desktop();
+        let lapInstance = new Laptop();
+        let d = new Programming();
+        d.check(deskInstance);
+        d.check(lapInstance);
+    }
+}
+let c = new LooseCoupling();
+c.checkLC();
+
