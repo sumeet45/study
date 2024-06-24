@@ -1077,6 +1077,7 @@ let a14: Cost.Id1 = 0;
 let a15: Cost.Id2 = 1;
 
 
+// example given by Navin Reddy on youtube shorts - "Loose Coupling"
 interface Computer {
     compile: () => void
 }
