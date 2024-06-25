@@ -1,0 +1,33 @@
+
+----------------------------------------------------------------------------------------------
+Quick Sort -
+
+function quickSort(arr){
+  if(arr.length === 1){
+    return arr
+  }
+  var pivot = arr[arr.length - 1];
+  var rArr = [], lArr = [];
+  for(let i = 0; i < arr.length - 1; i++){
+    if(arr[i] < pivot){
+      lArr.push(arr[i]);
+    } else {
+      rArr.push(arr[i]);
+    }
+  }
+  if(rArr.length > 0 && lArr.length > 0){
+  	return [...quickSort(lArr), pivot, ...quickSort(rArr)]
+  } else if(lArr.length > 0){
+ 		return [...quickSort(lArr), pivot]
+  } else {
+  	return [ pivot, ...quickSort(rArr)]
+  }
+}
+
+let d = quickSort([2,8,6,3,77,94,1,56,75])
+console.log(d)
+
+* In quick sort, we decide first pivot point. Then iterate over remaining array. If element found large than pivot element, then places in the right Array. For smaller element, kept in left array. We use recursion in it.
+
+----------------------------------------------------------------------------------------------
+
