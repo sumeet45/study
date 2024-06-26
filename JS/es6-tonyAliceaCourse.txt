@@ -434,11 +434,14 @@ na.greet();      //tony
 
 31) Symbols -
 * symbol is primitive type
-* sometime, we can overwrite earlier method in JS. symbol helps to resolve this issue.
+* sometimes, we can override earlier methods in JS. symbol helps to resolve this issue.
 
-32) Using sybols -
+32) Using symbols -
 * symbol is a fundamental type of thing in the JS engine.
+* symbol is primitive type, just like boolean, number.
+
 const grt = Symbol("greet");
+
 * Hash code - a value generated from another value. The same value is always generated for the same input.
 * every time we give, let's say one, two, three, I would always get out A, B, C.
 
