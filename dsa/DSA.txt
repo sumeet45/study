@@ -1,3 +1,4 @@
+Mastering Data Structures & Algorithms using C and C++  - Abdul bari
 
 2) Introduction -
 * Data structures - programm is a set of instructions which performs operations on data. so data is important part of programm. so when a program is dealing with the data, how it will organize the data in the main memory, that's what its data structure. The way you organize the data in the main memory during execution time of programm, that is DS.
