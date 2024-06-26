@@ -6,6 +6,9 @@ IOS development
 Android development
 Tools - GitActions
 CI-CD -
+Firebase
+payment integration
+DNS
 
 ------------------------------------------------------------------------------------------------------------------------------
 JWT (https://youtube.com/watch?v=5mUDRQfwXuE)-
@@ -38,10 +41,14 @@ xss
 Cookies 
 Session 
 
+------------------------------------------------------------------------------------------------------------------------------
+
 * db selection based on which reason - 
   1) read database manual of current DB. It can provide configuration know, which help to deal with any db related issue.
   2) can ask experts to select DB
   3) check Limit and FAQ section to learn about DB
+
+------------------------------------------------------------------------------------------------------------------------------
 
 * why react native instead of native or vice versa
   Choosing between native development and React Native depends on various factors, including project requirements, development resources, time constraints, and target audience. While both approaches have their advantages and disadvantages, there are scenarios where native development might be preferred over React Native:
@@ -59,3 +66,6 @@ Session
 6) Long-Term Maintenance and Scalability: Native apps may have lower maintenance overhead and better long-term scalability, especially for large-scale projects with complex requirements. Since native codebases are tightly coupled with platform updates and SDK changes, they can be easier to maintain and extend over time compared to cross-platform codebases, which may require additional effort for compatibility testing and updates.
 
 While native development offers advantages in performance, user experience, and access to platform-specific features, it often requires separate development efforts for each platform, resulting in higher initial development costs and longer time to market. Ultimately, the choice between native and React Native depends on your project's specific needs, resources, and trade-offs between development efficiency and application performance.
+
+
+------------------------------------------------------------------------------------------------------------------------------
