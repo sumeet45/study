@@ -443,15 +443,63 @@ na.greet();      //tony
 const grt = Symbol("greet");
 
 * Hash code - a value generated from another value. The same value is always generated for the same input.
+* hash codes are unique.
+* some JS engine choose to use the address of the memory location in which the symbol is stored as the value for the symbol.
 * every time we give, let's say one, two, three, I would always get out A, B, C.
 
-* const grt = Symbol("greet");      // created new value and store it in grt
+* const greet = Symbol("Hello");      // here, "Hello" is a reference point for the symbol. this is not the value of symbol. we can call it "description"
+
+
+* const grt = Symbol("greet");      // created new, random and unique value and store it in grt
 const grt2 = Symbol("greet");      // created new value and store it in grt2
 const fname = Symbol("fname");
 
-console.log(grt === grt2);      // false
+console.log(grt === grt2);      // false, bcz everytime it has unique value
+
+* ex.
+      const grt = Symbol("greet");            // this will generate unique value, and we can use it as name of field in class, object
+      const fname = Symbol("fname");
+
+      class Person {
+            [fname] = "Tony";                  // [fname] is to avoid collisions
+            [grt] (){
+                  return `Hi ${this.fname}`;
+            }
+      }
+      let tony = new Person();
+      const fname2 = Symbol("fname");
+      tony[fname2] = "Anthony";
+      tony.__proto__.greet = function(){
+            return "Hello ${this[fname]}`;
+      }
+
+      console.log(tony[grt]());
+      console.log(tony.greet());
+
+      let me = {
+            [fname]: "Anthony"
+      }
+      console.log(me[fname]);
+
+* Magic strings - These are strings that have a special meaning or usage in your program. This makes your program fragile, and easily susceptible to bugs.
+
+// global symbols
+      const HAIR_STRAIGHT = Symbol.for("straight");            //Symbol.for register into the Global symbol registry
+      const HAIR_WAVY = Symbol.for("wavy");
+      const HAIR_CURLY = Symbol.for("Curly");
+
+      let curly = Symbol.for("Curly");      //returns same value, which we got while using Symbol.for("Curly"). bcz its in global registry
+      console.log(curly === HAIR_CURLY);
+
+      console.log(Symbol.keyFor(HAIR_CURLY));
+
+* use it symbol whenever required.
 
 
+
+33) Well known Symbols -
+* Symbols already built into the JS engine, used by the engine for certain tasks
+* there already multiples are available
 
 
 34) Iterators and Iterables -
