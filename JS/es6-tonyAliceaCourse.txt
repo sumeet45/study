@@ -511,8 +511,20 @@ console.log(grt === grt2);      // false, bcz everytime it has unique value
 
 36) for ..of and for..in
 * enumberable - a property which will appear when looping over the properties of an object (it's "enumberable" flag is set to true). The term comes from mathematics , where it means "countable"
+      let names = ["tony", "Anthony", "alicea"];
+      for(const name of names){
+            console.log(name)      // "tony", "Anthony", "alicea"            // values
+      }
+      for(const name in names){
+            console.log(name)      // 0, 1, 2            // keys
+      }
 
-
+37) Iterators -
+* Iterators - a object who follows iteration protocol
+* Protocol - Rules for how to exchange information
+* Iteration Protocol - The information that must be provided by an object to let itself be iterated over.
+* Iterate over - To move from value to value across a set or list of values
+* Purpose of an iterator is to allow JS engine to loop over the object.
 
 
 40) Default Parameters: why?
