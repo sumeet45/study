@@ -519,6 +519,45 @@ console.log(grt === grt2);      // false, bcz everytime it has unique value
             console.log(name)      // 0, 1, 2            // keys
       }
 
+* lets check with class object properties are enumerable or not
+      // with class
+      class Animal {
+            name = "Dog";
+            static residence = "Earth";
+      }
+      class Dog extends Animal {
+            sound = "bark";
+            makeSound(){
+                  console.log(this.sound);
+            }
+      }
+      let dog = new Dog();
+      for(const prop in dog){
+            console.log(prop);      // name, sound      // here, makesound is not enumerable property
+      }
+
+      // with object literal
+      let dog2 = {
+            sound: "bark",
+            makesound: function(){
+                  console.log("bark");
+            }
+      }
+      dog2.__proto__ = {
+            residence: "Earth"
+      }
+      for(const prop in dog2){
+            console.log(prop);      // sound, makesound, residence
+      }
+
+      console.log(dog.propertyIsEnumerable("sound"));            // true
+
+      // 
+      for(const prop of dog){
+            console.log(prop);            // will return error - dog is not iterable
+      }
+* lets see, what is iterable
+
 37) Iterators -
 * Iterators - a object who follows iteration protocol
 * Protocol - Rules for how to exchange information
@@ -526,6 +565,9 @@ console.log(grt === grt2);      // false, bcz everytime it has unique value
 * Iterate over - To move from value to value across a set or list of values
 * Purpose of an iterator is to allow JS engine to loop over the object.
 
+
+38) Iterables and Symbol.iterator -
+* Iterable - An Object that has the expected function which returns an iterator
 
 40) Default Parameters: why?
 * default parameter is new addition to es6. 
