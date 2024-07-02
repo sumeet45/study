@@ -1,0 +1,21 @@
+
+4) how does an app work?
+* mobile is mini computer
+* when we tap on screen, sensors in phone registers the tap and sends a message to OS
+* now OS will look at data that it gets from the sensor.
+* OS will now ask application, to work on given commands
+* only 3 components for every single mobile app - screen, code, data
+* phone has limited memory and have battery limitation, so we need to keep things in mind while working on app.
+* while working on app, we have to work on edge cases like user switch to another app, user getting phone call.
+
+
+5) How to make an app -
+* 
+
+6) How to get All free stuff -
+
+9) How to make the most of the bootcamp -
+
+10) How to Get help When you're stuck -
+
+11) Developing for ios - tools and materials
