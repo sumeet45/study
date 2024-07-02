@@ -1,0 +1,77 @@
+JavaScript Data Structures & Algorithms + LEETCODE Exercises
+
+  
+1) Introduction -
+* 
+
+2) Overview (must watch)-
+* big o - 
+ 
+
+3) Code editor - 
+*
+
+4) Big O - intro -
+* we have 2 codes written differently but achieving same results. Using big O, we can decide which code run fast and better.
+* suppose first code run within 15 sec and other one took 60 sec, it means code 1 is better as per Time complexity. In time complexity, we mostly check code and decide how many number of operations are there in that code.
+* With Big O, we can calculate space complexity. In it, we calculate memory used by code
+
+5) Big O - worst case
+* we have omega, theta and omicron to represent cases
+* best case presented with omega
+* average case presented theta
+* worst case presented Omicron
+
+6) BigO: O(n) -
+* n will reside on the x axis
+* number of operations will reside on the y axis
+
+7) Big O: Drop constants - 
+* suppose code has 2 separate for loop. It will give following one -
+	n + n = 2n
+	O(2n)
+* there's rule which says drop constant. so above 2n will become "n". constant dropped. it becomes again O(n)
+
+8) Big O: O(n^2) -
+* if we have nested for loop, then it will give us - O(n^2)
+
+9) Big O: Drop non-dominants -
+* another way to simplify big o notation.
+* In code, we have 1 nested for loop which generate O(n^2) and additionally we have 1 for loop, which will give us O(n)
+* 	O(n^2 + n) => O(n^2)	- remove n, bcz its doesn't matter
+
+10) Big O: O(1)
+* code has addition with two operands - O(1)
+* suppose we add extra operands - O(2)
+* in the end, we will simplify by converting it to - O(1). bcz operation is same
+* number of operations doesn't change as n changes
+* O(1) referred as constant time
+
+
+11) 
+
+
+12) Big O: different terms for input -
+* suppose code have 2 different parameter and having 2 separate for loop. so notation will be - O(a + b)
+* suppose code have 2 different parameter and having 2 nested for loop. so notation will be - O(a * b)
+
+13) Big O: Arrays -
+* In array, push and pop are O(1) 
+* unshift and shift are O(n). where n means number of items in array. while shift and unshift lots of reindexing happened, hence O(n)
+* splice (adding or removing within array) operation is O(n), bcz of lots of reindexing
+* find using value - O(n), find using index - O(1)
+* if you need to work with only index, then array is great operation. otherwise need to think about other option
+
+14) Big O: wrap up -
+* use bigocheatsheet.com
+
+
+16) classes
+* ex.
+	class Cookies {
+		constructor(color){
+			this.color = color
+		}
+		//methods to update ds
+	}
+	let newCookie1 = new Cookies("green")
