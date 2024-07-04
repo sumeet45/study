@@ -770,7 +770,64 @@ Referenece -
             
 
 
+3) Decorators -
+  * With the introduction of Classes in TypeScript and ES6, there now exist certain scenarios that require additional features to support annotating or modifying classes and class members. Decorators provide a way to add both annotations and a meta-programming syntax for class declarations and members.
 
+
+4) Declaration Merging -
+  * 
+
+
+variable declaration -
+  * var declarations -
+     * Declaring a variable in JavaScript has always traditionally been done with the var keyword.
+     * example which shows scope chain 
+     * Scoping rules -
+     * Variable capturing quirks
+
+  * let declarations
+      * Block-scoping
+      * Re-declarations and Shadowing
+      * Block-scoped variable capturing
+      * const declarations
+
+  * let vs. const
+
+  * Destructuring
+      * Array destructuring
+      * Tuple destructuring
+      * Object destructuring -
+             let o = {
+               a: "foo",
+               b: 12,
+               c: "bar",
+             };
+             let { a, b } = o;
+
+          * property renaming -
+                 let { a: newName1, b: newName2 } = o;
+                 let { a: newName1, b: newName2 }: { a: string; b: number } = o;
+          
+          * Default values -
+                 function keepWholeObject(wholeObject: { a: string; b?: number }) {
+                  let { a, b = 1001 } = wholeObject;
+                }
+
+
+    * Function declarations
+
+Spread
+using declarations
+null and undefined
+Defining a disposable resource
+await using declarations
+Defining an asynchronously disposable resource
+await using vs await
+await using and return
+using and await using in for and for..of statements
+using and await using in older runtimes
+Is this page helpful?
+YesNo
 
 
    * you usually don’t need type annotation because TypeScript will infer type at its own
