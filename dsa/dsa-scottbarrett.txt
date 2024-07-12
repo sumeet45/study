@@ -75,3 +75,9 @@ JavaScript Data Structures & Algorithms + LEETCODE Exercises
 		//methods to update ds
 	}
 	let newCookie1 = new Cookies("green")
+
+17) linked list: Intro -
+* Unlike array, Linked list doesn't have indexes
+* array are placed in contigous places and linked list placed anywhere
+* linked list have two variables called = head and tail
+* head point to first item and tail point to last item
