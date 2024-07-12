@@ -69,3 +69,32 @@ While native development offers advantages in performance, user experience, and 
 
 
 ------------------------------------------------------------------------------------------------------------------------------
+
+* Improving Microservice Performance: From 1x to 10x
+
+1.Cache:
+Explanation: Cache stores frequently accessed data in a fast-access layer to reduce latency and improve performance.
+
+2.Connection Pooling:
+Explanation: Connection pooling reuses existing database connections to minimize the overhead of creating new connections, improving efficiency.
+
+3.Pagination:
+Explanation: Pagination divides a large set of data into smaller pages to enhance user experience and reduce data transfer times.
+
+4.JSON Serialization:
+Explanation: JSON serialization converts data objects into a JSON format for easy transmission between client and server applications.
+
+5.Payload Compression:
+Explanation: Payload compression reduces the size of data transmitted over the network, improving throughput and reducing latency.
+
+6.Avoid N+1 Problem:
+Explanation: The N+1 problem occurs in ORM frameworks when making repeated database queries instead of fetching data in bulk. It's solved by eager loading or using batch fetching techniques.
+
+7.Async Logging:
+Explanation: Async logging asynchronously writes log messages to disk or a centralized logging service, minimizing performance impact on the main application.
+
+8.Load Balancer:
+Explanation: Load balancer distributes incoming network traffic across multiple servers to optimize resource utilization, maximize throughput, and ensure high availability.
+
+------------------------------------------------------------------------------------------------------------------------------
+
