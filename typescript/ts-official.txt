@@ -777,8 +777,27 @@ Referenece -
 4) Declaration Merging -
   * 
 
+5) Enums -
 
-variable declaration -
+6) Iterators and Generator - 
+
+7) JSX -
+
+8) Mixins -
+
+9) Namespace -
+
+10) Namespace and modules -
+
+11) Symbols 
+
+12) Triple-slash directive
+
+13) Type Compatibility
+
+14) Type Inference
+
+15) variable declaration -
   * var declarations -
      * Declaring a variable in JavaScript has always traditionally been done with the var keyword.
      * example which shows scope chain 
