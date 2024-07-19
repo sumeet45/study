@@ -19,3 +19,6 @@
 10) How to Get help When you're stuck -
 
 11) Developing for ios - tools and materials
+* macOS 10
+* xcode
+* 
