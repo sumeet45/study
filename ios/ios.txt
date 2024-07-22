@@ -47,3 +47,12 @@
 * remember, xcode saves all of code automatically
 
 18) A walkthrough of the xcode development enviorment -
+* tabs - General, Signing and Capabilities, Resource Tags, Info, Build Setting, Build Phases, Build Rules
+* ios 13.0 - will give minimum level 
+* 4 things - status bar, left pane, right pane, bottom pane (debug area - (view > debug area))
+* https://www.appbrewery.co/p/ios-course-resources/
+* more shortcuts explained
+* preferences and font size and color
+
+19) Let's Design the User Interface -
+* 
