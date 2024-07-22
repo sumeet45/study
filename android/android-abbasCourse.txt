@@ -1,0 +1,11 @@
+Learn Android App Development in both Java &amp; Kotlin Languages. You'll master Android from ZERO to HERO
+
+1) Java or Kotlin-
+  Java -
+    * Java offers maturity. android has numerous libraries in java
+    * Java code compiles to byte code that is optimized for JVM
+    * Java uses for multiple level apps
+
+  Kotlin -
+    * kotlin known for its concise and expressive syntax, reducing boilerplate code
+    * kotlin provides built in null safety features, helping to prevent common runtime crashes by catching null pointer exception at run time.
