@@ -21,4 +21,29 @@
 11) Developing for ios - tools and materials
 * macOS 10
 * xcode
+* physical device
+* Apple developer program - we need free apple account (itunes account) to download app on your physical device. Buy Apple developer program, when we ready to deplu on store and ready to generating revenue.
+* app store connect - 
+
+13) Getting set up with Xcode -
+* xcode need 12 GB hard disk space and simulator need 2 GB. so overall, needed 25 to 30 GB space.
+* macOS should be updated
+
+14) Pathfinder -
 * 
+
+15) The I am Rich App -
+* shows story
+
+16) A note about the next lesson -
+* 
+
+17) Lets create a Brand new Xcode project -
+* use storyborad in userInterface
+* leave team as 'none'-  we need while launching app on physical device
+* product name - "I am Rich"
+* Organization Identifier - using reverse domain name 'com.appbrewery.I-am-rich' will give unique identifier
+* language - swift
+* remember, xcode saves all of code automatically
+
+18) A walkthrough of the xcode development enviorment -
