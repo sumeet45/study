@@ -1229,7 +1229,42 @@ Output -
         Hello, my name is John
 
 
-* Accessor Decorators
+* Accessor Decorators -
+        
+        // Define the LogAccess decorator
+        function LogAccess(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+          const originalGetter = descriptor.get;
+        
+          descriptor.get = function () {
+            console.log(`Getting value of ${propertyKey}`);
+            return originalGetter?.apply(this);
+          };
+        
+          return descriptor;
+        }
+        
+        // Apply the LogAccess decorator to the name getter
+        class Person {
+          private _name: string;
+        
+          constructor(name: string) {
+            this._name = name;
+          }
+        
+          @LogAccess
+          get name() {
+            return this._name;
+          }
+        
+          set name(value: string) {
+            this._name = value;
+          }
+        }
+        
+        // Create an instance of the Person class and access the name property
+        const person = new Person("John");
+        console.log(person.name);  // This will trigger the log
+
 
 
 --------------------------------------------------------------------------------------------------------------------------
