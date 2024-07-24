@@ -1140,4 +1140,124 @@ if(typeof finalBill === "number"){
 
 // using strict equality -  (===)
 
-// using function which return boolean
+// using a function which returns boolean
+
+
+
+* list of topics - 
+
+Creating a comprehensive topics list in TypeScript can be beneficial for understanding the language's features and capabilities. Here’s a structured topics list:
+
+Basic Concepts
+* Introduction to TypeScript
+    What is TypeScript?
+    Advantages over JavaScript
+    Installing TypeScript
+    TypeScript Compiler (tsc)
+
+* Basic Types
+    Boolean
+    Number
+    String
+    Array
+    Tuple
+    Enum
+    Any
+    Void
+    Null and Undefined
+    Never
+
+* Advanced Types
+    Type Inference
+    Type Aliases
+    Interfaces
+    Classes
+            Class Members (Properties and Methods)
+            Constructors
+            Inheritance
+            Access Modifiers (public, private, protected)
+            Readonly properties
+            Static properties and methods
+
+    Functions
+            Function Types
+            Optional and Default Parameters
+            Rest Parameters
+            Function Overloads
+
+    Generics
+            Generic Functions
+            Generic Classes
+            Generic Constraints
+            Using Generics with Interfaces and Functions
+
+    Advanced Concepts
+        Union and Intersection Types
+
+        Type Guards and Differentiating Types
+            typeof
+            instanceof
+            User-defined Type Guards
+            Type Assertions
+
+        Literal Types
+        Mapped Types
+        Conditional Types
+
+        Utility Types
+            Partial
+            Readonly
+            Record
+            Pick
+            Omit
+            Exclude
+            Extract
+            NonNullable
+            Parameters
+            ConstructorParameters
+            ReturnType
+            InstanceType
+
+Modules and Namespaces
+    Namespaces
+    Modules
+        Exporting and Importing
+        Module Resolution
+        Ambient Modules
+
+Advanced Topics
+    Decorators
+        Class Decorators
+        Method Decorators
+        Accessor Decorators
+        Property Decorators
+        Parameter Decorators
+    
+    Mixins
+    Advanced Type Manipulation
+    Declaration Merging
+    Triple-Slash Directives
+
+Tooling and Ecosystem
+        tsconfig.json
+        Type Definitions and DefinitelyTyped
+        TypeScript with Build Tools (Webpack, Gulp, etc.)
+        Linting and Formatting (TSLint, ESLint, Prettier)
+        Unit Testing with TypeScript
+            Jest
+            Mocha and Chai
+
+Practical Applications
+        TypeScript with React
+        TypeScript with Node.js
+        TypeScript with Angular
+
+Best Practices
+        Code Organization
+        Type Safety Best Practices
+        Performance Considerations
+
+Advanced Usage
+        Compiler Internals and Custom Transformers
+        Working with Legacy Code
+        Integrating with JavaScript Libraries
