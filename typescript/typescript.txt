@@ -1144,6 +1144,96 @@ if(typeof finalBill === "number"){
 
 
 
+Decorator -
+* class decorator -
+    A class decorator in TypeScript is a function that is applied to the class constructor. It can modify or replace the class definition
+                    
+        // class decorator
+        function AddSayHello(constructor: Function){
+          constructor.prototype.sayHello = function(){
+            console.log(`Hello o ${this.name}`);
+          }
+        }
+        @AddSayHello
+        class Person {
+          name: string;
+          constructor(name: string){
+            this.name = name;
+          }
+        }
+        const Person1 = new Person("sumeet");
+        Person1.sayHello();
+        
+        
+        // simple class decorator
+        // Define the Logger decorator
+        function Logger(constructor: Function) {
+          console.log(`Logging instance creation for ${constructor.name}`);
+        }
+        
+        // Apply the Logger decorator to the Person class
+        @Logger
+        class Person11 {
+          name: string;
+          constructor(name: string) {
+            this.name = name;
+          }
+          greet() {
+            console.log(`Hello, my name is ${this.name}`);
+          }
+        }
+        
+        // Create an instance of the Person class
+        const person = new Person11("John");    //  "Logging instance creation for Person11" 
+        person.greet(); // "Hello, my name is John" 
+
+
+
+* method decorator -
+    A method decorator in TypeScript allows you to modify the behavior of a method within a class. Here’s a simple example of a method decorator that logs the method name and its arguments whenever the method is called:
+
+    // Define the LogMethod decorator
+    function LogMethod(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+      const originalMethod = descriptor.value;
+    
+      descriptor.value = function (...args: any[]) {
+        console.log(`Method: ${propertyKey}`);
+        console.log(`Arguments: ${JSON.stringify(args)}`);
+        return originalMethod.apply(this, args);
+      };
+    
+      return descriptor;
+    }
+    
+    // Apply the LogMethod decorator to the greet method
+    class Person {
+      name: string;
+    
+      constructor(name: string) {
+        this.name = name;
+      }
+    
+      @LogMethod
+      greet(greeting: string) {
+        console.log(`${greeting}, my name is ${this.name}`);
+      }
+    }
+    
+    // Create an instance of the Person class and call the greet method
+    const person = new Person("John");
+    person.greet("Hello");
+
+Output - 
+        Method: greet
+        Arguments: ["Hello"]
+        Hello, my name is John
+
+
+* Accessor Decorators
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
 * list of topics - 
 
 Creating a comprehensive topics list in TypeScript can be beneficial for understanding the language's features and capabilities. Here’s a structured topics list:
