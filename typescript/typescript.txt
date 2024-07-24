@@ -117,6 +117,7 @@ ex. var person: {
 21) Any type =
 * variable contain any value
 * if you know types of data, just specify.
+* disable type checking for that variable
 
 
 
@@ -192,11 +193,14 @@ To:
 
 29) Unknown =
 * use "Unknown" instead of "any", if you knew something will assigned there in future.
-* its bit risky.
-
+* it is bit risky.
+* "Unknown" will be like a set of all possible values.
+        let un: unknown;
+        un = "33909000";
+        (typeof un === "string")?console.log(un.length):"";   //8
 
 30)The "Never" type =
-* "Never" assign to Error function
+* "Never" assigned to default cases of a switch statement or in an If statement
 
 
 31) wrap up -
@@ -1109,3 +1113,31 @@ class LooseCoupling {
 let c = new LooseCoupling();
 c.checkLC();
 
+-------------------------------------------------------------------------------------------
+// 24/07/2024
+
+// type assertion - using it, we can tell compiler that we know what will be the value of variable in future, if not specified now.
+let totalBill: any = 123;
+let finalBill = totalBill as number;
+console.log(finalBill); //123
+
+
+// type guard - is part of narrowing. using it, we can guard types and prevent errors
+// using typeof - checking type of variable, then allows to proceed to if block 
+if(typeof finalBill === "number"){
+  console.log("nummmm");
+}
+
+// using instanceof - using class, we create objects. we can check using "instanceof"
+// if(fruit instanceof Banana){
+//   console.log("fruit");
+// }
+
+// using in operator -
+// if("isJuicy" in fruit){
+//   console.log("fruit");
+// }
+
+// using strict equality -  (===)
+
+// using function which return boolean
