@@ -315,51 +315,89 @@ Typescript Official Site -
                     doSomething(myFunc);
 
         * Construct Signatures -
+            * JavaScript functions can also be invoked with the new operator. TypeScript refers to these as constructors because they usually create a new object. You can write a construct signature by adding the new keyword in front of a call signature:
             * ex.        type SomeConstructor = {
                             new (s: string): SomeObject;
                           };
                           function fn(ctor: SomeConstructor) {
                               return new ctor("hello");
                           }
+            * Some objects, like JavaScript’s Date object, can be called with or without new. You can combine call and construct signatures in the same type arbitrarily:
             * ex.
                     interface CallOrConstruct {
                       (n?: number): string;
                        new (s: string ): Date;
                     }
 
-         * Generic Functions -
+       * Generic Functions -
              * generics are used when we want to describe a correspondence between two values. We do this by declaring a type parameter in the function signature
              * ex.
                     function firstElement<Type>(arr: Type[]): Type | undefined {
                        return arr[0];
                     }
 
-         * Constraints -
-             * We’ve written some generic functions that can work on any kind of value. Sometimes we want to relate two values, but can only operate on a certain subset of values. In this case, we can use a constraint to limit the kinds of types that a type parameter can accept.
-             * Let’s write a function that returns the longer of two values. To do this, we need a length property that’s a number. We constrain the type parameter to that type by writing an extends clause:
-             * ex.
-                   function longest <Type extends { length: number }>(a: Type, b: Type): Type {
-                     return (a.length >= b.length)? a: b;
-                   }
-               
-               const longerArray = longest([1, 2], [1, 2, 3]);   // longerArray is of type 'number[]'
-               const longerString = longest("alice", "bob");               // longerString is of type 'alice' | 'bob'
-               const notOK = longest(10, 100);               // Error! Numbers don't have a 'length' property
+              * Inference
+                 * Note that we didn’t have to specify Type in this sample. The type was inferred - chosen automatically - by TypeScript.
+                 * We can use multiple type parameters as well. For example, a standalone version of map would look like this:
+                     function map<I, O>(arr: I, func: (arg: I) => O): O[] {
+                          return arr.map(func);
+                     }
+    
+    
 
-          * Specifying Type Arguments -
-               * TypeScript can usually infer the intended type arguments in a generic call, but not always. For example, let’s say you wrote a function to combine two arrays:
-                   function combine<Type>(arr1: Type[], arr2: Type[]): Type[] {
-                     return arr1.concat(arr2);
-                   }
-                   const arr = combine([1, 2, 3], ["hello"]);     //Type 'string' is not assignable to type 'number'.
-               * so for this, we can write like following -
-                      const arr = combine<string | number>([1, 2, 3], ["hello"]);     //possible way
+               * Constraints -
+                   * We’ve written some generic functions that can work on any kind of value. Sometimes we want to relate two values, but can only operate on a certain subset of values. In this case, we can use a constraint to limit the kinds of types that a type parameter can accept.
+                   * Let’s write a function that returns the longer of two values. To do this, we need a length property that’s a number. We constrain the type parameter to that type by writing an extends clause:
+                   * ex.
+                         function longest <Type extends { length: number }>(a: Type, b: Type): Type {
+                           return (a.length >= b.length)? a: b;
+                         }
+                     
+                     const longerArray = longest([1, 2], [1, 2, 3]);   // longerArray is of type 'number[]'
+                     const longerString = longest("alice", "bob");               // longerString is of type 'alice' | 'bob'
+                     const notOK = longest(10, 100);               // Error! Numbers don't have a 'length' property
+      
 
-          * Guidelines for Writing Good Generic Functions -
-              * Push Type Parameters Down - push type parameters down refers to the practice of passing type parameters to functions and type constructors as arguments, rather than constraining them. This can help to improve the type safety and readability of your code.
-                  check again
-              * Use Fewer Type Parameters - check again
-              * Type Parameters Should Appear Twice -check again
+                * Working with Constrained Values -
+                           function minimumLength<Type extends { length: number }>(
+                              obj: Type,
+                              minimum: number
+                            ): Type {
+                              if (obj.length >= minimum) {
+                                return obj;
+                              } else {
+                                return { length: minimum };
+                            Type '{ length: number; }' is not assignable to type 'Type'.
+                              '{ length: number; }' is assignable to the constraint of type 'Type', but 'Type' could be instantiated with a different subtype of constraint '{ length: number; }'.
+                              }
+                            }
+      
+                       * It might look like this function is OK - Type is constrained to { length: number }, and the function either returns Type or a value matching that constraint. The problem is that the function promises to return the same kind of object as was passed in, not just some object matching the constraint. If this code were legal, you could write code that definitely wouldn’t work:
+                                         // 'arr' gets value { length: 6 }
+                                         const arr = minimumLength([1, 2, 3], 6);
+                                         // and crashes here because arrays have
+                                         // a 'slice' method, but not the returned object!
+                                         console.log(arr.slice(0));
+
+
+
+                  * Specifying Type Arguments -
+                       * TypeScript can usually infer the intended type arguments in a generic call, but not always. For example, let’s say you wrote a function to combine two arrays:
+                           function combine<Type>(arr1: Type[], arr2: Type[]): Type[] {
+                             return arr1.concat(arr2);
+                           }
+                           const arr = combine([1, 2, 3], ["hello"]);     //Type 'string' is not assignable to type 'number'.
+                       * so for this, we can write like following -
+                              const arr = combine<string | number>([1, 2, 3], ["hello"]);     //possible way
+
+
+                  * Guidelines for Writing Good Generic Functions -
+                      * Push Type Parameters Down - push type parameters down refers to the practice of passing type parameters to functions and type constructors as arguments, rather than constraining them. This can help to improve the type safety and readability of your code.
+                          check again
+                      * Use Fewer Type Parameters - check again
+                      * Type Parameters Should Appear Twice -check again
+
+
 
           * Optional Parameters - we can make parameter as optional.
                  function f(x?: number) {}
