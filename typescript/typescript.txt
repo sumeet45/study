@@ -1269,6 +1269,11 @@ Output -
 
 --------------------------------------------------------------------------------------------------------------------------
 
+https://dev.to/toluagboola/type-aliases-vs-interfaces-in-typescript-3ggg
+https://www.geeksforgeeks.org/typescript-differences-between-type-aliases-and-interfaces-type/
+
+
+
 * list of topics - 
 
 Creating a comprehensive topics list in TypeScript can be beneficial for understanding the language's features and capabilities. Here’s a structured topics list:
