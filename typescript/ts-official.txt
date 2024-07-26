@@ -695,6 +695,13 @@ Typescript Official Site -
            * Unlike Array, there isn’t a ReadonlyArray constructor that we can use.
            * Just as TypeScript provides a shorthand syntax for Array<Type> with Type[], it also provides a shorthand syntax for ReadonlyArray<Type> with readonly Type[].
            * ex. values: readonly string[]
+           * One last thing to note is that unlike the readonly property modifier, assignability isn’t bidirectional between regular Arrays and ReadonlyArrays.
+                     let x: readonly string[] = [];
+                     let y: string[] = [];
+                      
+                     x = y;
+                     y = x;
+                     The type 'readonly string[]' is 'readonly' and cannot be assigned to the mutable type 'string[]'.
 
 
       * Tuple Types -
@@ -707,42 +714,44 @@ Typescript Official Site -
 
 * Type Manipulation -
       * Generics -
-            * function identity<Type>(arg: Type): Type {
-                return arg;
-              }
-              let output = identity<string>("myString");  
-              let output = identity("myString");
-
-            * Working with Generic Type Variables -
-                   function loggingIdentity<Type>(arg: Array<Type>): Array<Type> {
-                     console.log(arg.length); // Array has a .length, so no more error
+                 * function identity<Type>(arg: Type): Type {
                      return arg;
                    }
-                    OR
-                   function loggingIdentity<Type>(arg: Type[]): Type[] {
-                     console.log(arg.length);
-                     return arg;
-                   }
-             * check in detail
+                   let output = identity<string>("myString");  
+                   let output = identity("myString");
+     
+                 * Working with Generic Type Variables -
+                        function loggingIdentity<Type>(arg: Array<Type>): Array<Type> {
+                          console.log(arg.length); // Array has a .length, so no more error
+                          return arg;
+                        }
+                         OR
+                        function loggingIdentity<Type>(arg: Type[]): Type[] {
+                          console.log(arg.length);
+                          return arg;
+                        }
+                  * check in detail
 
-       * Generic Classes -
-             * A generic class has a similar shape to a generic interface. Generic classes have a generic type parameter list in angle brackets (<>) following the name of the class.
-             * ex. 
-                      class GenericNumber<NumType> {
-                         zeroValue: NumType;
-                         add: (x: NumType, y: NumType) => NumType
-                      }
-                      let myNum = new GenericNumber<number>();
-                      // let stringNumeric = new GenericNumber<string>();    // for string
-                      myNum.zeroValue = 0;
-                      myNum.add = function( x, y ) => {
-                                return x + y;
-                      }
-              * As we cover in our section on classes, a class has two sides to its type: the static side and the instance side. Generic classes are only generic over their instance side rather than their static side, so when working with classes, static members can not use the class’s type parameter.
+            * Generic Types -
+
+            * Generic Classes -
+                  * A generic class has a similar shape to a generic interface. Generic classes have a generic type parameter list in angle brackets (<>) following the name of the class.
+                  * ex. 
+                           class GenericNumber<NumType> {
+                              zeroValue: NumType;
+                              add: (x: NumType, y: NumType) => NumType
+                           }
+                           let myNum = new GenericNumber<number>();
+                           // let stringNumeric = new GenericNumber<string>();    // for string
+                           myNum.zeroValue = 0;
+                           myNum.add = function( x, y ) => {
+                                     return x + y;
+                           }
+                   * As we cover in our section on classes, a class has two sides to its type: the static side and the instance side. Generic classes are only generic over their instance side rather than their static side, so when working with classes, static members can not use the class’s type parameter.
 
 
          * Generic Constraints -
-              * working with any and all types, we’d like to constrain this function to work with any and all types that also  have the .length property
+              * working with any and all types, we’d like to constrain this function to work with any and all types that also  have the .length property. As long as the type has this member, we’ll allow it, but it’s required to have at least this member.
               * ex.
                    interface Lengthwise {
                      length: number;
@@ -766,6 +775,7 @@ Typescript Official Site -
 
 
          * Using Class Types in Generics -
+               * When creating factories in TypeScript using generics, it is necessary to refer to class types by their constructor functions. For example,
                * function create<Type>(c: { new (): Type }): Type {
                    return new c();
                  }
