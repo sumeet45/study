@@ -1,0 +1,505 @@
+// Welcome to the TypeScript Playground, this is a website
+// which gives you a chance to write, share and learn TypeScript.
+
+// You could think of it in three ways:
+//
+//  - A location to learn TypeScript where nothing can break
+//  - A place to experiment with TypeScript syntax, and share the URLs with others
+//  - A sandbox to experiment with different compiler features of TypeScript
+
+const anExampleVariable = "Hello World"
+console.log(anExampleVariable)
+
+// To learn more about the language, click above in "Examples" or "What's New".
+// Otherwise, get started by removing these comments and the world is your playground.
+  
+enum Status {
+    Ready,
+    Waiting
+}
+enum Color {
+    Red,
+    Green,
+    Blue
+}
+let a = Status.Ready;
+console.log(a);
+a = Color.Blue;
+console.log(a);
+
+
+
+class Sprite {
+  name = "";
+  x = 0;
+  y = 0;
+ 
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+ 
+type Constructor = new (...args: any[]) => {};
+function Scale<TBase extends Constructor>(Base: TBase) {
+  return class Scaling extends Base {
+    // Mixins may not declare private/protected properties
+    // however, you can use ES2020 private fields
+    _scale = 1;
+ 
+    setScale(scale: number) {
+      this._scale = scale;
+    }
+ 
+    get scale(): number {
+      return this._scale;
+    }
+  };
+}
+
+const EightBitSprite = Scale(Sprite);
+ 
+const flappySprite = new EightBitSprite("Bird");
+flappySprite.setScale(0.8);
+console.log(flappySprite.scale);
+console.log(flappySprite.x);
+console.log(flappySprite.y);
+
+
+let a1:boolean = true;
+let a2 = {
+  name: "s",
+  e: "s"
+}
+let a3: Array<string> = ["a", "s"];
+
+// tuple  
+let data: [number, number][] = [[2,2], [3,3]]
+
+enum Role { Admin, Author, Reader}
+interface UserObj {
+  name: string;
+  id: number;
+  meth: (a:number) => void;
+}
+let obj1: UserObj = {
+  name: "s",
+  id: 2,
+  meth: (a: number) => console.log("sdds")
+}
+// type assignment, type inference, 
+// type assertion - using it, we can tell compiler that we know what will be the value of variable in future, if not specified now.
+let totalBill: any = 123;
+let finalBill = totalBill as number;
+console.log(finalBill); //123
+
+// type guard - is part of narrowing. using it, we can guard types and prevent errors
+// using typeof - checking type of variable, then allows to proceed to if block 
+if(typeof finalBill === "number"){
+  console.log("nummmm");
+}
+
+// using instanceof - using class, we create objects. we can check using "instanceof"
+// if(fruit instanceof Banana){
+//   console.log("fruit");
+// }
+
+// using in operator -
+// if("isJuicy" in fruit){
+//   console.log("fruit");
+// }
+
+// using strict equality -  (===)
+
+// using function which return boolean
+
+
+// let un: unknown;
+// un = "33909000";
+// (typeof un === "string")?console.log(un.length):"";   //8
+
+
+
+
+// // class decorator
+// function AddSayHello(constructor: Function){
+//   constructor.prototype.sayHello = function(){
+//     console.log(`Hello o ${this.name}`);
+//   }
+// }
+// @AddSayHello
+// class Person {
+//   name: string;
+//   constructor(name: string){
+//     this.name = name;
+//   }
+// }
+// const Person1 = new Person("sumeet");
+// Person1.sayHello();
+
+
+// // simple class decorator
+// // Define the Logger decorator
+// function Logger(constructor: Function) {
+//   console.log(`Logging instance creation for ${constructor.name}`);
+// }
+
+// // Apply the Logger decorator to the Person class
+// @Logger
+// class Person11 {
+//   name: string;
+//   constructor(name: string) {
+//     this.name = name;
+//   }
+//   greet() {
+//     console.log(`Hello, my name is ${this.name}`);
+//   }
+// }
+
+// // Create an instance of the Person class
+// const person = new Person11("John");    //  "Logging instance creation for Person11" 
+// person.greet(); // "Hello, my name is John" 
+
+
+
+// function enumerable(value: boolean) {
+//   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+//     descriptor.enumerable = value;
+//   };
+// }
+
+// class Greeter {
+//   greeting: string;
+//   constructor(message: string) {
+//     this.greeting = message;
+//   }
+ 
+//   @enumerable(false)
+//   greet() {
+//     return "Hello, " + this.greeting;
+//   }
+// }
+
+// let str = "Hello Hi team just need to discuss with some points";
+// // let arr = str.split(" ");
+// let strinArr = [];
+// let strIn = ``; 
+// for(let j = 0; j < str.length; j++){
+//   // str[j]
+//   // console.log("src", str[j]);
+//   if(str[j] === " "){
+//     strinArr.push(strIn);
+//     strIn = ``;
+//   } else if(j +1 === str.length){
+//     strIn = `${strIn}${str[j]}`;
+//     strinArr.push(strIn);
+//   } else {
+//     strIn = `${strIn}${str[j]}`;
+//   }
+// }
+// console.log("Hiiiiii:m", strinArr);
+// let str1 = "";
+// for(let i = strinArr.length - 1; i >= 0; i--){
+//   console.log(strinArr[i]);
+//   str1 = `${str1} ${strinArr[i]}`;
+// }
+// console.log("final str", str1);
+
+// interface StringArray {
+//   [index: number]: string;
+// }
+ 
+// const myArray: StringArray = [{}];
+// const secondItem = myArray[1];
+
+// let a12;
+// a12?.toUpperCase();
+
+let a123:number = 2
+let a124: string[] = ["ss","s2"];
+let a125: Array<string> = ["sd","ss"];
+let a126: any = "2";
+// Type Annotations
+let a127: string = "s";
+// functions, Parameter Type Annotations 
+function a128(a: number, b: number): number{
+  return a + b;
+}
+// async function
+async function a129(): Promise<number>{
+  return 26;
+}
+async function call(){
+  try {
+    let a130 = await a129();
+    console.log("a130",a130);
+  } catch(e){
+  }
+}
+call();
+
+// anonymous function
+const names = ["s", "s1", "s2"];
+names.forEach((v: string) => {
+  console.log("s", v);
+})
+
+// object types, optional,
+let a131: object = {};
+let a132: {name: string, age: number, std?: string} = { name: "s", age: 22};
+
+// union
+type un1 = string | number | boolean
+let a133: un1 = 32;
+function a134(id: un1): null | string{
+  if(typeof id === "string"){
+    return id;
+  }
+  return null;
+}
+
+// type aliases
+type obj1 = {
+  name: string;
+  age: number;
+  add: (a: number, b: number) => number;
+  add1(a: number, b: number): number;
+}
+type cb1 = (a: string) => void
+
+let a135: obj1 = {
+  name: "s", age: 23,
+  add(a, b){
+    return a+b;
+  },
+  add1: (a, b) => {
+    return a+b
+  }
+}
+
+// interface
+interface int1 {
+  name: string;
+  age: number;
+  add: (a: number, b: number) => number;
+  add1(a: number, b: number): number;
+}
+let a136: int1 = {
+  name: "2", age: 2, 
+  add: function(a, b){return a+b}, 
+  add1:(a, b) => { return a+b}
+}
+
+// Type Assertions
+let a137: any = "111";
+// let empCode = (<string>a137).length; 
+let empCode1 = (a137 as string).length;
+console.log("empCode1",empCode1); 
+
+// Literal types
+let a138: "Hello" = "Hello";
+
+// Non-null Assertion Operator
+function liveDangerously(x?:number | null){
+  console.log(x?.toFixed());
+}
+
+// Enums
+enum Dir { N, E, W, S}
+let a139 : Dir.E = 1;   
+
+// narrowing 
+console.log("13888",typeof a138); //string
+if(typeof a138 === "string"){
+  console.log("aaaa")
+}
+if("name" in a136){     // in operator
+  console.log("name name");
+}
+// if( Banana instanceof fruit){
+//   console.log("Banana is child of fruit");
+// }
+if(a138 != null){
+  console.log("a138 equality");
+}
+
+// Function type expression
+type fn1 = (a: string) => void;
+function greeter(fn: fn1){
+  fn("Hello")
+}
+function printToConsole(s: string){
+  console.log(s);
+}
+greeter(printToConsole);
+
+// call signatures
+type DescFunction = {
+  description: string;
+  (arg: boolean): boolean;
+}
+function doSomething(fn: DescFunction){
+  fn(true);
+}
+function fn2(arg: boolean){
+  return arg;
+}
+doSomething(fn2);
+fn2.description = "s";
+
+// Construct Signatures
+type ConstructSign = {
+  new (s: string): boolean;
+}
+function fn3(ctor: ConstructSign){
+  return new ctor("check")
+}
+
+// Generic Function
+function GenericFn<T>(in1: T): T{
+  return in1;
+}
+function GenericFn1<T>(in1: T[]): T{
+  return in1[0];
+}
+GenericFn1([1,2,3]);
+GenericFn("ss");GenericFn(333);
+
+// constraint
+function ConstraintFn<M extends { length: number}, N extends { length: number}>(a: M, b: N){
+  return (a.length > b.length)? a: b; 
+}
+ConstraintFn("check", [1,2,3,4,5,6,7,8,8,6,4]);
+
+
+// Specifying Type Arguments
+function fn4<T>(arr: T[], arr1: T[]): T[]{
+  return arr.concat(arr1)
+}
+fn4<string | number>([1,2,3], ["ss", "sss"])
+
+
+// Push Type Parameters Down
+function firstElement1<Type>(arr: Type[]) {
+  return arr[0];
+}
+
+// Use Fewer Type Parameters
+function filter1<Type>(arr: Type[], func: (arg: Type) => boolean): Type[] {
+  return arr.filter(func);
+}
+
+// Type Parameters Should Appear Twice
+
+// Optional Parameters
+function fn5(a?: number){
+  console.log(a);
+}
+fn5(2);
+fn5();
+
+// Optional Parameters in Callbacks
+type Cb1 = (arg: any, index?: number ) => void
+
+function fn6(arr: any[], fn: Cb1): void{
+  console.log("ddd",arr);
+}
+
+// Function Overloads
+// function fn7(x: number): boolean;
+// function fn7(m: number, n: number, o: number): boolean;
+// function fn7(p: number, q: string, r: number): boolean{
+//   if(typeof x === "number"){
+//     return true;
+//   } else if()
+//   return true;
+// }
+
+// Declaring this in a Function
+
+// void
+function fn8(){}
+
+// object
+let a1222: object = {}
+
+// unknown
+function fn9(a: unknown){
+  // a.b();  'a' is of type 'unknown'.
+  if(typeof a === "object"){
+    console.log(a);
+  }
+}
+
+// never
+function fail(msg: string): never {
+  throw new Error(msg);
+}
+
+// Function
+function fn10(f: Function) {
+  return f(1, 2, 3);
+}
+
+// Rest Parameters
+function multiply(n: number, ...m: number[]) {
+  return m.map((x) => n * x);
+}
+// 'a' gets value [10, 20, 30, 40]
+const a140 = multiply(10, 1, 2, 3, 4)
+
+
+// Rest Arguments
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+arr1.push(...arr2);
+
+// Parameter Destructuring
+function sum({ a, b, c }: { a: number; b: number; c: number }) {
+  console.log(a + b + c);
+}
+
+// readonly Properties
+interface ReadOnlyEx1 {
+  readonly name: string
+}
+
+// Index Signatures
+interface IndexSignEx1 {
+  [key: string]: number | string
+}
+let a141: IndexSignEx1 = {
+  // s1: true,   // Type 'boolean' is not assignable to type 'string | number'.(2322)
+  s1: 1
+}
+
+// Excess Property Checks
+
+// Extending Types
+interface BasicAddress {
+  name?: string;
+  street: string;
+  city: string;
+  country: string;
+  postalCode: string;
+}
+ 
+interface AddressWithUnit extends BasicAddress {
+  unit: string;
+}
+
+// Intersection Types
+interface Colorful {
+  color: string;
+}
+interface Circle {
+  radius: number;
+}
+type ColorfulCircle = Colorful & Circle;
+
+// Interfaces vs. Intersections
+
+// Generic Object Types
+interface Box<Type> {
+  content: Type
+}
