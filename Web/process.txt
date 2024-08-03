@@ -1,0 +1,9 @@
+UI code - html, css,js,react, ts, next js
+API Request - send and req all types of data, all types of methods, 
+website Optimizing - 
+testing - cross browser compatibility, 
+debugging tools and techniques - 
+other aspects - CORS, performance of website, infrastructure, caching, caching layer, browser compliance, web services
+SEO - 
+Build tools - webpack
+documentation - confluence, JIRA,
