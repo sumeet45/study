@@ -1,9 +1,96 @@
-UI code - html, css,js,react, ts, next js
-API Request - send and req all types of data, all types of methods, 
-website Optimizing - 
+UI code - html, css, js, react, ts, next js
+HTTP - send and req all types of data, all types of methods, 
+Fast Loading -
 testing - cross browser compatibility, 
 debugging tools and techniques - 
 other aspects - CORS, performance of website, infrastructure, caching, caching layer, browser compliance, web services
 SEO - 
 Build tools - webpack
 documentation - confluence, JIRA,
+
+
+
+Core Skills
+1) HTML (Hypertext Markup Language)
+      Understanding semantic HTML to structure web content.
+      Knowledge of HTML5 features and best practices.
+2) CSS (Cascading Style Sheets)
+      Styling web pages, including layout, colors, fonts, and responsive design.
+      Proficiency with CSS3, including Flexbox, Grid, and animations.
+      Familiarity with pre-processors like Sass or LESS.
+3) JavaScript
+      Core JavaScript concepts like variables, data types, functions, and control flow.
+      ES6+ features such as arrow functions, classes, modules, destructuring, and template literals.
+      Asynchronous programming (promises, async/await).
+      Frameworks and Libraries
+4) JavaScript Frameworks and Libraries
+    React: Component-based architecture, state management, hooks.
+    Vue: Reactivity system, single-file components, Vuex for state management.
+    Angular: Component-based structure, TypeScript, dependency injection, services.
+5) CSS Frameworks
+    Bootstrap: Grid system, responsive design utilities, pre-built components.
+    Tailwind CSS: Utility-first CSS framework, customizable design.
+6) Version Control
+    Git and Version Control
+    Using Git for version control, including branching, merging, and handling pull requests.
+    Familiarity with platforms like GitHub, GitLab, or Bitbucket.
+
+Build Tools and Package Managers
+7) Build Tools
+    Webpack: Module bundler, loaders, plugins.
+    Parcel: Zero-configuration bundler.
+    Vite: Fast build tool with native ES module support.
+8) Package Managers
+    npm (Node Package Manager) and Yarn for managing project dependencies.
+
+Responsive and Mobile Design
+9) Responsive Design
+    Media queries, fluid grids, and flexible images.
+    Mobile-first design principles.
+10) Cross-Browser Compatibility
+    Ensuring that websites work consistently across different browsers and devices.
+
+UI/UX Principles
+11) User Interface (UI) Design
+    Understanding of design principles, typography, color theory, and layout.
+    Familiarity with design tools like Adobe XD, Sketch, Figma, or InVision.
+
+12) User Experience (UX)
+    Creating intuitive and user-friendly interfaces.
+    Knowledge of user research, usability testing, and prototyping.
+
+Web Performance
+13) Performance Optimization
+    Techniques for optimizing load times and runtime performance.
+    Image optimization, lazy loading, and code splitting.
+
+Accessibility
+14) Web Accessibility (a11y)
+    Ensuring web content is accessible to all users, including those with disabilities.
+    Familiarity with ARIA (Accessible Rich Internet Applications) standards.
+
+Testing and Debugging
+15) Testing
+    Writing unit tests, integration tests, and end-to-end tests.
+    Familiarity with testing frameworks like Jest, Mocha, Jasmine, and tools like Selenium, Cypress.
+
+16) Debugging
+    Using browser developer tools to debug and inspect web pages.
+    Identifying and fixing bugs in HTML, CSS, and JavaScript.
+
+Soft Skills and Best Practices
+17) Problem-Solving
+    Analyzing and breaking down complex problems into manageable tasks.
+18) Communication
+    Effectively communicating with team members, stakeholders, and users.
+19) Collaboration
+    Working in a team environment, often collaborating with back-end developers, designers, and project managers.
+20) Continuous Learning
+    Staying updated with the latest trends, tools, and technologies in the front-end ecosystem.
+
+21) Other Aspects - Security, CORS, caching, 
+Optional but Valuable Skills
+21) TypeScript: A typed superset of JavaScript that can improve code quality and maintainability.
+22) GraphQL: A query language for APIs that can be used as an alternative to REST.
+23) Progressive Web Apps (PWAs): Techniques for making web applications more app-like and capable offline.
+24) WebAssembly: For running code written in other languages on the web at near-native speed.
