@@ -88,9 +88,10 @@ Soft Skills and Best Practices
 20) Continuous Learning
     Staying updated with the latest trends, tools, and technologies in the front-end ecosystem.
 
-21) Other Aspects - Security, CORS, caching, 
 Optional but Valuable Skills
 21) TypeScript: A typed superset of JavaScript that can improve code quality and maintainability.
 22) GraphQL: A query language for APIs that can be used as an alternative to REST.
 23) Progressive Web Apps (PWAs): Techniques for making web applications more app-like and capable offline.
 24) WebAssembly: For running code written in other languages on the web at near-native speed.
+
+25) Other Aspects - Security, CORS, caching, HTTP, 
