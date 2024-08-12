@@ -6,6 +6,33 @@
 
 * TOPICS - HTTP, REGEX, JWT, Security ( Mobile, API, Client), Push notification,  payment integration, DNS, Authentication, Firebase, Elastic search, Form and File upload
 
+* Important Point - While learning any technology, understand following both - Concept and Code
+
+
+RoadMap Given by Scaler -----------
+give code to machine (w3schools, etc)
+DSA - 
+	20% - apna college, codehelp, mycodeschool, abdul bari, freecodecamp
+	80% - InterviewBit - structured, leetcode, 
+CS fundamentals- 
+	OS - concurrency, memory management
+	DB - Relational DB, { Index, SQL, B-Tree, Schema Design }
+	Network - socket programming - websocket
+------------------------------------------------------------
+Projects - 
+	MVC framework, 1 small project
+---------------------------------------------------------
+Design -
+	HLD (system design)
+	LLD - code, solid, design pattern
+For LLD - content - https://refactoring.guru/,	
+	  Book - Head first design
+	
+for HLD - Designing data intensive application - martin clifman
+	bytebyteGo
+	gaurav sen, tushar roy - utube
+	educative.io - 
+
 
 
 ------------------------------------------------------------------------------------------------------------------------------
