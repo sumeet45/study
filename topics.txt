@@ -1,8 +1,8 @@
 * web - HTML, CSS(sass, less), next/react router,  @testing-library/react
 
-* mobile - React Native, React navigation, @testing-library/react-native, android, IOS, DB, 
+* mobile - React Native, React navigation, @testing-library/react-native, android(kotlin + XML), IOS(swift), DB, 
 
-* Common - JS, React, Typescript, redux, jest, DSA, LLD, HLD, principles, system design
+* Common - JS, React, Typescript, redux, jest, Regex, DSA, LLD, HLD, principles, system design
 
 * TOPICS - HTTP, REGEX, JWT, Security ( Mobile, API, Client), Push notification,  payment integration, DNS, Authentication, Firebase, Elastic search, Form and File upload
 
