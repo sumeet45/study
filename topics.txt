@@ -1,22 +1,13 @@
-HTML
-CSS/ sass/ less
-JS
-TS
-R
-RN
-Redux
-Jest/ react-test-renderer
-react-navigation
-Android, 
-IOS, 
-DB,
-DSA
-LLD
-HLD
-principles
-system design
+* web - HTML, CSS(sass, less), next/react router,  @testing-library/react
 
-TOPICS - HTTP, REGEX, JWT, Security ( Mobile, API, Client), Push notification,  payment integration, DNS, Authentication, Firebase, Elastic search, Form and File upload
+* mobile - React Native, React navigation, @testing-library/react-native, android, IOS, DB, 
+
+* Common - JS, React, Typescript, redux, jest, DSA, LLD, HLD, principles, system design
+
+* TOPICS - HTTP, REGEX, JWT, Security ( Mobile, API, Client), Push notification,  payment integration, DNS, Authentication, Firebase, Elastic search, Form and File upload
+
+
+
 ------------------------------------------------------------------------------------------------------------------------------
 JWT (https://youtube.com/watch?v=5mUDRQfwXuE)-
 * http is stateless protocol
