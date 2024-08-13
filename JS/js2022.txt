@@ -294,12 +294,12 @@ when functions have same precedence
 ex - var a= 3, b=4, c=5;
 a = b = c;
 
-console.log(a);  //4
-console.log(b);  //4 
-console.log(c);  //4
+console.log(a);  //5
+console.log(b);  //5 
+console.log(c);  //5
 
 * According to associativity, = function has right to left associativity, so first solve,
-b = c, and assign 4 to b. After that assign 4 to a.
+b = c, and assign 5 to b. After that assign 5 to a.
 
 * associativity -
 	right-to-left = exponentiation, assignment and miscellaneous
@@ -329,7 +329,7 @@ console.log(e);   // 7sss
 
 26) Comparison Operator
 Look at below example - 
-      console.log(1 > 2 > 3)   //true
+      console.log(1 > 2 > 3)   //false
 It's logically fine
 
       console.log(3 < 2 < 1)   //true
