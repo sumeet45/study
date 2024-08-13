@@ -1,7 +1,7 @@
 
 HTTP -
 
-Identifying resources on the Web -
+1) Identifying resources on the Web -
       * The target of an HTTP request is called a "resource", whose nature isn't defined further; it can be a document, a photo, or anything else. Each resource is identified by a Uniform Resource Identifier (URI) used throughout HTTP for identifying resources.
 
 * URLs and URNs
@@ -50,4 +50,12 @@ Identifying resources on the Web -
                         mailto:help@supercyberhelpdesk.info
 
 
+2) Data URLs -
+     * Data URLs, URLs prefixed with the data: scheme, allow content creators to embed small files inline in documents. They were formerly known as "data URIs" until that name was retired by the WHATWG.
+     * Syntax -
+                    Data URLs are composed of four parts: a prefix (data:), a MIME type indicating the type of data, an optional base64 token if non-textual, and the data itself:
+                                   data:[<mediatype>][;base64],<data>
+     * The mediatype is a MIME type string, such as 'image/jpeg' for a JPEG image file. If omitted, defaults to text/plain;charset=US-ASCII
+     * If the data contains characters defined in RFC 3986 as reserved characters, or contains space characters, newline characters, or other non-printing characters, those characters must be percent-encoded.
+     * 
 
