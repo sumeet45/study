@@ -367,20 +367,37 @@ c.#greet()      //error
 
 
 28) Arrow functions and this -
-* let me = {
+*  let me = {
       fname: "Tony",
       greet: function(){
             let self = this;
+	    console.log(this);		  //me object
             let logMe = function(){
+                  console.log(this);      //window object	
                   console.log(self);      //me object
             }
             logMe()
       },
       greet2: function(){
-            console.log(this);      //me object
+            console.log(this);      	//me object
             let logMe = () => {
                   console.log(this);      //me object
+            } 
+	    logMe();
+      },
+      greet3: () => {
+	console.log(this);		//window
+	let logMe = function(){
+                  console.log(this); 	//window
             }
+            logMe();
+      },
+      greet4: () => {
+	console.log(this);		//window
+	let logMe = () => {
+                  console.log(this);	//window 
+            }
+            logMe();
       }
 }
 * whenever arrow function executed, it create execution context but without "this" value. hence, using scope chain it looks in parent execution context for this value.
