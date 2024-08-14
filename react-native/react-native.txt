@@ -2965,8 +2965,8 @@ profile-hermes
 ----------------------------------------------------------------------------------
 
 challenges -
-android - gradle related challenges, solved by updating versions, increasing or decreasing version, or adding extra dependency
+android - gradle related challenges, solved by updating versions, increasing or decreasing version, or adding extra dependency, or native related errors
 
-rn - linking libraries solved by doc, webview links clickable, facing issue with long flatlist solved by optimization, working on one mobile not another solved by personaly testing, after long use battery uses increase, finding memory leaks, third party integrations 
+rn - linking libraries solved by doc, webview links clickable,  AutoHeight of webview adjustment,  facing issue with long flatlist solved by optimization, working on one mobile not another solved by personaly testing, after long use battery uses increase, finding memory leaks, third party integrations, finding errors using symbolicating
 
-ios - finding errors using symbolicating
+ios - native related errors, cocoapods, build related errors
