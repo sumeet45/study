@@ -2960,3 +2960,13 @@ profile-hermes
 	This step is recommended in order for the source map to be generated:
 
 	If you are planning on building a debug APK, that will run without the packager, by invoking ./gradlew assembleDebug you can simply set bundleInDebug: true in your app/build.gradle file, inside the project.ext.react map.
+
+
+----------------------------------------------------------------------------------
+
+challenges -
+android - gradle related challenges, solved by updating versions, increasing or decreasing version, or adding extra dependency
+
+rn - linking libraries solved by doc, webview links clickable, facing issue with long flatlist solved by optimization, working on one mobile not another solved by personaly testing, after long use battery uses increase, finding memory leaks, third party integrations 
+
+ios - finding errors using symbolicating
