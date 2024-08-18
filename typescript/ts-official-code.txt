@@ -215,6 +215,8 @@ if(typeof finalBill === "number"){
 // let a12;
 // a12?.toUpperCase();
 
+
+---------------------------------------------------------------------------------------------------------------------------------------------
 let a123:number = 2
 let a124: string[] = ["ss","s2"];
 let a125: Array<string> = ["sd","ss"];
@@ -497,9 +499,108 @@ interface Circle {
 }
 type ColorfulCircle = Colorful & Circle;
 
+
 // Interfaces vs. Intersections
+// will give error
+interface Person {
+  name: string;
+}
+interface Person {
+  name: number;
+}
+
+//In contrast, the following code will compile, but it results in a never type
+interface Person1 {
+  name: string;
+}
+ 
+interface Person2 {
+  name: number;
+}
+ 
+type Staff = Person1 & Person2
+ 
+declare const staffer: Staff;
+staffer.name;
+         
+(property) name: never
+
+
 
 // Generic Object Types
 interface Box<Type> {
   content: Type
 }
+
+function setContents<Type>(box: Box<Type>, newContents: Type) {
+  box.contents = newContents;
+}
+
+type Box<Type> = {
+  contents: Type;
+};
+
+  //The Array Type
+  //The ReadonlyArray Type
+  //Tuple Types
+  //readonly Tuple Types
+
+
+//Generics
+
+//Generic Classes
+class GenericNumber<NumType> {
+  zeroValue: NumType;
+  add: (x: NumType, y: NumType) => NumType;
+}
+ 
+let myGenericNumber = new GenericNumber<number>();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function (x, y) {
+  return x + y;
+};
+
+//Generic Constraints
+interface Lengthwise {
+  length: number;
+}
+ 
+function loggingIdentity<Type extends Lengthwise>(arg: Type): Type {
+  console.log(arg.length); // Now we know it has a .length property, so no more error
+  return arg;
+}
+
+
+//Using Type Parameters in Generic Constraints
+function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
+  return obj[key];
+}
+ 
+let x = { a: 1, b: 2, c: 3, d: 4 };
+ 
+getProperty(x, "a");
+getProperty(x, "m");
+
+
+//Using Class Types in Generics
+function create<Type>(c: { new (): Type }): Type {
+  return new c();
+}
+
+
+//Keyof Type Operator
+type Point = { x: number; y: number };
+type P = keyof Point;
+
+
+//Typeof Type Operator
+let s = "hello";
+let n: typeof s;
+
+function f() {
+  return { x: 10, y: 3 };
+}
+type P = ReturnType<typeof f>;
+
+
+//Indexed Access Types
