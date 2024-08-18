@@ -1263,42 +1263,56 @@ From W3Schools -
 JS Objects -
 * methods are marked with "*" which returned new array.
 * methods are marked with "@" which mutate original array.
+* EEE - except empty elements
 
 1) Array -
-
-[*] concat()      Joins tow or more arrays and returns an array with the joined arrays. ex. arr.concat(arr1, arr2)
-[ ] constructor   Returns the function that created the Array object's prototype.
-[@] copyWithin()  Copies array elements within the array, to and from specified positions. arr.copywithin(target,start,end)
+[ ] at()	      The at() method returns an indexed element from an array.						 array.at(index)
+[*] concat()          Joins tow or more arrays and returns an array with the joined arrays. 				 arr.concat(arr1, arr2)
+[ ] constructor       Returns the function that created the Array object's prototype.
+[@] copyWithin()      Copies array elements within the array, to and from specified positions. 				 arr.copywithin(target,start,end)
 [ ] entries()         Returns a key/value pair Array Iteration Object
-[ ] every()           Checks if every element in an array pass a test. Executes a function for each array element( Except empty elements ).
-[@] fill()            Fill the elements in an array with a static value. array.fill(value, start, end)
-[*] filter()          Creates a new array with every element in an array that pass a test(Except empty elements).
-[ ] find()            Returns the value of the first element in an array that pass a test(Except empty elements).
-[ ] findIndex()       Returns the index of the first element in an array that pass a test(Except empty elements).
-[ ] forEach()         Calls a function for each array element(Except empty elements).
-[ ] from()            Creates an array from an object(with a length property).
-[ ] includes()        Check if an array contains the specified element(returns true if available).
-[ ] indexOf()         Search the array for an element and returns its position. array.indexOf(item, start)
-[ ] isArray()         Checks whether an object is an array.
-[ ] join()            Joins all elements of an array into a string.
-[ ] keys()            Returns a Array Iteration Object, containing the keys of the original array.
-[ ] lastIndexOf()     Search the array for an element, starting at the end, and returns its position
-[ ] length            Sets or returns the number of elements in an array
-[ ] map()             Creates a new array with the result of calling a function for each array element(Except empty elements).
-[@] pop()             Removes the last element of an array, and returns that element
+[ ] every()           Checks if every element in an array pass a test. Executes a function for each array element(EEE).  array.every(function(currentValue, index, arr), thisValue)
+[@] fill()            Fill the elements in an array with a static value. 						 array.fill(value, start, end)
+[*] filter()          Creates a new array with every element in an array that pass a test(Except empty elements).	 array.filter(function(currentValue, index, arr), thisValue)
+[ ] find()            Returns the value of the first element in an array that pass a test(Except empty elements).	 array.find(function(currentValue, index, arr),thisValue)
+[ ] findIndex()       Returns the index of the first element in an array that pass a test(Except empty elements).	 array.findIndex(function(currentValue, index, arr), thisValue)
+[ ] findLast()	      The findLast() method returns the value of the last element that passes a test.			 array.findLast(function(currentValue, index, arr),thisValue)
+[ ] findLastIndex()   The findLastIndex() method returns the index (position) of the last element that passes a test.	 array.findLastIndex(function(currentValue, index, arr), thisValue)
+[@] flat()	      The flat() method concatenates sub-array elements.						 array.flat(depth)
+[*] flatMap() 	      The flatMap() method maps all array elements and creates a new flat array.			 array.flatMap(function(currentValue, index, arr), thisValue)		
+[ ] forEach()         Calls a function for each array element(Except empty elements).					 array.forEach(function(currentValue, index, arr), thisValue)			 
+[*] from()            Creates an array from an object(with a length property).						 Array.from(object, mapFunction, thisValue)
+[ ] includes()        Check if an array contains the specified element(returns true if available).			 array.includes(element, start)
+[ ] indexOf()         Search the array for an element and returns its position. 					 array.indexOf(item, start)
+[ ] isArray()         Checks whether an object is an array.								 Array.isArray(obj)
+[ ] join()            Joins all elements of an array into a string.							 array.join(separator)
+[ ] keys()            Returns a Array Iteration Object, containing the keys of the original array.			 array.keys()
+[ ] lastIndexOf()     Search the array for an element, starting at the end, and returns its position			 array.lastIndexOf(item, start)
+[ ] length            Sets or returns the number of elements in an array						 array.length
+[*] map()             Creates a new array with the result of calling a function for each array element(EEE).		 array.map(function(currentValue, index, arr), thisValue)
+[*] of()	      The Array.of() method creates a new array from any number of arguments.				 Array.of(element1, element2, ... , elementN)
+[@] pop()             Removes the last element of an array, and returns that element					 array.pop()
 [ ] prototype         Allows you to add properties and methods to an Array object
-[@] push()            Adds new elements to the end of an array, and returns the new length
-[ ] reduce()          Reduce the values of an array to a single value (going left-to-right)(Except empty elements).
-[ ] reduceRight()     Reduce the values of an array to a single value (going right-to-left)(Except empty elements)
-[@] reverse()         Reverses the order of the elements in an array
-[@] shift()           Removes the first element of an array, and returns that element
-[*] slice()           Selects a part of an array, and returns the new array. arr.slice(start, end)
-[ ] some()            Checks if any of the elements in an array pass a test(Except empty elements).
-[@] sort()            Sorts the elements of an array
-[@] splice()          Adds/Removes elements from an array. arr.splice(index, count, item1... item N);
-[ ] toString()        Converts an array to a string, and returns the result
-[@] unshift()         Adds new elements to the beginning of an array, and returns the new length
-[ ] valueOf()         Returns the primitive value of an array
+[@] push()            Adds new elements to the end of an array, and returns the new length				 array.push()
+[ ] reduce()          Reduce the values of an array to a single value (going left-to-right)(EEE).	 		 array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+[ ] reduceRight()     Reduce the values of an array to a single value (going right-to-left)(EEE)			 array.reduceRight(function(total, currentValue, currentIndex, arr), initialValue)
+[@] reverse()         Reverses the order of the elements in an array							 array.reverse()
+[@] shift()           Removes the first element of an array, and returns that element					 array.shift()					 
+[*] slice()           Selects a part of an array, and returns the new array. 						 arr.slice(start, end)
+[ ] some()            Checks if any of the elements in an array pass a test(Except empty elements).			 array.some(function(value, index, arr), this)
+[@] sort()            Sorts the elements of an array									 array.sort(compareFunction)
+[@] splice()          Adds/Removes elements from an array. 								 arr.splice(index, count, item1... item N);		
+[*] toReversed()      The toReversed() method reverses the order of the elements in an array and return new array.	 array.toReversed()
+[*] toSorted()	      The toSorted() method sorts the elements of an array in alphabetical order and return new array.	 array.toSorted()
+[*] toSpliced()	      The toSpliced() method adds and/or removes array elements.					 array.toSpliced(index, count, item1, ....., itemX)
+[ ] toString()        Converts an array to a string, and returns the result						 array.toString()
+[@] unshift()         Adds new elements to the beginning of an array, and returns the new length			 array.unshift();
+[ ] values()	      The values() method returns an Iterator object with the values of an array.			 array.values()
+[ ] valueOf()         Returns the primitive value of an array								 array.valueOf();
+[*] with() 	      method as a safe way to update elements in an array without altering the original array.		 array.with(index, value)
+
+
+
 
 @ (mutate original array) - unshift, splice, sort, shift, reverse, push, pop, fill, copyWithin
 * (returned new array) - filter, concat, slice
