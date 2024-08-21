@@ -2964,9 +2964,28 @@ profile-hermes
 
 ----------------------------------------------------------------------------------
 
-challenges -
-android - gradle related challenges, solved by updating versions, increasing or decreasing version, or adding extra dependency, or native related errors
 
-rn - linking libraries solved by doc, webview links clickable,  AutoHeight of webview adjustment which contain social media posts also,  facing issue with long flatlist solved by optimization, working on one mobile not another solved by personaly testing, after long use battery uses increase, finding memory leaks, third party integrations, finding errors using symbolicating
 
-ios - native related errors, cocoapods, build related errors
+Features - 
+LMNTT and many more -
+Language can change (instructions, article and its content, categories and subcategories), Mode day and night, Notification setup and subscribe, Text to speech, Font Size change, Google Analytics for each article, photo and video ( gives realtime analytics), admob for ads, links support for (dynamic links, deep links and website links), able to bookmark and favourite articles, share article across any app, change city and it will change articles list as per current city
+
+Issues faced -
+1) lots of people uses multiple brands of mobile. so sometime we got error while working with another unusual device, so i try to find that device if it's available with my colleagues and test it. Or else I used symbolication
+
+2) project got bigger, every time it takes so much time to create build, so I used react-native run-android --active-arch-only ( while developing ) and 
+$ ./gradlew :app:assembleDebug -PreactNativeArchitectures=x86,x86_64 (while building). 
+	Earlier I used in app/build.gradle > android > splits > abi, 
+		enable enableSeparateBuildPerCPUArchitecture
+            	universalApk true  // If true, also generate a universal APK
+            	include "armeabi-v7a", "x86"
+
+3) as application grows, complexity grows. it started giving performance issue with Application. solved by applying measures
+
+4) While loading article list, we download partial content within body property. In article page, we have to show complete article. When we open first time, it took some time to download content. Hence webview not render enough height for content. It render only required height which partial content which comes while fetching list. once whole content comes, we have to readjust height. So we didn't get any plugin which help us. so for that, I wrote custom JS script and added that to Webview. so on loading, it readjust its height. and also added handler to open links which comes within content.
+
+* closing app abruptly after clicking multiple articles in short span of time
+
+5) issue with library linking with older version of RN. It was complex process earlier.
+
+6) In IOS, some .h or .m file not found OR Pod related errors, took help from online community
