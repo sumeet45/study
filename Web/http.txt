@@ -1,6 +1,8 @@
 
 HTTP -
 
+---------------------------------------------------------------
+Resources and URIs -
 1) Identifying resources on the Web -
       * The target of an HTTP request is called a "resource", whose nature isn't defined further; it can be a document, a photo, or anything else. Each resource is identified by a Uniform Resource Identifier (URI) used throughout HTTP for identifying resources.
 
@@ -99,7 +101,7 @@ HTTP -
      * Make your page work for both - With these techniques, you can configure your server to respond correctly for both, the www-prefixed and the non-www-prefixed domains. It is good advice to do this since you can't predict which URL users will type in their browser's URL bar. It is a matter of choosing which type you want to use as your canonical location, then redirecting the other type to it.
 
 
-----------------------
+---------------------------------------------------------------
 HTTP Guide -
 
 1) An overview of HTTP -
@@ -210,3 +212,337 @@ HTTP Guide -
 5) connection management in HTTP/1.x
 
 6) Protocol upgrade mechanism
+
+---------------------------------------------------------------
+HTTP security
+Content Security Policy (CSP)
+HTTP Strict Transport Security (HSTS)
+X-Content-Type-Options
+X-Frame-Options
+X-XSS-Protection
+Practical security implementation guides
+HTTP Observatory
+
+---------------------------------------------------------------
+A) HTTP access control (CORS) -
+     * CORS is designed to prevent unauthorized websites from accessing resources on a different domain without explicit permission from the resource owner.4
+     * How CORS Works:
+          1) Same-Origin Policy (SOP): 
+               * By default, web browsers follow the Same-Origin Policy, which restricts web pages from making requests to a different domain than the one that served the web page. This policy is crucial for security but can be restrictive when legitimate cross-origin requests are needed.
+          2) Preflight Requests:
+               * For certain types of HTTP requests, particularly those that are not considered "simple" (like PUT or DELETE requests), the browser sends an OPTIONS request to the server (called a preflight request) before the actual request. This preflight request checks whether the server allows the cross-origin request.
+               * The server must respond with the appropriate CORS headers (like Access-Control-Allow-Origin) to permit the actual request.
+          3) CORS Headers:
+               Access-Control-Allow-Origin: Specifies which origins are allowed to access the resource. This could be a specific domain, * (allow all domains), or the origin that made the request.
+               Access-Control-Allow-Methods: Indicates the HTTP methods (GET, POST, PUT, DELETE, etc.) that are allowed when accessing the resource.
+               Access-Control-Allow-Headers: Specifies which HTTP headers can be used when making the actual request.
+               Access-Control-Allow-Credentials: If true, the browser includes credentials (like cookies or HTTP authentication) with the requests.
+               Access-Control-Max-Age: Indicates how long the results of a preflight request can be cached.
+          Example:
+               Suppose you have a frontend application served from https://frontend.example.com that needs to make an API request to https://api.example.com. If https://api.example.com has CORS configured, it might include the following headers in its response:
+                    Access-Control-Allow-Origin: https://frontend.example.com
+                    Access-Control-Allow-Methods: GET, POST, PUT, DELETE
+                    Access-Control-Allow-Headers: Content-Type
+
+     * CORS Errors:
+          If a request is blocked due to CORS, the browser will typically show a CORS error in the console, indicating that the server did not respond with the appropriate headers.
+
+     * Practical Use:
+          Developers: Need to configure their servers to include the appropriate CORS headers if they want to allow cross-origin requests.
+          APIs: Public APIs often need to implement CORS to allow third-party applications to access them.
+          Security: Misconfiguring CORS can lead to security vulnerabilities, like exposing sensitive data to unauthorized domains.
+          Understanding and correctly implementing CORS is essential for web developers who work with APIs and need to allow cross-domain communication in a secure manner.
+
+
+B) HTTP authentication -
+     HTTP authentication is a method used to protect web resources by requiring the user to authenticate themselves before gaining access to those resources. When a user tries to access a protected resource, the server prompts for authentication credentials, typically a username and password. If the credentials are correct, the server grants access to the resource; otherwise, it denies the request.
+
+     Types of HTTP Authentication
+          * Basic Authentication:
+               How it works: The client sends the username and password encoded in Base64 as part of the HTTP header in every request to the server. The header looks like this:
+                       ex.  Authorization: Basic <Base64 encoded credentials>
+               Security Concerns:
+                    * The credentials are not encrypted, just Base64-encoded, which means they can be easily decoded if intercepted.
+                    * It is recommended to use Basic Authentication only over HTTPS, where the connection is encrypted, to prevent credentials from being exposed.
+
+          * Digest Authentication:     
+               How it works:
+                    The server sends a challenge (nonce) to the client.
+                    The client responds with a hash (MD5 or other algorithms) of the username, password, and other details.
+                    The server compares the hash to validate the credentials.
+               Security Advantages:
+                    Unlike Basic Authentication, the credentials are never sent in plain text. Instead, they are hashed, making it more secure.
+                    However, this method is still considered less secure compared to modern authentication methods.
+     
+          * Bearer Authentication (Token-based):     
+               How it works:
+                    The client first authenticates with the server (usually via a login API) and receives a token.
+                    The token is then sent in the Authorization header for subsequent requests:
+                         ex.     Authorization: Bearer <token>
+                    The server validates the token to grant or deny access.
+               Common Use:
+                    Often used in OAuth2 and JWT (JSON Web Token) based authentication systems.
+                    Tokens can have expiration times and scopes, offering more control over access.
+     
+          * HOBA (HTTP Origin-Bound Authentication):     
+               How it works:
+                    Uses digital signatures to authenticate clients.
+                    The client generates a public-private key pair and signs the authentication request with the private key.
+               Security:
+                    The server verifies the signature using the public key.
+                    HOBA is designed to be resistant to phishing and man-in-the-middle attacks.
+
+          * Mutual Authentication (Client Certificates):               
+               How it works:
+                    Both the client and the server authenticate each other using digital certificates.
+                    The client presents a certificate to the server, which validates it against a trusted certificate authority (CA).
+                    The server also presents its certificate to the client.
+               Use Case:
+                    Often used in environments requiring a high level of security, such as in financial services or sensitive government applications.
+     
+          * NTLM (Windows NT LAN Manager):     
+               How it works:
+                    NTLM is a challenge-response authentication protocol used mainly in Microsoft environments.
+                    It provides a way to authenticate users over an insecure network without sending the actual password.
+               Use Case:
+                    Commonly used in Windows-based networks but has largely been replaced by more secure methods like Kerberos.
+     
+     * How HTTP Authentication Works in Practice
+          * Client Request:
+               The client (e.g., a web browser or a script) requests a protected resource on the server.
+          * Server Challenge:     
+               The server responds with a 401 Unauthorized status code and includes a WWW-Authenticate header indicating the type of authentication required (e.g., Basic or Digest).
+          * Client Response:
+               The client sends back the credentials in the Authorization header according to the specified authentication type.
+          * Server Verification:     
+               The server checks the provided credentials. If valid, the server returns the requested resource with a 200 OK status.
+          * Subsequent Requests:     
+               The client continues to include the Authorization header in subsequent requests to access protected resources without being re-challenged.
+     
+     * Security Considerations
+          * HTTPS: Always use HTTPS to protect credentials during transmission, especially with Basic and Digest authentication.
+          * Token Expiration: Implement token expiration and revocation mechanisms to limit the validity of tokens.
+          * Multi-Factor Authentication (MFA): Combine HTTP authentication with MFA for added security.
+          * Secure Storage: Store passwords securely on the server side using hashing algorithms with salts.
+     
+     HTTP authentication is a crucial part of web security, enabling the protection of resources by ensuring that only authorized users can access them. However, it's essential to choose the appropriate method and implement additional security measures to protect against various attacks.
+
+     * Authentication in web applications -
+          Token authentication
+          Multi factor authentication
+          Adaptive authentication
+          Basic Auth
+          OAuth 2
+          Passwords
+          Authentication
+          Cookie-based authentication
+          OpenID
+          API key
+          Biometric authentication
+          Session management
+          Web Authentication
+          Common authentication methods
+          Digest auth
+          SAML
+          Hash and salt passwords
+          JWT authentication
+          Security Assertion Markup Language
+          SSO
+          Biometrics
+          Facial recognition
+          Fingerprint
+          NTLM auth
+
+
+C) HTTP caching -
+     * HTTP caching is a technique used to store copies of web resources (like HTML pages, images, or scripts) in order to reduce latency, decrease server load, and improve the overall user experience by delivering content more quickly. Caching is a fundamental aspect of optimizing web performance, and it can occur at various levels, including the browser, proxy servers, and content delivery networks (CDNs).
+     * How HTTP Caching Works -
+          When a client (like a web browser) makes an HTTP request for a resource, the server can include cache-related headers in the response that tell the client or intermediary caches how to store and reuse the resource in future requests.
+
+     * Key HTTP Caching Headers
+               1) Cache-Control:        
+                   * Description: This is the primary HTTP header used for controlling caching behavior. It allows both the client and server to specify how and for how long a resource should be cached.
+                   * Common Directives:
+                         max-age=<seconds>: Specifies the maximum amount of time (in seconds) a resource is considered fresh.
+                         no-cache: Forces revalidation with the server before using the cached resource.
+                         no-store: Prevents caching altogether. The resource must be fetched from the server every time.
+                         public: Indicates that the resource is cacheable by any cache, including browsers and intermediary caches.
+                         private: Indicates that the resource is cacheable only by the browser (not by shared caches like proxies).
+                         must-revalidate: Indicates that once a resource becomes stale, it must be revalidated with the server before being served.
+               
+               2) Expires:
+                    * Description: An older header used to specify an absolute expiry date and time for the cached resource. After this time, the resource is considered stale and should be revalidated with the server.
+                         Expires: Wed, 21 Oct 2023 07:28:00 GMT
+                    * Note: Cache-Control is preferred over Expires because it is more flexible.
+
+               3) ETag (Entity Tag):
+                    * Description: A unique identifier (often a hash) assigned to a specific version of a resource. When the client has a cached resource, it can send the ETag to the server using the If-None-Match header to check if the resource has changed.
+                    * How It Works:
+                         If the server finds that the resource has not changed, it responds with a 304 Not Modified status, allowing the client to use the cached version.
+                         If the resource has changed, the server sends the updated resource along with a new ETag.
+                              ETag: "abc123"
+               4) Last-Modified:
+                    * Description: Indicates the date and time when the resource was last modified. The client can send this date back to the server using the If-Modified-Since header to check if the resource has been updated.
+                    * How It Works:
+                         If the resource has not been modified since the specified date, the server returns a 304 Not Modified status.
+                         If it has been modified, the server returns the updated resource.
+                              Last-Modified: Wed, 21 Oct 2023 07:28:00 GMT
+
+     * Types of Caches
+               1) Browser Cache:        
+                    Description: The cache built into web browsers that stores resources like HTML, CSS, JavaScript, and images locally on the user's device.
+                    Usage: Reduces the need to re-download resources when navigating back to a previously visited page or reloading a page.
+               2) Proxy Cache:               
+                    Description: Caches located between the client and the server, often at the network level (e.g., ISP or enterprise proxy servers). These caches store responses for multiple users.
+                    Usage: Reduces server load and speeds up access for multiple users by serving cached content from a closer or shared proxy.
+               3) Content Delivery Network (CDN):               
+                    Description: A network of distributed servers that cache content closer to users. CDNs are often used to improve the load time of static assets like images, stylesheets, and scripts.
+                    Usage: Reduces latency by serving content from a server geographically closer to the user and offloading traffic from the origin server.
+
+
+     * Benefits of HTTP Caching
+               * Performance: Improves page load times by reducing the need to fetch resources from the server.
+               * Bandwidth Savings: Reduces the amount of data transferred over the network by reusing cached resources.
+               * Server Load Reduction: Decreases the number of requests and responses that the server must handle, freeing up resources for other tasks.
+               * Improved User Experience: Users experience faster page loads and smoother interactions with the application.
+
+
+
+D) HTTP compression -
+          * HTTP compression is a technique used to reduce the size of data sent from the server to the client, typically to improve the performance of web applications by reducing the amount of bandwidth required and speeding up the loading time of web pages. The most common types of data that benefit from HTTP compression include HTML, CSS, JavaScript, and JSON responses.
+
+          * How HTTP Compression Works
+               When a client (such as a web browser) requests a resource, it can indicate its support for various compression methods through the Accept-Encoding HTTP header. The server, if capable of compressing the resource, responds by compressing the resource using one of the supported compression algorithms and indicates the compression method used in the Content-Encoding header.
+
+          * Common HTTP Compression Methods
+               * Gzip:
+                    Description: Gzip is the most widely used compression method for HTTP. It uses the DEFLATE algorithm, which combines the LZ77 and Huffman coding algorithms.
+                    Usage:
+                         The client sends: Accept-Encoding: gzip.
+                         The server responds with: Content-Encoding: gzip if it chooses to use gzip compression.
+                    Pros: Provides a good balance between compression ratio and speed, widely supported across all browsers and servers.
+
+               * Brotli:
+                    Description: Brotli is a newer compression algorithm that typically achieves higher compression ratios than gzip, especially for text-based files. It was developed by Google and is supported by most modern browsers.
+                    Usage:
+                         The client sends: Accept-Encoding: br.
+                         The server responds with: Content-Encoding: br if it chooses to use Brotli compression.
+                    Pros: Offers better compression efficiency than gzip, particularly for web assets like HTML, CSS, and JavaScript.
+                    Cons: Slightly slower compression speed compared to gzip, though the difference is usually negligible for most use cases.
+
+               * Deflate:
+                    Description: Deflate is a compression method that combines the LZ77 algorithm with Huffman coding. It is similar to gzip but without the additional header and footer metadata.
+                    Usage:
+                         The client sends: Accept-Encoding: deflate.
+                         The server responds with: Content-Encoding: deflate if it chooses to use deflate compression.
+                    Pros: Offers decent compression and speed, though it is less commonly used than gzip and Brotli.
+                    Cons: Can lead to compatibility issues because of differences in implementation across servers and browsers.
+
+               * Other Methods (Less Common):
+                    Compress: An older algorithm that uses LZW (Lempel-Ziv-Welch) compression. It's largely obsolete and replaced by gzip.
+                    Identity: Indicates that no compression is used. This is the default if no other encoding is specified.
+
+     * HTTP Headers Involved in Compression
+               * Accept-Encoding:
+                    Description: Sent by the client to indicate which compression methods it supports.
+                         Accept-Encoding: gzip, deflate, br
+               * Content-Encoding:
+                    Description: Sent by the server to indicate which compression method was used to compress the response.
+                         Content-Encoding: gzip
+
+     * Benefits of HTTP Compression
+          Reduced Bandwidth Usage, Faster Page Load Times, Improved SEO, Reduced Server Load
+
+     * Considerations and Best Practices
+          * Choose the Right Compression Method:          
+               Use Brotli for maximum compression efficiency, especially for text-based assets. Gzip is a good fallback for older browsers and systems.
+          * Compress the Right Files:
+               Compress text-based assets like HTML, CSS, JavaScript, and JSON. Do not compress already compressed files like JPEG, PNG, or MP4, as this can lead to larger files.
+          * Use Conditional Requests:
+               Use ETag and Last-Modified headers along with compression to ensure that only updated resources are transferred, further reducing bandwidth usage.
+          * Test Compatibility:
+               Ensure that the chosen compression methods are supported by the client base. While gzip is almost universally supported, Brotli is only supported by modern browsers.
+          * Monitor Performance:
+               Regularly monitor the performance impact of compression on both server and client-side to ensure that the benefits outweigh the costs in terms of CPU usage and latency.
+
+     * Example of Compressed HTTP Response
+               HTTP/1.1 200 OK
+               Content-Type: text/html; charset=UTF-8
+               Content-Encoding: gzip
+               Vary: Accept-Encoding
+               Content-Length: 512
+
+
+
+
+HTTP conditional requests
+HTTP content negotiation
+HTTP cookies
+HTTP range requests
+HTTP redirects
+HTTP specifications
+Permissions Policy
+
+
+------------------------------------------------------
+HTTP Headers -
+1) Accept - 
+     * The Accept request HTTP header indicates which content types, expressed as MIME types, the client is able to understand. 
+     * Content types that are acceptable for the response
+     Accept: text/html, Accept: text/plain
+2) Accept-CH -
+     * The Accept-CH header may be set by a server to specify which client hints headers a client should include in subsequent requests.
+          Accept-CH: Viewport-Width, Width
+
+3) Accept-Charset -
+     * The Accept-Charset request HTTP header was a header that advertised a client's supported character encodings. It is no longer widely used.
+     * Character sets that are acceptable
+
+4) Accept-Encoding
+     * The Accept-Encoding request HTTP header indicates the content encoding (usually a compression algorithm) that the client can understand. 
+     Accept-Encoding: gzip, deflate
+
+5) Accept-Language
+     * The Accept-Language request HTTP header indicates the natural language and locale that the client prefers.
+
+6) Cache-Control
+     * Used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain
+     
+
+https://kapeli.com/cheat_sheets/HTTP_Header_Fields.docset/Contents/Resources/Documents/index
+
+
+------------------------------------------------------
+Forbidden header name
+A forbidden header name is the name of any HTTP header that cannot be modified programmatically; specifically, an HTTP request header name (in contrast with a Forbidden response header name).
+
+Modifying such headers is forbidden because the user agent retains full control over them. Names starting with Sec- are reserved for creating new headers safe from APIs that grant developers control over headers, such as fetch().
+
+Forbidden header names start with Proxy- or Sec-, or are one of the following names:
+
+Accept-Charset
+Accept-Encoding
+Access-Control-Request-Headers
+Access-Control-Request-Method
+Connection
+Content-Length
+Cookie
+Date
+DNT
+Expect
+Host
+Keep-Alive
+Origin
+Permissions-Policy
+Proxy-
+Sec-
+Referer
+TE
+Trailer
+Transfer-Encoding
+Upgrade
+Via
+
+
+     * Character sets that are acceptable
+     
