@@ -475,9 +475,125 @@ D) HTTP compression -
 
 
 
-HTTP conditional requests
-HTTP content negotiation
-HTTP cookies
+HTTP conditional requests -
+     * HTTP conditional requests are a mechanism that allows a client to make requests that include specific conditions. These conditions are used to determine whether a request should be fulfilled based on the state of the resource on the server. If the conditions are met, the server processes the request as usual. If the conditions are not met, the server may return a status code indicating that the request does not need to be fulfilled, such as 304 Not Modified.
+
+     * Conditional requests are particularly useful for reducing unnecessary data transfer, improving efficiency, and ensuring that clients have the most up-to-date version of a resource.
+     * Key HTTP Headers Used in Conditional Requests -
+          * If-Modified-Since:
+                    Description: The client uses this header to indicate that it only wants the resource if it has been modified since the specified date and time.
+                    Usage:
+                         The client sends: If-Modified-Since: <date-time>.
+                         The server checks the resource’s last modification date. If it hasn't changed since the specified date, the server responds with 304 Not Modified.
+                    If-Modified-Since: Wed, 21 Oct 2023 07:28:00 GMT
+
+          * If-Unmodified-Since:
+                    Description: The client uses this header to indicate that it only wants the resource if it has not been modified since the specified date and time.
+                    Usage:
+                         The client sends: If-Unmodified-Since: <date-time>.
+                         If the resource has been modified since the specified date, the server responds with 412 Precondition Failed.
+                    If-Unmodified-Since: Wed, 21 Oct 2023 07:28:00 GMT
+
+          * If-None-Match:
+                    Description: The client uses this header to indicate that it only wants the resource if the provided ETag does not match the current ETag of the resource on the server.
+                    Usage:
+                         The client sends: If-None-Match: "<etag>".
+                         The server compares the provided ETag with the current ETag. If they match, the server responds with 304 Not Modified.
+                    If-None-Match: "abc123"
+
+          * If-Match:
+                    Description: The client uses this header to indicate that it only wants the resource if the provided ETag matches the current ETag of the resource on the server.
+                    Usage:
+                         The client sends: If-Match: "<etag>".
+                         If the ETag does not match, the server responds with 412 Precondition Failed.
+                    If-Match: "abc123"
+
+          * If-Range:
+
+     * Status Codes Used in Conditional Requests
+               304 Not Modified:
+               412 Precondition Failed:
+
+     * Example of a Conditional Request and Response
+          Client Request:
+               GET /index.html HTTP/1.1
+               Host: example.com
+               If-Modified-Since: Wed, 21 Oct 2023 07:28:00 GMT
+               If-None-Match: "abc123"
+
+          Server Response (if the resource has not changed):
+               HTTP/1.1 304 Not Modified
+
+     
+
+
+HTTP content negotiation -
+          
+
+HTTP cookies -
+          * HTTP cookies are small pieces of data that are stored on the client side (typically in a web browser) and are sent back to the server with each subsequent request. They are widely used for managing state, user sessions, preferences, and other data that needs to persist between requests. Cookies play a crucial role in web development, especially in the context of authentication, personalization, and tracking.
+          * How HTTP Cookies Work
+               * Setting a Cookie:                    
+                    The server sends a Set-Cookie header in the HTTP response to instruct the client to store a cookie.
+                    The cookie contains a name-value pair, and may also include optional attributes such as expiration time, domain, path, security settings, etc.
+                    ex.  Set-Cookie: sessionId=abc123; Expires=Wed, 21 Oct 2023 07:28:00 GMT; HttpOnly; Secure
+
+               * Sending a Cookie:
+                    Once a cookie is set, the client automatically includes it in subsequent requests to the server within the specified domain and path.
+                    The cookie is included in the Cookie header of the HTTP request.
+                         GET /dashboard HTTP/1.1
+                         Host: example.com
+                         Cookie: sessionId=abc123
+
+               * Cookie Attributes:
+                    Name-Value Pair: The key-value data stored in the cookie.
+                         Example: username=JohnDoe
+                    Expires/Max-Age: Determines the lifespan of the cookie. Expires specifies the exact date and time the cookie expires, while Max-Age sets the lifetime of the cookie in seconds.
+                         Example: Expires=Wed, 21 Oct 2023 07:28:00 GMT or Max-Age=3600 (1 hour).
+                    Domain: Specifies the domain to which the cookie belongs. If not specified, it defaults to the domain of the document originating the cookie.
+                         Example: Domain=example.com
+                    Path: Defines the URL path for which the cookie is valid. If not specified, it defaults to the path of the document that set the cookie.
+                         Example: Path=/account
+                    Secure: Ensures the cookie is only sent over HTTPS connections.
+                         Example: Secure
+                    HttpOnly: Prevents the cookie from being accessed via JavaScript, helping to mitigate certain attacks like cross-site scripting (XSS).
+                         Example: HttpOnly
+                    SameSite: Restricts how cookies are sent with cross-site requests, helping to mitigate cross-site request forgery (CSRF) attacks.
+                         Example: SameSite=Strict (other options: Lax, None)
+
+               * Deleting a Cookie:
+                    A cookie can be deleted by setting its Expires attribute to a past date, or by setting its Max-Age to 0.
+                                   Set-Cookie: sessionId=abc123; Expires=Thu, 01 Jan 1970 00:00:00 GMT
+
+     * Use Cases for HTTP Cookies -
+               Session Management, Personalization, Tracking and Analytics, Shopping Carts
+     * Security Considerations
+               Secure Attribute - Always use the Secure attribute for cookies that store sensitive information, ensuring they are only sent over HTTPS connections.
+
+               HttpOnly Attribute - Use the HttpOnly attribute to prevent cookies from being accessed via JavaScript, which can help protect against XSS attacks.
+               SameSite Attribute -
+                         Configure the SameSite attribute to control whether cookies are sent with cross-site requests, helping to prevent CSRF attacks.
+                         SameSite=Strict is the most secure, but SameSite=Lax can be a good balance for most use cases.
+               Third-Party Cookies:
+                         Be cautious with third-party cookies, as they can pose privacy concerns and are increasingly being blocked or restricted by browsers.
+               Encryption:     
+                         Avoid storing sensitive information directly in cookies. Instead, store a token or session identifier and keep sensitive data on the server side.
+
+     * Best Practices for Using HTTP Cookies
+               Minimize Cookie Size:
+                    Keep cookies as small as possible to reduce overhead in HTTP requests. Only store essential data in cookies.
+               Set Appropriate Expiration:          
+                    Use session cookies (Expires or Max-Age not set) for temporary data, and set explicit expiration times for persistent cookies.
+               Use Separate Cookies for Separate Concerns:
+                    Avoid combining unrelated data in a single cookie. Use separate cookies for different purposes (e.g., session management, preferences).
+               Regularly Review and Clean Up Cookies:          
+                    Periodically audit cookies to ensure they are necessary and being used correctly. Remove any stale or unused cookies.
+               Comply with Privacy Regulations:         
+                    Ensure cookie usage complies with privacy laws like the GDPR, which require obtaining user consent before setting cookies, especially for tracking and analytics.
+
+
+
+
 HTTP range requests
 HTTP redirects
 HTTP specifications
