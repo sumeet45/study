@@ -6,7 +6,25 @@ yoga - cross-platform layout engine
 metro - bundler
 
 
-React Native Website - 
+IOS appstore pushing -
+* signing with keychain - gives CSR certificate. will help to create developer certificate
+* Now login within developer apple account
+* lets create identifier
+
+* create app using app store connect
+
+* create a new certificate using certificate tab
+* choose apple development >  select CSR certificate from desktop and upload > generate distribution certificate and download it
+
+* create Provisioning profile using Provisioning profile tab
+* select distribution of App Store > select App ID > select distribution certificate > Give name to provisioning profile > Download and install provisioning profile
+
+* Now install proviosioning profile and certificate by double clicking
+
+
+* Build application > archive with any OS device > archive app with validate app 
+* apple developer account should sign with xcode
+* while pushing to testflight, select pp and certificate
 
 ------------------------------------------------------------------------------------------------
 GUIDES
