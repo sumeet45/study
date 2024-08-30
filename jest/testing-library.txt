@@ -1,0 +1,91 @@
+
+Core API
+* About Queries - 
+    *  There are several types of queries ("get", "find", "query"), which help us to find element
+    * After selecting an element, you can use the Events API or user-event to fire events and simulate user interactions with the page, or use Jest and jest-dom to make assertions about the element.
+    * There are Testing Library helper methods that work with queries. As elements appear and disappear in response to actions, Async APIs like waitFor or findBy queries can be used to await the changes in the DOM. To find only elements that are children of a specific element, you can use within. If necessary, there are also a few options you can configure, like the timeout for retries and the default testID attribute.
+  
+    * Ex.
+          import {render, screen} from '@testing-library/react' // (or /dom, /vue, ...)
+          test('should show login form', () => {
+            render(<Login />)
+            const input = screen.getByLabelText('Username')
+            // Events and assertions...
+          })
+  
+    * Types of Queries-
+      
+      Type of Query	        0 Matches	            1 Match	            >1 Matches	          Retry (Async/Await)
+      Single Element				
+      getBy...	            Throw error	          Return element	    Throw error	          No
+      queryBy...	          Return null	          Return element	    Throw error	          No
+      findBy...	            Throw error	          Return element	    Throw error	          Yes
+      Multiple Elements				
+      getAllBy...	          Throw error	          Return array	      Return array	        No
+      queryAllBy...	        Return []	            Return array	      Return array	        No
+      findAllBy...	        Throw error	          Return array	      Return array	        Yes
+  
+    * Priority -
+      * Queries Accessible to Everyone - Queries that reflect the experience of visual/mouse users as well as those that use assistive technology.
+        * getByRole: This can be used to query every element that is exposed in the accessibility tree
+        * getByLabelText: This method is really good for form fields
+        * getByPlaceholderText: A placeholder is not a substitute for a label
+        * getByText: Outside of forms, text content is the main way users find elements
+        * getByDisplayValue: The current value of a form element can be useful when navigating a page with filled-in values.
+  
+      * Semantic Queries -
+        * getByAltText: If your element is one which supports alt text (img, area, input, and any custom element), then you can use this to find that element.
+        * getByTitle: The title attribute is not consistently read by screenreaders, and is not visible by default for sighted users
+  
+      * Test IDs -
+        * getByTestId: The user cannot see (or hear) these, so this is only recommended for cases where you can't match by role or text or it doesn't make sense.
+  
+  
+    * Using Queries -
+      ex. 
+              import {screen, getByLabelText} from '@testing-library/dom'
+              const inputNode1 = screen.getByLabelText('Username');              // With screen:
+
+              const container = document.querySelector('#app');              // Without screen, you need to provide a container:
+              const inputNode2 = getByLabelText(container, 'Username')
+
+    * queryOptions -  You can pass a queryOptions object with the query type. See the docs for each query type to see available options, e.g. byRole API.
+    * screen - 
+        const exampleInput = screen.getByLabelText('Example')
+
+    * TextMatch - Most of the query APIs take a TextMatch as an argument, which means the argument can be either a string, regex, or a function of signature (content?: string, element?: Element | null) => boolean which returns true for a match and false for a mismatch.
+          ex.      <div>Hello World</div>
+                    screen.getByText('Hello World') // full string match
+                    screen.getByText('llo Worl', {exact: false}) // substring match
+                    screen.getByText('hello world', {exact: false}) // ignore case
+
+                    // Matching a regex:
+                    screen.getByText(/World/) // substring match
+                    screen.getByText(/world/i) // substring match, ignore case
+                    screen.getByText(/^hello world$/i) // full string match, ignore case
+                    screen.getByText(/Hello W?oRlD/i) // substring match, ignore case, searches for "hello world" or "hello orld"
+                    
+                    // Matching with a custom function:
+                    screen.getByText((content, element) => content.startsWith('Hello'))
+
+            Will not find the div:
+                    // full string does not match
+                    screen.getByText('Goodbye World')
+
+    * Precision -
+        Queries that take a TextMatch also accept an object as the final argument that can contain options that affect the precision of string matching:
+            * exact: Defaults to true; matches full strings, case-sensitive. When false, matches substrings and is not case-sensitive.
+                it has no effect when used together with regex or function arguments.
+                in most cases, using a regex instead of a string combined with { exact: false } gives you more control over fuzzy matching so it should be preferred.
+            * normalizer: An optional function which overrides normalization behavior. 
+
+* ByRole -
+* ByLabelText
+* ByPlaceholderText
+* ByText
+* ByDisplayValue
+* ByAltText
+* ByTitle
+* ByTestId
+
+
