@@ -1064,10 +1064,38 @@ c.__proto__     //it give basic object and it's has property and method already
 
 
 
+57) Reflection and extend -
+* Reflection - An object can look at itself, listing and changing its properties and methods.
+* extend is possible because of Reflection of object
 
+* lets use for in operator
+let Person = { name: "sumeet", surname: "shedge", getFullName: () => { console.log("function", this.name, this.surname)}
+var John = { name: "s1", surname: "s2" }
 
+//don't do this EVER! for demo purpose only
+john.__proto__ = Person;
 
+for(var prop in john){			// loop over object and its prototype also, bcz of "For in"
+	if(john.hasOwnProperty(prop)){			// it gives true, when object really has property in its own, not in prototype chain.
+		console.log(`${prop} : ${john[prop]}`);	
+	}
+}
 
+let jane = {
+	address: "",
+	getFormalFullName: function(){
+		return this.surname + " " + this.name
+	}
+}
+var jim = {
+	getFirstName: function(){
+		return this.name;
+	}
+}
+
+_.extend(John, jane, jim);	// { name, surname, address, getFormalFullName, getFirstName, __proto__: { name, surname, getFullName } }
+
+* we can use reflection to also have this extend pattern, not just the prototype pattern to combine and compose objects
 
 
 
