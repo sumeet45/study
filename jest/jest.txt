@@ -14,6 +14,62 @@ maximillian video (youtube) =
 * assertions library - Defining test logic, expected outcome to compare with conditions. eg. chai
 * Jest is great replacement for mocha and chai.
 
+
+Jest use cases -
+1) Unit Testing: Testing individual functions or components to ensure they work as expected
+test('adds 1 + 2 to equal 3', () => {
+    expect(1 + 2).toBe(3);
+});
+
+2) Snapshot Testing: Testing the output of React components to ensure the UI does not change unexpectedly.
+test('renders correctly', () => {
+    const tree = renderer.create(<MyComponent />).toJSON();
+    expect(tree).toMatchSnapshot();
+});
+
+3) Integration Testing: Testing how different modules or components work together in a larger system
+test('submits data correctly', async () => {
+    const data = { name: 'John Doe' };
+    axios.post.mockResolvedValue({ data: 'Success' });
+
+    await act(async () => {
+        fireEvent.click(submitButton);
+    });
+
+    expect(axios.post).toHaveBeenCalledWith('/submit', data);
+});
+
+4) Mocking: Testing code that depends on external modules, APIs, or services by replacing them with mock functions
+jest.mock('axios');
+test('fetches data from API', async () => {
+    axios.get.mockResolvedValue({ data: { title: 'Hello World' } });
+    const result = await fetchData();
+    expect(result.title).toBe('Hello World');
+});
+
+5) Async Code Testing: Testing functions that involve asynchronous operations, such as promises, async/await, or timers.
+test('async function works correctly', async () => {
+    const data = await fetchData();
+    expect(data).toEqual({ userId: 1, id: 1, title: 'Test Title' });
+});
+
+
+6) Testing with Coverage: Measuring the amount of your codebase that is covered by tests
+jest --coverage
+
+7) Testing DOM Manipulation: Testing how your code interacts with the DOM, particularly in frontend applications
+test('button click updates the count', () => {
+    const { getByText } = render(<Counter />);
+    const button = getByText('Increment');
+    fireEvent.click(button);
+    expect(getByText('Count: 1')).toBeInTheDocument();
+});
+
+
+
+
+
+
 ------------------------------------------------------
 Jest Coverage link - https://medium.com/steve-cruz/awesome-jest-tip-coverage-report-6f1e303ef07
 
