@@ -220,6 +220,111 @@ const singleton2 = Singleton.getInstance();
 console.log(singleton1 === singleton2); // true
 console.log(singleton1.getData()); // Singleton Data
 
+
+------------------------------------------------------------------------------------
+
+// abstract facade pattern
+
+// 1. Abstract Product Interfaces
+interface Button {
+    render(): void;
+}
+
+interface Checkbox {
+    check(): void;
+}
+
+// 2. Concrete Products for Windows
+class WindowsButton implements Button {
+    render(): void {
+        console.log('Rendering a Windows Button');
+    }
+}
+
+class WindowsCheckbox implements Checkbox {
+    check(): void {
+        console.log('Checking a Windows Checkbox');
+    }
+}
+
+// 3. Concrete Products for MacOS
+class MacButton implements Button {
+    render(): void {
+        console.log('Rendering a MacOS Button');
+    }
+}
+
+class MacCheckbox implements Checkbox {
+    check(): void {
+        console.log('Checking a MacOS Checkbox');
+    }
+}
+
+// 4. Abstract Factory Interface
+interface UIFactory {
+    createButton(): Button;
+    createCheckbox(): Checkbox;
+}
+
+// 5. Concrete Factory for Windows
+class WindowsFactory implements UIFactory {
+    createButton(): Button {
+        return new WindowsButton();
+    }
+
+    createCheckbox(): Checkbox {
+        return new WindowsCheckbox();
+    }
+}
+
+// 6. Concrete Factory for MacOS
+class MacFactory implements UIFactory {
+    createButton(): Button {
+        return new MacButton();
+    }
+
+    createCheckbox(): Checkbox {
+        return new MacCheckbox();
+    }
+}
+
+// 7. Client Code
+class Application {
+    private button: Button;
+    private checkbox: Checkbox;
+
+    constructor(factory: UIFactory) {
+        this.button = factory.createButton();
+        this.checkbox = factory.createCheckbox();
+    }
+
+    renderUI(): void {
+        this.button.render();
+        this.checkbox.check();
+    }
+}
+
+// 8. Using the Abstract Factory
+const platform = 'MacOS';  // Can be dynamic or come from configuration
+
+let factory: UIFactory;
+if (platform === 'Windows') {
+    factory = new WindowsFactory();
+} else if (platform === 'MacOS') {
+    factory = new MacFactory();
+} else {
+    throw new Error('Unknown platform');
+}
+
+const app = new Application(factory);
+app.renderUI();  // Output: Rendering a MacOS Button, Checking a MacOS Checkbox
+
+
+
+
+
+
+
 ---------------------------------------------------------------------------------------------------------------------------
 
 Facade Pattern -
