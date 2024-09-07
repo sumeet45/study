@@ -90,6 +90,30 @@ console.log("factory pattern", e);      //"factory pattern",  Android: {}
 
 ---------------------------------------------------------------------------------------------------------------------------
 
+Prototyal Pattern
+
+* The Prototypal Pattern, also known as Prototype Pattern, is a creational design pattern used to create new objects by copying an existing object, known as the prototype. This pattern is particularly useful when the creation of an object is costly or complex. Instead of creating new instances from scratch, you clone the prototype. JavaScript's prototypal inheritance makes this pattern easy to implement
+
+// Prototype object
+const carPrototype = {
+  init(make, model) {
+    this.make = make;
+    this.model = model;
+  },
+  getDetails() {
+    return `${this.make} ${this.model}`;
+  }
+};
+
+// Creating a new car instance by cloning the prototype
+const car1 = Object.create(carPrototype);
+car1.init('Toyota', 'Corolla');
+console.log(car1.getDetails()); // Output: Toyota Corolla
+
+const car2 = Object.create(carPrototype);
+car2.init('Honda', 'Civic');
+console.log(car2.getDetails()); // Output: Honda Civic
+
 
 
 ---------------------------------------------------------------------------------------------------------------------------
@@ -314,29 +338,4 @@ homeTheater.endMovie();
 ---------------------------------------------------------------------------------------------------------------------------
 
 
----------------------------------------------------------------------------------------------------------------------------
-Prototyal Pattern
 
-* The Prototypal Pattern, also known as Prototype Pattern, is a creational design pattern used to create new objects by copying an existing object, known as the prototype. This pattern is particularly useful when the creation of an object is costly or complex. Instead of creating new instances from scratch, you clone the prototype. JavaScript's prototypal inheritance makes this pattern easy to implement
-
-// Prototype object
-const carPrototype = {
-  init(make, model) {
-    this.make = make;
-    this.model = model;
-  },
-  getDetails() {
-    return `${this.make} ${this.model}`;
-  }
-};
-
-// Creating a new car instance by cloning the prototype
-const car1 = Object.create(carPrototype);
-car1.init('Toyota', 'Corolla');
-console.log(car1.getDetails()); // Output: Toyota Corolla
-
-const car2 = Object.create(carPrototype);
-car2.init('Honda', 'Civic');
-console.log(car2.getDetails()); // Output: Honda Civic
-
----------------------------------------------------------------------------------------------------------------------------
