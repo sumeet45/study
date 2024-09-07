@@ -45,6 +45,14 @@ c.checkLC();
 ---------------------------------------------------------------------------------------------------------------------------
 
 // factory pattern
+// When you have complex object creation logic and want to encapsulate it.
+// When you need to create different types of related objects (e.g., different shapes, animals, or vehicles) in a flexible way.
+// When you want to decouple object creation from client code, allowing flexibility in object instantiation.
+// When you want to adhere to the Open/Closed Principle, making it easy to add new types without modifying existing code.
+// When you need to control or manage the object creation process, such as ensuring singletons, pooling, or caching.
+// When object creation depends on external input such as user preferences, configurations, or environment settings.
+// When you need to isolate the client from concrete class implementations, allowing flexibility in changing the underlying logic without breaking the client.
+
 interface Platform {
     getPlatformName: () => void
 }
@@ -82,34 +90,75 @@ console.log("factory pattern", e);      //"factory pattern",  Android: {}
 
 ---------------------------------------------------------------------------------------------------------------------------
 
-Prototyal Pattern
-
-* The Prototypal Pattern, also known as Prototype Pattern, is a creational design pattern used to create new objects by copying an existing object, known as the prototype. This pattern is particularly useful when the creation of an object is costly or complex. Instead of creating new instances from scratch, you clone the prototype. JavaScript's prototypal inheritance makes this pattern easy to implement
-
-// Prototype object
-const carPrototype = {
-  init(make, model) {
-    this.make = make;
-    this.model = model;
-  },
-  getDetails() {
-    return `${this.make} ${this.model}`;
-  }
-};
-
-// Creating a new car instance by cloning the prototype
-const car1 = Object.create(carPrototype);
-car1.init('Toyota', 'Corolla');
-console.log(car1.getDetails()); // Output: Toyota Corolla
-
-const car2 = Object.create(carPrototype);
-car2.init('Honda', 'Civic');
-console.log(car2.getDetails()); // Output: Honda Civic
 
 
 ---------------------------------------------------------------------------------------------------------------------------
 
 Builder Pattern -
+
+// In TypeScript, the Builder pattern can be implemented to build an object by chaining methods, instead of giving multiple parameters
+// Reasons -
+// 1) When Object Construction Has Many Optional Parameters
+// 2) When You Want to Avoid Large Constructors (Telescoping Constructor Problem)
+
+
+// Step 1: Define the Product class
+class User {
+    public name: string;
+    public age: number;
+    public email: string;
+    public address: string;
+
+    constructor(builder: UserBuilder) {
+        this.name = builder.name;
+        this.age = builder.age;
+        this.email = builder.email;
+        this.address = builder.address;
+    }
+}
+
+// Step 2: Create the Builder class
+class UserBuilder {
+    public name: string;
+    public age: number;
+    public email: string;
+    public address: string;
+
+    constructor(name: string) {
+        this.name = name;  // Required field
+    }
+
+    public setAge(age: number): this {
+        this.age = age;
+        return this;
+    }
+
+    public setEmail(email: string): this {
+        this.email = email;
+        return this;
+    }
+
+    public setAddress(address: string): this {
+        this.address = address;
+        return this;
+    }
+
+    public build(): User {
+        return new User(this);
+    }
+}
+
+// Step 3: Using the builder pattern
+const user = new UserBuilder('John Doe')  // Required name
+    .setAge(30);
+
+console.log("user ", user);  //  UserBuilder: { "name": "John Doe", "age": 30 } 
+
+user.setEmail('john.doe@example.com') 
+    .setAddress('123 Main St')           
+    .build();                        
+console.log(user);      // UserBuilder: { "name": "John Doe", "age": 30, "email": "john.doe@example.com", "address": "123 Main St"} 
+
 
 ---------------------------------------------------------------------------------------------------------------------------
 
@@ -266,5 +315,28 @@ homeTheater.endMovie();
 
 
 ---------------------------------------------------------------------------------------------------------------------------
+Prototyal Pattern
+
+* The Prototypal Pattern, also known as Prototype Pattern, is a creational design pattern used to create new objects by copying an existing object, known as the prototype. This pattern is particularly useful when the creation of an object is costly or complex. Instead of creating new instances from scratch, you clone the prototype. JavaScript's prototypal inheritance makes this pattern easy to implement
+
+// Prototype object
+const carPrototype = {
+  init(make, model) {
+    this.make = make;
+    this.model = model;
+  },
+  getDetails() {
+    return `${this.make} ${this.model}`;
+  }
+};
+
+// Creating a new car instance by cloning the prototype
+const car1 = Object.create(carPrototype);
+car1.init('Toyota', 'Corolla');
+console.log(car1.getDetails()); // Output: Toyota Corolla
+
+const car2 = Object.create(carPrototype);
+car2.init('Honda', 'Civic');
+console.log(car2.getDetails()); // Output: Honda Civic
 
 ---------------------------------------------------------------------------------------------------------------------------
