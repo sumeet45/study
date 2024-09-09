@@ -600,7 +600,102 @@ homeTheater.watchMovie("Inception");
 // Using the facade to end the movie
 homeTheater.endMovie();
 
----------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------
 
+Composite Pattern - 
+
+// Component - This is the base interface for both files and directories
+interface FileSystemComponent {
+    getName(): string;
+    getSize(): number;
+    printDetails(indentation: string): void;
+}
+
+// Leaf - This represents the file which is an individual object
+class File implements FileSystemComponent {
+    private name: string;
+    private size: number;
+
+    constructor(name: string, size: number) {
+        this.name = name;
+        this.size = size;
+    }
+
+    getName(): string {
+        return this.name;
+    }
+
+    getSize(): number {
+        return this.size;
+    }
+
+    printDetails(indentation: string): void {
+        console.log(`${indentation}- File: ${this.getName()} (${this.getSize()}KB)`);
+    }
+}
+
+// Composite - This represents the directory which can contain files or other directories
+class Directory implements FileSystemComponent {
+    private name: string;
+    private components: FileSystemComponent[] = [];
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    getName(): string {
+        return this.name;
+    }
+
+    getSize(): number {
+        return this.components.reduce((total, component) => total + component.getSize(), 0);
+    }
+
+    add(component: FileSystemComponent): void {
+        this.components.push(component);
+    }
+
+    remove(component: FileSystemComponent): void {
+        const index = this.components.indexOf(component);
+        if (index !== -1) {
+            this.components.splice(index, 1);
+        }
+    }
+
+    printDetails(indentation: string = ''): void {
+        console.log(`${indentation}+ Directory: ${this.getName()} (${this.getSize()}KB)`);
+        this.components.forEach((component) => component.printDetails(indentation + '  '));
+    }
+}
+
+// Client Code
+const rootDirectory = new Directory('root');
+const homeDirectory = new Directory('home');
+const userDirectory = new Directory('user');
+
+const file1 = new File('file1.txt', 10);
+const file2 = new File('file2.txt', 20);
+const file3 = new File('file3.txt', 30);
+
+// Building the directory structure
+rootDirectory.add(homeDirectory);
+homeDirectory.add(userDirectory);
+userDirectory.add(file1);
+userDirectory.add(file2);
+homeDirectory.add(file3);
+
+// Print details of the file system
+rootDirectory.printDetails();
+
+// Output:
+// + Directory: root (60KB)
+//   + Directory: home (60KB)
+//     + Directory: user (30KB)
+//       - File: file1.txt (10KB)
+//       - File: file2.txt (20KB)
+//     - File: file3.txt (30KB)
+
+
+--------------------------------------------------
 
 
