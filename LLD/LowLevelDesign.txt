@@ -698,4 +698,81 @@ rootDirectory.printDetails();
 
 --------------------------------------------------
 
+Decorator Pattern
+
+// Component - This is the base interface for both coffee and decorators
+interface Coffee {
+    cost(): number;
+    description(): string;
+}
+
+// Concrete Component - This represents a simple coffee without any additions
+class SimpleCoffee implements Coffee {
+    cost(): number {
+        return 50; // Basic cost of simple coffee
+    }
+
+    description(): string {
+        return 'Simple Coffee';
+    }
+}
+
+// Decorator - This is an abstract class for all decorators
+class CoffeeDecorator implements Coffee {
+    protected coffee: Coffee;
+
+    constructor(coffee: Coffee) {
+        this.coffee = coffee;
+    }
+
+    cost(): number {
+        return this.coffee.cost();
+    }
+
+    description(): string {
+        return this.coffee.description();
+    }
+}
+
+// Concrete Decorator 1 - This adds milk to the coffee
+class MilkDecorator extends CoffeeDecorator {
+    constructor(coffee: Coffee) {
+        super(coffee);
+    }
+
+    cost(): number {
+        return this.coffee.cost() + 10; // Additional cost for milk
+    }
+
+    description(): string {
+        return `${this.coffee.description()}, Milk`;
+    }
+}
+
+// Concrete Decorator 2 - This adds sugar to the coffee
+class SugarDecorator extends CoffeeDecorator {
+    constructor(coffee: Coffee) {
+        super(coffee);
+    }
+
+    cost(): number {
+        return this.coffee.cost() + 5; // Additional cost for sugar
+    }
+
+    description(): string {
+        return `${this.coffee.description()}, Sugar`;
+    }
+}
+
+// Client code
+let myCoffee: Coffee = new SimpleCoffee();
+console.log(`${myCoffee.description()}: ₹${myCoffee.cost()}`); // Output: Simple Coffee: ₹50
+
+// Add Milk
+myCoffee = new MilkDecorator(myCoffee);
+console.log(`${myCoffee.description()}: ₹${myCoffee.cost()}`); // Output: Simple Coffee, Milk: ₹60
+
+// Add Sugar
+myCoffee = new SugarDecorator(myCoffee);
+console.log(`${myCoffee.description()}: ₹${myCoffee.cost()}`); // Output: Simple Coffee, Milk, Sugar: ₹65
 
