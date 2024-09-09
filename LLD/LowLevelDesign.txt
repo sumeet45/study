@@ -326,7 +326,167 @@ app.renderUI();  // Output: Rendering a MacOS Button, Checking a MacOS Checkbox
 
 
 ---------------------------------------------------------------------------------------------------------------------------
+Structural Pattern -
 
+
+--------------------------------------------------------
+Adapter Pattern -
+* Adapt newPaymentProcessor, so it can replace OldPaymentSystem
+
+// Old payment system (existing code)
+class OldPaymentSystem {
+    makePayment(amount: number): void {
+        console.log(`Paid ${amount} using the old payment system.`);
+    }
+}
+
+// New payment processor (incompatible interface)
+class NewPaymentProcessor {
+    processPayment(amount: number): void {
+        console.log(`Paid ${amount} using the new payment processor.`);
+    }
+}
+
+// Adapter to bridge the old system and the new processor
+class PaymentAdapter {
+    private newPaymentProcessor: NewPaymentProcessor;
+
+    constructor(newPaymentProcessor: NewPaymentProcessor) {
+        this.newPaymentProcessor = newPaymentProcessor;
+    }
+
+    // This method adapts the new payment processor to work with the old system
+    makePayment(amount: number): void {
+        this.newPaymentProcessor.processPayment(amount); // Delegating to the new processor
+    }
+}
+
+// Client code using the old payment system
+class PaymentService {
+    private paymentSystem: OldPaymentSystem;
+
+    constructor(paymentSystem: OldPaymentSystem) {
+        this.paymentSystem = paymentSystem;
+    }
+
+    makePayment(amount: number): void {
+        this.paymentSystem.makePayment(amount);
+    }
+}
+
+// Using the old system (no adapter needed)
+const oldPaymentSystem = new OldPaymentSystem();
+const paymentServiceOld = new PaymentService(oldPaymentSystem);
+paymentServiceOld.makePayment(100); // Output: Paid 100 using the old payment system.
+
+// Using the new system via adapter
+const newPaymentProcessor = new NewPaymentProcessor();
+const adapter = new PaymentAdapter(newPaymentProcessor); // Adapter makes the new system compatible
+const paymentServiceNew = new PaymentService(adapter as unknown as OldPaymentSystem);
+paymentServiceNew.makePayment(200); // Output: Paid 200 using the new payment processor.
+
+
+--------------------------------------------------------
+
+Bridge Pattern -
+* The Bridge Pattern is a structural design pattern that decouples an abstraction from its implementation so that the two can vary independently. This is especially useful when you have multiple orthogonal dimensions of variation.
+* In TypeScript, the Bridge Pattern allows you to separate a class's abstraction (what it does) from its implementation (how it does it), so you can develop both independently.
+
+// Abstraction (RemoteControl)
+interface RemoteControl {
+    turnOn(): void;
+    turnOff(): void;
+}
+
+// Implementor (Device)
+interface Device {
+    turnOn(): void;
+    turnOff(): void;
+    setVolume(volume: number): void;
+}
+
+// Concrete Implementor 1 (TV)
+class TV implements Device {
+    private volume: number = 10;
+    
+    turnOn(): void {
+        console.log("Turning on the TV.");
+    }
+
+    turnOff(): void {
+        console.log("Turning off the TV.");
+    }
+
+    setVolume(volume: number): void {
+        this.volume = volume;
+        console.log(`TV volume set to ${this.volume}.`);
+    }
+}
+
+// Concrete Implementor 2 (Radio)
+class Radio implements Device {
+    private volume: number = 10;
+
+    turnOn(): void {
+        console.log("Turning on the Radio.");
+    }
+
+    turnOff(): void {
+        console.log("Turning off the Radio.");
+    }
+
+    setVolume(volume: number): void {
+        this.volume = volume;
+        console.log(`Radio volume set to ${this.volume}.`);
+    }
+}
+
+// Refined Abstraction 1 (Basic Remote)
+class BasicRemote implements RemoteControl {
+    protected device: Device;
+
+    constructor(device: Device) {
+        this.device = device;
+    }
+
+    turnOn(): void {
+        this.device.turnOn();
+    }
+
+    turnOff(): void {
+        this.device.turnOff();
+    }
+}
+
+// Refined Abstraction 2 (Advanced Remote)
+class AdvancedRemote extends BasicRemote {
+    constructor(device: Device) {
+        super(device);
+    }
+
+    setVolume(volume: number): void {
+        console.log("Using advanced remote to set volume.");
+        this.device.setVolume(volume);
+    }
+}
+
+// Client Code
+const tv = new TV();
+const basicRemoteForTV = new BasicRemote(tv);
+basicRemoteForTV.turnOn();  // Output: Turning on the TV.
+basicRemoteForTV.turnOff(); // Output: Turning off the TV.
+
+const radio = new Radio();
+const advancedRemoteForRadio = new AdvancedRemote(radio);
+advancedRemoteForRadio.turnOn();  // Output: Turning on the Radio.
+advancedRemoteForRadio.setVolume(20);  // Output: Using advanced remote to set volume. Radio volume set to 20.
+advancedRemoteForRadio.turnOff(); // Output: Turning off the Radio.
+
+
+
+
+
+--------------------------------------------------------
 Facade Pattern -
 
 * The Facade Pattern provides a simplified interface to a complex subsystem, making it easier to use. It hides the complexities of the system and provides a simple interface to the client. This pattern is particularly useful when you have a complex system with multiple subsystems and you want to provide a simpler API to the client.
