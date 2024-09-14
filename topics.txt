@@ -156,3 +156,5 @@ Explanation: Load balancer distributes incoming network traffic across multiple 
 
 ------------------------------------------------------------------------------------------------------------------------------
 
+how notification works? -
+https://www.suprsend.com/post/how-does-ios-and-android-push-notification-service-works-technically
