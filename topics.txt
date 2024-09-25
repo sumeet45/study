@@ -6,7 +6,7 @@
 
 * TOPICS - HTTP, REGEX, JWT, Security ( Mobile, API, Client), Push notification,  payment integration, DNS, Authentication, Firebase, Elastic search, Form and File upload
 
-* Important Point - While learning any technology, understand following both - Concept and Code
+* Important Point - While learning any technology, remember following points - * Concept and Code, * mental model, * keep clear mind and sentence about how it works in mind, * practice and discipline
 
 
 RoadMap Given by Scaler -----------
