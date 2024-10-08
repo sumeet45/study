@@ -32,3 +32,30 @@
 
 8) Adding webpack configuration - 
 * dependancies of webpack -
+ npm i --save-dev webpack webpack-cli
+ npm i lodash
+* create webpack.config.js.
+
+    const path = require("path");   //node library
+    module.exports = {
+     entry: "./src/index.js",
+     output: {
+        filename: "bundle.js",
+        path: path.resolve(__dirname, "dist")
+     }
+    }
+
+* add script in package.json
+      "build": "webpack --config webpack.config.js", //for production, if no mode passed
+      "buildDev": "webpack --config webpack.config.js --mode development"
+
+* replace "index.js" with "../dist/bundle.js"
+
+9) Fixing our button click -
+* In webpack, they uses IIFE concept to not pollute global namespace, hence we can't able to call the function directly. so we have to use another way using addEventListener.
+document.getElementById("btn1").addEventListener("click",function(){
+
+})
+
+10) CommonJS modules -
+* types of module - commonjs (require), ES6 (import and export), amd (define/ require), @import (css/ scss) , Image url reference
