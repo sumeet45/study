@@ -1,0 +1,34 @@
+1) 
+* Basics -  loaders, plugins, managing modules
+* webpack project - hot reloading, dependancy management, css modules, dynamic imports
+* optimizations - bundle analysis, duplication prevention, lazy loading
+* optimizations and production builds - bundle analysis, duplication prevention, lazy loading, Dead code elimination, Shimming, CSS spliting
+* build react app using webpack - react specific configurations, route management, css enhancement
+* final mastery Micro FrontEnd - use all previously learned concepts, routing in micro front ends, state management in micro front end
+
+2) What is webpack -
+* earlier we need to wait to download js, css, files. bcz of that, we need to wait and it hits sites performance.
+* jquery uses grunt for bundling
+* Webpack - 
+  * load all types of assets in module format (js, styles, images, fonts)
+  * dynamically building the dependancies graph
+  * removing unused code in a library
+  * removing duplication code
+  * Fetching modules at runtime
+
+3) Software installations
+* git, node, vs code
+
+4) understanding basic concepts
+* dependancy graph - based on this, dependancy and bundles are made in webpack.
+* entry file - entry point for webpack. now webpack will look for import and require module. It will start fetching content. in child files, webpack also look for required import and require modules. It also remove unused dependancy files from graph.
+* webpack output - output point for webpack, where optimized js, css, and images files are stored 
+* index.htlm - we will add only those files which comes from webpack output.
+
+5) Download source code
+
+7) Basic HTML Javascript setup -
+* write html and js code
+
+8) Adding webpack configuration - 
+* dependancies of webpack -
