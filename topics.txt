@@ -1,3 +1,54 @@
+Editors - VS code, Android studio, Xcode
+
+Bundlers - *Webpack, Rollup, Parcel, Vite, esbuild, Snowpack, Browserify, FuseBox, Microbundle, SystemJS
+
+Languages - JS, TS, Kotlin, Java, swift,
+
+Task Runners - 
+* List - Gulp, Grunt, npm scripts, webpack (with npm scripts), Brocolli, Parcel, Just, Make (with JavaScript)
+* Pure Basic - (*npm scripts)
+* complex - (*Gulp)
+* highly-configurable - (*Grunt)
+* lightweight and fast rebuilds - (Broccoli or Parcel)
+
+MonoRepo Management Tools - 
+* basic monorepo setups (Lerna,Yarn Workspace, NPM workspace,Bolt,) 
+* complex monorepos (Nx,  Rush, Bazel)
+* Performance-focused monorepos(TurboRepo, pnpm workspace, Lage)
+
+Principles - SOLID, DRY, KISS, 
+
+LLD
+
+HLD
+
+system design
+
+Topics -  HTTP, REGEX, JWT, Security ( Mobile, API, Client), Push notification,  payment integration, DNS, Authentication, Firebase, Elastic search, Form and File upload, Login with (MFA, SSO, using api), 
+
+version-control system - git
+
+Mobile - 
+    Libraries - React JS, (Navigation)React-navigation, (Testing)jest, @testing-library/react-native, Re.pack
+
+    Framework - React Native, 
+
+    DB - Realm, 
+
+    console - Google Developer console, Apple developer portal
+
+    CLI - react-native-cli
+
+    bundlers - metro bundler
+
+Web - 
+    Libraries - React JS, Next Js,
+
+    Languages - HTML & HTML5, CSS3,
+
+
+---------------------------------------------------------------------------------------------------------------------------
+
 * web - HTML, CSS(sass, less), next/react router,  @testing-library/react
 
 * mobile - React Native, React navigation, @testing-library/react-native, android(kotlin + XML), IOS(swift), DB, 
@@ -6,9 +57,10 @@
 
 * TOPICS - HTTP, REGEX, JWT, Security ( Mobile, API, Client), Push notification,  payment integration, DNS, Authentication, Firebase, Elastic search, Form and File upload
 
+---------------------------------------------------------------------------------------------------------------------------
 * Important Point - While learning any technology, remember following points - * Concept and Code, * mental model, * keep clear mind and sentence about how it works in mind, * practice and discipline
 
-
+---------------------------------------------------------------------------------------------------------------------------
 RoadMap Given by Scaler -----------
 give code to machine (w3schools, etc)
 DSA - 
