@@ -40,6 +40,8 @@
 
 * Analytics and Monitoring - Google Analytics / Firebase Analytics, Crashlytics
 
+* Modules system - commonjs, AMD, ES Module
+
 * Mobile - 
     * Libraries - React JS, (Navigation)React-navigation, (Testing - jest, @testing-library/react-native, Detox, appium), Re.pack
 
@@ -57,7 +59,6 @@
     * Libraries - React JS, Next Js,
 
     * Languages - HTML & HTML5, CSS3,
-
 
 ---------------------------------------------------------------------------------------------------------------------------
 
