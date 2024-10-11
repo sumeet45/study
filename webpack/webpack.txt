@@ -23,7 +23,7 @@
 * dependancy graph - based on this, dependancy and bundles are made in webpack.
 * entry file - entry point for webpack. now webpack will look for import and require module. It will start fetching content. in child files, webpack also look for required import and require modules. It also remove unused dependancy files from graph.
 * webpack output - output point for webpack, where optimized js, css, and images files are stored 
-* index.htlm - we will add only those files which comes from webpack output.
+* index.html - we will add only those files which comes from webpack output.
 
 5) Download source code
 
@@ -59,3 +59,52 @@ document.getElementById("btn1").addEventListener("click",function(){
 
 10) CommonJS modules -
 * types of module - commonjs (require), ES6 (import and export), amd (define/ require), @import (css/ scss) , Image url reference
+
+
+12) Loaders Section Introduction -
+* Loaders - will help to load particular files like Js, html file
+
+13) What are Loaders -
+* Loaders - webpack doesn't know how to deal with other type of files except JS. So that time loaders comes to help us.
+* we need to define loaders for each and every file we needed, like for CSS, CSS preprocessor, Images and so on.
+* showing official documentation
+* we can have multiple loaders for each file type.
+
+14) CSS loaders part - 1
+* we are importing css in js, so we can enable webpack optimizations.
+* if we added css in js, on running "npm run buildDev", it gives error. 
+ "You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders"
+* so for that, we need to add loader for that file type.
+* install loader dependancy - 
+   npm i --save-dev css-loader style-loader
+* how your adding loaders in rules is also important. Right to left
+* add it in webpack.config.js -
+      module: {
+         rules: [
+             {
+                 test: /.css$/,
+                 use: ["style-loader", "css-loader"]  // execution order right to left
+             }
+         ]
+      }
+
+15) CSS loaders Part 2-
+* CSS modules -
+
+
+16) SCSS loaders -
+* rename files from css to scss and variable in scss file.
+* for SCSS preprocessor, we need to add extra packages.
+  npm i --save-dev sass-loader sass
+* change regex for css also - /\.(css)$/,
+* {
+        test: /.s[ac]ss$/,
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader", options: { modules: true } },
+          { loader: "sass-loader"},
+        ],
+      }
+
+17) Loading images in js
+* 
