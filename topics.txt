@@ -1,50 +1,62 @@
-Editors - VS code, Android studio, Xcode
+* Editors - VS code, Android studio, Xcode
 
-Bundlers - *Webpack, Rollup, Parcel, Vite, esbuild, Snowpack, Browserify, FuseBox, Microbundle, SystemJS
+* Bundlers - *Webpack, Rollup, Parcel, Vite, esbuild, Snowpack, Browserify, FuseBox, Microbundle, SystemJS
 
-Languages - JS, TS, Kotlin, Java, swift,
+* Languages - JS, TS, Kotlin, Java, swift,
 
-Task Runners - 
-* List - Gulp, Grunt, npm scripts, webpack (with npm scripts), Brocolli, Parcel, Just, Make (with JavaScript)
-* Pure Basic - (*npm scripts)
-* complex - (*Gulp)
-* highly-configurable - (*Grunt)
-* lightweight and fast rebuilds - (Broccoli or Parcel)
+* Task Runners - 
+    * List - Gulp, Grunt, npm scripts, webpack (with npm scripts), Brocolli, Parcel, Just, Make (with JavaScript)
+    * Pure Basic - (*npm scripts)
+    * complex - (*Gulp)
+    * highly-configurable - (*Grunt)
+    * lightweight and fast rebuilds - (Broccoli or Parcel)
 
-MonoRepo Management Tools - 
-* basic monorepo setups (Lerna,Yarn Workspace, NPM workspace,Bolt,) 
-* complex monorepos (Nx,  Rush, Bazel)
-* Performance-focused monorepos(TurboRepo, pnpm workspace, Lage)
+* MonoRepo Management Tools - 
+    * basic monorepo setups (Lerna,Yarn Workspace, NPM workspace,Bolt,) 
+    * complex monorepos (Nx,  Rush, Bazel)
+    * Performance-focused monorepos(TurboRepo, pnpm workspace, Lage)
 
-Principles - SOLID, DRY, KISS, 
+* Principles - SOLID, DRY, KISS, 
 
-LLD
+* LLD
 
-HLD
+* HLD
 
-system design
+* System design
 
-Topics -  HTTP, REGEX, JWT, Security ( Mobile, API, Client), Push notification,  payment integration, DNS, Authentication, Firebase, Elastic search, Form and File upload, Login with (MFA, SSO, using api), 
+* Topics -  HTTP, REGEX, JWT, Security ( Mobile, API, Client), Push notification,  payment integration, DNS, Authentication, Firebase, Elastic search, Form and File upload, Login with (MFA, SSO, using api), webhook, websocket, webRTC, 
 
-version-control system - git
+* version-control system - git
 
-Mobile - 
-    Libraries - React JS, (Navigation)React-navigation, (Testing)jest, @testing-library/react-native, Re.pack
+* User Interface Design Tools - Figma
 
-    Framework - React Native, 
+* BackEnd - Nodejs (with graphql), Java
 
-    DB - Realm, 
+* online services - Firebase
 
-    console - Google Developer console, Apple developer portal
+* cloud computing services - AWS, Azure
 
-    CLI - react-native-cli
+* CI/CD - Jenkins, Docker, Kubernetes, CircleCI, Github Actions
 
-    bundlers - metro bundler
+* Analytics and Monitoring - Google Analytics / Firebase Analytics, Crashlytics
 
-Web - 
-    Libraries - React JS, Next Js,
+* Mobile - 
+    * Libraries - React JS, (Navigation)React-navigation, (Testing - jest, @testing-library/react-native, Detox, appium), Re.pack
 
-    Languages - HTML & HTML5, CSS3,
+    * Framework - React Native, 
+
+    * DB - Realm, SQLite
+
+    * portals - Google Developer console, Apple developer portal
+
+    * CLI - react-native-cli
+
+    * bundlers - metro bundler
+
+* Web - 
+    * Libraries - React JS, Next Js,
+
+    * Languages - HTML & HTML5, CSS3,
 
 
 ---------------------------------------------------------------------------------------------------------------------------
