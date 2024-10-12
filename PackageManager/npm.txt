@@ -1,0 +1,45 @@
+link - https://github.com/Sunil-Pradhan/npm-cheatsheet
+
+
+Commands -
+
+npm -version
+npm -v
+npm help
+npm install npm@latest -g    //update npm to latest version
+npm init  /  npm init --yes  /  npm init --y    //to initialise package.json, use mostly "npm init" to create package.json
+
+npm install  /  npm i  /  npm install react  /  npm install react  --save-dev  /  npm install react -D
+npm uninstall  react   /  npm un  react  /  npm remove react  /  npm rm react
+npm install react -g
+npm uninstall react -g  /  npm un react -g  /  npm remove react -g  /  npm rm react -g
+
+npm install react@18.3.0  /  npm install babel@6.23.0  /  npm in babel@6.23.0 --save-dev  /  npm install lodash@2.4.1 --save-exact
+
+npm list  /  npm ls  /  npm list --depth 1
+
+npm list -g  /  npm list --global  /  npm list -g --depth 0
+
+npm update lodash --save  /  npm update -g  /  npm update -g lodash  /  npm update --dev --save-dev
+
+npm run <script>
+
+npm config  /  npm config list
+--------------------------------------------------------------------------------
+Flags:
+
+-P : Production (--save-prod)
+
+-D : devDependencies (--save-dev)
+
+-O : Optional (--save-optional)
+
+-E : Save exact
+
+-g : Global
+
+-S : Save
+
+--no-save: Prevents saving to dependencies
+
+--------------------------------------------------------------------------------
