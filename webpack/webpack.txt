@@ -149,8 +149,11 @@ Cons -
            name: "movieapp",
            filename: "remoteEntry.js",
            remotes: {
-             homepage: "home@http://localhost:3000/remoteEntry.js"
-           }
+              homepage: "home@http://localhost:3000/remoteEntry.js",
+              detailspage: "details@http://localhost:3001/remoteEntry.js",
+              seatselectionpage: "seatselection@@http://localhost:3003/remoteEntry.js"
+           }      
+           shared: ["react", "react-dom"]
          }),
     
     
@@ -166,9 +169,20 @@ Cons -
           },
           exposes: {
             "./HomePage": "./src/components/HomeContent/HomeContent.jsx"
-          }
+          },      
+          shared: ["react", "react-dom"]
         }),
 
+
+        // within plugins array - add following
+        new ModuleFederationPlugin({
+          name: "details",
+          filename: "remoteEntry.js",
+          exposes: {
+            "./DetailsPage": "./src/components/DetailsContent/DetailsContent.jsx"
+          },
+          shared: ["react", "react-dom"]
+        }),
 
 
 * In host application, where you want to import component -
