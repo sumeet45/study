@@ -2503,6 +2503,7 @@ V8 engine for react native- microsoft working on it.
 ----------------------------------------Explaination Ends Here----------------------------------------------
 
 New Architecture image link - https://existek.com/blog/react-native-app-development/
+Fabric Explanation - https://www.linkedin.com/pulse/react-native-new-architecture-rishabh-yadav-gd8dc
 
 Artcile link - 1 more explanation about architecture - https://litslink.com/blog/new-react-native-architecture
 
