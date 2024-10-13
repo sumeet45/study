@@ -108,3 +108,72 @@ document.getElementById("btn1").addEventListener("click",function(){
 
 17) Loading images in js
 * 
+
+
+56) Basics of Micro FrontEnd -
+*
+
+57) Why Micro-FrontEnd -
+Pros-
+* Performance
+* Faster production rollout
+* Easier code reusability
+* Reduce dependancy
+
+Cons -
+* Lacks of control
+* need more coordination between teams
+* Complexity development & deployment progress
+
+* MFE good for bigger application
+
+58) Mirco-FrontEnd project introduction -
+* homepage (host app), details, booking, react component, serve app (MFE application)
+
+59) Starting of application servers - 
+* 
+
+
+60) Module federation basics -
+* we need 2 properties "exposes"(in host) and "remotes"( in MFE)
+
+61) Exposing components -
+
+*In webpack.config.js
+
+    //From Host Application
+        const {ModuleFederationPlugin} = require("webpack").container;
+    
+        // within plugins array - add following
+        new ModuleFederationPlugin({
+            name: "home",
+            filename: "remoteEntry.js",
+            remotes: {
+              components: "components@http://localhost:3002/remoteEntry.js",
+            }
+        })
+    
+    
+    // From MFE application
+    const { ModuleFederationPlugin } = require("webpack").container;
+    
+        // within plugins array - add following
+        new ModuleFederationPlugin({
+            name: "components",       //application name
+            filename: "remoteEntry.js",
+            exposes: {
+              "./MovieCard": "./src/components/MovieCard/MovieCard.jsx",  //we can use only default exports
+              "./BuyButton": "./src/components/Button/BuyButton/BuyButton.jsx",
+              "./Typography": "./src/components/Typography/Typography.jsx"
+            }
+        })
+
+
+
+* In host application, where you want to import component -
+    
+     const MovieCard = React.lazy(() => import("components/MovieCard"));
+
+     <Suspense fallback={<div>Loading...</div>}>
+        <MovieCard title={item.name} imageUrl={item.imageUrl} />
+     </Suspense>
