@@ -137,7 +137,7 @@ Cons -
 60) Module federation basics -
 * we need 2 properties "exposes"(in host) and "remotes"( in MFE)
 
-61) Exposing components -
+61) Exposing components till  66) Initialise micro frontend -
 
 *In webpack.config.js
 
@@ -146,12 +146,12 @@ Cons -
     
         // within plugins array - add following
         new ModuleFederationPlugin({
-            name: "home",
-            filename: "remoteEntry.js",
-            remotes: {
-              components: "components@http://localhost:3002/remoteEntry.js",
-            }
-        })
+           name: "movieapp",
+           filename: "remoteEntry.js",
+           remotes: {
+             homepage: "home@http://localhost:3000/remoteEntry.js"
+           }
+         }),
     
     
     // From MFE application
@@ -159,21 +159,27 @@ Cons -
     
         // within plugins array - add following
         new ModuleFederationPlugin({
-            name: "components",       //application name
-            filename: "remoteEntry.js",
-            exposes: {
-              "./MovieCard": "./src/components/MovieCard/MovieCard.jsx",  //we can use only default exports
-              "./BuyButton": "./src/components/Button/BuyButton/BuyButton.jsx",
-              "./Typography": "./src/components/Typography/Typography.jsx"
-            }
-        })
+          name: "home",
+          filename: "remoteEntry.js",
+          remotes: {
+            components: "components@http://localhost:3002/remoteEntry.js",
+          },
+          exposes: {
+            "./HomePage": "./src/components/HomeContent/HomeContent.jsx"
+          }
+        }),
 
 
 
 * In host application, where you want to import component -
     
-     const MovieCard = React.lazy(() => import("components/MovieCard"));
+     const HomeComponent = React.lazy(() => import("homepage/HomePage"))
 
      <Suspense fallback={<div>Loading...</div>}>
-        <MovieCard title={item.name} imageUrl={item.imageUrl} />
+          <HomeComponent />
      </Suspense>
+
+
+67) Setup movie app base -
+* we are doing routing here. using "react-router"
+* npm i react-router-dom
