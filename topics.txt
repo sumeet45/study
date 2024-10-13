@@ -24,7 +24,7 @@
 
 * System design
 
-* Topics -  HTTP, REGEX, JWT, Security ( Mobile, API, Client), Push notification,  payment integration, DNS, Authentication, Firebase, Elastic search, Form and File upload, Login with (MFA, SSO, using api), webhook, websocket, webRTC, 
+* Topics -  HTTP, REGEX, JWT, Security ( Mobile, API, Client), Push notification,  payment integration, DNS, Authentication, Firebase, Elastic search, Form and File upload, Login with (MFA, SSO, using api), webhook, websocket, webRTC, webworker, webstorage, 
 
 * version-control system - git
 
