@@ -1,0 +1,47 @@
+Useful link - https://www.agora.io/en/blog/how-does-webrtc-work/
+
+* WebRTC is a set of JavaScript API’s that allow us to establish a peer to peer connection between two browsers to exchange data such as audio and video, allowing us to create applications with audio and video calling features.
+* By bypassing the server we reduce latency since the data doesn’t have to go to the server first, this makes webRTC great for exchanging audio and video.
+
+Why webRTC, not websocket? (WebRTC pro's)
+* With websockets we can also establish a connection between peers to exchange data in real time, but this connection is between the client and server.
+* So if I send a message to a peer, the message first goes to the server, then the server sends that message to the other peer. 
+* This exchange typically happens really fast so even though there is some latency, you probably wouldn’t even notice it if you’re sending something like a chat message or some kind of notification.
+* latency in audio and video will cause issue. That time, we can use webRTC.
+* By establishing a connection and exchanging data between two browsers we eliminate any delay that the server may add.
+* WebRTC also uses User Datagram Protocol, or UDP, which is great for transmitting data really fast
+
+
+Why websocket, not webRTC? (webRTC con's)
+* There are certain limitations with webRTC so typically using webRTC with websockets is more of a common practice.
+* webRTC uses UDP, and UDP is not a reliable protocol for transferring important data. UDP is good at sending data really fast but it doesn’t check whether or not the data is being received.
+* WebRTC also has no built-in signaling so it cant be used on its own to establish a peer to peer connection. WebRTC takes care of everything for us once the connection is established but leaves it up to us on how to transmit the initial data in order to connect two peers.
+
+So how does all of this work?
+* From a high level perspective, to establish a connection, peer 1 will send some kind of message to peer 2 saying “hey, I want to connect to you, here’s some information about me and how you can connect to me, do you accept my offer?”
+* When peer 2 gets this information from peer 1, they have the opportunity to accept the connection. If peer 2 accepts, they will gather some information about their network and how to connect to it, and then send this information back to peer 1.
+* Once both peers have eachothers information, they are now connected and can now begin exchanging audio and video data or whatever else they want to send directly between their browsers without needing the server anymore.
+
+
+So what exactly is sent between the two clients and how is it sent?
+* First off, how the information is sent is usually through a process called signaling. Since the two peers don’t know about each other we would typically have a way to bring them into a channel together using something like WebSockets or any third party signaling services.
+* Once we bring them into the same channel or room, they can now signal over their connection details. Those connection details come in the form of a session description protocol (SDP) and ICE candidates.
+
+* SDP — A Session Description Protocol (SDP), is an object containing information about the session connection such as the codec, address, media type, audio and video and so on. Both peers will exchange SDP’s so they can understand how to connect to each other. One in the form of an SDP Offer and another as an SDP Answer.
+* Ice Candidates — An ICE candidate is a public IP address and port that could potentially be an address that receives data. Each user will typically have multiple Ice candidates that are gathered by making a series of requests to a STUN server.
+
+Check Image Here in above agora article
+
+
+So here is the order in which things will play out. ( Summary of working under the hood)
+* First the two peers will exchange SDP’s using some sort of signaling method
+* In order to exchange data between two peers we still need to transmit the data.The problem here is that nowadays most devices sit behind firewalls and NAT devices, so to coordinate the discovery of our public IP addresses we use a method called ICE, which stands for Interactive Connectivity Establishment.
+* once SDP offers are exchanged each peer will then make a series of requests to a STUN server which will generate a list of ICE candidates to use.
+* STUN servers are cheap and easy to maintain and because of that there are tons of free services you can use so you won’t have to worry about setting one up.
+* Once peer 1 gets these ICE candidates back from the STUN they will send them over to peer 2 and will let the network determine the best candidate to use. Peer 2 will do the same by requesting their ICE candidates and then sending them to peer 1.
+
+
+Trickling ICE Candidates
+* retrieving ice candidates can take time.
+* So for this we commonly use a method called “Trickle ICE” which means that as we receive each ICE candidate from the STUN server we will simply send them over one by one, so they will “trickle in”.
+
