@@ -19,3 +19,65 @@ Distributed VCS
 
 * What is Git?
 - Git is Distributed version control tool that supports distributed non-linear workflows by providing data assurance form developing quality software.It lets you and your team of developers work together on the same project from anywhere. Team members can work on files and easily merge their changes into one source.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+Leela web dev - git course youtube
+
+1)
+* Git is version control system (VCS)
+* VCS is software designed to record changes made to the file over time. git gives us ability to revert file or set of file.
+* 3 types of VCS are available in our daily life - Local, centralized, distributed
+* Local Version control system - we keep backup of files with adding current date in file name, and then change current file.
+* centralized version control system - in it, we keep our files in single server, and multiple developers can access it. Within it, we can maintain versions of files also.
+
+2) 
+* In centralized, we deal with server files which cause latency. In git, we will do code in local and when required, we push changes to git.
+* using git, we can have all history in the local only, don't need to go server.
+* in centralized, we can edit files, but we can't commit changes to your database.( bcz database is offline)
+* git maintain local database and on server database
+* 3 states in git - modified, staged (after git add), commited (git commit)
+* Working directory - is a singlecheckout of one version of the project. these files are pulled out of the compressed database in the git directory, and placed on disk for you to use or modify.
+* Staging Area - The staging area is a file, generally contained in your git directory. That stores information about what will go into next commit. technical name in git is the "index", but the phrase "staging area" works well
+* Repository Area - the git directory is where git store metdata and object database for your project. This is the most important part of git, and it is what is copied when you clone repo
+* Git workflow - 
+  a) modify files in working tree.
+  b) select files only which we needed in next commit and add those files in staging area ( git add )
+  c) takes files from staging area and store snapshots permanently to git repo ( means commiting files)
+
+
+3) 
+* download git software
+* command line tool and GUI
+* git bash provided by git
+
+
+4) 
+* after installing, first set git username and email.
+* use " git config " to get list of information
+* git uses a series of configuration to determin behaviour. git has 3 level configuration - 
+    a) Repository / Project Level (local - for each project )   -  repository/.git/config
+    b) User Account (Global level - computer user)    -            Users/sumeet/.gitconfig
+    c) System Level (git installation - Git level)    -            /usr/local/etc/gitconfig
+* Hierarchy level - Repo > User Account > System level
+* check complete git config - 
+    git config --list --show-origin
+
+
+5) 
+* "git init" - Initialized empty Git repository in folder
+* to change username and email for project level, we can use following commands - 
+    $ git config user.email
+      sumeets@nousinfo.com
+
+    $ git config --local user.email sumeetshedge@gmail.com      // to set project level
+
+    $ git config user.email
+    sumeetshedge@gmail.com
+
+    git config user.name sumeet                // store on project level
+    git config user.name
+    sumeet
+
+    git config --unset user.email              // to remove from git
