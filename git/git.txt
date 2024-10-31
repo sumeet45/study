@@ -73,11 +73,100 @@ Leela web dev - git course youtube
 
     $ git config --local user.email sumeetshedge@gmail.com      // to set project level
 
-    $ git config user.email
+    $ git config user.email                    //show email
     sumeetshedge@gmail.com
 
     git config user.name sumeet                // store on project level
     git config user.name
     sumeet
 
-    git config --unset user.email              // to remove from git
+    git config --unset user.email              // to remove from git project level
+
+    git config --local --remove-section user          //to remove user section from "config" file of project level
+
+* or we can go to file directly and add it directly within file
+
+
+6) 
+* "git help" - will give commonly used git commands
+* "git help -a"  - will give all commands
+* "Porcelain" means which we are using mostly
+* "git help --all"
+* to find about particular comman command - git help init (will open webpage about command)
+* "git status" - will gives status and branch name
+
+
+7) 
+* in project, there's html file untracked. let add it to staging area.
+* "git add index.html"          // addition to stage
+
+  //output
+        On branch master
+        No commits yet
+        Changes to be committed:
+          (use "git rm --cached <file>..." to unstage)
+                new file:   index.html
+* "git rm --cached index.html"          // to remove from staging area
+* "git commit -m "initial commit"            //  to add commit
+* "git log"                    // to log previous commits
+
+
+8)
+* "git diff" command is used in git to track the difference between the changes made on file.
+* diff command takes two inputs and reflects the differences between them.
+* to check changes between working area and staging area -  "git diff"
+* to check changes between staging area and repository area -  "git diff --staged"
+* to check changes between working area and repository area -  "git diff head"
+* To check diff command, lets add contact.txt
+* "git add contact.txt"
+* "git status"
+      On branch master
+        Changes to be committed:
+          (use "git restore --staged <file>..." to unstage)
+                new file:   contact.txt
+* again update contact.txt and use status command
+*   On branch master
+    Changes to be committed:
+      (use "git restore --staged <file>..." to unstage)
+            new file:   contact.txt
+    
+    Changes not staged for commit:
+      (use "git add <file>..." to update what will be committed)
+      (use "git restore <file>..." to discard changes in working directory)
+            modified:   contact.txt
+    
+* let use "git diff"
+    $ git diff
+      diff --git a/contact.txt b/contact.txt
+      index e69de29..c6a7d70 100644
+      --- a/contact.txt
+      +++ b/contact.txt
+      @@ -0,0 +1 @@
+      +this is contact page
+      \ No newline at end of file
+
+* $ git diff --staged
+  diff --git a/contact.txt b/contact.txt
+  new file mode 100644
+  index 0000000..e69de29
+
+* $ git diff head
+  diff --git a/contact.txt b/contact.txt
+  new file mode 100644
+  index 0000000..c6a7d70
+  --- /dev/null
+  +++ b/contact.txt
+  @@ -0,0 +1 @@
+  +this is contact page
+  \ No newline at end of file
+
+
+9) 
+* git stores data in the form of keys and values
+* values is nothing but the contents of the file.
+* we give value and it will calculate a key for it, that is nothing but hash.
+* git calculate hashes with SHA1 algorithm
+* "git cat-file 1dd2d4df2a76f939755bd20d700b0dad1f62d9f0 -p" 
+
+
+10) 
