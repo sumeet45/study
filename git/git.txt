@@ -170,3 +170,21 @@ Leela web dev - git course youtube
 
 
 10) 
+* create channel.txt and then rename it to "channel.html".
+*   on git status, 
+    On branch master
+    Changes to be committed:
+      (use "git restore --staged <file>..." to unstage)
+            renamed:    channel.txt -> channel.html
+    
+* now if we want to rename back, we can use following. It will rename and add it directly in staging area-
+    git mv channel.html channel.txt
+
+* suppose, we added some changes in channel.txt.
+    git add channel.txt
+
+* and now, if you want to restore file from staging area to working area
+    git restore --staged channel.txt
+
+* and in working area, we again remove recent changes, we can use following command
+    git restore channel.txt
