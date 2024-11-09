@@ -1,26 +1,4 @@
-Edureka youtube - 
-
-* what is version control?
-- Version control is a system that records changes to a file or set of files over the time, so that you can recall specific versions later. These versions are recorded in a repository and can be recalled from the same. There are local, centralized and distributed version control systems.
-
-Local VCS 
-Centralized VCS
-Distributed VCS
-
-* Use of VCS
-- better collaboration of code (shared workspace and real time updates),
-  managing code (previous versions code manage),
-  Rollback version,
-  Reduce Downtime (Reverse faulty and save time)
-  analyze code
-
-* what is repository?
-- A repo is a directory or storage space where your projects can live. It can be local to a folder on your computer or it can be a storage space on another online host (such as Github). In repo, you can any file related to your projects.
-
-* What is Git?
-- Git is Distributed version control tool that supports distributed non-linear workflows by providing data assurance form developing quality software.It lets you and your team of developers work together on the same project from anywhere. Team members can work on files and easily merge their changes into one source.
-
-
+While working on code, we can use git commands and vs code plugins simultaneously. whenever we use GUI of vs code, we can write/visualize commands. so it will make solid understanding.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 Leela web dev - git course youtube
@@ -179,6 +157,9 @@ Leela web dev - git course youtube
     
 * now if we want to rename back, we can use following. It will rename and add it directly in staging area-
     git mv channel.html channel.txt
+  
+  * git mv command - move or rename file
+           git mv myFile.txt new_directory/
 
 * suppose, we added some changes in channel.txt.
     git add channel.txt
@@ -188,3 +169,61 @@ Leela web dev - git course youtube
 
 * and in working area, we again remove recent changes, we can use following command
     git restore channel.txt
+
+* From web for git mv - 
+    * git mv is essentially a combination of git rm (to remove the old file) and git add (to add the new file).
+    * After using git mv, you still need to commit the changes
+    * If the destination file already exists, git mv will overwrite it. Use the -f flag to force this behavior if needed.
+
+* Fron web for git restore -
+
+11) 
+* Showing branch working concept
+* default branch has created "master" branch
+* Whenever we added commit, "HEAD" pointer moved to next commit in master branch.
+* while developing new feature, we need to create branch. 
+      git checkout -b loginFeature
+
+
+14) 
+* using "git init", we can initialize git in any folder with "master" branch.
+* using "git add .", we can add all files in staging area.
+* "git log" -  will give all commits available
+* "git log --oneline"  - will give all commits available in one line
+* to create feature branch - 
+    git checkout -b loginFeature              // will create branch and switch to branch also
+* add new file in folder, to add and check with "loginFeature"
+    git commit -m "login file added"
+* now if u use, git log with "loginFeature" branch
+    $ git log
+        commit 3d965c14d8b917e3f9a0e5dee5993a2be415f3e8 (HEAD -> loginFeature)
+        Author: Sumeet Shedge <sumeets@nousinfo.com>
+        Date:   Sun Nov 10 03:11:35 2024 +0530
+            login file added
+        
+        commit 9b15c771e30cf884ee29af21ac5a688ea8ae97a3 (master)
+        Author: Sumeet Shedge <sumeets@nousinfo.com>
+        Date:   Sun Nov 10 03:03:37 2024 +0530
+            initial commit
+
+* now switch back to master branch and check files. you will find only "ecom.txt" file which is created in master branch earlier.
+      git checkout master        // switch back to master
+  
+      ls
+        ecom.txt
+
+* now if you added some changes in "ecom.txt" file and you will add commit with msg "minor fixes" and you will be able to see the commit in log ( In master branch)
+    $ git log --oneline
+    7a90d90 (HEAD -> master) minor fixes
+    9b15c77 initial commit
+
+* now if we move back to login branch, it will have its own comments
+    $ git checkout loginFeature
+    $ git log --oneline
+    3d965c1 (HEAD -> loginFeature) login file added
+    9b15c77 initial commit
+
+* so it shows every branch keep its commits separately until its merge.
+
+
+13) 
