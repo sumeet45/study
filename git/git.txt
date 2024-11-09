@@ -1,5 +1,10 @@
 While working on code, we can use git commands and vs code plugins simultaneously. whenever we use GUI of vs code, we can write/visualize commands. so it will make solid understanding.
 
+commands - 
+
+git branch -  list all branches locally
+git branch dummy - create new branch
+
 ------------------------------------------------------------------------------------------------------------------------------------------------
 Leela web dev - git course youtube
 
@@ -227,3 +232,24 @@ Leela web dev - git course youtube
 
 
 13) 
+* in git/objects folder, we will be able to see all commits.
+* In git/refs/heads, we can see all branches listed there.
+* create branch
+      git branch dummy
+
+* to see content inside of each branch
+      $ cat .git/refs/heads/loginFeature
+      3d965c14d8b917e3f9a0e5dee5993a2be415f3e8
+
+      $ git log
+        commit 3d965c14d8b917e3f9a0e5dee5993a2be415f3e8 (HEAD -> loginFeature, dummy)
+        Author: Sumeet Shedge <sumeets@nousinfo.com>
+        Date:   Sun Nov 10 03:11:35 2024 +0530
+            login file added
+        
+        commit 9b15c771e30cf884ee29af21ac5a688ea8ae97a3
+        Author: Sumeet Shedge <sumeets@nousinfo.com>
+        Date:   Sun Nov 10 03:03:37 2024 +0530    
+            initial commit
+
+    first commit and cat command shows same "3d965c14d8b917e3f9a0e5dee5993a2be415f3e8"
