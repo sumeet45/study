@@ -253,3 +253,17 @@ Leela web dev - git course youtube
             initial commit
 
     first commit and cat command shows same "3d965c14d8b917e3f9a0e5dee5993a2be415f3e8"
+
+* Using "HEAD" file which points to current branch
+* to see content of HEAD - 
+      cat .git/HEAD
+
+* to rename branch -
+      git branch -m dummyBranch
+
+* to delete branch -
+      git checkout master
+      git branch -d dummyBranch
+
+* some time before deleting, we might have some commits in branch, which didn't allow to delte branch. So we can use following comments
+      git branch -D dummyBranch
