@@ -267,3 +267,36 @@ Leela web dev - git course youtube
 
 * some time before deleting, we might have some commits in branch, which didn't allow to delte branch. So we can use following comments
       git branch -D dummyBranch
+
+
+14) 
+* To merging we need "target" (master) and "source" (feature branch). For that, we need to move back to master branch
+      git checkout master
+      git merge login_feature
+* if no commits happened to master branch, then it will do fast-forward merge
+
+* lets add new feature branch and add commits in it
+      git checkout -b newFeature
+      git add .            //after adding new file
+      git commit -m "new file added"
+      git checkout master
+
+      $ git merge newFeature
+      Updating bbda67b..0f3be7d
+      Fast-forward
+       newFile.txt | 0
+       1 file changed, 0 insertions(+), 0 deletions(-)
+       create mode 100644 newFile.txt
+
+* you can see, there's fast forward merge, bcz there's no new commits in master branch
+
+* next example -
+    git checkout -b newFeature2
+    git checkout master
+    git add .                        // after adding file and folder
+    git commit -m "newFile2 and folder added"
+
+    git checkout newFeature2
+    git add .                        //after adding new files
+    
+    
