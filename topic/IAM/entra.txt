@@ -1,0 +1,3 @@
+
+* The Microsoft identity platform enables user authentication with Microsoft or social accounts, authorizes API access, and supports single-tenant and multi-tenant application development.
+* 
