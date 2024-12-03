@@ -1,3 +1,10 @@
 https://auth0.com/blog/an-overview-of-open-standards/
 
-* 
+oAuth for Beginners - How oauth authentication🔒 works ? (https://youtu.be/VZH_lGxqFYU?feature=shared)
+* OAuth provides access without password
+* open standard for authorization which allows any third party application to access your data
+* example -
+  user, resource server - where data is stored, third party app - who wants to access data, user data - who contains data, authorization code - based on this, we can confirm
+
+* authorization server and resoruce server are different in secure way.
+* auth code provides from authroization server. once we receives auth code, we ask for token based on that.
