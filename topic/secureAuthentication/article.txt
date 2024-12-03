@@ -1,6 +1,16 @@
 https://auth0.com/blog/an-overview-of-open-standards/
 
-oAuth for Beginners - How oauth authentication🔒 works ? (https://youtu.be/VZH_lGxqFYU?feature=shared)
+
+OAuth 2 Explained In Simple Terms -
+https://youtu.be/ZV5yTm4pT8g?feature=shared
+* Terms used in OAuth = Scopes, Authorization server, Access Token, Resource owner, Client, Identity Provider, Grant Types, Refresh Token, Redirect URI, OpenId Connect
+* oauth gives special key to access data in another application
+* Access token can expire after certain time and we can revoke also.
+* oauth also support refresh token.
+
+
+oAuth for Beginners - How oauth authentication🔒 works ? 
+(https://youtu.be/VZH_lGxqFYU?feature=shared)
 * OAuth provides access without password
 * open standard for authorization which allows any third party application to access your data
 * example -
@@ -8,3 +18,9 @@ oAuth for Beginners - How oauth authentication🔒 works ? (https://youtu.be/VZH
 
 * authorization server and resoruce server are different in secure way.
 * auth code provides from authroization server. once we receives auth code, we ask for token based on that.
+
+
+OAuth 2.0 explained with examples
+* oauth 1.0 is difficult to implement and not widely supported. In next version, OAuth 2.0, they solve issues with oauth and released it. now it becomes open standard.
+* oAuth 2.0 is way for two websites to talk to each other without sharing password
+* access token will expire in some time. 
