@@ -24,3 +24,85 @@ OAuth 2.0 explained with examples
 * oauth 1.0 is difficult to implement and not widely supported. In next version, OAuth 2.0, they solve issues with oauth and released it. now it becomes open standard.
 * oAuth 2.0 is way for two websites to talk to each other without sharing password
 * access token will expire in some time. 
+
+
+Chatgpt Answer =>
+
+**OAuth 2.0** and **OpenID Connect (OIDC)** are related but serve different purposes. Here's a breakdown of the key differences:
+
+---
+
+### **1. Purpose**
+| Aspect          | **OAuth 2.0**                                    | **OpenID Connect (OIDC)**                         |
+|------------------|--------------------------------------------------|---------------------------------------------------|
+| **Goal**         | Authorization: Delegates access to resources.   | Authentication: Verifies user identity.           |
+| **Use Case**     | Allow apps to access APIs on behalf of a user.   | Allow apps to authenticate users and obtain identity details. |
+
+---
+
+### **2. Scope**
+| Aspect                  | **OAuth 2.0**                                      | **OpenID Connect (OIDC)**                                   |
+|--------------------------|----------------------------------------------------|------------------------------------------------------------|
+| **Primary Concern**      | Access control and delegation of permissions.       | Identity verification and authentication of users.         |
+| **Information Provided** | Access tokens to interact with APIs.               | ID token (JWT) with claims about the user's identity.       |
+| **Example Scope**        | `read:email`, `write:profile`                      | `openid`, `profile`, `email` (used with OAuth scopes).      |
+
+---
+
+### **3. Tokens**
+| Aspect                | **OAuth 2.0**                                    | **OpenID Connect (OIDC)**                                  |
+|------------------------|--------------------------------------------------|-----------------------------------------------------------|
+| **Access Token**       | Grants access to protected resources (APIs).     | Same as in OAuth 2.0.                                      |
+| **ID Token**           | Not part of OAuth 2.0.                          | A JWT specifically for user authentication details.        |
+| **Token Validation**   | Client validates access token only indirectly.   | ID token is validated directly via signature verification. |
+
+---
+
+### **4. Flows**
+| Aspect                 | **OAuth 2.0**                                | **OpenID Connect (OIDC)**                           |
+|-------------------------|----------------------------------------------|----------------------------------------------------|
+| **Supported Flows**     | Authorization Code, Implicit, Resource Owner Password, Client Credentials. | Authorization Code, Implicit, Hybrid.             |
+| **Purpose of Flows**    | Obtain access tokens for resource access.   | Obtain ID tokens to verify user identity.          |
+
+---
+
+### **5. Endpoints**
+| Aspect                  | **OAuth 2.0**                                      | **OpenID Connect (OIDC)**                                   |
+|--------------------------|----------------------------------------------------|------------------------------------------------------------|
+| **Endpoints**            | Authorization, Token, and sometimes Revocation.   | Extends OAuth with UserInfo and Discovery endpoints.        |
+| **UserInfo Endpoint**    | Not part of OAuth.                                | Provides additional user details (e.g., name, email).       |
+| **Discovery Endpoint**   | Not part of OAuth.                                | Allows dynamic configuration (e.g., OpenID Provider Metadata). |
+
+---
+
+### **6. Security**
+| Aspect                      | **OAuth 2.0**                               | **OpenID Connect (OIDC)**                       |
+|-----------------------------|---------------------------------------------|-----------------------------------------------|
+| **Token Content**            | Access tokens contain permissions or roles but no user details. | ID tokens include user identity claims.        |
+| **Authentication Guarantee** | Not guaranteed; OAuth focuses on authorization. | Built-in authentication using ID tokens.       |
+
+---
+
+### **When to Use Each**
+| **Scenario**                        | **OAuth 2.0**                                | **OpenID Connect (OIDC)**                     |
+|-------------------------------------|----------------------------------------------|-----------------------------------------------|
+| You need to access an API on behalf of a user. | ✅ Yes                                   | ❌ No                                        |
+| You need to verify who the user is.           | ❌ No                                    | ✅ Yes                                       |
+| You need to combine authentication and API access. | ✅ With limitations                   | ✅ Best suited for both needs.               |
+
+---
+
+### **Example**
+- **OAuth 2.0:**
+  - A user allows an app to access their Google Drive files.
+  - App gets an **access token** to make API calls on behalf of the user.
+
+- **OpenID Connect:**
+  - A user logs into an app using their Google account.
+  - App receives an **ID token** to verify the user’s identity.
+
+---
+
+In summary:  
+- Use **OAuth 2.0** for **authorization** (delegating access).  
+- Use **OpenID Connect** for **authentication** (identifying users).
