@@ -111,3 +111,22 @@ Chatgpt Answer =>
 In summary:  
 - Use **OAuth 2.0** for **authorization** (delegating access).  
 - Use **OpenID Connect** for **authentication** (identifying users).
+
+
+6) what is graph api in entra and what's the use of it?
+* The Graph API in Microsoft Entra (formerly Azure Active Directory) is a RESTful API that allows applications to interact programmatically with Microsoft Entra ID (Azure AD). It serves as a gateway to access, manage, and manipulate identity and access resources in a Microsoft cloud environment.
+
+* ex.
+  * Group Management:
+      Create and manage groups for access control.
+      Add or remove users from groups.
+    
+    Example:
+    POST https://graph.microsoft.com/v1.0/groups
+    Content-Type: application/json
+    Authorization: Bearer {access-token}
+    {
+        "displayName": "Marketing Team",
+        "mailEnabled": false,
+        "securityEnabled": true
+    }
