@@ -339,3 +339,13 @@ Leela web dev - git course youtube
 
 
 
+16)
+* Rebase is powefull git command
+* rebasing is an alternative to merging
+* Rebasing a branch updates one branch with another by applying commits of one branch on top of the commits of another branch
+* git rebase is used to clean up our local commits history
+* Rebase is advanced command which is used rarely
+* merge preserves history
+* rebase doesn't preserve history
+* Do not use rebase when
+    * The branch is public when it is shared to all the developers. Most of the teams prefer merge over rebase
