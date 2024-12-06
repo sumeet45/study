@@ -349,3 +349,16 @@ Leela web dev - git course youtube
 * rebase doesn't preserve history
 * Do not use rebase when
     * The branch is public when it is shared to all the developers. Most of the teams prefer merge over rebase
+* common place where we use rebases
+    * cleaning up your commits before sharing your branch
+    * pulling changes from another branch without merge
+* merge will preserve history and rebase don't preserve history.
+* flow =>
+    git branch feature
+    git commit 
+    git commit 
+    git checkout feature
+    git commit 
+    git commit 
+    git checkout master          // note - need to move that branch, in which we want merge or rebase
+    git rebase feature
