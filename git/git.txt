@@ -314,3 +314,28 @@ Leela web dev - git course youtube
 
 
 15) 
+* when there's change in file of master branch and in same file of other branch, while merging them, we will get conflicts.
+
+* while merging going on, it indicate with branch name like following - 
+    sumeets@NIBLP1868 MINGW64 ~/Downloads/New folder/study/gitProjects/blogProj (master|MERGING)
+* Ex.
+    in master, created index.txt file and then create new branch called "featurebranch".
+    in featurebranch, update index.txt file. now commit it also.
+    again switch back to master branch to add "featureBranch" in master
+
+    $ git checkout master
+    $ git add .          // we update "index.txt" file in master branch to create conflicts
+    $ git commit -m "index file updated master branch"
+
+    $ git merge featureBranch                  // it will show conflicts while merging
+    Auto-merging index.txt
+    CONFLICT (content): Merge conflict in index.txt
+    Automatic merge failed; fix conflicts and then commit the result.
+
+    $ git merge --abort            // to abort merge
+    $ git merge featureBranch        // to start merging again
+    $ git add .                       // after resolving conflicts in notepad
+    $ git commit -m "index file merge with featurebranch"
+
+
+
