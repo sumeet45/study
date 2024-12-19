@@ -9,3 +9,8 @@ Learn Android App Development in both Java &amp; Kotlin Languages. You'll master
   Kotlin -
     * kotlin known for its concise and expressive syntax, reducing boilerplate code
     * kotlin provides built in null safety features, helping to prevent common runtime crashes by catching null pointer exception at run time.
+
+7) Changing Android Studio theme -
+* in the open project, we have customize tab. Click on it, and you will find theme
+
+8) Android Studio User Interface -
