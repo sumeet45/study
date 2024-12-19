@@ -1,0 +1,10 @@
+1. First, We will ask for permissions for Bluetooth and location.
+
+2. using "startDeviceScan", we can look for available devices. It will return device. This function will get called for each device who sent advertisement packet to mobile device. This device data will contain id (MAC address on android and UUID on iOS), name, and serial number.
+We also send last 4 digits of fcm token to ble device to pair in both ways.
+
+3. using "connectToDevice(deviceIdentifier, options)", we can connect to device using "deviceID". and once device approves connection by clicking on button, connection will get done.
+
+4. readCharacteristicsForService method helps to read data, by passing command "gbtd!". It will return data in base64 format, and we transform it to JSON string. we use JSON string to work with device.
+
+5. Same for sending command, we need to convert JSON string to base64 format with respective command. to write and read, we use GATT (Generic Attribute Profile) Protocol
