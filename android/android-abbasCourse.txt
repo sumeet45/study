@@ -129,3 +129,18 @@ double pi2 = 2.444455555;
 * ( + - * / % )
 * ( ==  !=  >  <   >=   <=  )
 * ( &&  ||  ! )
+
+
+27) Strings -
+* string are objects from java.lang string class, which means they have a lot of built in functionalities for working with text.
+* String hello = "Hello world";
+* concatenating string -  " + "
+* int length = hello.length();
+
+28) Conditional Statements -
+* if else
+* 
+
+33) Arrays -
+* int[] numArr = new int[5];
+* numArr[0] = 
