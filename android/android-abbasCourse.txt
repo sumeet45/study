@@ -14,3 +14,118 @@ Learn Android App Development in both Java &amp; Kotlin Languages. You'll master
 * in the open project, we have customize tab. Click on it, and you will find theme
 
 8) Android Studio User Interface -
+
+
+9) The Editors -
+* telling about multiple components of Android studio like layout editor,Editor Gutter Area, Validation and makrer sidebar, code editor area, palette, component tree, toolbar
+
+10) The Editors of Android Studio -
+* same as above
+
+11) Project Structure- 
+* Every app project must have an Android manifest XML file.
+* The manifest file describes essential information about your app to the Android Build tools, OS.
+* java folder
+* res folder - 
+    1) drawable -contain images
+    2) layout - store layouts
+    3) mipmap - for placing app launcher icon. Other drawable assets you use should be placed in the relevant drawable folders
+* values - contain many files of color, string and many
+    * color.xml is xml file to store color
+* strings - can define string in one place
+
+12) Gradle -
+* gradle build scripts used for configuring and building application
+* used to define process, dependancies and other project specific configuration.
+* build.gradle.kts (Project level) -  
+    * responsible for build process for entire android project
+    * specifies settings and dependancies that are common to all modules within project.
+    * .kts indicates that its written in kotlin, and uses kotlin DSL (Domain Specific Language) for gradle.
+* build.gradle.kts (App level) -  
+    * specific build setting for your android app Module
+    * includes dependancies, libraries, compileOptions, and other module specific configurations
+
+
+13) 
+* to fix issue of same class - 
+    * update android sdk to latest and 
+    * use invalidate cache.
+
+14) 
+
+
+15) 
+* sharing process of creating Java module and tried to run it.
+* first created new module using "new" of "file" menu.
+
+
+16) comments
+*   "//" 
+*   /*
+    * comments
+    **/
+
+17) Main method syntax
+* main - is the main method which is called on application opening
+
+18) Java output -
+public class Person {
+  public static void main(String[] args){
+      System.out.println("this is log");
+  }
+}
+
+19) Variables -
+* variable - can hold many things inside of it.
+* int age = 25;
+
+
+20) Data types -
+* define type of data that a variable can hold
+* 2 categories of data type -
+    Primitive data type - 8 data type available (byte, short, int, long(use L), float(use f), double(use d), char( 0 - 255 ), Boolean) 
+    NonPrimitive Data type - Array, String, Class, etc.
+
+21) Numbers -
+Data Type	      Description
+byte	          Stores whole numbers from -128 to 127
+short  	        Stores whole numbers from -32,768 to 32,767
+int	            Stores whole numbers from -2,147,483,648 to 2,147,483,647
+long	          Stores whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+float	          Stores fractional numbers. Sufficient for storing 6 to 7 decimal digits
+double	        Stores fractional numbers. Sufficient for storing 15 to 16 decimal digits
+boolean	        Stores true or false values
+char	          Stores a single character/letter or ASCII values
+
+int y = 23;
+
+22) Decimals -
+* float - is 32 bit with single precission floating point number
+* double - is 64 bit with double precission floating point number
+float pi = 3.14F;
+double pi2 = 2.444455555;
+
+23) Boolean -
+* boolean val = true;
+
+24) Characters -
+* char m1 = 'A';
+  char m2 = '8';
+  char m3 = '$';
+  char m4 = '\n';
+
+25) type casting -
+* converting  value of 1 data type to another
+* implicit and explicit type casting
+* Implicit - automatically converted from integer to double because there is no data loss.
+  int numInt = 10;
+  double numDouble = numInt;      //10.0
+* explicit - need developer to explicit convert  from one type to another.
+  double pi = 3.14;
+  int numPi = (int) pi;
+
+
+26) Operators -
+* ( + - * / % )
+* ( ==  !=  >  <   >=   <=  )
+* ( &&  ||  ! )
