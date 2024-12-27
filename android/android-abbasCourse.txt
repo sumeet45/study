@@ -1,3 +1,11 @@
+constructor
+properties
+methods		// method, getter, setter
+interface
+abstract class
+access modifier	//java
+
+------------------------------------------------------------------------------
 Learn Android App Development in both Java &amp; Kotlin Languages. You'll master Android from ZERO to HERO
 
 1) Java or Kotlin-
@@ -143,4 +151,167 @@ double pi2 = 2.444455555;
 
 33) Arrays -
 * int[] numArr = new int[5];
-* numArr[0] = 
+* numArr[0] = 10;
+System.out.println("Element at index o: " + numArr[0]);
+
+34) For Each loop - 
+*  for(int num: numArr){
+      System.out.println(""+ num);
+   }
+
+35) Multidimensional Array -
+*         int[][] arr1 = new int[3][3];
+        arr1[0][0] = 1;
+        arr1[0][1] = 2;
+        arr1[0][2] = 3;
+        arr1[1][0] = 4;
+        arr1[1][1] = 5;
+        arr1[1][2] = 6;
+        arr1[2][0] = 7;
+        arr1[2][1] = 8;
+        arr1[2][2] = 9;
+* int[][] arr2 = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+}
+
+
+36) Methods -
+* types of method = user-defined methods and Standard library methods
+* declare method - 
+    returnType methodNAme(){
+      //code
+    }
+    int getAge(){
+      return age;
+    }
+
+37) Returning type of Methods -
+* static int addNumber(int x, int y){
+  return x + y;
+}
+
+38) Method parameter -
+static int getSum(int x, int y){
+  return x + y
+}
+
+
+39) Method Overloading - 
+* same method name but with different parameter
+* static int getNum(int x, int y){
+    return x + y
+  }
+* static double getNum(double x, double y){
+    return x + y
+  }
+
+
+40) classes -
+* class is blueprint of objects.
+* showed car class with method and properties
+class Car {
+    int year;
+    int speed;
+    void accelerate(){
+        speed += 10;
+    }
+    void brake(){
+        speed -= 10;
+    }
+}
+
+41) Objects -
+* Car audi = new Car();    // to create object from class using constructor method
+        audi.speed = 180;
+        audi.year = 2023;
+        audi.accelerate();
+        audi.accelerate();
+        audi.brake();
+        System.out.println(""+ audi.speed);
+
+42) Constructor
+* used to create and initialize objects when they are first created.
+        Car audi = new Car(2024, 280);
+
+//constructor in class Car
+    public Car(int syear, int sspeed){
+        year = syear;
+        speed = sspeed;
+    }
+
+43) Access modifiers -
+* 4 - public, private, protected, default
+* private - available for only that class
+* protected - available for same class and subclass. not available for outside of package
+* default - no access modifier is specified, its considered as default access level. A class method or field with default access can be accessed only by classes within the same package.
+* modifier play major role in encapsulation
+
+44) Encapsulation -
+* way to protect data (variables, methods of data from being accessed and modifier directly by other classes)
+* we can access private properties through methods ( getters and setters )
+    public int getYear(){
+        return year;
+    }
+    public void setYear(int passYear){
+        year = passYear;
+    }
+
+45) Inheritance -
+* extends of properties of parent class
+* super variable used for access parent class properties and methods
+
+public class Vehicle {
+    void start(){
+      //start vehicle
+    }
+    void stop(){
+      // stop vehicle
+    }
+    int wheels;
+    public Vehicle(int nWheels){
+        this.wheels = nWheels;
+    }
+}
+
+public class Car extends Vehicle{
+    public Car(){
+      super(4)
+    }
+}
+
+46) this
+* "this" variable is a reference variable that is used to refer to the current instance of class.
+* Car audi = new Car("audi");
+  audi.start();  // vehicle method
+  audi.honk();  // car method
+  audi.stop();  // vehicle method
+
+* in class car, to override method of vehicle
+  @Override    //not mandatory
+  void start(){
+      //code
+  }
+* can't override methods declared as final and static.
+
+
+48) Polymorphism
+* is a concept that allows objects of different classes to be treated as objects of a common parent class.
+* check Vehicle is placed in the starting.
+  Vehicle v1 = new Car("audi");    // Car class
+  Vehicle v2 = new Truck(6);        // Truck class
+* polymorphism allows same method to work differently for different object.
+* method overloading and method overriding shows polymorphism
+
+49) Abstraction -
+* abstract class won't allow you to create instance from it.
+* public abstract class Vehicle {
+      abstract void brake();    // bcz of this abstract method, editor will suggest to implement same method in child class.
+}
+* allows you to use classes and objects without worrying about their implementation.
+
+50) Interfaces -
+* is like a contract or a set of rules that a class can promise to follow.
+* defines set of methods, signatures, methods without implementation that any class implementing the interface must provide.
+* prviodes a way to achieve abstraction and define a common behaviour that multiple classes can share in vehicle class.
