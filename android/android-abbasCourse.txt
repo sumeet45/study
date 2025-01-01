@@ -149,6 +149,28 @@ double pi2 = 2.444455555;
 * if else
 * 
 
+29) Switch Statement -
+* ex.
+    String day = "sunday";
+		
+		 switch(day){
+            case "monday":
+                	System.out.println("1");
+            break;
+            case "tuesday":
+                	System.out.println("2");
+            break;                              // to break execution
+            case "sunday":
+                	System.out.println("7");
+            break;
+            default:                            // default case
+                	System.out.println("8");
+        }
+* Sometimes you will want different switch cases to use the same code.
+* If multiple cases matches a case value, the first case is selected.
+* If no matching cases are found, the program continues to the default label.
+* Switch cases use strict comparison (===).
+
 33) Arrays -
 * int[] numArr = new int[5];
 * numArr[0] = 10;
