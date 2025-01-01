@@ -362,3 +362,39 @@ Leela web dev - git course youtube
     git commit 
     git checkout master          // note - need to move that branch, in which we want merge or rebase
     git rebase feature
+
+
+17) 
+* lets try git rebase.
+* flow =>
+      * create master branch
+      * added commit in master branch
+      * $ git log --oneline
+        1d08638 (HEAD -> master) master file added in master
+
+      * create new feature branch
+      * create 2 new commits in master branch
+      * $ git log --oneline
+      0131ede (HEAD -> master) index3 added
+      4f9db14 index2 added
+      1d08638 (feature) master file added in master
+
+      * now checkout to feature branch
+      * add 2 new commits in feature branch
+      * $ git log --oneline
+      3ba2d5f (HEAD -> feature) feature2 added
+      bdce180 feature1 added
+      1d08638 master file added in master
+
+      * move to master branch
+      * $ git rebase feature
+      Successfully rebased and updated refs/heads/master.
+
+      $ git log --oneline
+      9cb0486 (HEAD -> master) index3 added
+      44f037f index2 added
+      3ba2d5f (feature) feature2 added
+      bdce180 feature1 added
+      1d08638 master file added in master
+
+*  git log --oneline --graph
