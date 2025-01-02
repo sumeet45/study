@@ -1066,19 +1066,49 @@ Referenece -
   * var declarations -
      * Declaring a variable in JavaScript has always traditionally been done with the var keyword.
      * example which shows scope chain 
-     * Scoping rules -
-     * Variable capturing quirks
+     * Scoping rules - var declarations create var-scoping (function-scoping declaration)
+     * Variable capturing quirks - in for loop, while using var with setTimeout Function, we got 10 for "i". for that, we need to add IIFE in for loop, so we will get 1 to 9.
 
   * let declarations
-      * Block-scoping
-      * Re-declarations and Shadowing
-      * Block-scoped variable capturing
+      * Block-scoping - 
+         * When a variable is declared using let, it uses what some call lexical-scoping or block-scoping
+         * Another property of block-scoped variables is that they can’t be read or written to before they’re actually declared. While these variables are “present” throughout their scope, all points up until their declaration are part of their temporal dead zone.
+
+      * Re-declarations and Shadowing - 
+          * "let" won't allow to redeclare like var does.
+          
+      * Block-scoped variable capturing -
+          * for (let i = 0; i < 10; i++) {
+              setTimeout(function () {
+                console.log(i);        // 0, 1, 2, 3,...., 9
+              }, 100 * i);
+            }
+
       * const declarations
 
   * let vs. const
 
   * Destructuring
-      * Array destructuring
+      * Array destructuring -
+           let input = [1, 2];
+           let [first, second] = input;
+           console.log(first); // outputs 1
+           console.log(second); // outputs 2
+
+           * Destructuring works with already-declared variables as well: 
+                        // swap variables
+                     [first, second] = [second, first];
+
+           * And with parameters to a function:
+                     function f([first, second]: [number, number]) {
+                       console.log(first);
+                       console.log(second);
+                     }
+                     f([1, 2]);
+           * You can create a variable for the remaining items in a list using the syntax ...:
+                    let [first, ...rest] = [1, 2, 3, 4];
+
+
       * Tuple destructuring
       * Object destructuring -
              let o = {
