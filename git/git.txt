@@ -398,3 +398,8 @@ Leela web dev - git course youtube
       1d08638 master file added in master
 
 *  git log --oneline --graph
+
+
+18) 
+* combine multiple commits into one single commit
+* 
