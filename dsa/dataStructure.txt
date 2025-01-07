@@ -1,0 +1,50 @@
+
+// https://www.youtube.com/watch?v=RBSGKlAvoiM&ab_channel=freeCodeCamp.org
+
+* abstract data type
+  * ADT is an abstraction of a data structure which provides only the interface to which data structure must adhere to.
+  * ADT only defines how a DS should behave, and methods should have. but not details implementation.
+
+* complexity analysis -
+  * time and space -  how much required?
+
+* big o tells about worst case
+
+* Big O notation - (7:27)
+  from small to large order -
+  0(1)  -constant time
+  0(log (n)) - logarithmic time
+  0(n) - Linear time
+  0(nlog(n)) - 
+  0(n^2)
+  0(n^3)
+  0(b^n), b > 1
+  0(n!)
+
+  * we remove constant values from big o notation
+
+
+  * Static and Dynamic arrays -
+    * Static Array = 
+      * static arrays is fixed length container containing n elements indexable from the range [0, n-1]
+      * static arrays are given as contiguous (next to each other) chunks of memory. 
+      * what is indexable? - each slot/ index in the array can be referenced with a number.
+      * when and where is static array used? -
+            1) Storing and accessing sequential data, 
+            2) temporarily storing objects
+            3) used by IO routines as buffers
+            4) lookup tables and inverse lookup tables
+            and many more places.
+    * table
+            static arr       dynamic arr
+access        0(1)            0(1)
+search        0(n)            0(n)
+Insertion     N/A             0(n)
+Appending     N/A             0(1)
+Deletion      N/A             0(n)
+
+    * array start indexing with 0.
+    * 
+
+  * Operations on Dynamic Arrays -
+    * to create dynamic array using static array - create static array with 2 elements place and add all 2 numbers in it. once u want to add 3rd element, just create one more array with 3 space for elements and copy all elements from older array and add new numbers in the end.
