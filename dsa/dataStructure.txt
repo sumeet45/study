@@ -78,3 +78,15 @@ Deletion      N/A             0(n)
 Singly linked    Uses less memory           Cannot easily acces previous elements
 Doubly linked    can be traversed back      Takes 2x memory
 
+* Check operations for lists
+
+* Complexity -
+                        Singly linked        Doubly linked
+Search                     O(n)                O(n)
+Insert at head             O(1)                O(1)
+Insert at tail             O(1)                O(1)
+Remove at head             O(1)                O(1)
+Remove at tail             O(n)                O(1)
+Remove in middle           O(n)                O(n)
+
+
