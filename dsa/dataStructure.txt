@@ -48,3 +48,14 @@ Deletion      N/A             0(n)
 
   * Operations on Dynamic Arrays -
     * to create dynamic array using static array - create static array with 2 elements place and add all 2 numbers in it. once u want to add 3rd element, just create one more array with 3 space for elements and copy all elements from older array and add new numbers in the end.
+   * shows array with push, pop, shift, unshift operations method implementation
+
+2) What is Linked List -
+  * is a sequential list of nodes that hold data which point to other nodes also containing data.
+  * uses -
+      * used in many List, queue, and stack implementation,
+      * Great for creating circular lists
+      * can easily model real world objects such as trains
+      * used in separate chaining, which is present certain Hashtable implementations to deal with hashing collections
+      * often used in the implementation of adjacency lists for graphs.
+  
