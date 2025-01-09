@@ -78,7 +78,7 @@ Deletion      N/A             0(n)
 Singly linked    Uses less memory           Cannot easily acces previous elements
 Doubly linked    can be traversed back      Takes 2x memory
 
-* Check operations for lists
+*** Check operations for lists
 
 * Complexity -
                         Singly linked        Doubly linked
@@ -90,3 +90,30 @@ Remove at tail             O(n)                O(1)
 Remove in middle           O(n)                O(n)
 
 
+*** Check github code for doubly linked list
+
+
+
+3) Stack -
+* stack - is a one-ended linear data structure which models a real world stack by having two primary operations, namely push and pop.
+* stack based on LIFO.
+* where used -
+   * in text editors for undo and redo
+   * used in compiler syntax checking for matching brackets and braces.
+   * to show pile of books or plates
+   * used behind the scenes to support recursion by keeping track of previous func calls.
+   * used to do a Depth First Search (DFS) on graph.
+
+* complexity analysis - 
+   * pushing   O(1)
+   * popping   O(1)
+   * peeking   O(1)
+   * searching O(n)
+   * size      O(1)
+
+* shows example of stack with bracket sequence -
+     [[{}]()]
+
+* tower of hanoi -
+   [1,2,3,4]   []       []
+   
