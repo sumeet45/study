@@ -144,3 +144,7 @@ Remove in middle           O(n)                O(n)
 *** queue implementation -
 * queue done by array, singly and doubly linked lists
 * Yes, a queue is a first-in-first-out (FIFO) data structure, meaning that the first item added to the queue is the first to be removed. 
+
+
+5) Priority Queues -
+* 
