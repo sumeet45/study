@@ -147,4 +147,5 @@ Remove in middle           O(n)                O(n)
 
 
 5) Priority Queues -
-* 
+* Priority queue is abstract data type (ADT) that operates similar to a normal queue except that each element has a certain priority. The priority of the elements in the priority queue determine the order in which elements are removed from the PQ.
+* Priority queues only supporters comparable data, meaning the data inserted into the priority queue must be able to ordered in some way either from least to greatest or greatest to least. This is so that we are able to assign relative priorities to each element.
