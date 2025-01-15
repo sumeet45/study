@@ -158,4 +158,7 @@ Remove in middle           O(n)                O(n)
 ---------------------------------------------------------------------------------------------------
 https://youtu.be/2o2vX0ZqQ_Y?feature=shared
 
-* computer science is about solving problems by 
+* computer science is about solving problems by designing algorithms that can be converted into efficient programs. The key challenge is optimizing for time and money.
+* in recent time, we mostly focused on time, than memory.
+* To write efficient program, you need both - DS ( organize of data )and Algorithm ( process to solve the problem using organize data )
+* 
