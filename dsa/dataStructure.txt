@@ -164,4 +164,56 @@ https://youtu.be/2o2vX0ZqQ_Y?feature=shared
 * DS - is a particular way of organizing data in a computer memory, so that memory can be used effectively both in terms of time and space. It is logical relationship existing between individual elements of data, it considers elements stored and also their relationship to each other. Data structure mainly specifies following four things -
         organization of data, accessing methods, degree of association, Processing methods.
 
-* 
+* Impact of DS on Programs -
+  * if data is historical, then there's less chance of deletion, addition, or updating, so we should go for array DS
+  * if daily operations like add, delete are there, then should go for linked list
+
+  * DS affects both structural and functional aspects of Program. The choice of data structure plays a crucial role in program design and efficiency.
+  * specialized DS for Diff applications -
+        Relational DB - use B-tree indexes for efficient data retrieval
+        Compiler implementation - commonly rely on hash tables for fast identifier lookups
+
+  * DS and Algo Efficiency - efficient ds are essential to designing efficient algorithm. In some programming paradigm, DS are emphasized over algorithms as the primary organizing factor in the software design.
+  * Implementing DS - typically involves creating set of procedures to instantiate and manipulate the structure, ensuring efficient use and access.
+
+
+* Primitive and Non-primitive DS -
+  Primitive -
+  * char, int, float, double
+  * predefined by system and are directly operated upon by machine instructions.
+
+  Non-Primitive -
+  * primitive DS are insufficient, we use derived and user-defined DS.
+  * Derived DS - 
+       * are built using primitive DS. They are provided by the system but their structure is more complex.
+       * ex. arrays
+  * User defined DS - 
+      * created by the user using primitive and derived types, with custom structures and operations
+      * linked list, Trees, Stack, 
+
+
+* linear and non-linear DS -
+   
+   * LINEAR DATA STRUCTURE
+      * In a linear data structure, data elements are arranged in a linear order where each and every element are attached to its previous and next adjacent.
+      * In linear data structure, single level is involved.
+      * Its implementation is easy in comparison to non- linear data structure.
+      * In linear data structure, data elements can be traversed in a single run only.
+      * Its examples are: array, stack, queue, linked list, etc.
+   * NON-LINEAR DATA STRUCTURE
+      * In a non-linear data structure, data elements are attached in hierarchical manner.
+      * Whereas in non-linear data structure, multiple levels are involved.
+      * While its implementation is complex in comparison to linear data structure.
+      * While in non-linear data structure, data elements
+      * can't be traversed in a single run only.
+      * While its examples are: trees and graphs.
+
+* Homogeneous vs. Heterogeneous Data Structures
+Homogeneous Data: These data structures store elements of the same type, such as integers or floats. A common example is an array, where all elements share the same data type.
+Heterogeneous Data: These data structures can hold elements of different types. For example, a data structure may store integers, floats, and characters together. Examples include structures and unions.
+
+* Array -
+ * An array is a data structure that stores collection of elements of same type stored at contiguous memory locations and can be accessed using an index.
+ * indexing starts with 0.
+ * var arr1 = [2,3,4,5];
+34:47
