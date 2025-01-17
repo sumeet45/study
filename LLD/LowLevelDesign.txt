@@ -53,6 +53,8 @@ c.checkLC();
 // When object creation depends on external input such as user preferences, configurations, or environment settings.
 // When you need to isolate the client from concrete class implementations, allowing flexibility in changing the underlying logic without breaking the client.
 
+* Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.
+
 interface Platform {
     getPlatformName: () => void
 }
