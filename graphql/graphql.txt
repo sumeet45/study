@@ -1,0 +1,8 @@
+https://youtu.be/NNNcoWZ6Ih0?feature=shared
+
+1) Introduction
+* gives required data only
+* gives data within single API instead of multiple API calls
+* POST method we have only with graphql
+
+2)
