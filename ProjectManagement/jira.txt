@@ -41,30 +41,33 @@ Scrum team -
   * Before sprint starts, team decides to discuss the scope of the sprint in a sprint planning meeting. This meeting decides sprint backlog and sprnt goal.
 
 * Daily Standup -
-  * scrum team meets everyday, for max 15 mins to discuss what they did yesterday, what plans for today and if there are any impediments impacting their work. 
+  * The scrum team meets every day, for max 15 mins, to discuss what they did yesterday, what plans for today and if there are any impediments impacting their work. 
   * also at the end of the day, each team member should update the remaining work on the tasks they are working on.
 
 * Sprint Review -
-  * Once sprint ended, only the completed user stories are delivered. A review meeting is held to approve the deliverables, this meeting is called as Sprint review meeting,
+  * Once the sprint ends, only the completed user stories are delivered. A review meeting is held to approve the deliverables, this meeting is called as Sprint review meeting,
 
 
 * Sprint Retrospection -
-  * is last ceremony of sprint. team meets to discuss what went well and what needs improvement.
-  * apart from that, team also engages at regular intervals for backlog grooming
+  * is the last ceremony of the sprint. team meets to discuss what went well and what needs improvement.
+  * apart from that, the team also engages at regular intervals in backlog grooming
 
 
 ----
 * Epics
-  * are huge piece of work, which need to be converted in to smaller ones. Epic cannot be delivered in one sprint, it require many sprints to deliver.
+  * are huge pieces of work, which need to be converted into smaller ones. Epic cannot be delivered in one sprint, it requires many sprints to deliver.
 
 * User Stories
-  * is smaller requirement that a client wants, like a simple task.
+  * is a smaller requirement that a client wants, like a simple task.
 
 * Tasks 
-  * elemets of story. we can also say that tasks are the work required to get the story done. I have a list of task which I use in citiustech
+  * elements of story. we can also say that tasks are the work required to get the story done. I have a list of tasks which I use in citiustech
 
 * Bugs
   * issues in software
 
 
 ----
+* Create button to create story, bugs, epics and task
+* label helps to search user story as much as fast.
+* move stories to sprint 1
