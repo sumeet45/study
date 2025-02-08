@@ -1,0 +1,70 @@
+
+* Jira is a project management tool owned by atlassian for planning, tracking, and supporting software projects.
+* Jira usage - many more
+
+Scrum - 
+* Scrum is a framework based on Agile to define, plan, execute and deliver projects. Scrum is time boxed and iterative process 
+* scrum team works in sprints. sprints are fixed time intervals where time duration is decided by the team to complete a selected scope of work.
+
+Scrum team -
+* Product owner ( PO )
+* Scrum master ( SM )
+* Development team 
+
+* Product owner - 
+  * works with customers to gather requirements and is responsible for creating user stories, out of these requirements.
+  * He guides the team.
+  * He is accountable for maintaining the backlog.
+
+* Scrum master - 
+  * who is responsible for making sure the agile concepts are being followed and helps the team in resolving obstacles.
+  * facilitates all scrum ceremonies and guides the team with agile and scrum principle
+
+* Development team - developer team.
+
+* Product Backlog -
+  * is a prioritized list of user stories
+  * The PO manages this backlog only
+  * PO can remove any work items from the backlog, though anyone in the team can go ahead and add additional items to it
+  * The Scrum team discusses work items of the product backlog to estimate specify and prioritise them. This exercises is called as "Backlog Grooming".
+
+* Sprint Backlog - is a separate list of user stories which is a subset of product backlog, is a selected scope for the upcoming sprints.
+
+--- 
+* Scrum ceremonies -
+  Daily Standup
+  Sprint Planning
+  Sprint Review
+  Sprint Retrospection
+
+* Sprint Planning -
+  * Before sprint starts, team decides to discuss the scope of the sprint in a sprint planning meeting. This meeting decides sprint backlog and sprnt goal.
+
+* Daily Standup -
+  * scrum team meets everyday, for max 15 mins to discuss what they did yesterday, what plans for today and if there are any impediments impacting their work. 
+  * also at the end of the day, each team member should update the remaining work on the tasks they are working on.
+
+* Sprint Review -
+  * Once sprint ended, only the completed user stories are delivered. A review meeting is held to approve the deliverables, this meeting is called as Sprint review meeting,
+
+
+* Sprint Retrospection -
+  * is last ceremony of sprint. team meets to discuss what went well and what needs improvement.
+  * apart from that, team also engages at regular intervals for backlog grooming
+
+
+----
+* Epics
+  * are huge piece of work, which need to be converted in to smaller ones. Epic cannot be delivered in one sprint, it require many sprints to deliver.
+
+* User Stories
+  * is smaller requirement that a client wants, like a simple task.
+
+* Tasks 
+  * elemets of story. we can also say that tasks are the work required to get the story done. I have a list of task which I use in citiustech
+
+* Bugs
+  * issues in software
+
+
+----
