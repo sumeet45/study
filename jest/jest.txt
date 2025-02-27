@@ -1,3 +1,19 @@
+uses
+.mock, .fn, and .requireActual
+Globals -
+Expect -
+    Modifiers
+    Matchers
+    Asymmetric Matchers
+    Assertion Count
+Mock Functions
+    use in expect or beforethat 
+The Jest Object
+    Mock Modules
+    Mock Functions
+    Fake Timers
+    Misc
+----------------------------------------
 maximillian video (youtube) =
 
 * Why Testing - when we update any changes in code, does it affect our application by using Automated Testing.
