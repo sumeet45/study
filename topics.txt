@@ -66,7 +66,7 @@
 
 * mobile - React Native, React navigation, @testing-library/react-native, android(kotlin + XML), IOS(swift), DB, 
 
-* Common - JS, React, Typescript, redux, jest, Regex, DSA, LLD, HLD, principles, system design
+* Common - JS, React, Typescript, redux/ RTK, redux saga, jest, Regex, DSA, LLD, HLD, principles, system design
 
 * TOPICS - HTTP, REGEX, JWT, Security ( Mobile, API, Client), Push notification,  payment integration, DNS, Authentication, Firebase, Elastic search, Form and File upload
 
