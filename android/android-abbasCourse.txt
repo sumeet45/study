@@ -139,27 +139,27 @@ double pi2 = 2.444455555;
   char myChar = (char) (myInt + 'A');	//70
 
 
-26) Operators -
+28) Operators -
 * ( + - * / % )
 * ( ==  !=  >  <   >=   <=  )
 * ( &&  ||  ! )
 
 
-27) Strings -
+29) Strings -
 * string are objects from java.lang string class, which means they have a lot of built in functionalities for working with text.
 * String hello = "Hello world";
 * concatenating string -  " + "
 * int length = hello.length();
 
-28) Conditional Statements -
-* if else
+30) Conditional Statements -
+* if else code
 * 
 
-29) Switch Statement -
+31) Switch Statement -
 * ex.
     String day = "sunday";
 		
-		 switch(day){
+	switch(day){
             case "monday":
                 	System.out.println("1");
             break;
@@ -176,6 +176,28 @@ double pi2 = 2.444455555;
 * If multiple cases matches a case value, the first case is selected.
 * If no matching cases are found, the program continues to the default label.
 * Switch cases use strict comparison (===).
+
+32) While loop -
+* syntax -
+	while(condition){
+		// code to be executed repeatedly as long as condition is true
+	}
+* ex.
+	byte i = 0;
+        while (i < 10){
+            System.out.println(i);
+            i++;
+        }
+
+33) For loop - 
+* ex.
+	for(int j = 0; j <= 5; j++){
+            System.out.println(j);
+        }
+
+34) Break and Continue keywords -
+* break used to break execution and skip loop
+* continue used to break execution for that iteration only.
 
 33) Arrays -
 * int[] numArr = new int[5];
