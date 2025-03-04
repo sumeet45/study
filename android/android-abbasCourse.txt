@@ -89,10 +89,13 @@ public class Person {
 
 
 20) Data types -
-* define type of data that a variable can hold
+* define the type of data that a variable can hold
 * 2 categories of data type -
-    Primitive data type - 8 data type available (byte, short, int, long(use L), float(use f), double(use d), char( 0 - 255 ), Boolean) 
-    NonPrimitive Data type - Array, String, Class, etc.
+    * Primitive data type - 
+	* 8 data type available (byte, short, int, long(use L), float(use f), double(use d), char( 0 - 255, single character using single quote ), Boolean) 
+	* basic data type in Java and represent simple values
+    * NonPrimitive Data type - Array, String, Class, etc.
+
 
 21) Numbers -
 Data Type	      Description
