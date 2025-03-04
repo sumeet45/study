@@ -88,7 +88,7 @@ public class Person {
 * int age = 25;
 
 
-20) Data types -
+22) Data types -
 * define the type of data that a variable can hold
 * 2 categories of data type -
     * Primitive data type - 
@@ -110,30 +110,33 @@ char	          Stores a single character/letter or ASCII values
 
 int y = 23;
 
-22) Decimals -
+24) Decimals -
 * float - is 32 bit with single precission floating point number
 * double - is 64 bit with double precission floating point number
 float pi = 3.14F;
 double pi2 = 2.444455555;
 
-23) Boolean -
+25) Boolean -
 * boolean val = true;
 
-24) Characters -
+26) Characters -
 * char m1 = 'A';
   char m2 = '8';
   char m3 = '$';
   char m4 = '\n';
 
-25) type casting -
-* converting  value of 1 data type to another
+27) type casting -
+* type casting - converting  value of 1 data type to another
 * implicit and explicit type casting
 * Implicit - automatically converted from integer to double because there is no data loss.
   int numInt = 10;
   double numDouble = numInt;      //10.0
-* explicit - need developer to explicit convert  from one type to another.
+* explicit - need developer to explicit convert  from one type to another. when we want value to convert from larger data type to smaller data type
   double pi = 3.14;
-  int numPi = (int) pi;
+  int numPi = (int) pi;		// 3
+
+* int myInt = 5;
+  char myChar = (char) (myInt + 'A');	//70
 
 
 26) Operators -
