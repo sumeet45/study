@@ -199,18 +199,22 @@ double pi2 = 2.444455555;
 * break used to break execution and skip loop
 * continue used to break execution for that iteration only.
 
-33) Arrays -
+35) Arrays -
 * int[] numArr = new int[5];
 * numArr[0] = 10;
 System.out.println("Element at index o: " + numArr[0]);
 
-34) For Each loop - 
+36) For Each loop - 
+* syntax -
+	for(dataType element: collection/Array){
+		//code to execute
+	}
 *  for(int num: numArr){
       System.out.println(""+ num);
    }
 
-35) Multidimensional Array -
-*         int[][] arr1 = new int[3][3];
+37) Multidimensional Array -
+*       int[][] arr1 = new int[3][3];
         arr1[0][0] = 1;
         arr1[0][1] = 2;
         arr1[0][2] = 3;
