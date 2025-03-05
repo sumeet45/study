@@ -231,24 +231,30 @@ System.out.println("Element at index o: " + numArr[0]);
 }
 
 
-36) Methods -
+38) Methods -
 * types of method = user-defined methods and Standard library methods
 * declare method - 
     returnType methodNAme(){
       //code
     }
-    int getAge(){
+    static int getAge(){
       return age;
     }
+    void main(){
+	getAge()
+    }
 
-37) Returning type of Methods -
+39) Returning type of Methods -
 * static int addNumber(int x, int y){
   return x + y;
 }
 
-38) Method parameter -
+40) Method parameter -
 static int getSum(int x, int y){
   return x + y
+}
+void main(){
+	getSum(10, 20)	// 30
 }
 
 
@@ -263,11 +269,16 @@ static int getSum(int x, int y){
 
 
 40) classes -
+* java is object oriented programming language
+* object is any entity that has state and behaviour.
 * class is blueprint of objects.
 * showed car class with method and properties
 class Car {
-    int year;
+    // states
+    int year;		
     int speed;
+
+    //methods
     void accelerate(){
         speed += 10;
     }
@@ -277,6 +288,7 @@ class Car {
 }
 
 41) Objects -
+* syntax - className object = new className();
 * Car audi = new Car();    // to create object from class using constructor method
         audi.speed = 180;
         audi.year = 2023;
