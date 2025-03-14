@@ -249,7 +249,7 @@ System.out.println("Element at index o: " + numArr[0]);
   return x + y;
 }
 
-40) Method parameter -
+40) Method parameters -
 static int getSum(int x, int y){
   return x + y
 }
@@ -258,7 +258,7 @@ void main(){
 }
 
 
-39) Method Overloading - 
+41) Method Overloading - 
 * same method name but with different parameter
 * static int getNum(int x, int y){
     return x + y
@@ -268,7 +268,7 @@ void main(){
   }
 
 
-40) classes -
+42) classes -
 * java is object oriented programming language
 * object is any entity that has state and behaviour.
 * class is blueprint of objects.
@@ -287,7 +287,7 @@ class Car {
     }
 }
 
-41) Objects -
+43) Objects -
 * syntax - className object = new className();
 * Car audi = new Car();    // to create object from class using constructor method
         audi.speed = 180;
@@ -297,7 +297,7 @@ class Car {
         audi.brake();
         System.out.println(""+ audi.speed);
 
-42) Constructor
+44) Constructor
 * used to create and initialize objects when they are first created.
         Car audi = new Car(2024, 280);
 
@@ -307,14 +307,14 @@ class Car {
         speed = sspeed;
     }
 
-43) Access modifiers -
+45) Access modifiers -
 * 4 - public, private, protected, default
 * private - available for only that class
 * protected - available for same class and subclass. not available for outside of package
 * default - no access modifier is specified, its considered as default access level. A class method or field with default access can be accessed only by classes within the same package.
 * modifier play major role in encapsulation
 
-44) Encapsulation -
+46) Encapsulation -
 * way to protect data (variables, methods of data from being accessed and modifier directly by other classes)
 * we can access private properties through methods ( getters and setters )
     public int getYear(){
@@ -324,7 +324,7 @@ class Car {
         year = passYear;
     }
 
-45) Inheritance -
+47) Inheritance -
 * extends of properties of parent class
 * super variable used for access parent class properties and methods
 
@@ -347,8 +347,9 @@ public class Car extends Vehicle{
     }
 }
 
-46) this
+48) this
 * "this" variable is a reference variable that is used to refer to the current instance of class.
+* can be used within an instance method or a constructor to refer to the specific object that it is invoking the method or creating the instances.
 * Car audi = new Car("audi");
   audi.start();  // vehicle method
   audi.honk();  // car method
@@ -361,8 +362,21 @@ public class Car extends Vehicle{
   }
 * can't override methods declared as final and static.
 
+49) Method Overriding -
+* subclass overrides the method of superclass
+* ex.
+    public class Vehicle {
+      void start(){   System.out.println(" start ")}
+    }
+    public class Car extends Vehicle {
+      @override
+      void start(){  System.out.println(" car start") }   // method overriding
+    }
+* we can't override the methods declared as final and static.
+* we should use to override abstract method
 
-48) Polymorphism
+
+50) Polymorphism
 * is a concept that allows objects of different classes to be treated as objects of a common parent class.
 * check Vehicle is placed in the starting.
   Vehicle v1 = new Car("audi");    // Car class
@@ -370,14 +384,104 @@ public class Car extends Vehicle{
 * polymorphism allows same method to work differently for different object.
 * method overloading and method overriding shows polymorphism
 
-49) Abstraction -
+51) Abstraction -
 * abstract class won't allow you to create instance from it.
 * public abstract class Vehicle {
       abstract void brake();    // bcz of this abstract method, editor will suggest to implement same method in child class.
 }
 * allows you to use classes and objects without worrying about their implementation.
 
-50) Interfaces -
+52) Interfaces -
 * is like a contract or a set of rules that a class can promise to follow.
 * defines set of methods, signatures, methods without implementation that any class implementing the interface must provide.
 * prviodes a way to achieve abstraction and define a common behaviour that multiple classes can share in vehicle class.
+* ex.
+    public interface VehicleInterface {
+      void startEngine();
+      void brake();
+    }
+    public class Car implements VehicleInterface {
+      void startEngine(){
+        System.out.println("")
+      }
+      void brake(){
+        System.out.println("")
+      }
+    }
+* multiple inheritance is not possible in Java, we can acheive this through interface
+
+
+53) Abstraction Example - using Interface 
+* 
+
+54) Exercise 1-
+* public class MainClass {
+    public static void main(String[] args) {
+        MainClass c1 = new MainClass();
+        Scanner s1 = new Scanner(System.in);
+        System.out.println("Enter two numbers");
+        int num1 = s1.nextInt();
+        int num2 = s1.nextInt();
+        c1.divide(num1, num2);        
+    }
+
+    public int divide(int num1, int num2) {    
+        System.out.println("Dividing " + num1 + " by " + num2);
+        System.out.println("reminder " + num1%num2+ " division " + num1/num2);
+    }
+}
+
+55) Exercise 2-
+* 
+
+
+
+64) Views and View Group-
+* view Group denotes container and view is small view.
+* ViewGroup is special subclass of the view class that serves as a container for multiple views
+
+65) UI editing in Android Studio -
+* shows use of code, split and design mode
+
+66) Views Attributes -
+* We use these Attributes to define how each UI element should appear and behave.
+* id - assign unique id to view.
+* width and height - to set height and widthl.
+* above are constraintLayout Attributes.
+* here, he shows how to play with xml file and with Attributes panel
+
+
+67) TextView - Formatting texts -
+* its part of android widget framework
+* Attributes are defined in XML layout files that can also be modified programmatically in Java and kotlin code.
+* common Attributes - layout_width, layout_height, textColor, textStyle, text, gravity, typeface, textAllCaps, padding, layout_margin, background, inputType
+
+68) Declaring and initialising Views -
+* its refer to the process of creating referrences to UI elements or the views or the views defined in layout XML files so that you can interact with them programmatically
+* ex.         android:id="@+id/myTextView" - add id to xml file
+* now, we need to access those element using id with the help of "findViewById"
+  TextView myTextView = findViewById(R.id.myTextView);
+  myTextView.setText("Hi From Java code");
+
+
+69) EditText -
+* where user can enter text. Fundamental input control in android.
+* Attributes - layout_margin, hint, inputType, maxLength, textColor, textSize, textStyle, layout_editor_absoluteX, layout_editor_absoluteY
+* ex.
+        EditText myEditText = findViewById(R.id.editTextId);
+        String inputString = myEditText.getText().toString();
+
+        myTextView.setText(inputString);
+
+
+70) Buttons -
+* it is an integral part of Android app user interfaces and are widely used to create interactive interfaces.
+
+71) listeners in Android -
+* attach listeners on Buttons
+* ex. 
+  myBtn.setOnClickListener()
+
+72) ImageView - Displaying images -
+* used to show images and drawable. part of android framework
+* Attributes - src , 
