@@ -485,3 +485,133 @@ public class Car extends Vehicle{
 72) ImageView - Displaying images -
 * used to show images and drawable. part of android framework
 * Attributes - src , 
+
+
+73) The Greetings app - 
+* coding Example
+
+74) The counter app -
+* coding Example
+
+75) Desiging The layout -
+* 
+
+76) Adding functionalities to app-
+
+
+77) What are layouts?
+* layouts play a crucial role in designing the user interfaces of an android application
+* they allow yout to arrange and position various UI components such as buttons, text views, images, and more within the user interface of the application.
+* Layouts serves as blueprint for how the user interface should be organized and they help in achieving a consistent and visually appealing design across different devices and screen sizes.
+* All elements in the layout are built using a hierarchy of view and viewgroup objects.
+* A View usually draws something the user can see and interact with text, view, button etc.
+* Viewgroup is invisible container that defines the layout structure for the view and other viewgroup objects
+* View objects are usually called widgets and can be one of many subclasses such as button or text
+* The viewgroup objects are usually called layouts can be one of many types that provides a different layout structure such as linearlayout, relative layout, constraintLayout and so on.
+* Creating Layout -
+  * Each layout file must contain one root element and remaining should be its child elements
+* layout Attributes - 
+  * some Attributes are specific to view object itself.
+* layout_parameter -
+  * XML layout Attributes named layout_something define layout parameters for the view that are appropriate for the viewgroup in which it resides.
+
+
+78) types of Layout?
+* Each XML layout file is compiled into a view a resource.
+* load layout resource from your app code in your activities onCreate clickListener
+* ex.
+      onCreate(){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main_layout);
+      }
+* onCreate is method called by android framework
+* types - 
+  * linearlayout - arrange child views in linear fashion either horizontally or vertically (used for simple lists)
+  * relativeLayout - allows you to position child views relative to one another or to the parent layout.
+  * constraintLayout - allows you to create complex and responsive UI designs. uses system of constraints to define the position and alignment of views relative to each other.
+
+
+79) Linear Layout -
+* ex.
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    //need to keep in xml file, for linking
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"      //how to place element
+    >
+
+    <TextView
+        android:id="@+id/t1"
+        android:text="hi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </TextView>
+    <TextView
+        android:id="@+id/t2"
+        android:text="hi text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </TextView>
+
+</LinearLayout>
+
+80) relative Layout -
+* allows you to create and flexible user interface by specifying the positioning of child views in realtion to each other.
+* ex.
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/t1"
+        android:text="hi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true">
+
+    </TextView>
+    <TextView
+        android:layout_below="@+id/t1"          // set t2 below t1
+        android:layout_alignRight="@+id/t1"     // alignment set to t1 right
+        android:id="@+id/t2"
+        android:text="hi text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </TextView>
+
+</RelativeLayout>
+
+
+81) Constraint Layout -
+* Constraint layout - based on constraints, which defines how child views are positioned and sized relative to each other and to the parent layout.
+* constraints are set by specifying the connections between the edges of a view and other views, or the parent layout.
+* anchor points operate as a source or target for constraints.
+* to define constraint, we have to add at least one horizontal or vertical constraint for it.
+* syntax - app:layout_constraint<SOURCE_ANCHOR>_to<TARGET_ANCHOR>of="<TARGET_ID>"
+
+
+82) Constraint Layout in Android Studio -
+* 
+
+
+83) More About Constraint Layout -
+* 
