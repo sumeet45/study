@@ -615,3 +615,49 @@ public class Car extends Vehicle{
 
 83) More About Constraint Layout -
 * 
+
+84) App Life Cycle -
+* It referes to the sequences of events that occur as an activity trasitions through different states.
+* activities are the Fundamental building blocks of android applications, representing screens with user.
+* Activity Life Cycle consists of severl key methods that are called at different stages of an activities
+* lifecycle -
+    onCreate, onStart(when activity becomes visible), onResume(ready for user interaction), 
+    onPause(another activity is starting or device is going into multi-window mode), onStop(Release resources, save data)
+    onRestart (when activity restarted)
+    onDestroy (clean up resource and perform final tasks)
+* Orders -
+  On opening -
+    onCreate, onStart, onResume
+  On stopping -
+    onPause, onStop
+  On reOpening - 
+    onRestart, onStart, onResume
+  On closing app
+
+
+85) explicit intent -
+* a Fundamental component that facilitates communications between different components of an application as well as between different applications.
+* Intents are used to request an action to be performed either within same app or by other apps.
+* explicit intent - used to start a specific component within your own application, typically by specifying the target component class name
+* code -
+      Intent intent1 = new Intent(this, secondActivity.class);
+      startActivity(intent1);
+
+86) Implicit intent -
+* are used to perform actions that can involve components from other applications.
+* specify the action you want to perform, and the Android system finds the appropriate component to handle that action
+* need to revisit this video
+
+87) The manifest-
+* provides essential information about your android application to android operating system.
+* manifest file define various components that make up your activities such as activities, services, broadcast receivers and content providers.
+* Each component must declared with its name and configuration settings.
+* Intent filter in manifest file specifies that this activity is the main entry point of the app because we have the "action.MAIN" and should be displayed in launcher activity.
+* Intent filters define how your app can respond to implicit intents which are requested to perform a certain action.
+* the permissions are also part of Manifest file.
+
+
+88) Lucky number app promo -
+* showing app Example
+
+89) 
