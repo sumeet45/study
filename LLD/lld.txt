@@ -244,3 +244,7 @@ The **Factory Pattern** in JavaScript helps encapsulate object creation, making 
 3️⃣ **Abstract Factory** – For handling families of related objects.  
 
 Would you like me to provide real-world **React.js** examples? 🚀
+
+----------------------------------
+
+With Head First Design Pattern
