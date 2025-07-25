@@ -39,17 +39,25 @@
 * 
 
 17) Lets create a Brand new Xcode project -
+* to create new project, we can use 2 options - using file > new > project and through xcode opening modal
 * use storyborad in userInterface
-* leave team as 'none'-  we need while launching app on physical device
+* leave team as 'none'-  we need while launching app on physical device.
 * product name - "I am Rich"
-* Organization Identifier - using reverse domain name 'com.appbrewery.I-am-rich' will give unique identifier
+* Organization Identifier - org website "www.appbrewery.com", so final answer will be - "com.appbrewery" 
+* using reverse domain name 'com.appbrewery.I-am-rich' will give unique identifier
+* bundle identifier - it should be unique, so we can find app on appstore. it create by xcode itself using given data.
 * language - swift
 * remember, xcode saves all of code automatically
 
 18) A walkthrough of the xcode development enviorment -
 * tabs - General, Signing and Capabilities, Resource Tags, Info, Build Setting, Build Phases, Build Rules
-* ios 13.0 - will give minimum level 
-* 4 things - status bar, left pane, right pane, bottom pane (debug area - (view > debug area))
+* ios 13.0 - will give minimum level. below 13.0, app won't run on those, only above 13.0 will run.
+* told about device orientation
+* told about status bar
+* xcode segregate in to 4 things - status bar, left pane, right pane, bottom pane (debug area - (view > debug area))
+* we mostly work with swift files and storyborad file
+* while working with storyboard, we can add elements. Using right pane, we can alter their properties. she told that, she will explain in details once we start using it
+* debug area, comes under view > debug area > show debug area
 * https://www.appbrewery.co/p/ios-course-resources/
 * more shortcuts explained
 * preferences and font size and color
