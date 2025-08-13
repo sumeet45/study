@@ -63,4 +63,22 @@
 * preferences and font size and color
 
 19) Let's Design the User Interface -
-* 
+* we use "main.storyboard" to design page, "launchScreen.storyboard" used for launch screen.
+* in the storyboard, we have options in bottom, to change device, so we can check layout with different device.
+* "object library" will be available when we click on "+" icon.
+* suppose we want to change attributes of text, we have to select first "text" and click on "attributes inspector"
+* shows how to set colors using mulitple ways
+* shows size inspector working also. and tried 1 example.
+* sharing x and y axis details on screen.
+* while designing in ios, we take sizes in "points" not in "pixels".
+
+20) Let's incorporate Some image Assets -
+* "Assets.xcassets" are those one who have images.
+* showing how 1x, 2x and 3x image works. 3x will be sharper and have detailed thing as compared to 1x and 2x.
+* "appicon.co" is used for App icon generator.
+
+
+21) How to design and add an App icon
+* we can create icons using "appicon.co"
+* we have to add 2x, 3x etc., so whenever we copy and added it to app, app track properly which one is needed now mostly.
+* "content.json" is the one who manage this placement of images at exact place.
