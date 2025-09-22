@@ -57,13 +57,13 @@ Regex: The Basic Set -
 11) The wildcard symbol -
 * . - single wildcard, a period or dot is a wildcard that represents exactly one character in a single position
 ex.
-let string = "fooabar
+let string = `fooabar
 fooxbar
 baryfoo
 foobar
 fooxybar
-foocbar"
-const pattern = foo.bar/gm;
+foocbar`
+const pattern = /foo.bar/gm;
 
 
 12) Wildcard asterisk combo -

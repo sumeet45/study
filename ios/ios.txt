@@ -82,3 +82,65 @@
 * we can create icons using "appicon.co"
 * we have to add 2x, 3x etc., so whenever we copy and added it to app, app track properly which one is needed now mostly.
 * "content.json" is the one who manage this placement of images at exact place.
+
+23) Run your app on your iphone or simulator
+* show how to run your app with simulator
+* to run app on physical device have some steps-
+    check xcode and ios versions match
+    add an apple developer account
+    sign the app
+    connect physical device
+    trust yourself
+    Build and run your app
+* check xcode and ios versions match - 
+    xcode verions 11.0 knows about ios versions 13.0 and below.
+* add an apple developer account -
+    add your email and password, so it will get added it to xcode.
+    preferences > accounts
+* sign the app
+* in device and simulator, we can connect device using networks. for that, we have to connect device first, and click on connect through network. so it will remember its details
+
+
+35) Cloning from GitHub and How to Download the L.A.B. Project Stubs
+* shows how to clone github repo in xcode
+
+36) How to Design Your App
+* add background image and adjust using content mode
+* show how we can create copy of image.
+
+37) Let's link our design to our code
+* viewController.swift will be our code file
+* main.storyboard also called interface builder. It is our design file.
+* to show assistant code view, we can click on button (adjust editor lines) which is stack of lines.
+* to create IB outlet, we have to use "control^". Hold "control ^" and drag it to where we want our code should be placed.
+    @IBOutlet weak var diceImageView1: UIImageView!
+
+* To see UI as code, click on "Main" > shows list > "open as" > source code
+* To relink or link from code to UI, click on pointer and dragged to UI element.
+* Or you can use refactor menu.
+
+* when app crash due to not finding exact element, click right button on image and delete connection between code and UI. now app won't crash.
+* to re-establish connection between code and image, we can drag from code line to UI element
+* In viewDidLoad, we can add code which called once application loading completed.
+* showed, how to set new value to image element. formula -> who.what = value
+* showed another image and how to set to new image in that.
+    diceImageView1.image = UIImage(named: "DiceSix")
+* "viewDidLoad" works as main start point of app.
+* "alpha" in image attributes, help to make image transparent.
+* ask to add comments
+
+38) Responding to User Interactions with IBActions -
+* showing how to add interaction for button click.
+* create IB outlet for button, usng "control^" and drag it to viewController.swift.
+* In open outlet creation modal, we have name, connection, type and other things. Type should be selected as button, event also there.
+    @IBAction func submitButtonHandler(_ sender: UIButton) {
+    }
+
+40) [Swift Deep Dive] Naming Conventions, Commenting and String Interpolation
+* swift uses camelCase.
+* // - to add comment
+* showing code in playground
+* /*multi line
+    comment*/
+* print statement - to print value, to debug
+* print("Hello \(2+3) World");      //string Interpolation
