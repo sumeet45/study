@@ -144,3 +144,23 @@
     comment*/
 * print statement - to print value, to debug
 * print("Hello \(2+3) World");      //string Interpolation
+
+41) Storing Data using Variables and Arrays -
+* showing how to create array and how to assign different image on click of submit
+
+42) [swift deep dive] variables-
+* store data in variables.
+* we store data inside variable, replace with new value.
+* print("the value of a is \(a)");  string Interpolation
+* using third variable, show how to change values of 2 variables
+
+43) [swift deep dive] Arrays -
+* arrays - collection of items.
+* to access array - [1,2,3,4][0]    //0 refers index of array
+
+44) how to randomise the Dice image - 
+* let count += 1;       //operator
+* Int.random(in: 0...5)
+* in swift, if we didn't change the value of variable, editor suggest to change "var" to "let"
+
+45) 
