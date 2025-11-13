@@ -42,12 +42,13 @@
 * to create new project, we can use 2 options - using file > new > project and through xcode opening modal
 * use storyborad in userInterface
 * leave team as 'none'-  we need while launching app on physical device.
-* product name - "I am Rich"
-* Organization Identifier - org website "www.appbrewery.com", so final answer will be - "com.appbrewery" 
-* using reverse domain name 'com.appbrewery.I-am-rich' will give unique identifier
+* product name - "I am Rich". => suppose "FieldSpark"
+* Organization Identifier - org website "www.appbrewery.com", so final answer will be - "com.appbrewery". => suppose "https://tmv.vc/" then "vc.tmv"
+* using reverse domain name 'com.appbrewery.I-am-rich' will give unique identifier.    => after concat "vc.tmv.fieldspark"
 * bundle identifier - it should be unique, so we can find app on appstore. it create by xcode itself using given data.
 * language - swift
 * remember, xcode saves all of code automatically
+* while opening xcode, we found multiple options like ios, macOS, visionOS, driverkit and many more
 
 18) A walkthrough of the xcode development enviorment -
 * tabs - General, Signing and Capabilities, Resource Tags, Info, Build Setting, Build Phases, Build Rules
@@ -61,6 +62,10 @@
 * https://www.appbrewery.co/p/ios-course-resources/
 * more shortcuts explained
 * preferences and font size and color
+Notes -
+* A project tab - is the container for everything related to your app (or apps). Think of a project as the workspace for development.
+* A Target Tab - A target is a blueprint that tells Xcode how to build a product from the files in the project. It's instructions to build a specific app/product inside that project.
+* Scheme = How to build/run/debug/distribute it.
 
 19) Let's Design the User Interface -
 * we use "main.storyboard" to design page, "launchScreen.storyboard" used for launch screen.
@@ -163,4 +168,22 @@
 * Int.random(in: 0...5)
 * in swift, if we didn't change the value of variable, editor suggest to change "var" to "let"
 
-45) 
+46) Constants, the range operator and Randomisation -
+* constant - like once it declare and initilize variable, it doesn't change.
+* Basic data type -  string("angela"), Integer(12, -12, 1223444), float(12.34), double(3.123344444444), boolean(true, false)
+* to create random number - Int.random(in: 0...5)   => it can generate any value from 0 to 5
+* to do not include upper number - Int.random(in: 0 ..< 5)
+* like Int.random, we have Float.random(in: 0...5), Bool.random()
+
+
+59) Why do we need auto layout?
+* we will cover  - size classes and orientation, understand constraints, learn about alignment and pinning, learn about stackviews
+
+60) size classes explained - 
+* now, we are seeing, on device rotate, screen got cut. content not showing.
+* size classes - means virtual devices to see app in action. 
+
+61) Setting Constraints and working with the Safe Area -
+* by adjusting image, it doesn't adjust for multiple area.
+* by adding constraints, we can readjust screen.
+* To add constraint to image, as per different screen, we need to select image first and click on "Add new constraint"

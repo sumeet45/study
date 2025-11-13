@@ -5,3 +5,209 @@
 
 360) Accessing data with Rest API's -
 * accessing data with Rest API, will be possible in following ways - HTML, plain text, XML, JSON
+
+
+----------------- 
+tony alicea node js course 
+
+1) Introduction and the Goal of this Course
+* we will go under the hood in nodejs.
+* Don't Imitate, understand
+* v8 engine
+
+2) Big Words and NodsJS
+* big words are having simple meaning, just understand that first. 
+
+4) Conceptual Aside: The Command Line Interface
+* CLI - terminal or interface, where you type commands to computer rather than clicking around the mouse.
+* there are multiple CLI commands, using those we can give commands to computer.
+* bash on linux, terminal on mac, command prompt on windows
+* While working with nodejs, we need to do work more with CLI
+* showed commands - ls, cd folderName, dir /w /p
+* showed powershell also
+
+5) Command Line Reference
+https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Environment_setup/Command_line
+
+
+7) Conceptual Aside: Processors, Machine Language, and C++
+* v8 engine is core part of nodejs
+* MicroProcessor - small machine, and gives the output based on input. MicroProcessor speaks language. 
+* But all MicroProcessor speak different languages. languages - IA -32, x86-64, ARM, MIPS and etc. These languages called "Machine Code"
+* Machine Code (languages) - Programming languages spoken by computer Processors. Every program you run on your computer has been converted into Machine code.
+* hierarchy - Javascript > c/c++ > Assembly Language > Machine Language
+* Node is written in C++
+* v8 is written in C++
+* Node is wrapper around v8 engine. hence both are written in c++
+
+8) Javascript Aside: Javascript Engines, and The EcmaScript specifications -
+* EcmaScript - It is standard that Javascript is based on.
+* JS invented first. but all browser create changes in JS as per their requirement. Then Ecma is org that basically give standards to JS.
+* JS engine - a program that converts JS code into something the computer Processors can understand. It should follow ECMAscript standard on how the language should work and what features it should have.
+
+9) v8 under the hood -
+* v8 written for chrome browser
+* showing v8 github repo and downloaded also. showed respective folder for each machine language. shows some .h and .cc files.
+* this engine code written in c++, convert it to machine code.
+
+10) Adding features to Javascript - 
+* v8 can run standalone, or can be embedded into any c++ application.
+* so we can create c++ programm and add v8 engine to it. using this, we can add extra features to JS. c++ is far bigger and have more control compared to JS
+* he created 1 programm and add v8 to it. then he run JS code and it shows output. Even he uses different argument also which print actual c++ code also.
+    shell --print_code  (to show machine code)
+
+
+11) Conceptual Aside: Servers and Clients
+* Nodejs is server technology, and designed to write server code using JS.
+* server is computer that is performing services. client ask data from server. so server do big amount of work.
+* client request data in standard format. and then server sends response in standard format. This is called "client-server model of computing"
+* webserver - it is computer which is connected to internet and taking requests from client through internet. 
+* The standard, which shapes request and response, is called "HTTP"
+* we are aiming to write server and client code using Javascript
+
+12) What does Javascript Need to Manage a server?
+* Need things in JS -
+    1. better ways to organize our code into reusable pieces
+    2. ways to deal with files
+    3. ways to deal with databases
+    4. The ability to Communicate Over the Internet
+    5. The ability to Accept request and send response (in standard format)
+    6. way to deal with long time taking work
+
+13) The c++ core -
+* showing github repo of node. Node js developed by Ryan Dahl under joyent company
+
+14) The Javascript Core -
+* In nodejs code, they have JS code too to access c++ feature. These JS code are actually wrapper around c++ features.
+
+16) Lets install and Run some Javascript in Node
+* install nodejs process.
+* it also install npm
+* to check node is installed or not. using  node -v
+* we can type command  "node" and create enviornment which Accept JS code and gives output.
+* we can run file using node command - node app.js
+* showing debug in VS code.
+* breakpoint - a spot in our code where we tell a debugging tool to pause the execution of our code. so we can figure out what's going on.
+* shows how debugging activated in VS code
+
+17) LTS vs current
+* LTS - long term support. LTS version are stable one. prefer LTS over current. current might fail.
+
+
+19) Modules -
+* Moduels - a reusable block of code whose existence does not accidentally impact other code. JS didn't have this before.
+* Module wasn't part of JS, newly introduced. Using this, code in module doesn't impact other code. 
+* Node js implements CommonJS modules. 
+* Common JS modules - An agreed upon standard for how code modules should be structured.
+
+20) Javascript Aside: First Class Functions and Function expression
+* First Class function - Everything you can do with other types you can do with functions. You can use functions like strings, numbers, etc.( i.e. pass them around, set variables equal to them, put them in arrays and so on). it allows to write Function expression.
+* Function expression - A block of code that results in a value. Function expressions are possible in Javascript because functions are first class.
+* Invoke function -  call function
+* Function is actually special kind of object.
+* pass them around example - 
+function ab(){
+    console.log("Hello");
+}
+function bc(a){
+    a();
+}
+bc(ab);
+* set function to variable -
+var greetMe = function(){
+    console.log("hellow");
+}
+* use a function expression on the fly
+logGreeting(function(){
+    console.log("Hello sumeet");
+})
+
+21) Let's build a module
+* Using Module, we can separate code as per functionality and manage properly.
+* using "require" function, we can pull code in current codebase.
+    require("./greet.js");      // ./ means same folder level
+* to make code accessible in other file, we need to export first.
+    module.exports = {
+        greet: greetFn
+    }
+    var greet = require("./greet.js");
+    greet.greetFn();
+
+
+Note -
+Q. How engine resolve module in ES6 import export
+-   1 In ES6 import export, engine first went through each module and create dependancy graph in compile time.
+    2 Engine then resolve and links all imports/exports before executing anything
+
+* In ES6 modules, imports are live bindings, not copies.
+
+
+22) Javascript Aside: Objects and Objects Literal 
+* object - name value pair. name which maps to value. The name may be defined more than once in different context, but only can have one value in any given context. value can be other name-value pair.
+* value can be anything like primitive "property", object "property", Function "method"
+* object literal - name/value pairs separated by commas and surrounded by curly braces. This is quick, shorthand way to create Javascript objects in code.
+* let person  = {
+    fname: "sumee",
+    lname: "shedge",
+    greet: function(){
+        console.log(`Hello ${this.fname} ${this.lname}`);
+    }
+}
+person.greet();
+console.log(person["fname"]);
+
+23) JS Aside: Prototypal inheritance and Function Constructors
+* Inheritance - one object gets access to the properties and methods of another object.
+* JS implements Prototypal inheritance.
+* Every object have its prototype object. Using that, we can access different objects properties. It means whenever object created using Function Constructors, using prototype inheritance we can access other object properties in object.
+* Class - this is new ES6 feature
+* Function Constructors - Within node, we will use Function Constructors. A normal Function that is used to construct objects. The "this" variable points a new empty object, and that object is returned from the function automatically. And we do this by using "new" keyword.
+* To create object from function, we write function looks like below. It return new empty object and "this" keyword will point to that empty object. And within function, we add properties and methods, which get attached to new object.
+ex. 
+    function Person(fname, lname){
+        this.lname = fname;
+        this.fname = lname;
+    }
+
+    // create prototype inheritance
+    Person.prototype.greet = function(){
+        console.log(`Hello ${this.fname} ${this.lname}`);
+    }
+    var ab = new Person("sumeet", "shedge");
+    ab.greet();
+    var bc = new Person("sumeet1", "shedge");
+    bc.greet();
+
+    console.log(ab.__proto__);
+    console.log(bc.__proto__);
+    console.log(ab.__proto__ === bc.__proto__);     //true
+* Here, Person.prototype is not prototype for function actually, it is for objects which created using that function through funciton constructor. 
+
+
+24) Javascript Aside: By Reference and By Value -
+* primitive - a type of data that represents single value. Like a number or a string. In other words, not an object.
+* By value - Whenever we pass value to function or create variable using another one, it create using by value. it means, new variable or argument will create new memory location with value and it will point to that.
+    b = a (or pass to a function)
+    // so if "a" changes in future, "b" doesn't update
+* By Reference - when we pass object to function or to new variable, it will point to same memory location. both variable pointing to same memory location in Pass by reference.
+    b = a (or pass to a function)
+    //so If any changes happen in "a", it will reflect in "b"
+
+
+25) Javascript Aside: Immediately invoked Function Expressions (IIFEs)
+* When we talk about modules, we are not only talking about reusable block of code, but also we are talking about that's protected. Means, code inside module doesn't affect other code. Essentially, we are talking about scope.
+* Scope - Where in code you have access to particular variable or function.
+* so we need function, which is Immediately invoked by itself.
+* Whatever you created variable inside of IIFEs, it is protected. and it doesn't affect outside code and vice versa. That variable is available (scoped) to that function only.
+* ex.
+var fname = "Jane";
+(function (lname){
+    var fname = "John";
+    console.log(fname);
+    console.log(lname);
+}('Doe'));
+console.log(fname);
+
+John
+Doe
+Jane
