@@ -1,0 +1,364 @@
+
+What happens when a client sends a request?
+* Browser resolves your domain (DNS → IP)
+* TCP/TLS handshake (if HTTPS)
+* Request sent → Server port 80/443
+* Server application receives it (Node, Apache, Nginx)
+* Server responds with HTML/JSON
+* Client renders
+
+
+DNS - 
+DNS, or Domain Name System, is the internet's "phonebook" that translates human-readable domain names (like www.google.com) into machine-readable IP addresses (like 192.0.2.1). This process is essential because computers use IP addresses to locate and connect with each other on a network. When you enter a website address, a DNS server finds the corresponding IP address so your browser can load the page. 
+
+* How DNS works
+1) User enters a domain name: You type a URL into your web browser.
+2) Browser queries DNS: The browser sends a query to a DNS resolver, which is a server that can look up the IP address.
+3) DNS lookup process: The DNS resolver works through a hierarchical system to find the IP address:
+    * It may first check its local cache for a recent lookup.
+    * If not found, it asks a root name server.
+    (What is Root Name server? -
+        A root name server is a crucial server at the top of the Domain Name System (DNS) hierarchy that translates human-readable domain names into IP addresses. When a DNS lookup request occurs, the query first goes to a root name server, which then directs the query to the correct top-level domain (TLD) servers (like .com or .org) instead of resolving the entire address itself. There are 13 logical root name server addresses, but they are distributed globally across the internet using Anycast, with hundreds of physical servers in total, to improve speed and redundancy. )
+    ( Anycast DNS - 
+    Anycast DNS is a technique where a single IP address is used for multiple DNS servers located in different geographical locations. This allows user queries to be automatically routed to the nearest available server, which reduces latency, improves loading speeds, and increases reliability and availability. If one server fails, traffic is rerouted to another, making it more resilient to outages and attacks like DDoS. )
+    * The root server directs it to the correct top-level domain (TLD) server (e.g., for .com or .org).
+4) The TLD server directs it to the authoritative name server for that specific domain. 
+    ( Authorative Name Server -
+        * An authoritative name server is a DNS server that holds the definitive, original records for a specific domain and provides the final answer to a DNS query. Unlike a recursive resolver, which looks up information from other servers, an authoritative server provides answers directly from its own data about the domain it is responsible for. 
+        * Types of authoritative name servers
+        a) Primary name server (or Master): This server stores the master copy of a domain's zone data, and its administrator is responsible for making changes here.
+        b) Secondary name server (or Slave): This server maintains an identical, read-only copy of the primary server's zone data. It receives updates from the primary server automatically to stay synchronized. )
+5) IP address is returned: The authoritative name server provides the final IP address.
+6) Browser connects to the website: The browser uses the received IP address to connect to the website's server and load the page. 
+
+
+* Combined OSI Flow with DNS -
+1. Browser wants to connect → needs IP.
+2. Sends DNS query (Application Layer).
+3. Gets IP from DNS response.
+4. Now starts real OSI flow for HTTP:
+   Layer 7 → … → Layer 1 → Internet → Server
+
+
+* Actual data movement (real flow): DOWN → ACROSS → UP
+✔️ First data goes from Application → Physical on the client side
+✔️ THEN it travels through the network
+✔️ Then it reaches Physical → Application on the server side
+This is how the actual OSI flow works.
+
+
+---------------------------------------------------------------------------------------------------------
+Q) example of API request response with OSI model
+Answer from Chatgpt -
+
+*** FULL OSI MODEL EXAMPLE FOR AN API CALL ***
+🟦 CLIENT SIDE: Making an API Request
+
+Your application (mobile app, React app, backend script, Postman… anything) sends:
+
+GET https://api.example.com/users
+Accept: application/json
+Authorization: Bearer 12345...
+
+
+Now OSI starts working…
+
+🔵 7. Application Layer (Layer 7)
+* Your application constructs the HTTP request.
+
+Includes:
+HTTP method (GET)
+URL path (/users)
+Headers (Auth, Accept)
+Body (if POST/PUT)
+JSON/XML/etc.
+
+👉 This is where APIs “live”.
+
+🔵 6. Presentation Layer (Layer 6)
+* For HTTPS, TLS encryption happens here.
+* Data is transformed into encrypted binary.
+    Encrypted(HTTP_Request)
+* Format conversions also happen here (JSON → bytes).
+
+🔵 5. Session Layer (Layer 5)
+* A secure TLS session is created between client ↔ server.
+* Session keys established using SSL handshake.
+* Manages:
+    * Session resume
+    * Authentication tokens
+    * Socket lifecycle
+
+🔵 4. Transport Layer (Layer 4)
+TCP does the heavy lifting:
+    1) 3-Way Handshake
+        SYN → 
+            ← SYN-ACK
+        ACK →
+
+    2) Breaks the encrypted data into TCP segments
+    3) Adds:
+        * Source Port: 51515
+        * Destination Port: 443 (HTTPS)
+
+    4) Guarantees:
+        * Reliable delivery
+        * Ordered packets
+        * Retransmission if lost
+
+🔵 3. Network Layer (Layer 3)
+Adds IP information → forms packet.
+
+    Src IP: 192.168.1.10
+    Dst IP: 104.18.23.12 (API server)
+    Protocol: TCP
+
+Routers use this to forward traffic.
+
+🔵 2. Data Link Layer (Layer 2)
+Adds MAC address information → forms frame.
+
+    Src MAC: Your laptop’s MAC
+    Dst MAC: Router’s MAC
+
+Switches use this to move the frame locally.
+
+🔵 1. Physical Layer (Layer 1)
+
+Everything becomes:
+    Electrical pulses (Ethernet)
+    Radio frequencies (WiFi)
+    Light signals (Fiber)
+
+These bits travel through:
+    WiFi → Router → ISP → Internet → Server
+
+
+🟧 SERVER SIDE: Receiving the API Request
+
+The server goes up the OSI layers:
+    1 → 2 → 3
+    Bits → Frames → Packets
+
+4. Transport
+    TCP reassembles segments
+    Confirms delivery to client
+
+5. Session
+    Uses existing TLS session
+
+6. Presentation
+    Decrypts TLS
+    Converts binary → HTTP text
+
+7. Application
+The API server receives:
+    GET /users
+    Authorization: Bearer 12345
+
+Framework handles it:
+    Node.js Express
+    Spring Boot
+    Django
+    Laravel
+    FastAPI
+    etc.
+
+Processes logic → fetches data → constructs JSON response.
+
+
+🟩 SERVER SENDS RESPONSE (BACK DOWN OSI)
+
+Application Layer -
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
+    {
+    "id": 1,
+    "name": "John",
+    "email": "john@example.com"
+    }
+
+Then:
+7 → 6 → 5 → 4 → 3 → 2 → 1
+…and goes back through the internet to the client.
+
+
+🟦 CLIENT RECEIVES RESPONSE AND MOVES UP:
+1 → 2 → 3 → 4 → 5 → 6 → 7
+Finally your app receives JSON and displays it.
+
+ 
+* FINAL SUMMARY (API with OSI)
+✔ API request created at Layer 7
+✔ Encrypted at Layer 6
+✔ Session/TLS handled at Layer 5
+✔ Sent reliably using TCP (Layer 4)
+✔ Routed across internet using IP (Layer 3)
+✔ Delivered via MAC frames using Layer 2
+✔ Sent as bits in Layer 1
+✔ Server reverses that order and processes the request
+✔ Response comes back the same path in reverse
+
+
+---------------------------------------------------------------------------------------------------------
+OSI Model layers -
+* Application Layer in OSI Model (Layer 7)
+    It refers to standards, protocols, and services that these apps use to communicate.
+* What the Application Layer Actually Does
+It provides network services to applications such as:
+    ✔ 1. Identifies communication partners
+    Checks who the client wants to talk to
+    Resolves hostnames via DNS
+
+    ✔ 2. Synchronizes communication
+    Ensures both sides use the same protocol (e.g., HTTPS)
+    Defines how messages are formatted
+
+    ✔ 3. Provides data encoding and formatting
+    JSON, HTML, XML, MIME
+
+    ✔ 4. Handles authentication & authorization
+    HTTP Basic, OAuth, API keys, cookies
+
+    ✔ 5. Handles user-level functions
+    File transfer (FTP)
+    Email handling (SMTP/IMAP)
+    Web browsing (HTTP)
+    Remote login (SSH)
+
+* Key Idea
+1) Application Layer protocols do not move data; they only define how data should be used by the user-facing application.
+2) Data transferring is done by the lower layers.
+
+* Common Application Layer Protocols
+Web & APIs
+    HTTP / HTTPS
+    WebSocket
+
+Email
+    SMTP
+    POP3
+    IMAP
+
+File Transfer
+    FTP
+    SFTP
+    TFTP
+
+Remote Access
+    SSH
+    Telnet
+
+Network Services
+    DNS
+    DHCP
+    SNMP
+
+Others
+    NTP (time sync)
+    LDAP (directory services)
+
+---------------------------------------------------------------------------------------------------------
+Presentation Layer in OSI model
+    * The Presentation Layer is responsible for how the data looks — its format, structure, encoding, and encryption.
+    * It ensures that data from the sender is understandable by the receiver, even if both use different internal representations.
+
+Main Purpose of the Presentation Layer
+    * Think of it as the translator or formatter of the OSI model.
+
+    It handles:
+        ✔ Data Translation (Encoding / Decoding)
+            * Converts application data into a common format
+            * Example: JSON → binary → JSON
+
+        ✔ Data Encryption / Decryption
+            * SSL/TLS
+            * HTTPS
+            * AES, RSA, etc.
+
+        ✔ Data Compression / Decompression
+            * GZIP
+            * JPEG
+            * MP3 (audio compression)
+            * ZIP files
+
+🌐 2. Why Presentation Layer Exists
+    Different systems store and encode data differently.
+
+    Example:
+        Windows uses CP1252 encoding
+        Linux uses UTF-8
+        Some APIs send Base64 images
+        Files can be JPEG, PNG, GIF, TIFF
+
+    Without a standard “presentation” format, communication between systems would fail.
+
+🔍 3. What the Presentation Layer Actually Does
+1. Formatting / Data Representation
+    * HTML, XML, JSON
+    * ASN.1 (Networking data format)
+    * MIME types
+
+2. Character Encoding
+    * ASCII
+    * Unicode / UTF-8
+    * EBCDIC (old IBM encoding)
+
+3. File Encoding
+    * JPEG, PNG, GIF (images)
+    * MP4 (videos)
+    * PDF, DOCX (documents)
+
+4. Encryption
+    * TLS/SSL (at the presentation layer in OSI; but in TCP/IP it sits at Application layer)
+
+5. Compression
+    * GZIP for web
+    * DEFLATE
+    * Brotli (modern web compression)
+
+🧾 4. Examples of Presentation Layer Operations
+🟦 Example 1: Loading a Website (HTTPS)
+    * Application Layer: Browser builds HTTP request
+    * Presentation Layer: SSL encrypts the message
+    * Transport Layer sends encrypted data
+    * Server decrypts at Presentation Layer
+    * Application (server) gets plain HTTP request
+
+🟦 Example 2: JSON API
+    * Server sends JSON: { "name": "Sumeet" }
+    * Presentation Layer encodes it into UTF-8
+    * Transport sends bytes
+    * Client receives bytes
+    * Presentation layer decodes UTF-8 → JSON string
+
+🟦 Example 3: Sending a JPEG image
+    Client → JPEG compression (Presentation)
+    Server → Receives JPEG bytes and displays correctly
+
+
+🧩 5. Protocols / Standards for Presentation Layer
+    * Unlike Application Layer, OSI’s Presentation Layer doesn’t have many named protocols.
+    * But it uses formats and standards like:
+
+    Encoding Standards
+        * ASCII
+        * UTF-8
+        * UTF-16
+        * Base64
+
+    Compression Formats
+        * GZIP
+        * Brotli
+        * ZIP
+        * JPEG / PNG (image formats)
+
+    Encryption
+        SSL / TLS (OSI's view; TCP/IP considers it below Application layer)
+
+* Layer 6 – Presentation Layer => Encoding, encryption, data formats
+
+------------------------------------------------------------------------------
+
