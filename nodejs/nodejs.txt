@@ -211,3 +211,16 @@ console.log(fname);
 John
 Doe
 Jane
+
+
+26) How Do Node Modules Really Work?: module.exports and require
+* in node, we use "require" and "module.exports" to import and export modules.
+* showing internal node code for "require" function.
+* while requiring module, it check whether module already cached or not. And if its not cached, then it can cached module.
+* if file have extensions other than "JS", just mention it while requiring.
+* While running code, first it wraps in function expression with five parameters.
+*
+    (function(exports, require, module, __filename, __dirname){
+        // our code
+    });
+    fn(exports, require, module, __filename, __dirname);        // node invokes function
