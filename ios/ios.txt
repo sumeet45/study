@@ -187,3 +187,15 @@ Notes -
 * by adjusting image, it doesn't adjust for multiple area.
 * by adding constraints, we can readjust screen.
 * To add constraint to image, as per different screen, we need to select image first and click on "Add new constraint"
+
+
+
+62) How to use Alignment and Pinning -
+* To align logo with screen, we need different technique instead of setting constraint. Bcz if we added constraint from top like 300pt, then in horizontal mode, it will push logo out of window.
+* for this, we need to use "align" icon. first select logo and then click on "align" mode. and select "horizontal" and "vertical" align.
+* it will add constraint and it will show when we expand "launchScreen.dashboard".
+
+63) Working with Containers and Subviews -
+* Now lets move to MainStoryboard.
+* Here, we have complex page. If we try to add constriant or alignment for this, it will be tedious task.
+* we can use "container" for that.
