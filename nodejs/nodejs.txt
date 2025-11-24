@@ -224,3 +224,64 @@ Jane
         // our code
     });
     fn(exports, require, module, __filename, __dirname);        // node invokes function
+
+
+27) Javascript Aside: JSON
+* JSON - "Javascript object notation" - A standard for structring data that is inspired by Javascript object literals. JS engine are built to understand it.
+* in JSON, we have to add names within quotes.
+
+28) More on require -
+* If file is not present, then it will look for folder name and goes inside and look for index.js
+* when we have bigger module, so that time we have to modularize code. suppose, we have spanish.js and english.js. and we want that code in other separate file.
+    // spanish.js
+    var greet = () => {
+        console.log("Hola");
+    }
+    module.exports = greet;
+
+    // english.js
+    var greet = () => {
+        console.log("Hello");
+    }
+    module.exports = greet;
+
+    //greet/index.js
+    var english = require('./english');
+    var spanish = require('./spanish');
+    module.exports = { english, spanish };
+
+    //app.js
+    var greetObj = require("./greetings.json");
+    var greet = require("./greet");
+    greet.english();
+    greet.spanish();
+
+
+29) Module Patterns -
+* we can return single function in module.exports.
+    module.exports = function(){
+        console.log("Hello");
+    }
+
+    // app.js
+    var greet = require("./app");
+    greet();
+
+* //a0.js
+module.exports.greet = function(){
+    console.log("hello");
+}
+
+// a1.js
+var greet2 = require("./greet").greet;
+
+* //a0.js
+function Greetr(){
+    this.greeting = "Hello";
+    this.name = 'sumeet';
+}
+module.exports = new Greetr();
+
+//a1.js
+var greet = require("./a0");
+greet()
