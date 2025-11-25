@@ -106,7 +106,7 @@ example 1-
 
 example 2- 
 	var myvar;		//declared variable
-	console.log(myvar);		//error - reference error
+	console.log(myvar);		//undefined
 
 
 
@@ -118,7 +118,7 @@ example 2-
 14) Single Threaded, Synchronous Execution - 
 * Single Threaded - one command at a time.
 * Synchronous Execution - one command at a time in order that it appears.
-
+* In short - One command and in order
 
 
 
