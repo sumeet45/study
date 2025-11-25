@@ -191,7 +191,19 @@ function b(){
   console.log(myvar); //2
   a();
 
+3) function a() {
+  var myvar = 3; 
+  console.log(myvar); //3
+  b(); 
+}; 
+function b(){ 
+	console.log(myvar); //2
+} 
+  var myvar = 2; 
+  console.log(myvar); //2
+  a();
 
+* above 3rd exmaple clearly shows that, while using reference to outer variable enviorment, it doesn't consider execution context stack, but it actually looks lexically and decide variable value based on where code is written. 
 
 18) Scope, ES6 and let
 scope - where variable is available in your code. If function will call twice, then there is 2 different variables in 2 different execution context.
