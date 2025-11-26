@@ -501,8 +501,8 @@ greet({ name: "sumeet" });
 * JSON has some diffn -  1) property must be wrapped with ` "" `
 * Object Literal work with or without ` "" `, 
 	but JSON should have ` "" `;
-* JSON.stringify({"name": "sumeet"}) - use to convert Object to JSON string.
-* JSON.parse({ name: "sumeet" }) - use to convert JSON string to Object.
+* JSON.stringify({ name : "sumeet"}) - use to convert Object to JSON string.
+* JSON.parse('{ "name" : "sumeet" }') - use to convert JSON string to Object.
 * JSON is more strict, like it want quotes around the names and doesn't let you put functions as values.
 * JSON help us to transfer data.
 
@@ -598,6 +598,7 @@ B) By Ref -
 * Global level [function statement, function expression  & with fat arrow function] - it gives "window" object. 
 * Object Method - it gives "Parent Object".
 * nested function in Object Method - points to "Global Object", hence we create another variable called "self" in object method and used it as reference in "nested function".
+* Object fat arrow function - will give "window" object.
 
 * example 1 -
 		function a(){
@@ -639,6 +640,15 @@ var c = {
 };
 c.log();
 
+* ex.
+	let a = {
+	    ab: function(){
+	        console.log("ab",this);     // "a" object
+	    },
+	    bc: () => {
+	        console.log("bc",this);     //window
+	    }
+	}
 
 
 
