@@ -70,3 +70,28 @@ core features - Server Side Rendering, Static site generation, Effeicient routin
       </main>
     );
   }
+
+10) Styling components in Next.js -
+* External CSS file - created and applied to Post Component
+* Create "post.module.css" and importing in "post.tsx"
+* by "tailwind", we can manage css. using tailwind classes, we can styled our UI.
+* CSS modules offers custom styling, while tailwind offers utility first approach for quick layouts
+
+
+11) Routing in Next.js – How to Use App Router in your Next Apps -
+* https://www.freecodecamp.org/news/routing-in-nextjs/
+  * The Pages Directory and App Router are two crucial components that determine how users navigate through a Next.js application.
+  * In Pages router, we create folder like following - "pages/about/index.ts"
+  * In App router, folder - "app/about/pages.tsx"
+  * Apart from routing, App Router boasts a range of other features, including: 1) Layout Component, 2) Nested Layouts, 3) Template Components, 4) Loading Component, 5) Streaming, 6) Error Component, 7) Server Components
+
+12) Adding Navigations with next.js -
+* To maintain same structure across app, we use Layout Component. 
+* home.tsx -
+   <Layout>
+      <h1>Hello world</h1>
+      <Link href="/about" >Got to about page</Link><br />
+  </Layout>
+
+13) Using Environment Variables in Next.js
+* to add env config, we need to add it to root directory
