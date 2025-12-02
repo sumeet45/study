@@ -1,0 +1,22 @@
+
+2) Introduction and Welcome
+core features - Server Side Rendering, Static site generation, Effeicient routing to create web apps
+
+3) Why choose Next.js?
+* speed, scalability, and flexibility comes with next js
+* SSR (Server Side Rendering)- Content is rendered on server and then sent to the user's browser. Faster load times. Better SEO. Overall improved performance.
+* Static Site Generation - next js generate static HTML pages that load lkightining fast.
+* Easy routing - by just adding folder, we can create route
+* Automatic Code Splitting - Splits your code into smaller bundles, only the necessary JS loads for each page
+* Great For SEO - Because of Server side rendering search engines can crawl your pages easily.
+* Built in API routes - Create API routes directly in project
+
+4) Installing next.js and Initial Setup - 
+* first install nodejs
+* then use -  "npx create-next-app@latest"
+* also check version - "npx next -v"
+* visit folder and run App - "cd my-app" and "npm run dev"
+* site available on "http://localhost:3000"
+
+5) First look at a Next.js Page -
+* 
