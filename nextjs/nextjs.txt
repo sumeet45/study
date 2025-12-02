@@ -19,4 +19,54 @@ core features - Server Side Rendering, Static site generation, Effeicient routin
 * site available on "http://localhost:3000"
 
 5) First look at a Next.js Page -
-* 
+* to create new page in next js, you need to create folder beside to "page.tsx". suppose, we want to create route "about". For that, we have to create folder "about" near to "page.tsx" in app folder. within that, add "page.tsx", so it will server for "localhost:3000/about"
+* NextJs automatically generate route for us.
+* add code in main "page.tsx" -       <Link href="/about" >Got to about page</Link> to redirect user to "about" page.
+* to transit from one page to another, it uses "Client Side Navigation". it only update parts of page only. hence it becomes so fast.
+
+6) Getting Started with next.js -
+* Next.js is a React framework for building full-stack web applications. it means server app??-
+  Next.js being a full-stack React framework means it provides the tools and capabilities to handle both the frontend (client-side) and the backend (server-side) aspects of a web application within a single framework. 
+  It also automatically configures lower-level tools like bundlers and compilers. You can instead focus on building your product and shipping quickly.
+  Next.js has two different routers:
+    a) App Router: The newer router that supports new React features like Server Components.
+    b) Pages Router: The original router, still supported and being improved.
+
+
+8) Pages and Routing in next.js - 
+* let's try to create dynamic pages, based on data with next js
+* For this, we will add folder - "posts/[id]". within that, add page.tsx. 
+* Add following code -
+  export default async function Post({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params; // <-- FIX
+      return (
+      <main>
+        <h1>Post Page</h1>
+        <p>Post ID:111 - {id}</p>
+      </main>
+    );
+  }
+
+9) Fetching Data in next.js -
+* code -
+  import { posts } from '../../data/posts';
+  export default async function Post({ params }: { params: Promise<{ id: string }> }) {
+      const { id } = await params; // <-- FIX
+      const post = posts.find((post) => post.id === id);
+      if(!post){
+          return (
+              <main>
+                  <h1>Post Not Found</h1>
+                  <p>No post found with ID: {id}</p>
+              </main>
+          );
+      }
+      return (
+      <main>
+        <h1>Post Page</h1>
+        <p>Post ID: - {id}</p>
+        <p>{post?.title}</p>
+        <p>{post?.content}</p>
+      </main>
+    );
+  }
