@@ -1,0 +1,43 @@
+
+2) what is nexrt js? why would use it?
+* next js is react framework.
+* next js fullstack react framework. simplify process of building fullstack applications with react.
+* It gives both frontend and backend.
+* react gives more feature 
+
+
+3) Key features and Benefits -
+* FullStack apps - nextjs blends frontend + backend (in same project). Advantage - Frontend and Backend are part of same project
+* File based routing - routes are configured via filesystem (files + folders)
+* Server Side Rendering - by default, NextJs (pre) renders all pages on server. Advantage - finished HTML page (including content) is sent to the client ( -> great for SEO)
+
+4) Creating first NextJs app -
+* showing how to create App
+
+5) NextJs vs "Just React" - analysing the nextjs project -
+* In React, all content generated on client side, hence it shows simple html content and react library link in code.
+* In NextJs , all content generated on server and received on client side, so Browser can crawl when visited first time.
+
+6) Editing First App -
+* create route - "app/about/page.js" and add component in it.
+
+7) Pages router and App router - one Framework, Two Approaches -
+* Pages approach is older one.
+
+8) How to get most of this course -
+* watch videos and practices
+
+
+Next JS essentials (App router)
+86) Module introduction - 
+* 
+
+87) Starting Setup - 
+* setting project
+
+88) Understanding File-based Routing & React Server Components
+* "page.js" tell next js to render page.
+* normally, in "page.js", we have server component. So it render on server and send it to browser
+
+89) Adding Another Route via the File System
+* 
