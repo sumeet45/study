@@ -86,3 +86,35 @@ Next JS essentials (App router)
 
 94) Configuring Dynamic Routes and Using route Parameters -
 *  by adding, "app/blog/[id]/page.tsx", we will add dynamic routes. by default, in "app/blog/[id]/page.tsx", we received props object from next js. from that, we can extract params.
+
+export default async function BlogPost({ params }: { params: { slug: string } }) {
+    let slugs = await params;
+    return (
+         <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+        <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-center py-32 px-16 bg-white dark:bg-black sm:items-start">
+          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
+            This is the Blog Post Page. { slugs.slug }
+          </h1>
+        </main>
+      </div>    
+    )
+}
+
+95) Onwards to the Main Project: The Foodies App
+* gives new setup. downloading...
+
+
+98) Revisiting The Concept Of Layouts -
+* layout.js = is wrapper around pages.
+* if we added "app/meals/layout.js", it created nested layout. And rootlayout will be also active.
+    export default function ShareMealPage({children}: {children: React.ReactNode}) {
+      return (
+        <>
+            <div>Share meal layout</div>
+            {children}
+        </>
+      )
+    }
+
+99) Adding a Custom Component To A Layout -
+* adding a custom component in root layout. so Header component, we can place it in layout.js
