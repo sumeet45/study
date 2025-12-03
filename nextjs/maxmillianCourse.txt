@@ -118,3 +118,28 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
 99) Adding a Custom Component To A Layout -
 * adding a custom component in root layout. so Header component, we can place it in layout.js
+* <img src={logo.src} alt="Foodies Logo" />    // with normal img, need only "logo.src"
+
+100)  Styling NextJS Project: Your Options & Using CSS Modules
+* css modules - scoped to specific components. Have to name like following - ".module.css".
+
+import Classes from "./main-header.module.css";
+<header className={Classes.header}></header>
+
+101) Optimizing Images with the NextJS Image Component
+* Next Js image component will show image once they are really visible on the page.
+* handle process of setting up responsive images
+* 
+
+102) Using More Custom Components -
+* he move remaining header code to another component and imported in layout file.
+
+103) Populating The Starting Page Content
+* just populating using given file
+
+104) Preparing an Image Slideshow
+* just populating using given file
+
+105) React Server Components vs Client Components - When To Use What
+* React Server Component - rendered on server and send it to client. advantage - less client side code, great for SEO
+* Client Component - client component are same component with "use client" directive.
