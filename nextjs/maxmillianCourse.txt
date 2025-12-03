@@ -40,4 +40,7 @@ Next JS essentials (App router)
 * normally, in "page.js", we have server component. So it render on server and send it to browser
 
 89) Adding Another Route via the File System
+* create file - "app/about/page.tsx" will create "/about" route
+
+90) Navigating Between Pages - Wrong & Right Solution -
 * 
