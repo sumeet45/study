@@ -1,3 +1,6 @@
+Coursera - 
+
+"Introduction to Next.js"
 
 2) Introduction and Welcome
 core features - Server Side Rendering, Static site generation, Effeicient routing to create web apps
@@ -95,3 +98,110 @@ core features - Server Side Rendering, Static site generation, Effeicient routin
 
 13) Using Environment Variables in Next.js
 * to add env config, we need to add it to root directory
+
+
+------------------------------------------------------------------------
+Official Website -
+
+* Project structure and organization
+  
+  Top-level folders -
+    app	- App Router
+    pages	- Pages Router
+    public	- Static assets to be served
+    src	 - (Optional) application source folder
+  
+  Top-level files -
+    Next.js	
+    next.config.js -	Configuration file for Next.js
+    package.json -	Project dependencies and scripts
+    instrumentation.ts	- OpenTelemetry and Instrumentation file
+    proxy.ts -	Next.js request proxy
+    .env	- Environment variables
+    .env.local  -	Local environment variables
+    .env.production  -	Production environment variables
+    .env.development  -	Development environment variables
+    eslint.config.mjs  -	Configuration file for ESLint
+    .gitignore  -	Git files and folders to ignore
+    next-env.d.ts  -	TypeScript declaration file for Next.js
+    tsconfig.json  -	Configuration file for TypeScript
+    jsconfig.json  -	Configuration file for JavaScript
+
+
+
+  Routing Files -
+  Add page to expose a route, layout for shared UI such as header, nav, or footer, loading for skeletons, error for error boundaries, and route for APIs.
+    layout -	.js .jsx .tsx	Layout
+    page - 	.js .jsx .tsx	Page
+    loading -	 .js .jsx .tsx	Loading UI
+    not-found - 	.js .jsx .tsx	Not found UI
+    error  -	.js .jsx .tsx	Error UI
+    global-error  -	.js .jsx .tsx	Global error UI
+    route  -	.js .ts	API endpoint
+    template  -	.js .jsx .tsx	Re-rendered layout
+    default  -	.js .jsx .tsx	Parallel route fallback page
+
+
+  * Nested routes
+    Folders define URL segments. Nesting folders nests segments. Layouts at any level wrap their child segments. A route becomes public when a page or route file exists.
+  
+  Path	                        URL               pattern	Notes
+  app/layout.tsx	              —	                Root layout wraps all routes
+  app/blog/layout.tsx	          —	                Wraps /blog and descendants
+  app/page.tsx	                /	                Public route
+  app/blog/page.tsx	            /blog	            Public route
+  app/blog/authors/page.tsx	    /blog/authors	    Public route
+
+
+  * Dynamic routes -
+    Parameterize segments with square brackets. Use [segment] for a single param, [...segment] for catch‑all, and [[...segment]] for optional catch‑all. Access values via the params prop.
+  
+  Path	                                URL pattern
+  app/blog/[slug]/page.tsx	            /blog/my-first-post
+  app/shop/[...slug]/page.tsx	          /shop/clothing, /shop/clothing/shirts
+  app/docs/[[...slug]]/page.tsx	        /docs, /docs/layouts-and-pages, /docs/api-reference/use-router
+
+
+  * Route groups and private folders -
+    Organize code without changing URLs with route groups (group), and colocate non-routable files with private folders _folder.
+    * Route groups let you organize your app structure without affecting the URL path.
+    * A folder starting with underscore _ is private. Any folder starting with _ is ignored by routing.  Next.js does not create a route for it
+  
+  Path	                                  URL       pattern	Notes
+  app/(marketing)/page.tsx	              /	        Group omitted from URL
+  app/(shop)/cart/page.tsx	              /cart	    Share layouts within (shop)
+  app/blog/_components/Post.tsx	          —	        Not routable; safe place for UI utilities
+  app/blog/_lib/data.ts	                  —	        Not routable; safe place for utils
+
+
+  * Parallel and Intercepted Routes
+    * These features fit specific UI patterns, such as slot-based layouts or modal routing.
+    * Use @slot for named slots rendered by a parent layout. Use intercept patterns to render another route inside the current layout without changing the URL, for example, to show a details view as a modal over a list.
+    
+    Pattern (docs)	                  Meaning	                  Typical use case
+    @folder	                          Named slot	              Sidebar + main content
+    (.)folder	                        Intercept same level	    Preview sibling route in a modal
+    (..)folder	                      Intercept parent	        Open a child of the parent as an overlay
+    (..)(..)folder	                  Intercept two levels	    Deeply nested overlay
+    (...)folder	                      Intercept from root	      Show arbitrary route in current view
+
+
+  * Metadata file conventions
+    App icons
+    favicon	      .ico	Favicon file
+    icon	        .ico .jpg .jpeg .png .svg	App Icon file
+    icon	        .js .ts .tsx	Generated App Icon
+    apple-icon	  .jpg .jpeg, .png	Apple App Icon file
+    apple-icon	  .js .ts .tsx	Generated Apple App Icon
+    
+    Open Graph and Twitter images
+    opengraph-image	  .jpg .jpeg .png .gif	    Open Graph image file
+    opengraph-image	  .js .ts .tsx	            Generated Open Graph image
+    twitter-image	    .jpg .jpeg .png .gif	    Twitter image file
+    twitter-image	    .js .ts .tsx	            Generated Twitter image
+
+    SEO
+    sitemap	.xml	    Sitemap file
+    sitemap	.js .ts	  Generated Sitemap
+    robots	.txt	    Robots file
+    robots	.js .ts	  Generated Robots file
