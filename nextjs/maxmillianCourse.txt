@@ -43,4 +43,46 @@ Next JS essentials (App router)
 * create file - "app/about/page.tsx" will create "/about" route
 
 90) Navigating Between Pages - Wrong & Right Solution -
-* 
+* if we use, <a href="/about">, it might create issue. when we click on about us link, it downloaded new page from server. so it doesn't become SPA.
+* for this, we will use link from node.
+
+
+91) Working with Pages & Layouts -
+* layout is another reserved filename. "page.js" gives content of file and "layout.js" gives layout of one or more pages.
+* atleast 1 rootlayout file required.
+* if we want separte layout for "about", we have to add it in "about" folder.
+* in "./layout", we have "RootLayout".
+* in "./layout", we have metadata, for adding html head, title and so on.
+* we also have "{children}", which is content actually
+
+
+92) Reserved File Names, Custom Components & How To Organize A NextJS Project
+* globals.css - imported in layout.js and available for every page, where this layout file get called.
+* in app, if we added "icon.png", it will take it "favicon.png" and set it to tab
+* we can also add normal react component, which are not treated as pages. suppose, we move image from "page.js" to another component which is in another folder. and we will import it here in page.js.
+* He prefer app folder for only routing purpose, and components should be kept outside out of app folder.
+* in Jsconfig.json,
+    {
+      "compilerOptions": {
+            "paths": {
+              "@/*": ["./*"]
+            }  
+        }
+    }
+    so while importing files in page.tsx, we can just use "@/components/header"
+*
+
+93) Reserved Filenames
+  * As you already learned, there are some reserved filenames when working with NextJS.
+  * Important: These filenames are only reserved when creating them inside of the app/ folder (or any subfolder). Outside of the app/ folder, these filenames are not treated in any special way.
+  * Here's a list of reserved filenames in NextJS - you'll, of course, learn about the important ones throughout this section:
+    page.js => Create a new page (e.g., app/about/page.js creates a <your-domain>/about page)
+    layout.js => Create a new layout that wraps sibling and nested pages
+    not-found.js => Fallback page for "Not Found" errors (thrown by sibling or nested pages or layouts)
+    error.js => Fallback page for other errors (thrown by sibling pages or nested pages or layouts)
+    loading.js => Fallback page which is shown whilst sibling or nested pages (or layouts) are fetching data
+    route.js => Allows you to create an API route (i.e., a page which does NOT return JSX code but instead data, e.g., in the JSON format)
+    You also find a list with all supported filenames & detailed explanations in the official docs: https://nextjs.org/docs/app/api-reference/file-conventions
+
+94) Configuring Dynamic Routes and Using route Parameters -
+*  by adding, "app/blog/[id]/page.tsx", we will add dynamic routes. by default, in "app/blog/[id]/page.tsx", we received props object from next js. from that, we can extract params.
