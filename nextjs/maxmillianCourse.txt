@@ -143,3 +143,9 @@ import Classes from "./main-header.module.css";
 105) React Server Components vs Client Components - When To Use What
 * React Server Component - rendered on server and send it to client. advantage - less client side code, great for SEO
 * Client Component - client component are same component with "use client" directive.
+
+106) Using Client Components Efficiently -
+* usePathname - hook for current pathname from nextjs
+* sometime, we need to take help of client component, but there are some server component which doesnt need to render on client. For that, we can create component, move those content in that component.
+
+107) Outputting Meals Data & Images With Unknown Dimensions -
