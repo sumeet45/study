@@ -346,4 +346,79 @@ a[prop]         //hello
 
 
 38) The Node Event Emitter Part 1
-* 
+* Event Listener - the code that responds to event. When event happen, code (listener) is run. We can have many listeners for same event (one at a time in JS case).
+
+//Emitter.js
+function Emitter() {
+	this.events = {};
+}
+
+Emitter.prototype.on = function(type, listener) {
+	this.events[type] = this.events[type] || [];
+	this.events[type].push(listener);
+}
+
+Emitter.prototype.emit = function(type) {
+	if (this.events[type]) {
+		this.events[type].forEach(function(listener) {
+			listener();
+		});
+	}
+}
+
+module.exports = Emitter;
+
+
+//app.js
+var Emitter = require('./emitter');
+
+var emtr = new Emitter();
+
+emtr.on('greet', function() {
+	console.log('Somewhere, someone said hello.');
+});
+
+emtr.on('greet', function() {
+	console.log('A greeting occurred!');
+});
+
+console.log('Hello!');
+emtr.emit('greet');
+
+* Event emitter and node uses above idea for event emitter.
+
+
+39) The node event emitter part 2
+* showing event emitter code in node
+* using node's own event
+
+// app.js
+var Emitter = require('events');
+var eventConfig = require('./config').events;
+
+var emtr = new Emitter();
+
+emtr.on(eventConfig.GREET, function() {
+	console.log('Somewhere, someone said hello.');
+});
+
+emtr.on(eventConfig.GREET, function() {
+	console.log('A greeting occurred!');
+});
+
+console.log('Hello!');
+emtr.emit(eventConfig.GREET);
+
+
+//config.js
+module.exports = {
+	events: {
+		GREET: 'greet'
+	}
+}
+
+* magic string - a string that has some special meaning in our code. This is bad because it makes it easy for a typo to cause a bug, and hard for tools to help us find it. so instead of string, we will provide variable, so string will be proper one with everyone.
+
+
+
+40) JavaScript Aside: Object.create and Prototypes
