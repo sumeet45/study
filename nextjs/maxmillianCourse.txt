@@ -149,3 +149,61 @@ import Classes from "./main-header.module.css";
 * sometime, we need to take help of client component, but there are some server component which doesnt need to render on client. For that, we can create component, move those content in that component.
 
 107) Outputting Meals Data & Images With Unknown Dimensions -
+
+
+108) Setting Up A SQLite Database -
+* now we need database.
+* lets install - npm install better-sqlite3
+* run command - node initdb.ts
+
+109) Fetching Data By Leveraging NextJS & Fullstack Capabilities -
+* create file in lib - "lib/meals.ts"
+    import sql from 'better-sqlite3';
+    const db = sql('meals.db');
+    
+    export async function getMeals() {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        return db.prepare('SELECT * FROM meals').all();        //to fetch all data, "get" for single data, "run" for adding data
+    }
+* 
+
+
+110) Adding A Loading Page -
+* due to above setTimeout code, we see there's flicker.
+* In nextjs, it is doing caching very aggresively. it will rerender page only when we reload page or leave the page.
+* add "app/loading.tsx", which will show loading while content is loading.
+* loading.tsx, is a reserved filename
+
+111. Using Suspense & Streamed Responses For Granular Loading State Management
+* let move fetching data in another component
+    async function Meals() {
+      const meals = await getMeals();
+      return <MealsGrid meals={meals} />
+    }
+* and then use with suspense component
+    <Suspense fallback={<p>Loading meals...</p>}>
+          <Meals />
+        </Suspense>
+
+
+112) Handling Errors
+* Nextjs also provide "error.tsx" support.
+* error file handle only those error which occur in the page that sits in the same folder as this error.js file or any nested page and layout.
+    "use client";
+    export default function Error({error, reset}: {error: Error; reset: () => void}) {
+      return (<main className="error">
+        <p>Loading error</p>
+      </main>);
+    }
+
+
+113) Handling "Not Found" States -
+* "not-found.tsx" add in root folder. will catch all not-found errors.
+export default function NotFound() {
+    return (
+        <main className="not-found">
+            <h1>404 - Page Not Found</h1>
+            <p>Sorry, the page you are looking for does not exist.</p>
+        </main>
+    );
+}
