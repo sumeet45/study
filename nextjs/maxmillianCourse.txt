@@ -207,3 +207,33 @@ export default function NotFound() {
         </main>
     );
 }
+
+
+114. Loading & Rendering Meal Details via Dynamic Routes & Route Parameters
+* fetching single item -
+    export function getMeal(slug  : string) {
+        return db.prepare('SELECT * FROM meals WHERE slug = ?').get(slug);      // ? used to prevent SQL injection, used as placeholder
+    }
+* and bind it to component
+
+
+115. Throwing Not Found Errors For Individual Meals
+* if meal not found, handle like following -
+        if(!meal) {
+          notFound();   // this will trigger the not-found.tsx page
+        }
+
+116. Getting Started with the "Share Meal" Form
+
+
+117. Getting Started with a Custom Image Picker Input Component
+* uses "useRef" to access input file element.
+    const imagePickerRef = useRef(null);
+    function pickImageHandler() {
+        imagePickerRef.current.click();
+    }
+
+    HTML -         <input type="file" className={classes.input} id="image" ref={imagePickerRef} accept="image/png, image/jpeg" name={name} />
+
+
+118. Adding an Image Preview to the Picker
