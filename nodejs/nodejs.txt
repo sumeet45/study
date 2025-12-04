@@ -285,3 +285,65 @@ module.exports = new Greetr();
 //a1.js
 var greet = require("./a0");
 greet()
+
+29 need extra time
+
+30) exports vs module.exports
+
+
+31. Requiring Native (Core) Modules
+* require do much more than requiring modules.
+* using require, we can pull core native modules. full details available in "docs/api" in nodeJs official website.
+* For node developers, should go through this api docs.
+    var util = require("util");
+    var name = "sumeet"
+    var greeting = util.format('Hello $s', name);
+    util.log(greeting);
+
+32) ECMAscript Modules (ESM) -
+* ESM example -
+    export function greet(){}        // greet.js
+
+    import * as greeter from "greet";
+    greetr.greet();
+
+
+33) package.json
+
+
+34) ESM and CJS
+* to select ESM or CJS, we have to tell explicitly in package.json
+    "type": "module"
+* In some old npm modules, there are commonjs modules. we have to be careful. Mostly all adapt to ESM.
+
+35) Web Server Checklist - 
+
+
+36) Conceptual Aside: Events -
+* Event - Something that has happened in our app that we can respond to.
+* in node, there are two types of events. 
+* System events - comes from c++ side of nodejs core, thanks to library called "libuv". Library of c++ code, that deals with events coming from computer system. Those c++ events then allow us to respond to those happening with code.
+* Custom Events - they are inside JS core. It's JS library of events that deals with events that i can create for myself. It's JS file that contains the code for what's called the event emitter.
+* Whenever event happend in libuv, it generates a custom Javascript Event. JS event is not real events. In JS, there's no eventing concept. so no event object.
+
+37) JavaScript Aside: Object Properties, First Class Functions, and Arrays
+* let a = {
+    greet: "hello"
+}
+let prop = "greet"
+a.greet         //hello
+a['greet']      //hello
+a[prop]         //hello
+* we can access object property in multiple ways
+
+* function and array - array is collection of anything.
+    arr.push(function() {
+        console.log("arr push");
+    })
+    arr.forEach(function(item){
+        item()
+    })
+
+
+38) The Node Event Emitter Part 1
+* 
