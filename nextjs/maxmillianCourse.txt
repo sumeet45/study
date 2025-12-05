@@ -237,3 +237,83 @@ export default function NotFound() {
 
 
 118. Adding an Image Preview to the Picker
+* code 
+
+const [val, setVal] = useState();
+    const imagePickerRef = useRef(null);
+    function pickImageHandler() {
+        imagePickerRef.current.click();
+    }
+    function onChangeHandler(event : React.ChangeEvent<HTMLInputElement>): void {
+        
+        const files = event.target.files[0];
+        if(!files) {
+          setVal(null);
+            return;
+        }
+        const fileReader = new FileReader();
+        fileReader.onload = () => {
+            setVal(fileReader.result);
+        }
+        fileReader.readAsDataURL(files);
+
+    }
+
+119. Improving the Image Picker Component
+* code improved as per instructions.
+
+120) Introducing & Using Server Actions for Handling Form Submissions
+* showing "use server" directive. To make function "server Action", need to use "use server" directive. It made sure, it get called on server. 
+* this feature available in react and nextjs, both. But to use with React, you need help of nextjs.
+* after creating server actions, we can assign server action as value for the action prop on a function.
+* when form got submitted, it will create request and send it to this next.js server, that serving website. so server action get triggered. and you can handle the form submission there, but on the server.
+
+async function shareMeal(formData: FormData) {
+    'use server';
+    const meal = {
+      title: formData.get('title')?.toString() || '',
+      summary: formData.get('summary')?.toString() || '',
+      instructions: formData.get('instructions')?.toString() || '',
+      creator_email: formData.get('email')?.toString() || '',
+      creator: formData.get('name')?.toString() || '',
+      image: formData.get('image')?.toString() || '',
+    };
+    console.log(meal);
+    }
+}
+
+121) Storing Server Actions in Separate Files 
+* server action does not allow in client component. 
+* We might require server action in separate file.
+* if client component and server actions comes in one file, it might create issue.
+
+// lib/action.ts
+"use server"
+export async function shareMeal(formData: FormData) {
+    const meal = {
+      title: formData.get('title'),
+      summary: formData.get('summary'),
+      instructions: formData.get('instructions'),
+      creator_email: formData.get('email'),
+      creator: formData.get('name'),
+      image: formData.get('image'),
+    };
+    console.log(meal);
+}
+
+// in other file
+import { shareMeal } from '../../../lib/actions';
+
+
+122) Creating a Slug & Sanitizing User Input for XSS Protection
+* lets add this data in db.
+* we also need slug. That we will generate based on title. for that, we will install "slugify" and for cross site scripting attacks "xss".
+
+    export function saveMeal(meal) {
+        meal.slug = slugify(meal.title, { lower: true });  //to create URL friendly slugs
+        meal.instructions = xss(meal.instructions);    //to sanitize input and prevent XSS attacks
+    }
+
+123) Storing Uploaded Images & Storing Data in the Database
+* image should be stored on file system, not in database
+* 
