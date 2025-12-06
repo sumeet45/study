@@ -5,6 +5,24 @@ In JS, there are 4 things which we need to remember -
 4) Scope chain ( check physically )
 
 
+Diff var, let and const -
+1) Scope - var is global scope, let and const is block scoped.
+2) Hoisting - hoisting is possible with var, let and const is also hoisted, but not initialized. They enter a Temporal Dead Zone (TDZ) from the beginning of their block scope until their "declaration". Attempting to access them before declaration will result in a ReferenceError.
+3) Reassignment and Redeclaration - triangle pattern
+	var a = 20;
+	let b = 20;
+	const c = 30;
+4) we can access var variable with window, but not with let and const.
+
+
+difference between fat arrow function and normal function -
+1) this - normal function have own this. Arrow fun Does NOT have its own this.
+2) arguments - normal function Has its own arguments object. Arrow function No arguments object.
+3) Constructor use - NF can use as function constructor. AF can't use as function constructor.
+4) syntax
+5) hoisting - NF fully hoisted. AF not hoisted.
+6) methods in object - should go with NF. AF doesn't have this, so don't recommend.
+
 -------------------------------------------------------------------------------------
 4) Block Scoping: why?
 * Block Scoping: Variable scope is defined lexically by a block. In Js, curly braces.
