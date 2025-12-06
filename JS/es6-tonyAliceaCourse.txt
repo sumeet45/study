@@ -1,4 +1,11 @@
+In JS, there are 4 things which we need to remember -
+1) Execution stack
+2) Event Queue
+3) Prototype Chain
+4) Scope chain ( check physically )
 
+
+-------------------------------------------------------------------------------------
 4) Block Scoping: why?
 * Block Scoping: Variable scope is defined lexically by a block. In Js, curly braces.
 * Block scoping added to es6, to reduce bugs
