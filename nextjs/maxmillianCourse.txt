@@ -316,4 +316,30 @@ import { shareMeal } from '../../../lib/actions';
 
 123) Storing Uploaded Images & Storing Data in the Database
 * image should be stored on file system, not in database
-* 
+* code -
+
+//lib/meals 
+
+export async function saveMeal(meal) {
+    meal.slug = slugify(meal.title, { lower: true });  //to create URL friendly slugs
+    meal.instructions = xss(meal.instructions);    //to sanitize input and prevent XSS attacks
+    console.log("meal.image.name",meal.image);
+    const extension = meal.image.name.split('.').pop();
+    const filename = `${meal.slug}.${extension}`;
+    const stream = fs.createWriteStream(`public/images/${filename}`);
+    const bufferedImage = await meal.image.arrayBuffer();
+
+    stream.write(Buffer.from(bufferedImage), (error) => {
+        if (error) {
+            console.error('Error saving image:', error);
+        } else {
+            console.log('Image saved successfully');
+        }
+    })
+    meal.image = `/images/${filename}`;
+    db.prepare('INSERT INTO meals (title, summary, instructions, creator_email, creator, image, slug) VALUES (?, ?, ?, ?, ?, ?, ?)')
+        .run(meal.title, meal.summary, meal.instructions, meal.creator_email, meal.creator, meal.image, meal.slug);
+}
+
+124. Managing the Form Submission Status with useFormStatus
+* to check form status, we can use hook called "useFormStatus".
