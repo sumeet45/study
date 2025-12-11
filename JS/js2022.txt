@@ -1362,8 +1362,10 @@ JS Objects -
 [*] with() 	      method as a safe way to update elements in an array without altering the original array.		 array.with(index, value)
 
 types -
+arr.concat(arr1, arr2, arr3);
 arr.copywithin(target,start,end)
 array.every(function(currentValue - v, index - i, arr), thisValue)
+array.fill(value, start, end)
 array.includes(element, start)
 array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
 arr.slice(start, end)
