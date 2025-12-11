@@ -1364,10 +1364,10 @@ JS Objects -
 types -
 arr.concat(arr1, arr2, arr3);
 arr.copywithin(target,start,end)
-array.every(function(currentValue - v, index - i, arr), thisValue)
-array.fill(value, start, end)
-array.includes(element, start)
-array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+arr.every(function(currentValue - v, index - i, arr), thisValue)
+arr.fill(value, start, end)
+arr.includes(element, start)
+arr.reduce(function(total, currentValue, currentIndex, arr), initialValue)
 arr.slice(start, end)
 arr.splice(index, count, item1... item N);	
 
