@@ -338,3 +338,12 @@ If you want, I can also provide:
 ✅ Abstract Factory version (LandFactory, SeaFactory)
 ✅ Real-life logistics analogy
 Just tell me!
+
+
+✔ Use Factory Method When:
+* You want subclasses to decide what object gets created
+* You want your design to follow Open–Closed Principle
+* You will add new object types often
+* You want to avoid large if/else or switch statements
+* Object creation logic may become complex or change dynamically
+* You need polymorphic creation based on context
