@@ -644,3 +644,7 @@ If you want next:
 * 🧪 Testing example (real vs mock factories)
 
 Just tell me 👍
+
+Note - 
+* ekach type che product asel tr factory method
+* different type che product astil tr abstract factory
