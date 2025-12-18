@@ -145,7 +145,7 @@ Unlike Factory Method.
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Just remember (Super class, sub class, and product)
+Just remember (Super class, sub classes, and products)
 
 2) Factory Method Pattern -
 
@@ -354,6 +354,8 @@ Payment Gateways: An e-commerce platform uses a factory to return specific payme
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 Just remember ( multiple products in abstract, 1 product in factory )
+
+
 
 3) Abstract Factory Pattern -
 
