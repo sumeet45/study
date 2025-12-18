@@ -349,6 +349,9 @@ Just tell me!
 * You need polymorphic creation based on context
 
 
+Real-World Examples -
+Payment Gateways: An e-commerce platform uses a factory to return specific payment processors (Stripe, PayPal, or Credit Card) based on user selection without changing the core checkout logic.
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 Just remember ( multiple products in abstract, 1 product in factory )
 
