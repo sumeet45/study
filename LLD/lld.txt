@@ -654,7 +654,7 @@ Note -
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
-
+4) Builder Pattern -
 Below is an **in-depth, end-to-end explanation of the Builder Pattern**, with **concepts, structure, variations, pros/cons, and real-world + JavaScript examples**—the level expected in **system design / solution architect interviews**.
 
 ---
@@ -1224,3 +1224,333 @@ If you want, next I can explain:
 * **Builder vs Fluent Interface (important confusion)**
 
 Just say 👍
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+5) Adapter Pattern 
+
+Let’s go **deep and practical** on the **Adapter Pattern**, with **why, when, structure, variants, pitfalls, and real-world + JS examples**. Since you’re learning design patterns seriously, I’ll treat this like **architect-level understanding**, not just definition.
+
+---
+
+# Adapter Pattern (In Depth)
+
+## 1. What problem does Adapter solve?
+
+> **Adapter allows incompatible interfaces to work together without changing their existing code.**
+
+You already have:
+
+* **Existing / legacy code** (stable, tested, cannot change)
+* **New code** that expects a **different interface**
+
+👉 Adapter sits **in between** and **translates** one interface into another.
+
+---
+
+## 2. Real-world analogy (very important)
+
+### Mobile charger adapter 🔌
+
+* Wall socket → **220V Indian socket**
+* Charger → **expects a specific plug**
+
+You **don’t change the socket**
+You **don’t change the charger**
+
+👉 You add an **adapter**
+
+This is exactly what the Adapter Pattern does in software.
+
+---
+
+## 3. When should you use Adapter?
+
+Use Adapter when:
+
+✅ You want to reuse an **existing class**
+✅ But its interface **does not match** what your system expects
+✅ You **cannot or should not modify** the existing class
+✅ You want to follow **Open–Closed Principle**
+
+🚫 Do NOT use Adapter if:
+
+* You can directly modify the class
+* Interfaces already match
+* You’re just mapping DTOs (that’s not Adapter)
+
+---
+
+## 4. Structure (Participants)
+
+```
+Client  --->  Target (interface)
+                  ↑
+              Adapter
+                  ↓
+              Adaptee
+```
+
+### Roles:
+
+| Role        | Meaning                                    |
+| ----------- | ------------------------------------------ |
+| **Client**  | Code that needs a specific interface       |
+| **Target**  | Interface expected by the client           |
+| **Adaptee** | Existing class with incompatible interface |
+| **Adapter** | Converts Adaptee to Target                 |
+
+---
+
+## 5. Simple Example (Conceptual)
+
+### Target (what client expects)
+
+```js
+class PaymentProcessor {
+  pay(amount) {
+    throw new Error("Not implemented");
+  }
+}
+```
+
+### Adaptee (existing / legacy class)
+
+```js
+class OldPaymentGateway {
+  makePayment(valueInRupees) {
+    console.log(`Paid ₹${valueInRupees}`);
+  }
+}
+```
+
+### Adapter
+
+```js
+class PaymentAdapter extends PaymentProcessor {
+  constructor(oldGateway) {
+    super();
+    this.oldGateway = oldGateway;
+  }
+
+  pay(amount) {
+    this.oldGateway.makePayment(amount);
+  }
+}
+```
+
+### Client
+
+```js
+const oldGateway = new OldPaymentGateway();
+const payment = new PaymentAdapter(oldGateway);
+
+payment.pay(500);
+```
+
+✔ Client never knows about `OldPaymentGateway`
+
+---
+
+## 6. Adapter vs Direct Wrapping (important distinction)
+
+❌ This is NOT Adapter:
+
+```js
+oldGateway.makePayment(500);
+```
+
+✔ This IS Adapter:
+
+```js
+payment.pay(500);
+```
+
+Why?
+
+* Adapter **implements Target interface**
+* Client depends on **abstraction**, not concrete class
+
+---
+
+## 7. Two Types of Adapter Pattern
+
+### 1️⃣ Object Adapter (Most Common ✅)
+
+Uses **composition**
+
+```js
+class Adapter {
+  constructor(adaptee) {
+    this.adaptee = adaptee;
+  }
+}
+```
+
+✔ Flexible
+✔ Works in JS, Java, TS
+✔ Preferred approach
+
+---
+
+### 2️⃣ Class Adapter (Inheritance-based)
+
+Uses **inheritance** (possible in Java, C++, not ideal in JS)
+
+```java
+class Adapter extends Adaptee implements Target
+```
+
+🚫 Less flexible
+🚫 Tightly coupled
+🚫 Rarely used in modern systems
+
+---
+
+## 8. Real-World System Example (API Integration)
+
+### Scenario
+
+Your system expects:
+
+```js
+getUser(id)
+```
+
+Third-party API gives:
+
+```js
+fetchUserByUUID(uuid)
+```
+
+---
+
+### Target
+
+```js
+class UserService {
+  getUser(id) {}
+}
+```
+
+### Adaptee
+
+```js
+class ExternalUserAPI {
+  fetchUserByUUID(uuid) {
+    return { uuid, name: "Sumeet" };
+  }
+}
+```
+
+### Adapter
+
+```js
+class UserAdapter extends UserService {
+  constructor(api) {
+    super();
+    this.api = api;
+  }
+
+  getUser(id) {
+    return this.api.fetchUserByUUID(id);
+  }
+}
+```
+
+### Client
+
+```js
+const service = new UserAdapter(new ExternalUserAPI());
+service.getUser("123");
+```
+
+---
+
+## 9. Adapter vs Related Patterns (VERY IMPORTANT)
+
+| Pattern       | Difference                                |
+| ------------- | ----------------------------------------- |
+| **Adapter**   | Makes incompatible interfaces work        |
+| **Facade**    | Simplifies a complex system               |
+| **Decorator** | Adds behavior without changing interface  |
+| **Proxy**     | Controls access                           |
+| **Bridge**    | Separates abstraction from implementation |
+
+👉 **Adapter = interface translation**
+
+---
+
+## 10. Adapter + SOLID Principles
+
+✔ **Single Responsibility**
+
+* Adapter only translates interface
+
+✔ **Open–Closed**
+
+* No modification of existing classes
+
+✔ **Dependency Inversion**
+
+* Client depends on Target interface
+
+---
+
+## 11. Common Mistakes
+
+❌ Treating simple helper functions as Adapter
+❌ Putting business logic inside Adapter
+❌ Adapter calling multiple unrelated classes
+❌ Overusing Adapter for internal code
+
+---
+
+## 12. When Adapter becomes a code smell 🚨
+
+* Too many adapters → bad initial design
+* Adapter doing transformations + validation + logic
+* Adapters chained deeply
+
+👉 That’s when **Facade or refactoring** is better.
+
+---
+
+## 13. Adapter in Frontend / Node.js (Practical)
+
+### Example: Logger Adapter
+
+Different log libraries:
+
+```js
+winston.log()
+pino.info()
+```
+
+You want:
+
+```js
+logger.log("message")
+```
+
+👉 Create adapters for each logger.
+
+---
+
+## 14. One-line Summary (Interview Gold)
+
+> **Adapter Pattern converts the interface of a class into another interface the client expects, allowing incompatible classes to work together without modifying their source code.**
+
+---
+
+If you want next:
+
+* Adapter **vs Facade with same example**
+* Adapter in **React / Node.js real project**
+* Adapter interview questions
+* UML diagram walkthrough
+
+Just tell me 👍
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
