@@ -1227,6 +1227,7 @@ Just say 👍
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
+just remember (new taps design gives design water flow, so for old tap, we can attach design adapter and it gives design flow)
 
 5) Adapter Pattern 
 
