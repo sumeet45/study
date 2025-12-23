@@ -2006,3 +2006,309 @@ If you want, next I can explain:
 * **Difference between Bridge and Adapter using this TV example**
 * **Frontend example (UI + theme)**
 
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+7) Composite Pattern - 
+
+Let’s go **deep but simple** with the **Composite Design Pattern**, keeping examples intuitive and practical (the way you’ve been learning Adapter, Builder, Bridge, etc.).
+
+---
+
+# Composite Design Pattern (In Depth)
+
+## 1️⃣ What problem does Composite solve?
+
+**Problem:**
+You want to treat **individual objects** and **groups of objects** in the **same way**.
+
+> “Whether it’s one thing or a collection of things, I want to call the same method.”
+
+### Real-life analogy
+
+* A **file** and a **folder**
+* A **folder** can contain:
+
+  * files
+  * subfolders (which again contain files/folders)
+
+You don’t want different code paths like:
+
+```js
+if (isFile) { ... }
+if (isFolder) { ... }
+```
+
+👉 **Composite lets you handle both uniformly.**
+
+---
+
+## 2️⃣ Intent (Official Definition – simplified)
+
+> Composite pattern lets you compose objects into tree structures and work with them as if they were individual objects.
+
+Key words:
+
+* **Tree structure**
+* **Part–whole relationship**
+* **Same interface for single & group**
+
+---
+
+## 3️⃣ Structure of Composite Pattern
+
+There are **3 main roles**:
+
+```
+Component (interface / abstract class)
+   ↑
+ ┌───────────────┐
+ │               │
+Leaf           Composite
+```
+
+### 1. Component
+
+* Common interface
+* Declares operations like `render()`, `price()`, `execute()`
+
+### 2. Leaf
+
+* Represents **individual object**
+* Implements Component
+* Has no children
+
+### 3. Composite
+
+* Represents **group of objects**
+* Implements Component
+* Holds children (Component type)
+
+---
+
+## 4️⃣ Simple Example (Very Important)
+
+### 🎯 Example: **Company Organization**
+
+* Employee → **Leaf**
+* Manager → **Composite**
+* Both have `getSalary()`
+
+---
+
+### Step 1: Component
+
+```js
+class Employee {
+  getSalary() {
+    throw new Error("Method not implemented");
+  }
+}
+```
+
+---
+
+### Step 2: Leaf (Individual employee)
+
+```js
+class Developer extends Employee {
+  constructor(name, salary) {
+    super();
+    this.name = name;
+    this.salary = salary;
+  }
+
+  getSalary() {
+    return this.salary;
+  }
+}
+```
+
+---
+
+### Step 3: Composite (Manager with subordinates)
+
+```js
+class Manager extends Employee {
+  constructor(name) {
+    super();
+    this.name = name;
+    this.employees = [];
+  }
+
+  add(employee) {
+    this.employees.push(employee);
+  }
+
+  getSalary() {
+    return this.employees.reduce(
+      (total, emp) => total + emp.getSalary(),
+      0
+    );
+  }
+}
+```
+
+---
+
+### Step 4: Client Code (Key Benefit)
+
+```js
+const dev1 = new Developer("A", 50000);
+const dev2 = new Developer("B", 60000);
+
+const manager = new Manager("C");
+manager.add(dev1);
+manager.add(dev2);
+
+console.log(manager.getSalary()); // 110000
+```
+
+✅ **Client doesn’t care** if it’s a Developer or Manager
+✅ Same method → `getSalary()`
+
+---
+
+## 5️⃣ Tree Structure Visualization
+
+```
+Manager
+ ├── Developer A (50k)
+ └── Developer B (60k)
+```
+
+Recursive calls:
+
+```
+manager.getSalary()
+ → dev1.getSalary()
+ → dev2.getSalary()
+```
+
+---
+
+## 6️⃣ Key Characteristics
+
+| Aspect       | Explanation                  |
+| ------------ | ---------------------------- |
+| Structure    | Tree                         |
+| Relationship | Part–Whole                   |
+| Interface    | Same for leaf & composite    |
+| Behavior     | Recursive delegation         |
+| Client       | Treats all objects uniformly |
+
+---
+
+## 7️⃣ When to Use Composite Pattern
+
+✅ Use it when:
+
+* You have **hierarchical / tree-like data**
+* You want to **ignore differences** between single and group objects
+* Operations need to be applied **recursively**
+
+### Common real-world use cases
+
+* File system (file / folder)
+* UI components (button / panel / window)
+* Organization structure
+* Menu systems
+* HTML DOM
+* Permission structures
+
+---
+
+## 8️⃣ When NOT to Use
+
+❌ Avoid if:
+
+* You don’t have a hierarchy
+* Leaf and Composite behavior is very different
+* You need strict control over child operations
+
+---
+
+## 9️⃣ Advantages
+
+✔ Simplifies client code
+✔ Open/Closed Principle (add new types easily)
+✔ Natural recursion handling
+✔ Clean tree modeling
+
+---
+
+## 🔟 Disadvantages
+
+❌ Hard to restrict what can be added as child
+❌ Can become **too generic**
+❌ Debugging deep trees can be tricky
+
+---
+
+## 1️⃣1️⃣ Composite vs Related Patterns
+
+| Pattern   | Difference                         |
+| --------- | ---------------------------------- |
+| Composite | Treat individual & group uniformly |
+| Decorator | Adds behavior dynamically          |
+| Iterator  | Traverses collection               |
+| Flyweight | Shares object data                 |
+
+👉 Composite focuses on **structure**, not behavior extension.
+
+---
+
+## 1️⃣2️⃣ UI Example (Very Common)
+
+```js
+class UIComponent {
+  render() {}
+}
+
+class Button extends UIComponent {
+  render() {
+    console.log("Render Button");
+  }
+}
+
+class Panel extends UIComponent {
+  constructor() {
+    super();
+    this.children = [];
+  }
+
+  add(component) {
+    this.children.push(component);
+  }
+
+  render() {
+    this.children.forEach(child => child.render());
+  }
+}
+```
+
+Usage:
+
+```js
+const panel = new Panel();
+panel.add(new Button());
+panel.add(new Button());
+
+panel.render();
+```
+
+---
+
+## 1️⃣3️⃣ One-Line Summary (Interview Gold)
+
+> **Composite lets you treat a single object and a group of objects in the same way by organizing them in a tree structure.**
+
+---
+
+If you want, next we can:
+
+* Compare **Composite vs Decorator** (very confusing pair)
+* Implement Composite in **React / UI**
+* Show **before & after** (without composite → with composite)
+* Cover **interview questions** & pitfalls
+
+Just tell me 👍
