@@ -36,4 +36,14 @@ hierarchy =>
 * Table - Each Schema contain multiple objects like tables. In table, we have column and row. We call "field" for column. For each row, we call it as "record". We also have "Primary key" in table. It helps to find unique record.
 * Cell - single cell store value which have specific data types. Data types -> Numeric (INT, DECIMAL), Text (CHAR, VARCHAR), Date & Time (DATE, TIME)
 
-18:19
+
+4) SQL Commands -
+* DDL commands - helps to create table, alter table or drop table.
+* DML commands - helps to insert a new data, update and delete data.
+* DATA Query Language - Using 'Select', we can retrieve data.
+
+5) Why learn SQL?
+* To talk with data, High Demand Job, Industry Standards
+
+6) Setup your Enviornment ( Install SQL server ) -
+* 
