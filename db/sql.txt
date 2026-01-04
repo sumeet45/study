@@ -1,19 +1,39 @@
 
-* Database - It is simple container to store data. If we use files instead of DB, it will quite messy and long process. 
-* SQL is language to talk with database. stands for Structured Query Language.
+* Database - It is a simple container to store data. If we use files instead of DB, it will be quite messy and a long process. 
+* SQL is a language to talk with a database. stands for Structured Query Language.
 
-1) DBMS & SQL server -
-* we have data inside database. with different sql, every user accessing database.
-* dbms is software which manages database for every user.
-* SERVER - server means system which should be online.
+1) DBMS & SQL Server -
+* We have data inside the database. With different SQL, every user accesses the database.
+* DBMS is software which manages requests to the database for every user, and also handles security.
+* SERVER - server means a system which should be online 24/7. It hosts our database and DBMS software.
 
 In short -
 Database - stores data
-SQL - speaks to database
-DBMS - manages database
-server - where database lives
+SQL - speaks to the database
+DBMS - manages the database
+server - where the database lives
 
 2) DB types - 
-* relational db - in it, those have tables, which contains rows and columns. They have relationship with other tables also.
-* key-value  db - key - value db is also called no-relational db.
-* column based db - in it, data grouped according to column. it is quite advanced and handle big data.
+* relational DB - in it, we have tables, which contain rows and columns. They have a relationship with other tables also. Hence we call this relational DB
+* key-value  db - key-value db is also called a no-relational db.
+* column based db - in it, data is grouped according to the column. It is quite advanced and handles big data. The main purpose of this DB is to search for data.
+* graph based DB - 
+* Document-Based DB -
+
+* From above, key-value, column based, graph, document-based DBs, are called "No-SQL database".
+* Microsoft SQL server, MySQL, PostgreSQL are types of SQL relational Database.
+* key-value DB example - Redis, Amazon Dynamo DB
+* column-based DB example - Apache Casandra, Amazon Redshift
+* Graph DB example - Neo4J
+* Document-Based DB example - MongoDB
+
+
+3) Database Structure -
+hierarchy =>
+* Server - Who holds databases and will be available online all time.
+* Database - In Server, we can have multiple databases.
+* Schema - In each Database, we can have multiple schema. It is like category, which helps to group up related objects.
+* Table - Each Schema contain multiple objects like tables. In table, we have column and row. We call "field" for column. For each row, we call it as "record". We also have "Primary key" in table. It helps to find unique record.
+* Cell - single cell store value which have specific data types. Data types -> Numeric (INT, DECIMAL), Text (CHAR, VARCHAR), Date & Time (DATE, TIME)
+
+18:19
