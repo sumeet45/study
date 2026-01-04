@@ -1,0 +1,19 @@
+
+* Database - It is simple container to store data. If we use files instead of DB, it will quite messy and long process. 
+* SQL is language to talk with database. stands for Structured Query Language.
+
+1) DBMS & SQL server -
+* we have data inside database. with different sql, every user accessing database.
+* dbms is software which manages database for every user.
+* SERVER - server means system which should be online.
+
+In short -
+Database - stores data
+SQL - speaks to database
+DBMS - manages database
+server - where database lives
+
+2) DB types - 
+* relational db - in it, those have tables, which contains rows and columns. They have relationship with other tables also.
+* key-value  db - key - value db is also called no-relational db.
+* column based db - in it, data grouped according to column. it is quite advanced and handle big data.
