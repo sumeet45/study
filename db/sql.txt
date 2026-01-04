@@ -46,4 +46,4 @@ hierarchy =>
 * To talk with data, High Demand Job, Industry Standards
 
 6) Setup your Enviornment ( Install SQL server ) -
-* 
+* using docker with sqlserver-express ( for storing database ) and "SQL server(mssql)" extension of VS code ( for GUI ).
