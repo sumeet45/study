@@ -47,5 +47,11 @@ hierarchy =>
 
 6) Setup your Enviornment ( Install SQL server ) -
 * using docker with sqlserver-express ( for storing database ) and "SQL server(mssql)" extension of VS code ( for GUI ).
+* show page where links are available to download content
+* from that content, took 2 queries and run it, to create 2 separate database. Also telling about Adventure Works database from microsoft. Adventure works link contain 3 types of database - OLTP, Data Warehouse, Lightweight.
+* There are 2 ways to create Database - using query and using .bak file (restoring)
 
-25:05
+
+7) Query Data (SELECT)
+
+34:03
