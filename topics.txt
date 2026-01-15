@@ -1,4 +1,6 @@
-Fundamentals - DSA, LLD, HLD, Regex, Principles, System Design, git, graphql
+* - completed
+
+Fundamentals - DSA, LLD, HLD, Regex(*), Principles, System Design, git, graphql
 Cloud - AWS , Azure
 UI/UX - Figma
 common - JS, TS, React, HTML, CSS, Kotlin, Swift
