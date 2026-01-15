@@ -1,12 +1,14 @@
 Fundamentals - DSA, LLD, HLD, Regex, Principles, System Design, git, graphql
 Cloud - AWS , Azure
 UI/UX - Figma
-common - JS, TS, React, HTML, CSS
+common - JS, TS, React, HTML, CSS, Kotlin, Swift
 web - Next JS
 mobile - React Native, Android, IOS
 Test - Jest
 DB - Realm, SQL, PostgreSQL
 CI/CD - Kubernetes, Jenkins, Docker
+Editors - VS Code, Android Studio, Xcode
+topics - need to document under "topic"
 
 
 ================================================================================================================================================
