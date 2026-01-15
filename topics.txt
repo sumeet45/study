@@ -1,3 +1,15 @@
+Fundamentals - DSA, LLD, HLD, Regex, Principles, System Design, git, graphql
+Cloud - AWS , Azure
+UI/UX - Figma
+common - JS, TS, React, HTML, CSS
+web - Next JS
+mobile - React Native
+Test - Jest
+DB - Realm, SQL, PostgreSQL
+CI/CD - Kubernetes, Jenkins, Docker
+
+
+================================================================================================================================================
 * Editors - VS code, Android studio, Xcode
 
 * Bundlers - *Webpack, Rollup, Parcel, Vite, esbuild, Snowpack, Browserify, FuseBox, Microbundle, SystemJS
