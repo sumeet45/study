@@ -3,7 +3,7 @@ Cloud - AWS , Azure
 UI/UX - Figma
 common - JS, TS, React, HTML, CSS
 web - Next JS
-mobile - React Native
+mobile - React Native, Android, IOS
 Test - Jest
 DB - Realm, SQL, PostgreSQL
 CI/CD - Kubernetes, Jenkins, Docker
