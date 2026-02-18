@@ -1,0 +1,241 @@
+link - https://www.youtube.com/watch?v=s9Qh9fWeOAk
+
+client-server architecture -
+* client is mobile app/ browser, and server is machine that runs continuously waiting to handle incoming request
+
+IP address -
+* Server have address, so client using address can find and communicate
+* computer have IP address, so each computer can find others. IP address are like phone numbers.
+* eg. 34.120.10.5
+
+Domain Names System -
+* we need a way to map domain name to map IP address.
+* when we type domain name and serach it. Computer ask DNS server for IP address. once receives, it requests server for website.
+* command to find IP address - 
+ping youtube.com
+
+Proxy/Reverse Proxy -
+* sometimes request doesn't go to direct website, it passes through proxy/reverse Proxy first.
+* Proxy acts as Middle man between device and internet.
+* Proxy server hides our IP address, keeping location and identity private.
+* Reverse Proxy server intercepts client requests, forwards them to the backend service.
+
+Latency -
+* if user in india visit USA site, then it will send requests to USA and get the results from there. so Data travel USA to india, will take time. Hence, this delay we called latency. 
+* High latency can make apps feels slow and unresponsive
+* way to reduce latency - deploy our service across multiple data centers worldwide, so user can connect with nearest server
+
+HTTP/HTTPS -
+* clients and servers communicate using a set of rules called HTTP/HTTPS.
+* clients sends request to server. Request containing headers. Headers includes "request type", browser type and cookie, and request body. and Server send back response containing response with headers.
+* HTTP have major security flaw. it sends data in plain text. HTTPS encrypts all data using SSL/TLS protocol
+
+API -
+* API is like middleman, that allows clients to communicate with servers.
+* Client sends request to API, which is hosted on server. Now API processes request, and prepare response. API sends back response in structured manner.
+* API have many types, two of them - REST, and graphql
+
+REST -
+* REST is widely used. REST api follows a set of rules that defines how clients and server communicate over HTTP in structured way.
+* REST is stateless. Every request is independant. Everything is treated as a resource. (/user, /order)
+* It uses standard HTTP methods. get, post, put, delete
+
+Graphql -
+* Rest endpoints gives extra data than what u needed actually. to resolve this, graphql will help us.
+* In Graphql, client ask for exactly what they needed. And server provide it.
+* In Graphql, it requires more processing on server side. and it isn't easy to cache as REST.
+
+Database -
+* To handle large amount of data, we need database.
+* Database ensures that data is stored, retreived, and managed efficiently while keeping it secure, consistent and durable.
+* In System design, we choose SQL or NoSQL. SQL database stored data in tables with a strict predefined schema and they followed ACID properties. Because of ACID, we can use SQL for application which should have strong consistency and structured relationships such as banking system.
+* NOSQL DB are designed for high scalability and performance. They don't require a fixed schema and use different data models including key value stores.
+
+
+Vertical Scaling
+* To handle more requests, quickest solution => we need to add more CPU, RAM or storage. This is called Vertical Scaling or scaling up. But this is not permanent solution. we can't upgrade every time. Suppose that server crashes, entire system goes down.
+
+
+Horizontal Scaling -
+* Instead of upgrading single server, what if we add more servers to share the load. this is called horizontal scaling or scaling out. It makes more scalable and fall tolerant. In it, we distriute workload across multiple machines.
+
+Load Balanacer - 
+* Sits between clients and backend server acting as a traffic manager that distriute requests across multiple servers. If one server crashes, load balancer automatically redirects traffic to another healthy server.
+* It uses load balancing algorithm. (Round-Robin, Least connections, IP Hashing). using this, load balancer decide who will handle next request.
+
+Database -
+* To handle more request, we do Vertical scaling with DB also, by adding RAM, CPU, or storage.
+
+Indexing -
+* To handle more request, we do Vertical scaling with DB also, by adding RAM, CPU, or storage.
+* another options is Indexing.
+* In it, we can use Indexing table to find data so fast, without scanning whole table.
+* An index stores column values along with pointers to actual data rows in the table
+* Indexes are typically created on columns, that are frequently queried. such as Primary key, foreign keys
+* we should index only frequently accessed columns.
+* indexing improve read performance.
+
+Replication -
+* At 1 point, indexing also not useful when request are grows exponentially.
+* When data added in Main Database, all other "Read Replica" Database get updated with latest data and they get sync also. 
+* It improves availability also. Since if the Primary Replica fails, Read Replica can take over as the new Primary.
+
+Sharding -
+* Instead of keeping Everything in one place, we split the database, more manageable pieces and distriute them across multiple servers. This technique is called sharding.
+* Divide the data into smaller parts called shards. Each Shard contains a subset of the total data.
+* data is distriuted based on sharding key (ex. USER ID).
+* Using this, we reduce database load. since each shards handle only a portion of queries and speed up read and write performance, since queries are distriuted across multiple shards instead of hitting single database
+* Sharding also referred as Horizontal Partitioning. Since it is splits data by rows.
+
+Vertical Partitioning -
+* In it, we split database by columns. we create smaller, and focused tables.
+* Instead of checking whole table, we scan only relevant columns. this improve query performance.
+* It also reduces unnecessary disk i/o making data retrieval quicker
+
+
+Caching -
+* Retreiving from Disk instead of memory, is always slower.
+* So for that, we can store frequently accessed data in memory. It optimize performance of system by storing frequently accessed data in memory.
+* Cache-Aside Pattern - user request data -> application first checks in cache and if finds out then give it back to application and user.
+* To prevent outdated data, from being served, we use time to live value or ttl
+
+Denormalization -
+* Most relational DB uses normalization to store data efficiently by breaking it into separate tables. While this reduces redundancy, it also introduces joins.
+* When retrieving data from multiple tables, the database must combine them using JOIN operation, which can slow down queries as the dataset grows.
+* Denormalization reduces the numbers of joins by combining related data into a single table. In it, data get duplicated.
+* for example, instead of keeping users and orders in a separate table, we create users order table that stores users details with their latest orders. 
+* Denormalization is often used in Read-heavy application, where speed is more critical. but downside is, it leads to increase storage and more complex update request
+
+Cap Theroem -
+* It states that, no distriuted system can acheive all three of the following - consistency, availability, and Partition Tolerance.
+* Since network failure are inevitable, we must choose between consistency and Partition Tolerance OR availability and Partition Tolerance
+
+Blob storage - 
+* blob storage like Amazon S3 are example of blob storage. used for store large, unstructured files efficiently.
+* Files stored inside logical containers or buckets in the cloud.
+* advantages of blob storage - scalability, as you go model, automatic replication, easy access
+
+CDN -
+* CDN will be used for delivering content faster to users based on their location.
+CDN is global network of distriuted servers, that work together to deliver web content
+
+HTTP -
+* it follows request-response model.
+* With HTTP, only way to get real time update is through frequent polling, sending repeated request every few seconds. but polliing is inefficient. It increase server load and waste bandwidth, bcz most of response are empty, when there's no new data
+* 
+
+Websockets -
+* by allowing continuous two way communication between the client and server over a single persistent connection.
+* client initiate a Websockets connection with the server. once established connections remains open. server can push updates to the client at any time without waiting for a request.
+* client can also send message instantly to the server. this enables real time interactions and eliminates the need for polling.
+
+webhooks - 
+* Server needs to notify another server when an event occurs
+* suppose our server register webhook url with the provider. When an event occurs, provider sends a HTTP post request to the webhook url with event details
+
+Monolithic architecture -
+* works for small application, not for large one
+
+Microservices architecture -
+* breaking down big application into smaller independant services, called Microservices, that work together.
+* It handle a single responsibility. has its own database and logic.
+
+Message Queues - 
+* when multiple Microservices need to communicate direct api calls arent always efficient, this is where message queue comes in picture.
+* It enables services to communicate asynchronously allowing request to be processed without blocking other operations.
+* example - suppose there is producer which places a message in the queue, the queue temporarily holds the message, consumer retrieves the message and process it.
+* using message queue, we can decouple services. and improve the scalability. we can prevent overload on internal services within our system
+
+Rate Limiting -
+* Rate limiting restricts the number of requests a client can send within a specific time frame. Every user or IP address is assigned a request quota. if they exceed this limit, the server blocks additional requests temporarily and returns an error.
+* there are multiple types of rate limiting algorithm - fixed window, sliding window, token bucket
+
+API gateway - 
+* Rate limiting can be handled by API gateway. It is centralized service that handles Authentication, Rate limiting, logging, monitoring, Request Routing
+* imaging Microservices architecture application, instead of exposing each service directly an API gateway acts as a single entrty point for all client request. it routes the request to appropriate Microservices and response is sent back through the gateway to the client
+* API gateway simplifies API management and improves scalability and security
+
+Idempotency - 
+* it ensures that repeated request produce the same result as if request was made only once.
+* Here is how it works, easy request is assigned a unique ID. before processing the system checks if the request has already been handed. if yes, it ignores the duplicate request. if no, it processes the request normally 
+
+---------------------------------------------------------------------------
+
+
+link - https://www.youtube.com/watch?v=l3X1t3kpmwY
+
+1) What exactly is system design?
+* it's about big picture. It is based on priciples of distriuted systems. A distriuted systems is group of computers working together to acheive common goal.
+* group of computers can handle more data, serves more users and do tougher tasks
+* It involves -
+    what are requirements of systems?
+    who are the users and how many?
+    what components do we need in our design?
+    how these components should be organized and connected to work together effectively?
+    how to make the system scalable, so that it can handle more users?
+    how to make system more reliable, so if 1 part of system stop working, it doesn't break whole system?
+    How to make system easy to maintain?
+
+* While developing a new social media platform at the very least, we may need server to handle user request and database to store information about millions of users from all around the world.
+* To be good at system design, need to learn fundamental concepts. He divided into two - Key concepts and building blocks
+
+* Key Concepts -  will help u to design systems that meet specific requirements. It will also help you make informed decisions about which components to includes in your design.
+There are 12 concepts.
+    a) scalability - It means how well a system can handle more users or data without slowing down. there are 2 ways - vertical and horizontal
+        vertical scaling - when we add more resources to single machine like a getting bigger hard drive or more memory
+        horizontal scaling - when we add more machines to system, to spread the load.
+    b) performance - It means how fast your system works. We usually measures performance with "Latency" and "Throughput"
+        Latency - time it takes for single task.
+        Throughput - how many tasks your system can handle in a certain time.
+    c) availability - your system is up and running when users need it without any significant downtime
+    d) Reliability - your system is doing what its supposed to do even if things go wrong. system can be reliable using following methods -
+        Replication -
+        Redundancy - 
+        Failover Mechanisms
+    e) consistency - All users see the same data at the same time no matter which part of the system they interact with.
+    f) Eventual consistency - The data may not be upto date immediately but it will be after a specific time.
+    g) CAP Theroem - In distriuted system, you can have only 2 out 3 - 
+            1. consistency, 2. availability, 3. Partition Tolerance
+    h) Data storage and retrieval - it involves choosing right database, designing database schema and using technology like Partitioning, sharding, replication (for optimal storage and retrieval)
+    i) ACID transaction - 
+            A - Atomicity
+            C - consistency
+            I - Isolation
+            D - Durability
+        its way to make sure that everything we do in database is done right and reliably.
+    j) Consistence Hashing - is a method, which is used to spread data across a group of servers. This method makes it easier to add or remove servers without causing too many distruptions.It also improves load balancing, scalability.
+    k) Rate limiting - is technique used to control the rate at which clients can make request to a system. It prevent abuse, protect against DDOS attacks, ensures fair usage of resources. 
+    l) Networking and communication -  it is about how different parts of a system communicate? this involves understanding things like network protocol, API's, message Queues, Event driven architecture,
+    m) security and Privacy - it means putting in place methods to keep important data safe and stop unwanted access. It involves Authentication, authorization, and encryption.
+
+* building blocks of system design - most 8 common building blocks in system design.
+    a) application servers - computers that handle the business logic and processing required by the application
+    b) load balancers - distriute incoming requests to different servers to ensure no single server gets overwhelmed
+    c) databases - where u store your data.
+    d) caching - technique used to store frequently accessed data in a fast access storage to reduce the load on Primary data source and improves response times.
+    e) Message Queues - enables asynchronous communication between system components. They decouple sender and receiver and align them to work independantky and at different rates.
+    f) Storage - system to store and retrieve data such as files, images or videos. They can be local file system, distriuted file system, or object storage system (like s3)
+    h) Proxy server - acts as intermediatory between client and servers. It is used for load balancing, caching , security, content filtering.
+    i) CDN - content delivery network. group of servers spread across different locations workldwides. stores copies of website content, like image, video, and files
+
+* link to learn above and more concepts in details - https://github.com/ashishps1/awesome-system-design-resources
+* book recommendation - Designing data-intensive application by martin kleppmann
+
+* After understanding basic concepts, we can start practicing system design interview questions.
+* mostly asked questions - 
+    1) Design url shortning service like tinyurl
+    2) design social media platform like twitter/instagram
+    3) design chat application like instagram/whatsapp
+    4) design web crawler
+    5) design video streaming service like youtube/netflix
+    6) design e-commerce platform like amazon
+    7) design ride sharing application like ola/uber
+    8) design notification syste,
+    9) design key-value store like redis
+    10) design scalable logging and monitoring
+
+Q) where to practice and learn system design interview problems?
+- given github link
+
+Q) what is expected in a system design interview?
+- it doesn't require perfect solution in interview, It is all about tradeoffs. and different people take different approach
