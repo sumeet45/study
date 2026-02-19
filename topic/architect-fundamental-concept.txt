@@ -238,4 +238,16 @@ Q) where to practice and learn system design interview problems?
 - given github link
 
 Q) what is expected in a system design interview?
-- it doesn't require perfect solution in interview, It is all about tradeoffs. and different people take different approach
+- it doesn't require perfect solution in interview, It is all about tradeoffs. and different people take different approach to solve same task. In interview, expectation is that you can clarify requirements, 
+    1) functional, non-functional
+    2) estimate the capacity
+    3) choose the right database and define schema
+    4) Design APIs and Request/Response Pattern
+    5) sketch out a High level block Diagram
+    6) Deep dive into key components
+    7) Discuss how the system will scale under load using Sharding, Replication, Partitioning
+    8) Discuss tradeoffs SQL vs NoSQL
+    9) Discuss Caching strategy
+    10) Discuss strategies for handling failures using methods like replica, fallbacks and retries
+
+* DevDesignDigest to know more about system design
