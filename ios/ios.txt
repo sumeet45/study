@@ -6,7 +6,8 @@
 * OS will now ask application, to work on given commands
 * only 3 components for every single mobile app - screen, code, data
 * phone has limited memory and have battery limitation, so we need to keep things in mind while working on app.
-* while working on app, we have to work on edge cases like user switch to another app, user getting phone call.
+* In all smartphones, there's always a manager somebody to manage all of those resources. that is of course OS. OS is like factory boss. who's going to take decision about apps.
+* while working on app, we have to work on edge cases like user switch to another app, user getting phone call. we have to work on many things, like inside our app and also for outside our app.
 
 
 5) How to make an app -

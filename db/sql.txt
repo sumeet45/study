@@ -1,10 +1,12 @@
 
-* Database - It is a simple container to store data. If we use files instead of DB, it will be quite messy and a long process. 
+* Database - It is a simple container to store data. But instead of just dumping files into folders, the database organized the data. so it is easy to access, to manage and to search.
+* If we use files instead of DB, it will be quite messy and a long process. 
+* Database can handle huge amount of data. It is safe and secure to store important and critical data inside the database.
 * SQL is a language to talk with a database. stands for Structured Query Language.
 
 1) DBMS & SQL Server -
 * We have data inside the database. With different SQL, every user accesses the database.
-* DBMS is software which manages requests to the database for every user, and also handles security.
+* DBMS is software which manages requests to the database for every user, also it is going to make the priority which SQL must be executed first and also handles security.
 * SERVER - server means a system which should be online 24/7. It hosts our database and DBMS software.
 
 In short -
@@ -17,8 +19,8 @@ server - where the database lives
 * relational DB - in it, we have tables, which contain rows and columns. They have a relationship with other tables also. Hence we call this relational DB
 * key-value  db - key-value db is also called a no-relational db.
 * column based db - in it, data is grouped according to the column. It is quite advanced and handles big data. The main purpose of this DB is to search for data.
-* graph based DB - 
-* Document-Based DB -
+* graph based DB - main focuse here is the relationship between objects. So the main idea here is how to connect data points.
+* Document-Based DB - The data is stored as entire documents where the structure of data is not that important.
 
 * From above, key-value, column based, graph, document-based DBs, are called "No-SQL database".
 * Microsoft SQL server, MySQL, PostgreSQL are types of SQL relational Database.
@@ -29,6 +31,7 @@ server - where the database lives
 
 
 3) Database Structure -
+* The databases are very structred and organized. It has the following hierarchy.
 hierarchy =>
 * Server - Who holds databases and will be available online all time.
 * Database - In Server, we can have multiple databases.
@@ -45,7 +48,13 @@ hierarchy =>
 5) Why learn SQL?
 * To talk with data, High Demand Job, Industry Standards
 
+at 22:17, we can have full image of what have we learned till now in video
+
 6) Setup your Enviornment ( Install SQL server ) -
+* instead of SSMS, we use Azure data studio. for SQL-server, we use docker (On mac).
+* In SSMS, we have object explorer, menu, sql editor, result. 
+
+* link - https://www.datawithbaraa.com/wiki/sql#sql-welcome , to subscribe content
 * using docker with sqlserver-express ( for storing database ) and "SQL server(mssql)" extension of VS code ( for GUI ).
 * show page where links are available to download content
 * from that content, took 2 queries and run it, to create 2 separate database. Also telling about Adventure Works database from microsoft. Adventure works link contain 3 types of database - OLTP, Data Warehouse, Lightweight.
@@ -53,5 +62,8 @@ hierarchy =>
 
 
 7) Query Data (SELECT)
+* Normally, data is available in the table & table is available in Database. So whenever we want data, we will use SELECT query to grab data. Using this, we can ask for data from database.
+* It is called reading from database. Select statement help here to read from database.
+* SQL query have multiple clauses - SELECT, DISTINCT, TOP, FROM, JOIN, WHERE, GROUP BY, HAVING, ORDER BY.
 
-34:03
+35:47

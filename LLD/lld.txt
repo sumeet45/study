@@ -1,3 +1,41 @@
+How I Mastered Low Level Design Interviews ( Ashish Pratap Singh - https://youtu.be/OhCp6ppX6bg?si=BIoGpDfVYsPqRz2y )
+
+check link of github - https://github.com/ashishps1/awesome-low-level-design
+
+1) what LLD exactly is?
+* LLD focuses on the implementation details.
+* it involves translating high level design into "classes, interfaces, design patterns, data structures, and algorithm".
+
+2) How to get started?
+* Need to know any one OOPS based language - like TypeScript
+* you also need to know about how to create classes, objects, and use inbuilt data structures and algorithm libraries
+* also you need to know most common DS like arrays, linked list, sets, hash tables and algorithm like sorting, searching
+* learn OOPS
+* they are also building blocks for design patterns and other object oriented principle that i will cover shortly
+* also need to draw designs (UML design) to show different classes, their attributes and how they interact with each other
+* UML designs also have many options (like class diagram, sequence diagram, use case diagram)
+* courses for UML design - https://www.coursera.org/learn/object-oriented-design
+* design Principles mostly used -DRY, YAGNI, KISS, SOLID
+* design Pattern mostly used - singleton, factory, abstract factory, builder, adapter, Decorator, facade, composite, observer, command, Strategy, state, template method 
+
+3) concepts you need to learn
+4) most common interview questions
+* after learning, try to practice. and after practice you will find patterns  while solving.
+5) How to answer a LLD interview problem?
+* we received Real world problem and we have to solve it. use this steps -
+  clarify requirements and core use-cases - Ask question to get clear picture
+  Identify Entities - break down the problem and Identify the main entities or objects
+  Create classes - translate entities into classes and come up with a list of attributes
+  Identify Core methods - want to support 
+  Define relaationship between classes - if we have multiple classes, figure out how they would relate with each other
+  Implement necessary methods - ask interviewer which are important methods, and work on that
+  Exception Handling - Errors, Edge Cases,Exception, Unexpected Input
+6) best coding practices to follow during a lld interview
+
+
+resume at 4:47
+
+
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
