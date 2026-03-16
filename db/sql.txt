@@ -65,5 +65,51 @@ at 22:17, we can have full image of what have we learned till now in video
 * Normally, data is available in the table & table is available in Database. So whenever we want data, we will use SELECT query to grab data. Using this, we can ask for data from database.
 * It is called reading from database. Select statement help here to read from database.
 * SQL query have multiple clauses - SELECT, DISTINCT, TOP, FROM, JOIN, WHERE, GROUP BY, HAVING, ORDER BY.
+* Query - Select * ( select * is going to go and retrieve all the columns from your table.)
+* From Clause - tell SQL where to find your data. So with Select, we select the columns that we want and the "From", you specify the table where your data come from.
+* "SELECT * From User" - 
+    In this query, SQL execute first "From" Clause. Its going to go and retrieve all the data from the database to the results.
+    Second step, SQL check "SELECT" statement. It decide which columns we have to keep in the result.
+* lets start practicising
+* Before querying, we have to verify one thing that, we have to choose correct database. We can do this by selecting DB name in dropdown, or by query. 
+* Query for change database => "USE myDatabase"
+* Comment example => 
+        -- This is comment --
+        /* This 
+            is 
+            comment */
 
-35:47
+* retrieve data of all customers -  SELECT * FROM customers
+* retrieve data of all orders - SELECT * FORM orders
+
+8) Select Few Columns -
+* SELECT first_name, country, score FROM customers - will show table with given column list
+* SELECT first_name, score, country  FROM customers - will show table with score first before country
+
+
+9) SQL Query Where (Filter your data) -
+* we use where to filter our data based on condition, or any data that fulfuill condition going to stay in the output in the result.
+* syntax - SELECT * FROM Table WHERE condition
+* Query - 
+SELECT name, country from customers where score != 0
+SELECT * from customers where country = 'Germany'
+
+
+10) SQL query ORDER By (Sort your data) -
+* It helps to sort data. With this, we can do ascending or descending
+* while sorting, we have to spacify two things. 1) Ascending or Descending, 2) Table
+* by default, it is ascending. if we don't write ascending, it will take ascending. so better keep habit of adding ascending or descending. 
+* example - 
+select * from customers order by Score DESC
+
+
+
+Queries -
+Select * From User  //To read everything from User
+USE myDatabase      //To change database
+SELECT first_name, country, score FROM customers        // to show selected column
+Select * from customers where country = 'Germany'       // to filter rows
+select * from customers order by Score DESC             // to sort 
+
+
+51:00
