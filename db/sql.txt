@@ -99,9 +99,44 @@ SELECT * from customers where country = 'Germany'
 * It helps to sort data. With this, we can do ascending or descending
 * while sorting, we have to spacify two things. 1) Ascending or Descending, 2) Table
 * by default, it is ascending. if we don't write ascending, it will take ascending. so better keep habit of adding ascending or descending. 
+* In Descending, 1) step, SQL grabs data and 2) step, then sql sorts data
 * example - 
 select * from customers order by Score DESC
+select * from customers order by Score ASC
 
+11) SQL query (Nested) Order By - 
+* when we sort data using multiple columns. we call "nested sorting".
+* when we do sorting based on such column, where value repeats, we mostly need to use nested sorting.
+* After first sorting based on country, score not sorted properly. hence we have to add more sorting based on score.
+* ex.
+SELECT * FROM customers ORDER BY country ASC, score DESC    // country sorted first, then score
+
+12) SQL Query Group By -
+* combining the rows with same value in Group By. Combine and smash press rows to make it aggregated and combined
+* It aggregates column by another column.
+* ex. total score by country.   
+SELECT country[to show country name in table] AS customers_country, SUM(score) AS total from customers GROUP BY country [to do group by functionality]
+    // we received 3 rows with country
+* here, country is category and score is aggregator column.
+* If we add first_name in query after select, then we will get an error. SQL will tell you that I only need columns that you want to group the data by or should be aggregated.
+* Hence we have to add first_name in Group by
+    Select country, first_name, SUM(score) from customers Group by country, first_name
+    // will show 5 rows, bcz first_name applied here.
+* TIP - The result of GROUP BY determined by the unique values of the grouped columns
+
+* lets find total score and total number of customers for each country
+    Select country, SUM(score) AS total_score, COUNT(id) AS total_customers
+    From customers
+    GROUP By country
+
+
+13) SQL Query HAVING (Filter Aggregated data) -
+* we can use "HAVING" in order to filter data but after aggregation.
+* we can use "HAVING" only after using the group by.
+* syntax - 
+    SELECT country, SUM(score) FROM customers 
+    GROUP BY country
+    HAVING condition
 
 
 Queries -
@@ -110,6 +145,41 @@ USE myDatabase      //To change database
 SELECT first_name, country, score FROM customers        // to show selected column
 Select * from customers where country = 'Germany'       // to filter rows
 select * from customers order by Score DESC             // to sort 
+select country, SUM(score) AS total from customers Group By country     // Group By Function
 
 
-51:00
+
+
+Aggregator Functions - 
+* SUM
+* COUNT
+
+
+
+SQL Logical Execution Order
+* FROM
+    Identify source tables
+    Apply joins (JOIN, ON)
+* WHERE
+    Filter rows (before grouping)
+* GROUP BY
+    Group rows for aggregation
+* HAVING
+    Filter grouped data (after aggregation)
+* SELECT
+    Choose columns / expressions
+* DISTINCT
+    Remove duplicates (if used)
+* ORDER BY
+    Sort the result
+* LIMIT / OFFSET
+    Restrict number of rows returned
+
+Easy Way to Remember -
+F W G H S D O L
+👉 “Funny Writers Grow Happy Smart Data On Land” (just a mnemonic 😄)
+
+real interview-style explanation -
+“In SQL, the execution order is different from how we write the query. The database follows a logical processing order. It starts with the FROM clause to identify the data source and apply joins. Then it filters rows using WHERE. After that, it groups data using GROUP BY, and applies group-level filters using HAVING. Once the data is processed, it selects the required columns in the SELECT clause. Then it removes duplicates if DISTINCT is used, sorts the result using ORDER BY, and finally limits the output using LIMIT or OFFSET.”
+Add this line at the end:-  “That’s why we can’t use column aliases in the WHERE clause, because SELECT is executed later.”
+
