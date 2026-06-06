@@ -148,12 +148,105 @@ HTTP/2 – A protocol for greater performance -
 --------------------------
 link - https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Session
 
-* A typical HTTP session
+A typical HTTP session -
      In client-server protocols, like HTTP, sessions consist of three phases:
           1) The client establishes a TCP connection (or the appropriate connection if the transport layer is not TCP).
           2) The client sends its request, and waits for the answer.
           3) The server processes the request, sending back its answer, providing a status code and appropriate data.
           As of HTTP/1.1, the connection is no longer closed after completing the third phase, and the client is now granted a further request: this means the second and third phases can now be performed any number of times.
 
-* Establishing a connection
+
+Establishing a connection -
+     * In client-server protocols, it is the client which establishes the connection. Opening a connection in HTTP means initiating a connection in the underlying transport layer, usually this is TCP.
+     * With TCP, the default port for an HTTP server on a computer is port 80.
+
+Quick Research -
+Q) preflight request comes when connection made or while sending request first time?
+-  * A preflight request is sent while sending the request for the first time, not simply when the network connection is made.
+   * When JavaScript code triggers a cross-origin API call (such as a fetch() or Axios request), the web browser intercepts it. If the request meets specific criteria, the browser pauses the application's actual request and automatically issues an HTTP OPTIONS request (the preflight) right before transmitting the intended payload.
+   * The browser will only pause your request to send a preflight if it leaves the boundaries of a "simple request". It triggers if you use:
+          Methods other than standard options: Any request using PUT, DELETE, or PATCH.
+          Non-simple Content-Types: Sending data formatted as application/json (standard in modern web apps).
+          Custom HTTP Headers: Including custom app headers or security tokens like an Authorization header
+   * Is it Sent Every Single Time?
+     * No. To avoid destroying application performance with double network roundtrips on every single request, browsers utilize caching.
+     * If the server responds to the initial preflight request with an Access-Control-Max-Age header, the browser will cache the permission slip for the duration specified (in seconds). Subsequent identical requests made during that timeframe will be sent immediately without triggering additional preflight checks.
+   * preflight requests happen only when you call an API on a different domain (cross-origin). The browser checks the Origin, which consists of three parts: Protocol + Domain + Port. If any of these three pieces do not match perfectly, it is considered a cross-origin request and can trigger a preflight.
+
+
+Sending a client request -
+     * An HTTP client request consists of three blocks of text-based directives separated by CRLF, initiated by a user-agent. It includes a request line containing the method, document path, and protocol version, followed by HTTP headers conveying metadata, and an optional data block for methods like POST.
+     * ex.
+          Fetching the root page of developer.mozilla.org, (https://developer.mozilla.org/), and telling the server that the user-agent would prefer the page in French, if possible:
+
+     GET / HTTP/1.1
+     Host: developer.mozilla.org
+     Accept-Language: fr
+
+
+Request methods -
+     * HTTP defines a set of request methods indicating the desired action to be performed upon a resource. Although they can also be nouns, these requests methods are sometimes referred as HTTP verbs. The most common requests are GET and POST.
+
+
+Structure of a server response -
+     * An HTTP server response consists of three blocks of text-based directives separated by CRLF, sent after a web server processes a request. It begins with a status line containing the HTTP version and a response status code, followed by HTTP headers providing data metadata, and finishes with a data block containing the requested payload.
+     * ex.
+
+          HTTP/1.1 200 OK
+          Content-Type: text/html; charset=utf-8
+          Content-Length: 55743
+          Connection: keep-alive
+          Cache-Control: s-maxage=300, public, max-age=0
+          Content-Language: en-US
+          Date: Thu, 06 Dec 2018 17:37:18 GMT
+          ETag: "2e77ad1dc6ab0b53a2996dfd4653c1c3"
+          Server: meinheld/0.6.1
+          Strict-Transport-Security: max-age=63072000
+          X-Content-Type-Options: nosniff
+          X-Frame-Options: DENY
+          X-XSS-Protection: 1; mode=block
+          Vary: Accept-Encoding,Cookie
+          Age: 7
+          
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <title>A basic webpage</title>
+          </head>
+          <body>
+            <h1>Basic HTML webpage</h1>
+            <p>Hello, world!</p>
+          </body>
+          </html>
+
+
+
+Response status codes -
+     * HTTP response status codes indicate if a specific HTTP request has been successfully completed. Responses are grouped into five classes: informational responses, successful responses, redirects, client errors, and server errors.
+          Informational responses (100 – 199)
+          Successful responses (200 – 299)
+          Redirection messages (300 – 399)
+          Client error responses (400 – 499)
+          Server error responses (500 – 599)
+
+
+--------------------------
+link - https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Messages
+
+HTTP messages -
+     * HTTP messages are the mechanism used to exchange data between a server and a client in the HTTP protocol.
+     * There are two types of messages: requests sent by the client to trigger an action on the server, and responses, the answer that the server sends in response to a request.
+     * In HTTP/2, messages are wrapped in binary framing, which makes them slightly harder to read.
+
+
+Anatomy of an HTTP message -
+     * To understand how HTTP messages work, we'll look at HTTP/1.1 messages and examine the structure. The following illustration shows what messages in HTTP/1.1 look like:
+     * Both requests and responses share a similar structure:          
+          a) A start-line is a single line that describes the HTTP version along with the request method or the outcome of the request.
+          b) An optional set of HTTP headers containing metadata that describes the message. For example, a request for a resource might include the allowed formats of that resource, while the response might include headers to indicate the actual format returned.
+          c) An empty line indicating the metadata of the message is complete.
+          d) An optional body containing data associated with the message. This might be POST data to send to the server in a request, or some resource returned to the client in a response. Whether a message contains a body or not is determined by the start-line and HTTP headers.
+     The start-line and headers of the HTTP message are collectively known as the head of the requests, and the part afterwards that contains its content is known as the body.
+          
 
