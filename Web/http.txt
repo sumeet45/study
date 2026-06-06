@@ -670,6 +670,7 @@ Via
 * HTTP is an extensible protocol that relies on concepts like resources and Uniform Resource Identifiers (URIs), a basic message structure, and client-server communication model
 
 --------------------------
+link - https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview
 Overview of HTTP -
 * it is a client-server protocol
 * The messages sent by the client are called requests and the messages sent by the server as an answer are called responses
@@ -750,3 +751,37 @@ Conclusion -
 * HTTP is an extensible protocol that is easy to use. The client-server structure, combined with the ability to add headers, allows HTTP to advance along with the extended capabilities of the Web.
 
 
+--------------------------
+link - https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Evolution_of_HTTP#invention_of_the_world_wide_web
+
+Evolution of HTTP
+* HTTP (HyperText Transfer Protocol) is the underlying protocol of the World Wide Web.
+
+Invention of the World Wide Web
+*  Initially called the Mesh, it was later renamed the World Wide Web during its implementation in 1990
+
+HTTP/0.9 – The one-line protocol
+* HTTP/0.9 was extremely simple: requests consisted of a single line and started with the only possible method GET followed by the path to the resource.
+* Unlike subsequent evolutions, there were no HTTP headers. This meant that only HTML files could be transmitted. There were no status or error codes
+
+
+HTTP/1.0 – Building extensibility
+* HTTP/0.9 was very limited, but browsers and servers quickly made it more versatile:
+* Summarize of points -
+     * Request Versioning: HTTP/1.0 was added to GET lines.
+     * Response Status Codes: Allowed browsers to identify success or failure.
+     * Dynamic Browser Behavior: Enabled automated actions like local cache updates.
+     * HTTP Headers Introduced: Allowed metadata transmission for requests and responses.
+     * Protocol Extensibility: Increased overall flexibility of communication.
+     * Diverse File Support: Enabled non-HTML transfers via Content-Type headers.
+
+
+HTTP/1.1 – The standardized protocol
+* HTTP/1.1 clarified ambiguities and introduced numerous improvements:
+     * A connection could be reused, which saved time. It no longer needed to be opened multiple times to display the resources embedded in the single original document.
+     * Pipelining was added. This allowed a second request to be sent before the answer to the first one was fully transmitted. This lowered the latency of the communication.
+     * Chunked responses were also supported.
+     * Additional cache control mechanisms were introduced.
+     * Content negotiation, including language, encoding, and type, was introduced. A client and a server could now agree on which content to exchange.
+     * Thanks to the Host header, the ability to host different domains from the same IP address allowed server collocation.
+* HTTP/1.1 allows you to reuse a TCP connection for multiple requests and responses, so you avoid having to create a new connection for each request. However, clients still had to wait for each resource to download before requesting the next one (Head-of-line blocking). To work around this, most browsers allow up to six TCP connections per website (or origin).
