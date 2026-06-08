@@ -248,5 +248,18 @@ Anatomy of an HTTP message -
           c) An empty line indicating the metadata of the message is complete.
           d) An optional body containing data associated with the message. This might be POST data to send to the server in a request, or some resource returned to the client in a response. Whether a message contains a body or not is determined by the start-line and HTTP headers.
      The start-line and headers of the HTTP message are collectively known as the head of the requests, and the part afterwards that contains its content is known as the body.
+
+
+HTTP requests -
+* ex.
+          POST /users HTTP/1.1
+          Host: example.com
+          Content-Type: application/x-www-form-urlencoded
+          Content-Length: 49
           
+          name=FirstName+LastName&email=bsmth%40example.com
+
+* start line -      <method> <request-target> <protocol>
+<method> - The HTTP method (also known as an HTTP verb) is one of a set of defined words that describes the meaning of the request and the desired outcome.
+<request-target> - The request target is usually an absolute or relative URL, and is characterized by the context of the request. The format of the request target depends on the HTTP method used and the request context.
 
