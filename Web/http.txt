@@ -283,11 +283,14 @@ Request headers -
      Content-Type: application/x-www-form-urlencoded
      Content-Length: 49
 
+     In HTTP/1.x, each header is a case-insensitive string followed by a colon (:) and a value whose format depends on the header. The whole header, including the value, consists of one single line. This line can be quite long in some cases, such as the Cookie header.
+     Some headers are exclusively used in requests, while others can be sent in both requests and responses, or might have a more specific categorization:
+     1) Request headers, 2) Representation headers
+
 
 Request body - 
 The request body is the part of a request that carries information to the server. Only PATCH, POST, and PUT requests have a body. In the form submission example, this part is the body:
      name=FirstName+LastName&email=bsmth%40example.com
-
 
 
 B) HTTP responses
@@ -319,6 +322,40 @@ A numeric status code that indicates whether the request succeeded or failed. Co
 <reason-phrase> Optional
 The optional text after the status code is a brief, purely informational, text description of the status to help a human understand the outcome of a request. The reason phrase is occasionally included in parentheses (e.g., "201 (Created)") to indicate that it's optional.
 
+
+* Response headers -
+     Response headers are the metadata sent with a response. In HTTP/1.x, each header is a case-insensitive string followed by a colon (:) and a value whose format depends upon which header is used.
+     Like request headers, there are many different headers that can appear in responses, and they are categorized as:
+     1) Response Headers, 2) Representation Headers
+
+
+* Response Body -
+     A response body is included in most messages when responding to a client. In successful requests, the response body contains the data that the client asked for in a GET request. If there are problems with the client's request, it's common for the response body to describe why the request failed, and hint as to whether it's permanent or temporary.
+     Response bodies may be:
+     * Single-resource bodies defined by the two headers: Content-Type and Content-Length, or of unknown length and encoded in chunks with Transfer-Encoding set to chunked.
+     * Multiple-resource bodies, consisting of a body that contains multiple parts, each containing a different piece of information. Multipart bodies are typically associated with HTML Forms, but may also be sent in response to Range requests.
+
+
+c) HTTP/2 messages -
+     * HTTP/1.x also has a problem called head-of-line (HOL) blocking, where a client has to wait for a response from the server before sending the next request. 
+     * In HTTP/1.1 if you want to make two requests in parallel, you have to open two connections.
+     * HTTP/2 allows you to use a single TCP connection for multiple requests and responses at the same time. This is done by wrapping messages into a binary frame and sending the requests and responses in a numbered stream on a connection. Data and header frames are handled separately, which allows headers to be compressed via an algorithm called HPACK. Using the same TCP connection to handle multiple requests at the same time is called multiplexing.
+     * Requests are not necessarily sequential: stream 9 doesn't have to wait for stream 7 to finish, for instance.
+
+Pseudo-headers -
+One notable change to messages in HTTP/2 are the use of pseudo-headers. Where HTTP/1.x used the message start-line, HTTP/2 uses special pseudo-header fields beginning with :. In requests, there are the following pseudo-headers:
+     :method - the HTTP method.
+     :scheme - the scheme portion of the target URI, which is often HTTP(S).
+     :authority - the authority portion of the target URI.
+     :path - the path and query parts of the target URI.
+
+     In responses, there is only one pseudo-header, and that's the :status which provides the code of the response.
+
+-------------------------------------------------------------------------------------------
+link - https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types
+Media types (MIME types) -
+* A media type (formerly known as a Multipurpose Internet Mail Extensions or MIME type) indicates the nature and format of a document, file, or assortment of bytes. MIME types are defined and standardized in IETF's RFC 6838.
+* The Internet Assigned Numbers Authority (IANA) is responsible for all official MIME types, and you can find the most up-to-date and complete list at their Media Types page.
 
 
 
