@@ -531,6 +531,24 @@ Hop-by-hop compression -
      * To do this, HTTP uses a mechanism similar to the content negotiation for end-to-end compression: the node transmitting the request advertizes its will using the TE header and the other node chooses the adequate method, applies it, and indicates its choice with the Transfer-Encoding header.
      * In practice, hop-by-hop compression is transparent for the server and the client, and is rarely used. TE and Transfer-Encoding are mostly used to send a response by chunks, allowing to start transmitting a resource without knowing its length.
 
+--------------------------------------------------------------------------------------------------------------------------
+link (https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching) -
+
+HTTP caching -
+The HTTP cache stores a response associated with a request and reuses the stored response for subsequent requests.
+
+Types of caches -
+     1) Private caches -
+          * A private cache is a cache tied to a specific client — typically a browser cache. Since the stored response is not shared with other clients, a private cache can store a personalized response for that user.
+          * If a response contains personalized content and you want to store the response only in the private cache, you must specify a private directive.
+               ex. Cache-Control: private
+          * Personalized contents are usually controlled by cookies, but the presence of a cookie does not always indicate that it is private, and thus a cookie alone does not make the response private.
+
+     2) Shared cache -
+          The shared cache is located between the client and the server and can store responses that can be shared among users. And shared caches can be further sub-classified into proxy caches and managed caches.
+          a) Proxy caches - In addition to the function of access control, some proxies implement caching to reduce traffic out of the network. This is usually not managed by the service developer, so it must be controlled by appropriate HTTP headers and so on. However, in the past, outdated proxy-cache implementations — such as implementations that do not properly understand the HTTP Caching standard — have often caused problems for developers.
+          b) 
+
 
 
 
