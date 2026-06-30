@@ -547,7 +547,25 @@ Types of caches -
      2) Shared cache -
           The shared cache is located between the client and the server and can store responses that can be shared among users. And shared caches can be further sub-classified into proxy caches and managed caches.
           a) Proxy caches - In addition to the function of access control, some proxies implement caching to reduce traffic out of the network. This is usually not managed by the service developer, so it must be controlled by appropriate HTTP headers and so on. However, in the past, outdated proxy-cache implementations — such as implementations that do not properly understand the HTTP Caching standard — have often caused problems for developers.
-          b) 
+          b) Managed caches - Managed caches are explicitly deployed by service developers to offload the origin server and to deliver content efficiently. Examples include reverse proxies, CDNs, and service workers in combination with the Cache API.
+          * The characteristics of managed caches vary depending on the product deployed. In most cases, you can control the cache's behavior through the Cache-Control header and your own configuration files or dashboards.
+          * For example, the HTTP Caching specification essentially does not define a way to explicitly delete a cache — but with a managed cache, the stored response can be deleted at any time through dashboard operations, API calls, restarts, and so on. That allows for a more proactive caching strategy.
+          * ex. Cache-Control: no-store
+               This will not store any cache on browser.
+
+
+Heuristic caching -
+     * HTTP is designed to cache as much as possible, so even if no Cache-Control is given, responses will get stored and reused if certain conditions are met. This is called heuristic caching. For example, take the following response. This response was last updated 1 year ago.
+          HTTP/1.1 200 OK
+          Content-Type: text/html
+          Content-Length: 1024
+          Date: Tue, 22 Feb 2022 22:22:22 GMT
+          Last-Modified: Tue, 22 Feb 2021 22:22:22 GMT
+          
+          <!doctype html>
+          …
+
+
 
 
 
