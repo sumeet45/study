@@ -675,7 +675,19 @@ Validation -
                Don't know what could happen in outdated implementations.
 
 
-     
+     * Do not share with others -
+          * It would be problematic if a response with personalized content is unexpectedly visible to other users of a cache.
+          * In such a case, using the private directive will cause the personalized response to only be stored with the specific client and not be leaked to any other user of the cache.
+                    Cache-Control: private
+          In such a case, even if no-store is given, private must also be given.
+
+     * Provide up-to-date content every time -
+          * The no-store directive prevents a response from being stored, but does not delete any already-stored response for the same URL.
+          * In other words, if there is an old response already stored for a particular URL, returning no-store will not prevent the old response from being reused.
+          * However, a no-cache directive will force the client to send a validation request before reusing any stored response.
+                    Cache-Control: no-cache
+
+     * Dealing with outdated implementations -
 
 
 
