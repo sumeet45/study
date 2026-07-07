@@ -712,6 +712,46 @@ Validation -
                     If-Modified-Since: Tue, 22 Feb 2022 20:20:20 GMT
 
 
+     * Force reload -
+          * Browsers use max-age=0 during reloads for backward-compatibility reasons — because many outdated implementations prior to HTTP/1.1 did not understand no-cache. But no-cache is fine now in this use case, and force reload is an additional way to bypass cached responses.
+                    GET / HTTP/1.1
+                    Host: example.com
+                    Pragma: no-cache
+                    Cache-Control: no-cache
+
+
+     * Avoiding revalidation -
+          * To prevent revalidation, the immutable directive can be used to explicitly indicate that revalidation is not required because the content never changes.
+                    Cache-Control: max-age=31536000, immutable
+
+     * Deleting stored responses -
+          * There is no way to delete responses on an intermediate server that have been stored with a long max-age.
+
+     * Request collapse -
+          * The shared cache is primarily located before the origin server and is intended to reduce traffic to the origin server.
+          * Thus, if multiple identical requests arrive at a shared cache at the same time, the intermediate cache will forward a single request on behalf of itself to the origin, which can then reuse the result for all clients. This is called request collapse.
+          * Request collapse occurs when requests are arriving at the same time, so even if max-age=0 or no-cache is given in the response, it will be reused.
+          * If the response is personalized to a particular user and you do not want it to be shared in collapse, you should add the private directive.
+
+
+* Common caching patterns -
+     * Default settings - To ensure that by default the latest versions of resources will always be transferred, it's common practice to make the default Cache-Control value include no-cache:
+     * Cache Busting -
+     * Validation -
+          * Don't forget to set the Last-Modified and ETag headers, so that you don't have to re-transmit a resource when reloading. It's easy to generate those headers for pre-built static files.
+          * In addition, immutable can be added to prevent validation on reload.
+                    # bundle.v123.js
+                    HTTP/1.1 200 OK
+                    Content-Type: text/javascript
+                    Content-Length: 1024
+                    Cache-Control: public, max-age=31536000, immutable
+                    Last-Modified: Tue, 22 Feb 2022 20:20:20 GMT
+                    ETag: "YsAIAAAA-QG4G6kCMAMBAAAAAAAoK"
+     * Main resources - 
+          
+
+
+
 
 
 
