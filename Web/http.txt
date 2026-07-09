@@ -749,7 +749,56 @@ Validation -
                     ETag: "YsAIAAAA-QG4G6kCMAMBAAAAAAAoK"
      * Main resources - 
           
+---------------------------------------------------------------------------------------------------------------------------------------------
+link - https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Authentication
 
+The general HTTP authentication framework -
+     * RFC 7235 defines the HTTP authentication framework, which can be used by a server to challenge a client request, and by a client to provide authentication information.
+     * The challenge and response flow works like this:
+          * The server responds to a client with a 401 (Unauthorized) response status and provides information on how to authorize with a WWW-Authenticate response header containing at least one challenge.
+          * A client that wants to authenticate itself with the server can then do so by including an Authorization request header with the credentials.
+          * Usually a client will present a password prompt to the user and will then issue the request including the correct Authorization header.
+     
+
+
+* Proxy authentication -
+     The same challenge and response mechanism can be used for proxy authentication. As both resource authentication and proxy authentication can coexist, a different set of headers and status codes is needed. In the case of proxies, the challenging status code is 407 (Proxy Authentication Required), the Proxy-Authenticate response header contains at least one challenge applicable to the proxy, and the Proxy-Authorization request header is used for providing the credentials to the proxy server.
+
+* Access forbidden
+     * If a (proxy) server receives invalid credentials, it should respond with a 401 Unauthorized or with a 407 Proxy Authentication Required, and the user may send a new request or replace the Authorization header field.
+     * If a (proxy) server receives valid credentials that are inadequate to access a given resource, the server should respond with the 403 Forbidden status code. Unlike 401 Unauthorized or 407 Proxy Authentication Required, authentication is impossible for this user and browsers will not propose a new attempt.
+     * In all cases, the server may prefer returning a 404 Not Found status code, to hide the existence of the page to a user without adequate privileges or not correctly authenticated.
+
+
+* Character encoding of HTTP authentication -
+     Browsers use utf-8 encoding for usernames and passwords.
+     Firefox once used ISO-8859-1, but changed to utf-8 for parity with other browsers and to avoid potential problems as described in Firefox bug 1419658.
+
+* WWW-Authenticate and Proxy-Authenticate headers
+          * The WWW-Authenticate and Proxy-Authenticate response headers define the authentication method that should be used to gain access to a resource. They must specify which authentication scheme is used, so that the client that wishes to authorize knows how to provide the credentials.
+          * The syntax for these headers is the following:
+                    WWW-Authenticate: <type> realm=<realm>
+                    Proxy-Authenticate: <type> realm=<realm>
+          * Here, <type> is the authentication scheme ("Basic" is the most common scheme and introduced below). The realm is used to describe the protected area or to indicate the scope of protection. This could be a message like "Access to the staging site" or similar, so that the user knows to which space they are trying to get access to.
+
+
+* Authorization and Proxy-Authorization headers -
+     * The Authorization and Proxy-Authorization request headers contain the credentials to authenticate a user agent with a (proxy) server. Here, the <type> is needed again followed by the credentials, which can be encoded or encrypted depending on which authentication scheme is used.
+               Authorization: <type> <credentials>
+               Proxy-Authorization: <type> <credentials>
+
+* Authentication schemes -
+     Some common authentication schemes include:-
+          Basic,
+          Bearer,
+          Digest,
+          HOBA,          
+          Mutual,          
+          Negotiate / NTLM,
+          VAPID,
+          SCRAM,          
+          AWS4-HMAC-SHA256
+          
 
 
 
