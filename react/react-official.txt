@@ -1,13 +1,60 @@
-Quick Start -
+link - https://react.dev/learn
+
+Quick Start - 
 
 1) Creating and nesting components -
   * React apps are made out of components. A component is a piece of the UI (user interface) that has its own logic and appearance. A component can be as small as a button, or as large as an entire page.
   * React component names must always start with a capital letter, while HTML tags must be lowercase.
   * The "export default" keywords specify the main component in the file.
+       export default function MyApp() {
+          return (
+            <div>
+              <h1>Welcome to my app</h1>
+              <MyButton />
+            </div>
+          );
+        }
+
 
 2) Writing markup with JSX  -
   * Component written using JSX. JSX is stricter than HTML. You have to close tags like <br />. Your component also can’t return multiple JSX tags. You have to wrap them into a shared parent, like a <div>...</div> or an empty <>...</> wrapper.
 
 3) Adding styles  -
   * In React, you specify a CSS class with className.
+            <img className="avatar" />
+
+4) Displaying data -
+ * "{user.name}" using this, we can add variable in JSX.
+ * To add attribute value, we can use like following -   <img className="avatar" {user.imageUrl} />
+ * You can put more complex expressions inside the JSX curly braces too, for example, string concatenation. {"Photo" + user.name}
+
+5) Conditional rendering  -
+ * you can use an if statement to conditionally include JSX.
+ * If you prefer more compact code, you can use the conditional ? operator. Unlike if, it works inside JSX. -  
+      {isLoggedIn ? <AdminPanel /> : <LoginPanel />}
+ * When you don’t need the else branch, you can also use a shorter logical && syntax:
+      {isLoggedIn && <AdminPanel />}
+
+6) Rendering lists -
+ * using for loop or array's map function, we render list in React.
+ * we will add key attribute to <li>. it will contain unique value, like db Id. React uses your keys to know what happened if you later insert, delete, or reorder the items.
+
+7) Responding to events  -
+ * You can respond to events by declaring event handler functions inside your components.
+        <button onClick={handleClick}> Click Me </button>
+
+8) Updating the screen  -
+ * use "useState" hook to add state to component.
+    function MyButton(){
+       const [val, setVal] = useState(0);
+       const handleClick = () => {
+          setVal(val => val + 1)
+       }
+       return (
+         <button onClick={handleClick}>
+           Clicked {val} times
+         </button>
+       )
+    }
+
 
