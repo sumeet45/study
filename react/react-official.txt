@@ -57,4 +57,10 @@ Quick Start -
        )
     }
 
+9) Using Hooks -
+ * You can also write your own Hooks by combining the existing ones.
+ * You can only call Hooks at the top of your components (or other Hooks). If you want to use useState in a condition or a loop, extract a new component and put it there.
+
+10) Sharing data between components -
+ * you’ll need components to share data and always update together.
 
