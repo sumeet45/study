@@ -93,4 +93,35 @@ function MyButton({ count, onClick }) {
   );
 }
 
+------_-------------------
+
+Thinking in React -
+
+* When you build a user interface with React, you will first break it apart into pieces called components. Then, you will describe the different visual states for each of your components. Finally, you will connect your components together so that the data flows through them.
+
+Start with the mockup -
+
+1) Step 1: Break the UI into a component hierarchy -
+  * Start by drawing boxes around every component and subcomponent in the mockup and naming them.
+  * Depending on your background, you can think about splitting up a design into components.
+
+2) Step 2: Build a static version in React -
+  * To build a static version of your app that renders your data model, you’ll want to build components that reuse other components and pass data using props. You can choose "top to bottom" or "bottom to top"
+
+3) Step 3: Find the minimal but complete representation of UI state -
+  * To make the UI interactive, you need to let users change your underlying data model. You will use state for this.
+  * decide which should be state based on following.
+  * Which of these are state? Identify the ones that are not:
+      1) Does it remain unchanged over time? If so, it isn’t state.
+      2) Is it passed in from a parent via props? If so, it isn’t state.
+      3) Can you compute it based on existing state or props in your component? If so, it definitely isn’t state!
+    What’s left is probably state.
+
+4) Step 4: Identify where your state should live -
+  * After identifying your app’s minimal state data, you need to identify which component is responsible for changing this state, or owns the state.
+  * Find component, where state should be available. suppose, that state require in 1 place only, then use it in that component. If state required in different component, then use it in common parent, so you can pass it to child component.
+
+5) Step 5: Add inverse data flow -
+  * using Functions, which we pass as props, we can update state in parent component and we can achieve inverse data flow.
+
 
