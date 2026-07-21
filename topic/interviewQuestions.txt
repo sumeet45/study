@@ -1,0 +1,20 @@
+Scenario questions -
+* how to plan one application for 2 or more different customer with react - using subdomain based url or use JWT token (which will have org ID)
+* how to share authentication between multiple micro frontend - suppose we have 1 parent microfrontend application and other 2 child application open at time, so how can we share authentication or how we can handle logout from other tabs when those idle? - single domain setup with cookie
+* how to handle performance when 10k user uses at a time - horizontal scaling with load balancer, caching, improve DB queries (add indexing), use Queues for Heavy Task, Rate limiting, test app before rollout for 10k
+* sync state in tab in react -  BroadCastChannel API or redux-state-sync
+* how do u secure cookies in HTTPS - add Flags secure, HttpOnly, SameSite
+* suspense in React JS
+* React Fibre
+* JWT authentication
+* tree shaking
+* performance bottlenecks in react js
+* Node JS event loop
+* stream in nodejs
+* optimize node application
+* middleware in express js
+* jwt authentication vs session authentication
+* event emitter nodejs
+* after deployment API response time increases, what will you do?
+* vite vs webpack
+* Jest
