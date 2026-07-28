@@ -148,4 +148,40 @@ Step 2: Define the function -
  * React components are regular JavaScript functions, but their names must start with a capital letter or they won’t work!
 
 Step 3: Add markup -
- * component contain html tags, which we call JSX and it helps to you embed markup inside JavaScript 
+ * component contain html tags, which we call JSX and it helps to you embed markup inside JavaScript
+ * return statement can written in 2 ways -
+  return <img src={}/>
+  return (.
+       ..
+      .)
+ * Without parentheses, any code on the lines after return will be ignored!
+
+
+Using a component 
+ * Now that you’ve defined your Profile component, you can nest it inside other components. 
+
+function Profile() {
+  return (
+    <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg"
+      alt="Katherine Johnson"
+    />
+  );
+}
+
+export default function Gallery() {
+  return (
+    <section>
+      <h1>Amazing scientists</h1>
+      <Profile />
+      <Profile />
+      <Profile />
+    </section>
+  );
+}
+
+What the browser sees -
+ * Notice the difference in casing:
+    1) <section> is lowercase, so React knows we refer to an HTML tag.
+    2) <Profile /> starts with a capital P, so React knows that we want to use our component called Profile.
+
+Nesting and organizing components -
