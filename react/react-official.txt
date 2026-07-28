@@ -125,3 +125,13 @@ Start with the mockup -
   * using Functions, which we pass as props, we can update state in parent component and we can achieve inverse data flow.
 
 
+
+
+----------------------------------------
+
+link - https://react.dev/learn/your-first-component
+
+Your First Component -
+ * Components are one of the core concepts of React.
+ * React lets you combine your markup, CSS, and JavaScript into custom “components”, reusable UI elements for your app.
+ 
