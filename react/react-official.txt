@@ -209,5 +209,21 @@ Exporting and importing a component -
 Deep dive 
 Default export vs named export -
  *  A file can have no more than one default export, but it can have as many named exports as you like.
+ 
+Syntax	Export statement	Import statement
+Default	- 
+export default function Button() {}
+import Button from './Button.js';
 
-continue....
+Named -
+export function Button() {}	
+import { Button } from './Button.js';
+
+* with default, we can use any name while importing. and with named, we have to use exact name while importing.
+
+
+----------------------------
+link - https://react.dev/learn/writing-markup-with-jsx
+
+Writing Markup with JSX -
+ * 
