@@ -134,4 +134,18 @@ link - https://react.dev/learn/your-first-component
 Your First Component -
  * Components are one of the core concepts of React.
  * React lets you combine your markup, CSS, and JavaScript into custom “components”, reusable UI elements for your app.
+ * we can write component which we can reuse at any level in our app.
  
+Defining a component -
+ * a React component is a JavaScript function that you can sprinkle with markup.
+
+Build component - 
+Step 1: Export the component -
+ * The export default prefix is a standard JavaScript syntax (not specific to React). It lets you mark the main function in a file so that you can later import it from other files.
+
+Step 2: Define the function -
+ * With function Profile() { } you define a JavaScript function with the name Profile.
+ * React components are regular JavaScript functions, but their names must start with a capital letter or they won’t work!
+
+Step 3: Add markup -
+ * component contain html tags, which we call JSX and it helps to you embed markup inside JavaScript 
