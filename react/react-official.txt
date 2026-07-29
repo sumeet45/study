@@ -379,3 +379,14 @@ Logical AND operator (&&)
  * Another common shortcut you’ll encounter is the JavaScript logical AND (&&) operator. Inside React components, it often comes up when you want to render some JSX when the condition is true, or render nothing otherwise. With &&, you could conditionally render the checkmark only if isPacked is true
 
  * You can read this as “if isPacked, then (&&) render the checkmark, otherwise, render nothing”.
+
+ Recap
+ * In React, you control branching logic with JavaScript.
+ * You can return a JSX expression conditionally with an if statement.
+ * You can conditionally save some JSX to a variable and then include it inside other JSX by using the curly braces.
+ * In JSX, {cond ? <A /> : <B />} means “if cond, render <A />, otherwise <B />”.
+ * In JSX, {cond && <A />} means “if cond, render <A />, otherwise nothing”.
+ * The shortcuts are common, but you don’t have to use them if you prefer plain if.
+
+
+----------------------------------------------
