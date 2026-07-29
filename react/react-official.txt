@@ -371,3 +371,11 @@ Recap
 link - https://react.dev/learn/conditional-rendering
 
 Conditional Rendering
+ * In React, you can conditionally render JSX using JavaScript syntax like if statements, &&, and ? : operators.
+ * sometimes, it return JSX or null
+ * {isPacked ? name + ' ✅' : name}
+
+Logical AND operator (&&) 
+ * Another common shortcut you’ll encounter is the JavaScript logical AND (&&) operator. Inside React components, it often comes up when you want to render some JSX when the condition is true, or render nothing otherwise. With &&, you could conditionally render the checkmark only if isPacked is true
+
+ * You can read this as “if isPacked, then (&&) render the checkmark, otherwise, render nothing”.
