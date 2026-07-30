@@ -427,3 +427,15 @@ It minds its own business. It should not change any objects or variables that ex
  * You should not mutate any of the inputs that your components use for rendering. That includes props, state, and context. To update the screen, “set” state instead of mutating preexisting objects.
  * Strive to express your component’s logic in the JSX you return. When you need to “change things”, you’ll usually want to do it in an event handler. As a last resort, you can useEffect.
  * Writing pure functions takes a bit of practice, but it unlocks the power of React’s paradigm.
+
+
+------------------------------------
+
+link
+
+Understanding Your UI as a Tree -
+ * Thinking of your app as a tree is useful for understanding the relationship between components.
+ 
+
+Your UI as a tree 
+ * Trees are a relationship model between items. The UI is often represented using tree structures. For example, browsers use tree structures to model HTML (DOM) and CSS (CSSOM). Mobile platforms also use trees to represent their view hierarchy.
