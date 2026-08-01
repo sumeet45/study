@@ -391,7 +391,7 @@ Logical AND operator (&&)
 
 ----------------------------------------------
 
-link - 
+link - https://react.dev/learn/rendering-lists
 
 Rendering Lists
  * You will often want to display multiple similar components from a collection of data. You can use the JavaScript array methods to manipulate an array of data. On this page, you’ll use filter() and map() with React to filter and transform your array of data into an array of components.
@@ -403,7 +403,7 @@ Rendering Lists
 
 --------------------------------------
 
-link 
+link - https://react.dev/learn/keeping-components-pure
 
 Keeping Components Pure
 
@@ -431,7 +431,7 @@ It minds its own business. It should not change any objects or variables that ex
 
 ------------------------------------
 
-link
+link - https://react.dev/learn/understanding-your-ui-as-a-tree
 
 Understanding Your UI as a Tree -
  * Thinking of your app as a tree is useful for understanding the relationship between components.
@@ -476,7 +476,7 @@ link - https://react.dev/learn/adding-interactivity
 Adding Interactivity -
  
 
-Responding to events 
+Responding to events -
  * React lets you add event handlers to your JSX. Event handlers are your own functions that will be triggered in response to user interactions like clicking, hovering, focusing on form inputs, and so on.
  * Built-in components like <button> only support built-in browser events like onClick. However, you can also create your own components, and give their event handler props any application-specific names that you like.
   ex. 1) <Button onClick={onPlayMovie}>
@@ -490,4 +490,218 @@ Responding to events
 
 
 State: a component’s memory -
- * 
+ * state is required to show updated value.
+ * ex.  const [val, setVal] = useState(0);
+
+
+Render and commit  -
+ * This process of requesting and serving UI has three steps:
+     * Triggering a render (delivering the diner’s order to the kitchen)
+     * Rendering the component (preparing the order in the kitchen)
+     * Committing to the DOM (placing the order on the table)
+
+State as a snapshot -
+ * In react, even after updating state, it doesn't update instant. First, it rerender component and then it will have latest state.
+
+Queueing a series of state updates  -
+ * In React, if we have series of state update, it wait until code execution. and then react applies state update.
+
+ * example -
+      import { useState } from 'react';
+      
+      export default function Counter() {
+        const [score, setScore] = useState(0);
+      
+        function increment() {
+          setScore(score + 1);
+        }
+      
+        return (
+          <>
+            <button onClick={() => increment()}>+1</button>
+            <button onClick={() => {
+              increment();
+              increment();
+              increment();
+            }}>+3</button>
+            <h1>Score: {score}</h1>
+          </>
+        )
+      }
+
+ * State as a Snapshot explains why this is happening. Setting state requests a new re-render, but does not change it in the already running code. So score continues to be 0 right after you call setScore(score + 1).
+
+  console.log(score);  // 0
+  setScore(score + 1); // setScore(0 + 1);
+  console.log(score);  // 0
+  setScore(score + 1); // setScore(0 + 1);
+  console.log(score);  // 0
+  setScore(score + 1); // setScore(0 + 1);
+  console.log(score);  // 0
+ 
+ * You can fix this by passing an updater function when setting state. Notice how replacing setScore(score + 1) with setScore(s => s + 1) fixes the “+3” button. This lets you queue multiple state updates.
+
+ * by updating increment function in following way, we can resolve this -
+  function increment() {
+    setScore(s => s + 1);
+  }
+
+
+Updating objects in state -
+
+ * State can hold any kind of JavaScript value, including objects. But you shouldn’t change objects and arrays that you hold in the React state directly. Instead, when you want to update an object and array, you need to create a new one (or make a copy of an existing one), and then update the state to use that copy.
+ * Usually, you will use the ... spread syntax to copy objects and arrays that you want to change. For example, updating a nested object could look like this:
+        setPerson({
+          ...person,
+          name: e.target.value
+        });
+
+
+Updating arrays in state  -
+ * Arrays are another type of mutable JavaScript objects you can store in state and should treat as read-only. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array.
+
+-----------------------------------------------------------------------------------
+
+link - https://react.dev/learn/responding-to-events
+
+Responding to Events -
+ * React lets you add event handlers to your JSX. Event handlers are your own functions that will be triggered in response to interactions like clicking, hovering, focusing form inputs, and so on.
+
+
+Adding Event Handlers -
+ * To add an event handler, you will first define a function and then pass it as a prop to the appropriate JSX tag. handleClick is an event handler function.
+  ex.  
+         export default function Button() {
+           function handleClick() {
+             alert('You clicked me!');
+           }
+         
+           return (
+             <button onClick={handleClick}>
+               Click me
+             </button>
+           );
+         }
+  * Alternatively, you can define an event handler inline in the JSX:
+        <button onClick={function handleClick() {
+         alert('You clicked me!');
+       }}>
+
+   Or, more concisely, using an arrow function:
+      <button onClick={() => {
+        alert('You clicked me!');
+      }}>
+
+  * Functions passed to event handlers must be passed, not called.  wrong - <button onClick={handleClick()}>
+
+
+Reading props in event handlers -
+  * Because event handlers are declared inside of a component, they have access to the component’s props. Here is a button that, when clicked, shows an alert with its message prop:
+           function AlertButton({ message, children }) {
+              return (
+                <button onClick={() => alert(message)}>
+                  {children}
+                </button>
+              );
+            }
+
+
+Passing event handlers as props - 
+  * Often you’ll want the parent component to specify a child’s event handler. To do this, pass a prop the component receives from its parent as the event handler like so:
+           function Button({ onClick, children }) {
+             return (
+               <button onClick={onClick}>
+                 {children}
+               </button>
+             );
+           }
+           
+           function PlayButton({ movieName }) {
+             function handlePlayClick() {
+               alert(`Playing ${movieName}!`);
+             }
+           
+             return (
+               <Button onClick={handlePlayClick}>
+                 Play "{movieName}"
+               </Button>
+             );
+           }
+
+
+Naming event handler props  -
+  * By convention, event handler props should start with on, followed by a capital letter. For example, the Button component’s onClick prop could have been called onSmash.
+  * When your component supports multiple interactions, you might name event handler props for app-specific concepts. For example, this Toolbar component receives onPlayMovie and onUploadImage event handlers.
+
+
+Event propagation -
+  * Event handlers will also catch events from any children your component might have. We say that an event “bubbles” or “propagates” up the tree: it starts with where the event happened, and then goes up the tree.
+  * This <div> contains two buttons. Both the <div> and each button have their own onClick handlers. Which handlers do you think will fire when you click a button?
+      If you click on either button, its onClick will run first, followed by the parent <div>’s onClick. So two messages will appear. If you click the toolbar itself, only the parent <div>’s onClick will run.
+
+
+Stopping propagation -
+  * Event handlers receive an event object as their only argument. By convention, it’s usually called e, which stands for “event”. You can use this object to read information about the event.
+  * That event object also lets you stop the propagation. If you want to prevent an event from reaching parent components, you need to call e.stopPropagation() like this Button component does.
+     e.stopPropagation();
+
+
+Passing handlers as alternative to propagation  -
+  * Notice how this click handler runs a line of code and then calls the onClick prop passed by the parent:
+      function Button({ onClick, children }) {
+       return (
+         <button onClick={e => {
+           e.stopPropagation();
+           onClick();
+         }}>
+           {children}
+         </button>
+       );
+     }
+
+  * You could add more code to this handler before calling the parent onClick event handler, too. This pattern provides an alternative to propagation. It lets the child component handle the event, while also letting the parent component specify some additional behavior. Unlike propagation, it’s not automatic. But the benefit of this pattern is that you can clearly follow the whole chain of code that executes as a result of some event.
+
+  * If you rely on propagation and it’s difficult to trace which handlers execute and why, try this approach instead.
+
+
+Preventing default behavior -
+  * Some browser events have default behavior associated with them. For example, a <form> submit event, which happens when a button inside of it is clicked, will reload the whole page by default.
+  * You can call e.preventDefault() on the event object to stop this from happening:
+
+        export default function Signup() {
+           return (
+             <form onSubmit={e => {
+               e.preventDefault();
+               alert('Submitting!');
+             }}>
+               <input />
+               <button>Send</button>
+             </form>
+           );
+         }
+
+
+Recap -
+* You can handle events by passing a function as a prop to an element like <button>.
+* Event handlers must be passed, not called! onClick={handleClick}, not onClick={handleClick()}.
+* You can define an event handler function separately or inline.
+* Event handlers are defined inside a component, so they can access props.
+* You can declare an event handler in a parent and pass it as a prop to a child.
+* You can define your own event handler props with application-specific names.
+* Events propagate upwards. Call e.stopPropagation() on the first argument to prevent that.
+* Events may have unwanted default browser behavior. Call e.preventDefault() to prevent that.
+* Explicitly calling an event handler prop from a child handler is a good alternative to propagation.
+
+
+----------------------------------------------------------------------------------
+link - https://react.dev/learn/state-a-components-memory
+
+State: A Component's Memory -
+ * Components often need to change what’s on the screen as a result of an interaction. Components need to “remember” things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called state.
+
+
+
+
+
+
+
