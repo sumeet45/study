@@ -439,3 +439,13 @@ Understanding Your UI as a Tree -
 
 Your UI as a tree 
  * Trees are a relationship model between items. The UI is often represented using tree structures. For example, browsers use tree structures to model HTML (DOM) and CSS (CSSOM). Mobile platforms also use trees to represent their view hierarchy.
+
+
+The Render Tree -
+ * A major feature of components is the ability to compose components of other components. As we nest components, we have the concept of parent and child components, where each parent component may itself be a child of another component. When we render a React app, we can model this relationship in a tree, known as the render tree.
+
+The Module Dependency Tree 
+* Another relationship in a React app that can be modeled with a tree are an app’s module dependencies. As we break up our components and logic into separate files, we create JS modules where we may export components, functions, or constants. Each node in a module dependency tree is a module and each branch represents an import statement in that module.
+
+
+
