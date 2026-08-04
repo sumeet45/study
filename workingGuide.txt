@@ -1,0 +1,7 @@
+technologies -
+
+
+notes - 
+* take complete KT, ask questions if have any
+* don't hardcode anything in code.
+* check first for normal scenarios
