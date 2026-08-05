@@ -1,7 +1,31 @@
 technologies -
 
 
-notes - 
+best practices - 
 * take complete KT, ask questions if have any
 * don't hardcode anything in code.
-* check first for normal scenarios
+* check first for obvious scenarios
+
+
+* API documentation contain following -
+1. API Name
+2. Description
+3. HTTP Method
+4. Endpoint
+5. Authentication
+6. Authorization / Required Roles
+7. Path Parameters
+8. Query Parameters
+9. Request Headers
+10. Request Body
+11. Success Response
+12. Response Schema
+13. Error Responses
+14. Business Rules
+15. Pagination / Filtering / Sorting
+16. Example Request
+17. Example Response
+18. Example Error Response
+19. Dependencies / Downstream Services
+20. Notes / Limitations
+
