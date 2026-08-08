@@ -1,5 +1,13 @@
 technologies -
+Languages - JS, TS, Nodejs
+Core Topics - DSA, System Design (HLD, LLD), Database, Regex, git, API, HTTPS,
+Framework / Libraries - React, React Native, 
+Cloud /Deployment - AWS, Azure, Kubernetes, Docker, Redis, Kafka
+Patterns/Principles - Architectural Patterns, Deployment Patterns 
+ - 
 
+Working Style - 
+* TOI's  (Task, Output, Input, Steps) - write down
 
 best practices - 
 * take complete KT, ask questions if have any
@@ -29,3 +37,4 @@ best practices -
 19. Dependencies / Downstream Services
 20. Notes / Limitations
 
+* Technical Documentation - took help of chatgpt
