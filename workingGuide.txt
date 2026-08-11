@@ -7,7 +7,8 @@ Patterns/Principles - Architectural Patterns, Deployment Patterns
  - 
 
 Working Style - 
-* TOI's  (Task, Output, Input, Steps) - write down
+* TOIS  (Task, Output, Input, Steps) - write down points.
+* check if any Best practices available, then  apply.
 
 best practices - 
 * take complete KT, ask questions if have any
