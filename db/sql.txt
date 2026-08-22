@@ -139,6 +139,13 @@ SELECT country[to show country name in table] AS customers_country, SUM(score) A
     HAVING condition
 
 
+
+* Alter table -
+* To change definition of table, we will use Alter command.
+
+
+
+
 Queries -
 Select * From User  //To read everything from User
 USE myDatabase      //To change database
