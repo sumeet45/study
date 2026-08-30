@@ -215,12 +215,53 @@ example -
 * when we run two queries, it will show 2 data tables of result for each query.
 * for other DB, we must use ";" at the end of query.
 
+
 18) Static (Fixed) Values - (1:28:58)
-* 
+* we can add static values in the result data.
+* we can have, in 1 query data from database and static data from us.
+
+* example -
+    SELECT 123 AS static_number
+
+    SELECT "HELLO" AS static_string
+   
+    SELECT
+        id,
+        first_name,
+        "New_customer" AS customer_type
+    FROM customers
+
+19) Highlight and Execute - (1:31:09)
+* In this, we can select which part you want to execute and get the result.
 
 
+Data Definition Language -
+20) Data Definition Language - (1:32:33)
+* usually in empty DB, we create stucture of data (table).
+* using create command, we create table.
+* while creating command, add primary key to connect with other tables. primary key going to be visible for the database
+* we are changing definition of database, hence we call it "Data definition language"
+* if we loose script of create command, we can retrieve from expolorer panel.
+    path => click on table > Script Table as > CREATE TO > New query editor window
+* it will give you extra data also with create command.
+* better keep it in git
 
-* Alter table -
+syntax -
+    CREATE TABLE TABLE_NAME (
+        COLUMN_NAME  DATA_TYPE  CONSTRAINT,
+        CONSTRAINT  PRIMARY_KEY_NAME  PRIMARY KEY (id)
+    )
+
+example -
+    create table perspons (
+        id INT NOT NULL,
+        name VARCHAR(50) NOT NULL,
+        birth_date DATE,
+        phone VARCHART(15) NOT NULL
+        CONSTRAINT pk_persons PRIMARY KEY (id)
+    )
+
+21) Alter - (1:38:38)
 * To change definition of table, we will use Alter command.
 
 
