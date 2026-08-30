@@ -1,3 +1,23 @@
+Technical Documentation 
+
+
+* Learn to read and understand questions, so I can write better SQL queries to get required results.
+* Also practiced after learning the style for some time
+style -
+        1. Identify the tables and columns needed to answer the question.
+        2. Identify the task
+        3. Identify the conditions if any available
+
+example -
+    Find the average score for each country
+    considering only customers with a score not equal to 0
+    and return only those countries with an average score greater than 430.
+
+    1) Tables and Columns - customers (score, country)
+    2) Task - Calculate the average score for each country
+
+---------------------------------------------
+
 
 * Database - It is a simple container to store data. But instead of just dumping files into folders, the database organized the data. so it is easy to access, to manage and to search.
 * If we use files instead of DB, it will be quite messy and a long process. 
@@ -111,7 +131,7 @@ select * from customers order by Score ASC
 * ex.
 SELECT * FROM customers ORDER BY country ASC, score DESC    // country sorted first, then score
 
-12) SQL Query Group By -
+12) SQL Query Group By - (58:50)
 * combining the rows with same value in Group By. Combine and smash press rows to make it aggregated and combined
 * It aggregates column by another column.
 * ex. total score by country.   
@@ -130,13 +150,73 @@ SELECT country[to show country name in table] AS customers_country, SUM(score) A
     GROUP By country
 
 
-13) SQL Query HAVING (Filter Aggregated data) -
+13) SQL Query HAVING (Filter Aggregated data) - (1:07:07)
 * we can use "HAVING" in order to filter data but after aggregation.
 * we can use "HAVING" only after using the group by.
-* syntax - 
-    SELECT country, SUM(score) FROM customers 
-    GROUP BY country
-    HAVING condition
+* we use "where" clause on actual data, and we use "having" clause on Aggregated data.
+
+* syntax -
+        SELECT country, SUM(score)
+        FROM customers
+        Where score != 0    // run on Actual Table
+        GROUP BY country
+        HAVING condition    // run on Aggregated Columns
+
+* example -        
+        SELECT AVG(score), country
+        from customers
+        where score != 0
+        group by country
+        having AVG(score) > 430
+
+14) DISTINCT - (1:15:08)
+* It removes duplicated data. duplicates are like repeated values in your data.
+* It make sure, in result we don't have duplicates country, only single name will appear.
+* Don't try "DISTINCT" on unique values like "id", it will be waste.
+* use "DISTINCT", only when we see repetitions, duplicates in values.
+
+* syntax -
+        select
+        DISTINCT country
+        from customers
+
+*example -
+        select
+        distinct country
+        from customers
+
+15) TOP - (1:18:28)
+* In other databases, we call it "LIMIT".
+* to show limited number of result data rows, we can use "TOP".
+
+syntax -
+        select
+        TOP 3
+        from customers
+
+example -
+        select
+        TOP 3 *
+        from customers
+        ORDER BY score DESC
+
+        select
+        TOP 2 *
+        from customers
+        ORDER BY score ASC
+
+16) Execution Order Vs coding Order - (1:23:41)
+* showing coding order.
+* Filters list - Where, Having, select, distinct, top
+* Execution Order -
+        From, Where, Group by , Having , select, distinct, order by, top
+
+17) Multi-Queries (Cool SQL techniques) - (1:27:41)
+* when we run two queries, it will show 2 data tables of result for each query.
+* for other DB, we must use ";" at the end of query.
+
+18) Static (Fixed) Values - (1:28:58)
+* 
 
 
 
