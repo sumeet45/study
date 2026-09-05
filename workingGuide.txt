@@ -39,3 +39,11 @@ best practices -
 20. Notes / Limitations
 
 * Technical Documentation - took help of chatgpt
+
+
+* working guide -
+1) Gather all info, have a KT, ask question -
+  ask 3 questions mainly.
+   a) definition of each thing
+   b) data - from where we can gather, what kind of data type we will use.
+   c) business logic - ask business logic, any calculations, kind of users, 
