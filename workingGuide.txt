@@ -11,9 +11,13 @@ Working Style -
 * check if any Industry standards available, then apply those.
 
 best practices - 
-* take complete KT, ask questions if have any
 * don't hardcode anything in code.
 * check first for obvious scenarios
+
+Before Starting Project, consider following steps -
+* Complete KT should happened, ask questions if arrive while KT. every details should be noted on docs.
+* Features, scenarios in features should be decided before start working on it.
+* User Interface should also create, or atleast have an idea of UI.
 
 
 * API documentation contain following -
