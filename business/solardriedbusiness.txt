@@ -1,7 +1,11 @@
 
 Raw material -
 * Yellow onions, Red Onions, White Onions, Sweet Onions, Green Onions, Shallots, Pearl & Cipollini Onions
+
+product category - ready to cook
+
 Products - Flakes and powder
+
 Procedure -
 * To properly dehydrate yellow onions so they don't spoil or burn, use the following temperature and timing guidelines:
 
@@ -32,6 +36,8 @@ Machine -
     * cutter - Maxel commercial cutter, nirali onion slicer, Imperium Onion & Chili Cutter
     * dehyradtion -
 
+
+
 Machine decision points -
  * how much are our daily usage?
  * how many electricity units will be used by machine
@@ -45,8 +51,12 @@ Machine decision points -
  * operating instruction and how to use that machine? need demo
 
 
-Place to make -
+Place to make - native
+
+
 transport - we will handle it
+
+
 market - amazon (online sites), APMC markets, hotels, restaurant, shops
 
 certificate - 
