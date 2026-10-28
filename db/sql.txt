@@ -263,6 +263,25 @@ example -
 
 21) Alter - (1:38:38)
 * To change definition of table, we will use Alter command.
+* alter options - add column, remove column
+* follwing "add" query, will add column at the end of table. If you want column at the begining or in the middle of table, we need to drop table and start from the scratch.
+
+
+Example -
+    ALTER TABLE persons
+    ADD email VARCHAR(50) NOT NULL
+
+    ALTER TABLE persons
+    DROP COLUMN phone
+
+22) Drop - (1:42:02)
+* Drop table means, we will remove completely. It means we remove table and its data too from database.
+
+example - 
+    DROP TABLE persons
+
+23) DML commands (data manipulation commands) - (1:43:36)
+
 
 
 
